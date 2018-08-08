@@ -95,6 +95,72 @@
 
   <!-- Set title style -->
   
+    <h1><a href="../../../blog/2016/9/27/boxplot-or-violin-plot/">Boxplot or Violin Plot?</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2016-09-27
+  
+
+  <!-- Put post body -->
+  <p>The same data, different visualizations.</p>
+<p>Here's the box plot version:</p>
+<p><img src="../../../blog/2016/9/27/boxplot-or-violin-plot/accuracy-boxplot.png" alt="Data plotted using Seaborn&#39;s box plot."></p>
+<p>And here's the violin plot version.</p>
+<p><img src="../../../blog/2016/9/27/boxplot-or-violin-plot/accuracy-violinplot.png" alt="Data plotted using Seaborn&#39;s violin plot."></p>
+<p>Which is more appropriate, and why?</p>
+<p>I think the Box Plot is more suited for clearly delineating ranges: (min, max), (IQR), and medians, whereas the Violin Plot is more suited for visualizing the distribution of data, including the possibility of bi-/multi-modality.</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../../../blog/2016/9/27/boxplot-or-violin-plot/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
+    <h1><a href="../../../blog/2016/9/22/paper-review/">Paper Review</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2016-09-22
+  
+
+  <!-- Put post body -->
+  <p>I recently reviewed a paper for PLOS Computational Biology. This was my first ever scientific paper review, and so I did my best to be constructive and helpful to the authors, just as other reviewers were for my first lead author publication. I had seen stinging reviews of my colleague's work, those that made it look like the reviewer had an agenda and didn't bother reading the paper properly. Hence, I was determined to have this review not just objectively, but also constructively.</p>
+<p>I also signed off on the review, having been convinced of the need for a more transparent review system. I'm not sure how much my single contribution will make, but I think it's still the right thing to do.</p>
+<p>Because of confidentiality reasons, I can't discuss what the specific topic of the paper was, who the authors were, and what affiliation they had. However, I think I am allowed to describe (in broad general terms) some of the more prominent episodes of thought that went through my mind as I did the review. (If the editor contacts me at a later time and says this post isn't allowed either, I'll be the first to take it private into my own reflections...)</p>
+<p>Essentially the manuscript was about a new algorithm as applied to biology. As I was writing the review, I was constantly reminded of some mistakes I had made early on in my PhD training w.r.t. computational work. The first was the need for simulation data, which was not provided. Another one was to avoid claims of computational efficiency unless I had conducted a formal analysis of my algorithm's order of complexity. The authors had made both of these mistakes, and I hope that my review pointed it out in a way that didn't "sting" (I've seen those, they hurt, my colleagues have been victims of those reviews before.)</p>
+<p>One of PLOS Computational Biology's requirements for their journal article is that a new software method yields insight into some biological problem. My evaluation of the paper was that it wasn't clear what the biological problem was, and I thought it might help the authors by suggesting a few questions that I thought could be answered by their algorithm. As it turns out, the 2nd reviewer also concurred.</p>
+<p>The 2nd reviewer had a sharper eye for statistical issues than I did. Looking back, I was clearly more focused on the algorithm and its utility; I had swept aside statistical issues, partly because of a lack of confidence. Thankfully the 2nd reviewer addressed the question of whether there was statistical evidence for confidence in the conclusions. Just from reading the reviewer's comments, I think I've learned more about how to approach the stats question.</p>
+<p>I was sad, though, that the editors ultimately decided on a rejection; I had only requested for a major revision, and had tried my best to specify what would be necessary and what would be "good-to-have". The authors' topic is close to my heart, and I genuinely enjoyed seeing that there's a competing algorithm that worked faster than my own. Looking through Reviewer 2's comments, it must be the case that Reviewer 2 (who remained anonymous) recommended a rejection. I hope the authors find a good place to put their paper; the rejection always will sting, but I hope that at least I was able to help them make their work better.</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../../../blog/2016/9/22/paper-review/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../../../blog/2016/9/16/why-uncertainty-matters/">Why Uncertainty Matters</a></h1>
   
 
@@ -217,77 +283,6 @@
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../../../blog/2016/9/6/github-lab-notebooks/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../../../blog/2016/9/6/hack-a-gel-imager/">Hack a Gel Imaging Enclosure</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2016-09-06
-  
-
-  <!-- Put post body -->
-  <p>Last week, following a power outage, the expensive gel doc machine &amp; its computer failed. (It's also one floor up.) And so, we decided to just take a photo with our phones - and it turned out just fine.</p>
-<p>So, as things turn out, we don't need a $3000 gel imager to get an image of the gels. But if we think carefully about what a gel imager really is, it's a light box on the bottom, a camera on the top, and a box that shrouds the lighting to make imaging easier. If we have a computer that can send the images anywhere, even better. Guess what? All of that can be hacked together for less than $100.</p>
-<p>Feeling inspired by Google Cardboard, I took some cardboard boxes, and cut out five 24 cm<sup>2</sup> square pieces out of old cardboard boxes, and taped them together in a "+" configuration. I then taped them together to form a 24 cm<sup>3</sup> illuminator cover. On the middle square piece, I cut out a small square hole, big enough for an iPhone 6+ camera to peer into. This turns out to be about just the right size for the transilluminator that we have, with the right amount of elevation for the phone to capture the entire illuminator at one shot.</p>
-<p>Here's a few images of how it looks.</p>
-<p><img src="../../../blog/2016/9/6/hack-a-gel-imager/gel-box.jpg" alt="Gel box."></p>
-<p><img src="../../../blog/2016/9/6/hack-a-gel-imager/phone-box.jpg" alt="Phone on top of gel box."></p>
-<p>And for those who are curious what the final, cropped gel image looks like:</p>
-<p><img src="../../../blog/2016/9/6/hack-a-gel-imager/gel.jpg" alt="Image of gel."></p>
-<p><strong>Bill of Materials:</strong></p>
-<ol>
-<li>Smart phone: An old Moto E with 5 megapixels rear camera should suffice. $70.</li>
-<li>Cardboard box: Free; price may be higher if actually welded/laser-cut/3D-printed instead.</li>
-</ol>
-<p><strong>Some thoughts:</strong></p>
-<p>I believe in taking a hacker's approach to science. New labs, start-up companies, and labs in resource-poor regions need these alternatives to the "premium" products that are being sold in developed nations. The more we can use cheap, off-the-shelf components to do our science, the better.</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../../../blog/2016/9/6/hack-a-gel-imager/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../../../blog/2016/8/18/bayesian-estimation-greater-t-test/">Bayesian Estimation &gt; t-Test</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2016-08-18
-  
-
-  <!-- Put post body -->
-  <p>Recently found a very good article on the ArXiv about Bayesian estimation for difference in sample means. Loved the fact that someone's done the work so that I don't have to!</p>
-<p>The paper essentially explores how a Bayesian estimation (BEST) is essentially much, much better than traditional Null Hypothesis Significance Testing (NHST), and the author provides a good number of convincing arguments for this. The author basically covers the most commonly-used case in the experimental sciences - inter-comparison between an experimental and control group. I'd recommend reading the paper (<a href="http://www.indiana.edu/~kruschke/articles/Kruschke2013JEPG.pdf">link</a>).</p>
-<p>While skimming through it, I then found a <a href="https://pymc-devs.github.io/pymc3/notebooks/BEST.html">PyMC3 recipe</a>, as usual, provided by the awesome <a href="http://twiecki.github.io/">Thomas Wiecki</a> and <a href="http://stronginference.com/">Chris Fonnesbeck</a>.</p>
-<p>It makes me wonder... given how Bayesian inference is much more natural than Frequentist inference, why isn't this used more often?</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../../../blog/2016/8/18/bayesian-estimation-greater-t-test/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 
