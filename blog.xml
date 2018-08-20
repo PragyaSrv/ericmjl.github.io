@@ -2,13 +2,69 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2018-08-07T00:00:00Z</updated>
+  <updated>2018-08-20T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2018/8/20/3d-printed-wifi-access-qr-codes-part-1/">
+    <title type="text">3D Printed WiFi Access QR Codes: Part 1</title>
+    <id>urn:uuid:7893d2eb-dfb8-31af-96ff-99cf28127789</id>
+    <updated>2018-08-20T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2018/8/20/3d-printed-wifi-access-qr-codes-part-1/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;&lt;p&gt;In this blog post, I'll detail how I created a 3D printed QR code that can be used to help guests get on our home guest network in geek style. This part will detail the creation of a QR code with Python. The next part will detail how I created a program to generate 3D printable blocks. The final part will detail how I created a hybrid command line app and Flask app from the same code base, using &lt;code&gt;click&lt;/code&gt; and &lt;code&gt;Flask&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;the-project&quot;&gt;The Project&lt;/h2&gt;&lt;p&gt;Over the weekend, I embarked on a project to create a 3D printed QR code that guests at our house could scan to gain access to our guest wireless network.&lt;/p&gt;
+&lt;h2 id=&quot;why-i-decided-to-do-this&quot;&gt;Why I decided to do this&lt;/h2&gt;&lt;p&gt;From the standpoint of practicality, sure, it's trivial to open up phone settings, find the WiFi network name, and give them the password, but... this has the coolness factor associated with it! Imagine scanning a 3D-printed QR code! Until this becomes commonplace, it's a cool thing to be able to do.&lt;/p&gt;
+&lt;p&gt;Anyways, there's a ton of QR code generators out there on the web, and there's more than a handful of WiFi QR code generators out there - so why did I embark on this project?&lt;/p&gt;
+&lt;p&gt;Partly it's borne out of security reasons - I am not giving my WiFi password up to some random website. Who knows whether they're actually storing the passwords?&lt;/p&gt;
+&lt;p&gt;Another part of this is borne out of me wanting to scratch my itch surrounding QR codes. The last time I went to China (Xi'an and Shanghai, specifically), I saw QR codes &lt;em&gt;everywhere&lt;/em&gt;. There surely had to be something good we could use this for at home that didn't involve just packing and storage.&lt;/p&gt;
+&lt;h2 id=&quot;getting-setup&quot;&gt;Getting Setup&lt;/h2&gt;&lt;p&gt;Ok, let's get started! To create QR codes, all you need are the following packages:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;pyqrcode&lt;/code&gt; [&lt;code&gt;pip&lt;/code&gt;]&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pypng&lt;/code&gt; [&lt;code&gt;pip&lt;/code&gt;]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you want to do the 3D printing part, you'll need another set of packages:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;SolidPython&lt;/code&gt; [&lt;code&gt;pip&lt;/code&gt;]&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;numpy&lt;/code&gt; [&lt;code&gt;conda&lt;/code&gt;/&lt;code&gt;pip&lt;/code&gt;]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;encoding-wifi-credentials-in-a-qr-code&quot;&gt;Encoding WiFi credentials in a QR code&lt;/h2&gt;&lt;p&gt;Let's start by creating a QR code for our WiFi guest network.&lt;/p&gt;
+&lt;p&gt;Let's say that these are the security credentials for the network:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SSID (a.k.a. Network Name): &lt;code&gt;Family Guest Network&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Password: &lt;code&gt;vn8h2sncu093y3nd!&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Security Type (one of WPA or WEP): &lt;code&gt;WPA&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Because QR codes are merely two-dimensional barcodes that encode a string that can be parsed by another program, in order to create a QR-code that is readable for accessing WiFi, we need a string that can be parsed. This string is structured as follows:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;WIFI:S:&amp;lt;SSID&amp;gt;;T:&amp;lt;WPA|WEP|&amp;gt;;P:&amp;lt;password&amp;gt;;;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So in our case, we would want a string that looks like:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;WIFI:S:Family Guest Network;T:WPA;P:vn8h2sncu093y3nd!;;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, we can code up our Python program do encode the QR code for us. I'll assume you're running Python 3.6 or later.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyqrcode&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pq&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Family Guest Network&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;security&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;WPA&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;vn8h2sncu093y3nd!&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:{ssid};T:{security};P:{password};;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;terminal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;With that block of code, you should get a QR code printed to your terminal, just like that!&lt;/p&gt;
+&lt;p&gt;Let's say you wanted to do the simple thing, and just have a regular laser/inkjet printer make a printout of the QR code. To do so, you can save the QR code to disk as a PNG file:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;png&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;home_guest_wifi.png&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;&lt;p&gt;And just like that, you've used Python to create a WiFi QR code!  How easy was that?&lt;/p&gt;
+&lt;p&gt;Along the way, I also used Kite in the Atom text editor while embarking on this project - this allowed me to view documentation and common usage patterns for the packages I imported.&lt;/p&gt;
+&lt;p&gt;Now, if you remember that QR codes are just &quot;ASCII strings encoded in a 2D barcode&quot;, then you'll know that you can pass any arbitrary string into the &lt;code&gt;pyqrcode.create()&lt;/code&gt; function. That means you can  come up with any creative use of a short string that needs to be scanned to be useful! For example, you can create business cards with your LinkedIn profile embedded in the QR code, or use it to encode a serial number information on your possessions, or more!&lt;/p&gt;
+&lt;p&gt;Stay tuned for the coming blog posts!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/">
     <title type="text">Joint, conditional, and marginal probability distributions</title>
     <id>urn:uuid:cf34ea6b-fc4e-3a7f-aa18-5b12a4d0b0d9</id>
@@ -1528,37 +1584,6 @@ include /usr/local/share/nano/sh.nanorc  # gives you bash shell syntax highlight
 &lt;p&gt;On Friday, we did an interview simulator, in which we practiced interviewing one another. This gave me a better view into the thought process that an interviewer might be going through, particularly when conducting a technical interview. From prior experience interviewing, I remembered that my most pleasant interviews were with individuals who kept the atmosphere positive, encouraging, and provided hints along the way. Thus, I tried to conduct the mock interviews in the same way.&lt;/p&gt;
 &lt;p&gt;In the afternoon, I gave a very short workshop on how to write Pythonic code, which covered &lt;a href=&quot;https://www.python.org/dev/peps/pep-0008/#introduction&quot;&gt;&lt;code&gt;PEP8&lt;/code&gt;&lt;/a&gt; (which is now check-able using &lt;a href=&quot;https://github.com/PyCQA/pycodestyle&quot;&gt;&lt;code&gt;pycodestyle&lt;/code&gt;&lt;/a&gt;). It was fun seeing everybody go, &quot;Whoa! Atom can do that?!&quot; and then promptly going ahead to clean up their code according to the &lt;code&gt;flake8&lt;/code&gt; linter's recommendations.&lt;/p&gt;
 &lt;p&gt;Interspersed throughout the week, I made an effort to summarize my thesis work a bit more. I think I have a few ways/hooks to explain it to a 'recruiter without a technical background', a 'computer scientist without biology background', and a 'biologist without a computing background'. Making it concise with a good &quot;hook&quot; was the hardest part, but I think I have something good now.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/6/30/using-bokeh-in-fluforecaster/">
-    <title type="text">Using Bokeh in FluForecaster</title>
-    <id>urn:uuid:c11e7beb-02e6-34d1-8a57-5d26a00844bc</id>
-    <updated>2017-06-30T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/6/30/using-bokeh-in-fluforecaster/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Author: Eric J. Ma, Insight Health Data Science Fellow (Boston 2017b)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;In this blog post, I will show how Bokeh featured in my Insight project, FluForecaster.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Motivation&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;As a Health Data Fellow at Insight, we spend about 3 weeks executing on a data project, which we demo at companies that are hiring. I built &lt;a href=&quot;https://fluforecaster.herokuapp.com/&quot;&gt;FluForecaster&lt;/a&gt;, which was a project aimed at forecasting influenza sequence evolution using deep learning.&lt;/p&gt;
-&lt;p&gt;My choice of project was strategically aligned with my goals on a few levels. Firstly, I wanted to make sure my project showcased deep learning, as it's currently one of the hottest skills to have. Secondly, I had components of the code base written in separate Jupyter notebooks prior to Insight, meaning, I could execute on it quickly within the three weeks we had. Thirdly, I had intended to join Insight primarily with the goal of networking with the Insight community, and that basically meant 'being a blessing' to others on their journey too - if I could execute fast and well on my own stuff, then there'd be time to be a team player with other Fellows in the session, and help them get their projects across the finish line.&lt;/p&gt;
-&lt;p&gt;Each of us had to demo a &quot;final product&quot;. Initially, I was thinking about a &quot;forecasting dashboard&quot;, but one of our program directors, Ivan, suggested that I include more background information. As such, I decided to make the dashboard an interactive blog post instead. Thus, with FluForecaster being a web-first project, I finally had a project in which I could use Bokeh as part of the front-end.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Applying Bokeh&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Bokeh was used mainly for displaying three data panels in the browser. Firstly, I wanted to show how flu vaccine efficacy rarely crossed the 60% threshold over the years. Secondly, I wanted to show a breakdown of the number of sequences collected per year (as used in my dataset). Thirdly, I wanted to show a visual display of influenza evolution.&lt;/p&gt;
-&lt;p&gt;For yearly vaccine effectiveness, it was essentially a line and scatter chart, with the Y-axis constrained between 0 and 100%. I added a hover tooltip to enable my readers to see the exact value of vaccine effectiveness as measured by the US CDC.&lt;/p&gt;
-&lt;p&gt;To show the number of sequences per year in the dataset, the same kind of chart was deployed.&lt;/p&gt;
-&lt;p&gt;Bokeh magic became really evident later when I wanted to show sequence evolution in 3 dimensions. Because 3D charts are generally a poor choice for a flat screen, I opted to show pairs of dimensions at a time. A nice side-effect of this is that because my &lt;code&gt;ColumnDataSource&lt;/code&gt; was shared amongst each of the three pairs of coordinates, panning and selection was automatically linked for free.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Usage Pros and Cons&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Bokeh's API is very powerful, in that it supplies many plotting primitive objects (glyphs, particularly), and that makes it a big plus for users who are experienced with the library, who are creating complex interactive charts.&lt;/p&gt;
-&lt;p&gt;Most of my fellow Fellows at Insight ended up using the &lt;code&gt;bokeh.plotting&lt;/code&gt; interface, and I did too. I think the &lt;code&gt;bokeh.plotting&lt;/code&gt; interface provides the best balance between ease-of-use and flexibility. If you take a look at the code &lt;a href=&quot;https://github.com/ericmjl/flu-sequence-predictor/blob/master/utils/webplots.py#L15&quot;&gt;here&lt;/a&gt;, you'll notice that there's often a bit of boilerplate that gets repeated with variation, such as in the configuration of custom hover tools. I think this is the tradeoff we make for configurability... or I might just be not writing code most efficiently. :)&lt;/p&gt;
-&lt;p&gt;There were times where I was tempted to just use the &lt;code&gt;bkcharts&lt;/code&gt;' declarative interface instead. It's a lot more easy to use. However, I did have some time on hand, and wanted to get familiar with the &lt;code&gt;bokeh.plotting&lt;/code&gt; interface, because there's a possibility that I might want to make wrappers for other visualizations that can lend themselves to a declarative API.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Embedding Visualizations&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;I built my interactive blog post using a combination of Flask, hand-crafted HTML, Bootstrap CSS &amp;amp; JS, and Bokeh - which took care of the bulk of visuals. I drew static figures using Illustrator.&lt;/p&gt;
-&lt;p&gt;Embedding the necessary Bokeh components wasn't difficult. Very good documentation is available on the &lt;a href=&quot;http://bokeh.pydata.org/en/latest/docs/user_guide/embed.html&quot;&gt;Bokeh docs&lt;/a&gt;. The key insight that I had learned was that I could have the &lt;code&gt;components&lt;/code&gt; passed into my Flask app functions' &lt;code&gt;return&lt;/code&gt; statements, and embed them using Jinja2 templating syntax. An example can be found &lt;a href=&quot;https://github.com/ericmjl/flu-sequence-predictor/blob/master/templates/index.html#L81&quot;&gt;here&lt;/a&gt;. Basically, &lt;code&gt;components&lt;/code&gt; returns a &lt;code&gt;div&lt;/code&gt; and a &lt;code&gt;js&lt;/code&gt; object, which are essentially just strings. To embed them in the templates, we use the syntax &lt;code&gt;{{ div|safe }}&lt;/code&gt; and &lt;code&gt;{{ js|safe }}&lt;/code&gt;. That &lt;code&gt;|safe&lt;/code&gt; is very important: it tells the Jinja2 templating engine that it's safe to render those pieces of Javascript and HTML.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Through the project, I became a lot more familiar with the Bokeh plotting library. Now I feel a bit torn! I've contributed to both the Bokeh and &lt;code&gt;matplotlib&lt;/code&gt; projects, and I love them both! I've also come to deeply respect the lead developers of both projects, having interacted with them many times. If I were to make a comment on &quot;where to use what&quot; based on my experience, it'd probably still be the conservative view of &quot;&lt;code&gt;matplotlib&lt;/code&gt; for papers, &lt;code&gt;bokeh&lt;/code&gt; for the web&quot;... but I'm sure that will be outdated soon. Who knows how the Python plotting landscape will evolve - it's exciting times ahead, and at least for now, I'm happy for the experience driving a dataviz project with Bokeh!&lt;/p&gt;
 </content>
   </entry>
 </feed>
