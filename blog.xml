@@ -46,6 +46,7 @@
 &lt;li&gt;You need to know how much memory my data requires, and have to request for at least that amount of memory first per worker node at the the &lt;code&gt;SGECluster&lt;/code&gt; instantiation step.&lt;/li&gt;
 &lt;li&gt;Pre-scattering sometimes takes a bit of time, but I have not seen it take as much time as having the scheduler handle everything.&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&quot;acknowledgments&quot;&gt;Acknowledgments&lt;/h2&gt;&lt;p&gt;Special thanks goes to &lt;a href=&quot;https://matthewrocklin.com&quot;&gt;Matt Rocklin&lt;/a&gt;, who answered my question on &lt;a href=&quot;https://stackoverflow.com/questions/52997229/is-there-an-advantage-to-pre-scattering-data-objects-in-dask&quot;&gt;StackOverflow&lt;/a&gt;, which in turn inspired this blog post.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/">
