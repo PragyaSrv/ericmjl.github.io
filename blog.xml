@@ -2,13 +2,52 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2018-10-11T00:00:00Z</updated>
+  <updated>2018-10-26T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2018/10/26/more-dask-pre-scattering-data/">
+    <title type="text">More Dask: Pre-Scattering Data</title>
+    <id>urn:uuid:8b67f328-eb2a-3367-a47c-537108e7c883</id>
+    <updated>2018-10-26T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2018/10/26/more-dask-pre-scattering-data/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;I learned a new thing about &lt;code&gt;dask&lt;/code&gt; yesterday: pre-scattering data properly!&lt;/p&gt;
+&lt;p&gt;Turns out, you can pre-scatter your data across worker nodes, and have them access that data later when submitting functions to the scheduler.&lt;/p&gt;
+&lt;h2 id=&quot;how-to&quot;&gt;How-To&lt;/h2&gt;&lt;p&gt;To do so, we first call on &lt;code&gt;client.scatter&lt;/code&gt;, pass in the data that I want to scatter across all nodes, ensure that broadcasting is turned on (if and only if I am sure that all worker nodes will need it), and finally assign it to a new variable.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;dask_jobqueue&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SGECluster&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;dask.distributed&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SGECluster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# put parameters in there.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data_future&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;broadcast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;One key thing to remember here is to assign the result of &lt;code&gt;client.scatter&lt;/code&gt; to a variable. This becomes a pointer that you pass into other functions that are submitted via the &lt;code&gt;client.submit&lt;/code&gt; interface. Because this point is not immediately clear from the &lt;code&gt;client.scatter&lt;/code&gt; docs, &lt;a href=&quot;https://github.com/dask/distributed/pull/2320&quot;&gt;I put in a pull request (PR) to provide some just-in-time documentation&lt;/a&gt;, which just got merged this morning. By the way, not every PR has to be code - documentation help is always good!&lt;/p&gt;
+&lt;p&gt;Once we've scattered the data across our worker nodes and obtained a pointer for the scattered data, we can parallel submit our function across worker nodes.&lt;/p&gt;
+&lt;p&gt;Let's say we have a function, called &lt;code&gt;func&lt;/code&gt;, that takes in the &lt;code&gt;data&lt;/code&gt; variable and returns a number. The key characteristic of this function is that it takes anywhere from a few seconds to minutes to run, but I need it run many times (think hundreds to thousands of times).&lt;/p&gt;
+&lt;p&gt;In serial, I would usually do this as a list comprehension:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If done in parallel, I can now use the &lt;code&gt;client&lt;/code&gt; object to submit the function across all worker nodes. For clarity, let me switch to a &lt;code&gt;for-loop&lt;/code&gt; instead:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;submit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data_future&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gather&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Because the &lt;code&gt;client&lt;/code&gt; does not have to worry about sending the large &lt;code&gt;data&lt;/code&gt; object across the network of cluster nodes, it is very fast to submit the functions to the scheduler, which then dispatches it to the worker nodes, which all know where &lt;code&gt;data_future&lt;/code&gt; is on their own &quot;virtual cluster&quot; memory.&lt;/p&gt;
+&lt;h2 id=&quot;advantages&quot;&gt;Advantages&lt;/h2&gt;&lt;p&gt;By pre-scattering, we invest a bit of time pre-allocating memory on worker nodes to hold data that are relatively expensive to transfer. This time investment reaps dividends later when we are working with functions that operate on the data.&lt;/p&gt;
+&lt;h2 id=&quot;cautions&quot;&gt;Cautions&lt;/h2&gt;&lt;p&gt;Not really disadvantages (as I can't think of any), just some things to note:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;You need to know how much memory my data requires, and have to request for at least that amount of memory first per worker node at the the &lt;code&gt;SGECluster&lt;/code&gt; instantiation step.&lt;/li&gt;
+&lt;li&gt;Pre-scattering sometimes takes a bit of time, but I have not seen it take as much time as having the scheduler handle everything.&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/">
     <title type="text">Parallel Processing with Dask on GridEngine Clusters</title>
     <id>urn:uuid:18e951d8-6df5-3751-bf52-1bb750d90d1a</id>
@@ -1754,27 +1793,6 @@ include /usr/local/share/nano/sh.nanorc  # gives you bash shell syntax highlight
 &lt;p&gt;On the second day, I delivered my own Network Analysis Made Simple. I collected some feedback right at the end of the tutorial, and it looked like they were overall very positive. Many liked the whiteboard illustrations that I added on. When delivering this at PyCon, I think it would benefit from having a whiteboard of sorts.&lt;/p&gt;
 &lt;p&gt;The third day was the start of the conference talks. There's many, many great talks out there! I also had the opportunity to connect with new people over breakfast, lunch, coffee and dinner. I tried hosting &quot;office hours&quot;, like Matt Davis did last year, but I think I announced it a bit too late.&lt;/p&gt;
 &lt;p&gt;All-in-all, I think it was great to attend SciPy 2017 this year. I'm happy to have not broken the chain of attendance. Looking forward to serving on next year's organizing committee again, and I hope to have a new tutorial in the works!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/7/8/insight-week-6/">
-    <title type="text">Insight Week 6</title>
-    <id>urn:uuid:cee9eb4d-7a48-332d-a06c-ed17e1ff1b28</id>
-    <updated>2017-07-08T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/7/8/insight-week-6/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;We had a short week this week because of the long July 4th weekend (Happy Birthday, America!).&lt;/p&gt;
-&lt;p&gt;Wednesday was my second demo day, this time at MGH. There were 8 of us demoing at MGH's Clinical DS team, and I really enjoyed the interaction with them. The team asked of me two technical questions about Flu Forecaster, both of which were analogous to other questions I had heard before. After the demo, we hung out with the team and chatted a bit about their latest projects.&lt;/p&gt;
-&lt;p&gt;In the afternoon, I focused on doing the data challenge and leetcode exercises; in the evening, I (at the last minute) signed up for back-to-back behavioral and ML interview practice sessions. It was good to chat with the alumni helping with the sessions, as I learned much more about their thought process. In the future, I'll probably be called on to interview other people, and I will definitely draw on my experiences here.&lt;/p&gt;
-&lt;p&gt;On Thursday we had more prep. I helped with mock interviewing by being an observer for Xi and an interviewer for Angela. The role-playing with Angela was an interesting one for me. I tried playing the role of a conversational but technically-competent interviewer. Also asked questions genuinely out of curiosity too. I think that combined with Angela's outgoing personality kept the conversation enjoyable for all three of our spectators.&lt;/p&gt;
-&lt;p&gt;In the late afternoon, an NYC session alum came by and gave us a session on data challenges. The exercise he gave was quite neat - basically, given one categorical output column and a slew of other feature columns, train the best model that has the highest accuracy score. Oh, the twist? Do it in 25 minutes.&lt;/p&gt;
-&lt;p&gt;The key point from this exercise was to have us get prepared for an on-site data challenge. The on-site data challenge mainly helps the hiring team check that we have the necessary coding chops to work with the team. It also lets them see how we perform under time constraints. The most important thing is to deliver a model with some form of results. Iterating fast is very important. Thus, it helps to push out fast one model that works.&lt;/p&gt;
-&lt;p&gt;On Friday, we did another round of the interview simulator. I thought it was better run this time round. The mutual feedback from one another is very helpful. I was tasked with a stats question, which I melded into a hybrid stats + CS question, thus modelling what I had received when I was interviewed at Verily. FWIW, the question I asked was to define bootstrap resampling (sampling with replacement), implement it using the Python standard library, and discuss the scenarios where it becomes a useful thing.&lt;/p&gt;
-&lt;p&gt;If tasked with a similar one for the next time, I will probably ask about writing a function to sample from a Bernoulli distribution using only the Python standard library. It's useful to know how to implement these statistical draws when it's not easy or impossible to use other libraries. (I had to do it when trying out the PyPy interpreter a few years back, and didn't want to mess with installing &lt;code&gt;numpy&lt;/code&gt; for PyPy.)&lt;/p&gt;
-&lt;p&gt;I liked a few of the other questions asked as well - for example, the knapsack problem posed by Steve: Given a set of produce items, each with their own value and weight (in Kg), and a knapsack that can only carry a maximum weight of produce, find the set of produce that will maximize value at the market.&lt;/p&gt;
-&lt;p&gt;That afternoon, we slowed things down a bit. Regardless of how much we benefit from them, the interview simulators nonetheless are tiring. But that's the key point - interviews are day-long, exhausting endeavours that test stamina and ability to switch between contexts (both technical and social). The simulator aims to simulate that.&lt;/p&gt;
-&lt;p&gt;Looking forward to next week. For me it'll be a short one, because I'll be at SciPy 2017 to lead a Network Analysis tutorial. Also hoping to represent Insight well!&lt;/p&gt;
 </content>
   </entry>
 </feed>
