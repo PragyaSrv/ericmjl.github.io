@@ -17,7 +17,7 @@
     <author>
       <name>Eric J. Ma</name>
     </author>
-    <content type="html">&lt;h1 id=&quot;bayesian-modelling-is-hard-work&quot;&gt;Bayesian Modelling Is Hard Work&lt;/h1&gt;&lt;p&gt;It’s definitely not easy work; anybody trying to tell you that you can &quot;just apply this 
+    <content type="html">&lt;p&gt;It’s definitely not easy work; anybody trying to tell you that you can &quot;just apply this 
 model and just be done with it&quot; is probably wrong.&lt;/p&gt;
 &lt;h2 id=&quot;simple-models&quot;&gt;Simple Models&lt;/h2&gt;&lt;p&gt;Let me clarify: I agree that doing the first half of the statement, &quot;just apply this model&quot;, 
 is a good starting point, but I disagree with the latter half, &quot;and just be done with it&quot;. I 
