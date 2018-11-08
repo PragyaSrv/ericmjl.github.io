@@ -34,10 +34,9 @@ Gaussian-distributed noise in the output.&lt;/p&gt;
 model!&lt;/p&gt;
 &lt;p&gt;Doing the right thing, however, is where the tricky parts come in. To butcher and mash-up 
 two quotes:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;All models are wrong, but some are useful (Box), yet some models are more wrong than 
-others (modifying from Orwell).&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;critiquing-models&quot;&gt;Critiquing Models&lt;/h2&gt;&lt;p&gt;When doing modeling, a series of questions comes up:&lt;/p&gt;
+&lt;blockquote class=&quot;blockquote&quot;&gt;
+&lt;p&gt;All models are wrong, but some are useful (Box), yet some models are more wrong than others (modifying from Orwell). 
+&lt;/blockquote&gt;&lt;h2 id=&quot;critiquing-models&quot;&gt;Critiquing Models&lt;/h2&gt;&lt;p&gt;When doing modeling, a series of questions comes up:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Do my naive assumptions about &quot;Gaussians everywhere&quot; hold? &lt;/li&gt;
 &lt;li&gt;Given that my output data are continuous, is there a better distribution that can describe 
