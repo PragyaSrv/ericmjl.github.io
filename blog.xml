@@ -2,13 +2,103 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2018-10-26T00:00:00Z</updated>
+  <updated>2018-11-07T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2018/11/7/bayesian-modelling-is-hard-work/">
+    <title type="text">Bayesian Modelling is Hard Work!</title>
+    <id>urn:uuid:b544d44a-b92e-3f93-80b0-83a5f38ea17b</id>
+    <updated>2018-11-07T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2018/11/7/bayesian-modelling-is-hard-work/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;h1 id=&quot;bayesian-modelling-is-hard-work&quot;&gt;Bayesian Modelling Is Hard Work&lt;/h1&gt;&lt;p&gt;It’s definitely not easy work; anybody trying to tell you that you can &quot;just apply this 
+model and just be done with it&quot; is probably wrong.&lt;/p&gt;
+&lt;h2 id=&quot;simple-models&quot;&gt;Simple Models&lt;/h2&gt;&lt;p&gt;Let me clarify: I agree that doing the first half of the statement, &quot;just apply this model&quot;, 
+is a good starting point, but I disagree with the latter half, &quot;and just be done with it&quot;. I 
+have found that writing and fitting a very naive Bayesian model to the data I have is a very 
+simple thing. But doing the right thing is not. Let’s not be confused: I don’t mean a Naive 
+Bayes model, I mean naively writing down a Bayesian model that is structured very simply 
+with the simplest of priors that you can think of.&lt;/p&gt;
+&lt;p&gt;Write down the model, including any transformations that you may need on the variables, and 
+then lazily put in a bunch of priors. For example, you might just start with Gaussians 
+everywhere a parameter could take on negative to positive infinity values, or a bounded Half 
+Gaussian if it can only take values above (or below) a certain value. You might assume 
+Gaussian-distributed noise in the output.&lt;/p&gt;
+&lt;p&gt;Let’s still not be confused: Obviously this would not apply to a beta-bernoulli/binomial 
+model!&lt;/p&gt;
+&lt;p&gt;Doing the right thing, however, is where the tricky parts come in. To butcher and mash-up 
+two quotes:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;All models are wrong, but some are useful (Box), yet some models are more wrong than 
+others (modifying from Orwell).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;critiquing-models&quot;&gt;Critiquing Models&lt;/h2&gt;&lt;p&gt;When doing modeling, a series of questions comes up:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Do my naive assumptions about &quot;Gaussians everywhere&quot; hold? &lt;/li&gt;
+&lt;li&gt;Given that my output data are continuous, is there a better distribution that can describe 
+the likelihood?&lt;/li&gt;
+&lt;li&gt;Is there are more principled prior for some of the variables?&lt;/li&gt;
+&lt;li&gt;Does my link function, which joins the input data to the output parameters, properly 
+describe their relationship?&lt;/li&gt;
+&lt;li&gt;Instead of independent priors per group, would a group prior be justifiable?&lt;/li&gt;
+&lt;li&gt;Does my model yield posterior distributions that are within bounds of reasonable ranges, 
+which come from my prior knowledge? If it does not, do I need to bound my priors instead of 
+naively assuming the full support for those distributions?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I am quite sure that this list is non-exhaustive, and probably only covers the bare minimum 
+we have to think about.&lt;/p&gt;
+&lt;p&gt;Doing these model critiques is not easy. Yet, if we are to work towards truthful and 
+actionable conclusions, it is a necessity. We want to know ground truth, so that we can act 
+on it accordingly, and hence take appropriate actions.&lt;/p&gt;
+&lt;h2 id=&quot;prior-experience&quot;&gt;Prior Experience&lt;/h2&gt;&lt;p&gt;I have experienced this modeling loop that Mike Betancourt describes (in his [Principled 
+Bayesian Workflow notebook][notebook]) more than once. One involved count data, with a data 
+scientist from TripAdvisor last year at the SciPy conference; another involved estimating 
+cycle time distributions at work, and yet another involved a whole 4-parameter dose-response 
+curve. In each scenario, model fitting and critique took hours at the minimum; I’d also note 
+that with real world data, I didn’t necessarily get to the &quot;win&quot; was looking for.&lt;/p&gt;
+&lt;p&gt;[notebook]: 
+&lt;a href=&quot;https://github.com/betanalpha/jupyter_case_studies/blob/master/principled_bayesian_workflow/principled_bayesian_workflow.ipynb&quot;&gt;https://github.com/betanalpha/jupyter_case_studies/blob/master/principled_bayesian_workflow/principled_bayesian_workflow.ipynb&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;With the count data, the TripAdvisor data scientist and I reached a point where after 5 
+rounds of tweaking his model, we had a model that fit the data, and described a data 
+generating process that mimics closely to what we would expect given his process. It took us 
+5 rounds, and 3 hours of staring at his model and data, to get there!&lt;/p&gt;
+&lt;p&gt;Yet with cycle time distributions from work, a task ostensibly much easier (&quot;just fit a 
+distribution to the data&quot;), none of my distribution choices, which reflected what I thought 
+would be the data generating process, gave me a &quot;good fit&quot; to the data. I checked by many 
+means: K-S tests, visual inspection, etc. I ended up abandoning the fitting procedure, and 
+used empirical distributions instead.&lt;/p&gt;
+&lt;p&gt;With a 4-parameter dose-response curve, it took me 6 hours to go through 6 rounds of 
+modeling to get to a point where I felt comfortable with the model. I started with a 
+simplifying &quot;Gaussians everywhere&quot; assumption. Later, though, I hesitantly and tentatively 
+putting in bound priors because I knew some posterior distributions were completely out of 
+range under the naive assumptions of the first model, and were likely a result of 
+insufficient range in the concentrations tested. Yet even that model remained unsatisfying: 
+I was stuck with some compounds that didn’t change the output regardless of concentration, 
+and that data are fundamentally very hard to fit with a dose response curve. Thus I the next 
+afternoon,I modeled the dose response relationship using a Gaussian Process instead. Neither 
+model is completely satisfying to the degree that the count data model was, but both the GP 
+and the dose-response curve are and will be roughly correct modeling choices (with the GP 
+probably being more flexible), and importantly, both are actionable by the experimentalists.&lt;/p&gt;
+&lt;h2 id=&quot;thoughts&quot;&gt;Thoughts&lt;/h2&gt;&lt;p&gt;As you probably can see, whenever we either (1) don’t know ground truth, and/or (2) have 
+messy, real world data that don’t fit idealized assumptions about the data generating 
+process, &lt;strong&gt;getting the model &quot;right&quot; is a very hard thing to do!&lt;/strong&gt; Moreover, data are 
+insufficient on their own to critique the model; we will always need to bring in prior 
+knowledge. Much as all probability is conditional probability (Venn), all modeling involves 
+prior knowledge. Sometimes it comes up in non-modellable ways, though as far as possible, 
+it’s a good exercise to try incorporating that into the model definition.&lt;/p&gt;
+&lt;h2 id=&quot;canned-models?&quot;&gt;Canned Models?&lt;/h2&gt;&lt;p&gt;Even with that said, I’m still a fan of canned models, such as those provided by 
+&lt;code&gt;pymc-learn&lt;/code&gt; and &lt;code&gt;scikit-learn&lt;/code&gt; - provided we recognize that their &quot;canned&quot; nature and are 
+equipped to critique and modify said models. Yes, they provide easy, convenient baselines 
+that we can get started with. We can &quot;just apply this model&quot;. But we can’t &quot;just be done 
+with it&quot;: the hard part of getting the model right takes much longer and much more hard 
+work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/10/26/more-dask-pre-scattering-data/">
     <title type="text">More Dask: Pre-Scattering Data</title>
     <id>urn:uuid:8b67f328-eb2a-3367-a47c-537108e7c883</id>
@@ -1771,29 +1861,6 @@ include /usr/local/share/nano/sh.nanorc  # gives you bash shell syntax highlight
 &lt;p&gt;Finally, my interview simulator questions have become famous for being a 'hybrid' between stats, ML and CS. It's very much in the same vein as what I got when I interviewed with Verily.&lt;/p&gt;
 &lt;p&gt;Until we get hired, we are allowed (and one might even say, expected) to continue coming into the office to help each other prepare for upcoming interviews. We're all looking forward to getting hired and solving data problems!&lt;/p&gt;
 &lt;p&gt;With this post, I think I'll end the regular blog post series here. Hope this post series was an informative insight into Insight! Next one I'll post is going to be a summary of lessons learned from my time as an Insight Health Data Fellow.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/7/12/scipy-2017/">
-    <title type="text">SciPy 2017</title>
-    <id>urn:uuid:2c603928-9acb-38b4-916c-cc3edd590b7e</id>
-    <updated>2017-07-12T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/7/12/scipy-2017/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;I just finished from SciPy 2017!  This was a fruitful conference, and I'm glad I managed to make it.&lt;/p&gt;
-&lt;p&gt;Monday was the first day. I wanted to get a better feel for the Jupyter widgets ecosystem, and as such I sat in on the corresponding &lt;a href=&quot;https://scipy2017.scipy.org/ehome/220975/493418/&quot;&gt;tutorial&lt;/a&gt;. That happened to be the only tutorial I sat in live.&lt;/p&gt;
-&lt;p&gt;Nonetheless, one nice thing about the tutorials is that they are live recorded, and so we can watch the ones we missed on our own time when back home. These are the ones I hope to catch, partly out of interest, partly from recommendations by other conference attendees who sat in them:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Numba&lt;/li&gt;
-&lt;li&gt;Holoviews&lt;/li&gt;
-&lt;li&gt;Dask&lt;/li&gt;
-&lt;li&gt;scikit-image&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Looking at the list, I kind of realize now how much of a Continuum Analytics fanboy I've become...&lt;/p&gt;
-&lt;p&gt;On the second day, I delivered my own Network Analysis Made Simple. I collected some feedback right at the end of the tutorial, and it looked like they were overall very positive. Many liked the whiteboard illustrations that I added on. When delivering this at PyCon, I think it would benefit from having a whiteboard of sorts.&lt;/p&gt;
-&lt;p&gt;The third day was the start of the conference talks. There's many, many great talks out there! I also had the opportunity to connect with new people over breakfast, lunch, coffee and dinner. I tried hosting &quot;office hours&quot;, like Matt Davis did last year, but I think I announced it a bit too late.&lt;/p&gt;
-&lt;p&gt;All-in-all, I think it was great to attend SciPy 2017 this year. I'm happy to have not broken the chain of attendance. Looking forward to serving on next year's organizing committee again, and I hope to have a new tutorial in the works!&lt;/p&gt;
 </content>
   </entry>
 </feed>
