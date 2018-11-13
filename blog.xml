@@ -2,13 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2018-11-12T00:00:00Z</updated>
+  <updated>2018-11-13T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2018/11/13/solving-problems-actionably/">
+    <title type="text">Solving Problems Actionably</title>
+    <id>urn:uuid:47287890-e99d-3c82-b19f-7d2ddd0735ac</id>
+    <updated>2018-11-13T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2018/11/13/solving-problems-actionably/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;There's a quote by John Tukey that has been a recurrent theme at work.&lt;/p&gt;
+&lt;blockquote class=&quot;blockquote&quot;&gt;
+&lt;p&gt;It's better to solve the right problem approximately than to solve the wrong problem exactly.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;Continuing on the theme of quoting two Georges:&lt;/p&gt;
+&lt;blockquote class=&quot;blockquote&quot;&gt; 
+&lt;p&gt;All models are wrong, but some are more useful than others.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;H/T Allen Downey for pointing out that our minds think alike.&lt;/p&gt;
+&lt;p&gt;I have been working on a modelling effort for colleagues at work. There were two curves involved, and the second depended on the first one.&lt;/p&gt;
+&lt;p&gt;In both cases, I started with a simple model, and made judgment calls along the way as to whether to continue improving the model, or to stop there because the current iteration of the model was sufficient enough to act on. With first curve, the first model was actionable for me. With the second curve, the first model I wrote clearly wasn't good enough to be actionable, so I spent lots more rounds of iteration on it.&lt;/p&gt;
+&lt;p&gt;But wait, how does one determine &quot;actionability&quot;?&lt;/p&gt;
+&lt;h2 id=&quot;actionability&quot;&gt;Actionability&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;For myself&lt;/strong&gt;, it has generally meant that I'm confident enough in the results to take the next modelling step. My second curves depended on the first curves, and after double-checking multiple ways, I thought the first curve fits, though not perfect, were good enough when applied across a large number of samples that I could instead move on to the second curves.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;For others&lt;/strong&gt;, particularly at my workplace, it generally means a scientist can make a decision about what next experiment to run.&lt;/p&gt;
+&lt;h2 id=&quot;insight-s-mvp-influence&quot;&gt;Insight's MVP Influence&lt;/h2&gt;&lt;p&gt;Going through Insight Data Science drilled into us an instinct for developing an MVP for our problem before going on to perfect it. I think that general model works well. My project's final modelling results will be the result of chains of modelling assumptions at every step. Documenting those steps clearly, and then being willing to revisit those assumptions, is going always a good thing.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/11/12/thoughts-on-black/">
     <title type="text">Thoughts on Black</title>
     <id>urn:uuid:08f2ca8d-df54-3740-8d8b-b93a5bd7e728</id>
@@ -1832,30 +1855,6 @@ include /usr/local/share/nano/sh.nanorc  # gives you bash shell syntax highlight
 &lt;p&gt;Moving forward, I'd like to improve on that notebook a bit more, by somehow implementing/developing a visualization for multiclass classification &lt;strong&gt;uncertainty&lt;/strong&gt; which is the thing we gain from going Bayesian. Hopefully I'll be able to get to that next week - it's shaping up to look quite hectic!&lt;/p&gt;
 &lt;p&gt;As a side note, I found a bug with the multinomial distribution implementation in PyMC3, and am working with one of the core developers to get it fixed in PyMC3's master branch. (Thanks a ton, Junpeng, if you ever get to read this! ) In the meantime, I simply took his patch, modified mine a little bit, and used the patched up PyMC3 for my own purposes.&lt;/p&gt;
 &lt;p&gt;This is why I think open source is amazing - I can literally patch the source code to get it to do what I need correctly! Wherever I work next has to be supportive of things like this, and have to allow re-release of generally/broadly useful code that I touch - it is the right thing to do!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/7/17/lessons-learned-during-insight/">
-    <title type="text">Lessons Learned During Insight</title>
-    <id>urn:uuid:94213d9c-1919-363d-a3a8-ef2bf605cb81</id>
-    <updated>2017-07-17T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/7/17/lessons-learned-during-insight/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;&lt;strong&gt;(a) Solving healthcare goes beyond solving the science underlying it.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;At its core, healthcare delivery is essentially a human problem.  Even what we choose to optimize for is a hard problem. Do we optimize for changing human behaviour, or do we optimize for more precise treatments?&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;(b) Healthcare is complex&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The biggest thing preventing a &quot;solving of healthcare&quot; is misaligned incentives.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;(c) I like scientific data&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Regardless of the lesson that healthcare needs to be solved with more than science, I still found myself naturally much more engaged with companies that were dealing with scientific data as part of their data science problems. Teams that were dealing with other types of data: insurance claims, financial, marketing, platform product analytics, click streams... these were much less engaging. I know my best fit now, though I won’t rule out other teams.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;(d) People can change the equation.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;I met with some people whose intellect and grasp of knowledge I really admire! Additionally, passion is infectious. It helps to work with colleagues who energize one another, rather than drain each others’ energy.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;(e) Some Insight alumni are awesome&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;And I want to be like them when I help with mentoring for the next batch. Perhaps if I get a chance to interview others, I’d like to be able to model how I interview after the alumni mentors.&lt;/p&gt;
-&lt;p&gt;Biggest shout-out to George Leung, who works for Vectra, tailored his mentoring session by first asking me about my Insight project, which involved Gaussian processes and variational auto-encoders (VAEs). George asked me first about what VAEs were, and then asked me to solve a Bayes problem on the board. I could tell he was building his questions on-the-fly.&lt;/p&gt;
-&lt;p&gt;The other shout-out goes to Ramsey Kamar, who went through the “Big 4” questions: tell me about yourself, what’s your previous accomplishments, how did you face a conflict, and what’s your biggest weakness. His feedback to me was direct, positive, and most importantly, always encouraging.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;(f) Humanities tools are needed&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;On reflection, I think that if we’re going to solve the “human” portion of healthcare, we’re going to need tools from the humanities - the tools that let us qualitatively and quantitatively study human behaviour. While data science can provide a quantitative path towards a solution, the qualitative side of it will remain as important as ever.&lt;/p&gt;
 </content>
   </entry>
 </feed>
