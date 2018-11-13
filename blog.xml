@@ -2,13 +2,32 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2018-11-07T00:00:00Z</updated>
+  <updated>2018-11-12T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2018/11/12/thoughts-on-black/">
+    <title type="text">Thoughts on Black</title>
+    <id>urn:uuid:08f2ca8d-df54-3740-8d8b-b93a5bd7e728</id>
+    <updated>2018-11-12T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2018/11/12/thoughts-on-black/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;Having used Black for quite a while now, I have a hunch that it will continue to surpass its current popularity amongst projects.&lt;/p&gt;
+&lt;p&gt;It's one thing to be opinionated about things that matter for a project, but don't matter personally. Like code style. It's another thing to actually build a tool that, with one command, realizes those opinions in (milli)seconds. That's exactly what Black does.&lt;/p&gt;
+&lt;p&gt;At the end of the day, it was, and still is, a tool that has a very good human API - that of convenience.&lt;/p&gt;
+&lt;p&gt;By being opinionated about what code &lt;em&gt;ought&lt;/em&gt; to look like, &lt;code&gt;black&lt;/code&gt; has very few configurable parameters. Its interface is very simple. &lt;em&gt;Convenient.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;By automagically formatting &lt;em&gt;every&lt;/em&gt; Python file in subdirectories (if not otherwise configured so), it makes code formatting quick and easy. &lt;em&gt;Convenient.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In particular, by being opinionated about conforming to community standards for code style with Python, &lt;code&gt;black&lt;/code&gt; ensures that formatted code is consistently formatted and thus easy to read. &lt;em&gt;Convenient!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Because of this, I highly recommend the use of &lt;code&gt;black&lt;/code&gt; for code formatting.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pip install black
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/11/7/bayesian-modelling-is-hard-work/">
     <title type="text">Bayesian Modelling is Hard Work!</title>
     <id>urn:uuid:b544d44a-b92e-3f93-80b0-83a5f38ea17b</id>
@@ -1837,27 +1856,6 @@ include /usr/local/share/nano/sh.nanorc  # gives you bash shell syntax highlight
 &lt;p&gt;The other shout-out goes to Ramsey Kamar, who went through the “Big 4” questions: tell me about yourself, what’s your previous accomplishments, how did you face a conflict, and what’s your biggest weakness. His feedback to me was direct, positive, and most importantly, always encouraging.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;(f) Humanities tools are needed&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;On reflection, I think that if we’re going to solve the “human” portion of healthcare, we’re going to need tools from the humanities - the tools that let us qualitatively and quantitatively study human behaviour. While data science can provide a quantitative path towards a solution, the qualitative side of it will remain as important as ever.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/7/15/insight-week-7/">
-    <title type="text">Insight Week 7</title>
-    <id>urn:uuid:ac1b8134-3672-3195-8642-f1a29ae6f733</id>
-    <updated>2017-07-15T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/7/15/insight-week-7/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Aaand with that, week 7 of Insight is done!&lt;/p&gt;
-&lt;p&gt;I had a short week because of SciPy 2017, and I'm thankful that I got a chance to head out there - had the opportunity to reconnect with many friends from the SciPy community.&lt;/p&gt;
-&lt;p&gt;The two days of Week 7 that I experienced were probably the weirdest week 7 any Fellow has experienced to date. Because I had missed a demo on account of SciPy, and because the company didn't want to just watch the pre-recorded demo video, I made a trek up to Cambridge to demo on-site. What initially was a 30 minute session turned out to be a 1.5 hr demo.&lt;/p&gt;
-&lt;p&gt;I have two more demo obligations to fulfill next week. Other than that, it's going to be mostly interview preparation with other fellows, and more data and coding challenges, and more studying of topics that we're not familiar with. I am trying to brush up on SQL more, as I can see it being a useful tool to have to query data out of databases.&lt;/p&gt;
-&lt;p&gt;Now that we're done with Week 7, we're going to be alumni soon. As such, I've began thinking about how I could give back as an alumni. Some ideas have come to mind, inspired by what others have done.&lt;/p&gt;
-&lt;p&gt;Firstly, I think I can help standardize future Fellows' coding environments by providing a set of annotated instructions for installing the Anaconda distribution of Python. Perhaps even an evening workshop on the first Thursday might be useful.&lt;/p&gt;
-&lt;p&gt;Secondly, I've come to recognize that the biggest bottleneck for Fellows' projects is the web deployment and design portion. Model training to obtain an MVP is fairly fast - one of &lt;code&gt;scikit-learn&lt;/code&gt;'s models is often good enough. However, most of us didn't know HTML and Bootstrap CSS, and the deadline makes it stressful enough to pick this up on-the-fly. (The stress is probably compounded by the fact that the web app/blog post is not the most intellectually interesting portion of the project.) Perhaps a workshop at the end of Week 2 or beginning of Week 3 might be good.&lt;/p&gt;
-&lt;p&gt;Thirdly, I see this trend where a lot more projects are going to start using deep learning. I think putting a workshop together with, say, Jigar, might be a useful thing to have.&lt;/p&gt;
-&lt;p&gt;Finally, my interview simulator questions have become famous for being a 'hybrid' between stats, ML and CS. It's very much in the same vein as what I got when I interviewed with Verily.&lt;/p&gt;
-&lt;p&gt;Until we get hired, we are allowed (and one might even say, expected) to continue coming into the office to help each other prepare for upcoming interviews. We're all looking forward to getting hired and solving data problems!&lt;/p&gt;
-&lt;p&gt;With this post, I think I'll end the regular blog post series here. Hope this post series was an informative insight into Insight! Next one I'll post is going to be a summary of lessons learned from my time as an Insight Health Data Fellow.&lt;/p&gt;
 </content>
   </entry>
 </feed>
