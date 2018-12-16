@@ -2,13 +2,34 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2018-11-13T00:00:00Z</updated>
+  <updated>2018-12-09T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2018/12/9/mathematical-intuition/">
+    <title type="text">Mathematical Intuition</title>
+    <id>urn:uuid:4ae0c241-c33a-3013-8d4c-baf759793236</id>
+    <updated>2018-12-09T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2018/12/9/mathematical-intuition/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;Last week, I picked up Jeremy Kun's book, &quot;A Programmer's Introduction to Mathematics&quot;. In it, I finally found an explanation for my frustrations when reading math papers:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;What programmers would consider “sloppy” notation is one symptom of the problem, but there there are other expectations on the reader that, for better or worse, decelerate the pace of reading. Unfortunately I have no solution here. Part of the power and expressiveness of mathematics is the ability for its practitioners to overload, redefine, and omit in a suggestive manner. Mathematicians also have thousands of years of “legacy” math that require backward compatibility. Enforcing a single specification for all of mathematics—a suggestion I frequently hear from software engineers—would be horrendously counterproductive.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Reading just &lt;em&gt;that&lt;/em&gt; paragraph explained, in such a lucid manner, how my frustrations reading mathematically-oriented papers, stemmed from mismatched expectations. I come into a paper thinking like a software engineer. Descriptive variable names (as encouraged by Python), which are standardized as well, with structured abstractions providing a hierarchy of logic between chunks of code... No, mathematicians are more like Shakespeare - or perhaps linguists - in that they will take a symbol and imbibe it with a subtly new meaning or interpretation inspired by a new field. That &quot;L&quot; you see in one field of math doesn't always exactly mean the same thing in another field.&lt;/p&gt;
+&lt;h2 id=&quot;biology-vs.-math?&quot;&gt;Biology vs. Math?&lt;/h2&gt;&lt;p&gt;The contrast is stark when compared against reading a biology paper. With a biology paper, if you know the key wet-bench experiment types (and there's not that many), you can essentially get the gist of a paper by reading the abstract and dissecting the figures, which, granted, are described and labelled with field-specific jargon, but are at least descriptive names. With a math-oriented paper, the equations are the star, and one has to really grok each element of the equations to know what they mean. It means taking the time to dissect each equation and ask what each symbol is, what each group of symbols means, and how those underlying ideas connect with one another and with other ideas. It's not unlike a biology paper, but requiring a different kind of patience, one that I wasn't trained in.&lt;/p&gt;
+&lt;h2 id=&quot;learning-to-learn-by-teaching&quot;&gt;Learning to Learn by Teaching&lt;/h2&gt;&lt;p&gt;As Jeremy Kun wrote in his book, programmers do have some sort of a leg-up when it comes to reading and understanding math. It's a bit more than what Kun wrote, I think - yes, many programming ideas have deep mathematical connections. But I think there's more.&lt;/p&gt;
+&lt;p&gt;One thing we know from research into how people learn is that teaching someone something is an incredible way to learn that something. From my prior experience, the less background a student has in a material, the more demands are placed on the teacher's understanding of the material, as we work out how the multiple representations in our head to try to communicate it to them.&lt;/p&gt;
+&lt;p&gt;As it turns out, we programmers have the ultimate dumb &quot;student&quot; available at our fingertips: Our computers! By implementing mathematical ideas in code, we are essentially &quot;teaching&quot; the computer to do something mathematical. Computers are not smart; they are programmed to do exactly what we input to them. If we get an idea wrong, our implementation of the math will likely be wrong. That fundamental law of computing shows up again: Garbage in, garbage out.&lt;/p&gt;
+&lt;h2 id=&quot;hierarchy-of-ideas&quot;&gt;Hierarchy of Ideas&lt;/h2&gt;&lt;p&gt;More than just that, when we programmers implement a mathematical idea in code, we can start putting our &quot;good software engineering&quot; ideas into place! It helps the math become stickier when we can see, through code, the hierarchy of concepts that are involved.&lt;/p&gt;
+&lt;p&gt;An example, for me, comes from the deep learning world. I had an attempt dissecting two math-y deep learning papers last week. Skimming through the papers didn't do much good for my understanding of the paper. Neither did trying to read the paper like I do a biology paper. Sure, I could perhaps just read the ideas that the authors were describing in prose, but I had no intuition on which to base a proper critique of the idea's usefulness. It took implementing those papers in Python code, writing tests for them, and using abstractions that I had previously written, to come to a place where I felt like the ideas in the paper were a flexibly wieldable tool in my toolkit.&lt;/p&gt;
+&lt;p&gt;Reinventing the wheel, such that we can learn the wheel, can in fact help us decompose the wheel so that we can do other new things with it. Human creativity is such a wonderful thing!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/11/13/solving-problems-actionably/">
     <title type="text">Solving Problems Actionably</title>
     <id>urn:uuid:47287890-e99d-3c82-b19f-7d2ddd0735ac</id>
@@ -1835,26 +1856,6 @@ include /usr/local/share/nano/sh.nanorc  # gives you bash shell syntax highlight
 &lt;p&gt;The fix was inspired by someone else's problems that was discussed on &lt;code&gt;numpy&lt;/code&gt;'s repository. The trick was to convert the numbers from &lt;code&gt;float32&lt;/code&gt; to &lt;code&gt;float64&lt;/code&gt; first and re-compute the probabilities in &lt;code&gt;float64&lt;/code&gt; precision. I implemented that locally, and everything worked! I quickly ran two of the most relevant tests in the test suite, and they both passed. So I pushed up to GitHub and submitted a PR on this (after checking in with the lead devs on their issue tracker) - and it was just merged tonight!&lt;/p&gt;
 &lt;p&gt;If PyMC3's and &lt;code&gt;numpy&lt;/code&gt;'s code bases were not open source, with issues discussed openly, I would not have been able to figure out a possible fix to the issues with the help of other people. Also, I wouldn't have been able to patch the codebase locally first to see if it solved my own problems. I also wouldn't have access to the test suite to check that nothing was broken. All-in-all, working with an open source codebase was instrumental to getting this fix implemented.&lt;/p&gt;
 &lt;p&gt;Big shout-out to the PyMC devs I interacted with on this - Colin &amp;amp; Junpeng. Thank you for being so encouraging and helpful!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/7/22/bayesian-neural-networks/">
-    <title type="text">Bayesian Neural Networks</title>
-    <id>urn:uuid:91bffec6-e833-3f8e-8d9e-01a12e06bb4e</id>
-    <updated>2017-07-22T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/7/22/bayesian-neural-networks/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;During this week, while us Insight Fellows begin going out to interview with other companies, my &quot;side hustle&quot; has been working on my &lt;a href=&quot;https://github.com/ericmjl/bayesian-analysis-recipes&quot;&gt;Bayesian Analysis Recipes&lt;/a&gt; repository.&lt;/p&gt;
-&lt;p&gt;Two particularly interesting problems I've wanted to write my own implementation for are multinomial classification and Bayesian deep learning. I finally got both of them done today, after about 2-3 days of hacking on them.&lt;/p&gt;
-&lt;p&gt;Multinomial classification (&lt;a href=&quot;https://github.com/ericmjl/bayesian-analysis-recipes/blob/master/multiclass-logistic-regression-cover-type.ipynb&quot;&gt;notebook here&lt;/a&gt;) is the problem where we try to classify an item as being one of multiple classes. This is the natural extension to binary classification (done by logistic regression). To do this, I took the &lt;a href=&quot;https://archive.ics.uci.edu/ml/datasets/covertype&quot;&gt;forest cover dataset&lt;/a&gt; and used PyMC3 to implement multinomial logistic regression. Seeing how to do it with PyMC3 was the most important aspect of this; actual accuracy wasn't much of a concern for me.&lt;/p&gt;
-&lt;p&gt;However, having seen the classification report (at the bottom of the notebook), and having read that the dataset was originally classified using neural networks, I immediately had the thought of doing a Bayesian neural network for multi-class classification, having seen it implemented for binary classification on the PyMC3 website.&lt;/p&gt;
-&lt;p&gt;Bayesian neural networks are not hard to intuit - basically, we place priors on the weights, rather than learning point estimates. In doing so, we are able to propagate uncertainty forward to predictions. Speaking as a non-expert in the field, I think the tricky part is the sampling algorithms needed.&lt;/p&gt;
-&lt;p&gt;One thing nice about the field of Bayesian deep learning is the use of variational inference to approximate the true distribution of predictions with a mathematically more tractable one (e.g. a Gaussian). In doing so, we gain a fast way towards approximately learning the uncertainty in predictions - essentially we trade a little bit of accuracy for a lot of speed. For complex models like neural nets, this can be very valuable, as the number of parameters to learn grows very, very quickly with model complexity, so anything fast can make iteration easier.&lt;/p&gt;
-&lt;p&gt;Starting with the code &lt;a href=&quot;http://twiecki.github.io/blog/2016/06/01/bayesian-deep-learning/&quot;&gt;from Thomas Wiecki's website&lt;/a&gt;, I hacked together a few utility functions and boiled down the example to its essentials. Feed-forward neural nets aren't difficult to write - just a bunch of matrix ops and we're done. The &lt;a href=&quot;https://github.com/ericmjl/bayesian-analysis-recipes/blob/master/multiclass-classification-neural-network.ipynb&quot;&gt;notebook is available as well&lt;/a&gt;. One nice little feature is that by going with a deep neural network, we have additional predictive accuracy!&lt;/p&gt;
-&lt;p&gt;Moving forward, I'd like to improve on that notebook a bit more, by somehow implementing/developing a visualization for multiclass classification &lt;strong&gt;uncertainty&lt;/strong&gt; which is the thing we gain from going Bayesian. Hopefully I'll be able to get to that next week - it's shaping up to look quite hectic!&lt;/p&gt;
-&lt;p&gt;As a side note, I found a bug with the multinomial distribution implementation in PyMC3, and am working with one of the core developers to get it fixed in PyMC3's master branch. (Thanks a ton, Junpeng, if you ever get to read this! ) In the meantime, I simply took his patch, modified mine a little bit, and used the patched up PyMC3 for my own purposes.&lt;/p&gt;
-&lt;p&gt;This is why I think open source is amazing - I can literally patch the source code to get it to do what I need correctly! Wherever I work next has to be supportive of things like this, and have to allow re-release of generally/broadly useful code that I touch - it is the right thing to do!&lt;/p&gt;
 </content>
   </entry>
 </feed>
