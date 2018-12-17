@@ -95,6 +95,56 @@
 
   <!-- Set title style -->
   
+    <h1><a href="../blog/2018/12/16/gaussian-process-notes/">Gaussian Process Notes</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2018-12-16
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/data science/">
+          data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/bayesian/">
+          bayesian
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>I first learned GPs about two years back, and have been fascinated by the idea. I learned it through a video by David MacKay, and managed to grok it enough that I could put it to use in simple settings. That was reflected in my <a href="https://fluforecaster.herokuapp.com">Flu Forecaster project</a>, in which my GPs were trained only on individual latent spaces.</p>
+<p>Recently, though, I decided to seriously sit down and try to grok the math behind GPs (and other machine learning models). To do so, I worked through <a href="https://youtu.be/4vGiHC35j9s">Nando de Freitas' YouTube videos on GPs</a>. (Super thankful that he has opted to put these videos up online!)</p>
+<p>The product of this learning is two-fold. Firstly, I have added a <a href="https://github.com/ericmjl/bayesian-analysis-recipes/blob/master/notebooks/gp-test.ipynb">GP notebook</a> to my <a href="https://github.com/ericmjl/bayesian-analysis-recipes">Bayesian analysis recipes</a> repository.</p>
+<p>Secondly, I have also put together some hand-written notes on GPs. (For those who are curious, I first hand-wrote them on paper, then copied them into my iPad mini using a Wacom stylus. We don't have the budget at the moment for an iPad Pro!) They can be downloaded <a href="../blog/2018/12/16/gaussian-process-notes/gaussian-processes.pdf">here</a>.</p>
+<p>Some lessons learned:</p>
+<ul>
+<li>Algebra is indeed a technology of sorts (to quote Jeremy Kun's book). Being less sloppy than I used to be gives me the opportunity to connect ideas on the page to ideas in my head, and express them more succinctly.</li>
+<li>Grokking the math behind GPs at the minimum requires one thing: remembering, or else knowing how to derive, the formula for how to get the distribution parameters of a multivariate Gaussian conditioned on some of of its variables.</li>
+<li>Once I grokked the math, implementing a GP using only NumPy was trivial; also, extending it to higher dimensions was similarly trivial!</li>
+</ul>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../blog/2018/12/16/gaussian-process-notes/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../blog/2018/12/9/mathematical-intuition/">Mathematical Intuition</a></h1>
   
 
@@ -368,88 +418,6 @@ work. <strong><em>Veritas!</em></strong></p>
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../blog/2018/11/7/bayesian-modelling-is-hard-work/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2018/10/26/more-dask-pre-scattering-data/">More Dask: Pre-Scattering Data</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2018-10-26
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/dask/">
-          dask
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/parallel/">
-          parallel
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/optimization/">
-          optimization
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/gridengine/">
-          gridengine
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>I learned a new thing about <code>dask</code> yesterday: pre-scattering data properly!</p>
-<p>Turns out, you can pre-scatter your data across worker nodes, and have them access that data later when submitting functions to the scheduler.</p>
-<h2 id="how-to">How-To</h2><p>To do so, we first call on <code>client.scatter</code>, pass in the data that I want to scatter across all nodes, ensure that broadcasting is turned on (if and only if I am sure that all worker nodes will need it), and finally assign it to a new variable.</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">dask_jobqueue</span> <span class="kn">import</span> <span class="n">SGECluster</span>
-<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
-
-<span class="n">cluster</span> <span class="o">=</span> <span class="n">SGECluster</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>  <span class="c1"># put parameters in there.</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
-<span class="n">data_future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">broadcast</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
-<p>One key thing to remember here is to assign the result of <code>client.scatter</code> to a variable. This becomes a pointer that you pass into other functions that are submitted via the <code>client.submit</code> interface. Because this point is not immediately clear from the <code>client.scatter</code> docs, <a href="https://github.com/dask/distributed/pull/2320">I put in a pull request (PR) to provide some just-in-time documentation</a>, which just got merged this morning. By the way, not every PR has to be code - documentation help is always good!</p>
-<p>Once we've scattered the data across our worker nodes and obtained a pointer for the scattered data, we can parallel submit our function across worker nodes.</p>
-<p>Let's say we have a function, called <code>func</code>, that takes in the <code>data</code> variable and returns a number. The key characteristic of this function is that it takes anywhere from a few seconds to minutes to run, but I need it run many times (think hundreds to thousands of times).</p>
-<p>In serial, I would usually do this as a list comprehension:</p>
-<div class="hll"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">)]</span>
-</pre></div>
-<p>If done in parallel, I can now use the <code>client</code> object to submit the function across all worker nodes. For clarity, let me switch to a <code>for-loop</code> instead:</p>
-<div class="hll"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">data_future</span><span class="p">))</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
-</pre></div>
-<p>Because the <code>client</code> does not have to worry about sending the large <code>data</code> object across the network of cluster nodes, it is very fast to submit the functions to the scheduler, which then dispatches it to the worker nodes, which all know where <code>data_future</code> is on their own "virtual cluster" memory.</p>
-<h2 id="advantages">Advantages</h2><p>By pre-scattering, we invest a bit of time pre-allocating memory on worker nodes to hold data that are relatively expensive to transfer. This time investment reaps dividends later when we are working with functions that operate on the data.</p>
-<h2 id="cautions">Cautions</h2><p>Not really disadvantages (as I can't think of any), just some things to note:</p>
-<ol>
-<li>You need to know how much memory my data requires, and have to request for at least that amount of memory first per worker node at the the <code>SGECluster</code> instantiation step.</li>
-<li>Pre-scattering sometimes takes a bit of time, but I have not seen it take as much time as having the scheduler handle everything.</li>
-</ol>
-<h2 id="acknowledgments">Acknowledgments</h2><p>Special thanks goes to <a href="https://matthewrocklin.com">Matt Rocklin</a>, who answered my question on <a href="https://stackoverflow.com/questions/52997229/is-there-an-advantage-to-pre-scattering-data-objects-in-dask">StackOverflow</a>, which in turn inspired this blog post.</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2018/10/26/more-dask-pre-scattering-data/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 

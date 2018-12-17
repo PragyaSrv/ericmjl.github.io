@@ -14,7 +14,12 @@
     </style>
 
     
-    
+    <!-- Syntax Highlighter. Use both pygments and hl.js. -->
+    <link rel="stylesheet" href="../../../../../static/pygments.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
 
     <!-- Google Analytics -->
     <script>
@@ -45,7 +50,7 @@
     <link rel="stylesheet" href="/static/css/custom.css">
 </head>
 
-<title>Tag: bayesian - Eric J. Ma's Personal Site</title>
+<title>Gaussian Process Notes - Eric J. Ma's Personal Site</title>
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#local-links" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,34 +92,70 @@
     </nav>
     <div class="container">
         
-<h1><i class="fas fa-tag"></i> bayesian</h1>
+  
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
+    <h1>Gaussian Process Notes</h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2018-12-16
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/data science/">
+          data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/bayesian/">
+          bayesian
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>I first learned GPs about two years back, and have been fascinated by the idea. I learned it through a video by David MacKay, and managed to grok it enough that I could put it to use in simple settings. That was reflected in my <a href="https://fluforecaster.herokuapp.com">Flu Forecaster project</a>, in which my GPs were trained only on individual latent spaces.</p>
+<p>Recently, though, I decided to seriously sit down and try to grok the math behind GPs (and other machine learning models). To do so, I worked through <a href="https://youtu.be/4vGiHC35j9s">Nando de Freitas' YouTube videos on GPs</a>. (Super thankful that he has opted to put these videos up online!)</p>
+<p>The product of this learning is two-fold. Firstly, I have added a <a href="https://github.com/ericmjl/bayesian-analysis-recipes/blob/master/notebooks/gp-test.ipynb">GP notebook</a> to my <a href="https://github.com/ericmjl/bayesian-analysis-recipes">Bayesian analysis recipes</a> repository.</p>
+<p>Secondly, I have also put together some hand-written notes on GPs. (For those who are curious, I first hand-wrote them on paper, then copied them into my iPad mini using a Wacom stylus. We don't have the budget at the moment for an iPad Pro!) They can be downloaded <a href="../../../../../blog/2018/12/16/gaussian-process-notes/gaussian-processes.pdf">here</a>.</p>
+<p>Some lessons learned:</p>
 <ul>
-  
-    <li><a href="../../../blog/2018/12/16/gaussian-process-notes/">2018-12-16: Gaussian Process Notes</a></li>
-  
-    <li><a href="../../../blog/2018/12/9/mathematical-intuition/">2018-12-09: Mathematical Intuition</a></li>
-  
-    <li><a href="../../../blog/2018/11/7/bayesian-modelling-is-hard-work/">2018-11-07: Bayesian Modelling is Hard Work!</a></li>
-  
-    <li><a href="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/">2018-08-07: Joint, conditional, and marginal probability distributions</a></li>
-  
-    <li><a href="../../../blog/2018/8/6/d-separation-in-causal-inference/">2018-08-06: d-separation in causal inference</a></li>
-  
-    <li><a href="../../../blog/2018/7/16/bayesian-estimation-group-comparison-and-workflow/">2018-07-16: Bayesian Estimation, Group Comparison, and Workflow</a></li>
-  
-    <li><a href="../../../blog/2018/2/7/bayesian-inference-and-testing-sets/">2018-02-07: Bayesian Inference &amp; Testing Sets</a></li>
-  
-    <li><a href="../../../blog/2017/10/31/always-check-your-data/">2017-10-31: Always Check Your Data</a></li>
-  
-    <li><a href="../../../blog/2017/8/2/open-source-software/">2017-08-02: Open Source Software</a></li>
-  
-    <li><a href="../../../blog/2016/9/16/why-uncertainty-matters/">2016-09-16: Why Uncertainty Matters</a></li>
-  
-    <li><a href="../../../blog/2016/8/6/variational-inference-with-pymc3-a-lightweight-demo/">2016-08-06: Variational Inference With PyMC3: A Lightweight Demo</a></li>
-  
-    <li><a href="../../../blog/2016/6/10/abstractions/">2016-06-10: Abstractions</a></li>
-  
+<li>Algebra is indeed a technology of sorts (to quote Jeremy Kun's book). Being less sloppy than I used to be gives me the opportunity to connect ideas on the page to ideas in my head, and express them more succinctly.</li>
+<li>Grokking the math behind GPs at the minimum requires one thing: remembering, or else knowing how to derive, the formula for how to get the distribution parameters of a multivariate Gaussian conditioned on some of of its variables.</li>
+<li>Once I grokked the math, implementing a GP using only NumPy was trivial; also, extending it to higher dimensions was similarly trivial!</li>
 </ul>
+
+  </div>
+
+  <a name="disqus"></a>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/gaussian-process-notes"; this.page.url = "http://www.ericmjl.com/blog/2018/12/16/gaussian-process-notes/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//ericmjl.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
     </div>
 
