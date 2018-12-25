@@ -14,7 +14,12 @@
     </style>
 
     
-    
+    <!-- Syntax Highlighter. Use both pygments and hl.js. -->
+    <link rel="stylesheet" href="../../../../../static/pygments.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
 
     <!-- Google Analytics -->
     <script>
@@ -45,7 +50,7 @@
     <link rel="stylesheet" href="/static/css/custom.css">
 </head>
 
-<title>Blog - Eric J. Ma's Personal Site</title>
+<title>Conda hacks for data science efficiency - Eric J. Ma's Personal Site</title>
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#local-links" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,14 +93,13 @@
     <div class="container">
         
   
-    
   <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
+  <link rel="stylesheet" href="../../../../../static/pygments.css">
   <div>
 
   <!-- Set title style -->
   
-    <h1><a href="../blog/2018/12/25/conda-hacks-for-data-science-efficiency/">Conda hacks for data science efficiency</a></h1>
+    <h1>Conda hacks for data science efficiency</h1>
   
 
   <!-- Append author -->
@@ -110,15 +114,15 @@
   <!-- Append tags after author -->
   <p>
       <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
+      <a href="../../../../../blog/tag/data science/">
           data science
       </a>
       <i class="fas fa-tag"></i>
-      <a href="../blog/tag/conda/">
+      <a href="../../../../../blog/tag/conda/">
           conda
       </a>
       <i class="fas fa-tag"></i>
-      <a href="../blog/tag/hacks/">
+      <a href="../../../../../blog/tag/hacks/">
           hacks
       </a>
       
@@ -221,232 +225,23 @@
 
   </div>
 
-    <p><i>Did you enjoy this blog post? <a href="../blog/2018/12/25/conda-hacks-for-data-science-efficiency/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2018/12/16/gaussian-process-notes/">Gaussian Process Notes</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2018-12-16
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/bayesian/">
-          bayesian
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>I first learned GPs about two years back, and have been fascinated by the idea. I learned it through a video by David MacKay, and managed to grok it enough that I could put it to use in simple settings. That was reflected in my <a href="https://fluforecaster.herokuapp.com">Flu Forecaster project</a>, in which my GPs were trained only on individual latent spaces.</p>
-<p>Recently, though, I decided to seriously sit down and try to grok the math behind GPs (and other machine learning models). To do so, I worked through <a href="https://youtu.be/4vGiHC35j9s">Nando de Freitas' YouTube videos on GPs</a>. (Super thankful that he has opted to put these videos up online!)</p>
-<p>The product of this learning is two-fold. Firstly, I have added a <a href="https://github.com/ericmjl/bayesian-analysis-recipes/blob/master/notebooks/gp-test.ipynb">GP notebook</a> to my <a href="https://github.com/ericmjl/bayesian-analysis-recipes">Bayesian analysis recipes</a> repository.</p>
-<p>Secondly, I have also put together some hand-written notes on GPs. (For those who are curious, I first hand-wrote them on paper, then copied them into my iPad mini using a Wacom stylus. We don't have the budget at the moment for an iPad Pro!) They can be downloaded <a href="../blog/2018/12/16/gaussian-process-notes/gaussian-processes.pdf">here</a>.</p>
-<p>Some lessons learned:</p>
-<ul>
-<li>Algebra is indeed a technology of sorts (to quote Jeremy Kun's book). Being less sloppy than I used to be gives me the opportunity to connect ideas on the page to ideas in my head, and express them more succinctly.</li>
-<li>Grokking the math behind GPs at the minimum requires one thing: remembering, or else knowing how to derive, the formula for how to get the distribution parameters of a multivariate Gaussian conditioned on some of of its variables.</li>
-<li>Once I grokked the math, implementing a GP using only NumPy was trivial; also, extending it to higher dimensions was similarly trivial!</li>
-</ul>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2018/12/16/gaussian-process-notes/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2018/12/9/mathematical-intuition/">Mathematical Intuition</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2018-12-09
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/deep learning/">
-          deep learning
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/bayesian/">
-          bayesian
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/math/">
-          math
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>Last week, I picked up Jeremy Kun's book, "A Programmer's Introduction to Mathematics". In it, I finally found an explanation for my frustrations when reading math papers:</p>
-<blockquote><p>What programmers would consider “sloppy” notation is one symptom of the problem, but there there are other expectations on the reader that, for better or worse, decelerate the pace of reading. Unfortunately I have no solution here. Part of the power and expressiveness of mathematics is the ability for its practitioners to overload, redefine, and omit in a suggestive manner. Mathematicians also have thousands of years of “legacy” math that require backward compatibility. Enforcing a single specification for all of mathematics—a suggestion I frequently hear from software engineers—would be horrendously counterproductive.</p>
-</blockquote>
-<p>Reading just <em>that</em> paragraph explained, in such a lucid manner, how my frustrations reading mathematically-oriented papers, stemmed from mismatched expectations. I come into a paper thinking like a software engineer. Descriptive variable names (as encouraged by Python), which are standardized as well, with structured abstractions providing a hierarchy of logic between chunks of code... No, mathematicians are more like Shakespeare - or perhaps linguists - in that they will take a symbol and imbibe it with a subtly new meaning or interpretation inspired by a new field. That "L" you see in one field of math doesn't always exactly mean the same thing in another field.</p>
-<h2 id="biology-vs.-math?">Biology vs. Math?</h2><p>The contrast is stark when compared against reading a biology paper. With a biology paper, if you know the key wet-bench experiment types (and there's not that many), you can essentially get the gist of a paper by reading the abstract and dissecting the figures, which, granted, are described and labelled with field-specific jargon, but are at least descriptive names. With a math-oriented paper, the equations are the star, and one has to really grok each element of the equations to know what they mean. It means taking the time to dissect each equation and ask what each symbol is, what each group of symbols means, and how those underlying ideas connect with one another and with other ideas. It's not unlike a biology paper, but requiring a different kind of patience, one that I wasn't trained in.</p>
-<h2 id="learning-to-learn-by-teaching">Learning to Learn by Teaching</h2><p>As Jeremy Kun wrote in his book, programmers do have some sort of a leg-up when it comes to reading and understanding math. It's a bit more than what Kun wrote, I think - yes, many programming ideas have deep mathematical connections. But I think there's more.</p>
-<p>One thing we know from research into how people learn is that teaching someone something is an incredible way to learn that something. From my prior experience, the less background a student has in a material, the more demands are placed on the teacher's understanding of the material, as we work out how the multiple representations in our head to try to communicate it to them.</p>
-<p>As it turns out, we programmers have the ultimate dumb "student" available at our fingertips: Our computers! By implementing mathematical ideas in code, we are essentially "teaching" the computer to do something mathematical. Computers are not smart; they are programmed to do exactly what we input to them. If we get an idea wrong, our implementation of the math will likely be wrong. That fundamental law of computing shows up again: Garbage in, garbage out.</p>
-<h2 id="hierarchy-of-ideas">Hierarchy of Ideas</h2><p>More than just that, when we programmers implement a mathematical idea in code, we can start putting our "good software engineering" ideas into place! It helps the math become stickier when we can see, through code, the hierarchy of concepts that are involved.</p>
-<p>An example, for me, comes from the deep learning world. I had an attempt dissecting two math-y deep learning papers last week. Skimming through the papers didn't do much good for my understanding of the paper. Neither did trying to read the paper like I do a biology paper. Sure, I could perhaps just read the ideas that the authors were describing in prose, but I had no intuition on which to base a proper critique of the idea's usefulness. It took implementing those papers in Python code, writing tests for them, and using abstractions that I had previously written, to come to a place where I felt like the ideas in the paper were a flexibly wieldable tool in my toolkit.</p>
-<p>Reinventing the wheel, such that we can learn the wheel, can in fact help us decompose the wheel so that we can do other new things with it. Human creativity is such a wonderful thing!</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2018/12/9/mathematical-intuition/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2018/11/13/solving-problems-actionably/">Solving Problems Actionably</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2018-11-13
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/insight data science/">
-          insight data science
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>There's a quote by John Tukey that has been a recurrent theme at work.</p>
-<blockquote class="blockquote">
-<p>It's better to solve the right problem approximately than to solve the wrong problem exactly.</p>
-</blockquote><p>Continuing on the theme of quoting two Georges:</p>
-<blockquote class="blockquote"> 
-<p>All models are wrong, but some are more useful than others.</p>
-</blockquote><p>H/T Allen Downey for pointing out that our minds think alike.</p>
-<p>I have been working on a modelling effort for colleagues at work. There were two curves involved, and the second depended on the first one.</p>
-<p>In both cases, I started with a simple model, and made judgment calls along the way as to whether to continue improving the model, or to stop there because the current iteration of the model was sufficient enough to act on. With first curve, the first model was actionable for me. With the second curve, the first model I wrote clearly wasn't good enough to be actionable, so I spent lots more rounds of iteration on it.</p>
-<p>But wait, how does one determine "actionability"?</p>
-<h2 id="actionability">Actionability</h2><p><strong>For myself</strong>, it has generally meant that I'm confident enough in the results to take the next modelling step. My second curves depended on the first curves, and after double-checking multiple ways, I thought the first curve fits, though not perfect, were good enough when applied across a large number of samples that I could instead move on to the second curves.</p>
-<p><strong>For others</strong>, particularly at my workplace, it generally means a scientist can make a decision about what next experiment to run.</p>
-<h2 id="insight-s-mvp-influence">Insight's MVP Influence</h2><p>Going through Insight Data Science drilled into us an instinct for developing an MVP for our problem before going on to perfect it. I think that general model works well. My project's final modelling results will be the result of chains of modelling assumptions at every step. Documenting those steps clearly, and then being willing to revisit those assumptions, is going always a good thing.</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2018/11/13/solving-problems-actionably/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2018/11/12/thoughts-on-black/">Thoughts on Black</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2018-11-12
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/python/">
-          python
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/code style/">
-          code style
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>Having used Black for quite a while now, I have a hunch that it will continue to surpass its current popularity amongst projects.</p>
-<p>It's one thing to be opinionated about things that matter for a project, but don't matter personally. Like code style. It's another thing to actually build a tool that, with one command, realizes those opinions in (milli)seconds. That's exactly what Black does.</p>
-<p>At the end of the day, it was, and still is, a tool that has a very good human API - that of convenience.</p>
-<p>By being opinionated about what code <em>ought</em> to look like, <code>black</code> has very few configurable parameters. Its interface is very simple. <em>Convenient.</em></p>
-<p>By automagically formatting <em>every</em> Python file in subdirectories (if not otherwise configured so), it makes code formatting quick and easy. <em>Convenient.</em></p>
-<p>In particular, by being opinionated about conforming to community standards for code style with Python, <code>black</code> ensures that formatted code is consistently formatted and thus easy to read. <em>Convenient!</em></p>
-<p>Because of this, I highly recommend the use of <code>black</code> for code formatting.</p>
-<pre><code>pip install black
-</code></pre>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2018/11/12/thoughts-on-black/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-
-  
-  <div class="pagination">
-    
-      <span class="disabled">&laquo; Previous</span>
-    
-    | 1 |
-    
-      <a href="../blog/page/2/">Next &raquo;</a>
-    
-  </div>
-
+  <a name="disqus"></a>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/conda-hacks-for-data-science-efficiency"; this.page.url = "http://www.ericmjl.com/blog/2018/12/25/conda-hacks-for-data-science-efficiency/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//ericmjl.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
     </div>
 

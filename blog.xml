@@ -2,13 +2,115 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2018-12-16T00:00:00Z</updated>
+  <updated>2018-12-25T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2018/12/25/conda-hacks-for-data-science-efficiency/">
+    <title type="text">Conda hacks for data science efficiency</title>
+    <id>urn:uuid:251beb77-b7ce-3834-b046-ca9701afdffb</id>
+    <updated>2018-12-25T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2018/12/25/conda-hacks-for-data-science-efficiency/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;The &lt;code&gt;conda&lt;/code&gt; package manager has, over the years, become an integral part of my workflow. I use it to manage project environments, and have built a bunch of very simple hacks around it that you can adopt too. I'd like to share them with you, alongside the rationale for using them.&lt;/p&gt;
+&lt;h2 id=&quot;hack-1:-set-up-your-.condarc&quot;&gt;Hack #1: Set up your &lt;code&gt;.condarc&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Why?&lt;/strong&gt; It will save you a few keystrokes each time you want to do something with &lt;code&gt;conda&lt;/code&gt;. For example, in my &lt;code&gt;.condarc&lt;/code&gt;, I have the following:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Set the channels that the `conda install` command will &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# automatically search through.&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;defaults&lt;/span&gt;
+  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda-forge&lt;/span&gt;
+  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ericmjl&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Always accept installation. Is convenient, but always &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# double-check!&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;always_yes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;For more information on how to configure your &lt;code&gt;.condarc&lt;/code&gt;, check the &lt;a href=&quot;https://conda.io/docs/user-guide/configuration/use-condarc.html&quot;&gt;online documentation&lt;/a&gt;!&lt;/p&gt;
+&lt;h2 id=&quot;hack-2:-use-one-environment-spec-file-per-project&quot;&gt;Hack #2: Use one environment spec file per project&lt;/h2&gt;&lt;p&gt;This assumes that you have the habit of putting all files related to one project inside one folder, using subdirectories for finer-grained organization.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Why?&lt;/strong&gt; It will ensure that you have one version-controlled, authoritative specification for the packages that are associated with the project. This is good for (1) reproducibility, as you can send it to a colleague and have them reproduce the environment, and (2) will enable Hack #3, which I will showcase afterwards.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# file name: environment.yml&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Give your project an informative name&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;project-name&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Specify the conda channels that you wish to grab packages from, in order of priority.&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;defaults&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda-forge&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ericmjl&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Specify the packages that you would like to install inside your environment. Version numbers are allowed, and conda will automatically use its dependency solver to ensure that all packages work with one another.&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;python=3.7&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;jupyterlab&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;scipy&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;numpy&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pandas&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pyjanitor&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pandas&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# There are some packages which are not conda-installable. You can put the pip dependencies here instead.&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;pip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;tqdm&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# for example only, tqdm is actually available by conda.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A hack that I have related to this is that I use TextExpander shortcut to populate a starting environment spec file.&lt;/p&gt;
+&lt;p&gt;Additionally, if I want to install a new package, rather than simply typing &lt;code&gt;conda install &amp;lt;packagename&amp;gt;&lt;/code&gt;, I will add the package to the environment spec file, and then type &lt;code&gt;conda env update -f environment.yml&lt;/code&gt;, as more often than not, my default is to continue using the package I added.&lt;/p&gt;
+&lt;p&gt;For more details on what the environment spec file is all about, &lt;a href=&quot;https://conda.io/docs/user-guide/tasks/manage-environments.html#create-env-file-manually&quot;&gt;read the online docs&lt;/a&gt;!&lt;/p&gt;
+&lt;h2 id=&quot;hack-3:-use-conda-auto-env&quot;&gt;Hack 3: use &lt;code&gt;conda-auto-env&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;Written by &lt;a href=&quot;https://chdoig.github.io&quot;&gt;Christine Doig&lt;/a&gt;, &lt;a href=&quot;https://github.com/chdoig/conda-auto-env&quot;&gt;&lt;code&gt;conda-auto-env&lt;/code&gt;&lt;/a&gt; is a bash hack that enables you to automatically activate an environment once you enter into a project directory, &lt;em&gt;as long as an &lt;code&gt;environment.yml&lt;/code&gt; file already exists in the directory&lt;/em&gt;. If the environment does not already exist, then &lt;code&gt;conda-auto-env&lt;/code&gt; will automatically create one based on the &lt;code&gt;environment.yml&lt;/code&gt; file in your project directory.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Why?&lt;/strong&gt; If you have many projects that you are working on, then it will greatly reduce the amount of effort used to remember which project to activate.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;conda-auto-env&lt;/code&gt; looks like this:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# File: .conda-auto-env&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; conda_auto_env&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;environment.yml&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# echo &amp;quot;environment.yml file found&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;head -n &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; environment.yml &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; cut -f2 -d &lt;span class=&quot;s1&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Check if you are already in the environment&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt; !&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; *&lt;span class=&quot;nv&quot;&gt;$ENV&lt;/span&gt;* &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;# Check if the environment exists&lt;/span&gt;
+      conda activate &lt;span class=&quot;nv&quot;&gt;$ENV&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$?&lt;/span&gt; -eq &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+        :
+      &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# Create the environment and activate&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Conda env &amp;#39;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ENV&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;#39; doesn&amp;#39;t exist.&amp;quot;&lt;/span&gt;
+        conda env create -q
+        conda activate &lt;span class=&quot;nv&quot;&gt;$ENV&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PROMPT_COMMAND&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;conda_auto_env
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To use it, you have two options. You can either copy/paste the whole original script into your &lt;code&gt;.bashrc&lt;/code&gt;, or you can put it in a file called &lt;code&gt;.conda-auto-env&lt;/code&gt;, and source it from your &lt;code&gt;.bashrc&lt;/code&gt;. I recommend the latter, as it makes managing your &lt;code&gt;.bashrc&lt;/code&gt; easier:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# File: .bashrc&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /path/to/.conda-auto-env
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;hack-4:-hijack-bash-aliases-for-conda-commands&quot;&gt;Hack 4: hijack bash aliases for &lt;code&gt;conda&lt;/code&gt; commands&lt;/h2&gt;&lt;p&gt;I use aliases to save myself a few keystrokes whenever I'm at the terminal. This is a generalizable bash hack, but here it is as applied to &lt;code&gt;conda&lt;/code&gt; commands.&lt;/p&gt;
+&lt;p&gt;Anyways, these are the commands that I use most often, which I have found it useful to alias:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# File: .aliases&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ceu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;conda env update&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;cl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;conda list&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ci&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;conda install&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;cr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;conda remove&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Make sure your aliases don't clash with existing commands that you use!&lt;/p&gt;
+&lt;p&gt;Then, source &lt;code&gt;.aliases&lt;/code&gt; in your &lt;code&gt;. bashrc&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# File: .bashrc&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /path/to/.aliases
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, all of your defined aliases will be available in your bash shell.&lt;/p&gt;
+&lt;p&gt;The idea/pattern, as I mentioned earlier, is generalizable beyond just bash commands. (I have &lt;code&gt;ls&lt;/code&gt; aliased for &lt;code&gt;exa&lt;/code&gt;, and &lt;code&gt;l&lt;/code&gt; aliased for &lt;code&gt;ls&lt;/code&gt; - the epitome of laziness!)&lt;/p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;I hope you found these bash and &lt;code&gt;conda&lt;/code&gt; hacks to be useful. Hopefully they will help you become more productive and efficient!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/12/16/gaussian-process-notes/">
     <title type="text">Gaussian Process Notes</title>
     <id>urn:uuid:66321576-e328-3d24-b3a2-c90b3fa831fe</id>
@@ -1845,20 +1947,6 @@ include /usr/local/share/nano/sh.nanorc  # gives you bash shell syntax highlight
 &lt;p&gt;But writing good docs is a tough job! I absolutely agree with this. There are different styles through which developers read docs - some prefer examples, while others just want to see function definitions - and it's very difficult to cater to every style. I personally think starting off with the style one's most comfortable with, and then gradually accepting community contributions, is the right way to go.&lt;/p&gt;
 &lt;p&gt;One package that I maintain, &lt;a href=&quot;http://github.com/ericmjl/nxviz&quot;&gt;&lt;code&gt;nxviz&lt;/code&gt;&lt;/a&gt;, used to not have any docs written apart from that single file in the README. Thanks to my friend &lt;a href=&quot;https://www.linkedin.com/in/rempic/&quot;&gt;Remi Picone&lt;/a&gt;, I was able to learn how to configure Sphinx to get my docs working through copying &lt;a href=&quot;https://github.com/rempic/Image-Features-Extraction&quot;&gt;his example repository&lt;/a&gt;. Through that, I configured Sphinx to build docs on my nxviz project - and finally got it going! You can find it on &lt;a href=&quot;http://nxviz.readthedocs.io/en/latest/&quot;&gt;RTFD&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Learning this was really fun - looking forward to putting up more docs!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/8/10/next-steps/">
-    <title type="text">Next Steps</title>
-    <id>urn:uuid:7eda5309-b803-3c48-9d79-c9535e1e28bf</id>
-    <updated>2017-08-10T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/8/10/next-steps/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Signed and done! I will be joining the Novartis Institutes for Biomedical Research (NIBR) in September, as part of the Scientific Data Analysis (SDA) team under Novartis Informatics (NX).&lt;/p&gt;
-&lt;p&gt;NIBR is the research arm of Novartis, and the SDA team is essentially a &quot;Data Special Ops&quot; team inside NIBR. The nature of the position involves both internal consulting and the development of new initiatives across teams.&lt;/p&gt;
-&lt;p&gt;The nature of the role I'm being hired into is in statistical learning, which is a general direction I've been moving towards during my time in grad school. I picked up and implemented a number of useful and interesting deep learning algorithms back then, and over the past half a year, have finally gotten in underneath the hood of graph &amp;amp; image convolutions, variational autoencoders and gaussian processes. It's really fun stuff, at its core, and to me, it's even more fun translating biological and chemical data problems into that language, and back.&lt;/p&gt;
-&lt;p&gt;After a summer learning lots and networking with industry professionals and fellow Fellows at Insight, I'm ready for a bit more structure in my life. Looking forward to starting there!&lt;/p&gt;
 </content>
   </entry>
 </feed>
