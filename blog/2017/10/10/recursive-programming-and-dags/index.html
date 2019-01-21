@@ -133,30 +133,30 @@
   <p>Over the past few days, I've found myself using recursive programming to implement a "model specification" system with inheritance for deep learning. The goal here is to enable reproducible computational experiments for particular deep learning hyperparameter sets. Reproducibility is something I learned from the Software/Data Carpentry initiative, thus I wanted to ensure that my own work was reproducible, even if it's not (because of corporate reasons) open-able, because it's the right thing to do.</p>
 <p>So, how do these "model spec" files work? I call them "experiment profiles", and they specify a bunch of things: <strong>model architecture</strong>, <strong>training parameters</strong>, and <strong>data tasks</strong>. These experiment profiles are stored in YAML files on disk. A profile essentially looks like the following (dummy examples provided, naturally):</p>
 <div class="hll"><pre><span></span><span class="c1"># Name: default.yaml</span>
-<span class="nt">parent</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">null</span>
-<span class="nt">data_tasks</span><span class="p">:</span>
-    <span class="nt">tasks</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">task1</span><span class="p p-Indicator">,</span> <span class="nv">task2</span><span class="p p-Indicator">,</span> <span class="nv">task3</span><span class="p p-Indicator">]</span>
-<span class="nt">model_architecture</span><span class="p">:</span>
-    <span class="nt">hidden_layers</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">20</span><span class="p p-Indicator">,</span> <span class="nv">20</span><span class="p p-Indicator">,</span> <span class="nv">20</span><span class="p p-Indicator">]</span>
-    <span class="nt">hidden_dropouts</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0.1</span><span class="p p-Indicator">,</span> <span class="nv">0.2</span><span class="p p-Indicator">,</span> <span class="nv">0.3</span><span class="p p-Indicator">]</span>
-<span class="nt">training_parameters</span><span class="p">:</span>
-    <span class="nt">optimizer</span><span class="p">:</span> <span class="s">&quot;sgd&quot;</span>
-    <span class="nt">optimizer_options</span><span class="p">:</span>
-        <span class="nt">n_epochs</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="l l-Scalar l-Scalar-Plain">parent</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="l l-Scalar l-Scalar-Plain">data_tasks</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">task1</span><span class="p p-Indicator">,</span> <span class="nv">task2</span><span class="p p-Indicator">,</span> <span class="nv">task3</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">model_architecture</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">hidden_layers</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">20</span><span class="p p-Indicator">,</span> <span class="nv">20</span><span class="p p-Indicator">,</span> <span class="nv">20</span><span class="p p-Indicator">]</span>
+    <span class="l l-Scalar l-Scalar-Plain">hidden_dropouts</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">0.1</span><span class="p p-Indicator">,</span> <span class="nv">0.2</span><span class="p p-Indicator">,</span> <span class="nv">0.3</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">training_parameters</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">optimizer</span><span class="p p-Indicator">:</span> <span class="s">&quot;sgd&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">optimizer_options</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">n_epochs</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
 </pre></div>
 <p>In this YAML file, the key-value pairs essentially match the API of the tooling I've built on top of Keras' API to make myself more productive. (From the example, it should be clear that we're dealing with only feed-forward neural networks and nothing else more complicated.) The key here (pun unintended) is that I have a <code>parent</code> key-value pair that specifies another experiment profile that I can inherit from.</p>
 <p>Let's call the above example <code>default.yaml</code>. Let's say I want to run another computational experiment that uses the <code>adam</code> optimizer instead of plain vanilla <code>sgd</code>. Instead of re-specifying the entire YAML file, by implementing an inheritance scheme, I can re-specify only the optimizer and optimizer_options.</p>
 <div class="hll"><pre><span></span><span class="c1"># Name: adam.yaml</span>
-<span class="nt">parent</span><span class="p">:</span> <span class="s">&quot;default.yaml&quot;</span>
-<span class="nt">training_parameters</span><span class="p">:</span>
-    <span class="nt">optimizer</span><span class="p">:</span> <span class="s">&quot;adam&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">parent</span><span class="p p-Indicator">:</span> <span class="s">&quot;default.yaml&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">training_parameters</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">optimizer</span><span class="p p-Indicator">:</span> <span class="s">&quot;adam&quot;</span>
 </pre></div>
 <p>Finally, let's say I find out that 20 epochs (inherited from <code>default.yaml</code>) is too much for Adam - after all, Adam is one of the most efficient gradient descent algorithms out there - and I want to change it to 3 epochs instead. I can do the following:</p>
 <div class="hll"><pre><span></span><span class="c1"># Name: adam-3.yaml</span>
-<span class="nt">parent</span><span class="p">:</span> <span class="s">&quot;adam.yaml&quot;</span>
-<span class="nt">training_parameters</span><span class="p">:</span>
-    <span class="nt">optimizer_options</span><span class="p">:</span>
-        <span class="nt">n_epochs</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="l l-Scalar l-Scalar-Plain">parent</span><span class="p p-Indicator">:</span> <span class="s">&quot;adam.yaml&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">training_parameters</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">optimizer_options</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">n_epochs</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
 </pre></div>
 <p>Okay, so specifying YAML files with inheritance is all good, but how do I ensure that I get the entire parameter set out correctly, without writing verbose code? This is where the power of recursive programming comes in. Using recursion, I can solve this problem with <strong>a single function that calls itself on one condition, and returns a result on another condition</strong>. That's a recursive function in its essence.</p>
 <p>The core of this problem is traversing the inheritance path, from <code>adam-3.yaml</code> to <code>adam.yaml</code> to <code>default.yaml</code>. Once I have the inheritance path specified, loading the YAML files as a dictionary becomes the easy part.</p>

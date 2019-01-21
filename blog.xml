@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
-  <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2018-12-25T00:00:00Z</updated>
+  <id>urn:uuid:a6058c91-b2ec-3293-92f4-6c8535935525</id>
+  <updated>2019-01-21T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/1/21/advi-scalable-bayesian-inference/">
+    <title type="text">ADVI: Scalable Bayesian Inference</title>
+    <id>urn:uuid:1dbf9ba0-9e95-3818-8bf2-2a5f1d796bd7</id>
+    <updated>2019-01-21T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/1/21/advi-scalable-bayesian-inference/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;&lt;p&gt;You never know when scalability becomes an issue. Indeed, scalability necessitates a whole different world of tooling.&lt;/p&gt;
+&lt;p&gt;While at work, I've been playing with a model - a Bayesian hierarchical 4-parameter dose response model, to be specific. With this model, the overall goal (without going into proprietary specifics) was parameter learning - what's the 50th percentile concentration, what's the max, what's the minimum, etc.; what was also important was quantifying the uncertainty surrounding these parameters.&lt;/p&gt;
+&lt;h2 id=&quot;prototype-phase&quot;&gt;Prototype Phase&lt;/h2&gt;&lt;p&gt;Originally, when I prototyped the model, I used just a few thousand samples, which was trivial to fit with NUTS. I also got the model specification (both the group-level and population-level priors) done using those same few thousand.&lt;/p&gt;
+&lt;p&gt;At some point, I was qualitatively and quantitatively comfortable with the model specification. Qualitatively - the model structure reflected prior biochemical knowledge. Quantitatively, I saw good convergence when examining the sampling traces, as well as the shrinkage phenomena.&lt;/p&gt;
+&lt;h2 id=&quot;scaling-up&quot;&gt;Scaling Up&lt;/h2&gt;&lt;p&gt;Once I reached that point, I decided to scale up to the entire dataset: 400K+ samples, 3000+ groups.&lt;/p&gt;
+&lt;p&gt;Fitting this model with NUTS with the full dataset would have taken a week, with no stopping time guarantees at the end of an overnight run - when I left the day before, I was still hoping for 5 days. However, switching over to ADVI (automatic differentiation variational inference) was a key enabler for this model: I was able to finish fitting the model with ADVI in just 2.5 hours, with similar uncertainty estimates (it'll never end up being identical, given random sampling).&lt;/p&gt;
+&lt;h2 id=&quot;thoughts&quot;&gt;Thoughts&lt;/h2&gt;&lt;p&gt;I used to not appreciate that ADVI could be useful for simpler models; in the past, I used to think that ADVI was mainly useful in Bayesian neural network applications - in other words, with large parameter and large data models.&lt;/p&gt;
+&lt;p&gt;With this example, I'm definitely more informed about what &quot;scale&quot; can mean: both in terms of number of parameters in a model, and in terms of number of samples that the model is fitted on. In this particular example, the model is simple, but the number of samples is so large that ADVI becomes a feasible alternative to NUTS MCMC sampling.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/12/25/conda-hacks-for-data-science-efficiency/">
     <title type="text">Conda hacks for data science efficiency</title>
-    <id>urn:uuid:251beb77-b7ce-3834-b046-ca9701afdffb</id>
+    <id>urn:uuid:39ce6029-68b7-335b-b9ff-eef56eae19b9</id>
     <updated>2018-12-25T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/12/25/conda-hacks-for-data-science-efficiency/" />
     <author>
@@ -21,14 +39,14 @@
 &lt;h2 id=&quot;hack-1:-set-up-your-.condarc&quot;&gt;Hack #1: Set up your &lt;code&gt;.condarc&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Why?&lt;/strong&gt; It will save you a few keystrokes each time you want to do something with &lt;code&gt;conda&lt;/code&gt;. For example, in my &lt;code&gt;.condarc&lt;/code&gt;, I have the following:&lt;/p&gt;
 &lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Set the channels that the `conda install` command will &lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# automatically search through.&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;defaults&lt;/span&gt;
   &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda-forge&lt;/span&gt;
   &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ericmjl&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# Always accept installation. Is convenient, but always &lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# double-check!&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;always_yes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;always_yes&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;For more information on how to configure your &lt;code&gt;.condarc&lt;/code&gt;, check the &lt;a href=&quot;https://conda.io/docs/user-guide/configuration/use-condarc.html&quot;&gt;online documentation&lt;/a&gt;!&lt;/p&gt;
 &lt;h2 id=&quot;hack-2:-use-one-environment-spec-file-per-project&quot;&gt;Hack #2: Use one environment spec file per project&lt;/h2&gt;&lt;p&gt;This assumes that you have the habit of putting all files related to one project inside one folder, using subdirectories for finer-grained organization.&lt;/p&gt;
@@ -36,16 +54,16 @@
 &lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# file name: environment.yml&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# Give your project an informative name&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;project-name&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;project-name&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# Specify the conda channels that you wish to grab packages from, in order of priority.&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;defaults&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda-forge&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ericmjl&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# Specify the packages that you would like to install inside your environment. Version numbers are allowed, and conda will automatically use its dependency solver to ensure that all packages work with one another.&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;python=3.7&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;jupyterlab&lt;/span&gt;
@@ -55,7 +73,7 @@
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pyjanitor&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pandas&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# There are some packages which are not conda-installable. You can put the pip dependencies here instead.&lt;/span&gt;
-&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;pip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pip&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;tqdm&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# for example only, tqdm is actually available by conda.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A hack that I have related to this is that I use TextExpander shortcut to populate a starting environment spec file.&lt;/p&gt;
@@ -113,7 +131,7 @@
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/12/16/gaussian-process-notes/">
     <title type="text">Gaussian Process Notes</title>
-    <id>urn:uuid:66321576-e328-3d24-b3a2-c90b3fa831fe</id>
+    <id>urn:uuid:7f66a2e1-5748-3157-9f54-02a15a62a568</id>
     <updated>2018-12-16T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/12/16/gaussian-process-notes/" />
     <author>
@@ -133,7 +151,7 @@
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/12/9/mathematical-intuition/">
     <title type="text">Mathematical Intuition</title>
-    <id>urn:uuid:4ae0c241-c33a-3013-8d4c-baf759793236</id>
+    <id>urn:uuid:572af158-cae6-352c-9fec-4aeda3c882dc</id>
     <updated>2018-12-09T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/12/9/mathematical-intuition/" />
     <author>
@@ -154,7 +172,7 @@
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/11/13/solving-problems-actionably/">
     <title type="text">Solving Problems Actionably</title>
-    <id>urn:uuid:47287890-e99d-3c82-b19f-7d2ddd0735ac</id>
+    <id>urn:uuid:bf1917f4-5fd8-39ef-8f8d-cd3c579e1c62</id>
     <updated>2018-11-13T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/11/13/solving-problems-actionably/" />
     <author>
@@ -177,7 +195,7 @@
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/11/12/thoughts-on-black/">
     <title type="text">Thoughts on Black</title>
-    <id>urn:uuid:08f2ca8d-df54-3740-8d8b-b93a5bd7e728</id>
+    <id>urn:uuid:328c9b28-fabd-388f-8241-ebebc5d525f7</id>
     <updated>2018-11-12T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/11/12/thoughts-on-black/" />
     <author>
@@ -196,7 +214,7 @@
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/11/7/bayesian-modelling-is-hard-work/">
     <title type="text">Bayesian Modelling is Hard Work!</title>
-    <id>urn:uuid:b544d44a-b92e-3f93-80b0-83a5f38ea17b</id>
+    <id>urn:uuid:9db881b3-5e64-3198-9e10-4a82a60c32f2</id>
     <updated>2018-11-07T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/11/7/bayesian-modelling-is-hard-work/" />
     <author>
@@ -283,7 +301,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/10/26/more-dask-pre-scattering-data/">
     <title type="text">More Dask: Pre-Scattering Data</title>
-    <id>urn:uuid:8b67f328-eb2a-3367-a47c-537108e7c883</id>
+    <id>urn:uuid:c55b96b5-1584-30ab-a716-b9233a86d089</id>
     <updated>2018-10-26T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/10/26/more-dask-pre-scattering-data/" />
     <author>
@@ -323,7 +341,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/">
     <title type="text">Parallel Processing with Dask on GridEngine Clusters</title>
-    <id>urn:uuid:18e951d8-6df5-3751-bf52-1bb750d90d1a</id>
+    <id>urn:uuid:49cb4bc9-bd08-3554-a093-bb5eab1c7a6f</id>
     <updated>2018-10-11T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/" />
     <author>
@@ -427,7 +445,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/">
     <title type="text">Optimizing Block Sparse Matrix Creation with Python</title>
-    <id>urn:uuid:77088e4f-4e42-31ba-8d87-ad8dca59c91a</id>
+    <id>urn:uuid:56d08ecd-e6bc-3414-8106-7b5b1e1452c1</id>
     <updated>2018-09-04T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/" />
     <author>
@@ -592,7 +610,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/">
     <title type="text">Joint, conditional, and marginal probability distributions</title>
-    <id>urn:uuid:cf34ea6b-fc4e-3a7f-aa18-5b12a4d0b0d9</id>
+    <id>urn:uuid:4a3ff391-f843-37f8-8679-30e5585fcac4</id>
     <updated>2018-08-07T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/" />
     <author>
@@ -605,7 +623,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/8/6/d-separation-in-causal-inference/">
     <title type="text">d-separation in causal inference</title>
-    <id>urn:uuid:2f272b7e-2bfd-3f09-9d5d-2b782ce072bb</id>
+    <id>urn:uuid:9f5e3c9d-6dfb-3ff7-822e-a8c40267e0fe</id>
     <updated>2018-08-06T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/8/6/d-separation-in-causal-inference/" />
     <author>
@@ -617,7 +635,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/8/1/nxviz-05-released/">
     <title type="text">nxviz 0.5 released!</title>
-    <id>urn:uuid:04350bd2-49a7-32f6-b61c-ccc1c573974c</id>
+    <id>urn:uuid:bf02122e-f414-32f1-a5ef-d15866429ba2</id>
     <updated>2018-08-01T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/8/1/nxviz-05-released/" />
     <author>
@@ -634,7 +652,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/7/27/pyjanitor-0-3-released/">
     <title type="text">pyjanitor 0.3 released!</title>
-    <id>urn:uuid:ca97ad1f-1402-3a65-a15b-1653138a01d4</id>
+    <id>urn:uuid:29fca9b1-eb7a-36e2-a1fa-081631d4fdf7</id>
     <updated>2018-07-27T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/7/27/pyjanitor-0-3-released/" />
     <author>
@@ -659,7 +677,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/7/26/scipy-2018/">
     <title type="text">SciPy 2018</title>
-    <id>urn:uuid:d1504284-578a-32b3-b988-3bac646e8b8e</id>
+    <id>urn:uuid:facc96ac-e7b5-3133-8337-554af67b2c5d</id>
     <updated>2018-07-26T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/7/26/scipy-2018/" />
     <author>
@@ -679,7 +697,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/7/16/bayesian-estimation-group-comparison-and-workflow/">
     <title type="text">Bayesian Estimation, Group Comparison, and Workflow</title>
-    <id>urn:uuid:58217c0b-67d0-3380-92be-00cbcab54a50</id>
+    <id>urn:uuid:64633193-d4d3-383a-9d4e-93cc0d59b8ec</id>
     <updated>2018-07-16T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/7/16/bayesian-estimation-group-comparison-and-workflow/" />
     <author>
@@ -702,7 +720,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/7/14/ecdfs/">
     <title type="text">ECDFs</title>
-    <id>urn:uuid:dcedf06f-59ec-360f-9711-7e4db71e3ef1</id>
+    <id>urn:uuid:722d1463-699e-333c-98e8-1bf49765bda4</id>
     <updated>2018-07-14T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/7/14/ecdfs/" />
     <author>
@@ -759,7 +777,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/6/17/git-tip-apply-a-patch/">
     <title type="text">Git Tip: Apply a Patch</title>
-    <id>urn:uuid:91a163e7-561a-3b01-937e-dd71a96974c3</id>
+    <id>urn:uuid:524d6bf5-7d9f-3e26-88c9-528c7bf88719</id>
     <updated>2018-06-17T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/6/17/git-tip-apply-a-patch/" />
     <author>
@@ -863,7 +881,7 @@ $ git apply /tmp/patch.txt
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/6/5/my-latent-dissatisfaction-with-modern-ml/">
     <title type="text">My Latent Dissatisfaction with Modern ML</title>
-    <id>urn:uuid:2e5732c7-78fb-320e-a57e-6d2164ced345</id>
+    <id>urn:uuid:f72b7f69-3450-36b2-8372-de49629de8e5</id>
     <updated>2018-06-05T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/6/5/my-latent-dissatisfaction-with-modern-ml/" />
     <author>
@@ -890,7 +908,7 @@ $ git apply /tmp/patch.txt
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/5/26/causal-modelling/">
     <title type="text">Causal Modelling</title>
-    <id>urn:uuid:0d2239fc-b359-3a37-abfa-d50e0d2a6f01</id>
+    <id>urn:uuid:c379dc08-8c4b-3098-afc8-f3c3bd97b8c8</id>
     <updated>2018-05-26T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/5/26/causal-modelling/" />
     <author>
@@ -903,7 +921,7 @@ $ git apply /tmp/patch.txt
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/5/6/model-baselines-are-important/">
     <title type="text">Model Baselines Are Important</title>
-    <id>urn:uuid:f3d55548-fb27-39e0-bc0d-86413913fe59</id>
+    <id>urn:uuid:9e425835-4049-3e1d-a460-a61bec0783ce</id>
     <updated>2018-05-06T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/5/6/model-baselines-are-important/" />
     <author>
@@ -918,7 +936,7 @@ $ git apply /tmp/patch.txt
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/3/30/consolidate-your-scripts-using-click/">
     <title type="text">Consolidate your scripts using click</title>
-    <id>urn:uuid:beec04f1-f5b9-3932-9d12-92337ec70fbb</id>
+    <id>urn:uuid:0a6ff3a5-a269-3603-a184-fb79eb6153a7</id>
     <updated>2018-03-30T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/3/30/consolidate-your-scripts-using-click/" />
     <author>
@@ -984,7 +1002,7 @@ script &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; was run!
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/28/lessons-learned-and-reinforced-from-writing-my-own-deep-learning-package/">
     <title type="text">Lessons learned and reinforced from writing my own deep learning package</title>
-    <id>urn:uuid:390270b7-9d7b-306c-9ead-2617aac7af0a</id>
+    <id>urn:uuid:9ea49ae6-b524-3249-911e-681d772c9086</id>
     <updated>2018-02-28T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/28/lessons-learned-and-reinforced-from-writing-my-own-deep-learning-package/" />
     <author>
@@ -1004,7 +1022,7 @@ script &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; was run!
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/26/joy-from-teaching/">
     <title type="text">Joy from teaching</title>
-    <id>urn:uuid:5c9209f0-4531-3b75-b34a-ceb067bc526c</id>
+    <id>urn:uuid:e547dcd7-e53b-3eb3-b3ef-a0d0bbfc8796</id>
     <updated>2018-02-26T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/26/joy-from-teaching/" />
     <author>
@@ -1018,7 +1036,7 @@ script &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; was run!
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/25/annotating-code-tests-and-selectively-running-tests/">
     <title type="text">Annotating code tests and selectively running tests</title>
-    <id>urn:uuid:58ec5548-622e-3171-a4e9-74776a93d076</id>
+    <id>urn:uuid:21841009-0758-3896-b3b3-db8cc8b78b15</id>
     <updated>2018-02-25T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/25/annotating-code-tests-and-selectively-running-tests/" />
     <author>
@@ -1046,7 +1064,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/21/nxviz-first-pr-merged/">
     <title type="text">nxviz first PR merged!</title>
-    <id>urn:uuid:12691a84-54fb-355f-a79b-2f656232a743</id>
+    <id>urn:uuid:abc678e9-023b-3ff8-a4d7-39e8074029a4</id>
     <updated>2018-02-21T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/21/nxviz-first-pr-merged/" />
     <author>
@@ -1059,7 +1077,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/20/deep-learning-and-the-importance-of-a-good-teacher/">
     <title type="text">Deep Learning and the Importance of a Good Teacher</title>
-    <id>urn:uuid:06ad28dc-a618-3792-a8d5-1cc5645cb01b</id>
+    <id>urn:uuid:9b8292c9-df88-35cc-82ee-e18accb82c36</id>
     <updated>2018-02-20T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/20/deep-learning-and-the-importance-of-a-good-teacher/" />
     <author>
@@ -1073,7 +1091,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/13/data-scientists-need-to-write-good-apis/">
     <title type="text">Data scientists need to write good APIs</title>
-    <id>urn:uuid:53402dcb-b8ee-3f08-923d-b30a8e94a285</id>
+    <id>urn:uuid:94c56710-a5f8-3127-bf04-47df862e5b84</id>
     <updated>2018-02-13T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/13/data-scientists-need-to-write-good-apis/" />
     <author>
@@ -1086,7 +1104,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/7/bayesian-inference-and-testing-sets/">
     <title type="text">Bayesian Inference &amp; Testing Sets</title>
-    <id>urn:uuid:ef48ae04-9b7a-3b04-a221-bf4e0f46d296</id>
+    <id>urn:uuid:01bf564f-afd4-36b9-916b-7ecca522ff68</id>
     <updated>2018-02-07T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/7/bayesian-inference-and-testing-sets/" />
     <author>
@@ -1103,7 +1121,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/6/pycon-program-committee-review/">
     <title type="text">PyCon Program Committee Review</title>
-    <id>urn:uuid:017a77c3-861d-34cd-82ec-12512e56f66f</id>
+    <id>urn:uuid:0ba436c8-ef55-39f9-917e-614337a32f3e</id>
     <updated>2018-02-06T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/6/pycon-program-committee-review/" />
     <author>
@@ -1156,7 +1174,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/1/29/refactor-notebook-code/">
     <title type="text">Refactor Notebook Code</title>
-    <id>urn:uuid:d502b49d-f207-3319-a533-01b3b17c9330</id>
+    <id>urn:uuid:2cbac964-c713-3f74-912c-6289003b826b</id>
     <updated>2018-01-29T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/1/29/refactor-notebook-code/" />
     <author>
@@ -1170,7 +1188,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/1/18/pymc3-docs-weibull-patches-merged/">
     <title type="text">PyMC3 docs + Weibull patches merged!</title>
-    <id>urn:uuid:337ce668-8116-366a-b9dc-903308b761a6</id>
+    <id>urn:uuid:ab68759f-0fd9-3b1f-aa2b-2f7d3ea4865c</id>
     <updated>2018-01-18T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/1/18/pymc3-docs-weibull-patches-merged/" />
     <author>
@@ -1188,7 +1206,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/1/10/offline-time/">
     <title type="text">Offline Time</title>
-    <id>urn:uuid:9c643c98-4cfc-3fe2-ac9a-d2ee9f8ad34f</id>
+    <id>urn:uuid:e9468e73-0550-349c-be80-a54a0e92340c</id>
     <updated>2018-01-10T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/1/10/offline-time/" />
     <author>
@@ -1201,7 +1219,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/1/8/bayesian-uncertainty-a-more-nuanced-view/">
     <title type="text">Bayesian Uncertainty: A More Nuanced View</title>
-    <id>urn:uuid:c8e9b5e3-9f3c-38d6-9605-cd46842f22ae</id>
+    <id>urn:uuid:a64a48e0-79df-392e-8d5c-130cc239e3e2</id>
     <updated>2018-01-08T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/1/8/bayesian-uncertainty-a-more-nuanced-view/" />
     <author>
@@ -1213,7 +1231,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/12/13/visual-studio-code-a-new-microsoft/">
     <title type="text">Visual Studio Code: A New Microsoft?</title>
-    <id>urn:uuid:06b625f2-4e15-3653-91b0-2f759200dd68</id>
+    <id>urn:uuid:f63fd7f6-ece6-31d3-acfc-5d4f054c130f</id>
     <updated>2017-12-13T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/12/13/visual-studio-code-a-new-microsoft/" />
     <author>
@@ -1233,7 +1251,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/11/30/pydata-nyc-2017-recap/">
     <title type="text">PyData NYC 2017 Recap</title>
-    <id>urn:uuid:69d8bdba-18aa-34f8-961d-a08fcc38cc72</id>
+    <id>urn:uuid:3928a375-1062-3846-9024-be002b5014cd</id>
     <updated>2017-11-30T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/11/30/pydata-nyc-2017-recap/" />
     <author>
@@ -1273,7 +1291,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/11/16/bayesian-learning-and-overfitting/">
     <title type="text">Bayesian Learning and Overfitting</title>
-    <id>urn:uuid:8ac4ab4c-3233-3ebe-8191-80fadf3a82c5</id>
+    <id>urn:uuid:1785be6f-199e-33f1-9d07-3f499eef3115</id>
     <updated>2017-11-16T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/11/16/bayesian-learning-and-overfitting/" />
     <author>
@@ -1295,7 +1313,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/11/14/the-value-of-thinking-simply/">
     <title type="text">The Value of Thinking Simply</title>
-    <id>urn:uuid:fd45d251-9956-3192-839f-cf23a0455b66</id>
+    <id>urn:uuid:7e98d396-c1b0-3d47-ace1-cf093101db14</id>
     <updated>2017-11-14T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/11/14/the-value-of-thinking-simply/" />
     <author>
@@ -1320,7 +1338,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/11/3/boston-bayesians-talk-an-attempt-at-demystifying-bayesian-deep-learning/">
     <title type="text">Boston Bayesians Talk: An Attempt at Demystifying Bayesian Deep Learning</title>
-    <id>urn:uuid:16575827-ed23-3dba-8acf-172b01b148f7</id>
+    <id>urn:uuid:5c78ec22-5f13-3e67-b918-3e77176cdf49</id>
     <updated>2017-11-03T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/11/3/boston-bayesians-talk-an-attempt-at-demystifying-bayesian-deep-learning/" />
     <author>
@@ -1337,7 +1355,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/10/31/always-check-your-data/">
     <title type="text">Always Check Your Data</title>
-    <id>urn:uuid:5aa6b7fd-5346-3f68-a35b-83bb0dc0b0b6</id>
+    <id>urn:uuid:381b8625-445b-3809-a0eb-a15e15af7404</id>
     <updated>2017-10-31T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/10/31/always-check-your-data/" />
     <author>
@@ -1351,7 +1369,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/10/27/random-forests-a-good-default-model/">
     <title type="text">Random Forests: A Good Default Model?</title>
-    <id>urn:uuid:2570438e-960b-3197-8bf0-6a690f53f864</id>
+    <id>urn:uuid:57ba1309-fb7c-3501-8cd0-0014da929de6</id>
     <updated>2017-10-27T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/10/27/random-forests-a-good-default-model/" />
     <author>
@@ -1378,7 +1396,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/10/22/network-propagation/">
     <title type="text">Network Propagation</title>
-    <id>urn:uuid:8092c56f-71cb-389a-ab28-5d3168f9e6c9</id>
+    <id>urn:uuid:3cfd1061-8ead-37d1-80de-6c28fc04493d</id>
     <updated>2017-10-22T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/10/22/network-propagation/" />
     <author>
@@ -1450,7 +1468,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/10/11/pypy-impressive/">
     <title type="text">PyPy: Impressive!</title>
-    <id>urn:uuid:d33ee57d-b161-39f0-9b6d-9821ba7c6a11</id>
+    <id>urn:uuid:f70547d1-63cd-32af-ad75-0612e0e068b5</id>
     <updated>2017-10-11T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/10/11/pypy-impressive/" />
     <author>
@@ -1550,7 +1568,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/10/10/recursive-programming-and-dags/">
     <title type="text">Recursive Programming and DAGs</title>
-    <id>urn:uuid:5b939f02-8808-3e54-938f-21843ac5e60b</id>
+    <id>urn:uuid:12a61689-8dd4-31d6-a9b4-c36a99df6421</id>
     <updated>2017-10-10T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/10/10/recursive-programming-and-dags/" />
     <author>
@@ -1559,30 +1577,30 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
     <content type="html">&lt;p&gt;Over the past few days, I've found myself using recursive programming to implement a &quot;model specification&quot; system with inheritance for deep learning. The goal here is to enable reproducible computational experiments for particular deep learning hyperparameter sets. Reproducibility is something I learned from the Software/Data Carpentry initiative, thus I wanted to ensure that my own work was reproducible, even if it's not (because of corporate reasons) open-able, because it's the right thing to do.&lt;/p&gt;
 &lt;p&gt;So, how do these &quot;model spec&quot; files work? I call them &quot;experiment profiles&quot;, and they specify a bunch of things: &lt;strong&gt;model architecture&lt;/strong&gt;, &lt;strong&gt;training parameters&lt;/strong&gt;, and &lt;strong&gt;data tasks&lt;/strong&gt;. These experiment profiles are stored in YAML files on disk. A profile essentially looks like the following (dummy examples provided, naturally):&lt;/p&gt;
 &lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Name: default.yaml&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;null&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;data_tasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;tasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p p-Indicator&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;task1&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;task2&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;task3&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;model_architecture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;hidden_layers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p p-Indicator&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;hidden_dropouts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p p-Indicator&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;training_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;sgd&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;optimizer_options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;n_epochs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;20&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;null&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;data_tasks&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;tasks&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p p-Indicator&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;task1&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;task2&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;task3&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;model_architecture&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;hidden_layers&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p p-Indicator&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;hidden_dropouts&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p p-Indicator&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;training_parameters&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;sgd&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;optimizer_options&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;n_epochs&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;20&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;In this YAML file, the key-value pairs essentially match the API of the tooling I've built on top of Keras' API to make myself more productive. (From the example, it should be clear that we're dealing with only feed-forward neural networks and nothing else more complicated.) The key here (pun unintended) is that I have a &lt;code&gt;parent&lt;/code&gt; key-value pair that specifies another experiment profile that I can inherit from.&lt;/p&gt;
 &lt;p&gt;Let's call the above example &lt;code&gt;default.yaml&lt;/code&gt;. Let's say I want to run another computational experiment that uses the &lt;code&gt;adam&lt;/code&gt; optimizer instead of plain vanilla &lt;code&gt;sgd&lt;/code&gt;. Instead of re-specifying the entire YAML file, by implementing an inheritance scheme, I can re-specify only the optimizer and optimizer_options.&lt;/p&gt;
 &lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Name: adam.yaml&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;default.yaml&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;training_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;adam&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;default.yaml&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;training_parameters&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;adam&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Finally, let's say I find out that 20 epochs (inherited from &lt;code&gt;default.yaml&lt;/code&gt;) is too much for Adam - after all, Adam is one of the most efficient gradient descent algorithms out there - and I want to change it to 3 epochs instead. I can do the following:&lt;/p&gt;
 &lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Name: adam-3.yaml&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;adam.yaml&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;training_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;optimizer_options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;n_epochs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;adam.yaml&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;training_parameters&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;optimizer_options&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;n_epochs&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;3&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Okay, so specifying YAML files with inheritance is all good, but how do I ensure that I get the entire parameter set out correctly, without writing verbose code? This is where the power of recursive programming comes in. Using recursion, I can solve this problem with &lt;strong&gt;a single function that calls itself on one condition, and returns a result on another condition&lt;/strong&gt;. That's a recursive function in its essence.&lt;/p&gt;
 &lt;p&gt;The core of this problem is traversing the inheritance path, from &lt;code&gt;adam-3.yaml&lt;/code&gt; to &lt;code&gt;adam.yaml&lt;/code&gt; to &lt;code&gt;default.yaml&lt;/code&gt;. Once I have the inheritance path specified, loading the YAML files as a dictionary becomes the easy part.&lt;/p&gt;
@@ -1641,7 +1659,7 @@ J -&amp;gt; I -&amp;gt; F -&amp;gt; root
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/10/10/pydata-nyc-2017/">
     <title type="text">PyData NYC 2017</title>
-    <id>urn:uuid:e720c68f-51c8-3391-9f3c-97ce2ba8267c</id>
+    <id>urn:uuid:b8ef9281-6ea2-3cf7-b334-a7ad6f3997b1</id>
     <updated>2017-10-10T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/10/10/pydata-nyc-2017/" />
     <author>
@@ -1661,7 +1679,7 @@ J -&amp;gt; I -&amp;gt; F -&amp;gt; root
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/10/7/a-data-scientists-guide-to-environment-variables/">
     <title type="text">A Data Scientist's Guide to Environment Variables</title>
-    <id>urn:uuid:0005f631-a0b5-3be2-8e59-9c6c40922a33</id>
+    <id>urn:uuid:6db00b27-e3f6-3a06-8c72-22ed75f4bb01</id>
     <updated>2017-10-07T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/10/7/a-data-scientists-guide-to-environment-variables/" />
     <author>
@@ -1771,7 +1789,7 @@ $ echo $PATH
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/10/3/new-habits/">
     <title type="text">New Habits</title>
-    <id>urn:uuid:7877ee11-bf8d-39a4-b1e5-9c18a698d76f</id>
+    <id>urn:uuid:be86358d-c9c0-3ad3-8c2e-b667d5b5e156</id>
     <updated>2017-10-03T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/10/3/new-habits/" />
     <author>
@@ -1796,7 +1814,7 @@ $ echo $PATH
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/9/14/visualize-large-datasets-by-sampling/">
     <title type="text">Visualize Large Datasets by Sampling</title>
-    <id>urn:uuid:97b636b4-2b94-388a-ad54-67a2e65f392d</id>
+    <id>urn:uuid:e73ae663-9ee9-399f-84f2-5a068e43bb88</id>
     <updated>2017-09-14T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/9/14/visualize-large-datasets-by-sampling/" />
     <author>
@@ -1811,7 +1829,7 @@ $ echo $PATH
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/9/11/nano-text-editor-hacks/">
     <title type="text">nano text editor hacks</title>
-    <id>urn:uuid:5d36c0a2-5bef-39b9-835c-bd5784574506</id>
+    <id>urn:uuid:9412673f-ebaf-3237-8d5b-16705c50af33</id>
     <updated>2017-09-11T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/9/11/nano-text-editor-hacks/" />
     <author>
@@ -1854,7 +1872,7 @@ include /usr/local/share/nano/sh.nanorc  # gives you bash shell syntax highlight
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/8/31/what-would-be-useful-for-aspiring-data-scientists-to-know/">
     <title type="text">What would be useful for aspiring data scientists to know?</title>
-    <id>urn:uuid:ac5e7fea-ac8d-3bec-bed0-8c017fad3ed5</id>
+    <id>urn:uuid:76dedd70-95de-3513-a6fb-6994fa0b31c1</id>
     <updated>2017-08-31T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/8/31/what-would-be-useful-for-aspiring-data-scientists-to-know/" />
     <author>
@@ -1931,22 +1949,6 @@ include /usr/local/share/nano/sh.nanorc  # gives you bash shell syntax highlight
 &lt;/ol&gt;
 &lt;p&gt;All-in-all, I think it boils back down to the fundamentals of living in a society: it's still about &lt;strong&gt;creating real value for others&lt;/strong&gt;, and &lt;strong&gt;receiving commensurate recognition&lt;/strong&gt; (not always money, by the way) for what you've delivered. Tips and tricks can sometimes get us ahead by a bit, but the fundamentals matter the most.&lt;/p&gt;
 &lt;p&gt;For aspiring data scientists, some parting words: build useful stuff, learn new things, demonstrate that you can deliver value using data analytics and work with others using the same tools, and good luck on your job hunt!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/8/24/reading-and-writing-docs-the-overlooked-programming-skill/">
-    <title type="text">Reading &amp; Writing Docs: The Overlooked Programming Skill?</title>
-    <id>urn:uuid:4182b54b-1dbb-3681-9bcd-01e6851eb7c4</id>
-    <updated>2017-08-24T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/8/24/reading-and-writing-docs-the-overlooked-programming-skill/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;I recently read a blog article by DataCamp's CTO (Dieter) on how to scale their projects and their engineering team - it's a &lt;a href=&quot;https://medium.com/datacamp/technical-vision-part-1-5f016c163340&quot;&gt;great read&lt;/a&gt;! In the article, Dieter states that the only way to scale an engineering team is to have well-written docs. I can see the benefits to doing it this way - we minimize the number of channels that any coder needs to use to find out information; the docs should be the place where the intent and technical detail of the code are simultaneously documented alongside usage examples.&lt;/p&gt;
-&lt;p&gt;Thus, in the final weeks up to starting my new job at Novartis as a Data Scientist, I decided to make sure I have the practice of writing, reading and publishing docs as good as muscle memory. I can already envision cases where, while conducting and building analyses, I end up writing a bunch of generally-useful functions that should be documented as well. What I write may eventually need to be used by someone else, including my future self; keeping track of how exactly a function is intended to be used is going to be very useful.&lt;/p&gt;
-&lt;p&gt;I think reading and writing docs is an overlooked skill in programming. It's probably because this isn't a test of &quot;creative capacity&quot; (i.e. can you build something new), which is the &quot;sexy&quot; thing. It's more a test of &quot;maintenance capacity&quot; - and this is given less value and importance in the coding world. But it's incredibly important - many basic problems can be solved by reading the docs... but also, so many problems can be avoided by writing really good docs! The onus is on both parties - package maintainers &lt;em&gt;and&lt;/em&gt; developers - to write &lt;em&gt;and&lt;/em&gt; read good docs.&lt;/p&gt;
-&lt;p&gt;But writing good docs is a tough job! I absolutely agree with this. There are different styles through which developers read docs - some prefer examples, while others just want to see function definitions - and it's very difficult to cater to every style. I personally think starting off with the style one's most comfortable with, and then gradually accepting community contributions, is the right way to go.&lt;/p&gt;
-&lt;p&gt;One package that I maintain, &lt;a href=&quot;http://github.com/ericmjl/nxviz&quot;&gt;&lt;code&gt;nxviz&lt;/code&gt;&lt;/a&gt;, used to not have any docs written apart from that single file in the README. Thanks to my friend &lt;a href=&quot;https://www.linkedin.com/in/rempic/&quot;&gt;Remi Picone&lt;/a&gt;, I was able to learn how to configure Sphinx to get my docs working through copying &lt;a href=&quot;https://github.com/rempic/Image-Features-Extraction&quot;&gt;his example repository&lt;/a&gt;. Through that, I configured Sphinx to build docs on my nxviz project - and finally got it going! You can find it on &lt;a href=&quot;http://nxviz.readthedocs.io/en/latest/&quot;&gt;RTFD&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Learning this was really fun - looking forward to putting up more docs!&lt;/p&gt;
 </content>
   </entry>
 </feed>
