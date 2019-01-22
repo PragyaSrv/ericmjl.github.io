@@ -138,14 +138,14 @@
 <h2 id="hack-1:-set-up-your-.condarc">Hack #1: Set up your <code>.condarc</code></h2><p><strong>Why?</strong> It will save you a few keystrokes each time you want to do something with <code>conda</code>. For example, in my <code>.condarc</code>, I have the following:</p>
 <div class="hll"><pre><span></span><span class="c1"># Set the channels that the `conda install` command will </span>
 <span class="c1"># automatically search through.</span>
-<span class="l l-Scalar l-Scalar-Plain">channels</span><span class="p p-Indicator">:</span>
+<span class="nt">channels</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ericmjl</span>
 
 <span class="c1"># Always accept installation. Is convenient, but always </span>
 <span class="c1"># double-check!</span>
-<span class="l l-Scalar l-Scalar-Plain">always_yes</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">always_yes</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 <p>For more information on how to configure your <code>.condarc</code>, check the <a href="https://conda.io/docs/user-guide/configuration/use-condarc.html">online documentation</a>!</p>
 <h2 id="hack-2:-use-one-environment-spec-file-per-project">Hack #2: Use one environment spec file per project</h2><p>This assumes that you have the habit of putting all files related to one project inside one folder, using subdirectories for finer-grained organization.</p>
@@ -153,16 +153,16 @@
 <div class="hll"><pre><span></span><span class="c1"># file name: environment.yml</span>
 
 <span class="c1"># Give your project an informative name</span>
-<span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">project-name</span>
+<span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project-name</span>
 
 <span class="c1"># Specify the conda channels that you wish to grab packages from, in order of priority.</span>
-<span class="l l-Scalar l-Scalar-Plain">channels</span><span class="p p-Indicator">:</span>
+<span class="nt">channels</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ericmjl</span>
 
 <span class="c1"># Specify the packages that you would like to install inside your environment. Version numbers are allowed, and conda will automatically use its dependency solver to ensure that all packages work with one another.</span>
-<span class="l l-Scalar l-Scalar-Plain">dependencies</span><span class="p p-Indicator">:</span>
+<span class="nt">dependencies</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python=3.7</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">jupyterlab</span>
@@ -172,7 +172,7 @@
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pyjanitor</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pandas</span>
 <span class="c1"># There are some packages which are not conda-installable. You can put the pip dependencies here instead.</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">pip</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tqdm</span>  <span class="c1"># for example only, tqdm is actually available by conda.</span>
 </pre></div>
 <p>A hack that I have related to this is that I use TextExpander shortcut to populate a starting environment spec file.</p>

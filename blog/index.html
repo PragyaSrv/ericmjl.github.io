@@ -99,58 +99,6 @@
 
   <!-- Set title style -->
   
-    <h1><a href="../blog/2019/1/21/advi-scalable-bayesian-inference/">ADVI: Scalable Bayesian Inference</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-01-21
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/bayesian/">
-          bayesian
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/variational inference/">
-          variational inference
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <h2 id="introduction">Introduction</h2><p>You never know when scalability becomes an issue. Indeed, scalability necessitates a whole different world of tooling.</p>
-<p>While at work, I've been playing with a model - a Bayesian hierarchical 4-parameter dose response model, to be specific. With this model, the overall goal (without going into proprietary specifics) was parameter learning - what's the 50th percentile concentration, what's the max, what's the minimum, etc.; what was also important was quantifying the uncertainty surrounding these parameters.</p>
-<h2 id="prototype-phase">Prototype Phase</h2><p>Originally, when I prototyped the model, I used just a few thousand samples, which was trivial to fit with NUTS. I also got the model specification (both the group-level and population-level priors) done using those same few thousand.</p>
-<p>At some point, I was qualitatively and quantitatively comfortable with the model specification. Qualitatively - the model structure reflected prior biochemical knowledge. Quantitatively, I saw good convergence when examining the sampling traces, as well as the shrinkage phenomena.</p>
-<h2 id="scaling-up">Scaling Up</h2><p>Once I reached that point, I decided to scale up to the entire dataset: 400K+ samples, 3000+ groups.</p>
-<p>Fitting this model with NUTS with the full dataset would have taken a week, with no stopping time guarantees at the end of an overnight run - when I left the day before, I was still hoping for 5 days. However, switching over to ADVI (automatic differentiation variational inference) was a key enabler for this model: I was able to finish fitting the model with ADVI in just 2.5 hours, with similar uncertainty estimates (it'll never end up being identical, given random sampling).</p>
-<h2 id="thoughts">Thoughts</h2><p>I used to not appreciate that ADVI could be useful for simpler models; in the past, I used to think that ADVI was mainly useful in Bayesian neural network applications - in other words, with large parameter and large data models.</p>
-<p>With this example, I'm definitely more informed about what "scale" can mean: both in terms of number of parameters in a model, and in terms of number of samples that the model is fitted on. In this particular example, the model is simple, but the number of samples is so large that ADVI becomes a feasible alternative to NUTS MCMC sampling.</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/1/21/advi-scalable-bayesian-inference/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
     <h1><a href="../blog/2018/12/25/conda-hacks-for-data-science-efficiency/">Conda hacks for data science efficiency</a></h1>
   
 
@@ -186,14 +134,14 @@
 <h2 id="hack-1:-set-up-your-.condarc">Hack #1: Set up your <code>.condarc</code></h2><p><strong>Why?</strong> It will save you a few keystrokes each time you want to do something with <code>conda</code>. For example, in my <code>.condarc</code>, I have the following:</p>
 <div class="hll"><pre><span></span><span class="c1"># Set the channels that the `conda install` command will </span>
 <span class="c1"># automatically search through.</span>
-<span class="l l-Scalar l-Scalar-Plain">channels</span><span class="p p-Indicator">:</span>
+<span class="nt">channels</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ericmjl</span>
 
 <span class="c1"># Always accept installation. Is convenient, but always </span>
 <span class="c1"># double-check!</span>
-<span class="l l-Scalar l-Scalar-Plain">always_yes</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">always_yes</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 <p>For more information on how to configure your <code>.condarc</code>, check the <a href="https://conda.io/docs/user-guide/configuration/use-condarc.html">online documentation</a>!</p>
 <h2 id="hack-2:-use-one-environment-spec-file-per-project">Hack #2: Use one environment spec file per project</h2><p>This assumes that you have the habit of putting all files related to one project inside one folder, using subdirectories for finer-grained organization.</p>
@@ -201,16 +149,16 @@
 <div class="hll"><pre><span></span><span class="c1"># file name: environment.yml</span>
 
 <span class="c1"># Give your project an informative name</span>
-<span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">project-name</span>
+<span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project-name</span>
 
 <span class="c1"># Specify the conda channels that you wish to grab packages from, in order of priority.</span>
-<span class="l l-Scalar l-Scalar-Plain">channels</span><span class="p p-Indicator">:</span>
+<span class="nt">channels</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ericmjl</span>
 
 <span class="c1"># Specify the packages that you would like to install inside your environment. Version numbers are allowed, and conda will automatically use its dependency solver to ensure that all packages work with one another.</span>
-<span class="l l-Scalar l-Scalar-Plain">dependencies</span><span class="p p-Indicator">:</span>
+<span class="nt">dependencies</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python=3.7</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">jupyterlab</span>
@@ -220,7 +168,7 @@
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pyjanitor</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pandas</span>
 <span class="c1"># There are some packages which are not conda-installable. You can put the pip dependencies here instead.</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">pip</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tqdm</span>  <span class="c1"># for example only, tqdm is actually available by conda.</span>
 </pre></div>
 <p>A hack that I have related to this is that I use TextExpander shortcut to populate a starting environment spec file.</p>
@@ -440,6 +388,55 @@
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../blog/2018/11/13/solving-problems-actionably/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
+    <h1><a href="../blog/2018/11/12/thoughts-on-black/">Thoughts on Black</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2018-11-12
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/python/">
+          python
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/code style/">
+          code style
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>Having used Black for quite a while now, I have a hunch that it will continue to surpass its current popularity amongst projects.</p>
+<p>It's one thing to be opinionated about things that matter for a project, but don't matter personally. Like code style. It's another thing to actually build a tool that, with one command, realizes those opinions in (milli)seconds. That's exactly what Black does.</p>
+<p>At the end of the day, it was, and still is, a tool that has a very good human API - that of convenience.</p>
+<p>By being opinionated about what code <em>ought</em> to look like, <code>black</code> has very few configurable parameters. Its interface is very simple. <em>Convenient.</em></p>
+<p>By automagically formatting <em>every</em> Python file in subdirectories (if not otherwise configured so), it makes code formatting quick and easy. <em>Convenient.</em></p>
+<p>In particular, by being opinionated about conforming to community standards for code style with Python, <code>black</code> ensures that formatted code is consistently formatted and thus easy to read. <em>Convenient!</em></p>
+<p>Because of this, I highly recommend the use of <code>black</code> for code formatting.</p>
+<pre><code>pip install black
+</code></pre>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../blog/2018/11/12/thoughts-on-black/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 
