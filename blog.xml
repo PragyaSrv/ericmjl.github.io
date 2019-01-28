@@ -2,13 +2,31 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2018-12-25T00:00:00Z</updated>
+  <updated>2019-01-28T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/1/28/minimum-viable-products-matter/">
+    <title type="text">Minimum Viable Products (MVPs) Matter</title>
+    <id>urn:uuid:e7106802-1560-3f7e-a492-9b3e5bd3d957</id>
+    <updated>2019-01-28T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/1/28/minimum-viable-products-matter/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;MVPs matter because they afford us at least two things:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Psychological safety&lt;/li&gt;
+&lt;li&gt;Credibility&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Psychological safety comes from knowing that we have at least a working prototype that we can deliver to whomever is going to consume our results. We aren't stuck in the land of imaginary ideas without something tangible for others to interact with.&lt;/p&gt;
+&lt;p&gt;Credibility comes about because with the MVP on hand, others now can trust on our ability to execute on an idea. Prior to that, all that others have to go off are promises of &quot;a thing&quot;.&lt;/p&gt;
+&lt;p&gt;Build your MVPs. They're a good thing!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/12/25/conda-hacks-for-data-science-efficiency/">
     <title type="text">Conda hacks for data science efficiency</title>
     <id>urn:uuid:251beb77-b7ce-3834-b046-ca9701afdffb</id>
@@ -1931,22 +1949,6 @@ include /usr/local/share/nano/sh.nanorc  # gives you bash shell syntax highlight
 &lt;/ol&gt;
 &lt;p&gt;All-in-all, I think it boils back down to the fundamentals of living in a society: it's still about &lt;strong&gt;creating real value for others&lt;/strong&gt;, and &lt;strong&gt;receiving commensurate recognition&lt;/strong&gt; (not always money, by the way) for what you've delivered. Tips and tricks can sometimes get us ahead by a bit, but the fundamentals matter the most.&lt;/p&gt;
 &lt;p&gt;For aspiring data scientists, some parting words: build useful stuff, learn new things, demonstrate that you can deliver value using data analytics and work with others using the same tools, and good luck on your job hunt!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/8/24/reading-and-writing-docs-the-overlooked-programming-skill/">
-    <title type="text">Reading &amp; Writing Docs: The Overlooked Programming Skill?</title>
-    <id>urn:uuid:4182b54b-1dbb-3681-9bcd-01e6851eb7c4</id>
-    <updated>2017-08-24T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/8/24/reading-and-writing-docs-the-overlooked-programming-skill/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;I recently read a blog article by DataCamp's CTO (Dieter) on how to scale their projects and their engineering team - it's a &lt;a href=&quot;https://medium.com/datacamp/technical-vision-part-1-5f016c163340&quot;&gt;great read&lt;/a&gt;! In the article, Dieter states that the only way to scale an engineering team is to have well-written docs. I can see the benefits to doing it this way - we minimize the number of channels that any coder needs to use to find out information; the docs should be the place where the intent and technical detail of the code are simultaneously documented alongside usage examples.&lt;/p&gt;
-&lt;p&gt;Thus, in the final weeks up to starting my new job at Novartis as a Data Scientist, I decided to make sure I have the practice of writing, reading and publishing docs as good as muscle memory. I can already envision cases where, while conducting and building analyses, I end up writing a bunch of generally-useful functions that should be documented as well. What I write may eventually need to be used by someone else, including my future self; keeping track of how exactly a function is intended to be used is going to be very useful.&lt;/p&gt;
-&lt;p&gt;I think reading and writing docs is an overlooked skill in programming. It's probably because this isn't a test of &quot;creative capacity&quot; (i.e. can you build something new), which is the &quot;sexy&quot; thing. It's more a test of &quot;maintenance capacity&quot; - and this is given less value and importance in the coding world. But it's incredibly important - many basic problems can be solved by reading the docs... but also, so many problems can be avoided by writing really good docs! The onus is on both parties - package maintainers &lt;em&gt;and&lt;/em&gt; developers - to write &lt;em&gt;and&lt;/em&gt; read good docs.&lt;/p&gt;
-&lt;p&gt;But writing good docs is a tough job! I absolutely agree with this. There are different styles through which developers read docs - some prefer examples, while others just want to see function definitions - and it's very difficult to cater to every style. I personally think starting off with the style one's most comfortable with, and then gradually accepting community contributions, is the right way to go.&lt;/p&gt;
-&lt;p&gt;One package that I maintain, &lt;a href=&quot;http://github.com/ericmjl/nxviz&quot;&gt;&lt;code&gt;nxviz&lt;/code&gt;&lt;/a&gt;, used to not have any docs written apart from that single file in the README. Thanks to my friend &lt;a href=&quot;https://www.linkedin.com/in/rempic/&quot;&gt;Remi Picone&lt;/a&gt;, I was able to learn how to configure Sphinx to get my docs working through copying &lt;a href=&quot;https://github.com/rempic/Image-Features-Extraction&quot;&gt;his example repository&lt;/a&gt;. Through that, I configured Sphinx to build docs on my nxviz project - and finally got it going! You can find it on &lt;a href=&quot;http://nxviz.readthedocs.io/en/latest/&quot;&gt;RTFD&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Learning this was really fun - looking forward to putting up more docs!&lt;/p&gt;
 </content>
   </entry>
 </feed>
