@@ -14,7 +14,12 @@
     </style>
 
     
-    
+    <!-- Syntax Highlighter. Use both pygments and hl.js. -->
+    <link rel="stylesheet" href="../../../../../static/pygments.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
 
     <!-- Google Analytics -->
     <script>
@@ -45,7 +50,7 @@
     <link rel="stylesheet" href="/static/css/custom.css">
 </head>
 
-<title>Tag: variational inference - Eric J. Ma's Personal Site</title>
+<title>ADVI: Scalable Bayesian Inference - Eric J. Ma's Personal Site</title>
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#local-links" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,14 +96,72 @@
     </nav>
     <div class="container">
         
-<h1><i class="fas fa-tag"></i> variational inference</h1>
-<ul>
   
-    <li><a href="../../../blog/2019/1/21/advi-scalable-bayesian-inference/">2019-01-21: ADVI: Scalable Bayesian Inference</a></li>
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
   
-    <li><a href="../../../blog/2016/8/6/variational-inference-with-pymc3-a-lightweight-demo/">2016-08-06: Variational Inference With PyMC3: A Lightweight Demo</a></li>
+    <h1>ADVI: Scalable Bayesian Inference</h1>
   
-</ul>
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-01-21
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/bayesian/">
+          bayesian
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/variational inference/">
+          variational inference
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/data science/">
+          data science
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <h2 id="introduction">Introduction</h2><p>You never know when scalability becomes an issue. Indeed, scalability necessitates a whole different world of tooling.</p>
+<p>While at work, I've been playing with a model - a Bayesian hierarchical 4-parameter dose response model, to be specific. With this model, the overall goal (without going into proprietary specifics) was parameter learning - what's the 50th percentile concentration, what's the max, what's the minimum, etc.; what was also important was quantifying the uncertainty surrounding these parameters.</p>
+<h2 id="prototype-phase">Prototype Phase</h2><p>Originally, when I prototyped the model, I used just a few thousand samples, which was trivial to fit with NUTS. I also got the model specification (both the group-level and population-level priors) done using those same few thousand.</p>
+<p>At some point, I was qualitatively and quantitatively comfortable with the model specification. Qualitatively - the model structure reflected prior biochemical knowledge. Quantitatively, I saw good convergence when examining the sampling traces, as well as the shrinkage phenomena.</p>
+<h2 id="scaling-up">Scaling Up</h2><p>Once I reached that point, I decided to scale up to the entire dataset: 400K+ samples, 3000+ groups.</p>
+<p>Fitting this model with NUTS with the full dataset would have taken a week, with no stopping time guarantees at the end of an overnight run - when I left the day before, I was still hoping for 5 days. However, switching over to ADVI (automatic differentiation variational inference) was a key enabler for this model: I was able to finish fitting the model with ADVI in just 2.5 hours, with similar uncertainty estimates (it'll never end up being identical, given random sampling).</p>
+<h2 id="thoughts">Thoughts</h2><p>I used to not appreciate that ADVI could be useful for simpler models; in the past, I used to think that ADVI was mainly useful in Bayesian neural network applications - in other words, with large parameter and large data models.</p>
+<p>With this example, I'm definitely more informed about what "scale" can mean: both in terms of number of parameters in a model, and in terms of number of samples that the model is fitted on. In this particular example, the model is simple, but the number of samples is so large that ADVI becomes a feasible alternative to NUTS MCMC sampling.</p>
+
+  </div>
+
+  <a name="disqus"></a>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/advi-scalable-bayesian-inference"; this.page.url = "http://www.ericmjl.com/blog/2019/1/21/advi-scalable-bayesian-inference/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//ericmjl.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
     </div>
 
