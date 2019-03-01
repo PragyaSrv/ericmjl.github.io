@@ -2,13 +2,55 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2019-01-28T00:00:00Z</updated>
+  <updated>2019-03-01T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/3/1/pair-coding-why-and-how-for-data-scientists/">
+    <title type="text">Pair Coding: Why and How for Data Scientists</title>
+    <id>urn:uuid:639416f0-072e-3e1a-bb09-6bbec1ce20e0</id>
+    <updated>2019-03-01T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/3/1/pair-coding-why-and-how-for-data-scientists/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;&lt;p&gt;While at work, I've been experimenting with pair coding with other data science-oriented colleagues. My experiences tell me that this is something extremely valuable to do. I'd like to share here the &quot;why&quot; and the &quot;how&quot; on pair coding, but focused towards data scientists.&lt;/p&gt;
+&lt;h2 id=&quot;what-is-pair-coding?&quot;&gt;What is pair coding?&lt;/h2&gt;&lt;p&gt;Pair coding is a form of programming where two people work together on a single code base together. It usually involves one person on the keyboard and another talking through the problem and observing for issues, such as syntax, logic, or code style. Occasionally, they may swap who is on the keyboard. In other words, one is the &quot;creator&quot;, and the other is the &quot;critic&quot; (but in a positive, constructive fashion).&lt;/p&gt;
+&lt;h2 id=&quot;what-s-your-history-with-pair-coding?&quot;&gt;What's your history with pair coding?&lt;/h2&gt;&lt;p&gt;I was inspired by a few places. Firstly, there are a wealth of blog posts detailing the potential benefits and pitfalls of pair coding, in a software developer's context. (A quick Google search will lead you to them.) Secondly, I had, at work, experimented with &quot;pair hacking&quot; sessions, which involved more than coding, including white-boarding a problem to get a feel for its scope, and it turned out to be pretty productive. Thirdly, I was inspired by &lt;a href=&quot;https://www.newyorker.com/magazine/2018/12/10/the-friendship-that-made-google-huge&quot;&gt;a New Yorker article on Jeff and Sanjay&lt;/a&gt;, in which part of it chronicled how they worked as a pair to solve the toughest problems at Google.&lt;/p&gt;
+&lt;p&gt;Now, because I'm not a software engineer by training, and because don't have extensive experience beforehand, and because there are no data-science-oriented resources for pair coding that I have read before (I'd love to read them if you know of any!), I've had to be adapt what I read for software development to a data science context.&lt;/p&gt;
+&lt;h2 id=&quot;what-are-the-potential-benefits-of-pair-coding?&quot;&gt;What are the potential benefits of pair coding?&lt;/h2&gt;&lt;p&gt;I can see at least the following benefits, if not more that I have yet to discover:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Instant peer review over data science logic and code. Because we are talking through a problem while coding it up, we can instantly check whether our logic is correct against each other.&lt;/li&gt;
+&lt;li&gt;Knowledge transfer. In my experience, I've had productive pair-coding sessions with another colleague who has a better grasp of the project than I do. Hence, I contribute &amp;amp; teach the technical component, while I also learn the broader project context better.&lt;/li&gt;
+&lt;li&gt;Building trust. We all know that the more closely you work with someone, the more rough corners get rubbed off.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;what-pre-requisites-do-you-see-for-a-productive-pair-programming-session?&quot;&gt;What pre-requisites do you see for a productive pair programming session?&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;A long, continuous, and uninterrupted time slot (at least 2-3 hours in length) to maintain continuity.&lt;/li&gt;
+&lt;li&gt;A defined goal or question that we are seeking to answer - keeps us focused on what needs to be done.&lt;/li&gt;
+&lt;li&gt;That goal should also be plausibly achievable within the 2-3 hour timeframe. &lt;/li&gt;
+&lt;li&gt;Large monitors for both parties to look at, or a code-sharing platform where both can see the code without needing to physically huddle.&lt;/li&gt;
+&lt;li&gt;A place where we can talk without feeling hindered.&lt;/li&gt;
+&lt;li&gt;No impromptu interruptions from other individuals.&lt;/li&gt;
+&lt;li&gt;Complementary and intersecting skillsets.&lt;/li&gt;
+&lt;li&gt;Open-minded individuals who are willing to learn. (Ego-free.)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;where-does-pair-coding-differ-for-data-scientists-vs.-software-engineers?&quot;&gt;Where does pair coding differ for data scientists vs. software engineers?&lt;/h2&gt;&lt;p&gt;I think the differences at best are subtle, not necessarily overt.&lt;/p&gt;
+&lt;p&gt;The biggest difference that I can think of might be in clarity. To the best of my knowledge, software engineers work with pretty well-defined requirements. The only hiccups that I can imagine that may occur are in unforeseen logic/code blockers. Data scientists, on the other hand, often are exploring and defining the requirements as things go along. In other words, we are working with more unknowns than a software engineer might.&lt;/p&gt;
+&lt;p&gt;An example is a model I built with a colleague at work that involved groups of groups of samples. We weren't able to envision the final model right at the beginning, and code towards it. Rather, we built the model iteratively, starting with highly simplifying assumptions, discussing which ones to refine, and iteratively building the model as we went forward.&lt;/p&gt;
+&lt;p&gt;Perhaps a related difference is that as data scientists, because of potentially greater uncertainty surrounding the final product, we may end up talking more about project direction than one would as a software engineer. But that's probably just a minor detail.&lt;/p&gt;
+&lt;h2 id=&quot;do-you-have-any-memorable-quotes-from-the-new-yorker-article?&quot;&gt;Do you have any memorable quotes from the New Yorker article?&lt;/h2&gt;&lt;p&gt;Yes, a number of them.&lt;/p&gt;
+&lt;p&gt;One on scaling things up.&lt;/p&gt;
+&lt;blockquote class=&quot;blockquote&quot;&gt;
+&lt;p&gt;Alan Eustace became the head of the engineering team after Rosing left, in 2005. “To solve problems at scale, paradoxically, you have to know the smallest details,” Eustace said.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;Another on pair programming as an uncommon practice:&lt;/p&gt;
+&lt;blockquote class=&quot;blockquote&quot;&gt;
+&lt;p&gt;“I don’t know why more people don’t do it,” Sanjay said, of programming with a partner.&lt;/p&gt;
+&lt;p&gt;“You need to find someone that you’re gonna pair-program with who’s compatible with your way of thinking, so that the two of you together are a complementary force,” Jeff said.&lt;/p&gt;
+&lt;/blockquote&gt;</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/1/28/minimum-viable-products-matter/">
     <title type="text">Minimum Viable Products (MVPs) Matter</title>
     <id>urn:uuid:e7106802-1560-3f7e-a492-9b3e5bd3d957</id>
@@ -1843,49 +1885,6 @@ $ echo $PATH
 &lt;p&gt;If your samples are statistically sampled independently of one another (i.e. basically not timeseries), and the goals are to do some statistical visualizations, then it's basically valid to visualize a downsampled set of the dataset.&lt;/p&gt;
 &lt;p&gt;I recently encountered this point at work. After running a clustering analysis, I wanted to see a pair plot of the distribution of features in each cluster. However, with cluster sizes ranging from 200-2 million, rendering times were unreasonably long (making things non-interactive) for the large sized clusters. I thus decided to downsample the large clusters to a maximum of 2,000 data points. Instantly, render times improved, and I could start interacting with my data again.&lt;/p&gt;
 &lt;p&gt;Little things matter!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/9/11/nano-text-editor-hacks/">
-    <title type="text">nano text editor hacks</title>
-    <id>urn:uuid:5d36c0a2-5bef-39b9-835c-bd5784574506</id>
-    <updated>2017-09-11T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/9/11/nano-text-editor-hacks/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Much as I've embraced the &lt;a href=&quot;https://atom.io/&quot;&gt;Atom text editor&lt;/a&gt;, there are times when the GUI isn't accessible to us, and we are forced to use a Terminal-based text editor.&lt;/p&gt;
-&lt;p&gt;Now, I'm not one of those crazy types who use emacs or vim - those are the real seasoned pros. (I still don't know how to exit vim, btw.) As such, my terminal editor of choice remains the venerable &lt;code&gt;nano&lt;/code&gt;. Here's some hacks that I recently figured out, to make text editing much easier in &lt;code&gt;nano&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;1-syntax-highlighting&quot;&gt;(1) Syntax highlighting&lt;/h2&gt;&lt;p&gt;This is such a big one! Syntax highlighting seriously helps a ton. If you're on a Mac, make sure you install &lt;code&gt;homebrew&lt;/code&gt;'s version of &lt;code&gt;nano&lt;/code&gt; - you can look at my &lt;a href=&quot;https://github.com/ericmjl/dotfiles/blob/master/install.sh#L41&quot;&gt;dotfiles&lt;/a&gt; or run the command:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ brew install nano
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then, edit your &lt;code&gt;~/.nanorc&lt;/code&gt; file to look something like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;include /usr/local/share/nano/python.nanorc  # gives you Python syntax highlighting
-include /usr/local/share/nano/sh.nanorc  # gives you bash shell syntax highlighting
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Next time you use &lt;code&gt;nano&lt;/code&gt; (from your user account), syntax highlighting should be enabled!&lt;/p&gt;
-&lt;p&gt;You can find a sample &lt;a href=&quot;https://github.com/ericmjl/dotfiles/blob/master/.nanorc-mac&quot;&gt;.nanorc&lt;/a&gt; file on my GitHub &lt;a href=&quot;https://github.com/ericmjl/dotfiles/&quot;&gt;dotfiles&lt;/a&gt; repository&lt;/p&gt;
-&lt;h2 id=&quot;2-keyboard-shortcuts&quot;&gt;(2) Keyboard Shortcuts&lt;/h2&gt;&lt;p&gt;Here's a laundry list of keyboard shortcuts I've muscle-memorized:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Ctrl-x&lt;/code&gt;: quits. There will be a prompt to save the file if it's been modified.&lt;ul&gt;
-&lt;li&gt;I usually end up doing &lt;code&gt;Ctrl-x-y-Enter&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Ctrl-v&lt;/code&gt; scrolls down a page&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Ctrl-y&lt;/code&gt; scrolls up a page&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Ctrl-w&lt;/code&gt; searches the document for a term that you type in (think &quot;where&quot;)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Ctrl-k&lt;/code&gt; cuts the line&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Ctrl-u&lt;/code&gt; pastes a cut line&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Ctrl-^&lt;/code&gt; (i.e. &lt;code&gt;Ctrl-Shift-6&lt;/code&gt; on macOS keyboards) starts a &quot;select&quot; cursor.&lt;ul&gt;
-&lt;li&gt;You can use arrow keys to expand or shrink the selection, which can then be cut and pasted.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Ctrl-c&lt;/code&gt; cancels any commands that are 'active'.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Ctrl-o&lt;/code&gt; activates the &quot;save file&quot; dialogue - lets you save your state without quitting.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;(3) Persistence&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;nano&lt;/code&gt;, being not as fancy as &lt;code&gt;vim&lt;/code&gt; or &lt;code&gt;emacs&lt;/code&gt;, means it doesn't have the concept of sessions. Doesn't matter - use &lt;a href=&quot;https://github.com/tmux/tmux/wiki&quot;&gt;&lt;code&gt;tmux&lt;/code&gt;&lt;/a&gt; to persist!&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;All-in-all, the biggest one that aids in writing on a terminal editor is syntax highlighting. I wrote this blog post in &lt;code&gt;nano&lt;/code&gt;, and being able to visually see different parts of my text highlighted according to their meaning has made writing much easier.&lt;/p&gt;
 </content>
   </entry>
 </feed>
