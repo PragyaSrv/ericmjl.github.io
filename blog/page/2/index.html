@@ -99,6 +99,142 @@
 
   <!-- Set title style -->
   
+    <h1><a href="../../../blog/2018/12/25/conda-hacks-for-data-science-efficiency/">Conda hacks for data science efficiency</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2018-12-25
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/data science/">
+          data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/conda/">
+          conda
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/hacks/">
+          hacks
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>The <code>conda</code> package manager has, over the years, become an integral part of my workflow. I use it to manage project environments, and have built a bunch of very simple hacks around it that you can adopt too. I'd like to share them with you, alongside the rationale for using them.</p>
+<h2 id="hack-1:-set-up-your-.condarc">Hack #1: Set up your <code>.condarc</code></h2><p><strong>Why?</strong> It will save you a few keystrokes each time you want to do something with <code>conda</code>. For example, in my <code>.condarc</code>, I have the following:</p>
+<div class="hll"><pre><span></span><span class="c1"># Set the channels that the `conda install` command will </span>
+<span class="c1"># automatically search through.</span>
+<span class="nt">channels</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ericmjl</span>
+
+<span class="c1"># Always accept installation. Is convenient, but always </span>
+<span class="c1"># double-check!</span>
+<span class="nt">always_yes</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+<p>For more information on how to configure your <code>.condarc</code>, check the <a href="https://conda.io/docs/user-guide/configuration/use-condarc.html">online documentation</a>!</p>
+<h2 id="hack-2:-use-one-environment-spec-file-per-project">Hack #2: Use one environment spec file per project</h2><p>This assumes that you have the habit of putting all files related to one project inside one folder, using subdirectories for finer-grained organization.</p>
+<p><strong>Why?</strong> It will ensure that you have one version-controlled, authoritative specification for the packages that are associated with the project. This is good for (1) reproducibility, as you can send it to a colleague and have them reproduce the environment, and (2) will enable Hack #3, which I will showcase afterwards.</p>
+<div class="hll"><pre><span></span><span class="c1"># file name: environment.yml</span>
+
+<span class="c1"># Give your project an informative name</span>
+<span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project-name</span>
+
+<span class="c1"># Specify the conda channels that you wish to grab packages from, in order of priority.</span>
+<span class="nt">channels</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ericmjl</span>
+
+<span class="c1"># Specify the packages that you would like to install inside your environment. Version numbers are allowed, and conda will automatically use its dependency solver to ensure that all packages work with one another.</span>
+<span class="nt">dependencies</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python=3.7</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">jupyterlab</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">scipy</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">numpy</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pandas</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pyjanitor</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pandas</span>
+<span class="c1"># There are some packages which are not conda-installable. You can put the pip dependencies here instead.</span>
+<span class="p p-Indicator">-</span> <span class="nt">pip</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tqdm</span>  <span class="c1"># for example only, tqdm is actually available by conda.</span>
+</pre></div>
+<p>A hack that I have related to this is that I use TextExpander shortcut to populate a starting environment spec file.</p>
+<p>Additionally, if I want to install a new package, rather than simply typing <code>conda install &lt;packagename&gt;</code>, I will add the package to the environment spec file, and then type <code>conda env update -f environment.yml</code>, as more often than not, my default is to continue using the package I added.</p>
+<p>For more details on what the environment spec file is all about, <a href="https://conda.io/docs/user-guide/tasks/manage-environments.html#create-env-file-manually">read the online docs</a>!</p>
+<h2 id="hack-3:-use-conda-auto-env">Hack 3: use <code>conda-auto-env</code></h2><p>Written by <a href="https://chdoig.github.io">Christine Doig</a>, <a href="https://github.com/chdoig/conda-auto-env"><code>conda-auto-env</code></a> is a bash hack that enables you to automatically activate an environment once you enter into a project directory, <em>as long as an <code>environment.yml</code> file already exists in the directory</em>. If the environment does not already exist, then <code>conda-auto-env</code> will automatically create one based on the <code>environment.yml</code> file in your project directory.</p>
+<p><strong>Why?</strong> If you have many projects that you are working on, then it will greatly reduce the amount of effort used to remember which project to activate.</p>
+<p><code>conda-auto-env</code> looks like this:</p>
+<div class="hll"><pre><span></span><span class="c1"># File: .conda-auto-env</span>
+<span class="c1">#!/bin/bash</span>
+
+<span class="k">function</span> conda_auto_env<span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> -e <span class="s2">&quot;environment.yml&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="c1"># echo &quot;environment.yml file found&quot;</span>
+    <span class="nv">ENV</span><span class="o">=</span><span class="k">$(</span>head -n <span class="m">1</span> environment.yml <span class="p">|</span> cut -f2 -d <span class="s1">&#39; &#39;</span><span class="k">)</span>
+    <span class="c1"># Check if you are already in the environment</span>
+    <span class="k">if</span> <span class="o">[[</span> <span class="nv">$PATH</span> !<span class="o">=</span> *<span class="nv">$ENV</span>* <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+      <span class="c1"># Check if the environment exists</span>
+      conda activate <span class="nv">$ENV</span>
+      <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        :
+      <span class="k">else</span>
+        <span class="c1"># Create the environment and activate</span>
+        <span class="nb">echo</span> <span class="s2">&quot;Conda env &#39;</span><span class="nv">$ENV</span><span class="s2">&#39; doesn&#39;t exist.&quot;</span>
+        conda env create -q
+        conda activate <span class="nv">$ENV</span>
+      <span class="k">fi</span>
+    <span class="k">fi</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="nb">export</span> <span class="nv">PROMPT_COMMAND</span><span class="o">=</span>conda_auto_env
+</pre></div>
+<p>To use it, you have two options. You can either copy/paste the whole original script into your <code>.bashrc</code>, or you can put it in a file called <code>.conda-auto-env</code>, and source it from your <code>.bashrc</code>. I recommend the latter, as it makes managing your <code>.bashrc</code> easier:</p>
+<div class="hll"><pre><span></span><span class="c1"># File: .bashrc</span>
+<span class="nb">source</span> /path/to/.conda-auto-env
+</pre></div>
+<h2 id="hack-4:-hijack-bash-aliases-for-conda-commands">Hack 4: hijack bash aliases for <code>conda</code> commands</h2><p>I use aliases to save myself a few keystrokes whenever I'm at the terminal. This is a generalizable bash hack, but here it is as applied to <code>conda</code> commands.</p>
+<p>Anyways, these are the commands that I use most often, which I have found it useful to alias:</p>
+<div class="hll"><pre><span></span><span class="c1"># File: .aliases</span>
+<span class="nb">alias</span> <span class="nv">ceu</span><span class="o">=</span><span class="s2">&quot;conda env update&quot;</span>
+<span class="nb">alias</span> <span class="nv">cl</span><span class="o">=</span><span class="s2">&quot;conda list&quot;</span>
+<span class="nb">alias</span> <span class="nv">ci</span><span class="o">=</span><span class="s2">&quot;conda install&quot;</span>
+<span class="nb">alias</span> <span class="nv">cr</span><span class="o">=</span><span class="s2">&quot;conda remove&quot;</span>
+</pre></div>
+<p>Make sure your aliases don't clash with existing commands that you use!</p>
+<p>Then, source <code>.aliases</code> in your <code>. bashrc</code>:</p>
+<div class="hll"><pre><span></span><span class="c1"># File: .bashrc</span>
+<span class="nb">source</span> /path/to/.aliases
+</pre></div>
+<p>Now, all of your defined aliases will be available in your bash shell.</p>
+<p>The idea/pattern, as I mentioned earlier, is generalizable beyond just bash commands. (I have <code>ls</code> aliased for <code>exa</code>, and <code>l</code> aliased for <code>ls</code> - the epitome of laziness!)</p>
+<h2 id="conclusion">Conclusion</h2><p>I hope you found these bash and <code>conda</code> hacks to be useful. Hopefully they will help you become more productive and efficient!</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../../../blog/2018/12/25/conda-hacks-for-data-science-efficiency/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../../../blog/2018/12/16/gaussian-process-notes/">Gaussian Process Notes</a></h1>
   
 
@@ -301,127 +437,6 @@
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../../../blog/2018/11/12/thoughts-on-black/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../../../blog/2018/11/7/bayesian-modelling-is-hard-work/">Bayesian Modelling is Hard Work!</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2018-11-07
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/bayesian/">
-          bayesian
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/data science/">
-          data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/statistics/">
-          statistics
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>It’s definitely not easy work; anybody trying to tell you that you can "just apply this 
-model and just be done with it" is probably wrong.</p>
-<h2 id="simple-models">Simple Models</h2><p>Let me clarify: I agree that doing the first half of the statement, "just apply this model", 
-is a good starting point, but I disagree with the latter half, "and just be done with it". I 
-have found that writing and fitting a very naive Bayesian model to the data I have is a very 
-simple thing. But doing the right thing is not. Let’s not be confused: I don’t mean a Naive 
-Bayes model, I mean naively writing down a Bayesian model that is structured very simply 
-with the simplest of priors that you can think of.</p>
-<p>Write down the model, including any transformations that you may need on the variables, and 
-then lazily put in a bunch of priors. For example, you might just start with Gaussians 
-everywhere a parameter could take on negative to positive infinity values, or a bounded Half 
-Gaussian if it can only take values above (or below) a certain value. You might assume 
-Gaussian-distributed noise in the output.</p>
-<p>Let’s still not be confused: Obviously this would not apply to a beta-bernoulli/binomial 
-model!</p>
-<p>Doing the right thing, however, is where the tricky parts come in. To butcher and mash-up 
-two quotes:</p>
-<blockquote class="blockquote">
-<p>All models are wrong, but some are useful (Box), yet some models are more wrong than others (modifying from Orwell). 
-</blockquote><h2 id="critiquing-models">Critiquing Models</h2><p>When doing modeling, a series of questions comes up:</p>
-<ul>
-<li>Do my naive assumptions about "Gaussians everywhere" hold? </li>
-<li>Given that my output data are continuous, is there a better distribution that can describe 
-the likelihood?</li>
-<li>Is there are more principled prior for some of the variables?</li>
-<li>Does my link function, which joins the input data to the output parameters, properly 
-describe their relationship?</li>
-<li>Instead of independent priors per group, would a group prior be justifiable?</li>
-<li>Does my model yield posterior distributions that are within bounds of reasonable ranges, 
-which come from my prior knowledge? If it does not, do I need to bound my priors instead of 
-naively assuming the full support for those distributions?</li>
-</ul>
-<p>I am quite sure that this list is non-exhaustive, and probably only covers the bare minimum 
-we have to think about.</p>
-<p>Doing these model critiques is not easy. Yet, if we are to work towards truthful and 
-actionable conclusions, it is a necessity. We want to know ground truth, so that we can act 
-on it accordingly, and hence take appropriate actions.</p>
-<h2 id="prior-experience">Prior Experience</h2><p>I have experienced this modeling loop that Mike Betancourt describes (in his <a href="https://github.com/betanalpha/jupyter_case_studies/blob/master/principled_bayesian_workflow/principled_bayesian_workflow.ipynb">Principled 
-Bayesian Workflow notebook</a>) more than once. One involved count data, with a data 
-scientist from TripAdvisor last year at the SciPy conference; another involved estimating 
-cycle time distributions at work, and yet another involved a whole 4-parameter dose-response 
-curve. In each scenario, model fitting and critique took hours at the minimum; I’d also note 
-that with real world data, I didn’t necessarily get to the "win" was looking for.</p>
-<p>With the count data, the TripAdvisor data scientist and I reached a point where after 5 
-rounds of tweaking his model, we had a model that fit the data, and described a data 
-generating process that mimics closely to what we would expect given his process. It took us 
-5 rounds, and 3 hours of staring at his model and data, to get there!</p>
-<p>Yet with cycle time distributions from work, a task ostensibly much easier ("just fit a 
-distribution to the data"), none of my distribution choices, which reflected what I thought 
-would be the data generating process, gave me a "good fit" to the data. I checked by many 
-means: K-S tests, visual inspection, etc. I ended up abandoning the fitting procedure, and 
-used empirical distributions instead.</p>
-<p>With a 4-parameter dose-response curve, it took me 6 hours to go through 6 rounds of 
-modeling to get to a point where I felt comfortable with the model. I started with a 
-simplifying "Gaussians everywhere" assumption. Later, though, I hesitantly and tentatively 
-putting in bound priors because I knew some posterior distributions were completely out of 
-range under the naive assumptions of the first model, and were likely a result of 
-insufficient range in the concentrations tested. Yet even that model remained unsatisfying: 
-I was stuck with some compounds that didn’t change the output regardless of concentration, 
-and that data are fundamentally very hard to fit with a dose response curve. Thus I the next 
-afternoon,I modeled the dose response relationship using a Gaussian Process instead. Neither 
-model is completely satisfying to the degree that the count data model was, but both the GP 
-and the dose-response curve are and will be roughly correct modeling choices (with the GP 
-probably being more flexible), and importantly, both are actionable by the experimentalists.</p>
-<h2 id="thoughts">Thoughts</h2><p>As you probably can see, whenever we either (1) don’t know ground truth, and/or (2) have 
-messy, real world data that don’t fit idealized assumptions about the data generating 
-process, <strong>getting the model "right" is a very hard thing to do!</strong> Moreover, data are 
-insufficient on their own to critique the model; we will always need to bring in prior 
-knowledge. Much as all probability is conditional probability (Venn), all modeling involves 
-prior knowledge. Sometimes it comes up in non-modellable ways, though as far as possible, 
-it’s a good exercise to try incorporating that into the model definition.</p>
-<h2 id="canned-models?">Canned Models?</h2><p>Even with that said, I’m still a fan of canned models, such as those provided by 
-<code>pymc-learn</code> and <code>scikit-learn</code> - provided we recognize that their "canned" nature and are 
-equipped to critique and modify said models. Yes, they provide easy, convenient baselines 
-that we can get started with. We can "just apply this model". But we can’t "just be done 
-with it": the hard part of getting the model right takes much longer and much more hard 
-work. <strong><em>Veritas!</em></strong></p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../../../blog/2018/11/7/bayesian-modelling-is-hard-work/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 

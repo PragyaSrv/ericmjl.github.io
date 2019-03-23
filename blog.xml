@@ -2,13 +2,72 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2019-03-20T00:00:00Z</updated>
+  <updated>2019-03-22T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/3/22/functools-partial/">
+    <title type="text">Functools Partial</title>
+    <id>urn:uuid:7059f3fb-181e-305d-840a-bf1c34b42e8b</id>
+    <updated>2019-03-22T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/3/22/functools-partial/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;If you’ve done Python programming for a while, I think it pays off to know some little tricks that can improve the readability of your code and decrease the amount of repetition that goes on.&lt;/p&gt;
+&lt;p&gt;One such tool is &lt;code&gt;functools.partial&lt;/code&gt;. It took me a few years after my first introduction to &lt;code&gt;partial&lt;/code&gt; before I finally understood why it was such a powerful tool.&lt;/p&gt;
+&lt;p&gt;Essentially, what &lt;code&gt;partial&lt;/code&gt; does is it wraps a function and sets a keyword argument to a constant. That’s it. What do we mean?&lt;/p&gt;
+&lt;p&gt;Here’s a minimal example. Let’s say we have a function &lt;code&gt;f&lt;/code&gt;, not written by me, but provided by someone else.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# do something with a and b.&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In my code, let’s say that I know that the value that &lt;code&gt;b&lt;/code&gt; takes on in my app is always the tuple &lt;code&gt;(1, 'A')&lt;/code&gt;. I now have a few options. The most obvious is assign the tuple &lt;code&gt;(1, 'A')&lt;/code&gt; to a variable, and pass that in on every function call:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# do some stuff.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# do more stuff.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# ad nauseum&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# set value of N&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;resultN&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The other way I could do it is use &lt;code&gt;functools.partial&lt;/code&gt; and just set the keyword argument &lt;code&gt;b&lt;/code&gt; to equal to the tuple directly.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;functools&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;partial&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;partial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, I can repeat the code above, but now only worrying about the keyword argument &lt;code&gt;a&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# do some stuff.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# do more stuff.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# ad nauseum&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# set value of N&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;resultN&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And there you go, that’s basically how &lt;code&gt;functools.partial&lt;/code&gt; works in a nutshell.&lt;/p&gt;
+&lt;p&gt;Now, where have I used this in real life?&lt;/p&gt;
+&lt;p&gt;The most common place I have used it is in Flask. I have built Flask apps where I need to dynamically keep my Bokeh version synced up between the Python and JS libraries that get called. To ensure that my HTML templates have a consistent Bokeh version, I use the following pattern:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;bokeh&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__version__&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bkversion&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render_template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;functools&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;partial&lt;/span&gt; 
+
+&lt;span class=&quot;n&quot;&gt;render_template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;partial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;render_template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bkversion&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bkversion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Flask app boilerplate&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vm&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;nd&quot;&gt;@app.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render_template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;index.html.j2&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, because I always have &lt;code&gt;bkversion&lt;/code&gt; pre-specified in &lt;code&gt;render_template&lt;/code&gt;, I never have to repeat it over every &lt;code&gt;render_template&lt;/code&gt; function call.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/3/20/how-i-work/">
     <title type="text">How I Work</title>
     <id>urn:uuid:ecb1119f-e770-31bd-bddd-4da7130485e2</id>
@@ -1876,31 +1935,6 @@ $ echo $PATH
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Note - you can also execute the exact same commands inside your bash session; the interactivity may also be helpful.&lt;/p&gt;
 &lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;&lt;p&gt;I hope you enjoyed this article, and that it'll give you a, ahem, path forward whenever you encounter these environment variables!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/10/3/new-habits/">
-    <title type="text">New Habits</title>
-    <id>urn:uuid:7877ee11-bf8d-39a4-b1e5-9c18a698d76f</id>
-    <updated>2017-10-03T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/10/3/new-habits/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Ever since &quot;going corporate&quot;, it's meant picking up more new productivity/coding habits. Here's a sampling of what I've learned.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;(1) Living by my calendar&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Basically, the &quot;work calendar&quot; defines everything about the day. I've had to make sure that if I am not going to be pencilled in for a meeting, I have to block out time on the calendar first.&lt;/p&gt;
-&lt;p&gt;Also, sending invites to people + rooms -- the latter being the newest habit I've had to pick up.&lt;/p&gt;
-&lt;p&gt;Finally, setting informative titles for calendar events - if I want to have coffee or lunch with X, I can't just write &quot;Coffee with X&quot; - it literally shows up as &quot;Coffee with X&quot; on X's calendar, which is super awkward, as if they're having coffee with themselves! Something more informative, like, &quot;Eric &amp;lt;&amp;gt; X coffee&quot; really helps the other person, who might be super busy and thus only glances at their calendar once in a while.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;(2) Flagging emails and applying rules&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Emails fly everywhere. It gets super overwhelming after a while.&lt;/p&gt;
-&lt;p&gt;If there's stuff that needs to be followed-up on, it stays in my Inbox until it's done. It also gets flagged, which automatically creates a Todo on my task list. (If this sounds like Outlook - yes, it's Outlook. On macOS. With no &quot;email snoozing&quot; feature...)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;(3) Hacking through legacy code and shared compute resources&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Working on a compute cluster with a code base that's built for legacy versions of programming languages is super frustrating! Thankfully I know enough about the differences between Python 2 and Python 3 to hack my way through.&lt;/p&gt;
-&lt;p&gt;Shared compute resources means using &lt;code&gt;modules&lt;/code&gt;, but not everybody sets up &lt;code&gt;modules&lt;/code&gt; with the same set of assumptions as others. Some create virtual environments inside a module, others append to &lt;code&gt;$PATH&lt;/code&gt;, and getting the right combinations in a modular way is really tricky. It means I have some really painful one-off &lt;code&gt;$PATH&lt;/code&gt; hacks to make stuff work. Documentation is paramount - without putting in docs, I'll never remember what I did...&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;(4) Adapting to others' coding styles&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Not everybody is a Python programmer, and not everybody is a Pythonic programmer. The usual Python idioms that I'm used to (whether functional or object-oriented) sometimes get thrown out in favour of some other style (globals, anybody?), and I have to adapt to figure out what's going on. Thankfully my colleagues are open to me modifying their code, as long as I can demonstrate that the new version works fine, and I've been working hard to bring in Pythonic code style.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;(5) Performance reviews&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Gotta start getting used to this. I had a taste of it while volunteering as part of Tang Hall's student leadership, but now it's for real.&lt;/p&gt;
 </content>
   </entry>
 </feed>
