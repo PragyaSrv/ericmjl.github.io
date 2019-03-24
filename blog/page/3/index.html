@@ -43,6 +43,10 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/css/custom.css">
+
+    <!-- Mathjax -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
 </head>
 
 <title>Blog - Eric J. Ma's Personal Site</title>
@@ -91,6 +95,55 @@
     </nav>
     <div class="container">
         
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
+    <h1><a href="../../../blog/2018/11/12/thoughts-on-black/">Thoughts on Black</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2018-11-12
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/python/">
+          python
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/code style/">
+          code style
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>Having used Black for quite a while now, I have a hunch that it will continue to surpass its current popularity amongst projects.</p>
+<p>It's one thing to be opinionated about things that matter for a project, but don't matter personally. Like code style. It's another thing to actually build a tool that, with one command, realizes those opinions in (milli)seconds. That's exactly what Black does.</p>
+<p>At the end of the day, it was, and still is, a tool that has a very good human API - that of convenience.</p>
+<p>By being opinionated about what code <em>ought</em> to look like, <code>black</code> has very few configurable parameters. Its interface is very simple. <em>Convenient.</em></p>
+<p>By automagically formatting <em>every</em> Python file in subdirectories (if not otherwise configured so), it makes code formatting quick and easy. <em>Convenient.</em></p>
+<p>In particular, by being opinionated about conforming to community standards for code style with Python, <code>black</code> ensures that formatted code is consistently formatted and thus easy to read. <em>Convenient!</em></p>
+<p>Because of this, I highly recommend the use of <code>black</code> for code formatting.</p>
+<pre><code>pip install black
+</code></pre>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../../../blog/2018/11/12/thoughts-on-black/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
   
     
   <!-- Import stylesheet -->
@@ -652,57 +705,6 @@ work. <strong><em>Veritas!</em></strong></p>
     <p><i>Did you enjoy this blog post? <a href="../../../blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/">Joint, conditional, and marginal probability distributions</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2018-08-07
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/statistics/">
-          statistics
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/probability/">
-          probability
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/bayesian/">
-          bayesian
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/data science/">
-          data science
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>Joint probability, conditional probability, and marginal probability... These are three central terms when learning about probability, and they show up in Bayesian statistics as well. However... I never really could remember what they were, especially since we were usually taught them using formulas, rather than pictures.</p>
-<p>Well, for those who learn a bit better using pictures... if you know what a probability distribution is, then hopefully these help with remembering what these terms mean. (Clicking on the image will bring you to the original, hosted on GitHub.)</p>
-<p><a href="https://github.com/ericmjl/distributions/raw/master/joint-conditional-marginal.pdf"><img src="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/joint-conditional-marginal.png" alt=""></a></p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
 
   
   <div class="pagination">
@@ -752,5 +754,4 @@ work. <strong><em>Veritas!</em></strong></p>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-
 </body>

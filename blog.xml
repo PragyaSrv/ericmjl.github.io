@@ -2,13 +2,44 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2019-03-22T00:00:00Z</updated>
+  <updated>2019-03-24T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/3/24/variance-explained/">
+    <title type="text">Variance Explained</title>
+    <id>urn:uuid:0732917e-8efd-3932-8fad-e75d4d69dd52</id>
+    <updated>2019-03-24T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/3/24/variance-explained/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;Variance explained, as a regression quality metric, is one that I have begun to like a lot, especially when used in place of a metric like the correlation coefficient (r&lt;sup&gt;2&lt;/sup&gt;).&lt;/p&gt;
+&lt;p&gt;Here's variance explained defined:&lt;/p&gt;
+&lt;p&gt;$$1 - \frac{var(y&lt;em&gt;{true} - y&lt;/em&gt;{pred})}{var(y_{true})}$$&lt;/p&gt;
+&lt;p&gt;Why do I like it? It’s because this metric gives us a measure of the scale of the error in predictions relative to the scale of the data.&lt;/p&gt;
+&lt;p&gt;The numerator in the fraction calculates the variance in the errors, in other words, the &lt;em&gt;scale of the errors&lt;/em&gt;. The denominator in the fraction calculates the variance in the data, in other words, the &lt;em&gt;scale of the data&lt;/em&gt;. By subtracting the fraction from 1, we get a number upper-bounded at 1 (best case), and unbounded towards negative infinity.&lt;/p&gt;
+&lt;p&gt;Here's a few interesting scenarios.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If the scale of the errors is small relative to the scale of the data, then variance explained will be close to 1.&lt;/li&gt;
+&lt;li&gt;If the scale of the errors is about the same scale as the data, then the variance explained will be around 0. This essentially says our model is garbage.&lt;/li&gt;
+&lt;li&gt;If the scale of the errors is greater than the scale of the data, then the variance explained will be negative. This is also an indication of a garbage model.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A thing that is &lt;em&gt;really nice&lt;/em&gt; about variance explained is that it can be used to compare related machine learning tasks that have different unit scales, for which we want to compare how good one model performs across all of the tasks. Mean squared error makes this an apples-to-oranges comparison, because the unit scales of each machine learning task is different. On the other hand, variance explained is unit-less.&lt;/p&gt;
+&lt;p&gt;Now, we know that single metrics can have failure points, as does the coefficient of correlation r^2^, as shown in Ansecombe's quartet and the Datasaurus Dozen:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://d2f99xq7vri1nk.cloudfront.net/Anscombe_1_0_0.png&quot; alt=&quot;Ansecombe&amp;#39;s quartet, taken from Autodesk Research&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Fig. 1: Ansecombe's quartet, taken from Autodesk Research&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.revolutionanalytics.com/downloads/DataSaurus%20Dozen.gif&quot; alt=&quot;Datasaurus Dozen, taken from Revolution Analytics&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Fig. 2: Datasaurus Dozen, taken from Revolution Analytics&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;One place where the variance explained can fail is if the predictions are systematically shifted off from the true values. Let's say prediction was shifted off by 2 units.&lt;/p&gt;
+&lt;p&gt;$$var(y&lt;em&gt;{true} - y&lt;/em&gt;{pred}) = var([2, 2, ..., 2]) = 0$$&lt;/p&gt;
+&lt;p&gt;There's no variance in errors, even though they are systematically shifted off from the true prediction. Like r&lt;sup&gt;2&lt;/sup&gt;, variance explained will fail here.&lt;/p&gt;
+&lt;p&gt;As usual, &lt;a href=&quot;https://en.wikipedia.org/wiki/Anscombe%27s_quartet&quot;&gt;Ansecombe's quartet&lt;/a&gt;, as does &lt;a href=&quot;https://www.autodeskresearch.com/publications/samestats&quot;&gt;The Datasaurus Dozen&lt;/a&gt;, gives us a pertinent reminder that visually inspecting your model predictions is always a good thing!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/3/22/functools-partial/">
     <title type="text">Functools Partial</title>
     <id>urn:uuid:7059f3fb-181e-305d-840a-bf1c34b42e8b</id>
@@ -1825,116 +1856,6 @@ J -&amp;gt; I -&amp;gt; F -&amp;gt; root
 &lt;p&gt;Also, &lt;strong&gt;&lt;a href=&quot;https://pydata.org/nyc2017/speaker/profile/80/&quot;&gt;Thomas Caswell&lt;/a&gt;&lt;/strong&gt;, one of the &lt;a href=&quot;http://matplotlib.org/&quot;&gt;&lt;code&gt;matplotlib&lt;/code&gt;&lt;/a&gt; lead devs who helped guide my first foray into open source contributions, is giving a tutorial on &lt;a href=&quot;https://pydata.org/nyc2017/schedule/presentation/3/&quot;&gt;developing interactive figures in matplotlib&lt;/a&gt;. Highly recommended if you're into the visualization world!&lt;/p&gt;
 &lt;p&gt;Finally, the always-interesting, always entertaining &lt;strong&gt;&lt;a href=&quot;https://pydata.org/nyc2017/schedule/presentation/25/&quot;&gt;en zyme&lt;/a&gt;&lt;/strong&gt; will be speaking on an &lt;a href=&quot;https://pydata.org/nyc2017/schedule/presentation/25/&quot;&gt;interesting topic&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Looking forward to being at the conference, and meeting old and new friends there!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/10/7/a-data-scientists-guide-to-environment-variables/">
-    <title type="text">A Data Scientist's Guide to Environment Variables</title>
-    <id>urn:uuid:0005f631-a0b5-3be2-8e59-9c6c40922a33</id>
-    <updated>2017-10-07T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/10/7/a-data-scientists-guide-to-environment-variables/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;You might have encountered a piece of software asking you for permission to modify your &lt;code&gt;PATH&lt;/code&gt; variable, or another program's installation instructions cryptically telling you that you have to &quot;set your &lt;code&gt;LD_LIBRARY_PATH&lt;/code&gt; variable correctly&quot;.&lt;/p&gt;
-&lt;p&gt;As a data scientist, you might encounter other environment variable issues when interacting with your compute stack (particularly if you don't have full control over it, like I do). This post is meant to demystify what an environment variable is, and how it gets used in a data science context.&lt;/p&gt;
-&lt;h2 id=&quot;what-is-an-environment-variable?&quot;&gt;What Is An Environment Variable?&lt;/h2&gt;&lt;p&gt;First off, let me explain what an environment variable is, by going in-depth into the &lt;code&gt;PATH&lt;/code&gt; environment variable. I'd encourage you to execute the commands here inside your bash terminal (with appropriate modifications -- read the text to figure out what I'm doing!).&lt;/p&gt;
-&lt;p&gt;When you log into your computer system, say, your local computer’s terminal or your remote server via SSH, your bash interpreter needs to know where to look for particular programs, such as &lt;code&gt;nano&lt;/code&gt; (the text editor), or &lt;code&gt;git&lt;/code&gt; (your version control software), or your Python executable. This is controlled by your PATH variable. It specifies the paths to folders where your executable programs are found.&lt;/p&gt;
-&lt;p&gt;By historical convention, command line programs, such as &lt;code&gt;nano&lt;/code&gt;, &lt;code&gt;which&lt;/code&gt;, and &lt;code&gt;top&lt;/code&gt;, are found in the directory &lt;code&gt;/usr/bin&lt;/code&gt;. (By historical convention, the &lt;code&gt;/bin&lt;/code&gt; folder is for software binaries, which is why they are named &lt;code&gt;/bin&lt;/code&gt;.) These are the ones that are bundled with your operating system, and as such, need special permissions to upgrade.&lt;/p&gt;
-&lt;p&gt;Try it out in your terminal:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ which which
-/usr/bin/which
-$ which top
-/usr/bin/top
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Other programs are installed (for whatever reason) into &lt;code&gt;/bin&lt;/code&gt; instead. &lt;code&gt;ls&lt;/code&gt; is one example:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ which ls
-/bin/ls
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Yet other programs might be installed in other special directories:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ which nano
-/usr/local/bin/nano
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;How does your Bash terminal figure out where to go to look for stuff? It uses the &lt;code&gt;PATH&lt;/code&gt; environment variable. It looks something like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ echo $PATH
-/usr/bin:/bin:/usr/local/bin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The most important thing to remember about the &lt;code&gt;PATH&lt;/code&gt; variable is that it is &quot;colon-delimited&quot;. That is, each directory path is separated by the next using a &quot;colon&quot; (&lt;code&gt;:&lt;/code&gt;) character. The order in which your bash terminal is looking for programs goes from left to right:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/usr/bin&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/bin&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/usr/local/bin&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;On my particular computer, when I type in &lt;code&gt;ls&lt;/code&gt;, my bash interpreter will look inside the &lt;code&gt;/usr/bin&lt;/code&gt; directory first. It'll find that &lt;code&gt;ls&lt;/code&gt; doesn't exist in &lt;code&gt;/usr/bin&lt;/code&gt;, and so it'll move to the next directory, &lt;code&gt;/bin&lt;/code&gt;. Since my &lt;code&gt;ls&lt;/code&gt; exists under &lt;code&gt;/bin&lt;/code&gt;, it'll execute the &lt;code&gt;ls&lt;/code&gt; program from there.&lt;/p&gt;
-&lt;p&gt;You can see, then, that this is simultaneously super flexible for customizing your compute environment, yet also potentially super frustrating if a program modified your &lt;code&gt;PATH&lt;/code&gt; variable without you knowing.&lt;/p&gt;
-&lt;p&gt;Wait, you can actually modify your &lt;code&gt;PATH&lt;/code&gt; variable? Yep, and there's a few ways to do this.&lt;/p&gt;
-&lt;h2 id=&quot;how-to-modify-the-path-variable&quot;&gt;How To Modify the &lt;code&gt;PATH&lt;/code&gt; variable&lt;/h2&gt;&lt;h3 id=&quot;using-a-bash-session&quot;&gt;Using a Bash Session&lt;/h3&gt;&lt;p&gt;The first way is transient, or temporary, and only occurs for your particular bash session. You can make a folder have higher priority than the existing paths by &quot;pre-pending&quot; it to the &lt;code&gt;PATH&lt;/code&gt; variable:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ export PATH=/path/to/my/folder:$PATH
-$ echo $PATH
-/path/to/my/folder:/usr/bin:/bin:/usr/local/bin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Or I can make it have a lower priority than existing paths by &quot;appending&quot; it to the &lt;code&gt;PATH&lt;/code&gt; variable:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ export PATH=$PATH:/path/to/my/folder
-$ echo $PATH
-/usr/bin:/bin:/usr/local/bin:/path/to/my/folder
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The reason this is temporary is because I only export it during my current bash session.&lt;/p&gt;
-&lt;h3 id=&quot;bashrc-or-.bash_profile-file&quot;&gt;&lt;code&gt;bashrc&lt;/code&gt; or &lt;code&gt;.bash_profile&lt;/code&gt; File&lt;/h3&gt;&lt;p&gt;If I wanted to make my changes somewhat more permanent, then I would include inside my &lt;code&gt;.bashrc&lt;/code&gt; or &lt;code&gt;.bash_profile&lt;/code&gt; file. (I recommend using the &lt;code&gt;.bashrc&lt;/code&gt; file.) The &lt;code&gt;.bashrc&lt;/code&gt;/&lt;code&gt;.bash_profile&lt;/code&gt; file lives inside your home directory (your &lt;code&gt;$HOME&lt;/code&gt; environment variable specifies this), and is a file that your bash interpreter will execute first load. It will execute all of the commands inside there. This means, you can change your PATH variable by simply putting inside your &lt;code&gt;.bashrc&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;...other stuff above...
-# Make /path/to/folder have higher priority
-export PATH=/path/to/folder:$PATH
-
-# Make /path/to/other/folder have lower priority
-export PATH=$PATH:/path/to/folder
-...other stuff below...
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&quot;data-science-and-the-path-environment-variable&quot;&gt;Data Science and the &lt;code&gt;PATH&lt;/code&gt; environment variable&lt;/h2&gt;&lt;p&gt;Now, &lt;strong&gt;how is this relevant to data scientists?&lt;/strong&gt; Well, if you're a data scientist, chances are that you use Python, and that your Python interpreter comes from the Anaconda Python distribution (a seriously awesome thing, go get it!). What the Anaconda Python installer does is prioritize the &lt;code&gt;/path/to/anaconda/bin&lt;/code&gt; folder in the &lt;code&gt;PATH&lt;/code&gt; environment variable. You might have other Python interpreters installed on your system (that is, Apple ships its own). However, this &lt;code&gt;PATH&lt;/code&gt; modification ensures that each time you type &lt;code&gt;python&lt;/code&gt; into your Bash terminal, you execute the Python interpreter shipped with the Anaconda Python distribution. In my case, after installing the Anaconda Python distribution, my &lt;code&gt;PATH&lt;/code&gt; looks like:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ echo $PATH
-/Users/ericmjl/anaconda/bin:/usr/bin:/bin:/usr/local/bin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Even better, what conda environments do is prepend the path to the conda environment binaries folder while the environment is activated. For example, with my blog, I keep it in an environment named &lt;code&gt;lektor&lt;/code&gt;. Thus...&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ echo $PATH
-/Users/ericmjl/anaconda/bin:/usr/bin:/bin:/usr/local/bin
-$ which python
-/Users/ericmjl/anaconda/bin/python
-$ source activate lektor
-$ echo $PATH
-/Users/ericmjl/anaconda/envs/lektor/bin:/Users/ericmjl/anaconda/bin:/usr/bin:/bin:/usr/local/bin
-$ which python
-/Users/ericmjl/anaconda/envs/lektor/bin/python
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Notice how the bash terminal now preferentially picks the Python inside the higher-priority &lt;code&gt;lektor&lt;/code&gt; environment.&lt;/p&gt;
-&lt;p&gt;If you've gotten to this point, then you'll hopefully realize there's a few important concepts listed here. Let's recap them:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;PATH&lt;/code&gt; is an environment variable stored as a plain text string used by the bash interpreter to figure out where to find executable programs.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;PATH&lt;/code&gt; is colon-delimited; higher priority directories are to the left of the string, while lower priority directories are to the right of the string.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;PATH&lt;/code&gt; can be modified by prepending or appending directories to the environment variable. It can be done transiently inside a bash session by running the &lt;code&gt;export&lt;/code&gt; command at the command prompt, or it can be done permanently across bash sessions by adding an &lt;code&gt;export&lt;/code&gt; line inside your &lt;code&gt;.bashrc&lt;/code&gt; or &lt;code&gt;.bash_profile&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;other-environment-variables-of-interest&quot;&gt;Other Environment Variables of Interest&lt;/h2&gt;&lt;p&gt;Now, what other environment variables might a data scientist encounter? These are a sampling of them that you might see, and might have to fix, especially in contexts where your system administrators are off on vacation (or taking too long to respond).&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;For general use&lt;/strong&gt;, you'll definitely want to know where your &lt;code&gt;HOME&lt;/code&gt; folder is -- on Linux systems, it's often &lt;code&gt;/home/username&lt;/code&gt;, while on macOS systems, it's often &lt;code&gt;/Users/username&lt;/code&gt;.  You can figure out what &lt;code&gt;HOME&lt;/code&gt; is by doing:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ echo $HOME
-/Users/ericmjl
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;If you're a Python user&lt;/strong&gt;, then the &lt;code&gt;PYTHONPATH&lt;/code&gt; is one variable that might be useful. It is used by the Python interpreter, and specifies where to find Python modules/packages.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;If you have to deal with C++ libraries&lt;/strong&gt;, then knowing your &lt;code&gt;LD_LIBRARY_PATH&lt;/code&gt; environment variable is going to be very important. I'm not well-versed enough in this to espouse on it intelligently, so I would defer to &lt;a href=&quot;http://xahlee.info/UnixResource_dir/_/ldpath.html&quot;&gt;this website&lt;/a&gt; for more information on best practices for using the &lt;code&gt;LD_LIBRARY_PATH&lt;/code&gt; variable.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;If you're working with Spark&lt;/strong&gt;, then the &lt;code&gt;PYSPARK_PYTHON&lt;/code&gt; environment variable would be of interest. This essentially tells Spark which Python to use for both its driver and its workers; you can also set the &lt;code&gt;PYSPARK_DRIVER_PYTHON&lt;/code&gt; to be separate from the &lt;code&gt;PYSPARK_PYTHON&lt;/code&gt; environment variable, if needed.&lt;/p&gt;
-&lt;h3 id=&quot;hack-your-environment-variables&quot;&gt;Hack Your Environment Variables&lt;/h3&gt;&lt;p&gt;This is where the most fun happens! Follow along for some stuff you might be able to do by hacking your environment variables.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hack #1: Enable access to PyPy.&lt;/strong&gt; I occasionally keep up with the development of PyPy, but because PyPy is not yet the default Python interpreter, and is not yet &lt;code&gt;conda install&lt;/code&gt;-able, I have to put it in its own &lt;code&gt;$HOME/pypy/bin&lt;/code&gt; directory. To enable access to the PyPy interpreter, I have to make sure that my &lt;code&gt;/path/to/pypy&lt;/code&gt; is present in the &lt;code&gt;PATH&lt;/code&gt; environment variable, but at a lower priority than my regular CPython interpreter.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hack #2: Enable access to other language interpreters/compilers.&lt;/strong&gt; This is analogous to PyPy. I once was trying out Lua's JIT interpreter to use Torch for deep learning, and needed to add a path to there in my &lt;code&gt;.bashrc&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hack #3: Install Python packages to your home directory.&lt;/strong&gt; On shared Linux compute systems that use the &lt;code&gt;modules&lt;/code&gt;  system rather than &lt;code&gt;conda&lt;/code&gt; environments, a &lt;code&gt;modulefile&lt;/code&gt; that you load might be configured with a virtual environment that &lt;em&gt;you don't have permissions to modify&lt;/em&gt;. If you need to install a Python package, you might want to &lt;code&gt;pip install --user my_pkg_name&lt;/code&gt;. This will install it to &lt;code&gt;$HOME/.local/lib/python-[version]/site-packages/&lt;/code&gt;. Ensuring that your &lt;code&gt;PYTHONPATH&lt;/code&gt; includes &lt;code&gt;$HOME/.local/lib/python-[version]/site-packages&lt;/code&gt; at a high enough priority is going to be important in this case.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hack 4: Debugging when things go wrong.&lt;/strong&gt; In case something throws an error, or you have unexpected behaviour -- something I encountered before was my Python interpreter not being found correctly after loading all of my Linux modules -- then a way to debug is to temporarily set your PATH environment variable to some sensible &quot;defaults&quot; and sourcing that, effectively &quot;resetting&quot; your PATH variable, so that you can manually prepend/append while debugging.&lt;/p&gt;
-&lt;p&gt;To do this, place the following line inside a file named &lt;code&gt;.path_default&lt;/code&gt;, inside your home directory:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;export PATH=&quot;&quot;  # resets PATH to an empty string.
-export PATH=/usr/bin:/bin:/usr/local/bin:$PATH  # this is a sensible default; customize as needed.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;After something goes wrong, you can reset your PATH environment variable by using the &quot;source&quot; command:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ echo $PATH
-/some/complicated/path:/more/complicated/paths:/really/complicated/paths
-$ source ~/.path_default
-$ echo $PATH
-/usr/bin:/bin:/usr/local/bin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Note - you can also execute the exact same commands inside your bash session; the interactivity may also be helpful.&lt;/p&gt;
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;&lt;p&gt;I hope you enjoyed this article, and that it'll give you a, ahem, path forward whenever you encounter these environment variables!&lt;/p&gt;
 </content>
   </entry>
 </feed>

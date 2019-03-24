@@ -43,6 +43,10 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/css/custom.css">
+
+    <!-- Mathjax -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
 </head>
 
 <title>Blog - Eric J. Ma's Personal Site</title>
@@ -91,6 +95,67 @@
     </nav>
     <div class="container">
         
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
+    <h1><a href="../blog/2019/3/24/variance-explained/">Variance Explained</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-03-24
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/data science/">
+          data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/machine learning/">
+          machine learning
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>Variance explained, as a regression quality metric, is one that I have begun to like a lot, especially when used in place of a metric like the correlation coefficient (r<sup>2</sup>).</p>
+<p>Here's variance explained defined:</p>
+<p>$$1 - \frac{var(y<em>{true} - y</em>{pred})}{var(y_{true})}$$</p>
+<p>Why do I like it? It’s because this metric gives us a measure of the scale of the error in predictions relative to the scale of the data.</p>
+<p>The numerator in the fraction calculates the variance in the errors, in other words, the <em>scale of the errors</em>. The denominator in the fraction calculates the variance in the data, in other words, the <em>scale of the data</em>. By subtracting the fraction from 1, we get a number upper-bounded at 1 (best case), and unbounded towards negative infinity.</p>
+<p>Here's a few interesting scenarios.</p>
+<ul>
+<li>If the scale of the errors is small relative to the scale of the data, then variance explained will be close to 1.</li>
+<li>If the scale of the errors is about the same scale as the data, then the variance explained will be around 0. This essentially says our model is garbage.</li>
+<li>If the scale of the errors is greater than the scale of the data, then the variance explained will be negative. This is also an indication of a garbage model.</li>
+</ul>
+<p>A thing that is <em>really nice</em> about variance explained is that it can be used to compare related machine learning tasks that have different unit scales, for which we want to compare how good one model performs across all of the tasks. Mean squared error makes this an apples-to-oranges comparison, because the unit scales of each machine learning task is different. On the other hand, variance explained is unit-less.</p>
+<p>Now, we know that single metrics can have failure points, as does the coefficient of correlation r^2^, as shown in Ansecombe's quartet and the Datasaurus Dozen:</p>
+<p><img src="https://d2f99xq7vri1nk.cloudfront.net/Anscombe_1_0_0.png" alt="Ansecombe&#39;s quartet, taken from Autodesk Research"></p>
+<p><em>Fig. 1: Ansecombe's quartet, taken from Autodesk Research</em></p>
+<p><img src="https://blog.revolutionanalytics.com/downloads/DataSaurus%20Dozen.gif" alt="Datasaurus Dozen, taken from Revolution Analytics"></p>
+<p><em>Fig. 2: Datasaurus Dozen, taken from Revolution Analytics</em></p>
+<p>One place where the variance explained can fail is if the predictions are systematically shifted off from the true values. Let's say prediction was shifted off by 2 units.</p>
+<p>$$var(y<em>{true} - y</em>{pred}) = var([2, 2, ..., 2]) = 0$$</p>
+<p>There's no variance in errors, even though they are systematically shifted off from the true prediction. Like r<sup>2</sup>, variance explained will fail here.</p>
+<p>As usual, <a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">Ansecombe's quartet</a>, as does <a href="https://www.autodeskresearch.com/publications/samestats">The Datasaurus Dozen</a>, gives us a pertinent reminder that visually inspecting your model predictions is always a good thing!</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../blog/2019/3/24/variance-explained/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
   
     
   <!-- Import stylesheet -->
@@ -386,58 +451,6 @@
     <p><i>Did you enjoy this blog post? <a href="../blog/2019/1/28/minimum-viable-products-matter/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2019/1/21/advi-scalable-bayesian-inference/">ADVI: Scalable Bayesian Inference</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-01-21
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/bayesian/">
-          bayesian
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/variational inference/">
-          variational inference
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <h2 id="introduction">Introduction</h2><p>You never know when scalability becomes an issue. Indeed, scalability necessitates a whole different world of tooling.</p>
-<p>While at work, I've been playing with a model - a Bayesian hierarchical 4-parameter dose response model, to be specific. With this model, the overall goal (without going into proprietary specifics) was parameter learning - what's the 50th percentile concentration, what's the max, what's the minimum, etc.; what was also important was quantifying the uncertainty surrounding these parameters.</p>
-<h2 id="prototype-phase">Prototype Phase</h2><p>Originally, when I prototyped the model, I used just a few thousand samples, which was trivial to fit with NUTS. I also got the model specification (both the group-level and population-level priors) done using those same few thousand.</p>
-<p>At some point, I was qualitatively and quantitatively comfortable with the model specification. Qualitatively - the model structure reflected prior biochemical knowledge. Quantitatively, I saw good convergence when examining the sampling traces, as well as the shrinkage phenomena.</p>
-<h2 id="scaling-up">Scaling Up</h2><p>Once I reached that point, I decided to scale up to the entire dataset: 400K+ samples, 3000+ groups.</p>
-<p>Fitting this model with NUTS with the full dataset would have taken a week, with no stopping time guarantees at the end of an overnight run - when I left the day before, I was still hoping for 5 days. However, switching over to ADVI (automatic differentiation variational inference) was a key enabler for this model: I was able to finish fitting the model with ADVI in just 2.5 hours, with similar uncertainty estimates (it'll never end up being identical, given random sampling).</p>
-<h2 id="thoughts">Thoughts</h2><p>I used to not appreciate that ADVI could be useful for simpler models; in the past, I used to think that ADVI was mainly useful in Bayesian neural network applications - in other words, with large parameter and large data models.</p>
-<p>With this example, I'm definitely more informed about what "scale" can mean: both in terms of number of parameters in a model, and in terms of number of samples that the model is fitted on. In this particular example, the model is simple, but the number of samples is so large that ADVI becomes a feasible alternative to NUTS MCMC sampling.</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/1/21/advi-scalable-bayesian-inference/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
 
   
   <div class="pagination">
@@ -487,5 +500,4 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-
 </body>

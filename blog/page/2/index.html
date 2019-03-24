@@ -43,6 +43,10 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/css/custom.css">
+
+    <!-- Mathjax -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
 </head>
 
 <title>Blog - Eric J. Ma's Personal Site</title>
@@ -91,6 +95,58 @@
     </nav>
     <div class="container">
         
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
+    <h1><a href="../../../blog/2019/1/21/advi-scalable-bayesian-inference/">ADVI: Scalable Bayesian Inference</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-01-21
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/bayesian/">
+          bayesian
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/variational inference/">
+          variational inference
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/data science/">
+          data science
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <h2 id="introduction">Introduction</h2><p>You never know when scalability becomes an issue. Indeed, scalability necessitates a whole different world of tooling.</p>
+<p>While at work, I've been playing with a model - a Bayesian hierarchical 4-parameter dose response model, to be specific. With this model, the overall goal (without going into proprietary specifics) was parameter learning - what's the 50th percentile concentration, what's the max, what's the minimum, etc.; what was also important was quantifying the uncertainty surrounding these parameters.</p>
+<h2 id="prototype-phase">Prototype Phase</h2><p>Originally, when I prototyped the model, I used just a few thousand samples, which was trivial to fit with NUTS. I also got the model specification (both the group-level and population-level priors) done using those same few thousand.</p>
+<p>At some point, I was qualitatively and quantitatively comfortable with the model specification. Qualitatively - the model structure reflected prior biochemical knowledge. Quantitatively, I saw good convergence when examining the sampling traces, as well as the shrinkage phenomena.</p>
+<h2 id="scaling-up">Scaling Up</h2><p>Once I reached that point, I decided to scale up to the entire dataset: 400K+ samples, 3000+ groups.</p>
+<p>Fitting this model with NUTS with the full dataset would have taken a week, with no stopping time guarantees at the end of an overnight run - when I left the day before, I was still hoping for 5 days. However, switching over to ADVI (automatic differentiation variational inference) was a key enabler for this model: I was able to finish fitting the model with ADVI in just 2.5 hours, with similar uncertainty estimates (it'll never end up being identical, given random sampling).</p>
+<h2 id="thoughts">Thoughts</h2><p>I used to not appreciate that ADVI could be useful for simpler models; in the past, I used to think that ADVI was mainly useful in Bayesian neural network applications - in other words, with large parameter and large data models.</p>
+<p>With this example, I'm definitely more informed about what "scale" can mean: both in terms of number of parameters in a model, and in terms of number of samples that the model is fitted on. In this particular example, the model is simple, but the number of samples is so large that ADVI becomes a feasible alternative to NUTS MCMC sampling.</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../../../blog/2019/1/21/advi-scalable-bayesian-inference/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
   
     
   <!-- Import stylesheet -->
@@ -390,55 +446,6 @@
     <p><i>Did you enjoy this blog post? <a href="../../../blog/2018/11/13/solving-problems-actionably/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../../../blog/2018/11/12/thoughts-on-black/">Thoughts on Black</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2018-11-12
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/python/">
-          python
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/code style/">
-          code style
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>Having used Black for quite a while now, I have a hunch that it will continue to surpass its current popularity amongst projects.</p>
-<p>It's one thing to be opinionated about things that matter for a project, but don't matter personally. Like code style. It's another thing to actually build a tool that, with one command, realizes those opinions in (milli)seconds. That's exactly what Black does.</p>
-<p>At the end of the day, it was, and still is, a tool that has a very good human API - that of convenience.</p>
-<p>By being opinionated about what code <em>ought</em> to look like, <code>black</code> has very few configurable parameters. Its interface is very simple. <em>Convenient.</em></p>
-<p>By automagically formatting <em>every</em> Python file in subdirectories (if not otherwise configured so), it makes code formatting quick and easy. <em>Convenient.</em></p>
-<p>In particular, by being opinionated about conforming to community standards for code style with Python, <code>black</code> ensures that formatted code is consistently formatted and thus easy to read. <em>Convenient!</em></p>
-<p>Because of this, I highly recommend the use of <code>black</code> for code formatting.</p>
-<pre><code>pip install black
-</code></pre>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../../../blog/2018/11/12/thoughts-on-black/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
 
   
   <div class="pagination">
@@ -488,5 +495,4 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-
 </body>
