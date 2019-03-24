@@ -19,8 +19,9 @@
     </author>
     <content type="html">&lt;p&gt;Variance explained, as a regression quality metric, is one that I have begun to like a lot, especially when used in place of a metric like the correlation coefficient (r&lt;sup&gt;2&lt;/sup&gt;).&lt;/p&gt;
 &lt;p&gt;Here's variance explained defined:&lt;/p&gt;
-&lt;p&gt;$$1 - \frac{var(y&lt;em&gt;{true} - y&lt;/em&gt;{pred})}{var(y_{true})}$$&lt;/p&gt;
-&lt;p&gt;Why do I like it? It’s because this metric gives us a measure of the scale of the error in predictions relative to the scale of the data.&lt;/p&gt;
+&lt;p&gt;
+$$1 - \frac{var(y_{true} - y_{pred})}{var(y_{true})}$$
+&lt;/p&gt;&lt;p&gt;Why do I like it? It’s because this metric gives us a measure of the scale of the error in predictions relative to the scale of the data.&lt;/p&gt;
 &lt;p&gt;The numerator in the fraction calculates the variance in the errors, in other words, the &lt;em&gt;scale of the errors&lt;/em&gt;. The denominator in the fraction calculates the variance in the data, in other words, the &lt;em&gt;scale of the data&lt;/em&gt;. By subtracting the fraction from 1, we get a number upper-bounded at 1 (best case), and unbounded towards negative infinity.&lt;/p&gt;
 &lt;p&gt;Here's a few interesting scenarios.&lt;/p&gt;
 &lt;ul&gt;
@@ -35,8 +36,9 @@
 &lt;p&gt;&lt;img src=&quot;https://blog.revolutionanalytics.com/downloads/DataSaurus%20Dozen.gif&quot; alt=&quot;Datasaurus Dozen, taken from Revolution Analytics&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Fig. 2: Datasaurus Dozen, taken from Revolution Analytics&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;One place where the variance explained can fail is if the predictions are systematically shifted off from the true values. Let's say prediction was shifted off by 2 units.&lt;/p&gt;
-&lt;p&gt;$$var(y&lt;em&gt;{true} - y&lt;/em&gt;{pred}) = var([2, 2, ..., 2]) = 0$$&lt;/p&gt;
-&lt;p&gt;There's no variance in errors, even though they are systematically shifted off from the true prediction. Like r&lt;sup&gt;2&lt;/sup&gt;, variance explained will fail here.&lt;/p&gt;
+&lt;p&gt;
+$$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
+&lt;/p&gt;&lt;p&gt;There's no variance in errors, even though they are systematically shifted off from the true prediction. Like r&lt;sup&gt;2&lt;/sup&gt;, variance explained will fail here.&lt;/p&gt;
 &lt;p&gt;As usual, &lt;a href=&quot;https://en.wikipedia.org/wiki/Anscombe%27s_quartet&quot;&gt;Ansecombe's quartet&lt;/a&gt;, as does &lt;a href=&quot;https://www.autodeskresearch.com/publications/samestats&quot;&gt;The Datasaurus Dozen&lt;/a&gt;, gives us a pertinent reminder that visually inspecting your model predictions is always a good thing!&lt;/p&gt;
 </content>
   </entry>
