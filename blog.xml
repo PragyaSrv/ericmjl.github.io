@@ -2,13 +2,29 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2019-03-24T00:00:00Z</updated>
+  <updated>2019-04-29T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/4/29/pycon-2019-pre-journey/">
+    <title type="text">PyCon 2019 Pre-Journey</title>
+    <id>urn:uuid:ccbe0426-b1a5-3655-ab5f-4005fb02089d</id>
+    <updated>2019-04-29T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/4/29/pycon-2019-pre-journey/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;I'm headed out to &lt;a href=&quot;https://us.pycon.org/2019&quot;&gt;PyCon 2019&lt;/a&gt;! This year, I will be co-instructing two tutorials, one on network analysis and one on Bayesian statistics, and delivering one talk on Bayesian statistics.&lt;/p&gt;
+&lt;p&gt;The first tutorial on &lt;a href=&quot;https://us.pycon.org/2019/schedule/presentation/70/&quot;&gt;network analysis&lt;/a&gt; is based on &lt;a href=&quot;https://github.com/ericmjl/Network-Analysis-Made-Simple&quot;&gt;material that I first developed&lt;/a&gt; 5 years ago, and have continually updated. I've enjoyed teaching this tutorial because it represents a different way of thinking about data - in other words, relationally. This year, I will be a co-instructor for &lt;a href=&quot;https://twitter.com/Mridul_Seth&quot;&gt;Mridul&lt;/a&gt;, who has kindly agreed to step up and teach it this year at PyCon. The apprentice has exceeded the master!&lt;/p&gt;
+&lt;p&gt;The second tutorial on &lt;a href=&quot;https://us.pycon.org/2019/schedule/presentation/77/&quot;&gt;Bayesian statistics&lt;/a&gt; is based on &lt;a href=&quot;https://github.com/ericmjl/bayesian-stats-modelling-tutorial&quot;&gt;material co-developed&lt;/a&gt; with &lt;a href=&quot;https://twitter.com/hugobowne&quot;&gt;Hugo Bowne-Anderson&lt;/a&gt;. Hugo is a mathematician by training, a pedagogy master, and data science aficionado. Like myself, he is a fan of Bayesian statistical modelling methods, and we first debuted the tutorial past year at SciPy. We're super excited for this one!&lt;/p&gt;
+&lt;p&gt;The talk that I will deliver is on &lt;a href=&quot;https://us.pycon.org/2019/schedule/presentation/174/&quot;&gt;Bayesian statistical analysis of case/control tests&lt;/a&gt;. In particular, I noticed a content gap in the data science talks, where case/control comparisons were limited to one case and one control. One epiphany I came to was that if we use Bayesian methods to analyze our data, there's no particular reason to limit ourselves to one case and one control; we can flexibly model multiple cases vs. one control, or even multiple cases vs multiple different controls in the same analysis, in a fashion that is flexible and principled.&lt;/p&gt;
+&lt;p&gt;My final involvement with PyCon this year is as Financial Aid Chair. This is the first year that I'm leading the FinAid effort; during previous years, I had learned a ton from the previous chair Karan Goel. My co-chairs this year are Denise Williams and Jigyasa Grover; I'm looking forward to meeting them in 3D!&lt;/p&gt;
+&lt;p&gt;All-in-all, I'm looking forward to another fun year at PyCon!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/3/24/variance-explained/">
     <title type="text">Variance Explained</title>
     <id>urn:uuid:0732917e-8efd-3932-8fad-e75d4d69dd52</id>
@@ -1838,26 +1854,6 @@ E -&amp;gt; C -&amp;gt; A -&amp;gt; root
 J -&amp;gt; I -&amp;gt; F -&amp;gt; root
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you were wondering why linked lists, trees and other data structures might be useful as a data scientist, I hope this illustrates on productive example!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/10/10/pydata-nyc-2017/">
-    <title type="text">PyData NYC 2017</title>
-    <id>urn:uuid:e720c68f-51c8-3391-9f3c-97ce2ba8267c</id>
-    <updated>2017-10-10T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/10/10/pydata-nyc-2017/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;I'm seriously looking forward to PyData NYC this year -- there's a great lineup of talks that I'm particularly looking forward to hearing! The theme for my set of must-see talks this year is &quot;Bayesian machine learning&quot; - there's much for me to learn!&lt;/p&gt;
-&lt;p&gt;The first is by my fellow Boston Bayesian &lt;strong&gt;&lt;a href=&quot;https://colindcarroll.com/&quot;&gt;Colin Caroll&lt;/a&gt;&lt;/strong&gt; with his talk titled &lt;a href=&quot;https://pydata.org/nyc2017/schedule/presentation/12/&quot;&gt;Two views on regression with PyMC3 and scikit-learn&lt;/a&gt;. Colin is a mathematician at heart, even though he does software engineering for living now, and I can't wait to hear about regularization strategies!&lt;/p&gt;
-&lt;p&gt;The second is by &lt;strong&gt;&lt;a href=&quot;https://pydata.org/nyc2017/speaker/profile/6/&quot;&gt;Nicole Carlson&lt;/a&gt;&lt;/strong&gt;, with her talk titled &lt;a href=&quot;https://pydata.org/nyc2017/schedule/presentation/24/&quot;&gt;Turning PyMC3 into scikit-learn&lt;/a&gt;. Nicole's talk is of interest to me because I've implemented models in PyMC3 before, and now would like to know how to make them reusable!&lt;/p&gt;
-&lt;p&gt;The third talk is by &lt;strong&gt;&lt;a href=&quot;https://pydata.org/nyc2017/speaker/profile/118/&quot;&gt;Chaya Stern&lt;/a&gt;&lt;/strong&gt;, with her talk titled &lt;a href=&quot;https://pydata.org/nyc2017/schedule/presentation/53/&quot;&gt;Bayesian inference in computational chemistry&lt;/a&gt;. Super relevant to my work at Novartis!&lt;/p&gt;
-&lt;p&gt;The fourth is by my fellow Boston Pythonista &lt;strong&gt;&lt;a href=&quot;https://pydata.org/nyc2017/speaker/profile/34/&quot;&gt;Joe Jevnik&lt;/a&gt;&lt;/strong&gt;, who will be speaking on the first day about his journey into deep learning on some really cool time-series data. He works at Quantopian, BUT the spoiler here is that his talk is NOT about financial data! (I've heard his talk outline already.)&lt;/p&gt;
-&lt;p&gt;The fifth is a tutorial by &lt;strong&gt;&lt;a href=&quot;https://pydata.org/nyc2017/speaker/profile/29/&quot;&gt;Jacob Schrieber&lt;/a&gt;&lt;/strong&gt;, with his talk titled &lt;a href=&quot;https://pydata.org/nyc2017/schedule/presentation/30/&quot;&gt;pomegranate: fast and flexible probabilistic modeling in python&lt;/a&gt;. &lt;code&gt;pomegranate&lt;/code&gt;'s API models after the &lt;code&gt;scikit-learn&lt;/code&gt;'s API; with the API being the user-facing interface, and &lt;code&gt;scikit-learn&lt;/code&gt; being the &lt;em&gt;de facto&lt;/em&gt; go-to library for machine learning, I'd be interested to see how much more &lt;code&gt;pomegranate&lt;/code&gt; adds to the ecosystem, particularly w.r.t. Bayesian models.&lt;/p&gt;
-&lt;p&gt;There are a swathe of other good talks that I'm expecting to be able to catch online later on. &lt;strong&gt;&lt;a href=&quot;https://matthewrocklin.com/&quot;&gt;Matt Rocklin&lt;/a&gt;&lt;/strong&gt;, who is the lead developer of Dask, has done a ton of work on speeding Python up through parallelism. His talk will be on &lt;a href=&quot;https://pydata.org/nyc2017/schedule/presentation/22/&quot;&gt;the use of Cython &amp;amp; Dask to speed up GeoPandas&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Also, &lt;strong&gt;&lt;a href=&quot;https://pydata.org/nyc2017/speaker/profile/80/&quot;&gt;Thomas Caswell&lt;/a&gt;&lt;/strong&gt;, one of the &lt;a href=&quot;http://matplotlib.org/&quot;&gt;&lt;code&gt;matplotlib&lt;/code&gt;&lt;/a&gt; lead devs who helped guide my first foray into open source contributions, is giving a tutorial on &lt;a href=&quot;https://pydata.org/nyc2017/schedule/presentation/3/&quot;&gt;developing interactive figures in matplotlib&lt;/a&gt;. Highly recommended if you're into the visualization world!&lt;/p&gt;
-&lt;p&gt;Finally, the always-interesting, always entertaining &lt;strong&gt;&lt;a href=&quot;https://pydata.org/nyc2017/schedule/presentation/25/&quot;&gt;en zyme&lt;/a&gt;&lt;/strong&gt; will be speaking on an &lt;a href=&quot;https://pydata.org/nyc2017/schedule/presentation/25/&quot;&gt;interesting topic&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Looking forward to being at the conference, and meeting old and new friends there!&lt;/p&gt;
 </content>
   </entry>
 </feed>
