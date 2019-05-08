@@ -2,13 +2,115 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2019-04-29T00:00:00Z</updated>
+  <updated>2019-05-08T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/5/8/pycon-2019-sprints/">
+    <title type="text">PyCon 2019 Sprints</title>
+    <id>urn:uuid:a42b3f69-a28c-3ea5-945b-64486982c78e</id>
+    <updated>2019-05-08T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/5/8/pycon-2019-sprints/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;This year was the first year that I decided to lead a sprint! The sprint I led was for &lt;code&gt;pyjanitor&lt;/code&gt;, a package that I developed with my colleague, Zach Barry, and a remote collaborator in NYC, Sam Zuckerman (whom I've never met in person!). This being the first sprint I've ever led, I think I was lucky to stumble upon a few ideas that made for a productive, collaborative, and most importantly, fun sprint.&lt;/p&gt;
+&lt;h2 id=&quot;pyjanitor?&quot;&gt;pyjanitor?&lt;/h2&gt;&lt;p&gt;I'm going to deliver a talk on &lt;code&gt;pyjanitor&lt;/code&gt; later in the year, so I'll save the details for that talk. The short description of &lt;code&gt;pyjanitor&lt;/code&gt; is that if you have &lt;code&gt;pandas&lt;/code&gt; one-liners that are difficult to remember, they should become a function in &lt;code&gt;pyjanitor&lt;/code&gt;; if you have a 10-liner that you always copy/paste from another source, they should become a function in &lt;code&gt;pyjanitor&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;sprints?&quot;&gt;Sprints?&lt;/h2&gt;&lt;p&gt;Code sprints are a part of PyCon, and it's basically one to four days of intense and focused software development on a single project.&lt;/p&gt;
+&lt;p&gt;Project sprint leads first pitch their projects at the &quot;&lt;em&gt;Sprintros&lt;/em&gt;&quot;, where they indicate what days they will be sprinting, and at what times. The next day, we indicate on which rooms our projects will be sprinting. Volunteers from the conference, who would like to make an open source project contribution, then identify projects they would like to come sprint with.&lt;/p&gt;
+&lt;p&gt;In some senses, there's no way for a sprint leader to know how popular their sprint will be &lt;em&gt;a priori&lt;/em&gt;. We have to be prepared to handle a range of scenarios from sprinting with just one other person to sprinting with a crowd.&lt;/p&gt;
+&lt;h2 id=&quot;structure&quot;&gt;Structure&lt;/h2&gt;&lt;h3 id=&quot;preparation&quot;&gt;Preparation&lt;/h3&gt;&lt;p&gt;In preparation for the sprint, I absorbed many lessons learned over the years of sprinting on others' projects.&lt;/p&gt;
+&lt;p&gt;The most obvious one was to ensure that every sprinter had something to do right from the get-go. Having a task from the get-go keeps sprinters, especially newcomers, engaged right from the beginning. This motivated the requirement to make a doc fix before making a code fix. (You can read more below on how we made this happen.) I wrote out this requirement in a number of places, and by the time the sprint day rolled by, this rolled off pretty naturally.&lt;/p&gt;
+&lt;p&gt;The second thing that I did to prep was to triage existing issues and label them as being beginner- or intermediate-friendly, and whether they were doc, infrastructure, or code contributions.&lt;/p&gt;
+&lt;p&gt;Those two things were the my highest priority preparation for the sprint, and I think that helped a ton.&lt;/p&gt;
+&lt;h3 id=&quot;doc-fixes&quot;&gt;Doc Fixes&lt;/h3&gt;&lt;p&gt;This sprint, I gave the structure some thought, and settled on the following: Before making a code contribution, I required a docs contribution.&lt;/p&gt;
+&lt;p&gt;Docs contributions could be of any scale:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A typographical, grammatical, or spelling error.&lt;/li&gt;
+&lt;li&gt;A docstring that was unclear.&lt;/li&gt;
+&lt;li&gt;Installation/setup instructions that are unclear.&lt;/li&gt;
+&lt;li&gt;A sentence/phrase/word choice that didn't make sense.&lt;/li&gt;
+&lt;li&gt;New example/tutorial notebooks using the library.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I think this worked well for the following reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;New contributors must read the docs before developing on the project, and hence become familiar with the project.&lt;/li&gt;
+&lt;li&gt;There's always something that can be done better in the docs, and hence, there is something that can be immediately acted on.&lt;/li&gt;
+&lt;li&gt;The task is a pain point personally uncovered by the contributor, and hence the contributor has the full context of the problem. &lt;/li&gt;
+&lt;li&gt;The docs don't break the code/tests, and hence doc contributions are a great way make a contribution without wrestling with more complex testing.&lt;/li&gt;
+&lt;li&gt;Starting &lt;em&gt;everybody&lt;/em&gt; who has never worked on &lt;code&gt;pyjanitor&lt;/code&gt; on docs is an egalitarian way of on-boarding every newcomer, beginner and experienced individuals alike. Nobody gets special treatment.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For each individual's contribution, I asked them to first raise an issue on the GitHub issue tracker describing the contribution that they would like to make, and then clearly indicate in the comments that they would like to work on it. Then, they would go through the process of doing the documentation fix, from forking the repository, cloning it locally, creating a new branch, making edits, committing, pushing, and PR-ing.&lt;/p&gt;
+&lt;p&gt;If two people accidentally ended up working on the same docs issue, I would assess the effort of the later one, and if it was substantial enough, I would allow them to consider it done, and move onto a different issue.&lt;/p&gt;
+&lt;p&gt;Going forth, as the group of contributors expands, I will enforce this &quot;docs-first&quot; requirement only for newcomer sprinters, and request experienced ones to help manage the process.&lt;/p&gt;
+&lt;h3 id=&quot;code-contributions&quot;&gt;Code Contributions&lt;/h3&gt;&lt;p&gt;Once the docs contributions were done, sprinters were free to either continue with more docs contributions, or provide a code contribution.&lt;/p&gt;
+&lt;p&gt;Code contributions could be of one of the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;New function contributions.&lt;/li&gt;
+&lt;li&gt;Cleaner implementations of existing functions.&lt;/li&gt;
+&lt;li&gt;Restructuring of existing functions.&lt;/li&gt;
+&lt;li&gt;Identification of functions to deprecate (very important!)&lt;/li&gt;
+&lt;li&gt;Infrastructural changes to docs, build system, and more.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The process for doing this was identical to docs: raise an issue, claim it, and then make a new branch with edits, and finally PR it.&lt;/p&gt;
+&lt;h2 id=&quot;my-role&quot;&gt;My Role&lt;/h2&gt;&lt;p&gt;For both days, we had more than 10 people sprint on &lt;code&gt;pyjanitor&lt;/code&gt;. Many who were present on the 1st day (and didn't have a flight to catch) came back on the 2nd day. As such, I actually didn't get much coding done. Instead, I took on the following roles:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Q&amp;amp;A person: Answering questions about what would be acceptable contributions, technical (read: git) issues, and more.&lt;/li&gt;
+&lt;li&gt;Issue labeller and triage-r: I spent the bulk of my downtime (and pre-/post-sprint time) tagging issues on the GitHub issue tracker and marking them as being available or unavailable for hacking on, and tagging them with whether they were docs-related, infrastructure-related, or code enhancements. &lt;/li&gt;
+&lt;li&gt;Code reviewer: As PRs came in, I would conduct code reviews on each of them, and would discuss with them where to adjust the code to adhere to code style standards. &lt;/li&gt;
+&lt;li&gt;Continuous integration pipeline babysitter: Because I had just switched us off from Travis CI to Azure Pipelines, I was babysitting the pipelines to make sure nothing went wrong. (Spoiler: something did!) &lt;/li&gt;
+&lt;li&gt;Green button pusher: Once all tests passed, I would hit the big green button to merge PRs!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If I get to sprint with other experienced contributors at the sprints, I would definitely like to have some help with the above.&lt;/p&gt;
+&lt;h2 id=&quot;thoughts&quot;&gt;Thoughts&lt;/h2&gt;&lt;h3 id=&quot;making-sprints-human-friendly&quot;&gt;Making sprints human-friendly&lt;/h3&gt;&lt;p&gt;I tried out a few ideas, which I hope made the sprints just that little bit more human-friendly.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Used large Post-It easel pads to write out commonly-used commands at the terminal.&lt;/li&gt;
+&lt;li&gt;Displayed claimed seating arrangements at the morning, and more importantly, get to know every sprinter's name.&lt;/li&gt;
+&lt;li&gt;Announcing every PR to the group that was merged and what the content was, followed by a round of applause.&lt;/li&gt;
+&lt;li&gt;Setting a timer for 5 minutes before lunch so that they could all get ahead in the line.&lt;/li&gt;
+&lt;li&gt;I used staff privileges to move the box of leftover bananas into our sprint room. :)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I think the applause is the most encouraging part of the process. Having struggled through a PR, however big or small, and having group recognition for that effort, is super encouraging, especially for first-time contributors. I think we need to encourage this more at sprints.&lt;/p&gt;
+&lt;h3 id=&quot;relinquishing-control&quot;&gt;Relinquishing control&lt;/h3&gt;&lt;p&gt;The only things about the pyjanitor project that I'm unwilling to give up on are: good documentation of what a function does, that a function should do one thing well, and that it be method-chainable. Everything else, including functionality, is an open discussion that we can have!&lt;/p&gt;
+&lt;p&gt;One PR I particularly enjoyed was that from Lucas, who PR'd in a logo for the project on the docs page. He had the idea to take the hacky broomstick I drew on the big sticky note (as a makeshift logo), redraw it as a vector graphic in Inkscape, and PR it in as the (current) official logo on the docs.&lt;/p&gt;
+&lt;p&gt;More broadly, I deferred to the sprinters' opinions on docs, because I recognized that I'd have old eyes on the docs, and wouldn't be able to easily identify places where the docs could be written more clearly. Eventually, a small, self-organizing squad of 3-5 sprinters ended up becoming the unofficial docs squad, rearranging the structure of the docs, building automation around it, and better organizing and summarizing the information on the docs.&lt;/p&gt;
+&lt;p&gt;In more than a few places, if there were a well-justified choice for the API (which really meant naming the functions and keyword arguments), I'd be more than happy to see the PR happen. Even if it is evolved away later, the present codebase and PRs that led to it provided the substrate for better evolution of the API!&lt;/p&gt;
+&lt;h3 id=&quot;a-new-microsoft&quot;&gt;A new Microsoft&lt;/h3&gt;&lt;p&gt;This year, I switched from Travis CI to Azure Pipelines. In particular, I was attracted to the ability to build on all three major operating systems, Windows, macOS, and Linux, on the free tier.&lt;/p&gt;
+&lt;p&gt;Microsoft had a booth at PyCon, in which Steve Dowell led an initiative to get us set up with Azure-related tools. Indeed, as a major sponsor of the conference, this was one of the best swag given to us. Super practical, relationship- and goodwill-building. Definitely not lesser than the Adafruit lunchboxes with electronics as swag!&lt;/p&gt;
+&lt;h3 id=&quot;hiccups&quot;&gt;Hiccups&lt;/h3&gt;&lt;p&gt;Naturally, not everything was smooth sailing throughout. I did find myself a tad expressing myself in an irate fashion at times with the amount of context switching that I was doing, especially switching between talking to different sprinters one after another. (I am very used to long stretches hacking on one problem.) One thing future sprinters could help with, which I will document, is to give me enough ramp-up context around their problem, so that I can quickly pinpoint what other information I might need.&lt;/p&gt;
+&lt;p&gt;The other not-so-smooth-sailing thing was finding out that Azure sometimes did not catch errors in a script block! My unproven hypothesis at this point is that if I have four commands executed in a script block, and if any of the first three fail but the last one passes, the entire script block will behave as if it passes. This probably stems from the build system looking at only the last exit code to determine exit status. Eventually, after splitting each check into individual steps, linting and testing errors started getting caught automatically! (Automating this is much preferred to me running the &lt;code&gt;black&lt;/code&gt; code formatter in my head.)&lt;/p&gt;
+&lt;p&gt;Though the above issue is fixed, I think I am still having issues getting &lt;code&gt;pycodestyle&lt;/code&gt; and &lt;code&gt;black&lt;/code&gt; to work on the Windows builds. Definitely looking forward to hearing from Azure devs what could be done here!&lt;/p&gt;
+&lt;h2 id=&quot;suggestions&quot;&gt;Suggestions&lt;/h2&gt;&lt;p&gt;I'm sure there's ways I could have made the sprint a bit better.  I'd love to hear them if there's something I've missed! Please feel free to comment below.&lt;/p&gt;
+&lt;h2 id=&quot;sprinter-acknowledgement&quot;&gt;Sprinter Acknowledgement&lt;/h2&gt;&lt;p&gt;I would like to thank all the sprinters who joined in this sprint. Their GitHub handles are below:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;@HectorM14 (who was remote!)&lt;/li&gt;
+&lt;li&gt;@jekwatt&lt;/li&gt;
+&lt;li&gt;@kurtispinkney&lt;/li&gt;
+&lt;li&gt;@lphk92&lt;/li&gt;
+&lt;li&gt;@jonnybazookatone&lt;/li&gt;
+&lt;li&gt;@SorenFrohlich&lt;/li&gt;
+&lt;li&gt;@dave-frazzetto&lt;/li&gt;
+&lt;li&gt;@dsouzadaniel&lt;/li&gt;
+&lt;li&gt;@Eidhagen&lt;/li&gt;
+&lt;li&gt;@mdini&lt;/li&gt;
+&lt;li&gt;@kimt33&lt;/li&gt;
+&lt;li&gt;@jack-kessler-88&lt;/li&gt;
+&lt;li&gt;@NapsterInBlue&lt;/li&gt;
+&lt;li&gt;@jk3587&lt;/li&gt;
+&lt;li&gt;@ricky-lim&lt;/li&gt;
+&lt;li&gt;@catherinedevlin&lt;/li&gt;
+&lt;li&gt;@StephenSchroed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And as always, big thanks to my collaborators on the repository:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;@zbarry&lt;/li&gt;
+&lt;li&gt;@szuckerman&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/4/29/pycon-2019-pre-journey/">
     <title type="text">PyCon 2019 Pre-Journey</title>
     <id>urn:uuid:ccbe0426-b1a5-3655-ab5f-4005fb02089d</id>
@@ -1763,97 +1865,6 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
 
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;{} seconds&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/10/10/recursive-programming-and-dags/">
-    <title type="text">Recursive Programming and DAGs</title>
-    <id>urn:uuid:5b939f02-8808-3e54-938f-21843ac5e60b</id>
-    <updated>2017-10-10T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/10/10/recursive-programming-and-dags/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Over the past few days, I've found myself using recursive programming to implement a &quot;model specification&quot; system with inheritance for deep learning. The goal here is to enable reproducible computational experiments for particular deep learning hyperparameter sets. Reproducibility is something I learned from the Software/Data Carpentry initiative, thus I wanted to ensure that my own work was reproducible, even if it's not (because of corporate reasons) open-able, because it's the right thing to do.&lt;/p&gt;
-&lt;p&gt;So, how do these &quot;model spec&quot; files work? I call them &quot;experiment profiles&quot;, and they specify a bunch of things: &lt;strong&gt;model architecture&lt;/strong&gt;, &lt;strong&gt;training parameters&lt;/strong&gt;, and &lt;strong&gt;data tasks&lt;/strong&gt;. These experiment profiles are stored in YAML files on disk. A profile essentially looks like the following (dummy examples provided, naturally):&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Name: default.yaml&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;null&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;data_tasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;tasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p p-Indicator&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;task1&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;task2&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;task3&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;model_architecture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;hidden_layers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p p-Indicator&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;hidden_dropouts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p p-Indicator&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;training_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;sgd&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;optimizer_options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;n_epochs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;20&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;In this YAML file, the key-value pairs essentially match the API of the tooling I've built on top of Keras' API to make myself more productive. (From the example, it should be clear that we're dealing with only feed-forward neural networks and nothing else more complicated.) The key here (pun unintended) is that I have a &lt;code&gt;parent&lt;/code&gt; key-value pair that specifies another experiment profile that I can inherit from.&lt;/p&gt;
-&lt;p&gt;Let's call the above example &lt;code&gt;default.yaml&lt;/code&gt;. Let's say I want to run another computational experiment that uses the &lt;code&gt;adam&lt;/code&gt; optimizer instead of plain vanilla &lt;code&gt;sgd&lt;/code&gt;. Instead of re-specifying the entire YAML file, by implementing an inheritance scheme, I can re-specify only the optimizer and optimizer_options.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Name: adam.yaml&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;default.yaml&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;training_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;adam&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Finally, let's say I find out that 20 epochs (inherited from &lt;code&gt;default.yaml&lt;/code&gt;) is too much for Adam - after all, Adam is one of the most efficient gradient descent algorithms out there - and I want to change it to 3 epochs instead. I can do the following:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Name: adam-3.yaml&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;adam.yaml&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;training_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;optimizer_options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;n_epochs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;3&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Okay, so specifying YAML files with inheritance is all good, but how do I ensure that I get the entire parameter set out correctly, without writing verbose code? This is where the power of recursive programming comes in. Using recursion, I can solve this problem with &lt;strong&gt;a single function that calls itself on one condition, and returns a result on another condition&lt;/strong&gt;. That's a recursive function in its essence.&lt;/p&gt;
-&lt;p&gt;The core of this problem is traversing the inheritance path, from &lt;code&gt;adam-3.yaml&lt;/code&gt; to &lt;code&gt;adam.yaml&lt;/code&gt; to &lt;code&gt;default.yaml&lt;/code&gt;. Once I have the inheritance path specified, loading the YAML files as a dictionary becomes the easy part.&lt;/p&gt;
-&lt;p&gt;How would this look like in code? Let's take a look at an implementation.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;yaml&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;inheritance_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;yaml_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;    :param str yaml_file: The path to the yaml file of interest.&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;    :param list path: A list specifying the existing inheritance path. First&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;        entry is the file of interest, and parents are recursively appended to&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;        the end of the list.&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;yaml_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;r+&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yaml&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;parent&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;parent&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inheritance_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;parent&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The most important part of the function is in the &lt;code&gt;if&lt;/code&gt;/&lt;code&gt;else&lt;/code&gt; block. If I have reached the &quot;root&quot; of the inheritance path, (that is, I have hit &lt;code&gt;default.yaml&lt;/code&gt; which has no parent), then I return the &lt;code&gt;path&lt;/code&gt; traversed. Otherwise, I return into the &lt;code&gt;inheritance_path&lt;/code&gt; function call again, but with an updated &lt;code&gt;path&lt;/code&gt; list, and a different &lt;code&gt;yaml_file&lt;/code&gt; to read. It's a bit like doing a &lt;code&gt;while&lt;/code&gt; loop, but in my opinion, a bit more elegant aesthetically.&lt;/p&gt;
-&lt;p&gt;Once I've gotten the path list, I can finally load the parameters using a single function that calls on &lt;code&gt;inheritance_path&lt;/code&gt;.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;load_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;yaml_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inheritance_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;yaml_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;yaml_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_tasks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
-             &lt;span class=&quot;n&quot;&gt;model_architecture&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
-             &lt;span class=&quot;n&quot;&gt;training_parameters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# go in reverse!&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;r+&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yaml&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This is the equivalent of traversing a Directed Acyclic Graph (DAG), or in some special cases, a tree data structure, but in a way where we don't have to know the entire tree structure ahead of time. The goal is to reach the root from any node:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;root
-    |- A
-        |- B
-        |- C
-            |- D
-            |- E
-    |- F
-        |- G
-        |- H
-        |- I
-            |- J
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Also, because we only have one pointer in each YAML file to its parent, we have effectively created a &quot;Linked List&quot; that we can use to trace a path back to the &quot;root&quot; node, along the way collecting the information that we need together. By using this method of traversal, we only need to know the neighbors, and at some point (however long it takes), we will reach the root.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;D -&amp;gt; C -&amp;gt; A -&amp;gt; root
-E -&amp;gt; C -&amp;gt; A -&amp;gt; root
-J -&amp;gt; I -&amp;gt; F -&amp;gt; root
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If you were wondering why linked lists, trees and other data structures might be useful as a data scientist, I hope this illustrates on productive example!&lt;/p&gt;
 </content>
   </entry>
 </feed>
