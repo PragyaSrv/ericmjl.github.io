@@ -157,6 +157,56 @@
 
   <!-- Set title style -->
   
+    <h1><a href="../blog/2019/5/10/pycon-2019-tutorial-and-conference-days/">PyCon 2019 Tutorial and Conference Days</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-05-10
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/pycon 2019/">
+          pycon 2019
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/conferences/">
+          conferences
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/data science/">
+          data science
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>It's just been days since I got back from PyCon, and I'm already looking forward to 2020! But I thought it'd be nice to continue the recap.</p>
+<p>This year at PyCon, I co-led two tutorials, one with Hugo Bowne-Anderson on <a href="https://us.pycon.org/2019/schedule/presentation/77/">Bayesian Data Science by Simulation</a>, and the other with Mridul Seth on <a href="https://us.pycon.org/2019/schedule/presentation/70/">Network Analysis Made Simple</a>.</p>
+<p>I always enjoy teaching with <a href="../blog/2019/5/10/pycon-2019-tutorial-and-conference-days/#">Hugo</a>. He brought his giant sense of humour, both figuratively and literally, to this tutorial, and melded it with his deep grasp of the math behind Bayesian statistics, delivering a workshop that, by many points of feedback, is excellent. Having reviewed the tutorial feedback, we've got many ideas for our showcase of Part II at SciPy 2019!</p>
+<p>This year was the first year that Mridul and I swapped roles. In previous years, he was my TA, helping tutorial participants while I did the main lecturing. This year, the apprentice became the master, and a really good one indeed! Looking forward to seeing him shine more in subsequent tutorial iterations.</p>
+<p>During the conference days, I spent most of my time either helping out with Financial Aid, or at the Microsoft booth. As I have alluded to in multiple tweets, Microsoft's swag this year was the best of them all. Microelectronics kits in a blue lunch box from Adafruit, and getting set up with <a href="https://azure.microsoft.com/en-us/">Azure</a>. In fact, this website is now re-built with each push on Azure pipelines! Indeed, <a href="https://twitter.com/zooba">Steve Dowell</a> from Microsoft told me that this year's best swag was probably getting setup with Azure, and I'm 100% onboard with that!</p>
+<p>I also delivered a talk this year, which essentially amounted to a <a href="https://us.pycon.org/2019/schedule/presentation/174/">formal rant against canned statistical procedures</a>. I had a ton of fun delivering this talk. The usual nerves still get to me, and I had to do a lot of talking-to-myself-style rehearsals to work off those nerves. For the first time, I also did office hours post-talk at an Open Space, where for one hour, we talked about all things Bayes. Happy to have met everybody who came by; I genuinely enjoyed the chat!</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../blog/2019/5/10/pycon-2019-tutorial-and-conference-days/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../blog/2019/5/8/pycon-2019-sprints/">PyCon 2019 Sprints</a></h1>
   
 
@@ -405,111 +455,6 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../blog/2019/3/24/variance-explained/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2019/3/22/functools-partial/">Functools Partial</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-03-22
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/python/">
-          python
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/hacks/">
-          hacks
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/tips and tricks/">
-          tips and tricks
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/productivity/">
-          productivity
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/coding/">
-          coding
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>If you’ve done Python programming for a while, I think it pays off to know some little tricks that can improve the readability of your code and decrease the amount of repetition that goes on.</p>
-<p>One such tool is <code>functools.partial</code>. It took me a few years after my first introduction to <code>partial</code> before I finally understood why it was such a powerful tool.</p>
-<p>Essentially, what <code>partial</code> does is it wraps a function and sets a keyword argument to a constant. That’s it. What do we mean?</p>
-<p>Here’s a minimal example. Let’s say we have a function <code>f</code>, not written by me, but provided by someone else.</p>
-<div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="c1"># do something with a and b.</span>
-    <span class="k">return</span> <span class="n">result</span>
-</pre></div>
-<p>In my code, let’s say that I know that the value that <code>b</code> takes on in my app is always the tuple <code>(1, 'A')</code>. I now have a few options. The most obvious is assign the tuple <code>(1, 'A')</code> to a variable, and pass that in on every function call:</p>
-<div class="hll"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">)</span>
-<span class="n">result1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
-<span class="c1"># do some stuff.</span>
-<span class="n">result2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
-<span class="c1"># do more stuff.</span>
-<span class="c1"># ad nauseum</span>
-<span class="n">N</span> <span class="o">=</span> <span class="c1"># set value of N</span>
-<span class="n">resultN</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-<p>The other way I could do it is use <code>functools.partial</code> and just set the keyword argument <code>b</code> to equal to the tuple directly.</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
-<span class="n">f_</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">))</span>
-</pre></div>
-<p>Now, I can repeat the code above, but now only worrying about the keyword argument <code>a</code>:</p>
-<div class="hll"><pre><span></span><span class="n">result1</span> <span class="o">=</span> <span class="n">f_</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1"># do some stuff.</span>
-<span class="n">result2</span> <span class="o">=</span> <span class="n">f_</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="c1"># do more stuff.</span>
-<span class="c1"># ad nauseum</span>
-<span class="n">N</span> <span class="o">=</span> <span class="c1"># set value of N</span>
-<span class="n">resultN</span> <span class="o">=</span> <span class="n">f_</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
-</pre></div>
-<p>And there you go, that’s basically how <code>functools.partial</code> works in a nutshell.</p>
-<p>Now, where have I used this in real life?</p>
-<p>The most common place I have used it is in Flask. I have built Flask apps where I need to dynamically keep my Bokeh version synced up between the Python and JS libraries that get called. To ensure that my HTML templates have a consistent Bokeh version, I use the following pattern:</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh</span> <span class="kn">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">bkversion</span>
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">Flask</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span> 
-
-<span class="n">render_template</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">render_template</span><span class="p">,</span> <span class="n">bkversion</span><span class="o">=</span><span class="n">bkversion</span><span class="p">)</span>
-
-<span class="c1"># Flask app boilerplate</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-
-
-<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">home</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html.j2&#39;</span><span class="p">)</span>
-</pre></div>
-<p>Now, because I always have <code>bkversion</code> pre-specified in <code>render_template</code>, I never have to repeat it over every <code>render_template</code> function call.</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/3/22/functools-partial/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 
