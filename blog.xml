@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
-  <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
+  <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
   <updated>2019-05-10T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
@@ -11,7 +11,7 @@
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
   <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/context-switching/">
     <title type="text">Context Switching</title>
-    <id>urn:uuid:b323afb0-df8c-3aa2-afe8-379eff18252f</id>
+    <id>urn:uuid:138c066f-4d92-30c1-9ce1-fcb960d09b9f</id>
     <updated>2019-05-10T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/5/10/context-switching/" />
     <author>
@@ -25,7 +25,7 @@
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/5/8/pycon-2019-sprints/">
     <title type="text">PyCon 2019 Sprints</title>
-    <id>urn:uuid:a42b3f69-a28c-3ea5-945b-64486982c78e</id>
+    <id>urn:uuid:d8d5337d-96e9-3b0d-9230-36f97c2bdfb4</id>
     <updated>2019-05-08T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/5/8/pycon-2019-sprints/" />
     <author>
@@ -127,7 +127,7 @@
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/4/29/pycon-2019-pre-journey/">
     <title type="text">PyCon 2019 Pre-Journey</title>
-    <id>urn:uuid:ccbe0426-b1a5-3655-ab5f-4005fb02089d</id>
+    <id>urn:uuid:ea18dc8e-651f-31d1-99c8-7ccf0d8665f9</id>
     <updated>2019-04-29T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/4/29/pycon-2019-pre-journey/" />
     <author>
@@ -143,7 +143,7 @@
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/3/24/variance-explained/">
     <title type="text">Variance Explained</title>
-    <id>urn:uuid:0732917e-8efd-3932-8fad-e75d4d69dd52</id>
+    <id>urn:uuid:a80dbc96-c035-3453-83a6-9467547d3ba2</id>
     <updated>2019-03-24T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/3/24/variance-explained/" />
     <author>
@@ -176,7 +176,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/3/22/functools-partial/">
     <title type="text">Functools Partial</title>
-    <id>urn:uuid:7059f3fb-181e-305d-840a-bf1c34b42e8b</id>
+    <id>urn:uuid:f23551e3-45c9-34f6-8f68-e3ab84b18146</id>
     <updated>2019-03-22T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/3/22/functools-partial/" />
     <author>
@@ -235,7 +235,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/3/20/how-i-work/">
     <title type="text">How I Work</title>
-    <id>urn:uuid:ecb1119f-e770-31bd-bddd-4da7130485e2</id>
+    <id>urn:uuid:5a6a9ae4-43d0-34b2-81b3-823142b1a655</id>
     <updated>2019-03-20T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/3/20/how-i-work/" />
     <author>
@@ -266,7 +266,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/3/1/pair-coding-why-and-how-for-data-scientists/">
     <title type="text">Pair Coding: Why and How for Data Scientists</title>
-    <id>urn:uuid:639416f0-072e-3e1a-bb09-6bbec1ce20e0</id>
+    <id>urn:uuid:d8db3420-e4e8-3ed2-b9b3-4a6f1eda345b</id>
     <updated>2019-03-01T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/3/1/pair-coding-why-and-how-for-data-scientists/" />
     <author>
@@ -308,7 +308,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/1/28/minimum-viable-products-matter/">
     <title type="text">Minimum Viable Products (MVPs) Matter</title>
-    <id>urn:uuid:e7106802-1560-3f7e-a492-9b3e5bd3d957</id>
+    <id>urn:uuid:5fdb7330-1a76-37a5-87fe-c82c85c29697</id>
     <updated>2019-01-28T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/1/28/minimum-viable-products-matter/" />
     <author>
@@ -326,7 +326,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/1/21/advi-scalable-bayesian-inference/">
     <title type="text">ADVI: Scalable Bayesian Inference</title>
-    <id>urn:uuid:c601f17e-84cb-3984-8342-27dd19372045</id>
+    <id>urn:uuid:bed05db0-b72f-3072-854d-cc9297778052</id>
     <updated>2019-01-21T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/1/21/advi-scalable-bayesian-inference/" />
     <author>
@@ -344,7 +344,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/12/25/conda-hacks-for-data-science-efficiency/">
     <title type="text">Conda hacks for data science efficiency</title>
-    <id>urn:uuid:251beb77-b7ce-3834-b046-ca9701afdffb</id>
+    <id>urn:uuid:1b57f1c7-98dc-3319-9b34-bb0c73c376dc</id>
     <updated>2018-12-25T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/12/25/conda-hacks-for-data-science-efficiency/" />
     <author>
@@ -446,7 +446,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/12/16/gaussian-process-notes/">
     <title type="text">Gaussian Process Notes</title>
-    <id>urn:uuid:66321576-e328-3d24-b3a2-c90b3fa831fe</id>
+    <id>urn:uuid:eaf5c4d1-f8ac-3221-a93e-3e7dd93d62e2</id>
     <updated>2018-12-16T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/12/16/gaussian-process-notes/" />
     <author>
@@ -466,7 +466,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/12/9/mathematical-intuition/">
     <title type="text">Mathematical Intuition</title>
-    <id>urn:uuid:4ae0c241-c33a-3013-8d4c-baf759793236</id>
+    <id>urn:uuid:e46888b1-cac1-3708-b867-11715f8925af</id>
     <updated>2018-12-09T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/12/9/mathematical-intuition/" />
     <author>
@@ -487,7 +487,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/11/13/solving-problems-actionably/">
     <title type="text">Solving Problems Actionably</title>
-    <id>urn:uuid:47287890-e99d-3c82-b19f-7d2ddd0735ac</id>
+    <id>urn:uuid:d9ae291d-9091-317e-87a0-05c4610fbbaa</id>
     <updated>2018-11-13T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/11/13/solving-problems-actionably/" />
     <author>
@@ -510,7 +510,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/11/12/thoughts-on-black/">
     <title type="text">Thoughts on Black</title>
-    <id>urn:uuid:08f2ca8d-df54-3740-8d8b-b93a5bd7e728</id>
+    <id>urn:uuid:39a47edb-b6d0-3295-a3e6-f031d153d4e6</id>
     <updated>2018-11-12T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/11/12/thoughts-on-black/" />
     <author>
@@ -529,7 +529,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/11/7/bayesian-modelling-is-hard-work/">
     <title type="text">Bayesian Modelling is Hard Work!</title>
-    <id>urn:uuid:b544d44a-b92e-3f93-80b0-83a5f38ea17b</id>
+    <id>urn:uuid:0fea828d-ead7-3d05-b557-860da82b274b</id>
     <updated>2018-11-07T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/11/7/bayesian-modelling-is-hard-work/" />
     <author>
@@ -616,7 +616,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/10/26/more-dask-pre-scattering-data/">
     <title type="text">More Dask: Pre-Scattering Data</title>
-    <id>urn:uuid:8b67f328-eb2a-3367-a47c-537108e7c883</id>
+    <id>urn:uuid:89313dc4-3635-36b7-a940-ee0bf62f3118</id>
     <updated>2018-10-26T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/10/26/more-dask-pre-scattering-data/" />
     <author>
@@ -656,7 +656,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/">
     <title type="text">Parallel Processing with Dask on GridEngine Clusters</title>
-    <id>urn:uuid:18e951d8-6df5-3751-bf52-1bb750d90d1a</id>
+    <id>urn:uuid:51ee1e9d-0539-3d2b-aa12-a5b6029cfc76</id>
     <updated>2018-10-11T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/" />
     <author>
@@ -760,7 +760,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/">
     <title type="text">Optimizing Block Sparse Matrix Creation with Python</title>
-    <id>urn:uuid:77088e4f-4e42-31ba-8d87-ad8dca59c91a</id>
+    <id>urn:uuid:ceebc93b-02a9-33fc-896e-fc3c6fa188cd</id>
     <updated>2018-09-04T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/" />
     <author>
@@ -925,7 +925,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/">
     <title type="text">Joint, conditional, and marginal probability distributions</title>
-    <id>urn:uuid:cf34ea6b-fc4e-3a7f-aa18-5b12a4d0b0d9</id>
+    <id>urn:uuid:1d4f0347-83d3-3612-aa52-78facad43d8a</id>
     <updated>2018-08-07T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/" />
     <author>
@@ -938,7 +938,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/8/6/d-separation-in-causal-inference/">
     <title type="text">d-separation in causal inference</title>
-    <id>urn:uuid:2f272b7e-2bfd-3f09-9d5d-2b782ce072bb</id>
+    <id>urn:uuid:d8b72cb8-2e3e-388c-b0e8-ea1481189cb7</id>
     <updated>2018-08-06T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/8/6/d-separation-in-causal-inference/" />
     <author>
@@ -950,7 +950,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/8/1/nxviz-05-released/">
     <title type="text">nxviz 0.5 released!</title>
-    <id>urn:uuid:04350bd2-49a7-32f6-b61c-ccc1c573974c</id>
+    <id>urn:uuid:980311e7-3b87-39d1-91c6-d25ecc43e22c</id>
     <updated>2018-08-01T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/8/1/nxviz-05-released/" />
     <author>
@@ -967,7 +967,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/7/27/pyjanitor-0-3-released/">
     <title type="text">pyjanitor 0.3 released!</title>
-    <id>urn:uuid:ca97ad1f-1402-3a65-a15b-1653138a01d4</id>
+    <id>urn:uuid:7b76f896-3f53-3cbd-b657-89ab432b1d4b</id>
     <updated>2018-07-27T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/7/27/pyjanitor-0-3-released/" />
     <author>
@@ -992,7 +992,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/7/26/scipy-2018/">
     <title type="text">SciPy 2018</title>
-    <id>urn:uuid:d1504284-578a-32b3-b988-3bac646e8b8e</id>
+    <id>urn:uuid:30862a8d-2a3c-36a4-833b-d25c2888c4fd</id>
     <updated>2018-07-26T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/7/26/scipy-2018/" />
     <author>
@@ -1012,7 +1012,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/7/16/bayesian-estimation-group-comparison-and-workflow/">
     <title type="text">Bayesian Estimation, Group Comparison, and Workflow</title>
-    <id>urn:uuid:58217c0b-67d0-3380-92be-00cbcab54a50</id>
+    <id>urn:uuid:4c1b9be5-3f2a-3ee6-b7bb-c7d06227a6fc</id>
     <updated>2018-07-16T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/7/16/bayesian-estimation-group-comparison-and-workflow/" />
     <author>
@@ -1035,7 +1035,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/7/14/ecdfs/">
     <title type="text">ECDFs</title>
-    <id>urn:uuid:dcedf06f-59ec-360f-9711-7e4db71e3ef1</id>
+    <id>urn:uuid:dbc98517-ed4a-3a54-b9dc-49b8b9c4cf54</id>
     <updated>2018-07-14T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/7/14/ecdfs/" />
     <author>
@@ -1092,7 +1092,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/6/17/git-tip-apply-a-patch/">
     <title type="text">Git Tip: Apply a Patch</title>
-    <id>urn:uuid:91a163e7-561a-3b01-937e-dd71a96974c3</id>
+    <id>urn:uuid:537a773c-af06-3120-a855-0eb7840fcd8d</id>
     <updated>2018-06-17T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/6/17/git-tip-apply-a-patch/" />
     <author>
@@ -1196,7 +1196,7 @@ $ git apply /tmp/patch.txt
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/6/5/my-latent-dissatisfaction-with-modern-ml/">
     <title type="text">My Latent Dissatisfaction with Modern ML</title>
-    <id>urn:uuid:2e5732c7-78fb-320e-a57e-6d2164ced345</id>
+    <id>urn:uuid:5f977883-8cbc-3e16-93a5-5cbf9d30b805</id>
     <updated>2018-06-05T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/6/5/my-latent-dissatisfaction-with-modern-ml/" />
     <author>
@@ -1223,7 +1223,7 @@ $ git apply /tmp/patch.txt
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/5/26/causal-modelling/">
     <title type="text">Causal Modelling</title>
-    <id>urn:uuid:0d2239fc-b359-3a37-abfa-d50e0d2a6f01</id>
+    <id>urn:uuid:5b2d4b06-4eaf-3618-a93e-b39d261875af</id>
     <updated>2018-05-26T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/5/26/causal-modelling/" />
     <author>
@@ -1236,7 +1236,7 @@ $ git apply /tmp/patch.txt
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/5/6/model-baselines-are-important/">
     <title type="text">Model Baselines Are Important</title>
-    <id>urn:uuid:f3d55548-fb27-39e0-bc0d-86413913fe59</id>
+    <id>urn:uuid:7d559809-3f5b-354d-9927-4be51ce084a8</id>
     <updated>2018-05-06T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/5/6/model-baselines-are-important/" />
     <author>
@@ -1251,7 +1251,7 @@ $ git apply /tmp/patch.txt
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/3/30/consolidate-your-scripts-using-click/">
     <title type="text">Consolidate your scripts using click</title>
-    <id>urn:uuid:beec04f1-f5b9-3932-9d12-92337ec70fbb</id>
+    <id>urn:uuid:3709bff4-3396-359f-b0f9-b86c59444500</id>
     <updated>2018-03-30T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/3/30/consolidate-your-scripts-using-click/" />
     <author>
@@ -1317,7 +1317,7 @@ script &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; was run!
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/28/lessons-learned-and-reinforced-from-writing-my-own-deep-learning-package/">
     <title type="text">Lessons learned and reinforced from writing my own deep learning package</title>
-    <id>urn:uuid:390270b7-9d7b-306c-9ead-2617aac7af0a</id>
+    <id>urn:uuid:760b906d-01bd-3e59-88d8-fb39f32c77d8</id>
     <updated>2018-02-28T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/28/lessons-learned-and-reinforced-from-writing-my-own-deep-learning-package/" />
     <author>
@@ -1337,7 +1337,7 @@ script &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; was run!
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/26/joy-from-teaching/">
     <title type="text">Joy from teaching</title>
-    <id>urn:uuid:5c9209f0-4531-3b75-b34a-ceb067bc526c</id>
+    <id>urn:uuid:8e9f2b85-e060-3a15-a8d0-65906edf39c4</id>
     <updated>2018-02-26T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/26/joy-from-teaching/" />
     <author>
@@ -1351,7 +1351,7 @@ script &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; was run!
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/25/annotating-code-tests-and-selectively-running-tests/">
     <title type="text">Annotating code tests and selectively running tests</title>
-    <id>urn:uuid:58ec5548-622e-3171-a4e9-74776a93d076</id>
+    <id>urn:uuid:31420a5c-b9a1-3778-871c-db88e16330ba</id>
     <updated>2018-02-25T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/25/annotating-code-tests-and-selectively-running-tests/" />
     <author>
@@ -1379,7 +1379,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/21/nxviz-first-pr-merged/">
     <title type="text">nxviz first PR merged!</title>
-    <id>urn:uuid:12691a84-54fb-355f-a79b-2f656232a743</id>
+    <id>urn:uuid:bc5445d4-0683-31df-be66-ecb19a0540f1</id>
     <updated>2018-02-21T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/21/nxviz-first-pr-merged/" />
     <author>
@@ -1392,7 +1392,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/20/deep-learning-and-the-importance-of-a-good-teacher/">
     <title type="text">Deep Learning and the Importance of a Good Teacher</title>
-    <id>urn:uuid:06ad28dc-a618-3792-a8d5-1cc5645cb01b</id>
+    <id>urn:uuid:0c34c3b9-95bf-3e91-8344-09517b1e6c73</id>
     <updated>2018-02-20T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/20/deep-learning-and-the-importance-of-a-good-teacher/" />
     <author>
@@ -1406,7 +1406,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/13/data-scientists-need-to-write-good-apis/">
     <title type="text">Data scientists need to write good APIs</title>
-    <id>urn:uuid:53402dcb-b8ee-3f08-923d-b30a8e94a285</id>
+    <id>urn:uuid:73162366-224d-37e0-9ef3-39f6a2e55568</id>
     <updated>2018-02-13T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/13/data-scientists-need-to-write-good-apis/" />
     <author>
@@ -1419,7 +1419,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/7/bayesian-inference-and-testing-sets/">
     <title type="text">Bayesian Inference &amp; Testing Sets</title>
-    <id>urn:uuid:ef48ae04-9b7a-3b04-a221-bf4e0f46d296</id>
+    <id>urn:uuid:96f3537d-0053-326d-979a-ac549fbb7e90</id>
     <updated>2018-02-07T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/7/bayesian-inference-and-testing-sets/" />
     <author>
@@ -1436,7 +1436,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/2/6/pycon-program-committee-review/">
     <title type="text">PyCon Program Committee Review</title>
-    <id>urn:uuid:017a77c3-861d-34cd-82ec-12512e56f66f</id>
+    <id>urn:uuid:4f8d4d53-e130-376a-b0e2-b3db9d2eed1c</id>
     <updated>2018-02-06T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/2/6/pycon-program-committee-review/" />
     <author>
@@ -1489,7 +1489,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/1/29/refactor-notebook-code/">
     <title type="text">Refactor Notebook Code</title>
-    <id>urn:uuid:d502b49d-f207-3319-a533-01b3b17c9330</id>
+    <id>urn:uuid:8309b6fc-fd3e-3e0c-ab26-17d52d4afeff</id>
     <updated>2018-01-29T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/1/29/refactor-notebook-code/" />
     <author>
@@ -1503,7 +1503,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/1/18/pymc3-docs-weibull-patches-merged/">
     <title type="text">PyMC3 docs + Weibull patches merged!</title>
-    <id>urn:uuid:337ce668-8116-366a-b9dc-903308b761a6</id>
+    <id>urn:uuid:f22f0c10-918f-38ac-8c36-1b1c1e8ee749</id>
     <updated>2018-01-18T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/1/18/pymc3-docs-weibull-patches-merged/" />
     <author>
@@ -1521,7 +1521,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/1/10/offline-time/">
     <title type="text">Offline Time</title>
-    <id>urn:uuid:9c643c98-4cfc-3fe2-ac9a-d2ee9f8ad34f</id>
+    <id>urn:uuid:29863cc5-a7ec-3337-8c79-fcc65a0995ef</id>
     <updated>2018-01-10T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/1/10/offline-time/" />
     <author>
@@ -1534,7 +1534,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/1/8/bayesian-uncertainty-a-more-nuanced-view/">
     <title type="text">Bayesian Uncertainty: A More Nuanced View</title>
-    <id>urn:uuid:c8e9b5e3-9f3c-38d6-9605-cd46842f22ae</id>
+    <id>urn:uuid:5871bf8e-fbdf-35a3-a420-8267cb1128f3</id>
     <updated>2018-01-08T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/1/8/bayesian-uncertainty-a-more-nuanced-view/" />
     <author>
@@ -1546,7 +1546,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/12/13/visual-studio-code-a-new-microsoft/">
     <title type="text">Visual Studio Code: A New Microsoft?</title>
-    <id>urn:uuid:06b625f2-4e15-3653-91b0-2f759200dd68</id>
+    <id>urn:uuid:e1fe6dc2-4043-3260-a1bf-98e1bcd1fd76</id>
     <updated>2017-12-13T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/12/13/visual-studio-code-a-new-microsoft/" />
     <author>
@@ -1566,7 +1566,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/11/30/pydata-nyc-2017-recap/">
     <title type="text">PyData NYC 2017 Recap</title>
-    <id>urn:uuid:69d8bdba-18aa-34f8-961d-a08fcc38cc72</id>
+    <id>urn:uuid:ed3de73d-9ec0-384b-9132-9028852e81ac</id>
     <updated>2017-11-30T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/11/30/pydata-nyc-2017-recap/" />
     <author>
@@ -1606,7 +1606,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/11/16/bayesian-learning-and-overfitting/">
     <title type="text">Bayesian Learning and Overfitting</title>
-    <id>urn:uuid:8ac4ab4c-3233-3ebe-8191-80fadf3a82c5</id>
+    <id>urn:uuid:7af0a513-acb5-378e-bb47-4dd2a2f56dad</id>
     <updated>2017-11-16T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/11/16/bayesian-learning-and-overfitting/" />
     <author>
@@ -1628,7 +1628,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/11/14/the-value-of-thinking-simply/">
     <title type="text">The Value of Thinking Simply</title>
-    <id>urn:uuid:fd45d251-9956-3192-839f-cf23a0455b66</id>
+    <id>urn:uuid:6e2ed2bc-8784-3b10-8090-d356b1544593</id>
     <updated>2017-11-14T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/11/14/the-value-of-thinking-simply/" />
     <author>
@@ -1653,7 +1653,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/11/3/boston-bayesians-talk-an-attempt-at-demystifying-bayesian-deep-learning/">
     <title type="text">Boston Bayesians Talk: An Attempt at Demystifying Bayesian Deep Learning</title>
-    <id>urn:uuid:16575827-ed23-3dba-8acf-172b01b148f7</id>
+    <id>urn:uuid:66573597-ad1f-3ccf-a1d9-6f9f398f07a6</id>
     <updated>2017-11-03T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/11/3/boston-bayesians-talk-an-attempt-at-demystifying-bayesian-deep-learning/" />
     <author>
@@ -1670,7 +1670,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/10/31/always-check-your-data/">
     <title type="text">Always Check Your Data</title>
-    <id>urn:uuid:5aa6b7fd-5346-3f68-a35b-83bb0dc0b0b6</id>
+    <id>urn:uuid:a47c69fb-367a-38a7-a370-3e8aef7973c3</id>
     <updated>2017-10-31T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/10/31/always-check-your-data/" />
     <author>
@@ -1684,7 +1684,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/10/27/random-forests-a-good-default-model/">
     <title type="text">Random Forests: A Good Default Model?</title>
-    <id>urn:uuid:2570438e-960b-3197-8bf0-6a690f53f864</id>
+    <id>urn:uuid:20e6aa3e-1a88-314c-933f-5471638bf770</id>
     <updated>2017-10-27T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/10/27/random-forests-a-good-default-model/" />
     <author>
@@ -1711,7 +1711,7 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2017/10/22/network-propagation/">
     <title type="text">Network Propagation</title>
-    <id>urn:uuid:8092c56f-71cb-389a-ab28-5d3168f9e6c9</id>
+    <id>urn:uuid:02c9e029-7c07-3dae-a4de-8a8bcfa0438d</id>
     <updated>2017-10-22T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2017/10/22/network-propagation/" />
     <author>
