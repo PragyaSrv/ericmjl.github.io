@@ -14,7 +14,12 @@
     </style>
 
     
-    
+    <!-- Syntax Highlighter. Use both pygments and hl.js. -->
+    <link rel="stylesheet" href="../../../../../static/pygments.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
 
     <!-- Google Analytics -->
     <script>
@@ -55,7 +60,7 @@
 
 </head>
 
-<title>Tag: coding - Eric J. Ma's Personal Site</title>
+<title>Context Switching - Eric J. Ma's Personal Site</title>
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#local-links" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,14 +106,68 @@
     </nav>
     <div class="container">
         
-<h1><i class="fas fa-tag"></i> coding</h1>
-<ul>
   
-    <li><a href="../../../blog/2019/5/10/context-switching/">2019-05-10: Context Switching</a></li>
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
   
-    <li><a href="../../../blog/2019/3/22/functools-partial/">2019-03-22: Functools Partial</a></li>
+    <h1>Context Switching</h1>
   
-</ul>
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-05-10
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/programming/">
+          programming
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/coding/">
+          coding
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/data science/">
+          data science
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>Context switching is hard. I noticed this when I was at the PyCon sprints, where I was bouncing from sprinter to sprinter, trying to give them each the necessary attention to get their chosen sprint tasks done. After a while, it took a toll on my brain, and I started finding it hard to concentrate on the next problem.</p>
+<p>Under such circumstances, when one is context switching often (most hopefully out of one's own volition), how do we communicate that we need some ramp-up time, and how can others help us help them?</p>
+<p>I think one practical thing that can be done is to frequently communicate on each context switch that context ramp-up is needed. In the future, when I switch contexts, first thing I'm going to ask is something along the lines of, "What context do I need to help me help you?" Or, if I'm lost, I can clearly communicate what I'm missing - if it's context that I'm missing - by stating, "I think I'm missing some context. Can you bring me up to speed?"</p>
+<p>At least while sprinting, sprinters can definitely help me help them by providing the necessary context up-front. Perhaps this applies more generally as well: when we're asking someone for help, we may be able to help them out by asking them, "What context from me would help you get up-to-speed here?"</p>
+
+  </div>
+
+  <a name="disqus"></a>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/context-switching"; this.page.url = "http://www.ericmjl.com/blog/2019/5/10/context-switching/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//ericmjl.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
     </div>
 
