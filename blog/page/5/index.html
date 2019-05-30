@@ -109,6 +109,57 @@
 
   <!-- Set title style -->
   
+    <h1><a href="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/">Joint, conditional, and marginal probability distributions</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2018-08-07
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/statistics/">
+          statistics
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/probability/">
+          probability
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/bayesian/">
+          bayesian
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/data science/">
+          data science
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>Joint probability, conditional probability, and marginal probability... These are three central terms when learning about probability, and they show up in Bayesian statistics as well. However... I never really could remember what they were, especially since we were usually taught them using formulas, rather than pictures.</p>
+<p>Well, for those who learn a bit better using pictures... if you know what a probability distribution is, then hopefully these help with remembering what these terms mean. (Clicking on the image will bring you to the original, hosted on GitHub.)</p>
+<p><a href="https://github.com/ericmjl/distributions/raw/master/joint-conditional-marginal.pdf"><img src="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/joint-conditional-marginal.png" alt=""></a></p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../../../blog/2018/8/6/d-separation-in-causal-inference/">d-separation in causal inference</a></h1>
   
 
@@ -318,63 +369,6 @@
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../../../blog/2018/7/26/scipy-2018/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../../../blog/2018/7/16/bayesian-estimation-group-comparison-and-workflow/">Bayesian Estimation, Group Comparison, and Workflow</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2018-07-16
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/bayesian/">
-          bayesian
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/statistics/">
-          statistics
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/data science/">
-          data science
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>Over the past year, having learned about Bayesian inference methods, I finally see how estimation, group comparison, and model checking build upon each other into this really elegant framework for data analysis.</p>
-<h2 id="parameter-estimation">Parameter Estimation</h2><p>The foundation of this is "estimating a parameter". In a typical situation, we are most concerned with the parameter of interest. It could be a population mean, or a population variance. If there's a mathematical function that links the input variables to the output (a.k.a. "link function"), then the parameters of the model are that function's parameters. The key point here is that the atomic activity of Bayesian analysis is the estimation of a parameter, and its associated uncertainty.</p>
-<h2 id="comparison-of-groups">Comparison of Groups</h2><p>Building on that, we can then estimate parameters for more than one group of things. As a first pass, we could assume that each of the groups are unrelated, and thus "independently" (I'm trying to avoid overloading this term) estimate parameters per group under this assumption. Alternatively, we could assume that the groups are related to one another, and thus use a "hierarchical" model to estimate parameters for each group.</p>
-<p>Once we've done that, what's left is the comparison of parameters between the groups. The simplest activity is to compare the posterior distributions' 95% highest posterior densities, and check to see if they overlap. Usually this is done for the mean, or for regression parameters, but the variance might also be important to check as well.</p>
-<h2 id="model-check">Model Check</h2><p>Rounding off this framework is model checking: how do we test that the model is a good one? The bare minimum that we should do is simulate data from the model - it should generate samples whose distribution looks like the actual data itself. If it doesn't, then we have a problem, and need to go back and rework the model structure until it does.</p>
-<p>Could it be that we have a model that only fits the data on hand (overfitting)? Potentially so - and if this is the case, then our best check is to have an "out-of-sample" group. While a train/test/validation split might be useful, the truest test of a model is new data that has been collected.</p>
-<h2 id="thoughts">Thoughts</h2><p>These three major steps in Bayesian data analysis workflows did not come together until recently; they each seemed disconnected from the others. Perhaps this was just an artefact of how I was learning them. However, I think I've finally come to a unified realization: Estimation is necessary before we can do comparison, and model checking helps us build confidence in the estimation and comparison procedures that we use.</p>
-<h2 id="summary">Summary</h2><p>When doing Bayesian data analysis, the key steps that we're performing are:</p>
-<ol>
-<li>Estimation</li>
-<li>Comparison</li>
-<li>Model Checking</li>
-</ol>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../../../blog/2018/7/16/bayesian-estimation-group-comparison-and-workflow/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 

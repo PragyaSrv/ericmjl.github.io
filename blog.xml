@@ -2,13 +2,37 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
-  <updated>2019-05-10T00:00:00Z</updated>
+  <updated>2019-05-29T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/5/29/reasoning-about-shapes-and-probability-distributions/">
+    <title type="text">Reasoning about Shapes and Probability Distributions</title>
+    <id>urn:uuid:5c8f4058-21b0-3325-9214-75e8ddbe29d7</id>
+    <updated>2019-05-29T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/5/29/reasoning-about-shapes-and-probability-distributions/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;I’m here with the PyMC4 dev team and Tensorflow Probability developers Rif, Brian and Chris in Google Montreal, and have found the time thus far to be an amazing learning opportunity.&lt;/p&gt;
+&lt;p&gt;Prior to this summit, it never dawned on me how interfacing tensors with probability distributions could be such a minefield of overloaded ideas and terminology. Yet, communicating clearly about tensors is important, because if problems can be cast into a tensor-space operation, vectorization can help speed up many operations that we wish to handle. I wanted to share a bit about something new about tensors that I learned here: the different types of shapes involved in a probabilistic programming language.&lt;/p&gt;
+&lt;p&gt;Let’s start by thinking about a few questions involving the most venerable distribution of them all: the Gaussian, also known as the Normal distribution.&lt;/p&gt;
+&lt;p&gt;Let’s start by thinking about a single draw from a standard Gaussian. Drawing one number from the standard Gaussian yields a scalar. In tensor space, a scalar is a rank 0 tensor, and this colloquially means that there’s no dimensions involved. If we drew out the distribution, and drew out the process of drawing numbers from the distribution, it might look like the following:&lt;/p&gt;
+&lt;p&gt;What if we were to draw two numbers from this one Gaussian? We could use a vector with two slots to represent those draws. However, the elementary &lt;em&gt;event&lt;/em&gt; of drawing a single number did not fundamentally change when we drew two numbers, as we merely repeated the same &lt;em&gt;event&lt;/em&gt; to draw two. With my hands waving in the air, I will claim that this holds true even with K &lt;em&gt;samples&lt;/em&gt; drawn from the distribution.&lt;/p&gt;
+&lt;p&gt;Now, what if I had a second Gaussian, say, with a different mean and/or variance? If I were to draw one number from the first Gaussian alongside one number from the second Gaussian, and then concatenate them into a vector, we can represent this as us drawing numbers from independent Gaussians. In this case, we may argue that per distribution, the elementary shape of the &lt;em&gt;event&lt;/em&gt; did not change. However, since we have a &lt;em&gt;batch&lt;/em&gt; of two distributions, this contributes to the final shape of the tensor. Again, with much waving of my hands in the air, this should extend to more than two distributions. The illustration below should help clarify how this is different from the first.&lt;/p&gt;
+&lt;p&gt;Now, what if we had a multivariate Gaussian, with two variates? This makes for a very interesting case! The elementary &lt;em&gt;event&lt;/em&gt; drawn from this multivariate Gaussian is a two-element vector, not a scalar, which means that its shape is apparently identical to the case where we have a single pair of numbers drawn from a batch of two independent Gaussians! Yet, we know that semantically, these two apparently same-shaped draws are shaped semantically differently. The two independent Gaussians individually have elementary &lt;em&gt;event&lt;/em&gt; shapes that are scalar, but when drawn as a &lt;em&gt;batch&lt;/em&gt; of two, that is when their shape of &lt;code&gt;(2,)&lt;/code&gt; forms. On the other hand, the multivariate Gaussian cannot have its two numbers drawn independent of one another (unless this is the special case of diagonal-only covariance - in which case, this is equivalent to independent Gaussians). Hence, the elementary &lt;em&gt;event&lt;/em&gt; shape is not scalar, but vector (or more generally, same rank tensor as the mean vector), but the &lt;em&gt;batch&lt;/em&gt; has only a single distribution, hence it has a scalar batch shape.&lt;/p&gt;
+&lt;p&gt;To summarize, here are the various kinds of shapes, defined:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Event shape:&lt;/strong&gt; The atomic shape of a single event/observation from the distribution (or batch of distributions of the same family).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Batch shape:&lt;/strong&gt; The atomic shape of a single sample of observations from one or more distributions &lt;em&gt;of the same family&lt;/em&gt;. As an example, we can’t have a batch of a Gaussian and a Gamma distribution together, but we can have a batch of more than one Gaussians.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sample shape:&lt;/strong&gt; The shape of a bunch of samples drawn from the distributions.&lt;/p&gt;
+&lt;p&gt;And finally, here’s the full spread of possibilities, using one or two draws, uni- or bi-variate Gaussians, and one or two batches of distributions as an illustration.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../../../../blog/2019/5/29/reasoning-about-shapes-and-probability-distributions/shapes-blog-post-md.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Special thanks goes to fellow PyMC devs, Ravin Kumar, Brandon Willard, Colin Carroll, and Peadar Coyle, who provided feedback on the figure over a late-night tea/dinner/bar session at the end of Day 2.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/context-switching/">
     <title type="text">Context Switching</title>
     <id>urn:uuid:138c066f-4d92-30c1-9ce1-fcb960d09b9f</id>
@@ -1696,33 +1720,6 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
 &lt;p&gt;As things turned out, those columns that gave me negative infinity likelihood initializations were doing so because of negative values in the data. Try fitting a Poisson likelihood, which only has positive support, on that!&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://i.imgflip.com/1yl6ki.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;This lost hour and a half was a good lesson in data checking/testing: &lt;strong&gt;always be sure to sanity check basic stats associated with the data - bounds (min/max), central tendency (mean/median/mode) and spread (variance, quartile range) - always check!&lt;/strong&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/10/27/random-forests-a-good-default-model/">
-    <title type="text">Random Forests: A Good Default Model?</title>
-    <id>urn:uuid:20e6aa3e-1a88-314c-933f-5471638bf770</id>
-    <updated>2017-10-27T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/10/27/random-forests-a-good-default-model/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;I've been giving this some thought, and wanted to go out on a limb to put forth this idea:&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;I think Random Forests (RF) are a good &quot;baseline&quot; model to try, after establishing a &quot;random&quot; baseline case.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;(Clarification: I'm using RF as a shorthand for &quot;forest-based ML algorithms&quot;, including XGBoost etc.)&lt;/p&gt;
-&lt;p&gt;Before I go on, let me first provide some setup.&lt;/p&gt;
-&lt;p&gt;Let's say we have a two-class classification problem. Assume everything is balanced. One &quot;dumb baseline&quot;&quot; case is a coin flip. The other &quot;dumb baseline&quot; is predicting everything to be one class. Once we have these established, we can go to a &quot;baseline&quot; machine learning model.&lt;/p&gt;
-&lt;p&gt;Usually, people might say, &quot;go do logistic regression (LR)&quot; as your first baseline model for classification problems. It sure is a principled choice! Logistic regression is geared towards classification problems, makes only linear assumptions about the data, and identifies directional effects as well. From a practical perspective, it's also very fast to train.&lt;/p&gt;
-&lt;p&gt;But I've found myself more and more being oriented towards using RFs as my baseline model instead of logistic regression. Here are my reasons:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Practically speaking, any modern computer can train a RF model with ~1000+ trees in not much more time than it would need for an LR model.&lt;/li&gt;
-&lt;li&gt;By using RFs, we do not make linearity assumptions about the data.&lt;/li&gt;
-&lt;li&gt;Additionally, we don't have to scale the data (one less thing to do).&lt;/li&gt;
-&lt;li&gt;RFs will automatically learn non-linear interaction terms in the data, which is not possible without further feature engineering in LR.&lt;/li&gt;
-&lt;li&gt;As such, the out-of-the-box performance using large RFs with default settings is often very good, making for a much more intellectually interesting challenge in trying to beat that classifier.&lt;/li&gt;
-&lt;li&gt;With &lt;code&gt;scikit-learn&lt;/code&gt;, it's a one-liner change to swap out LR for RF. The API is what matters, and as such, drop-in replacements are easily implemented!&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Just to be clear, I'm not advocating for throwing away logistic regression altogether. There are moments where interpretability is needed, and is more easily done by using LR. In those cases, LR can be the &quot;baseline model&quot;, or even just back-filled in after training the baseline RF model for comparison.&lt;/p&gt;
-&lt;p&gt;Random Forests were the darling of the machine learning world before neural networks came along, and even now, remain the tool-of-choice for colleagues in the cheminformatics world. Given how easy they are to use now, why not just start with them?&lt;/p&gt;
 </content>
   </entry>
 </feed>
