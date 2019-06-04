@@ -57,20 +57,6 @@
 &lt;p&gt;I think there are great ideas in all three, and when I take a birds-eye view of the scientific computing ecosystem in Python as both a developer and end-user, I’d love to see the NumPy API, which is idiomatic and widely used and built on top of, become aware of each of these types of designs, something akin to NEP-18, the array function dispatching protocol that allows NumPy APIs to be called on other tensor libraries.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/context-switching/">
-    <title type="text">Context Switching</title>
-    <id>urn:uuid:138c066f-4d92-30c1-9ce1-fcb960d09b9f</id>
-    <updated>2019-05-10T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2019/5/10/context-switching/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Context switching is hard. I noticed this when I was at the PyCon sprints, where I was bouncing from sprinter to sprinter, trying to give them each the necessary attention to get their chosen sprint tasks done. After a while, it took a toll on my brain, and I started finding it hard to concentrate on the next problem.&lt;/p&gt;
-&lt;p&gt;Under such circumstances, when one is context switching often (most hopefully out of one's own volition), how do we communicate that we need some ramp-up time, and how can others help us help them?&lt;/p&gt;
-&lt;p&gt;I think one practical thing that can be done is to frequently communicate on each context switch that context ramp-up is needed. In the future, when I switch contexts, first thing I'm going to ask is something along the lines of, &quot;What context do I need to help me help you?&quot; Or, if I'm lost, I can clearly communicate what I'm missing - if it's context that I'm missing - by stating, &quot;I think I'm missing some context. Can you bring me up to speed?&quot;&lt;/p&gt;
-&lt;p&gt;At least while sprinting, sprinters can definitely help me help them by providing the necessary context up-front. Perhaps this applies more generally as well: when we're asking someone for help, we may be able to help them out by asking them, &quot;What context from me would help you get up-to-speed here?&quot;&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/pycon-2019-tutorial-and-conference-days/">
     <title type="text">PyCon 2019 Tutorial and Conference Days</title>
     <id>urn:uuid:6deb7465-7419-311f-8605-23b31aefa0e6</id>
@@ -85,6 +71,20 @@
 &lt;p&gt;This year was the first year that Mridul and I swapped roles. In previous years, he was my TA, helping tutorial participants while I did the main lecturing. This year, the apprentice became the master, and a really good one indeed! Looking forward to seeing him shine more in subsequent tutorial iterations.&lt;/p&gt;
 &lt;p&gt;During the conference days, I spent most of my time either helping out with Financial Aid, or at the Microsoft booth. As I have alluded to in multiple tweets, Microsoft's swag this year was the best of them all. Microelectronics kits in a blue lunch box from Adafruit, and getting set up with &lt;a href=&quot;https://azure.microsoft.com/en-us/&quot;&gt;Azure&lt;/a&gt;. In fact, this website is now re-built with each push on Azure pipelines! Indeed, &lt;a href=&quot;https://twitter.com/zooba&quot;&gt;Steve Dowell&lt;/a&gt; from Microsoft told me that this year's best swag was probably getting setup with Azure, and I'm 100% onboard with that! (Fun fact, Steve told me that he's never been called by his Twitter handle (&lt;code&gt;zooba&lt;/code&gt;) in real-life... until we met.)&lt;/p&gt;
 &lt;p&gt;I also delivered a talk this year, which essentially amounted to a &lt;a href=&quot;https://us.pycon.org/2019/schedule/presentation/174/&quot;&gt;formal rant against canned statistical procedures&lt;/a&gt;. I had a ton of fun delivering this talk. The usual nerves still get to me, and I had to do a lot of talking-to-myself-style rehearsals to work off those nerves. For the first time, I also did office hours post-talk at an Open Space, where for one hour, we talked about all things Bayes. Happy to have met everybody who came by; I genuinely enjoyed the chat!&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/context-switching/">
+    <title type="text">Context Switching</title>
+    <id>urn:uuid:138c066f-4d92-30c1-9ce1-fcb960d09b9f</id>
+    <updated>2019-05-10T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/5/10/context-switching/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;Context switching is hard. I noticed this when I was at the PyCon sprints, where I was bouncing from sprinter to sprinter, trying to give them each the necessary attention to get their chosen sprint tasks done. After a while, it took a toll on my brain, and I started finding it hard to concentrate on the next problem.&lt;/p&gt;
+&lt;p&gt;Under such circumstances, when one is context switching often (most hopefully out of one's own volition), how do we communicate that we need some ramp-up time, and how can others help us help them?&lt;/p&gt;
+&lt;p&gt;I think one practical thing that can be done is to frequently communicate on each context switch that context ramp-up is needed. In the future, when I switch contexts, first thing I'm going to ask is something along the lines of, &quot;What context do I need to help me help you?&quot; Or, if I'm lost, I can clearly communicate what I'm missing - if it's context that I'm missing - by stating, &quot;I think I'm missing some context. Can you bring me up to speed?&quot;&lt;/p&gt;
+&lt;p&gt;At least while sprinting, sprinters can definitely help me help them by providing the necessary context up-front. Perhaps this applies more generally as well: when we're asking someone for help, we may be able to help them out by asking them, &quot;What context from me would help you get up-to-speed here?&quot;&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/5/8/pycon-2019-sprints/">
