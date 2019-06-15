@@ -157,6 +157,63 @@
 
   <!-- Set title style -->
   
+    <h1><a href="../blog/2019/6/14/mobile-working-on-the-ipad/">Mobile Working on the iPad</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Am</a>
+    
+    on 2019-06-14
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/productivity/">
+          productivity
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/mobile/">
+          mobile
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>A few years ago, I test-drove mobile work using my thesis as a case study, basically challenging myself with the question: how much of my main thesis paper could I write on iOS (specifically, an iPad Mini)? Back then, iOS turned out to be a superb tool for the writing phase (getting ideas into a text editor), and a horrible one for final formatting before submitting a paper to a journal (inflexible). Now, don’t get me wrong, though - I would still use it as part of my workflow if I were to do it again!</p>
+<p>Fast-forward a few years, I now do more programming in a data science context than I do formal writing, and the tooling for software development and data analysis on iOS has improved greatly. I thought I’d challenge myself with an experiment: how much of development and analytics could I do on an iPad, especially the Mini?</p>
+<p>This time round, armed with an iPad Pro (11”), I decided to test again how much one can do on iOS, once again.</p>
+<h2 id="software-development">Software Development</h2><p>I develop [<code>pyjanitor</code>] as a tool that I use in my daily work, and as part of my open source software portfolio. When I’m on my MacBook or Pro, or on my Linux desktop at home, I usually work with VSCode for it’s integrated terminal, superb syntax highlighting, git integration, code completion with Kite, and more.</p>
+<p>Moving to iOS, VSCode is not available, and that immediately means to rely on Terminal-based tools to get my work done. I ponied up for [Blink Shell], and found it to pay off immediately. Having enabled remote access on my Linux tower at home, I was thrilled to learn that Blink supports [<code>mosh</code>], and when paired with [<code>tmux</code>], it is a superb solution for maintaining persistent shells across spotty internet conditions.</p>
+<p>A while ago, I also configured <code>nano</code> with syntax highlighting. As things turned out, syntax highlighting has the biggest effect on my productivity compared to other text editor enhancements (e.g. code completion, git integration, etc.). After I mastered most of <code>nano</code>'s shortcut keys, I found I could be productive at coding in just <code>nano</code> itself. Even though missing out on the usual assistive tools meant I was coding somewhat slower, the pace was still acceptable; moreover, relying less on those tools helped me develop a muscle memory for certain API calls. I also found myself becoming more effective because the single window idioms of iOS meant I was focusing on the programming task at hand, rather than getting distracted while looking at docs in a web browser (a surprisingly common happening for me!).</p>
+<h2 id="data-analysis">Data Analysis</h2><p>For data analysis, Jupyter notebooks are the tool of my choice, for their interactive nature, and the ability to weave a narrative throughout the computation. Jupyter Lab is awesome for this task, but it’s poorly supported on mobile Safari. To use Jupyter notebooks in iOS, the best offering at the moment is [Juno], with its ability to connect to a Jupyter server accessible through an IP address or URL. This does require payment, though, and I gladly ponied up for that as well.</p>
+<p>I run a Jupyter server on my Linux tower at home. Because it has a GPU installed on it, when I am accessing the machine through Juno, my iPad suddenly has access to a full-fledged, fully-configured GPU as part of the compute environment! Coupled with the responsiveness of Juno, this makes for a fairly compelling setup to do Python programming on an iPad.</p>
+<h2 id="pros-and-cons-of-ipad-mini-based-development">Pros and Cons of iPad Mini-based Development</h2><h3 id="cons">Cons</h3><p>Overall, the experience has been positive, but there have been some challenges, which I would like to detail here.</p>
+<p><strong>Remote server required:</strong> Firstly, because we are essentially using the iPad as a thin client to a remote server, one must either pay for a remote development server in the cloud, or go through the hassle of setting up a development machine that one can SSH into. This may turn off individuals who either are loathe to rent a computer, or don’t have the necessary experience to setup a remote server on their own.</p>
+<p><strong>iOS Multi-Windowing:</strong> It’s sometimes non-trivial to check up source code or function signatures (API docs, really) on the sidebar browser window in iOS. Unlike macOS, in which I have a number of shortcut keys that will let me launch and/or switch between apps, the lack of this capability on iOS means I find myself slowed down because I have to use a bunch of swiping gestures to get to where I need to be. (<code>Cmd-tab</code> seems to be the only exception, for it activates the app switcher, but the number of apps in the app switcher remembers is limited.)</p>
+<h3 id="pros">Pros</h3><p>Even with the issues detailed above, there’s still much to love about doing mobile development work on an iOS device.</p>
+<p><strong>iOS Speed:</strong> On the latest hardware, iOS is speedy. Well, even that is a bit of an understatement. I rarely get lags while typing in Blink and Juno, and even when I do, I can usually pin it down to network latency more than RAM issues.</p>
+<p><strong>Focus:</strong> This is the biggest win. Because iOS makes it difficult to switch contexts, this is actually an upside for work that involves creating things. Whether it’s someone who is drawing, producing videos, editing photos, writing blog posts, or creating code, the ability to focus on the context at hand is tremendous for producing high quality work. Here, iOS is actually a winner for focused productivity.</p>
+<p><strong>Mobility:</strong> The second upside would be that of battery life, and hence mobility, by extension. My 12” MacBook is super mobile, yes, but macOS appears to have issues restraining battery drainage when the lid is closed. By contrast, iOS seems to have fewer issues with this. The battery life concerns mean I’m carrying my mouse, charger and dongle with me all the time, and I’ll get the equivalent of range anxiety when I take only my laptop.</p>
+<p><strong>Keyboard Experience:</strong> The keyboard experience on the Smart Keyboard Folio is surprisingly good! It’s tactile, and is fully covered, so we won’t have issues arise due to dust getting underneath the keys, like my little MacBook had.</p>
+<h2 id="concluding-thoughts">Concluding Thoughts</h2><p>This test has been quite instructive. As usual, tooling is superbly important for productivity; investing in the right tools makes it worthwhile. Granted, none of this comes cheap or for free, naturally. Given the future directions of iOS, I think it’s shaping up to be a real contender for productivity!</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../blog/2019/6/14/mobile-working-on-the-ipad/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../blog/2019/5/29/reasoning-about-shapes-and-probability-distributions/">Reasoning about Shapes and Probability Distributions</a></h1>
   
 
@@ -336,146 +393,6 @@
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../blog/2019/5/10/pycon-2019-tutorial-and-conference-days/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2019/5/8/pycon-2019-sprints/">PyCon 2019 Sprints</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-05-08
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/pycon/">
-          pycon
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/software development/">
-          software development
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/sprint/">
-          sprint
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/open source/">
-          open source
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>This year was the first year that I decided to lead a sprint! The sprint I led was for <code>pyjanitor</code>, a package that I developed with my colleague, Zach Barry, and a remote collaborator in NYC, Sam Zuckerman (whom I've never met in person!). This being the first sprint I've ever led, I think I was lucky to stumble upon a few ideas that made for a productive, collaborative, and most importantly, fun sprint.</p>
-<h2 id="pyjanitor?">pyjanitor?</h2><p>I'm going to deliver a talk on <code>pyjanitor</code> later in the year, so I'll save the details for that talk. The short description of <code>pyjanitor</code> is that if you have <code>pandas</code> one-liners that are difficult to remember, they should become a function in <code>pyjanitor</code>; if you have a 10-liner that you always copy/paste from another source, they should become a function in <code>pyjanitor</code>.</p>
-<h2 id="sprints?">Sprints?</h2><p>Code sprints are a part of PyCon, and it's basically one to four days of intense and focused software development on a single project.</p>
-<p>Project sprint leads first pitch their projects at the "<em>Sprintros</em>", where they indicate what days they will be sprinting, and at what times. The next day, we indicate on which rooms our projects will be sprinting. Volunteers from the conference, who would like to make an open source project contribution, then identify projects they would like to come sprint with.</p>
-<p>In some senses, there's no way for a sprint leader to know how popular their sprint will be <em>a priori</em>. We have to be prepared to handle a range of scenarios from sprinting with just one other person to sprinting with a crowd.</p>
-<h2 id="structure">Structure</h2><h3 id="preparation">Preparation</h3><p>In preparation for the sprint, I absorbed many lessons learned over the years of sprinting on others' projects.</p>
-<p>The most obvious one was to ensure that every sprinter had something to do right from the get-go. Having a task from the get-go keeps sprinters, especially newcomers, engaged right from the beginning. This motivated the requirement to make a doc fix before making a code fix. (You can read more below on how we made this happen.) I wrote out this requirement in a number of places, and by the time the sprint day rolled by, this rolled off pretty naturally.</p>
-<p>The second thing that I did to prep was to triage existing issues and label them as being beginner- or intermediate-friendly, and whether they were doc, infrastructure, or code contributions.</p>
-<p>Those two things were the my highest priority preparation for the sprint, and I think that helped a ton.</p>
-<h3 id="doc-fixes">Doc Fixes</h3><p>This sprint, I gave the structure some thought, and settled on the following: Before making a code contribution, I required a docs contribution.</p>
-<p>Docs contributions could be of any scale:</p>
-<ul>
-<li>A typographical, grammatical, or spelling error.</li>
-<li>A docstring that was unclear.</li>
-<li>Installation/setup instructions that are unclear.</li>
-<li>A sentence/phrase/word choice that didn't make sense.</li>
-<li>New example/tutorial notebooks using the library.</li>
-</ul>
-<p>I think this worked well for the following reasons:</p>
-<ol>
-<li>New contributors must read the docs before developing on the project, and hence become familiar with the project.</li>
-<li>There's always something that can be done better in the docs, and hence, there is something that can be immediately acted on.</li>
-<li>The task is a pain point personally uncovered by the contributor, and hence the contributor has the full context of the problem. </li>
-<li>The docs don't break the code/tests, and hence doc contributions are a great way make a contribution without wrestling with more complex testing.</li>
-<li>Starting <em>everybody</em> who has never worked on <code>pyjanitor</code> on docs is an egalitarian way of on-boarding every newcomer, beginner and experienced individuals alike. Nobody gets special treatment.</li>
-</ol>
-<p>For each individual's contribution, I asked them to first raise an issue on the GitHub issue tracker describing the contribution that they would like to make, and then clearly indicate in the comments that they would like to work on it. Then, they would go through the process of doing the documentation fix, from forking the repository, cloning it locally, creating a new branch, making edits, committing, pushing, and PR-ing.</p>
-<p>If two people accidentally ended up working on the same docs issue, I would assess the effort of the later one, and if it was substantial enough, I would allow them to consider it done, and move onto a different issue.</p>
-<p>Going forth, as the group of contributors expands, I will enforce this "docs-first" requirement only for newcomer sprinters, and request experienced ones to help manage the process.</p>
-<h3 id="code-contributions">Code Contributions</h3><p>Once the docs contributions were done, sprinters were free to either continue with more docs contributions, or provide a code contribution.</p>
-<p>Code contributions could be of one of the following:</p>
-<ol>
-<li>New function contributions.</li>
-<li>Cleaner implementations of existing functions.</li>
-<li>Restructuring of existing functions.</li>
-<li>Identification of functions to deprecate (very important!)</li>
-<li>Infrastructural changes to docs, build system, and more.</li>
-</ol>
-<p>The process for doing this was identical to docs: raise an issue, claim it, and then make a new branch with edits, and finally PR it.</p>
-<h2 id="my-role">My Role</h2><p>For both days, we had more than 10 people sprint on <code>pyjanitor</code>. Many who were present on the 1st day (and didn't have a flight to catch) came back on the 2nd day. As such, I actually didn't get much coding done. Instead, I took on the following roles:</p>
-<ol>
-<li>Q&amp;A person: Answering questions about what would be acceptable contributions, technical (read: git) issues, and more.</li>
-<li>Issue labeller and triage-r: I spent the bulk of my downtime (and pre-/post-sprint time) tagging issues on the GitHub issue tracker and marking them as being available or unavailable for hacking on, and tagging them with whether they were docs-related, infrastructure-related, or code enhancements. </li>
-<li>Code reviewer: As PRs came in, I would conduct code reviews on each of them, and would discuss with them where to adjust the code to adhere to code style standards. </li>
-<li>Continuous integration pipeline babysitter: Because I had just switched us off from Travis CI to Azure Pipelines, I was babysitting the pipelines to make sure nothing went wrong. (Spoiler: something did!) </li>
-<li>Green button pusher: Once all tests passed, I would hit the big green button to merge PRs!</li>
-</ol>
-<p>If I get to sprint with other experienced contributors at the sprints, I would definitely like to have some help with the above.</p>
-<h2 id="thoughts">Thoughts</h2><h3 id="making-sprints-human-friendly">Making sprints human-friendly</h3><p>I tried out a few ideas, which I hope made the sprints just that little bit more human-friendly.</p>
-<ol>
-<li>Used large Post-It easel pads to write out commonly-used commands at the terminal.</li>
-<li>Displayed claimed seating arrangements at the morning, and more importantly, get to know every sprinter's name.</li>
-<li>Announcing every PR to the group that was merged and what the content was, followed by a round of applause.</li>
-<li>Setting a timer for 5 minutes before lunch so that they could all get ahead in the line.</li>
-<li>I used staff privileges to move the box of leftover bananas into our sprint room. :)</li>
-</ol>
-<p>I think the applause is the most encouraging part of the process. Having struggled through a PR, however big or small, and having group recognition for that effort, is super encouraging, especially for first-time contributors. I think we need to encourage this more at sprints.</p>
-<h3 id="relinquishing-control">Relinquishing control</h3><p>The only things about the pyjanitor project that I'm unwilling to give up on are: good documentation of what a function does, that a function should do one thing well, and that it be method-chainable. Everything else, including functionality, is an open discussion that we can have!</p>
-<p>One PR I particularly enjoyed was that from Lucas, who PR'd in a logo for the project on the docs page. He had the idea to take the hacky broomstick I drew on the big sticky note (as a makeshift logo), redraw it as a vector graphic in Inkscape, and PR it in as the (current) official logo on the docs.</p>
-<p>More broadly, I deferred to the sprinters' opinions on docs, because I recognized that I'd have old eyes on the docs, and wouldn't be able to easily identify places where the docs could be written more clearly. Eventually, a small, self-organizing squad of 3-5 sprinters ended up becoming the unofficial docs squad, rearranging the structure of the docs, building automation around it, and better organizing and summarizing the information on the docs.</p>
-<p>In more than a few places, if there were a well-justified choice for the API (which really meant naming the functions and keyword arguments), I'd be more than happy to see the PR happen. Even if it is evolved away later, the present codebase and PRs that led to it provided the substrate for better evolution of the API!</p>
-<h3 id="a-new-microsoft">A new Microsoft</h3><p>This year, I switched from Travis CI to Azure Pipelines. In particular, I was attracted to the ability to build on all three major operating systems, Windows, macOS, and Linux, on the free tier.</p>
-<p>Microsoft had a booth at PyCon, in which Steve Dowell led an initiative to get us set up with Azure-related tools. Indeed, as a major sponsor of the conference, this was one of the best swag given to us. Super practical, relationship- and goodwill-building. Definitely not lesser than the Adafruit lunchboxes with electronics as swag!</p>
-<h3 id="hiccups">Hiccups</h3><p>Naturally, not everything was smooth sailing throughout. I did find myself a tad expressing myself in an irate fashion at times with the amount of context switching that I was doing, especially switching between talking to different sprinters one after another. (I am very used to long stretches hacking on one problem.) One thing future sprinters could help with, which I will document, is to give me enough ramp-up context around their problem, so that I can quickly pinpoint what other information I might need.</p>
-<p>The other not-so-smooth-sailing thing was finding out that Azure sometimes did not catch errors in a script block! My unproven hypothesis at this point is that if I have four commands executed in a script block, and if any of the first three fail but the last one passes, the entire script block will behave as if it passes. This probably stems from the build system looking at only the last exit code to determine exit status. Eventually, after splitting each check into individual steps, linting and testing errors started getting caught automatically! (Automating this is much preferred to me running the <code>black</code> code formatter in my head.)</p>
-<p>Though the above issue is fixed, I think I am still having issues getting <code>pycodestyle</code> and <code>black</code> to work on the Windows builds. Definitely looking forward to hearing from Azure devs what could be done here!</p>
-<h2 id="suggestions">Suggestions</h2><p>I'm sure there's ways I could have made the sprint a bit better.  I'd love to hear them if there's something I've missed! Please feel free to comment below.</p>
-<h2 id="sprinter-acknowledgement">Sprinter Acknowledgement</h2><p>I would like to thank all the sprinters who joined in this sprint. Their GitHub handles are below:</p>
-<ul>
-<li>@HectorM14 (who was remote!)</li>
-<li>@jekwatt</li>
-<li>@kurtispinkney</li>
-<li>@lphk92</li>
-<li>@jonnybazookatone</li>
-<li>@SorenFrohlich</li>
-<li>@dave-frazzetto</li>
-<li>@dsouzadaniel</li>
-<li>@Eidhagen</li>
-<li>@mdini</li>
-<li>@kimt33</li>
-<li>@jack-kessler-88</li>
-<li>@NapsterInBlue</li>
-<li>@jk3587</li>
-<li>@ricky-lim</li>
-<li>@catherinedevlin</li>
-<li>@StephenSchroed</li>
-</ul>
-<p>And as always, big thanks to my collaborators on the repository:</p>
-<ul>
-<li>@zbarry</li>
-<li>@szuckerman</li>
-</ul>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/5/8/pycon-2019-sprints/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 
