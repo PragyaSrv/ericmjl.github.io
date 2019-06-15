@@ -14,7 +14,12 @@
     </style>
 
     
-    
+    <!-- Syntax Highlighter. Use both pygments and hl.js. -->
+    <link rel="stylesheet" href="../../../../../static/pygments.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
 
     <!-- Google Analytics -->
     <script>
@@ -55,7 +60,7 @@
 
 </head>
 
-<title>Tag: network science - Eric J. Ma's Personal Site</title>
+<title>Graphs and Matrices - Eric J. Ma's Personal Site</title>
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#local-links" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,18 +106,68 @@
     </nav>
     <div class="container">
         
-<h1><i class="fas fa-tag"></i> network science</h1>
-<ul>
   
-    <li><a href="../../../blog/2019/6/15/graphs-and-matrices/">2019-06-15: Graphs and Matrices</a></li>
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
   
-    <li><a href="../../../blog/2017/10/22/network-propagation/">2017-10-22: Network Propagation</a></li>
+    <h1>Graphs and Matrices</h1>
   
-    <li><a href="../../../blog/2016/7/16/principles-of-network-visualization/">2016-07-16: Principles of Network Visualization</a></li>
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-06-15
   
-    <li><a href="../../../blog/2016/6/9/network-science-and-statistics-applications-and-fundamentals/">2016-06-09: Network Science and Statistics: Applications and Fundamentals</a></li>
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/graphs/">
+          graphs
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/network science/">
+          network science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/data science/">
+          data science
+      </a>
+      
+  </p>
   
-</ul>
+
+  <!-- Put post body -->
+  <p>Once again, I’m reminded through my research how neat and useful it is to be able to think of matrices as graphs and vice-versa.</p>
+<p>I was constructing a symmetric square matrix of values, in which multiple cells of the matrix were empty (i.e. no values present). (Thankfully, the diagonal is guaranteed dense.) From this matrix, I wanted the largest set of rows/columns that formed a symmetric, densely populated square matrix of values, subject to a second constraint that the set of rows/columns also maximally intersected with another set of items.</p>
+<p>Having thought about the requirements of the problem, my prior experience with graphs reminded me that every graph has a corresponding adjacency matrix, and that finding the densest symmetric subset of entries in the matrix was equivalent to finding cliques in a graph! My intern and I proceeded to convert the matrix into its graph representation, and a few API calls in <code>networkx</code> later, we found the matrix we needed.</p>
+<p>The key takeaway from this experience? Finding the right representation for a problem, we can computationally solve them quickly by using the appropriate APIs!</p>
+
+  </div>
+
+  <a name="disqus"></a>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/graphs-and-matrices"; this.page.url = "http://www.ericmjl.com/blog/2019/6/15/graphs-and-matrices/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//ericmjl.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
     </div>
 
