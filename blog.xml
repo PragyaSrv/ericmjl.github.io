@@ -2,13 +2,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
-  <updated>2019-06-15T00:00:00Z</updated>
+  <updated>2019-06-30T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/6/30/bone-marrow-donations/">
+    <title type="text">Bone Marrow Donations</title>
+    <id>urn:uuid:22191134-fa53-3619-9bd6-3d459afdf5d3</id>
+    <updated>2019-06-30T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/6/30/bone-marrow-donations/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;A friend of mine just reached out to me, saying that he’s been diagnosed with leukemia. Thankfully, he’s not subject to the abysmal state of US healthcare (as he lives in a place where healthcare coverage is great), and so he’s on treatment, progressing, and hopefully has a great shot at beating this cancer.&lt;/p&gt;
+&lt;p&gt;He definitely knows how to speak to a data scientist: using data. The odds of a match for a patient who needs a bone marrow transplant are 500:1. That means on average, only about 1 donor in 500 will be a match. On the other hand, under certain assumptions, every 500 donors who registers will mean one life, on average, can be saved. I did some digging myself: According to the &lt;a href=&quot;https://bloodcell.transplant.hrsa.gov/research/registry_donor_data/index.html&quot;&gt;US Health Resources and Services Administration&lt;/a&gt;, nearly every single minority ethnic group is underrepresented in donor registry databases.&lt;/p&gt;
+&lt;p&gt;As things turn out, signing up to be a donor is quite lightweight. Genetic information - specifically, only Human Leukocyte Antigen (HLA) type - is needed, and that can be obtained in a non-invasive fashion. If a match is found, the donor still has the option to withdraw if they have any objections. As such, the process is completely voluntary for the donor. There are two types of donations possible: peripheral blood stem cells (PBSC) and bone marrow, with PBSC donations being lightweight and bone marrow donations being more involved. Digging a bit deeper, it seems like the only sacrifice a donor has to make is that of time and some discomfort.&lt;/p&gt;
+&lt;p&gt;I’m putting this blog post up as a reminder to myself to register, and to encourage others to do so as well. If you’re in the United States, &lt;a href=&quot;https://bethematch.org/&quot;&gt;Be The Match&lt;/a&gt; is the organization to get in touch with; if you’re from my home country of Canada, the &lt;a href=&quot;https://blood.ca/en&quot;&gt;Canadian Blood Services&lt;/a&gt; manages the process.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/6/15/graphs-and-matrices/">
     <title type="text">Graphs and Matrices</title>
     <id>urn:uuid:13aa8653-1144-32cd-8390-43043f8d8d3f</id>
@@ -98,6 +112,20 @@
 &lt;p&gt;I think there are great ideas in all three, and when I take a birds-eye view of the scientific computing ecosystem in Python as both a developer and end-user, I’d love to see the NumPy API, which is idiomatic and widely used and built on top of, become aware of each of these types of designs, something akin to NEP-18, the array function dispatching protocol that allows NumPy APIs to be called on other tensor libraries.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/context-switching/">
+    <title type="text">Context Switching</title>
+    <id>urn:uuid:138c066f-4d92-30c1-9ce1-fcb960d09b9f</id>
+    <updated>2019-05-10T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/5/10/context-switching/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;Context switching is hard. I noticed this when I was at the PyCon sprints, where I was bouncing from sprinter to sprinter, trying to give them each the necessary attention to get their chosen sprint tasks done. After a while, it took a toll on my brain, and I started finding it hard to concentrate on the next problem.&lt;/p&gt;
+&lt;p&gt;Under such circumstances, when one is context switching often (most hopefully out of one's own volition), how do we communicate that we need some ramp-up time, and how can others help us help them?&lt;/p&gt;
+&lt;p&gt;I think one practical thing that can be done is to frequently communicate on each context switch that context ramp-up is needed. In the future, when I switch contexts, first thing I'm going to ask is something along the lines of, &quot;What context do I need to help me help you?&quot; Or, if I'm lost, I can clearly communicate what I'm missing - if it's context that I'm missing - by stating, &quot;I think I'm missing some context. Can you bring me up to speed?&quot;&lt;/p&gt;
+&lt;p&gt;At least while sprinting, sprinters can definitely help me help them by providing the necessary context up-front. Perhaps this applies more generally as well: when we're asking someone for help, we may be able to help them out by asking them, &quot;What context from me would help you get up-to-speed here?&quot;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/pycon-2019-tutorial-and-conference-days/">
     <title type="text">PyCon 2019 Tutorial and Conference Days</title>
     <id>urn:uuid:6deb7465-7419-311f-8605-23b31aefa0e6</id>
@@ -112,20 +140,6 @@
 &lt;p&gt;This year was the first year that Mridul and I swapped roles. In previous years, he was my TA, helping tutorial participants while I did the main lecturing. This year, the apprentice became the master, and a really good one indeed! Looking forward to seeing him shine more in subsequent tutorial iterations.&lt;/p&gt;
 &lt;p&gt;During the conference days, I spent most of my time either helping out with Financial Aid, or at the Microsoft booth. As I have alluded to in multiple tweets, Microsoft's swag this year was the best of them all. Microelectronics kits in a blue lunch box from Adafruit, and getting set up with &lt;a href=&quot;https://azure.microsoft.com/en-us/&quot;&gt;Azure&lt;/a&gt;. In fact, this website is now re-built with each push on Azure pipelines! Indeed, &lt;a href=&quot;https://twitter.com/zooba&quot;&gt;Steve Dowell&lt;/a&gt; from Microsoft told me that this year's best swag was probably getting setup with Azure, and I'm 100% onboard with that! (Fun fact, Steve told me that he's never been called by his Twitter handle (&lt;code&gt;zooba&lt;/code&gt;) in real-life... until we met.)&lt;/p&gt;
 &lt;p&gt;I also delivered a talk this year, which essentially amounted to a &lt;a href=&quot;https://us.pycon.org/2019/schedule/presentation/174/&quot;&gt;formal rant against canned statistical procedures&lt;/a&gt;. I had a ton of fun delivering this talk. The usual nerves still get to me, and I had to do a lot of talking-to-myself-style rehearsals to work off those nerves. For the first time, I also did office hours post-talk at an Open Space, where for one hour, we talked about all things Bayes. Happy to have met everybody who came by; I genuinely enjoyed the chat!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/context-switching/">
-    <title type="text">Context Switching</title>
-    <id>urn:uuid:138c066f-4d92-30c1-9ce1-fcb960d09b9f</id>
-    <updated>2019-05-10T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2019/5/10/context-switching/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Context switching is hard. I noticed this when I was at the PyCon sprints, where I was bouncing from sprinter to sprinter, trying to give them each the necessary attention to get their chosen sprint tasks done. After a while, it took a toll on my brain, and I started finding it hard to concentrate on the next problem.&lt;/p&gt;
-&lt;p&gt;Under such circumstances, when one is context switching often (most hopefully out of one's own volition), how do we communicate that we need some ramp-up time, and how can others help us help them?&lt;/p&gt;
-&lt;p&gt;I think one practical thing that can be done is to frequently communicate on each context switch that context ramp-up is needed. In the future, when I switch contexts, first thing I'm going to ask is something along the lines of, &quot;What context do I need to help me help you?&quot; Or, if I'm lost, I can clearly communicate what I'm missing - if it's context that I'm missing - by stating, &quot;I think I'm missing some context. Can you bring me up to speed?&quot;&lt;/p&gt;
-&lt;p&gt;At least while sprinting, sprinters can definitely help me help them by providing the necessary context up-front. Perhaps this applies more generally as well: when we're asking someone for help, we may be able to help them out by asking them, &quot;What context from me would help you get up-to-speed here?&quot;&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/5/8/pycon-2019-sprints/">
@@ -1730,30 +1744,5 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
 &lt;/blockquote&gt;&lt;p&gt;This seems to dovetail well with the following convoluted intuition that I've had: &lt;strong&gt;if I fit a Bayesian model on the &quot;training&quot; set of the data, then update it with the &quot;test&quot; set, it's equivalent to just training with the whole dataset. With wide priors, if I fit with a smaller dataset, my posterior distribution will be wider than if I fit with the entire dataset. So... where possible, just train with the entire dataset.&lt;/strong&gt; That said, I've not had sufficient grounding in Bayesian stats (after all, still a newcomer) to justify this.&lt;/p&gt;
 &lt;p&gt;I certainly have more reading/learning to do here. Looks like something neat to explore in the short-term.&lt;/p&gt;
 </content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/11/14/the-value-of-thinking-simply/">
-    <title type="text">The Value of Thinking Simply</title>
-    <id>urn:uuid:6e2ed2bc-8784-3b10-8090-d356b1544593</id>
-    <updated>2017-11-14T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/11/14/the-value-of-thinking-simply/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Einstein has a famous quote that most people don't hear about.&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p class=&quot;mb-0&quot;&gt;It can scarcely be denied that the supreme goal of all theory is to make the irreducible basic elements as simple and as few as possible without having to surrender the adequate representation of a single datum of experience.&lt;/p&gt;
-&lt;footer class=&quot;blockquote-footer&quot;&gt;Albert Einstein&lt;/footer&gt;
-&lt;/blockquote&gt;&lt;p&gt;It instead, most people hear the misquote:&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote text&quot;&gt;
-&lt;p&gt;Everything should be made as simple as possible, but no simpler. &lt;/p&gt;
-&lt;footer class=&quot;blockquote-footer&quot;&gt;Misquoted version&lt;/footer&gt;
-&lt;/blockquote&gt;&lt;p&gt;Though a misquote, it's still a fair (though lopsided -- missing a sufficient translation of the latter half) simplification of the original.&lt;/p&gt;
-&lt;p&gt;In my work, I'm reminded of this point. I can choose to go for the complex fancy thing, but if I don't start from first principles, or start with simplistic approximations, I will struggle to have a sufficiently firm grasp on a problem to start tackling it. And therein lies the key, I think, in making progress on creative, intellectual work.&lt;/p&gt;
-&lt;p&gt;The past week, I've noticed myself not wasting time on mindless coding (which usually amounts to re-running code with tweaks), and instead devoting more time to strategic thinking. As an activity, strategic thinking isn't just sitting there and thinking. For me, it involves writing and re-writing what I'm thinking, drawing and re-drawing what I'm seeing, and arranging and composing the pieces that are floating in my mind. During that time of writing, drawing, arranging and composing, I'm questioning myself, &quot;What if I didn't have this piece?&quot;. Soon enough, the &quot;simplest complex version&quot; (SCV) of whatever I'm working on begins to emerge -- but it never really is the final version! I go back and prototype it in code, and then get stuck on something, and realize I left something out in that SCV, and re-draw the entire SCV from scratch.&lt;/p&gt;
-&lt;p&gt;Here's my misquote, then, offered up:&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt;Sufficiently simple, and only necessarily complex.&lt;/p&gt;
-&lt;footer class=&quot;blockquote-footer&quot;&gt;A further mutated version.&lt;/footer&gt;
-&lt;/blockquote&gt;</content>
   </entry>
 </feed>
