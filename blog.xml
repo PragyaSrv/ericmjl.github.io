@@ -2,13 +2,40 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
-  <updated>2019-06-30T00:00:00Z</updated>
+  <updated>2019-07-07T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/7/7/order-of-magnitude-is-more-than-accurate-enough/">
+    <title type="text">Order of magnitude is more than accurate enough</title>
+    <id>urn:uuid:544726e7-4d22-3318-9b25-bd2736b63d62</id>
+    <updated>2019-07-07T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/7/7/order-of-magnitude-is-more-than-accurate-enough/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;When I was in &lt;a href=&quot;https://scienceone.ubc.ca/&quot;&gt;Science One&lt;/a&gt; at UBC in 2006, our Physics professor, &lt;a href=&quot;https://www.phas.ubc.ca/users/mark-halpern&quot;&gt;Mark Halpern&lt;/a&gt;, said a quotable statement that has stuck for many years.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Order of magnitude is more than accurate enough.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;At the time, that statement rocked the class, myself included. We were classically taught that significant digits are significant, and that we have to keep track of them. But Mark’s quote seemed to throw all of that caution and precision in Physics into the wind. Did what we learn in Physics lab class not matter?&lt;/p&gt;
+&lt;p&gt;Turns out, there was one highly instructive activity that still hasn’t left my mind. We were asked, during a recitation, to estimate how many days the city of Vancouver could be powered for if we took a piece of chalk and converted its entire mass into energy. This clearly required estimation of chalk mass and Vancouver daily energy consumption, both of which we had no way of accurately knowing.&lt;/p&gt;
+&lt;p&gt;Regardless, I took it upon myself to carry significant digits in our calculation, while my recitation partner, Charles Au, was fully convinced that this wasn’t necessary, and so did all calculations order-of-magnitude. We debated and agreed upon what assumptions we needed to arrive at a solution, and then proceeded to do the same calculations, one with significant digits, the other without.&lt;/p&gt;
+&lt;p&gt;We reached the same conclusion.&lt;/p&gt;
+&lt;p&gt;More precisely, I remember obtaining a result along the lines of $6.2 \cdot 10^3$ days, while Charles obtained $10^4$ days. On an order of magnitude, more or less equivalent.&lt;/p&gt;
+&lt;p&gt;In retrospect, I shouldn’t have been so surprised. Mark is an astrophysicist, and at that scale, 1 or 2 significant digits might not carry the most importance; rather, getting into the right ballpark might be more important. At the same time, the recitation activity was a powerful first-hand experience of that last point: getting into the right ballpark first.&lt;/p&gt;
+&lt;p&gt;At the same time, I was also missing a second perspective, which then explains my surprise at Mark’s quote. Now that I’ve gone the route of more statistics-oriented work, I see a similar theme showing up. John Tukey said something along these lines:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The connection to order of magnitude estimates should be quite clear here. If we’re on an order of magnitude correct on the right questions, we can always refine the answer further. If we’re precisely answering the wrong question, God help us.&lt;/p&gt;
+&lt;p&gt;What does this mean for a data scientist? For one, it means that means approximate methods are usually good enough practically to get ourselves into the right ballpark; we can use pragmatic considerations to decide whether we need a more complicated model or not. It also means that when we’re building data pipelines, minimum viable products, which help us test whether we’re answering the right question, matter more than the fanciest deep learning model.&lt;/p&gt;
+&lt;p&gt;So yes, to mash those two quotes together:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Order of magnitude estimates on the right question are more useful than precise quantifications on the wrong question.&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/6/30/bone-marrow-donations/">
     <title type="text">Bone Marrow Donations</title>
     <id>urn:uuid:22191134-fa53-3619-9bd6-3d459afdf5d3</id>
@@ -1721,28 +1748,6 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
 &lt;p&gt;His tutorial repository can be found &lt;a href=&quot;https://github.com/ColCarroll/pydata_nyc2017&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&quot;top-to-bottom-line-by-line&quot;&gt;Top-To-Bottom, Line-By-Line&lt;/h3&gt;&lt;p&gt;This one was led by the ever-entertaining, ever-surprising James Powell. I wish the tutorial was recorded, because even though this is a &quot;novice&quot; tutorial, it nonetheless was still an eye-opening talk. Anybody who thinks they know Python should go listen to James' talks, whenever he gives them live - it's bound to be entertaining and eye-opening!&lt;/p&gt;
 &lt;h2 id=&quot;overall-thoughts&quot;&gt;Overall Thoughts&lt;/h2&gt;&lt;p&gt;I'm glad I made it to PyData NYC 2017 this year. Made many new friends and connections, and caught up with old friends in the PyData community. As always, learned a ton as well!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/11/16/bayesian-learning-and-overfitting/">
-    <title type="text">Bayesian Learning and Overfitting</title>
-    <id>urn:uuid:7af0a513-acb5-378e-bb47-4dd2a2f56dad</id>
-    <updated>2017-11-16T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/11/16/bayesian-learning-and-overfitting/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Yesterday, after I did my Boston Bayesians dry run talk, there was a point raised that I had only heard of once before: Bayesian learning methods don't overfit. Which means we're allowed to use all the data on hand. The point holds for simple Bayesian networks, and for more complicated deep neural nets.&lt;/p&gt;
-&lt;p&gt;Though I believe it, I wasn't 100% convinced of this myself, so I decided to check it up. I managed to get my hands on Radford Neal's book, Bayesian Learning for Neural Networks, and found the following quotable paragraphs:&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote blockquote-success&quot;&gt;
-&lt;p&gt;It is a common belief, however, that restricting the complexity of the models used for such tasks is a good thing, not just because of the obvious computational savings from using a simple model, but also because it is felt that too complex a model will overfit the training data, and perform poorly when applied to new cases. This belief is certainly justified if the model parameters are estimated by maximum likelihood. I will argue here that concern about overfitting is not a good reason to limit complexity in a Bayesian context.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;p&gt;A few paragraphs later, after explaining the frequentist procedure:&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt;From a Bayesian perspective, adjusting the complexity of the model based on the amount of training data makes no sense. A Bayesian defines a model, selects a prior, collects data, computes the posterior, and then makes predictions. There is no provision in the Bayesian framework for changing the model or the prior depending on how much data was collected. If the model and prior are correct for a thousand observations, they are correct for ten observations as well (though the impact of using an incorrect prior might be more serious with fewer observations). In practice, we might sometimes switch to a simpler model if it turns out that we have little data, and we feel that we will consequently derive little benefit from using a complex, computationally expensive model, but this would be a concession to practicality, rather than a theoretically desirable procedure.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;p&gt;Finally, in the following section after describing how neural networks are built:&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt;In a Bayesian model of this type, the role of the hyperparameters controlling the priors for weights is roughly analogous to the role of a weight decay constant in conventional training. With Bayesian training, values for these hyperparameters (more precisely, a distribution of values) can be found without the need for a validation set.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;p&gt;This seems to dovetail well with the following convoluted intuition that I've had: &lt;strong&gt;if I fit a Bayesian model on the &quot;training&quot; set of the data, then update it with the &quot;test&quot; set, it's equivalent to just training with the whole dataset. With wide priors, if I fit with a smaller dataset, my posterior distribution will be wider than if I fit with the entire dataset. So... where possible, just train with the entire dataset.&lt;/strong&gt; That said, I've not had sufficient grounding in Bayesian stats (after all, still a newcomer) to justify this.&lt;/p&gt;
-&lt;p&gt;I certainly have more reading/learning to do here. Looks like something neat to explore in the short-term.&lt;/p&gt;
 </content>
   </entry>
 </feed>
