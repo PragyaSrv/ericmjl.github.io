@@ -2,13 +2,47 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
-  <updated>2019-07-07T00:00:00Z</updated>
+  <updated>2019-07-15T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/7/15/scipy-2019-post-conference/">
+    <title type="text">SciPy 2019 Post-Conference</title>
+    <id>urn:uuid:287628a3-958d-3ec0-b59e-db5c450d2182</id>
+    <updated>2019-07-15T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/7/15/scipy-2019-post-conference/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;It’s my last day in Austin, TX, having finished a long week of conferencing at &lt;a href=&quot;https://www.scipy2019.scipy.org/&quot;&gt;SciPy 2019&lt;/a&gt;. This trip was very fruitful and productive! At the same time, I’m ready for a quieter change - meeting and talking with people does take a drain on my brain, and I have a mildly strong preference for quiet time over interaction time.&lt;/p&gt;
+&lt;h2 id=&quot;tutorials&quot;&gt;Tutorials&lt;/h2&gt;&lt;p&gt;I participated in the tutorials as an instructor for three tutorials, which I think have become my “data science toolkit”: &lt;a href=&quot;https://www.youtube.com/watch?v=2wvt6GPZl1U&quot;&gt;Bayesian statistical modeling&lt;/a&gt;, network analysis, and &lt;a href=&quot;https://www.youtube.com/watch?v=JPBz7-UCqRo&quot;&gt;deep learning&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Of the three, the one I had the most fun teaching was the deep learning one. The goal of that tutorial was to peel back a layer behind the frameworks and see what’s going on. To reinforce this and make it all concrete, we live coded a deep learning framework prototype, and it worked! (I didn’t plan for it, and so I was quite nervous while doing it, but we pulled it off as a class, and I think it reinforced the point about revealing what goes on underneath a framework.&lt;/p&gt;
+&lt;p&gt;I also had a lot of fun teaching the Bayesian statistical modeling tutorial, which I had co-created with Hugo Bowne-Anderson, and as always, my personal “evergreen” tutorial on Network Analysis always brings me joy, especially when we reach the end and talk about graphs and matrices. I think the material connecting linear algebra to graph concepts is one that the crowd enjoys, and I might emphasize it more going forth at the SciPy tutorials.&lt;/p&gt;
+&lt;h2 id=&quot;talks&quot;&gt;Talks&lt;/h2&gt;&lt;p&gt;This year, &lt;a href=&quot;https://www.youtube.com/watch?v=sSIT0rJh2OM&quot;&gt;I delivered a talk on &lt;code&gt;pyjanitor&lt;/code&gt;&lt;/a&gt;. Excluding lightning talks, this is probably the first time I’ve started my slides one day before having to deliver it (yikes!). Granted, I’ve had the outline in my head for a long time now, I guess having to do the talk was good impetus to actually get it done.&lt;/p&gt;
+&lt;p&gt;Apart from that, there’s a rich selection of talks at SciPy from which I think we can screen at work over lunches (Data Science YouTube). I particularly like &lt;a href=&quot;https://www.youtube.com/watch?v=J_aymk4YXhg&quot;&gt;the talk&lt;/a&gt; on &lt;a href=&quot;https://optuna.org/&quot;&gt;Optuna&lt;/a&gt;, a framework for hyperparameter optimization, and I think I’ll be using this tool going forwards.&lt;/p&gt;
+&lt;h2 id=&quot;sprints&quot;&gt;Sprints&lt;/h2&gt;&lt;p&gt;I did a sprint on &lt;code&gt;pyjanitor&lt;/code&gt; with my colleague Zach Barry. This sprint, we had about 20+ sprinters join us, the vast majority of them being first-time sprinters.&lt;/p&gt;
+&lt;p&gt;One thing that stuck for me, this time round, is how even first-timers have different degrees of experience. Some know &lt;code&gt;git&lt;/code&gt; while most others don’t; most don’t have any prior experience with &lt;a href=&quot;https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow&quot;&gt;Gitflow&lt;/a&gt;. I had an interaction that led me to realize it’s very important to state meaningfully what “beginner” means in concrete terms. For example, a “beginner” &lt;code&gt;pyjanitor&lt;/code&gt; contributor is probably a &lt;code&gt;pandas&lt;/code&gt; user, may or may not have used &lt;code&gt;git&lt;/code&gt; before, probably doesn’t know GitFlow. A common prerequisite quality amongst contributors would probably be that they would have the patience to&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Read the documentation,&lt;/li&gt;
+&lt;li&gt;Attempt at least one pass digesting the documentation, and &lt;/li&gt;
+&lt;li&gt;Ask questions regarding the intent behind something before asking for a change.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In terms of the things accomplished at this sprint, contributions mainly revolved around:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Improving language in the docs,&lt;/li&gt;
+&lt;li&gt;New functions, and&lt;/li&gt;
+&lt;li&gt;New example notebooks.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In addition to &lt;code&gt;pyjanitor&lt;/code&gt; sprinting, special thanks goes to &lt;a href=&quot;https://twitter.com/ocefpaf&quot;&gt;Felipe Fernandes&lt;/a&gt;, who helped me &lt;a href=&quot;https://anaconda.org/conda-forge/jax&quot;&gt;get &lt;code&gt;jax&lt;/code&gt; up onto conda-forge&lt;/a&gt;! SciPy is really the place where we can get to meet people &lt;em&gt;and&lt;/em&gt; get things done.&lt;/p&gt;
+&lt;h2 id=&quot;career-advice-learned&quot;&gt;Career advice learned&lt;/h2&gt;&lt;p&gt;While at SciPy, I had a chance to talk with Eric Jones, CEO of Enthought. Having described my current role at work, he mentioned how having a team like the one I’m on parked inside IT gives us a very unique position to connect data science work across the organization to the consumers of our data products. When I raised to him my frustrations regarding our infatuation with vendors &lt;em&gt;when FOSS alternatives clearly exist&lt;/em&gt;, his advice in return was essentially this:&lt;/p&gt;
+&lt;blockquote class=&quot;blockquote&quot;&gt;
+&lt;p&gt;Focus on leveling-up your colleagues skills and knowledge, keep pushing the education piece at work, and don’t worry about the money that gets spent on tooling.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;Having thought about this, I agree. Over time, we should let the results speak. At the same time, I want to help create the environment that I would like to work in: where my colleagues use the same tooling stack, are hacker-types, aren’t afraid to dig deep into the “computer stuff” and into the biology/chemistry, and have the necessary skill + desire to design machine learning systems to systematically accelerate discovery science.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/7/7/order-of-magnitude-is-more-than-accurate-enough/">
     <title type="text">Order of magnitude is more than accurate enough</title>
     <id>urn:uuid:544726e7-4d22-3318-9b25-bd2736b63d62</id>
@@ -1705,26 +1739,6 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
     </author>
     <content type="html">&lt;p&gt;The following thought hit my mind just last night.&lt;/p&gt;
 &lt;p&gt;Bayesian inference requires the computation of uncertainty. Computing that uncertainty is computationally expensive compared to simply computing point estimates/summary statistics. But when exactly is uncertainty useful, and more importantly, actionable? That's something I've not really appreciated in the past. It's probably not productive to be dogmatic about always computing uncertainty if that uncertainty is not actionable.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2017/12/13/visual-studio-code-a-new-microsoft/">
-    <title type="text">Visual Studio Code: A New Microsoft?</title>
-    <id>urn:uuid:e1fe6dc2-4043-3260-a1bf-98e1bcd1fd76</id>
-    <updated>2017-12-13T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2017/12/13/visual-studio-code-a-new-microsoft/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;During my week attending PyData NYC 2017, which was effectively a mini-mini-sabbatical from work, I got a chance to try out Visual Studio Code. Part of it was curiosity, having seen so many PyData participants using it; part of it was because of Steve Dowell, a core CPython contributor who works at Microsoft, who mentioned about the Python-friendly tools they added into VSCode.&lt;/p&gt;
-&lt;p&gt;I think VSCode is representative of a new Microsoft.&lt;/p&gt;
-&lt;p&gt;But first, let me describe what using it is like.&lt;/p&gt;
-&lt;h2 id=&quot;user-interface&quot;&gt;User Interface&lt;/h2&gt;&lt;p&gt;First off, the UI is beautiful. It's impossible to repeat enough how important the UI is. With minimal configuration, I made it basically match Atom's UI, which I had grown used to. It has an integrated terminal, and the colours are... wow. That shade of green, blue and red are amazing, ever just so slightly muted compared to the Terminal or iTerm. The background shade of black matches well with the rest of VSCode, and the colour scheme is changeable to match that of Atom's. The design feels... just right. Wow!&lt;/p&gt;
-&lt;h2 id=&quot;git-integration&quot;&gt;Git Integration&lt;/h2&gt;&lt;p&gt;Secondly, the integration with Git rivals Atom; in fact, there's a one-click &quot;sync&quot; button! It also has nice &lt;code&gt;git commit -am&lt;/code&gt; analog where I can add and commit all of the files simultaneously.&lt;/p&gt;
-&lt;h2 id=&quot;intellisense&quot;&gt;Intellisense&lt;/h2&gt;&lt;p&gt;Thirdly, IntelliSense is just amazing! I like how I can use it to look up a function signature just by mousing over the function name.&lt;/p&gt;
-&lt;h2 id=&quot;open-source&quot;&gt;Open Source&lt;/h2&gt;&lt;p&gt;Finally, it’s fully open source and back able, in the same vein as Atom, minus the bloat that comes from building on top of electron. Impressive stuff!&lt;/p&gt;
-&lt;h2 id=&quot;other-thoughts&quot;&gt;Other Thoughts&lt;/h2&gt;&lt;p&gt;Now, on the new Microsoft.&lt;/p&gt;
-&lt;p&gt;Only at the recent PyData NYC did I learn that Microsoft has hired almost half of the core CPython developers! Not only that, they are encouraged to continue their contributions into the CPython code base. In my view, that’s a pretty awesome development! It means the Python programming language will continue to have a strong corporate backing while also enjoying community support. Its a sign of a healthy ecosystem, IMO, and also a sign of Microsoft’s support for Open Source Software!&lt;/p&gt;
-&lt;p&gt;I’m more and more impressed by what Microsoft is doing for the Open Source community. I’m hoping they’ll continue up with this!!&lt;/p&gt;
 </content>
   </entry>
 </feed>
