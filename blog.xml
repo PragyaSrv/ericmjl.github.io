@@ -2,13 +2,75 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
-  <updated>2019-07-15T00:00:00Z</updated>
+  <updated>2019-07-21T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/7/21/how-to-lead-a-great-code-sprint/">
+    <title type="text">How to lead a great code sprint</title>
+    <id>urn:uuid:c2b85692-9b2a-30a2-a683-0ad286e6b9f8</id>
+    <updated>2019-07-21T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/7/21/how-to-lead-a-great-code-sprint/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;This blog post is the first in a series of two blog posts on participating in code sprints, and is the culmination of two other blog posts I’ve written on leading a sprint. In this post, I’ll be writing it from the perspective of what a sprint participant might appreciate from a sprint leader.&lt;/p&gt;
+&lt;h2 id=&quot;write-good-docs&quot;&gt;Write good docs&lt;/h2&gt;&lt;p&gt;Documentation scales you, the package maintainer. Good docs let others get going without needing your intervention, while bad docs create more confusion. Write good docs ahead-of-time on:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The purpose and scope of the project.&lt;/li&gt;
+&lt;li&gt;How to get setup for contributing&lt;/li&gt;
+&lt;li&gt;What contributors should look out for when contributing, including:&lt;ul&gt;
+&lt;li&gt;Code style&lt;/li&gt;
+&lt;li&gt;Function scope&lt;/li&gt;
+&lt;li&gt;Documentation requirements&lt;/li&gt;
+&lt;li&gt;Testing requirements&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;How contributors can contribute without necessarily providing code&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;require-documentation-as-a-first-contribution&quot;&gt;Require documentation as a first contribution&lt;/h2&gt;&lt;p&gt;This may not necessarily apply to all projects, but for small-ish enough projects, this might be highly relevant. Requiring documentation contributions as the first contribution has a few nice side effects for newcomer contributors:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;This enforces familiarity with the project before making contributions.&lt;/li&gt;
+&lt;li&gt;It’s a very egalitarian way to kick-off the sprints, reducing the probability of sprinter anxiety from falling behind.&lt;/li&gt;
+&lt;li&gt;This reduces the burden of new contributions for first-time sprinters: docs do not break code!&lt;/li&gt;
+&lt;li&gt;Apart from being non-intimidating, it can sometimes give rise to repetitive tasks that newcomer sprinters with which newcomers can practice git workflow.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;make-clear-who-should-sprint-with-your-project&quot;&gt;Make clear who should sprint with your project&lt;/h2&gt;&lt;p&gt;Mismatched expectations breed frustration; hence, making clear what pre-requisite knowledge participants should have can go a long way to reducing frustrations later on.&lt;/p&gt;
+&lt;p&gt;Drawing on my &lt;code&gt;pyjanitor&lt;/code&gt; experience, I would want participants to at the minimum be me of the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;pandas&lt;/code&gt; users who have frustrations with the library, and would like to make contributions, or&lt;/li&gt;
+&lt;li&gt;Individuals who wish to make a documentation contribution and don’t mind doing a fine-toothed pass over the docs to figure out what is unclear in the docs.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Defining your so-called “sprint audience” ahead-of-time can go a long way to making the sprint productive and friendly.&lt;/p&gt;
+&lt;h2 id=&quot;communicate-priorities-of-the-project&quot;&gt;Communicate priorities of the project&lt;/h2&gt;&lt;p&gt;Sprinters want to know that their contributions are going to be valued. Though it is easy to say, “come talk with me before you embark on a task”, the reality is that you, the sprint lead, are likely going to be extremely overbooked. One way to get around this, I think, is to have a high-level list of priorities for the sprint, which can help sprinters better strategize which tasks to tackle. Communicate this on a whiteboard, large sticky notes, or online Wiki page that you can direct people to.&lt;/p&gt;
+&lt;h2 id=&quot;have-a-publicly-viewable-file-lock&quot;&gt;Have a publicly-viewable “file lock”&lt;/h2&gt;&lt;p&gt;Merge conflicts will inadvertently show up if multiple people are contributing to the same file simultaneously. It helps to have a publicly-viewable “file lock” on, say, a whiteboard or large sticky notes, so that we know who is working on what file. This helps prevent you, the sprint lead, from accidentally getting two people to work on the same file, and then having to resolve merge conflicts later.&lt;/p&gt;
+&lt;p&gt;In the &lt;code&gt;pyjanitor&lt;/code&gt; sprints, I frequently approved two people working on the same notebook; resolving merge conflicts in the notebook JSON later proved to be a big pain! This lesson was one learned hard.&lt;/p&gt;
+&lt;h2 id=&quot;encourage-contribution-of-life-like-examples&quot;&gt;Encourage contribution of life-like examples&lt;/h2&gt;&lt;p&gt;If there are new package users in the crowd who want to get familiar with the package, then encouraging them to contribute life-like examples is a great way to have them make a contribution! This has some nice side effects:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;In creating the example, they may find limitations in the package that could form the substrate of future contributions.&lt;/li&gt;
+&lt;li&gt;By using the library in the creation of an example, they become users of the project themselves.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;celebrate-every-contribution&quot;&gt;Celebrate every contribution&lt;/h2&gt;&lt;p&gt;This one is particularly important for first-time contributors. Oftentimes, they have never done standard Gitflow, and that is intimidating enough. So it doesn’t matter if the contribution is nothing more than deleting an unnecessary plural &lt;code&gt;s&lt;/code&gt; or correcting a broken URL. We should celebrate that contribution, because they have now learned how to make a contribution (regardless of type), and can repeat the unfamiliar Gitflow pattern until they have it muscle memorized.&lt;/p&gt;
+&lt;p&gt;At the SciPy sprints, for the &lt;code&gt;pyjanitor&lt;/code&gt; project, once a contributor’s PR finished building and passed all checks, I brought my iPad over to their table to let them hit the Big Green Button on GitHub. This is one touch I am quite confident our sprinters loved!&lt;/p&gt;
+&lt;h2 id=&quot;recognize-and-assign-non-code-tasks&quot;&gt;Recognize and assign non-code tasks&lt;/h2&gt;&lt;p&gt;While code contributions are useful, I think a great way to encourage them to help out would be to have them help with non-code contributions. A few examples include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Debugging others’ setups&lt;/li&gt;
+&lt;li&gt;Triaging/tagging issues on your issue tracker&lt;/li&gt;
+&lt;li&gt;Talking with sprinters to help them prioritize&lt;/li&gt;
+&lt;li&gt;Social media sprinting for the project&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is because you, the sprinter, might have your hands full helping beginners, and so having as much help as possible is extremely helpful to you. Be sure, of course, the acknowledge them in some public way that expresses your appreciation of their effort, because they might not necessarily get into the commit record (which, by the way, is not the only way to keep track of contributions).&lt;/p&gt;
+&lt;h2 id=&quot;stay-humble-and-calm&quot;&gt;Stay humble and calm&lt;/h2&gt;&lt;p&gt;In open source software development, it is hard to find contributors who are willing to sustain an effort, and so any contributions are generally welcome (barring those that are clearly out of scope). Hence, as far as it is humanly possible, I would be inclined to express appreciation for contributors’ contributions.&lt;/p&gt;
+&lt;p&gt;One of the PyMC maintainers, &lt;a href=&quot;https://colindcarroll.com&quot;&gt;Colin Carroll&lt;/a&gt;, said something of a contribution that I wanted to make that stuck with me. The gist of it was as follows:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;It’s a contribution from someone who is willing, and I’d take that any day.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So yes, even though we may see our project as providing an opportunity for newcomers to contribute, the fact that they are willing to contribute is even more so an important thing to recognize! Gratitude makes more sense than entitlement here.&lt;/p&gt;
+&lt;p&gt;Staying calm is also important. It’s easy to get irritated because of all of the context switching that happens. Leverage the help you can get from your sprint co-leads to help shoulder the load. If you take good care of your mental state, you can help make the sprints fun and productive for others.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/7/15/scipy-2019-post-conference/">
     <title type="text">SciPy 2019 Post-Conference</title>
     <id>urn:uuid:287628a3-958d-3ec0-b59e-db5c450d2182</id>
@@ -79,7 +141,7 @@
     <updated>2019-07-07T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/7/7/scipy-2019-pre-conference/" />
     <author>
-      <name>Eric J. Am</name>
+      <name>Eric J. Ma</name>
     </author>
     <content type="html">&lt;p&gt;For the 6th year running, I’m out at UT Austin for &lt;a href=&quot;https://www.scipy2019.scipy.org/&quot;&gt;SciPy 2019&lt;/a&gt;! It’s one of my favorite conferences to attend, because the latest in data science tooling is well featured in the conference program, and I get to meet in-person a lot of the GitHub usernames that I interact with online.&lt;/p&gt;
 &lt;p&gt;I will be involved in three tutorials this year, which I think have become my data science toolkit: Bayesian stats, network science, and deep learning. Really excited to share my knowledge; my hope is that at least a few more people find the practical experience I’ve gained over the years useful, and that they can put it to good use in their own work too. This year is also the first year I’ve submitted a talk on pyjanitor, which is a package that I have developed with others for cleaning data, also excited to share this with the broader SciPy community!&lt;/p&gt;
@@ -1727,18 +1789,6 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
     <content type="html">&lt;p&gt;I was locked out of my work computer due to password reasons. (It's not human error - something about corporate management tools locked me out. Okay, well, that's human error too.) That said, I inadvertently gained a full two hours of offline time on Monday.&lt;/p&gt;
 &lt;p&gt;Those two hours turned out to be pretty productive. I spent some time sketching out my work projects, trying to make better sense of how the project could fit in a disease area researcher's workflow, and figuring out derivative analyses that could enhance the value to them. This was something I probably wouldn't be able to accomplish if I had the regular distractions of my computer nearby.&lt;/p&gt;
 &lt;p&gt;Seems like Cal Newport's &quot;digital distraction de-cluttering&quot; is a good thing to do. I must do more of it.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/1/8/bayesian-uncertainty-a-more-nuanced-view/">
-    <title type="text">Bayesian Uncertainty: A More Nuanced View</title>
-    <id>urn:uuid:5871bf8e-fbdf-35a3-a420-8267cb1128f3</id>
-    <updated>2018-01-08T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/1/8/bayesian-uncertainty-a-more-nuanced-view/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;The following thought hit my mind just last night.&lt;/p&gt;
-&lt;p&gt;Bayesian inference requires the computation of uncertainty. Computing that uncertainty is computationally expensive compared to simply computing point estimates/summary statistics. But when exactly is uncertainty useful, and more importantly, actionable? That's something I've not really appreciated in the past. It's probably not productive to be dogmatic about always computing uncertainty if that uncertainty is not actionable.&lt;/p&gt;
 </content>
   </entry>
 </feed>
