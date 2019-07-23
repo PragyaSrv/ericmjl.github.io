@@ -2,13 +2,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
-  <updated>2019-07-21T00:00:00Z</updated>
+  <updated>2019-07-23T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/7/23/t-distributed-likelihoods-are-kind-of-neat/">
+    <title type="text">T-distributed likelihoods are kind of neat</title>
+    <id>urn:uuid:54bb3560-6978-3b7d-8d06-1662c0477294</id>
+    <updated>2019-07-23T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/7/23/t-distributed-likelihoods-are-kind-of-neat/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;The Student’s T distribution is the generalization of the Gaussian and Cauchy distributions. How so? Basically by use of its “degrees of freedom” ($df$) parameter.&lt;/p&gt;
+&lt;p&gt;If we plot the probability density functions of the T distribution with varying degrees of freedom, and compare them to the Cauchy and Gaussian distributions, we get the following:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;../../../../../blog/2019/7/23/t-distributed-likelihoods-are-kind-of-neat/t-distributions.png&quot;&gt;&lt;img src=&quot;../../../../../blog/2019/7/23/t-distributed-likelihoods-are-kind-of-neat/t-distributions.png&quot; alt=&quot;Student T distributions with varying degrees of freedom.&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Notice that when $df=1$, the T distribution is identical to the Cauchy distribution, and that as $df$ increases, it gradually becomes more and more like the Normal distribution. At $df=30$, it is thought to be approximately enough Gaussian.&lt;/p&gt;
+&lt;p&gt;On its own, this is already quite useful; when placed in the context of a hierarchical Bayesian model, that’s when it gets even more interesting! In a hierarchical Bayesian model, we are using samples to estimate group-level parameters, but constraining group parameters to vary mostly like each other, unless evidence in the data suggests otherwise. If we allow the $df$ parameter to vary, then if some groups look more Cauchy while other groups look more Gaussian, this can be flexibly captured in the model.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/7/21/how-to-lead-a-great-code-sprint/">
     <title type="text">How to lead a great code sprint</title>
     <id>urn:uuid:c2b85692-9b2a-30a2-a683-0ad286e6b9f8</id>
@@ -1776,19 +1791,6 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
 &lt;p&gt;&lt;strong&gt;(1) Docs are an awesome place to start.&lt;/strong&gt; In fact, I made a few formatting mistakes in my first and second PRs that gave an opportunity for another guy to fix! Nothing is too small to be made as a contribution. FWIW, my first contribution to open source software were documentation fixes for &lt;code&gt;matplotlib&lt;/code&gt;, and that was a superb learning journey!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;(2) Friendly maintainers are crucial.&lt;/strong&gt; The PyMC dev team can basically be described as, &quot;generally super nice!&quot; From the online and in-person interactions I've had with them, there's little in the way of egos, they're always learning, always being generally helpful. If they weren't that way, I very likely would have second thoughts trying putting in a PR there.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;(3) Open source lets me fix bugs I find.&lt;/strong&gt; This lets me work at the pace that I need to, without having to wait for commercial vendors to provide update patches. If the patch that I find turns out to be useful for others, then the work I did can possibly save a ton of people's time as well. Win-win scenario!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/1/10/offline-time/">
-    <title type="text">Offline Time</title>
-    <id>urn:uuid:29863cc5-a7ec-3337-8c79-fcc65a0995ef</id>
-    <updated>2018-01-10T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/1/10/offline-time/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;I was locked out of my work computer due to password reasons. (It's not human error - something about corporate management tools locked me out. Okay, well, that's human error too.) That said, I inadvertently gained a full two hours of offline time on Monday.&lt;/p&gt;
-&lt;p&gt;Those two hours turned out to be pretty productive. I spent some time sketching out my work projects, trying to make better sense of how the project could fit in a disease area researcher's workflow, and figuring out derivative analyses that could enhance the value to them. This was something I probably wouldn't be able to accomplish if I had the regular distractions of my computer nearby.&lt;/p&gt;
-&lt;p&gt;Seems like Cal Newport's &quot;digital distraction de-cluttering&quot; is a good thing to do. I must do more of it.&lt;/p&gt;
 </content>
   </entry>
 </feed>
