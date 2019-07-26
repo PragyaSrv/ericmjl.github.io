@@ -109,6 +109,54 @@
 
   <!-- Set title style -->
   
+    <h1><a href="../../../blog/2019/5/10/context-switching/">Context Switching</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-05-10
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/programming/">
+          programming
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/coding/">
+          coding
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/data science/">
+          data science
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>Context switching is hard. I noticed this when I was at the PyCon sprints, where I was bouncing from sprinter to sprinter, trying to give them each the necessary attention to get their chosen sprint tasks done. After a while, it took a toll on my brain, and I started finding it hard to concentrate on the next problem.</p>
+<p>Under such circumstances, when one is context switching often (most hopefully out of one's own volition), how do we communicate that we need some ramp-up time, and how can others help us help them?</p>
+<p>I think one practical thing that can be done is to frequently communicate on each context switch that context ramp-up is needed. In the future, when I switch contexts, first thing I'm going to ask is something along the lines of, "What context do I need to help me help you?" Or, if I'm lost, I can clearly communicate what I'm missing - if it's context that I'm missing - by stating, "I think I'm missing some context. Can you bring me up to speed?"</p>
+<p>At least while sprinting, sprinters can definitely help me help them by providing the necessary context up-front. Perhaps this applies more generally as well: when we're asking someone for help, we may be able to help them out by asking them, "What context from me would help you get up-to-speed here?"</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../../../blog/2019/5/10/context-switching/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../../../blog/2019/5/10/pycon-2019-tutorial-and-conference-days/">PyCon 2019 Tutorial and Conference Days</a></h1>
   
 
@@ -407,111 +455,6 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../../../blog/2019/3/24/variance-explained/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../../../blog/2019/3/22/functools-partial/">Functools Partial</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-03-22
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/python/">
-          python
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/hacks/">
-          hacks
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/tips and tricks/">
-          tips and tricks
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/data science/">
-          data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/productivity/">
-          productivity
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/coding/">
-          coding
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>If you’ve done Python programming for a while, I think it pays off to know some little tricks that can improve the readability of your code and decrease the amount of repetition that goes on.</p>
-<p>One such tool is <code>functools.partial</code>. It took me a few years after my first introduction to <code>partial</code> before I finally understood why it was such a powerful tool.</p>
-<p>Essentially, what <code>partial</code> does is it wraps a function and sets a keyword argument to a constant. That’s it. What do we mean?</p>
-<p>Here’s a minimal example. Let’s say we have a function <code>f</code>, not written by me, but provided by someone else.</p>
-<div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="c1"># do something with a and b.</span>
-    <span class="k">return</span> <span class="n">result</span>
-</pre></div>
-<p>In my code, let’s say that I know that the value that <code>b</code> takes on in my app is always the tuple <code>(1, 'A')</code>. I now have a few options. The most obvious is assign the tuple <code>(1, 'A')</code> to a variable, and pass that in on every function call:</p>
-<div class="hll"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">)</span>
-<span class="n">result1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
-<span class="c1"># do some stuff.</span>
-<span class="n">result2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
-<span class="c1"># do more stuff.</span>
-<span class="c1"># ad nauseum</span>
-<span class="n">N</span> <span class="o">=</span> <span class="c1"># set value of N</span>
-<span class="n">resultN</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-<p>The other way I could do it is use <code>functools.partial</code> and just set the keyword argument <code>b</code> to equal to the tuple directly.</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
-<span class="n">f_</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">))</span>
-</pre></div>
-<p>Now, I can repeat the code above, but now only worrying about the keyword argument <code>a</code>:</p>
-<div class="hll"><pre><span></span><span class="n">result1</span> <span class="o">=</span> <span class="n">f_</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1"># do some stuff.</span>
-<span class="n">result2</span> <span class="o">=</span> <span class="n">f_</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="c1"># do more stuff.</span>
-<span class="c1"># ad nauseum</span>
-<span class="n">N</span> <span class="o">=</span> <span class="c1"># set value of N</span>
-<span class="n">resultN</span> <span class="o">=</span> <span class="n">f_</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
-</pre></div>
-<p>And there you go, that’s basically how <code>functools.partial</code> works in a nutshell.</p>
-<p>Now, where have I used this in real life?</p>
-<p>The most common place I have used it is in Flask. I have built Flask apps where I need to dynamically keep my Bokeh version synced up between the Python and JS libraries that get called. To ensure that my HTML templates have a consistent Bokeh version, I use the following pattern:</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh</span> <span class="kn">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">bkversion</span>
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">Flask</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span> 
-
-<span class="n">render_template</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">render_template</span><span class="p">,</span> <span class="n">bkversion</span><span class="o">=</span><span class="n">bkversion</span><span class="p">)</span>
-
-<span class="c1"># Flask app boilerplate</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-
-
-<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">home</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html.j2&#39;</span><span class="p">)</span>
-</pre></div>
-<p>Now, because I always have <code>bkversion</code> pre-specified in <code>render_template</code>, I never have to repeat it over every <code>render_template</code> function call.</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../../../blog/2019/3/22/functools-partial/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 

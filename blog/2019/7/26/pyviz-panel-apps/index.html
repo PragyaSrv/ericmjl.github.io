@@ -14,7 +14,12 @@
     </style>
 
     
-    
+    <!-- Syntax Highlighter. Use both pygments and hl.js. -->
+    <link rel="stylesheet" href="../../../../../static/pygments.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
 
     <!-- Google Analytics -->
     <script>
@@ -55,7 +60,7 @@
 
 </head>
 
-<title>Tag: data products - Eric J. Ma's Personal Site</title>
+<title>PyViz Panel Apps - Eric J. Ma's Personal Site</title>
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#local-links" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,14 +106,77 @@
     </nav>
     <div class="container">
         
-<h1><i class="fas fa-tag"></i> data products</h1>
-<ul>
   
-    <li><a href="../../../blog/2019/7/26/pyviz-panel-apps/">2019-07-26: PyViz Panel Apps</a></li>
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
   
-    <li><a href="../../../blog/2019/1/28/minimum-viable-products-matter/">2019-01-28: Minimum Viable Products (MVPs) Matter</a></li>
+    <h1>PyViz Panel Apps</h1>
   
-</ul>
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-07-26
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/data science/">
+          data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/data products/">
+          data products
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/app/">
+          app
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/deployment/">
+          deployment
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>I finally learned how to build and serve apps with Panel!</p>
+<p>Here are the key ideas:</p>
+<ol>
+<li>Prototype the app inside a Jupyter notebook. That gives the real-time feedback on whether your apps/widgets are working or not. </li>
+<li>The most important thing is that the final thing you package together is now a <code>.servable()</code> object.</li>
+<li>Use Panel’s <code>serve</code> command to test the app locally. It’s actually quite magical - the serve command can actually parse a Jupyter notebook and serve it up on a local web server.</li>
+<li>When you’ve confirmed that everything is working properly locally, Heroku is a great deployment option. Using the default Python buildpack and a <code>requirements.txt</code> file, one can easily specify the exact Python environment for deployment.</li>
+</ol>
+<p>As a pedagogical implementation, I put up a <a href="https://github.com/ericmjl/minimal-panel-app">minimal panel app on GitHub</a>, and also <a href="https://minimal-panel.herokuapp.com">served it up on Heroku</a>. Come check it out! I hope it’s useful for you.</p>
+
+  </div>
+
+  <a name="disqus"></a>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/pyviz-panel-apps"; this.page.url = "http://www.ericmjl.com/blog/2019/7/26/pyviz-panel-apps/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//ericmjl.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
     </div>
 

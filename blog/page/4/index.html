@@ -109,6 +109,111 @@
 
   <!-- Set title style -->
   
+    <h1><a href="../../../blog/2019/3/22/functools-partial/">Functools Partial</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-03-22
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/python/">
+          python
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/hacks/">
+          hacks
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/tips and tricks/">
+          tips and tricks
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/data science/">
+          data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/productivity/">
+          productivity
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/coding/">
+          coding
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>If you’ve done Python programming for a while, I think it pays off to know some little tricks that can improve the readability of your code and decrease the amount of repetition that goes on.</p>
+<p>One such tool is <code>functools.partial</code>. It took me a few years after my first introduction to <code>partial</code> before I finally understood why it was such a powerful tool.</p>
+<p>Essentially, what <code>partial</code> does is it wraps a function and sets a keyword argument to a constant. That’s it. What do we mean?</p>
+<p>Here’s a minimal example. Let’s say we have a function <code>f</code>, not written by me, but provided by someone else.</p>
+<div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="c1"># do something with a and b.</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+<p>In my code, let’s say that I know that the value that <code>b</code> takes on in my app is always the tuple <code>(1, 'A')</code>. I now have a few options. The most obvious is assign the tuple <code>(1, 'A')</code> to a variable, and pass that in on every function call:</p>
+<div class="hll"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="n">result1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
+<span class="c1"># do some stuff.</span>
+<span class="n">result2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
+<span class="c1"># do more stuff.</span>
+<span class="c1"># ad nauseum</span>
+<span class="n">N</span> <span class="o">=</span> <span class="c1"># set value of N</span>
+<span class="n">resultN</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+<p>The other way I could do it is use <code>functools.partial</code> and just set the keyword argument <code>b</code> to equal to the tuple directly.</p>
+<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="n">f_</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">))</span>
+</pre></div>
+<p>Now, I can repeat the code above, but now only worrying about the keyword argument <code>a</code>:</p>
+<div class="hll"><pre><span></span><span class="n">result1</span> <span class="o">=</span> <span class="n">f_</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># do some stuff.</span>
+<span class="n">result2</span> <span class="o">=</span> <span class="n">f_</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="c1"># do more stuff.</span>
+<span class="c1"># ad nauseum</span>
+<span class="n">N</span> <span class="o">=</span> <span class="c1"># set value of N</span>
+<span class="n">resultN</span> <span class="o">=</span> <span class="n">f_</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+<p>And there you go, that’s basically how <code>functools.partial</code> works in a nutshell.</p>
+<p>Now, where have I used this in real life?</p>
+<p>The most common place I have used it is in Flask. I have built Flask apps where I need to dynamically keep my Bokeh version synced up between the Python and JS libraries that get called. To ensure that my HTML templates have a consistent Bokeh version, I use the following pattern:</p>
+<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh</span> <span class="kn">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">bkversion</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span> 
+
+<span class="n">render_template</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">render_template</span><span class="p">,</span> <span class="n">bkversion</span><span class="o">=</span><span class="n">bkversion</span><span class="p">)</span>
+
+<span class="c1"># Flask app boilerplate</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">home</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html.j2&#39;</span><span class="p">)</span>
+</pre></div>
+<p>Now, because I always have <code>bkversion</code> pre-specified in <code>render_template</code>, I never have to repeat it over every <code>render_template</code> function call.</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../../../blog/2019/3/22/functools-partial/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../../../blog/2019/3/20/how-i-work/">How I Work</a></h1>
   
 
@@ -341,142 +446,6 @@
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../../../blog/2019/1/21/advi-scalable-bayesian-inference/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../../../blog/2018/12/25/conda-hacks-for-data-science-efficiency/">Conda hacks for data science efficiency</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2018-12-25
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/data science/">
-          data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/conda/">
-          conda
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/hacks/">
-          hacks
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>The <code>conda</code> package manager has, over the years, become an integral part of my workflow. I use it to manage project environments, and have built a bunch of very simple hacks around it that you can adopt too. I'd like to share them with you, alongside the rationale for using them.</p>
-<h2 id="hack-1:-set-up-your-.condarc">Hack #1: Set up your <code>.condarc</code></h2><p><strong>Why?</strong> It will save you a few keystrokes each time you want to do something with <code>conda</code>. For example, in my <code>.condarc</code>, I have the following:</p>
-<div class="hll"><pre><span></span><span class="c1"># Set the channels that the `conda install` command will </span>
-<span class="c1"># automatically search through.</span>
-<span class="nt">channels</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ericmjl</span>
-
-<span class="c1"># Always accept installation. Is convenient, but always </span>
-<span class="c1"># double-check!</span>
-<span class="nt">always_yes</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-</pre></div>
-<p>For more information on how to configure your <code>.condarc</code>, check the <a href="https://conda.io/docs/user-guide/configuration/use-condarc.html">online documentation</a>!</p>
-<h2 id="hack-2:-use-one-environment-spec-file-per-project">Hack #2: Use one environment spec file per project</h2><p>This assumes that you have the habit of putting all files related to one project inside one folder, using subdirectories for finer-grained organization.</p>
-<p><strong>Why?</strong> It will ensure that you have one version-controlled, authoritative specification for the packages that are associated with the project. This is good for (1) reproducibility, as you can send it to a colleague and have them reproduce the environment, and (2) will enable Hack #3, which I will showcase afterwards.</p>
-<div class="hll"><pre><span></span><span class="c1"># file name: environment.yml</span>
-
-<span class="c1"># Give your project an informative name</span>
-<span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">project-name</span>
-
-<span class="c1"># Specify the conda channels that you wish to grab packages from, in order of priority.</span>
-<span class="nt">channels</span><span class="p">:</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ericmjl</span>
-
-<span class="c1"># Specify the packages that you would like to install inside your environment. Version numbers are allowed, and conda will automatically use its dependency solver to ensure that all packages work with one another.</span>
-<span class="nt">dependencies</span><span class="p">:</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python=3.7</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">jupyterlab</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">scipy</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">numpy</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pandas</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pyjanitor</span>
-<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pandas</span>
-<span class="c1"># There are some packages which are not conda-installable. You can put the pip dependencies here instead.</span>
-<span class="p p-Indicator">-</span> <span class="nt">pip</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tqdm</span>  <span class="c1"># for example only, tqdm is actually available by conda.</span>
-</pre></div>
-<p>A hack that I have related to this is that I use TextExpander shortcut to populate a starting environment spec file.</p>
-<p>Additionally, if I want to install a new package, rather than simply typing <code>conda install &lt;packagename&gt;</code>, I will add the package to the environment spec file, and then type <code>conda env update -f environment.yml</code>, as more often than not, my default is to continue using the package I added.</p>
-<p>For more details on what the environment spec file is all about, <a href="https://conda.io/docs/user-guide/tasks/manage-environments.html#create-env-file-manually">read the online docs</a>!</p>
-<h2 id="hack-3:-use-conda-auto-env">Hack 3: use <code>conda-auto-env</code></h2><p>Written by <a href="https://chdoig.github.io">Christine Doig</a>, <a href="https://github.com/chdoig/conda-auto-env"><code>conda-auto-env</code></a> is a bash hack that enables you to automatically activate an environment once you enter into a project directory, <em>as long as an <code>environment.yml</code> file already exists in the directory</em>. If the environment does not already exist, then <code>conda-auto-env</code> will automatically create one based on the <code>environment.yml</code> file in your project directory.</p>
-<p><strong>Why?</strong> If you have many projects that you are working on, then it will greatly reduce the amount of effort used to remember which project to activate.</p>
-<p><code>conda-auto-env</code> looks like this:</p>
-<div class="hll"><pre><span></span><span class="c1"># File: .conda-auto-env</span>
-<span class="c1">#!/bin/bash</span>
-
-<span class="k">function</span> conda_auto_env<span class="o">()</span> <span class="o">{</span>
-  <span class="k">if</span> <span class="o">[</span> -e <span class="s2">&quot;environment.yml&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="c1"># echo &quot;environment.yml file found&quot;</span>
-    <span class="nv">ENV</span><span class="o">=</span><span class="k">$(</span>head -n <span class="m">1</span> environment.yml <span class="p">|</span> cut -f2 -d <span class="s1">&#39; &#39;</span><span class="k">)</span>
-    <span class="c1"># Check if you are already in the environment</span>
-    <span class="k">if</span> <span class="o">[[</span> <span class="nv">$PATH</span> !<span class="o">=</span> *<span class="nv">$ENV</span>* <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-      <span class="c1"># Check if the environment exists</span>
-      conda activate <span class="nv">$ENV</span>
-      <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-        :
-      <span class="k">else</span>
-        <span class="c1"># Create the environment and activate</span>
-        <span class="nb">echo</span> <span class="s2">&quot;Conda env &#39;</span><span class="nv">$ENV</span><span class="s2">&#39; doesn&#39;t exist.&quot;</span>
-        conda env create -q
-        conda activate <span class="nv">$ENV</span>
-      <span class="k">fi</span>
-    <span class="k">fi</span>
-  <span class="k">fi</span>
-<span class="o">}</span>
-
-<span class="nb">export</span> <span class="nv">PROMPT_COMMAND</span><span class="o">=</span>conda_auto_env
-</pre></div>
-<p>To use it, you have two options. You can either copy/paste the whole original script into your <code>.bashrc</code>, or you can put it in a file called <code>.conda-auto-env</code>, and source it from your <code>.bashrc</code>. I recommend the latter, as it makes managing your <code>.bashrc</code> easier:</p>
-<div class="hll"><pre><span></span><span class="c1"># File: .bashrc</span>
-<span class="nb">source</span> /path/to/.conda-auto-env
-</pre></div>
-<h2 id="hack-4:-hijack-bash-aliases-for-conda-commands">Hack 4: hijack bash aliases for <code>conda</code> commands</h2><p>I use aliases to save myself a few keystrokes whenever I'm at the terminal. This is a generalizable bash hack, but here it is as applied to <code>conda</code> commands.</p>
-<p>Anyways, these are the commands that I use most often, which I have found it useful to alias:</p>
-<div class="hll"><pre><span></span><span class="c1"># File: .aliases</span>
-<span class="nb">alias</span> <span class="nv">ceu</span><span class="o">=</span><span class="s2">&quot;conda env update&quot;</span>
-<span class="nb">alias</span> <span class="nv">cl</span><span class="o">=</span><span class="s2">&quot;conda list&quot;</span>
-<span class="nb">alias</span> <span class="nv">ci</span><span class="o">=</span><span class="s2">&quot;conda install&quot;</span>
-<span class="nb">alias</span> <span class="nv">cr</span><span class="o">=</span><span class="s2">&quot;conda remove&quot;</span>
-</pre></div>
-<p>Make sure your aliases don't clash with existing commands that you use!</p>
-<p>Then, source <code>.aliases</code> in your <code>. bashrc</code>:</p>
-<div class="hll"><pre><span></span><span class="c1"># File: .bashrc</span>
-<span class="nb">source</span> /path/to/.aliases
-</pre></div>
-<p>Now, all of your defined aliases will be available in your bash shell.</p>
-<p>The idea/pattern, as I mentioned earlier, is generalizable beyond just bash commands. (I have <code>ls</code> aliased for <code>exa</code>, and <code>l</code> aliased for <code>ls</code> - the epitome of laziness!)</p>
-<h2 id="conclusion">Conclusion</h2><p>I hope you found these bash and <code>conda</code> hacks to be useful. Hopefully they will help you become more productive and efficient!</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../../../blog/2018/12/25/conda-hacks-for-data-science-efficiency/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 
