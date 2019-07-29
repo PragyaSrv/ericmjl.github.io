@@ -60,7 +60,7 @@
 
 </head>
 
-<title>How to lead a great code sprint - Eric J. Ma's Personal Site</title>
+<title>How to be a great code sprinter - Eric J. Ma's Personal Site</title>
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#local-links" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,7 +113,7 @@
 
   <!-- Set title style -->
   
-    <h1>How to lead a great code sprint</h1>
+    <h1>How to be a great code sprinter</h1>
   
 
   <!-- Append author -->
@@ -122,7 +122,7 @@
     
       <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
     
-    on 2019-07-21
+    on 2019-07-29
   
   </p>
   <!-- Append tags after author -->
@@ -156,58 +156,27 @@
   
 
   <!-- Put post body -->
-  <p>This blog post is the first in a series of two blog posts on participating in code sprints, and is the culmination of two other blog posts I’ve written on leading a sprint. In this post, I’ll be writing it from the perspective of what a sprint participant might appreciate from a sprint leader.</p>
-<h2 id="write-good-docs">Write good docs</h2><p>Documentation scales you, the package maintainer. Good docs let others get going without needing your intervention, while bad docs create more confusion. Write good docs ahead-of-time on:</p>
+  <p>This blog post is the second in a series of two on participating in code sprints. The first one is <a href="https://ericmjl.github.io/blog/2019/7/21/how-to-lead-a-great-code-sprint/">here</a>. In this post, I will write about how a sprinter themselves can also help contribute to a positive sprint experience all-ways.</p>
+<h2 id="read-the-docs-to-understand-the-scope-of-the-project">Read the docs to understand the scope of the project</h2><p>As a sprinter, we may often have preconceived notions about what a project is about. It helps to have an accurate view on what a project is and isn’t about. This is oftentimes best accomplished by reading the documentation of that project, assuming the docs are well-written. Doing so can help you better align what you think should be done on the project with what the package maintainer sees as priorities for the project.</p>
+<h2 id="be-ready-to-make-documentation-contributions-of-any-scale">Be ready to make documentation contributions of any scale</h2><p>Documentation is oftentimes the hardest thing for a package maintainer to write, because it often entails slowing down to a beginner’s speed (an unnatural speed at this point), while knowing one’s own blind spots on where a beginner would stumble (also challenging to do).</p>
+<p>If you are newcomer sprinter, by focusing on the sections of the docs that pertain to “processes” (e.g. getting development environment setup) and slowly working through them and documenting what’s missing, that can go a long way to helping other newcomers get set up as well. Anything that the maintainer leaves out may need to be made explicitly clear - and you can help make it clear!</p>
+<p>Package maintainers, and prior contributors, are human. That means that there inadvertently may be errors in language that may have been inserted into the package. Any small patch that fixes the docs, including even small typographical errors, can be very helpful to improving documentation quality.</p>
+<h2 id="dont-be-afraid-to-ask-questions...">Don’t be afraid to ask questions...</h2><p>You will find that asking questions can really accelerate your own progress on the project. This is important for getting unstuck, wherever you might be stuck.</p>
+<h2 id="...but-also-try-keep-your-questions-to-the-non-obvious-things.">...but also try keep your questions to the non-obvious things.</h2><p>That said, asking the too-simple questions that can be answered by a Google query is likely going to steal time and attention away from other sprinters who might have more substantial questions on hand.</p>
+<p>A pet peeve of mine is asking questions that can be answered in the docs. Asking these questions of the maintainer doesn’t reflect positively on you, the sprinter. Whether or not you intended, what often gets received/communicated to the maintainer is carelessness and a lack of attention to detail, the opposite of both being generally good qualities to possess and project.</p>
+<p>There’s a pretty broad balance point between the two, so don’t feel inhibited by fear of not hitting a precise balance between looking for docs and asking questions.</p>
+<h2 id="for-any-feature-requests-try-to-be-ready-with-a-proposed-implementation">For any feature requests, try to be ready with a proposed implementation</h2><p>This one I find very important. Having a proposed implementation on hand for a thing that you think should be in the library goes a long way to helping the package maintainer (or other contributors) see what exactly you’re trying to accomplish with that feature. Having a sketch on-hand makes it much easier for the package maintainer to say “yes” to the new feature, and having written the documentation and a proposed suite of tests for that new feature makes it <em>even easier</em>.</p>
+<p>If you aren’t able to propose an implementation, then raising an inquiry rather than a request makes a world of difference in how a package maintainer perceives the communication of the issue at hand.</p>
+<p>As an example:</p>
 <ul>
-<li>The purpose and scope of the project.</li>
-<li>How to get setup for contributing</li>
-<li>What contributors should look out for when contributing, including:<ul>
-<li>Code style</li>
-<li>Function scope</li>
-<li>Documentation requirements</li>
-<li>Testing requirements</li>
+<li><strong>Request</strong>: “Package X should be able to do Y.”</li>
+<li><strong>Inquiry</strong>: “Is it within scope for package X to be able to do Y?” or “Has this feature Y been considered before?”</li>
 </ul>
-</li>
-<li>How contributors can contribute without necessarily providing code</li>
-</ul>
-<h2 id="require-documentation-as-a-first-contribution">Require documentation as a first contribution</h2><p>This may not necessarily apply to all projects, but for small-ish enough projects, this might be highly relevant. Requiring documentation contributions as the first contribution has a few nice side effects for newcomer contributors:</p>
-<ol>
-<li>This enforces familiarity with the project before making contributions.</li>
-<li>It’s a very egalitarian way to kick-off the sprints, reducing the probability of sprinter anxiety from falling behind.</li>
-<li>This reduces the burden of new contributions for first-time sprinters: docs do not break code!</li>
-<li>Apart from being non-intimidating, it can sometimes give rise to repetitive tasks that newcomer sprinters with which newcomers can practice git workflow.</li>
-</ol>
-<h2 id="make-clear-who-should-sprint-with-your-project">Make clear who should sprint with your project</h2><p>Mismatched expectations breed frustration; hence, making clear what pre-requisite knowledge participants should have can go a long way to reducing frustrations later on.</p>
-<p>Drawing on my <code>pyjanitor</code> experience, I would want participants to at the minimum be me of the following:</p>
-<ol>
-<li><code>pandas</code> users who have frustrations with the library, and would like to make contributions, or</li>
-<li>Individuals who wish to make a documentation contribution and don’t mind doing a fine-toothed pass over the docs to figure out what is unclear in the docs.</li>
-</ol>
-<p>Defining your so-called “sprint audience” ahead-of-time can go a long way to making the sprint productive and friendly.</p>
-<h2 id="communicate-priorities-of-the-project">Communicate priorities of the project</h2><p>Sprinters want to know that their contributions are going to be valued. Though it is easy to say, “come talk with me before you embark on a task”, the reality is that you, the sprint lead, are likely going to be extremely overbooked. One way to get around this, I think, is to have a high-level list of priorities for the sprint, which can help sprinters better strategize which tasks to tackle. Communicate this on a whiteboard, large sticky notes, or online Wiki page that you can direct people to.</p>
-<h2 id="have-a-publicly-viewable-file-lock">Have a publicly-viewable “file lock”</h2><p>Merge conflicts will inadvertently show up if multiple people are contributing to the same file simultaneously. It helps to have a publicly-viewable “file lock” on, say, a whiteboard or large sticky notes, so that we know who is working on what file. This helps prevent you, the sprint lead, from accidentally getting two people to work on the same file, and then having to resolve merge conflicts later.</p>
-<p>In the <code>pyjanitor</code> sprints, I frequently approved two people working on the same notebook; resolving merge conflicts in the notebook JSON later proved to be a big pain! This lesson was one learned hard.</p>
-<h2 id="encourage-contribution-of-life-like-examples">Encourage contribution of life-like examples</h2><p>If there are new package users in the crowd who want to get familiar with the package, then encouraging them to contribute life-like examples is a great way to have them make a contribution! This has some nice side effects:</p>
-<ol>
-<li>In creating the example, they may find limitations in the package that could form the substrate of future contributions.</li>
-<li>By using the library in the creation of an example, they become users of the project themselves.</li>
-</ol>
-<h2 id="celebrate-every-contribution">Celebrate every contribution</h2><p>This one is particularly important for first-time contributors. Oftentimes, they have never done standard Gitflow, and that is intimidating enough. So it doesn’t matter if the contribution is nothing more than deleting an unnecessary plural <code>s</code> or correcting a broken URL. We should celebrate that contribution, because they have now learned how to make a contribution (regardless of type), and can repeat the unfamiliar Gitflow pattern until they have it muscle memorized.</p>
-<p>At the SciPy sprints, for the <code>pyjanitor</code> project, once a contributor’s PR finished building and passed all checks, I brought my iPad over to their table to let them hit the Big Green Button on GitHub. This is one touch I am quite confident our sprinters loved!</p>
-<h2 id="recognize-and-assign-non-code-tasks">Recognize and assign non-code tasks</h2><p>While code contributions are useful, I think a great way to encourage them to help out would be to have them help with non-code contributions. A few examples include:</p>
-<ul>
-<li>Debugging others’ setups</li>
-<li>Triaging/tagging issues on your issue tracker</li>
-<li>Talking with sprinters to help them prioritize</li>
-<li>Social media sprinting for the project</li>
-</ul>
-<p>This is because you, the sprinter, might have your hands full helping beginners, and so having as much help as possible is extremely helpful to you. Be sure, of course, the acknowledge them in some public way that expresses your appreciation of their effort, because they might not necessarily get into the commit record (which, by the way, is not the only way to keep track of contributions).</p>
-<h2 id="stay-humble-and-calm">Stay humble and calm</h2><p>In open source software development, it is hard to find contributors who are willing to sustain an effort, and so any contributions are generally welcome (barring those that are clearly out of scope). Hence, as far as it is humanly possible, I would be inclined to express appreciation for contributors’ contributions.</p>
-<p>One of the PyMC maintainers, <a href="https://colindcarroll.com">Colin Carroll</a>, said something of a contribution that I wanted to make that stuck with me. The gist of it was as follows:</p>
-<blockquote><p>It’s a contribution from someone who is willing, and I’d take that any day.</p>
-</blockquote>
-<p>So yes, even though we may see our project as providing an opportunity for newcomers to contribute, the fact that they are willing to contribute is even more so an important thing to recognize! Gratitude makes more sense than entitlement here.</p>
-<p>Staying calm is also important. It’s easy to get irritated because of all of the context switching that happens. Leverage the help you can get from your sprint co-leads to help shoulder the load. If you take good care of your mental state, you can help make the sprints fun and productive for others.</p>
+<p>The latter are more thoughtful, and communicates much less a sense of entitlement on the part of the sprinter’s request.</p>
+<h2 id="were-all-building-mental-maps-of-each-others-knowledge">We’re all building mental maps of each others’ knowledge</h2><p>When two colleagues meet for the first time, we have to build a mental model of each others’ strengths. At a sprint, the package maintainer has to multiply this by however many people are sprinting.</p>
+<p>If they are making an effort to map your skills against theirs, they may be very verbose, asking lots of questions to clarify what you do and don’t know. It pays to be patient here.</p>
+<p>If they don’t have the bandwidth to do so (and this is a charitable description for some maintainers), then they may be glossing over detail. Rather than being stuck, it pays to interrupt them gently and clarify. (Taking notes is a very good way of communicating that you’re treating this process seriously too!)</p>
+<h2 id="give-your-sprint-leader-sufficient-context">Give your sprint leader sufficient context</h2><p>As mentioned above, the sprint leader will oftentimes be context switching from person to person. It’s mentally exhausting, so spoon-feeding a bit more context (such as the thing you’re working on), and condensing your question to the essentials and asking it very precisely can go a long way to helping your sprint leader help you better.</p>
 
   </div>
 
@@ -215,7 +184,7 @@
   <div class="comments">
 <div id="disqus_thread"></div>
 <script>
-  var disqus_config = function() { this.page.identifier = "/blog/how-to-lead-a-great-code-sprint"; this.page.url = "http://www.ericmjl.com/blog/2019/7/21/how-to-lead-a-great-code-sprint/"; };
+  var disqus_config = function() { this.page.identifier = "/blog/how-to-be-a-great-code-sprinter"; this.page.url = "http://www.ericmjl.com/blog/2019/7/29/how-to-be-a-great-code-sprinter/"; };
   (function() {
     var d = document, s = d.createElement('script');
     s.src = '//ericmjl.disqus.com/embed.js';
