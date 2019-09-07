@@ -109,6 +109,74 @@
 
   <!-- Set title style -->
   
+    <h1><a href="../blog/2019/9/7/dokku-building-an-internal-heroku-at-work/">Dokku: Building an internal Heroku at work</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-09-07
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/data apps/">
+          data apps
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/data science/">
+          data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/devops/">
+          devops
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/deployment/">
+          deployment
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>At work, we don’t have a service that has the simplicity of Heroku. Part of it is that we’re still behind what’s available for free in my FOSS life (both commercial and FOSS offerings), and cybersecurity tends to be a gatekeeper against adoption of new things, which is a reality I have to face at work.</p>
+<p>BUT! I am unwilling to simply bow down to this secnario. “There’s got to be a better way.”</p>
+<p>What does that mean? It means if we want a Heroku-like thing internally, we have to hack together workarounds.</p>
+<p>Enter <a href="http://dokku.viewdocs.io/dokku/">Dokku</a>!</p>
+<p>What is it? It’s a FOSS implementation of the functionality that Heroku provides. It’s only slightly more involved than Heroku, and gives us a really nice taste of what’s possible with Heroku.</p>
+<p>Dokku claims to be the “smallest PaaS implementation you’ve ever seen”, and I fully believe it. The maintainers have done a wonderful thing, making the installation process as simple and clean as possible. I’ve successfully installed it on a bare DigitalOcean droplet and on my home Linux tower. I’ve also successfully installed it in EC2 instances at work, albeit needing a few minor modifications to the script they provide.</p>
+<h2 id="why-would-i-want-to-use-dokku?">Why would I want to use Dokku?</h2><p>Taking Dokku on my DigitalOcean droplet as an example, what it effectively provides is a self-hosted Heroku.</p>
+<p>This means you can get 95% of the convenience that Heroku offers, except done in-house. This can be handy if you’ve got cybersecurity standing in the way of awesome convenience, or if finance isn’t willing to shell out the moolah.</p>
+<h2 id="what-can-we-do-with-dokku?">What can we do with Dokku?</h2><p>Here’s a few neat things that we can do.</p>
+<ol>
+<li>We can provision a database to run on the same compute node as the app, and then link them together. If your compute node is “beefy” enough (RAM/CPU/storage-wise) to handle both the database and the app (and I mean, I’m confident that most disposable apps aren’t going to be at a large scale), then it can be pretty handy, because it means we save on latency.</li>
+<li>We can deploy apps using either Heroku buildpacks (which look for Procfiles) or using Dockerfiles. Docker containers can be easier to maintain if we have a large and/or complex <code>conda</code> environment, in my opinion, as we can reuse the existing environment spec, but Procfiles are much nicer for smaller projects. This fits with the paradigm of “declaring what you need”, rather than “programming what you need”. </li>
+<li>Because Dokku is managing everything through isolated Docker containers, we can actually enter into a Docker container and muck around to debug, without worrying about breaking the broader system. I realize now how neat it is to have containerization, but without a unified front-end interface to manage the containers, networking interfaces, and environment variables, it’s tough to keep everything straight. Dokku provides that front-end interface.</li>
+</ol>
+<h2 id="what-are-you-deploying-right-now?">What are you deploying right now?</h2><p>On my DigitalOcean box, which I use for personal projects, I have deployed both the “Getting Started” Ruby app that Heroku provides as well as a <a href="../blog/2019/9/7/dokku-building-an-internal-heroku-at-work/minimal-panel.ericmjl.com">minimal app</a> showcasing a minimal dashboard using <a href="../blog/2019/9/7/dokku-building-an-internal-heroku-at-work/panel.pyviz.org">Panel</a>.</p>
+<p>The easy part was getting Dokku up and running. The hard part, though, was getting URLs and DNSs right. It took some debugging to get that work correctly.</p>
+<p>In particular, Dokku uses a concept called virtual hosts (<code>VHOSTS</code>) to route from the Dokku host to individual containers. For example, to get <code>minimal-panel.ericmjl.com</code> up and running correctly, I had to ensure that <code>*.ericmjl.com</code> was routed to my DigitalOcean box.</p>
+<h2 id="how-have-we-used-this-at-work?">How have we used this at work?</h2><p>At work, I just finished prototyping the use of Dokku on EC2. In particular, I was able to deploy both Dockerfile-based and Procfile-based projects. Once again, getting a domain was the most troublesome part of this project; spinning up an EC2 instance and configuring it became easy using a simple Bash script which we executed on each test spin-up machine.</p>
+<h2 id="what-changes-between-heroku-and-dokku?">What changes between Heroku and Dokku?</h2><p>The biggest thing I found is that I need to at least have SSH-access to the compute box that is running Dokku. This is because what we would usually configure on Heroku’s web interface (e.g. environment variables), we would instead configure using <code>dokku</code>’s command-line interface via SSH. Hence, not being afraid of the CLI is important.</p>
+<h2 id="whats-your-verdict?">What’s your verdict?</h2><p>If you know Heroku, Dokku gets you 95% of the convenience you’re used to, plus quite a bit more flexibility to customize it to your own compute environment.</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../blog/2019/9/7/dokku-building-an-internal-heroku-at-work/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../blog/2019/7/29/how-to-be-a-great-code-sprinter/">How to be a great code sprinter</a></h1>
   
 
@@ -391,74 +459,6 @@
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../blog/2019/7/21/how-to-lead-a-great-code-sprint/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2019/7/15/scipy-2019-post-conference/">SciPy 2019 Post-Conference</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-07-15
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/conference/">
-          conference
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/scipy2019/">
-          scipy2019
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>It’s my last day in Austin, TX, having finished a long week of conferencing at <a href="https://www.scipy2019.scipy.org/">SciPy 2019</a>. This trip was very fruitful and productive! At the same time, I’m ready for a quieter change - meeting and talking with people does take a drain on my brain, and I have a mildly strong preference for quiet time over interaction time.</p>
-<h2 id="tutorials">Tutorials</h2><p>I participated in the tutorials as an instructor for three tutorials, which I think have become my “data science toolkit”: <a href="https://www.youtube.com/watch?v=2wvt6GPZl1U">Bayesian statistical modeling</a>, network analysis, and <a href="https://www.youtube.com/watch?v=JPBz7-UCqRo">deep learning</a>.</p>
-<p>Of the three, the one I had the most fun teaching was the deep learning one. The goal of that tutorial was to peel back a layer behind the frameworks and see what’s going on. To reinforce this and make it all concrete, we live coded a deep learning framework prototype, and it worked! (I didn’t plan for it, and so I was quite nervous while doing it, but we pulled it off as a class, and I think it reinforced the point about revealing what goes on underneath a framework.</p>
-<p>I also had a lot of fun teaching the Bayesian statistical modeling tutorial, which I had co-created with Hugo Bowne-Anderson, and as always, my personal “evergreen” tutorial on Network Analysis always brings me joy, especially when we reach the end and talk about graphs and matrices. I think the material connecting linear algebra to graph concepts is one that the crowd enjoys, and I might emphasize it more going forth at the SciPy tutorials.</p>
-<h2 id="talks">Talks</h2><p>This year, <a href="https://www.youtube.com/watch?v=sSIT0rJh2OM">I delivered a talk on <code>pyjanitor</code></a>. Excluding lightning talks, this is probably the first time I’ve started my slides one day before having to deliver it (yikes!). Granted, I’ve had the outline in my head for a long time now, I guess having to do the talk was good impetus to actually get it done.</p>
-<p>Apart from that, there’s a rich selection of talks at SciPy from which I think we can screen at work over lunches (Data Science YouTube). I particularly like <a href="https://www.youtube.com/watch?v=J_aymk4YXhg">the talk</a> on <a href="https://optuna.org/">Optuna</a>, a framework for hyperparameter optimization, and I think I’ll be using this tool going forwards.</p>
-<h2 id="sprints">Sprints</h2><p>I did a sprint on <code>pyjanitor</code> with my colleague Zach Barry. This sprint, we had about 20+ sprinters join us, the vast majority of them being first-time sprinters.</p>
-<p>One thing that stuck for me, this time round, is how even first-timers have different degrees of experience. Some know <code>git</code> while most others don’t; most don’t have any prior experience with <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow">Gitflow</a>. I had an interaction that led me to realize it’s very important to state meaningfully what “beginner” means in concrete terms. For example, a “beginner” <code>pyjanitor</code> contributor is probably a <code>pandas</code> user, may or may not have used <code>git</code> before, probably doesn’t know GitFlow. A common prerequisite quality amongst contributors would probably be that they would have the patience to</p>
-<ol>
-<li>Read the documentation,</li>
-<li>Attempt at least one pass digesting the documentation, and </li>
-<li>Ask questions regarding the intent behind something before asking for a change.</li>
-</ol>
-<p>In terms of the things accomplished at this sprint, contributions mainly revolved around:</p>
-<ul>
-<li>Improving language in the docs,</li>
-<li>New functions, and</li>
-<li>New example notebooks.</li>
-</ul>
-<p>In addition to <code>pyjanitor</code> sprinting, special thanks goes to <a href="https://twitter.com/ocefpaf">Felipe Fernandes</a>, who helped me <a href="https://anaconda.org/conda-forge/jax">get <code>jax</code> up onto conda-forge</a>! SciPy is really the place where we can get to meet people <em>and</em> get things done.</p>
-<h2 id="career-advice-learned">Career advice learned</h2><p>While at SciPy, I had a chance to talk with Eric Jones, CEO of Enthought. Having described my current role at work, he mentioned how having a team like the one I’m on parked inside IT gives us a very unique position to connect data science work across the organization to the consumers of our data products. When I raised to him my frustrations regarding our infatuation with vendors <em>when FOSS alternatives clearly exist</em>, his advice in return was essentially this:</p>
-<blockquote class="blockquote">
-<p>Focus on leveling-up your colleagues skills and knowledge, keep pushing the education piece at work, and don’t worry about the money that gets spent on tooling.</p>
-</blockquote><p>Having thought about this, I agree. Over time, we should let the results speak. At the same time, I want to help create the environment that I would like to work in: where my colleagues use the same tooling stack, are hacker-types, aren’t afraid to dig deep into the “computer stuff” and into the biology/chemistry, and have the necessary skill + desire to design machine learning systems to systematically accelerate discovery science.</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/7/15/scipy-2019-post-conference/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 
