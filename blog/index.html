@@ -188,6 +188,59 @@ chown &lt;myusername&gt; *.pem  <span class="c1"># changes ownership of those fi
 
   <!-- Set title style -->
   
+    <h1><a href="../blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/">Multiple Coin-Flips vs. One Coin Flip Generalized?</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-10-05
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/teaching/">
+          teaching
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/bayesian/">
+          bayesian
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/statistics/">
+          statistics
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>Do people learn better by:</p>
+<ul>
+<li>Generalizing from one example explained well, or by</li>
+<li>Having multiple case studies that highlight the same point?</li>
+</ul>
+<p>I think both are needed, but I am also torn sometimes by whether it’s more effective to communicate using the former or the latter.</p>
+<p>Case in point: In teaching Bayesian statistics, the coin flip is a particular case of the Beta-Binomial model. However, the Beta-Binomial model can be taken from its most elementary form (estimation on one group) through to its most sophisticated form (hierarchically estimating <code>p</code>).</p>
+<p>I guess if the goal is to show how broadly applicable a given model class (i.e. the beta-binomial model) is, a teacher would elect to jump between multiple examples that are apparently distinct. However, if the goal is build depth (i.e. going from single group to multiple group estimation), sticking with one example (e.g. of baseball players, classically) would be the better strategy.</p>
+<p>Both are needed, just at different times, I think. Thinking through this example, I think, gives me a first-principles way of deciding which approach to go for.</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../blog/2019/9/7/dokku-building-an-internal-heroku-at-work/">Dokku: Building an internal Heroku at work</a></h1>
   
 
@@ -381,55 +434,6 @@ chown &lt;myusername&gt; *.pem  <span class="c1"># changes ownership of those fi
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../blog/2019/7/26/pyviz-panel-apps/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2019/7/23/t-distributed-likelihoods-are-kind-of-neat/">T-distributed likelihoods are kind of neat</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-07-23
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/statistics/">
-          statistics
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/distributions/">
-          distributions
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>The Student’s T distribution is the generalization of the Gaussian and Cauchy distributions. How so? Basically by use of its “degrees of freedom” ($df$) parameter.</p>
-<p>If we plot the probability density functions of the T distribution with varying degrees of freedom, and compare them to the Cauchy and Gaussian distributions, we get the following:</p>
-<p><a href="../blog/2019/7/23/t-distributed-likelihoods-are-kind-of-neat/t-distributions.png"><img src="../blog/2019/7/23/t-distributed-likelihoods-are-kind-of-neat/t-distributions.png" alt="Student T distributions with varying degrees of freedom."></a></p>
-<p>Notice that when $df=1$, the T distribution is identical to the Cauchy distribution, and that as $df$ increases, it gradually becomes more and more like the Normal distribution. At $df=30$, we can consider it to be approximately enough Gaussian.</p>
-<p>On its own, this is already quite useful; when placed in the context of a hierarchical Bayesian model, that’s when it gets even more interesting! In a hierarchical Bayesian model, we are using samples to estimate group-level parameters, but constraining group parameters to vary mostly like each other, unless evidence in the data suggests otherwise. If we allow the $df$ parameter to vary, then if some groups look more Cauchy while other groups look more Gaussian, this can be flexibly captured in the model.</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/7/23/t-distributed-likelihoods-are-kind-of-neat/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 

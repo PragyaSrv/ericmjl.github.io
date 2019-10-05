@@ -9,6 +9,25 @@
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/">
+    <title type="text">Multiple Coin-Flips vs. One Coin Flip Generalized?</title>
+    <id>urn:uuid:3df0c5f9-3913-3dae-8550-1cbfdd5a6505</id>
+    <updated>2019-10-05T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;Do people learn better by:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Generalizing from one example explained well, or by&lt;/li&gt;
+&lt;li&gt;Having multiple case studies that highlight the same point?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I think both are needed, but I am also torn sometimes by whether it’s more effective to communicate using the former or the latter.&lt;/p&gt;
+&lt;p&gt;Case in point: In teaching Bayesian statistics, the coin flip is a particular case of the Beta-Binomial model. However, the Beta-Binomial model can be taken from its most elementary form (estimation on one group) through to its most sophisticated form (hierarchically estimating &lt;code&gt;p&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;I guess if the goal is to show how broadly applicable a given model class (i.e. the beta-binomial model) is, a teacher would elect to jump between multiple examples that are apparently distinct. However, if the goal is build depth (i.e. going from single group to multiple group estimation), sticking with one example (e.g. of baseball players, classically) would be the better strategy.&lt;/p&gt;
+&lt;p&gt;Both are needed, just at different times, I think. Thinking through this example, I think, gives me a first-principles way of deciding which approach to go for.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/10/5/jupyter-server-with-https-on-personal-server/">
     <title type="text">Jupyter Server with HTTPS on Personal Server</title>
     <id>urn:uuid:9b74c6db-5130-3fcf-a2a7-0b1f922121d7</id>
@@ -1797,19 +1816,6 @@ $ py.test -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;not integration&amp;quot
 &lt;p&gt;On my journey in to deep learning and now graph convolutions, &lt;a href=&quot;../../../../../blog/2018/2/20/deep-learning-and-the-importance-of-a-good-teacher/www.cs.toronto.edu/~duvenaud/&quot;&gt;David Duvenaud&lt;/a&gt; (currently a professor at the University of Toronto) simultaneously taught me, a newcomer to deep learning, the basics of deep learning and the mechanics behind the graph convolutional neural network he and his colleagues had just published. The key insight he passed on to me was that deep learning was nothing more than chaining differentiable functions together. Many times I’d ask him, “so does this mean I can do that operation?”, and the answer would usually be “yeah, why not?”.&lt;/p&gt;
 &lt;p&gt;Knowing this point has made me realize how flexible deep learning really is. Once I got under the hood of what deep learning really was, then I realized that actually, DL is all about chaining together math functions one after another. Best part is, we get to define what those math functions are!&lt;/p&gt;
 &lt;p&gt;Knowing this has also helped me when I read new DL papers. It’s now a lot easier to for me to tell when a research group has come up with something very different from the rest of the pack as opposed to advancing existing methods.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/2/13/data-scientists-need-to-write-good-apis/">
-    <title type="text">Data scientists need to write good APIs</title>
-    <id>urn:uuid:73162366-224d-37e0-9ef3-39f6a2e55568</id>
-    <updated>2018-02-13T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/2/13/data-scientists-need-to-write-good-apis/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;I had a breakthrough in my work today. This was not some scientific epiphany, but just breaking through a wall in my progress. Today's breakthrough  was totally enabled by writing my class definitions in a way that made sense, and by writing class methods that enabled me to express my ideas in a literate fashion.&lt;/p&gt;
-&lt;p&gt;Logical class definitions and methods, refactored functions... these should be reflexive habits, but unfortunately, this isn't always the case with data science. We get so caught up in writing the code to make that plot that we forget to refactor out so that the block of code isn't brittle. But that brittle code means that my future self will loathe my current self for not writing that code robustly.&lt;/p&gt;
-&lt;p&gt;In other words, write good APIs.&lt;/p&gt;
 </content>
   </entry>
 </feed>
