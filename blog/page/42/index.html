@@ -109,6 +109,100 @@
 
   <!-- Set title style -->
   
+    <h1><a href="../../../blog/3d-printed-wifi-access-qr-codes-part-1/">3D Printed WiFi Access QR Codes: Part 1</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/3d printing/">
+          3d printing
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/qr codes/">
+          qr codes
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../blog/tag/python/">
+          python
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <h2 id="summary">Summary</h2><p>In this blog post, I'll detail how I created a 3D printed QR code that can be used to help guests get on our home guest network in geek style. This part will detail the creation of a QR code with Python. The next part will detail how I created a program to generate 3D printable blocks. The final part will detail how I created a hybrid command line app and Flask app from the same code base, using <code>click</code> and <code>Flask</code>.</p>
+<h2 id="the-project">The Project</h2><p>Over the weekend, I embarked on a project to create a 3D printed QR code that guests at our house could scan to gain access to our guest wireless network.</p>
+<h2 id="why-i-decided-to-do-this">Why I decided to do this</h2><p>From the standpoint of practicality, sure, it's trivial to open up phone settings, find the WiFi network name, and give them the password, but... this has the coolness factor associated with it! Imagine scanning a 3D-printed QR code! Until this becomes commonplace, it's a cool thing to be able to do.</p>
+<p>Anyways, there's a ton of QR code generators out there on the web, and there's more than a handful of WiFi QR code generators out there - so why did I embark on this project?</p>
+<p>Partly it's borne out of security reasons - I am not giving my WiFi password up to some random website. Who knows whether they're actually storing the passwords?</p>
+<p>Another part of this is borne out of me wanting to scratch my itch surrounding QR codes. The last time I went to China (Xi'an and Shanghai, specifically), I saw QR codes <em>everywhere</em>. There surely had to be something good we could use this for at home that didn't involve just packing and storage.</p>
+<h2 id="getting-setup">Getting Setup</h2><p>Ok, let's get started! To create QR codes, all you need are the following packages installed in your environment:</p>
+<ol>
+<li><code>pyqrcode</code> [<code>pip</code>]</li>
+<li><code>pypng</code> [<code>pip</code>]</li>
+</ol>
+<p>If you want to do the 3D printing part, you'll need another package:</p>
+<ol>
+<li><code>SolidPython</code> [<code>pip</code>]</li>
+<li><code>numpy</code> [<code>conda</code>/<code>pip</code>]</li>
+</ol>
+<p>Finally, if you'd like to work with command line interfaces and Flask, you'll need:</p>
+<ol>
+<li><code>click</code> [<code>pip</code>/<code>conda</code>]</li>
+<li><code>Flask</code> [<code>pip</code>/<code>conda</code>]</li>
+</ol>
+<h2 id="encoding-wifi-credentials-in-a-qr-code">Encoding WiFi credentials in a QR code</h2><p>Let's start by creating a QR code for our WiFi guest network.</p>
+<p>Let's say that these are the security credentials for the network:</p>
+<ul>
+<li>SSID (a.k.a. Network Name): <code>Family Guest Network</code></li>
+<li>Password: <code>vn8h2sncu093y3nd!</code></li>
+<li>Security Type (one of WPA or WEP): <code>WPA</code></li>
+</ul>
+<p>Because QR codes are merely two-dimensional barcodes that encode a string that can be parsed by another program, in order to create a QR-code that is readable for accessing WiFi, we need a string that can be parsed. This string is structured as follows:</p>
+<div class="hll"><pre><span></span>WIFI:S:&lt;SSID&gt;;T:&lt;WPA|WEP|&gt;;P:&lt;password&gt;;;
+</pre></div>
+<p>So in our case, we would want a string that looks like:</p>
+<div class="hll"><pre><span></span>WIFI:S:Family Guest Network;T:WPA;P:vn8h2sncu093y3nd!;;
+</pre></div>
+<p>Now, we can code up our Python program do encode the QR code for us. I'll assume you're running Python 3.6 or later.</p>
+<div class="hll"><pre><span></span><span class="kn">import</span> <span class="nn">pyqrcode</span> <span class="kn">as</span> <span class="nn">pq</span>
+<span class="n">ssid</span> <span class="o">=</span> <span class="s2">&quot;Family Guest Network&quot;</span>
+<span class="n">security</span> <span class="o">=</span> <span class="s2">&quot;WPA&quot;</span>
+<span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;vn8h2sncu093y3nd!&quot;</span>
+<span class="n">qr</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;WIFI:S:{ssid};T:{security};P:{password};;&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">qr</span><span class="o">.</span><span class="n">terminal</span><span class="p">())</span>
+</pre></div>
+<p>With that block of code, you should get a QR code printed to your terminal, just like that!</p>
+<p>Let's say you wanted to do the simple thing, and just have a regular laser/inkjet printer make a printout of the QR code. To do so, you can save the QR code to disk as a PNG file:</p>
+<div class="hll"><pre><span></span><span class="n">qr</span><span class="o">.</span><span class="n">png</span><span class="p">(</span><span class="s1">&#39;home_guest_wifi.png&#39;</span><span class="p">)</span>
+</pre></div>
+<h2 id="conclusions">Conclusions</h2><p>And just like that, you've used Python to create a WiFi QR code!  How easy was that?</p>
+<p>Along the way, I also used Kite in the Atom text editor while embarking on this project - this allowed me to view documentation and common usage patterns for the packages I imported.</p>
+<p>Now, if you remember that QR codes are just "ASCII strings encoded in a 2D barcode", then you'll know that you can pass any arbitrary string into the <code>pyqrcode.create()</code> function. That means you can come up with any creative use of a short string that needs to be scanned to be useful! For example, you can create business cards with your LinkedIn profile URL embedded in the QR code, or use it to encode a serial number information on your possessions, or more!</p>
+<p>Stay tuned for the coming blog posts!</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../../../blog/3d-printed-wifi-access-qr-codes-part-1/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../../../blog/3d-printed-wifi-access-qr-codes-part-2/">3D Printed WiFi Access QR Codes: Part 2</a></h1>
   
 

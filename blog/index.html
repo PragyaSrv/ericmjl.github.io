@@ -109,6 +109,84 @@
 
   <!-- Set title style -->
   
+    <h1><a href="../blog/2019/10/18/caching-long-running-function-results/">Caching Long-Running Function Results</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-10-18
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/python/">
+          python
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/tips/">
+          tips
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/optimization/">
+          optimization
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/packages/">
+          packages
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>I found this nifty tool for caching the results of long-running functions: <a href="https://pypi.org/project/cachier/"><code>cachier</code></a>. This is useful when we’re building, say, Python applications for which quick interactions are necessary, or for caching the results of a long database query.</p>
+<p>How do we use it? Basically it’s nothing more than a decorator!</p>
+<p>Let’s imagine I have a long-running function as below.</p>
+<div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">long_running_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
+    <span class="c1"># stuff happens</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+<p>Turns out, if you have a need to cache the result in a lightweight fashion, you can simply add <code>cachier</code>:</p>
+<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">cachier</span> <span class="kn">import</span> <span class="n">cachier</span>
+
+<span class="nd">@cachier</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">long_running_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
+    <span class="c1"># stuff happens</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+<p>The result is stored in your home directory, so the cache is accessible to you.</p>
+<p>One nice thing <code>cachier</code> also offers is the ability to set a time duration after which the cache goes stale. This can be useful in situations where you know that you need to refresh the cache, such as a database query that may go stale because of new data added into it. This is done by specifying the <code>stale_after</code> keyword argument:</p>
+<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">cachier</span> <span class="kn">import</span> <span class="n">cachier</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+
+<span class="c1"># Re-cache result after 1 week.</span>
+<span class="nd">@cachier</span><span class="p">(</span><span class="n">stale_after</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">long_running_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
+    <span class="c1"># stuff happens</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+<p>If you need to reset the cache manually, you can always do:</p>
+<div class="hll"><pre><span></span><span class="n">long_running_function</span><span class="o">.</span><span class="n">clear_cache</span><span class="p">()</span>
+</pre></div>
+<p>There are other advanced features that <code>cachier</code> provides, and so I’d encourage you to go and take a look at it!</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../blog/2019/10/18/caching-long-running-function-results/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../blog/2019/10/5/jupyter-server-with-https-on-personal-server/">Jupyter Server with HTTPS on Personal Server</a></h1>
   
 
@@ -377,63 +455,6 @@ chown &lt;myusername&gt; *.pem  <span class="c1"># changes ownership of those fi
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../blog/2019/7/29/how-to-be-a-great-code-sprinter/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2019/7/26/pyviz-panel-apps/">PyViz Panel Apps</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-07-26
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data products/">
-          data products
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/app/">
-          app
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/deployment/">
-          deployment
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>I finally learned how to build and serve apps with Panel!</p>
-<p>Here are the key ideas:</p>
-<ol>
-<li>Prototype the app inside a Jupyter notebook. That gives the real-time feedback on whether your apps/widgets are working or not. </li>
-<li>The most important thing is that the final thing you package together is now a <code>.servable()</code> object.</li>
-<li>Use Panel’s <code>serve</code> command to test the app locally. It’s actually quite magical - the serve command can actually parse a Jupyter notebook and serve it up on a local web server.</li>
-<li>When you’ve confirmed that everything is working properly locally, Heroku is a great deployment option. Using the default Python buildpack and a <code>requirements.txt</code> file, one can easily specify the exact Python environment for deployment.</li>
-</ol>
-<p>As a pedagogical implementation, I put up a <a href="https://github.com/ericmjl/minimal-panel-app">minimal panel app on GitHub</a>, and also <a href="https://minimal-panel-app.herokuapp.com">served it up on Heroku</a>. Come check it out! I hope it’s useful for you.</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/7/26/pyviz-panel-apps/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 
