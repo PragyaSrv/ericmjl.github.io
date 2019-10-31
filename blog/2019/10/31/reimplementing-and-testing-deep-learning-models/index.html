@@ -14,7 +14,12 @@
     </style>
 
     
-    
+    <!-- Syntax Highlighter. Use both pygments and hl.js. -->
+    <link rel="stylesheet" href="../../../../../static/pygments.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
 
     <!-- Google Analytics -->
     <script>
@@ -55,7 +60,7 @@
 
 </head>
 
-<title>Blog - Eric J. Ma's Personal Site</title>
+<title>Reimplementing and Testing Deep Learning Models - Eric J. Ma's Personal Site</title>
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#local-links" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,14 +107,13 @@
     <div class="container">
         
   
-    
   <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
+  <link rel="stylesheet" href="../../../../../static/pygments.css">
   <div>
 
   <!-- Set title style -->
   
-    <h1><a href="../blog/2019/10/31/reimplementing-and-testing-deep-learning-models/">Reimplementing and Testing Deep Learning Models</a></h1>
+    <h1>Reimplementing and Testing Deep Learning Models</h1>
   
 
   <!-- Append author -->
@@ -124,23 +128,23 @@
   <!-- Append tags after author -->
   <p>
       <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
+      <a href="../../../../../blog/tag/data science/">
           data science
       </a>
       <i class="fas fa-tag"></i>
-      <a href="../blog/tag/deep learning/">
+      <a href="../../../../../blog/tag/deep learning/">
           deep learning
       </a>
       <i class="fas fa-tag"></i>
-      <a href="../blog/tag/testing/">
+      <a href="../../../../../blog/tag/testing/">
           testing
       </a>
       <i class="fas fa-tag"></i>
-      <a href="../blog/tag/pair programming/">
+      <a href="../../../../../blog/tag/pair programming/">
           pair programming
       </a>
       <i class="fas fa-tag"></i>
-      <a href="../blog/tag/code review/">
+      <a href="../../../../../blog/tag/code review/">
           code review
       </a>
       
@@ -360,393 +364,23 @@ helps us avoid as many of these rabbitholes as possible.</p>
 
   </div>
 
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/10/31/reimplementing-and-testing-deep-learning-models/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2019/10/30/code-review-in-data-science/">Code review in data science</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-10-30
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/essays/">
-          essays
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/workflow/">
-          workflow
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/good practices/">
-          good practices
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p><em>This blog post is cross-posted in my <a href="https://ericmjl.github.io/essays-on-data-science/workflow/code-review/">essays collection</a>.</em></p>
-<p>The practice of code review is extremely beneficial to the practice of software engineering.
-I believe it has its place in data science as well.</p>
-<h2 id="what-code-review-is">What code review is</h2><p>Code review is the process by which a contributor's newly committed code
-is reviewed by one or more teammate(s).
-During the review process, the teammate(s) are tasked with ensuring that they</p>
-<ul>
-<li>understand the code and are able to follow the logic,</li>
-<li>find potential flaws in the newly contributed code,</li>
-<li>identify poorly documented code and confusing use of variable names,</li>
-<li>raise constructive questions and provide constructive feedback</li>
-</ul>
-<p>on the codebase.</p>
-<p>If you've done the practice of scientific research before,
-it is essentially identical to peer review,
-except with code being the thing being reviewed instead.</p>
-<h2 id="what-code-review-_isn-t_">What code review <em>isn't</em></h2><p>Code review is not the time
-for a senior person to slam the contributions of a junior person,
-nor vice versa.</p>
-<h2 id="why-data-scientists-should-do-code-review">Why data scientists should do code review</h2><p>The first reason is to ensure that project knowledge
-is shared amongst teammates.
-By doing this, we ensure that
-in case the original code creator needs to be offline for whatever reason,
-others on the team cover for that person and pick up the analysis.
-When N people review the code, N+1 people know what went on.
-(It does not necessarily have to be N == number of people on the team.)</p>
-<p>In the context of notebooks, this is even more important.
-An analysis is complex,
-and involves multiple modelling decisions and assumptions.
-Raising these questions,
-and pointing out where those assumptions should be documented
-(particularly in the notebook)
-is a good way of ensuring
-that N+1 people know those implicit assumptions that go into the model.</p>
-<p>The second reason is that
-even so-called "senior" data scientists are humans,
-and will make mistakes.
-With my interns and less-experienced colleagues,
-I will invite them to constructively raise queries about my code
-where it looks confusing to them.
-Sometimes, their lack of experience gives me an opportunity to explain
-and share design considerations during the code review process,
-but at other times, they are correct, and I have made a mistake in my code
-that should be rectified.</p>
-<h2 id="what-code-review-can-be">What code review can be</h2><p>Code review can become a very productive time of learning for all parties.
-What it takes is the willingness to listen to the critique provided,
-and the willingness to raise issues on the codebase in a constructive fashion.</p>
-<h2 id="how-code-review-happens">How code review happens</h2><p>Code review happens usually in the context of a pull request
-to merge contributed code into the master branch.
-The major version control system hosting platforms (GitHub, BitBucket, GitLab)
-all provide an interface to show the "diff"
-(i.e. newly contributed or deleted code)
-and comment directly on the code, in context.</p>
-<p>As such, code review can happen entirely asynchronously, across time zones,
-and without needing much in-person interaction.</p>
-<p>Of course, being able to sync up either via a video call,
-or by meeting up in person,
-has numerous advantages by allowing non-verbal communication to take place.
-This helps with building trust between teammates,
-and hence doing even "virtual" in-person reviews
-can be a way of being inclusive towards remote colleagues.</p>
-<h2 id="parting-words">Parting words</h2><p>If your firm is set up to use a version control system,
-then you probably have the facilities to do code review available.
-I hope this essay encourages you to give it a try.</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/10/30/code-review-in-data-science/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2019/10/29/ai-will-not-solve-medicine/">“AI will not solve medicine”</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-10-29
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/drug development/">
-          drug development
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/artificial intelligence/">
-          artificial intelligence
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/medicine/">
-          medicine
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>Those who think “AI will solve medicine” are delusional.
-I say this as a practitioner of machine learning in drug discovery and development.</p>
-<p>First things first, “AI” is an overused term.
-We should stop using it, especially in medicinal research.</p>
-<p>Now, my thoughts are more sanguine.
-The real value proposition of machine learning models in drug development
-is to navigate chemical, sequence, pathway, and knowledge space
-faster and smarter than we might otherwise do so
-without machine learning methods.
-It’s a modeling tool, and nothing more than that.
-It’s a tool for helping the human collective make better decisions than without it,
-but it’s also a double-edged sword.
-We can use the tool and then constrain our thinking because we have that tool,
-because we want to continue using that tool.
-Or we can use the tool to our advantage
-and liberate our mind to think of other things.</p>
-<p>This thought was sparked off by an email that I was on at work.
-A molecule was approved for <em>continued investigation</em> (not even “go for safety trials”!),
-and 63 people were on that email.
-Imagine the number of people
-who are involved in getting a molecule past all research-phase checkpoints
-<em>and</em> all 3 clinical trial checkpoints.
-<em>Hint: Many people are involved.</em></p>
-<p>As I combed through the names on that email,
-the number of machine learners was vastly outnumbered by the number of colleagues
-who toiled daily at the bench,
-wrangling with even more uncertainty than that we have at our computers.
-We machine learners work in service of them,
-delivering insights and prioritized directions,
-just as they toil to generate the data that our data-hungry models need.
-It’s a symbiotic relationship.</p>
-<p>What do all of those 63 people work on?</p>
-<p>Some make the molecules.
-Others design the assays to test the molecules in.
-Yet others design the assays to find the target to then develop the assay for.
-It’s many layers of human creativity in the loop.
-I can’t automate the entirety of their work with my software tools, but I can augment them.
-I mean, yeah, I can find a new potential target,
-but ultimately it's a molecular biologist
-who develops the assay, especially if that assay has never existed before.</p>
-<p>There are others who professionally manage the progress of the project.
-There’s sufficient complexity at the bench
-and in the silicon chips
-that we can’t each keep track of the big picture.
-Someone has to do that, and keep everybody focused.</p>
-<p>And then there’s the handful of us who deal with numbers and mainly just numbers.
-Yes, it’s a handful.
-I counted them on my fingers.
-We do have an outsized impact compared to our numbers,
-but that’s because we can get computers to do our repetitive work for us.
-At the bench, robots are harder to work with.
-Having been at the bench before and failing badly at it,
-I can very much empathize with how tedious the work is.
-It’s expensive to collect that data,
-so the onus is on us computation types to get help navigate “data space” more smartly.</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/10/29/ai-will-not-solve-medicine/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2019/10/18/caching-long-running-function-results/">Caching Long-Running Function Results</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-10-18
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/python/">
-          python
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/tips/">
-          tips
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/optimization/">
-          optimization
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/packages/">
-          packages
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>I found this nifty tool for caching the results of long-running functions: <a href="https://pypi.org/project/cachier/"><code>cachier</code></a>. This is useful when we’re building, say, Python applications for which quick interactions are necessary, or for caching the results of a long database query.</p>
-<p>How do we use it? Basically it’s nothing more than a decorator!</p>
-<p>Let’s imagine I have a long-running function as below.</p>
-<div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">long_running_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
-    <span class="c1"># stuff happens</span>
-    <span class="k">return</span> <span class="n">result</span>
-</pre></div>
-<p>Turns out, if you have a need to cache the result in a lightweight fashion, you can simply add <code>cachier</code>:</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">cachier</span> <span class="kn">import</span> <span class="n">cachier</span>
-
-<span class="nd">@cachier</span><span class="p">()</span>
-<span class="k">def</span> <span class="nf">long_running_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
-    <span class="c1"># stuff happens</span>
-    <span class="k">return</span> <span class="n">result</span>
-</pre></div>
-<p>The result is stored in your home directory, so the cache is accessible to you.</p>
-<p>One nice thing <code>cachier</code> also offers is the ability to set a time duration after which the cache goes stale. This can be useful in situations where you know that you need to refresh the cache, such as a database query that may go stale because of new data added into it. This is done by specifying the <code>stale_after</code> keyword argument:</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">cachier</span> <span class="kn">import</span> <span class="n">cachier</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
-
-<span class="c1"># Re-cache result after 1 week.</span>
-<span class="nd">@cachier</span><span class="p">(</span><span class="n">stale_after</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="k">def</span> <span class="nf">long_running_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
-    <span class="c1"># stuff happens</span>
-    <span class="k">return</span> <span class="n">result</span>
-</pre></div>
-<p>If you need to reset the cache manually, you can always do:</p>
-<div class="hll"><pre><span></span><span class="n">long_running_function</span><span class="o">.</span><span class="n">clear_cache</span><span class="p">()</span>
-</pre></div>
-<p>There are other advanced features that <code>cachier</code> provides, and so I’d encourage you to go and take a look at it!</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/10/18/caching-long-running-function-results/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2019/10/5/jupyter-server-with-https-on-personal-server/">Jupyter Server with HTTPS on Personal Server</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-10-05
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/jupyter/">
-          jupyter
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/dataops/">
-          dataops
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/devops/">
-          devops
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>Recording this for myself, since I did it once and probably don't have the brain bandwidth to remember this through repetition.</p>
-<p>I have known how to run a "public" Jupyter server (password-protected, naturally), but one thing I've struggled with was getting HTTPS working.</p>
-<p>Turns out, the <code>letsencrypt</code> instructions aren't that bad on Jupyter's docs. I just was ignorant in the past, and didn't know enough about Linux to get this working right.</p>
-<p>The key here is creating a <code>letsencrypt</code> certificate, and making sure file permissions are set correctly.</p>
-<p>First off, go to the <a href="https://certbot.eff.org">Certbot page</a>. Select the type of website you're running and operating system. For Jupyter, I chose "None of the Above" and "Ubuntu 18.04 LTS (bionic)" (even though I'm technically on Ubuntu 19). (Here's a <a href="https://certbot.eff.org/lets-encrypt/ubuntubionic-other">shortcut link</a> to the instructions if you're in the same situation.)</p>
-<p>On my system (Ubuntu-based), I used the following commands to install <code>certbot</code>:</p>
-<div class="hll"><pre><span></span><span class="c1"># Add repository</span>
-sudo apt-get update
-sudo apt-get install software-properties-common
-sudo add-apt-repository universe
-sudo add-apt-repository ppa:certbot/certbot
-sudo apt-get update
-
-<span class="c1"># Install certbot</span>
-sudo apt-get install certbot
-
-<span class="c1"># Run certbot</span>
-sudo certbot certonly --standalone
-</pre></div>
-<p>Follow the instructions. <code>certbot</code> will install into a protected directory. In my case, it was <code>/etc/letsencrypt/live/&lt;mywebsite&gt;/</code>.</p>
-<p>Here, a problem will show up. That directory above is not accessible by a Jupyter server run under a user other than <code>root</code>. But a desired property of running Jupyter servers is that we don't have to use <code>sudo</code> to run it. How can we solve this? Basically, by making sure that the certificate is readable by a non-<code>root</code> user.</p>
-<p>What I did, then, was to copy the files that were created by <code>certbot</code> into a location under my home directory. For security by obscurity, I'm naturally not revealing its identity. Then, I changed ownership of those files to my username:</p>
-<div class="hll"><pre><span></span><span class="nb">pwd</span>  <span class="c1"># you should be in the directory where the certbot-created files are located</span>
-su -
-chown &lt;myusername&gt; *.pem  <span class="c1"># changes ownership of those files</span>
-</pre></div>
-<p>Finally, I went into my Jupyter config (<code>~/.jupyter/jupyter_notebook_config.py</code>, this is well-known), and edited the two lines that specified the "certfile" and the "keyfile":</p>
-<div class="hll"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">certfile</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;/absolute/path/to/your/certificate/mycert.pem&#39;</span>
-<span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">keyfile</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;/absolute/path/to/your/certificate/mykey.key&#39;</span>
-</pre></div>
-<p>If this helps you, leave me a note in the comments below. :)</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/10/5/jupyter-server-with-https-on-personal-server/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-
-  
-  <div class="pagination">
-    
-      <span class="disabled">&laquo; Previous</span>
-    
-    | 1 |
-    
-      <a href="../blog/page/2/">Next &raquo;</a>
-    
-  </div>
-
+  <a name="disqus"></a>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/reimplementing-and-testing-deep-learning-models"; this.page.url = "http://www.ericmjl.com/blog/2019/10/31/reimplementing-and-testing-deep-learning-models/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//ericmjl.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
     </div>
 

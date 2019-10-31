@@ -2,13 +2,232 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
-  <updated>2019-10-30T00:00:00Z</updated>
+  <updated>2019-10-31T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/10/31/reimplementing-and-testing-deep-learning-models/">
+    <title type="text">Reimplementing and Testing Deep Learning Models</title>
+    <id>urn:uuid:02474dc0-517b-3e55-b426-7a7ab233a9f0</id>
+    <updated>2019-10-31T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/10/31/reimplementing-and-testing-deep-learning-models/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;em&gt;Note: this blog post is cross-posted on my personal &lt;a href=&quot;https://ericmjl.github.io/essays-on-data-science/machine-learning/reimplementing-models/&quot;&gt;essay collection on the practice of data science&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;At work, most deep learners I have encountered
+have a tendency to take deep learning models
+and treat them as black boxes that we should be able to wrangle.
+While I see this as a pragmatic first step
+to testing and proving out the value of a newly-developed deep learning model,
+I think that stopping there
+and not investing the time into understanding the nitty-gritty of the model
+leaves us in a poor position
+to know that model's
+(1) applicability domain (i.e. where the model should be used),
+(2) computational and statistical performance limitations, and
+(3) possible engineering barriers to getting the model performant
+in a &quot;production&quot; setting.&lt;/p&gt;
+&lt;p&gt;As such, with deep learning models,
+I'm actually a fan of investing the time to re-implement the model
+in a tensor framework that we all know and love,
+NumPy (and by extension, JAX).&lt;/p&gt;
+&lt;h2 id=&quot;benefits-of-re-implementing-deep-learning-models&quot;&gt;Benefits of re-implementing deep learning models&lt;/h2&gt;&lt;p&gt;Doing a model re-implementation from a deep learning framework
+into NumPy code actually has some benefits for the time being invested.&lt;/p&gt;
+&lt;h3 id=&quot;developing-familiarity-with-deep-learning-frameworks&quot;&gt;Developing familiarity with deep learning frameworks&lt;/h3&gt;&lt;p&gt;Firstly, doing so forces us to know the translation/mapping
+from deep learning tensor libraries into NumPy.
+One of the issues I have had with deep learning libraries
+(PyTorch and Tensorflow being the main culprits here)
+is that their API copies something like 90% of NumPy API
+without making easily accessible
+the design considerations discussed when deciding to deviate.
+(By contrast, CuPy has an explicit API policy
+that is well-documented and front-and-center on the docs,
+while JAX strives to replicate the NumPy API.)&lt;/p&gt;
+&lt;p&gt;My gripes with tensor library APIs aside, though,
+translating a model by hand from one API to another
+forces growth in familiarity with both APIs,
+much as translating between two languages
+forces growth in familiarity with both languages.&lt;/p&gt;
+&lt;h3 id=&quot;developing-a-mechanistic-understanding-of-the-model&quot;&gt;Developing a mechanistic understanding of the model&lt;/h3&gt;&lt;p&gt;It is one thing to describe a deep neural network
+as being &quot;like the brain cell connections&quot;.
+It is another thing to know that the math operations underneath the hood
+are nothing more than dot products (or tensor operations, more generally).
+Re-implementing a deep learning model
+requires combing over every line of code,
+which forces us to identify each math operation used.
+No longer can we hide behind an unhelpfully vague abstraction.&lt;/p&gt;
+&lt;h3 id=&quot;developing-an-ability-to-test-and-sanity-check-the-model&quot;&gt;Developing an ability to test and sanity-check the model&lt;/h3&gt;&lt;p&gt;If we follow the workflow (that I will describe below)
+for reimplementing the model,
+(or as the reader should now see, translating the model between APIs)
+we will develop confidence in the correctness of the model.
+This is because the workflow I am going to propose
+involves proper basic software engineering workflow:
+writing documentation for the model,
+testing it,
+and modularizing it into its logical components.
+Doing each of these requires a mechanistic understanding
+of how the model works,
+and hence forms a useful way of building intuition behind the model
+as well as correctness of the model.&lt;/p&gt;
+&lt;h3 id=&quot;reimplementing-models-is-_not_-a-waste-of-time&quot;&gt;Reimplementing models is &lt;em&gt;not&lt;/em&gt; a waste of time&lt;/h3&gt;&lt;p&gt;By contrast, it is a highly beneficial practice
+for gaining a deeper understanding into the inner workings
+of a deep neural network.
+The only price we pay is in person-hours,
+yet under the assumption that the model is of strong commercial interest,
+that price can only be considered an investment, and not a waste.&lt;/p&gt;
+&lt;h2 id=&quot;a-proposed-workflow-for-reimplementing-deep-learning-models&quot;&gt;A proposed workflow for reimplementing deep learning models&lt;/h2&gt;&lt;p&gt;I will now propose a workflow for re-implementing deep learning models.&lt;/p&gt;
+&lt;h3 id=&quot;identify-a-coding-partner&quot;&gt;Identify a coding partner&lt;/h3&gt;&lt;p&gt;Pair programming is a productive way of teaching and learning.
+Hence, I would start by identifying a coding partner
+who has the requisite skillset and shared incentive
+to go deep on the model.&lt;/p&gt;
+&lt;p&gt;Doing so helps a few ways.&lt;/p&gt;
+&lt;p&gt;Firstly, we have real-time peer review on our code,
+making it easier for us to catch mistakes that show up.&lt;/p&gt;
+&lt;p&gt;Secondly, working together at the same time means that
+both myself and my colleague will learn something about the neural network
+that we are re-implementing.&lt;/p&gt;
+&lt;h3 id=&quot;pick-out-the-forward-step-of-the-model&quot;&gt;Pick out the &quot;forward&quot; step of the model&lt;/h3&gt;&lt;p&gt;The &quot;forward&quot; pass of the model is where the structure of the model is defined:
+basically the mathematical operations
+that transform the input data into the output observations.&lt;/p&gt;
+&lt;p&gt;A few keywords to look out for
+are the &lt;code&gt;forward()&lt;/code&gt; and  &lt;code&gt;__calll__()&lt;/code&gt; class methods.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# Implementation of model happens here.&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;something&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;something&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;For models that involve an autoencoder,
+somewhat more seasoned programmers
+might create a class method called &lt;code&gt;encoder()&lt;/code&gt; and &lt;code&gt;decoder()&lt;/code&gt;,
+which themselves reference another model
+that would have a &lt;code&gt;forward()&lt;/code&gt; or &lt;code&gt;__call__()&lt;/code&gt; defined.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AutoEncoder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;something&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encoder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decoder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;something&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Re-implementing the &lt;code&gt;forward()&lt;/code&gt; part of the model
+is usually a good way of building a map
+of the equations that are being used
+to transform the input data into the output data.&lt;/p&gt;
+&lt;h3 id=&quot;inspect-the-shapes-of-the-weights&quot;&gt;Inspect the shapes of the weights&lt;/h3&gt;&lt;p&gt;While the equations give the model &lt;em&gt;structure&lt;/em&gt;,
+the weights and biases, or the &lt;em&gt;parameters&lt;/em&gt;,
+are the part of the model that are optimized.
+(In Bayesian statistics, we would usually presume a model structure,
+i.e. the set of equations used alongside the priors,
+and fit the model parameters.)&lt;/p&gt;
+&lt;p&gt;Because much of deep learning hinges on linear algebra,
+and because most of the transformations that happen
+involve transforming the &lt;em&gt;input space&lt;/em&gt; into the &lt;em&gt;output space&lt;/em&gt;,
+getting the shapes of the parameters is very important.&lt;/p&gt;
+&lt;p&gt;In a re-implementation exercise with my intern,
+where we re-implemented
+a specially designed recurrent neural network layer in JAX,
+we did a manual sanity check through our implementation
+to identify what the shapes would need to be
+for the inputs and outputs.&lt;/p&gt;
+&lt;h3 id=&quot;write-tests-for-the-neural-network-components&quot;&gt;Write tests for the neural network components&lt;/h3&gt;&lt;p&gt;Once we have the neural network model and its components implemented,
+writing tests for those components is a wonderful way of making sure
+that
+(1) the implementation is correct, to the best of our knowledge, and that
+(2) we can catch when the implementation might have been broken inadvertently.&lt;/p&gt;
+&lt;p&gt;The shape test (as described above) is one way of doing this.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_layer_shapes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;weights&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;normal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_dims&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_dims&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;normal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_dims&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nn_layer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weights&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_dims&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If there are special elementwise transforms performed on the data,
+such as a ReLU or exponential transform,
+we can test that the numerical properties of the output are correct:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_layer_shapes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;weights&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;normal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_dims&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_dims&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;normal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_dims&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nn_layer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weights&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nonlinearity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;relu&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;write-tests-for-the-entire-training-loop&quot;&gt;Write tests for the entire training loop&lt;/h3&gt;&lt;p&gt;Once the model has been re-implemented in its entirety,
+prepare a small set of training data,
+and pass it through the model,
+and attempt to train it for a few epochs.&lt;/p&gt;
+&lt;p&gt;If the model, as implemented, is doing what we think it should be,
+then after a dozen epochs or so,
+the training loss should go down.
+We can then test that the training loss at the end
+is less than the training loss at the beginning.
+If the loss does go down, it's necessary but not sufficient for knowing
+that the model is implemented correctly.
+However, if the loss &lt;em&gt;does not&lt;/em&gt; go down, then we will definitely know
+that a problem exists somewhere in the code, and can begin to debug.&lt;/p&gt;
+&lt;p&gt;An example with pseudocode below might look like the following:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dummy_graph_data&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gnn_model&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_gnn_params&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;losses&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mse_loss&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;jax&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grad&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;jax.experimental.optimizers&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;adam&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_gnn_training&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Prepare training data&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dummy_graph_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_gnn_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;dloss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mse_loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;adam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;step_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.005&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;start_loss&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mse_loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dloss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;end_loss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mse_loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end_loss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start_loss&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A side benefit of this is that
+if you commit to only judiciously changing the tests,
+you will end up with a stable
+and copy/paste-able
+training loop that you know you can trust
+on new learning tasks,
+and hence only need to worry about swapping out the data.&lt;/p&gt;
+&lt;h3 id=&quot;build-little-tools-for-yourself-that-automate-repetitive-boring-things&quot;&gt;Build little tools for yourself that automate repetitive (boring) things&lt;/h3&gt;&lt;p&gt;You may notice in the above integration test,
+we wrote a lot of other functions
+that make testing much easier,
+such as dummy data generators,
+and parameter initializers.&lt;/p&gt;
+&lt;p&gt;These are tools that make composing parts of the entire training process
+modular and easy to compose.
+I strongly recommend writing these things,
+and also backing them with more tests
+(since we will end up relying on them anyways).&lt;/p&gt;
+&lt;h3 id=&quot;now-run-your-deep-learning-experiments&quot;&gt;Now run your deep learning experiments&lt;/h3&gt;&lt;p&gt;Once we have the model re-implemented and tested,
+the groundwork is present for us to conduct extensive experiments
+with the confidence that we know
+how to catch bugs in the model
+in a fairly automated fashion.&lt;/p&gt;
+&lt;h2 id=&quot;concluding-words&quot;&gt;Concluding words&lt;/h2&gt;&lt;p&gt;Re-implementing deep learning models can be a very fun and rewarding exercise,
+because it serves as an excellent tool
+to check our understanding of the models that we work with.&lt;/p&gt;
+&lt;p&gt;Without the right safeguards in place, though,
+it can also very quickly metamorphose into a nightmare rabbithole of debugging.
+Placing basic safeguards in place when re-implementing models
+helps us avoid as many of these rabbitholes as possible.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/10/30/code-review-in-data-science/">
     <title type="text">Code review in data science</title>
     <id>urn:uuid:0f73d0d2-2ced-3974-8f4c-cbefcad558e4</id>
@@ -1926,20 +2145,6 @@ script &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; was run!
 &lt;h2 id=&quot;graph-convolutions-have-a-connection-to-network-propagation&quot;&gt;Graph convolutions have a connection to network propagation&lt;/h2&gt;&lt;p&gt;I will probably explore this a bit more deeply in another blog post, but yes, as I explore the math involved in doing graph convolutions, I'm noticing that there's a deep connection there. The short story is basically &quot;convolutions propagate information across nodes&quot; in almost exactly the same way as &quot;network propagation methods share information across nodes&quot;, through the use of a kernel defined by the adjacency matrix of a graph.&lt;/p&gt;
 &lt;p&gt;Ok, that's a lot of jargon, but I promise I will explore this topic at a later time.&lt;/p&gt;
 &lt;h2 id=&quot;open-sourcing&quot;&gt;Open Sourcing&lt;/h2&gt;&lt;p&gt;I'm an avid open source fan. Lots of my work builds on it. However, because this &quot;neural networks on graphs&quot; work is developed on company time and for company use, this will very likely be the first software project that I send to Legal to evaluate whether I can open source/publish it or not -- I'll naturally have to make my strongest case for open sourcing the code base (e.g. ensuring no competitive intelligence is leaked), but eventually will still have to defer to them for a final decision.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/2/26/joy-from-teaching/">
-    <title type="text">Joy from teaching</title>
-    <id>urn:uuid:8e9f2b85-e060-3a15-a8d0-65906edf39c4</id>
-    <updated>2018-02-26T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/2/26/joy-from-teaching/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;It always brings me joy to see others benefit from what I can offer.&lt;/p&gt;
-&lt;p&gt;Thanks for &lt;a href=&quot;https://www.linkedin.com/feed/update/urn:li:activity:6373939725656563713&quot;&gt;sharing the fruits of your journey&lt;/a&gt; on LinkedIn, Umar!&lt;/p&gt;
-&lt;p&gt;Also a big thanks to the others who have finished the course! I hope you have enjoyed the learning journey, and were able to find problems to apply your newly-gained knowledge!&lt;/p&gt;
-&lt;p&gt;With big thanks to &lt;a href=&quot;https://www.datacamp.com/&quot;&gt;DataCamp&lt;/a&gt; as well, for the development of their platform, enabling us to do teaching even outside of the academy! (Special shout-out to Hugo Bowne-Anderson and Yashas Roy, with whom I've personally partnered with to make the content go live.)&lt;/p&gt;
 </content>
   </entry>
 </feed>
