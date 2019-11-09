@@ -2,13 +2,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
-  <updated>2019-10-31T00:00:00Z</updated>
+  <updated>2019-11-09T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/11/9/principled-git-based-workflow-in-collaborative-data-science-projects/">
+    <title type="text">Principled Git-based Workflow in Collaborative Data Science Projects</title>
+    <id>urn:uuid:7a225876-ae09-3cc4-bf75-d98cc06c9c42</id>
+    <updated>2019-11-09T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/11/9/principled-git-based-workflow-in-collaborative-data-science-projects/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;Having worked with GitFlow on a data science project and coming to a few epiphanies with it, I decided to share some of my thoughts &lt;a href=&quot;https://ericmjl.github.io/essays-on-data-science/workflow/gitflow/&quot;&gt;in an essay&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I hope you enjoy it; writing the essay was also a great opportunity for me to pick up more advanced features of &lt;code&gt;pymdownx&lt;/code&gt;, a package that extends Markdown syntax with other really cool features.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/10/31/reimplementing-and-testing-deep-learning-models/">
     <title type="text">Reimplementing and Testing Deep Learning Models</title>
     <id>urn:uuid:02474dc0-517b-3e55-b426-7a7ab233a9f0</id>
@@ -2125,26 +2137,6 @@ script &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; was run!
 &lt;li&gt;Consolidate disparate Python scripts into a single &lt;code&gt;.py&lt;/code&gt;  file, wrapping them inside a callable function.&lt;/li&gt;
 &lt;li&gt;Use &lt;code&gt;click&lt;/code&gt; to expose them to the end-user (yourself, or others) at the command line.&lt;/li&gt;
 &lt;/ul&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/2/28/lessons-learned-and-reinforced-from-writing-my-own-deep-learning-package/">
-    <title type="text">Lessons learned and reinforced from writing my own deep learning package</title>
-    <id>urn:uuid:760b906d-01bd-3e59-88d8-fb39f32c77d8</id>
-    <updated>2018-02-28T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/2/28/lessons-learned-and-reinforced-from-writing-my-own-deep-learning-package/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;At work, I’ve been rolling my own deep learning package to experiment with graph convolutional neural networks. I did this because in graph-centric deep learning, an idea I picked up from this paper, the inputs, convolution kernels, and much more, are being actively developed, and the standard APIs don’t fit with this kind of data.&lt;/p&gt;
-&lt;p&gt;Here’s lessons I learned (and reinforced) while doing this.&lt;/p&gt;
-&lt;h2 id=&quot;autograd-is-an-amazing-package&quot;&gt;&lt;code&gt;autograd&lt;/code&gt; is an amazing package&lt;/h2&gt;&lt;p&gt;I am using &lt;code&gt;autograd&lt;/code&gt; to write my neural networks. &lt;code&gt;autograd&lt;/code&gt; provides a way to automatically differentiate &lt;code&gt;numpy&lt;/code&gt; code. As long as I write the forward computation up to the loss function, &lt;code&gt;autograd&lt;/code&gt; will be able to differentiate the loss function w.r.t. all of the parameters used, thus providing the direction to move parameters to minimize the loss function.&lt;/p&gt;
-&lt;h2 id=&quot;deep-learning-is-nothing-more-than-chaining-elementary-differentiable-functions&quot;&gt;Deep learning is nothing more than chaining elementary differentiable functions&lt;/h2&gt;&lt;p&gt;Linear regression is nothing more than a dot product of features with weights and adding bias terms. Logistic regression just chains the logistic function on top of that. Anything deeper than that is what we might call a neural network.&lt;/p&gt;
-&lt;p&gt;One interesting thing that I've begun to ponder is the shape of the loss function, and how it changes when I change model architecture, activation functions, and more. I can't speak intelligently about it right now, but from observing the training performance live (I update a plot of predictions vs. actual values at the end of &lt;code&gt;x&lt;/code&gt; training epochs), different combinations of activation functions seem to cause different behaviours of the outputs, and there's no first-principles reason why that I can think of. All-told, pretty interesting :).&lt;/p&gt;
-&lt;h2 id=&quot;defining-a-good-api-is-hard-work&quot;&gt;Defining a good API is hard work&lt;/h2&gt;&lt;p&gt;There are design choices that go into the API design. I first off wanted to build something familiar, so I chose to emulate the functional API of Keras and PyTorch and Chainer. I also wanted composability, in which I can define modules of layers and chain them together, so I opted to use Python objects and to take advantage of their &lt;code&gt;__call__&lt;/code&gt; method to achieve both goals. At the same time, &lt;code&gt;autograd&lt;/code&gt; imposes a constraint in that I need to have functions differentiable with respect to their first argument, an array of parameters. Thus, I had to make sure the weights and biases are made transparently available for &lt;code&gt;autograd&lt;/code&gt; to differentiate. As a positive side effect, it means I can actually inspect the parameters dictionary quite transparently.&lt;/p&gt;
-&lt;h2 id=&quot;optimizing-for-speed-is-a-very-hard-thing&quot;&gt;Optimizing for speed is a very hard thing&lt;/h2&gt;&lt;p&gt;Even though I'm doing my best already with matrix math (and hopefully getting better at mastering 3-dimensional and higher matrix algebra), in order to keep my API clean and compatible with &lt;code&gt;autograd&lt;/code&gt; (meaning no sparse arrays), I have opted to use lists of &lt;code&gt;numpy&lt;/code&gt; arrays.&lt;/p&gt;
-&lt;h2 id=&quot;graph-convolutions-have-a-connection-to-network-propagation&quot;&gt;Graph convolutions have a connection to network propagation&lt;/h2&gt;&lt;p&gt;I will probably explore this a bit more deeply in another blog post, but yes, as I explore the math involved in doing graph convolutions, I'm noticing that there's a deep connection there. The short story is basically &quot;convolutions propagate information across nodes&quot; in almost exactly the same way as &quot;network propagation methods share information across nodes&quot;, through the use of a kernel defined by the adjacency matrix of a graph.&lt;/p&gt;
-&lt;p&gt;Ok, that's a lot of jargon, but I promise I will explore this topic at a later time.&lt;/p&gt;
-&lt;h2 id=&quot;open-sourcing&quot;&gt;Open Sourcing&lt;/h2&gt;&lt;p&gt;I'm an avid open source fan. Lots of my work builds on it. However, because this &quot;neural networks on graphs&quot; work is developed on company time and for company use, this will very likely be the first software project that I send to Legal to evaluate whether I can open source/publish it or not -- I'll naturally have to make my strongest case for open sourcing the code base (e.g. ensuring no competitive intelligence is leaked), but eventually will still have to defer to them for a final decision.&lt;/p&gt;
 </content>
   </entry>
 </feed>

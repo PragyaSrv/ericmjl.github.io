@@ -109,6 +109,52 @@
 
   <!-- Set title style -->
   
+    <h1><a href="../blog/2019/11/9/principled-git-based-workflow-in-collaborative-data-science-projects/">Principled Git-based Workflow in Collaborative Data Science Projects</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-11-09
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/data science/">
+          data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/git/">
+          git
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/workflow/">
+          workflow
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>Having worked with GitFlow on a data science project and coming to a few epiphanies with it, I decided to share some of my thoughts <a href="https://ericmjl.github.io/essays-on-data-science/workflow/gitflow/">in an essay</a>.</p>
+<p>I hope you enjoy it; writing the essay was also a great opportunity for me to pick up more advanced features of <code>pymdownx</code>, a package that extends Markdown syntax with other really cool features.</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../blog/2019/11/9/principled-git-based-workflow-in-collaborative-data-science-projects/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../blog/2019/10/31/reimplementing-and-testing-deep-learning-models/">Reimplementing and Testing Deep Learning Models</a></h1>
   
 
@@ -654,85 +700,6 @@ so the onus is on us computation types to get help navigate “data space” mor
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../blog/2019/10/18/caching-long-running-function-results/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2019/10/5/jupyter-server-with-https-on-personal-server/">Jupyter Server with HTTPS on Personal Server</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-10-05
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/jupyter/">
-          jupyter
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/dataops/">
-          dataops
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/devops/">
-          devops
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>Recording this for myself, since I did it once and probably don't have the brain bandwidth to remember this through repetition.</p>
-<p>I have known how to run a "public" Jupyter server (password-protected, naturally), but one thing I've struggled with was getting HTTPS working.</p>
-<p>Turns out, the <code>letsencrypt</code> instructions aren't that bad on Jupyter's docs. I just was ignorant in the past, and didn't know enough about Linux to get this working right.</p>
-<p>The key here is creating a <code>letsencrypt</code> certificate, and making sure file permissions are set correctly.</p>
-<p>First off, go to the <a href="https://certbot.eff.org">Certbot page</a>. Select the type of website you're running and operating system. For Jupyter, I chose "None of the Above" and "Ubuntu 18.04 LTS (bionic)" (even though I'm technically on Ubuntu 19). (Here's a <a href="https://certbot.eff.org/lets-encrypt/ubuntubionic-other">shortcut link</a> to the instructions if you're in the same situation.)</p>
-<p>On my system (Ubuntu-based), I used the following commands to install <code>certbot</code>:</p>
-<div class="hll"><pre><span></span><span class="c1"># Add repository</span>
-sudo apt-get update
-sudo apt-get install software-properties-common
-sudo add-apt-repository universe
-sudo add-apt-repository ppa:certbot/certbot
-sudo apt-get update
-
-<span class="c1"># Install certbot</span>
-sudo apt-get install certbot
-
-<span class="c1"># Run certbot</span>
-sudo certbot certonly --standalone
-</pre></div>
-<p>Follow the instructions. <code>certbot</code> will install into a protected directory. In my case, it was <code>/etc/letsencrypt/live/&lt;mywebsite&gt;/</code>.</p>
-<p>Here, a problem will show up. That directory above is not accessible by a Jupyter server run under a user other than <code>root</code>. But a desired property of running Jupyter servers is that we don't have to use <code>sudo</code> to run it. How can we solve this? Basically, by making sure that the certificate is readable by a non-<code>root</code> user.</p>
-<p>What I did, then, was to copy the files that were created by <code>certbot</code> into a location under my home directory. For security by obscurity, I'm naturally not revealing its identity. Then, I changed ownership of those files to my username:</p>
-<div class="hll"><pre><span></span><span class="nb">pwd</span>  <span class="c1"># you should be in the directory where the certbot-created files are located</span>
-su -
-chown &lt;myusername&gt; *.pem  <span class="c1"># changes ownership of those files</span>
-</pre></div>
-<p>Finally, I went into my Jupyter config (<code>~/.jupyter/jupyter_notebook_config.py</code>, this is well-known), and edited the two lines that specified the "certfile" and the "keyfile":</p>
-<div class="hll"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">certfile</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;/absolute/path/to/your/certificate/mycert.pem&#39;</span>
-<span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">keyfile</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;/absolute/path/to/your/certificate/mykey.key&#39;</span>
-</pre></div>
-<p>If this helps you, leave me a note in the comments below. :)</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/10/5/jupyter-server-with-https-on-personal-server/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 
