@@ -18,7 +18,9 @@
       <name>Eric J. Ma</name>
     </author>
     <content type="html">&lt;p&gt;Having worked with GitFlow on a data science project and coming to a few epiphanies with it, I decided to share some of my thoughts &lt;a href=&quot;https://ericmjl.github.io/essays-on-data-science/workflow/gitflow/&quot;&gt;in an essay&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I hope you enjoy it; writing the essay was also a great opportunity for me to pick up more advanced features of &lt;code&gt;pymdownx&lt;/code&gt;, a package that extends Markdown syntax with other really cool features.&lt;/p&gt;
+&lt;p&gt;One of my thoughts here is that most data scientists aren't resistant to using GitFlow (and more generally, just being more intentional about what gets worked on) because it's a bad idea, but because there's a lack of incentives to do so. In there, I try to address this concern.&lt;/p&gt;
+&lt;p&gt;And because GitFlow does require knowledge of Git, it can trigger an, &quot;Oh no, one more thing to learn!&quot; response. These things do take time to learn, yes, but I see it also as an investment of time with a future payoff.&lt;/p&gt;
+&lt;p&gt;Apart from that, I hope you enjoy the essay; writing it was also a great opportunity for me to pick up more advanced features of &lt;code&gt;pymdownx&lt;/code&gt;, a package that extends Markdown syntax with other really cool features.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/10/31/reimplementing-and-testing-deep-learning-models/">
