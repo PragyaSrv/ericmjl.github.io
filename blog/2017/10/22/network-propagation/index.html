@@ -185,7 +185,7 @@
 <div class="hll"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 <p>The <code>.reshape(A.shape[0], 1)</code> is done for convenience, so that each axis is aligned appropriately for the following matrix multiplication:</p>
-<div class="hll"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">A</span> <span class="err">@</span> <span class="n">M</span>
+<div class="hll"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">A</span> <span class="o">@</span> <span class="n">M</span>
 <span class="n">matrix</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">],</span>
         <span class="p">[</span> <span class="mf">0.</span><span class="p">],</span>
         <span class="p">[</span> <span class="mf">0.</span><span class="p">],</span>
@@ -193,7 +193,7 @@
         <span class="p">[</span> <span class="mf">1.</span><span class="p">]])</span>
 </pre></div>
 <p>After the end of one round, nodes 2 and 3 have no information held on them, but their neighbours do. Let's do two rounds of propagation, rather than just one.</p>
-<div class="hll"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">A</span> <span class="err">@</span> <span class="p">(</span><span class="n">A</span> <span class="err">@</span> <span class="n">M</span><span class="p">)</span>
+<div class="hll"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">A</span> <span class="o">@</span> <span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">M</span><span class="p">)</span>
 <span class="n">matrix</span><span class="p">([[</span> <span class="mf">2.</span><span class="p">],</span>
         <span class="p">[</span> <span class="mf">1.</span><span class="p">],</span>
         <span class="p">[</span> <span class="mf">2.</span><span class="p">],</span>
@@ -207,9 +207,9 @@
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="k">def</span> <span class="nf">recursive_propagate</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
    <span class="o">...</span><span class="p">:</span>     <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-   <span class="o">...</span><span class="p">:</span>         <span class="k">return</span> <span class="n">recursive_propagate</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">normalize</span><span class="p">(</span><span class="n">A</span> <span class="err">@</span> <span class="n">M</span><span class="p">),</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+   <span class="o">...</span><span class="p">:</span>         <span class="k">return</span> <span class="n">recursive_propagate</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">normalize</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">M</span><span class="p">),</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
    <span class="o">...</span><span class="p">:</span>     <span class="k">else</span><span class="p">:</span>
-   <span class="o">...</span><span class="p">:</span>         <span class="k">return</span> <span class="n">normalize</span><span class="p">(</span><span class="n">A</span> <span class="err">@</span> <span class="n">M</span><span class="p">)</span>
+   <span class="o">...</span><span class="p">:</span>         <span class="k">return</span> <span class="n">normalize</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">M</span><span class="p">)</span>
    <span class="o">...</span><span class="p">:</span>
 </pre></div>
 <p>On a previous blog post, I've alluded to the fact that recursive functions are pretty darn useful!</p>

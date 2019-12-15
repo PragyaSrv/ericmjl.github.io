@@ -179,12 +179,12 @@
 <div class="hll"><pre><span></span>WIFI:S:Family Guest Network;T:WPA;P:vn8h2sncu093y3nd!;;
 </pre></div>
 <p>Now, we can code up our Python program do encode the QR code for us. I'll assume you're running Python 3.6 or later.</p>
-<div class="hll"><pre><span></span><span class="kn">import</span> <span class="nn">pyqrcode</span> <span class="kn">as</span> <span class="nn">pq</span>
+<div class="hll"><pre><span></span><span class="kn">import</span> <span class="nn">pyqrcode</span> <span class="k">as</span> <span class="nn">pq</span>
 <span class="n">ssid</span> <span class="o">=</span> <span class="s2">&quot;Family Guest Network&quot;</span>
 <span class="n">security</span> <span class="o">=</span> <span class="s2">&quot;WPA&quot;</span>
 <span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;vn8h2sncu093y3nd!&quot;</span>
-<span class="n">qr</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;WIFI:S:{ssid};T:{security};P:{password};;&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">qr</span><span class="o">.</span><span class="n">terminal</span><span class="p">())</span>
+<span class="n">qr</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;WIFI:S:</span><span class="si">{ssid}</span><span class="s1">;T:</span><span class="si">{security}</span><span class="s1">;P:</span><span class="si">{password}</span><span class="s1">;;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">qr</span><span class="o">.</span><span class="n">terminal</span><span class="p">())</span>
 </pre></div>
 <p>With that block of code, you should get a QR code printed to your terminal, just like that!</p>
 <p>Let's say you wanted to do the simple thing, and just have a regular laser/inkjet printer make a printout of the QR code. To do so, you can save the QR code to disk as a PNG file:</p>

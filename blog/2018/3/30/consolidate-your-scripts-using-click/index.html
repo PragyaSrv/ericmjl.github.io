@@ -158,12 +158,12 @@
 <div class="hll"><pre><span></span><span class="kn">import</span> <span class="nn">click</span>
 
 
-<span class="nd">@click.group</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="k">pass</span>
 
 
-<span class="nd">@main.command</span><span class="p">()</span>
+<span class="nd">@main</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">script1</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Makes stuff happen.</span>
@@ -172,11 +172,11 @@
     <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="s1">&#39;script 1 was run!&#39;</span><span class="p">)</span>  <span class="c1"># click.echo is recommended by the click authors.</span>
 
 
-<span class="nd">@main.command</span><span class="p">()</span>
+<span class="nd">@main</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">script2</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Makes more stuff happen.&quot;&quot;&quot;</span>
     <span class="c1"># do stuff that was originally in script 2.</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;script 2 was run!&#39;</span><span class="p">)</span>  <span class="c1"># we can run print instead of click.echo as well!</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;script 2 was run!&#39;</span><span class="p">)</span>  <span class="c1"># we can run print instead of click.echo as well!</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">cli</span><span class="p">()</span>

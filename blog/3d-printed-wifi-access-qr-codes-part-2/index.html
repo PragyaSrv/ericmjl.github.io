@@ -154,22 +154,22 @@
 <ol>
 <li>The QR code creator.</li>
 </ol>
-<div class="hll"><pre><span></span><span class="kn">import</span> <span class="nn">pyqrcode</span> <span class="kn">as</span> <span class="nn">pq</span>
+<div class="hll"><pre><span></span><span class="kn">import</span> <span class="nn">pyqrcode</span> <span class="k">as</span> <span class="nn">pq</span>
 <span class="n">ssid</span> <span class="o">=</span> <span class="s2">&quot;Family Guest Network&quot;</span>
 <span class="n">security</span> <span class="o">=</span> <span class="s2">&quot;WPA&quot;</span>
 <span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;vn8h2sncu093y3nd!&quot;</span>
-<span class="n">qr</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;WIFI:S:{ssid};T:{security};P:{password};;&#39;</span><span class="p">)</span>
+<span class="n">qr</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;WIFI:S:</span><span class="si">{ssid}</span><span class="s1">;T:</span><span class="si">{security}</span><span class="s1">;P:</span><span class="si">{password}</span><span class="s1">;;&#39;</span><span class="p">)</span>
 </pre></div>
 <h2 id="creating-a-3d-printed-qr-code-with-python">Creating a 3D Printed QR Code with Python</h2><p>Now, let's see how we can create 3D models with Python code. We will need a package called <code>SolidPython</code>, and optionally <code>numpy</code> to help us with some array processing. (It can be done entirely using built-in lists if needed.)</p>
 <h3 id="create-qr-code-object">Create QR Code Object</h3><p>To start, I first defined a convenience function that let me create and return a <code>QRCode</code> object that can be passed around and manipulated.</p>
 <div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">create_wifi_qr</span><span class="p">(</span><span class="n">ssid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">security</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="n">qr</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;WIFI:S:{ssid};T:{security};P:{password};;&#39;</span><span class="p">)</span>
+    <span class="n">qr</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;WIFI:S:</span><span class="si">{ssid}</span><span class="s1">;T:</span><span class="si">{security}</span><span class="s1">;P:</span><span class="si">{password}</span><span class="s1">;;&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">qr</span>
 </pre></div>
 <p>Its use will become evident later. You'll also notice I'm using type hints inside the function.</p>
 <h3 id="create-text-representation">Create Text Representation</h3><p>Using the function, we can create a text representation of the QR code:</p>
 <div class="hll"><pre><span></span><span class="n">qr</span> <span class="o">=</span> <span class="n">create_wifi_qr</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">security</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">qr</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">qr</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
 </pre></div>
 <p>This will give essentially a series of 1s and 0s. This is a string, though, not a <code>numpy</code> array. Hence, we may have to convert this into a list of lists, or a <code>numpy</code> array (as a user of the scientific Python stack, I prefer using arrays where possible, but in this case there is no real practical advantage to doing so because we are not doing linear algebra).</p>
 <h3 id="create-array-representation">Create Array Representation</h3><p>Let's now define a function that takes in the <code>QRCode</code> object and return an array version of the text rendering.</p>
@@ -203,7 +203,7 @@
 <span class="n">qrobj</span> <span class="o">=</span> <span class="n">union</span><span class="p">()(</span><span class="o">*</span><span class="n">cubes</span><span class="p">,</span> <span class="n">base_plate</span><span class="p">)</span>
 
 
-<span class="k">print</span><span class="p">(</span><span class="n">scad_render</span><span class="p">(</span><span class="n">qrobj</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scad_render</span><span class="p">(</span><span class="n">qrobj</span><span class="p">))</span>
 </pre></div>
 <p>This will give the following OpenSCAD code, which I've truncated for brevity:</p>
 <div class="hll"><pre><span></span>union() {

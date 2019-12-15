@@ -109,6 +109,241 @@
 
   <!-- Set title style -->
   
+    <h1><a href="../blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/">A Review of the Python Data Science Dashboarding Landscape in 2019</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-12-15
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/dashboarding/">
+          dashboarding
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/python/">
+          python
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/data science/">
+          data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/data visualization/">
+          data visualization
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/software development/">
+          software development
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p><em>This blog post is also available on <a href="https://ericmjl.github.io/essays-on-data-science/">my collection of essays</a>.</em></p>
+<h2 id="introduction">Introduction</h2><p>As Pythonista data scientists,
+we are spoiled for choice when it comes to developing front-ends
+for our data apps.
+We used to have to fiddle with HTML in Flask (or Plotly's Dash),
+but now, there are tools in which
+"someone wrote the HTML/JS so I didn't have to".</p>
+<p>Let me give a quick tour of the landscape of tools
+as I've experienced it in 2019.</p>
+<h3 id="beginnings:-voila">Beginnings: Voila</h3><p>Previously, I had test-driven
+<a href="https://voila.readthedocs.io/en/latest/">Voila</a>.
+The key advantage I saw back then was that in my workflow,
+once I had the makings of a UI present in the Jupyter notebook,
+and just needed a way to serve it up
+independent of having my end-users run a Jupyter server,
+then Voila helped solve that use case.
+By taking advantage of existing the <code>ipywidgets</code> ecosystem
+and adding on a way to run and serve the HTML output of a notebook,
+Voila solved that part of the dashboarding story quite nicely.
+In many respects,
+I regard Voila as the first proper dashboarding tool for Pythonistas.</p>
+<p>That said, development in a Jupyter notebook
+didn't necessarily foster best practices
+(such as refactoring and testing code).
+When my first project at work ended,
+and I didn't have a need for further dashboarding,
+I didn't touch Voila for a long time.</p>
+<h3 id="another-player:-panel">Another player: Panel</h3><p>Later, <a href="http://panel.pyviz.org/">Panel</a> showed up.
+Panel's development model allowed a more modular app setup,
+including importing of plotting functions defined inside <code>.py</code> files
+that returned individual plots.
+Panel also allowed me to prototype in a notebook and see the output live
+before moving the dashboard code into a source <code>.py</code> file.</p>
+<p>At work, we based a one-stop shop dashboard for a project on Panel,
+and in my personal life,
+I also built a
+<a href="https://github.com/ericmjl/minimal-panel-app">minimal panel app</a>
+that I also
+<a href="https://minimal-panel-app.herokuapp.com/">deployed to Heroku</a>.
+Panel was definitely developed
+targeting notebook and source file use cases in mind,
+and this shows through in its source development model.</p>
+<p>That said, panel apps could be slow to load,
+and without having a "spinner" solution in place
+(i.e. something to show the user
+that the app is "doing something" in the background),
+it sometimes made apps <em>feel</em> slow
+even though the slowness was not Panel's fault really.
+(My colleagues and I pulled out all the tricks in our bag to speed things up.)</p>
+<p>Additionally, any errors that show up don't get surfaced to the app's UI,
+where developer eyeballs are on -
+instead, they get buried in the browser's JavaScript console
+or in the Python terminal where the app is being served.
+When deployed, this makes it difficult to see where errors show up
+and debug errors.</p>
+<h3 id="enter-streamlit">Enter Streamlit</h3><p>Now, Streamlit comes along, and some of its initial demos are pretty rad.
+In order to test-drive it,
+I put together this <a href="https://minimal-streamlit.herokuapp.com/">little tutorial</a>
+on the Beta probability distribution for my colleagues.</p>
+<p>Streamlit definitely solves some of the pain points
+that I've observed with Panel and Voila.</p>
+<p>The most important one that I see is that errors are captured by Streamlit
+and bubbled up to the UI,
+where our eyeballs are going to be when developing the app.
+For me, this is a very sensible decision to make, for two reasons:</p>
+<p>Firstly, it makes debugging interactions that much easier.
+Instead of needing to have two interfaces open,
+the error message shows up right where the interaction fails,
+in the same browser window as the UI elements.</p>
+<p>Secondly, it makes it possible for us
+to use the error messages as a UI "hack" to inform users
+where their inputs (e.g. free text) might be invalid,
+thereby giving them <em>informative error messages</em>.
+(Try it out in the Beta distribution app:
+it'll give you an error message right below
+if you try to type something that cant be converted into a float!)</p>
+<p>The other key thing that Streamlit provides as a UI nice-ity
+is the ability to signal to end-users that a computation is happening.
+Streamlit does this in three ways, two of which always come for free.
+<strong>Firstly</strong>, if something is "running",
+then in the top-right hand corner of the page,
+the "Running" spinner will animate.
+<strong>Secondly</strong>, anything that is re-rendering will automatically be greyed out.
+<strong>Finally</strong>, we can use a special context manager
+to provide a custom message on the front-end:</p>
+<div class="hll"><pre><span></span><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">spinner</span><span class="p">(</span><span class="s2">&quot;Message goes here...&quot;</span><span class="p">):</span>
+    <span class="c1"># stuff happens</span>
+</pre></div>
+<p>So all-in-all, Streamlit seems to have a solution of some kind
+for the friction points that I have observed with Panel and Voila.</p>
+<p>Besides that, Streamlit, I think, uses a procedural paradigm,
+rather than a callback paradigm, for app construction.
+We just have to think of the app as a linear sequence of actions
+that happen from top to bottom.
+State is never really an issue, because every code change
+and interaction re-runs the source file from top to bottom, from scratch.
+When building quick apps,
+this paradigm really simplifies things compared to a callback-based paradigm.</p>
+<p>Finally, Streamlit also provides a convenient way to add text to the UI
+by automatically parsing as Markdown any raw strings unassigned to a variable
+in a <code>.py</code> file and rendering them as HTML.
+This opens the door to treating a <code>.py</code> file as a
+<a href="https://en.wikipedia.org/wiki/Literate_programming">literate programming document</a>,
+hosted by a Python-based server in the backend.
+It'd be useful especially in teaching scenarios.
+(With <code>pyiodide</code> bringing the PyData stack to the browser,
+I can't wait to see standalone <code>.py</code> files rendered to the DOM!)</p>
+<p>Now, this isn't to say that Streamlit is problem-free.
+There are still rough edges,
+the most glaring (as of today) in the current release
+is the inability to upload a file and operate on it.
+This has been fixed in <a href="https://github.com/streamlit/streamlit/pull/488">a recent pull request</a>,
+so I'm expecting this should show up in a new release any time soon.</p>
+<p>The other not-so-big-problem that I see with Streamlit at the moment
+is the procedural paradigm -
+by always re-running code from top-to-bottom afresh on every single change,
+apps that rely on long compute may need a bit more thought to construct,
+including the use of Streamlit's caching mechanism.
+Being procedural does make things easier for development though,
+and on balance, I would not discount Streamlit's simplicity here.</p>
+<h2 id="where-does-streamlit-fit?">Where does Streamlit fit?</h2><p>As I see it, Streamlit's devs are laser-focused on enabling devs
+to <em>very quickly</em> get to a somewhat good-looking app prototype.
+In my experience, the development time for the Beta distribution app
+took about 3 hours, 2.5 of which were spent on composing prose.
+So effectively, I only used half an hour doing code writing,
+with a live and auto-reloading preview
+greatly simplifying the development process.
+(I conservatively estimate that this is about 1.5 times
+as fast as I would be using Panel.)</p>
+<p>Given Streamlit, I would use it to develop two classes of apps:
+(1) very tightly-focused utility apps that do one lightweight thing well, and
+(2) bespoke, single-document literate programming education material.</p>
+<p>I would be quite hesitant to build more complex things;
+then again, for me, that statement would be true more generally anyways
+with whatever tool.
+In any case, I think bringing UNIX-like thinking to the web
+is probably a good idea:
+we make little utilities/functional tools
+that can pipe standard data formats from to another.</p>
+<h2 id="common-pain-points-across-all-three-dashboarding-tools">Common pain points across all three dashboarding tools</h2><p>A design pattern I have desired is to be able to serve up a fleet of small,
+individual utilities served up from the same codebase,
+served up by individual server processes,
+but all packaged within the same container.
+The only way I can think of at the moment
+is to build a custom Flask-based gateway
+to redirect properly to each utility's process.
+That said, I think this is probably out of scope
+for the individual dashboarding projects.</p>
+<h2 id="how-do-we-go-forward?">How do we go forward?</h2><p>The ecosystem is ever-evolving, and,
+rather than being left confused by the multitude of options available to us,
+I find myself actually being very encouraged
+at the development that has been happening.
+There's competing ideas with friendly competition between the developers,
+but they are also simultaneously listening to each other and their users
+and converging on similar things in the end.</p>
+<p>That said, I think it would be premature to go "all-in" on a single solution
+at this moment.
+For the individual data scientist,
+I would advise to be able to build something
+using each of the dashboarding frameworks.
+My personal recommendations are to know how to use:</p>
+<ul>
+<li>Voila + <code>ipywidgets</code> in a Jupyter notebook</li>
+<li>Panel in Jupyter notebooks and standalone <code>.py</code> files</li>
+<li>Streamlit in <code>.py</code> files.</li>
+</ul>
+<p>These recommendations stem mainly from
+the ability to style and layout content without needing much knowledge of HTML.
+In terms of roughly when to use what,
+my prior experience has been that
+Voila and Streamlit are pretty good for quicker prototypes,
+while Panel has been good for more complex ones,
+though in all cases, we have to worry about speed impacting user experience.</p>
+<p>From my experience at work,
+being able to quickly hash out key visual elements in a front-end prototype
+gives us the ability to better communicate with UI/UX designers and developers
+on what we're trying to accomplish.
+Knowing how to build front-ends ourselves
+lowers the communication and engineering barrier
+when taking a project to production.
+It's a worthwhile skill to have;
+be sure to have it in your toolbox!</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../blog/2019/11/9/principled-git-based-workflow-in-collaborative-data-science-projects/">Principled Git-based Workflow in Collaborative Data Science Projects</a></h1>
   
 
@@ -624,84 +859,6 @@ so the onus is on us computation types to get help navigate “data space” mor
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../blog/2019/10/29/ai-will-not-solve-medicine/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2019/10/18/caching-long-running-function-results/">Caching Long-Running Function Results</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-10-18
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/python/">
-          python
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/tips/">
-          tips
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/optimization/">
-          optimization
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/packages/">
-          packages
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>I found this nifty tool for caching the results of long-running functions: <a href="https://pypi.org/project/cachier/"><code>cachier</code></a>. This is useful when we’re building, say, Python applications for which quick interactions are necessary, or for caching the results of a long database query.</p>
-<p>How do we use it? Basically it’s nothing more than a decorator!</p>
-<p>Let’s imagine I have a long-running function as below.</p>
-<div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">long_running_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
-    <span class="c1"># stuff happens</span>
-    <span class="k">return</span> <span class="n">result</span>
-</pre></div>
-<p>Turns out, if you have a need to cache the result in a lightweight fashion, you can simply add <code>cachier</code>:</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">cachier</span> <span class="kn">import</span> <span class="n">cachier</span>
-
-<span class="nd">@cachier</span><span class="p">()</span>
-<span class="k">def</span> <span class="nf">long_running_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
-    <span class="c1"># stuff happens</span>
-    <span class="k">return</span> <span class="n">result</span>
-</pre></div>
-<p>The result is stored in your home directory, so the cache is accessible to you.</p>
-<p>One nice thing <code>cachier</code> also offers is the ability to set a time duration after which the cache goes stale. This can be useful in situations where you know that you need to refresh the cache, such as a database query that may go stale because of new data added into it. This is done by specifying the <code>stale_after</code> keyword argument:</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">cachier</span> <span class="kn">import</span> <span class="n">cachier</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
-
-<span class="c1"># Re-cache result after 1 week.</span>
-<span class="nd">@cachier</span><span class="p">(</span><span class="n">stale_after</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="k">def</span> <span class="nf">long_running_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
-    <span class="c1"># stuff happens</span>
-    <span class="k">return</span> <span class="n">result</span>
-</pre></div>
-<p>If you need to reset the cache manually, you can always do:</p>
-<div class="hll"><pre><span></span><span class="n">long_running_function</span><span class="o">.</span><span class="n">clear_cache</span><span class="p">()</span>
-</pre></div>
-<p>There are other advanced features that <code>cachier</code> provides, and so I’d encourage you to go and take a look at it!</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/10/18/caching-long-running-function-results/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 

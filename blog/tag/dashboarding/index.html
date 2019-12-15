@@ -14,12 +14,7 @@
     </style>
 
     
-    <!-- Syntax Highlighter. Use both pygments and hl.js. -->
-    <link rel="stylesheet" href="../../../../../static/pygments.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-
+    
 
     <!-- Google Analytics -->
     <script>
@@ -60,7 +55,7 @@
 
 </head>
 
-<title>Annotating code tests and selectively running tests - Eric J. Ma's Personal Site</title>
+<title>Tag: dashboarding - Eric J. Ma's Personal Site</title>
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#local-links" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,86 +101,12 @@
     </nav>
     <div class="container">
         
+<h1><i class="fas fa-tag"></i> dashboarding</h1>
+<ul>
   
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../../../../../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
+    <li><a href="../../../blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/">2019-12-15: A Review of the Python Data Science Dashboarding Landscape in 2019</a></li>
   
-    <h1>Annotating code tests and selectively running tests</h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2018-02-25
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/programming/">
-          programming
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/python/">
-          python
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/testing/">
-          testing
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/software engineering/">
-          software engineering
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>I just learned about a neat trick when using <code>pytest</code> - the ability to "mark" tests with metadata, and the ability to selectively run groups of marked tests.</p>
-<p>Here's an example:</p>
-<div class="hll"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
-
-<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">slow</span>  <span class="c1"># annotate it as a &quot;slow&quot; test</span>
-<span class="k">def</span> <span class="nf">test_that_runs_slowly</span><span class="p">():</span>
-    <span class="o">....</span>
-
-<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">slow</span>  <span class="c1"># annotate test as a &quot;slow&quot; test.</span>
-<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">integration</span>  <span class="c1"># annotate test as being an &quot;integration&quot; test</span>
-<span class="k">def</span> <span class="nf">test_that_does_integration</span><span class="p">():</span>
-    <span class="o">....</span>
-</pre></div>
-<p>What's really cool here is that I can selectively run slow tests or selectively run integration tests:</p>
-<div class="hll"><pre><span></span>$ py.test -m <span class="s2">&quot;slow&quot;</span>   <span class="c1"># only runs &quot;slow&quot; tests</span>
-$ py.test -m <span class="s2">&quot;integration&quot;</span>  <span class="c1"># only runs &quot;integration&quot; tests</span>
-$ py.test -m <span class="s2">&quot;not integration&quot;</span>  <span class="c1"># only runs tests that are not &quot;integration&quot; tests.</span>
-</pre></div>
-
-  </div>
-
-  <a name="disqus"></a>
-  <div class="comments">
-<div id="disqus_thread"></div>
-<script>
-  var disqus_config = function() { this.page.identifier = "/blog/annotating-code-tests-and-selectively-running-tests"; this.page.url = "http://www.ericmjl.com/blog/2018/2/25/annotating-code-tests-and-selectively-running-tests/"; };
-  (function() {
-    var d = document, s = d.createElement('script');
-    s.src = '//ericmjl.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-<noscript>
-  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
-    rel="nofollow">comments powered by Disqus.</a>
-</noscript>
-</div>
+</ul>
 
     </div>
 

@@ -2,13 +2,206 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
-  <updated>2019-11-09T00:00:00Z</updated>
+  <updated>2019-12-15T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/">
+    <title type="text">A Review of the Python Data Science Dashboarding Landscape in 2019</title>
+    <id>urn:uuid:84460dc2-fd52-38c9-980c-e763f1d2d7f1</id>
+    <updated>2019-12-15T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;em&gt;This blog post is also available on &lt;a href=&quot;https://ericmjl.github.io/essays-on-data-science/&quot;&gt;my collection of essays&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;&lt;p&gt;As Pythonista data scientists,
+we are spoiled for choice when it comes to developing front-ends
+for our data apps.
+We used to have to fiddle with HTML in Flask (or Plotly's Dash),
+but now, there are tools in which
+&quot;someone wrote the HTML/JS so I didn't have to&quot;.&lt;/p&gt;
+&lt;p&gt;Let me give a quick tour of the landscape of tools
+as I've experienced it in 2019.&lt;/p&gt;
+&lt;h3 id=&quot;beginnings:-voila&quot;&gt;Beginnings: Voila&lt;/h3&gt;&lt;p&gt;Previously, I had test-driven
+&lt;a href=&quot;https://voila.readthedocs.io/en/latest/&quot;&gt;Voila&lt;/a&gt;.
+The key advantage I saw back then was that in my workflow,
+once I had the makings of a UI present in the Jupyter notebook,
+and just needed a way to serve it up
+independent of having my end-users run a Jupyter server,
+then Voila helped solve that use case.
+By taking advantage of existing the &lt;code&gt;ipywidgets&lt;/code&gt; ecosystem
+and adding on a way to run and serve the HTML output of a notebook,
+Voila solved that part of the dashboarding story quite nicely.
+In many respects,
+I regard Voila as the first proper dashboarding tool for Pythonistas.&lt;/p&gt;
+&lt;p&gt;That said, development in a Jupyter notebook
+didn't necessarily foster best practices
+(such as refactoring and testing code).
+When my first project at work ended,
+and I didn't have a need for further dashboarding,
+I didn't touch Voila for a long time.&lt;/p&gt;
+&lt;h3 id=&quot;another-player:-panel&quot;&gt;Another player: Panel&lt;/h3&gt;&lt;p&gt;Later, &lt;a href=&quot;http://panel.pyviz.org/&quot;&gt;Panel&lt;/a&gt; showed up.
+Panel's development model allowed a more modular app setup,
+including importing of plotting functions defined inside &lt;code&gt;.py&lt;/code&gt; files
+that returned individual plots.
+Panel also allowed me to prototype in a notebook and see the output live
+before moving the dashboard code into a source &lt;code&gt;.py&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;At work, we based a one-stop shop dashboard for a project on Panel,
+and in my personal life,
+I also built a
+&lt;a href=&quot;https://github.com/ericmjl/minimal-panel-app&quot;&gt;minimal panel app&lt;/a&gt;
+that I also
+&lt;a href=&quot;https://minimal-panel-app.herokuapp.com/&quot;&gt;deployed to Heroku&lt;/a&gt;.
+Panel was definitely developed
+targeting notebook and source file use cases in mind,
+and this shows through in its source development model.&lt;/p&gt;
+&lt;p&gt;That said, panel apps could be slow to load,
+and without having a &quot;spinner&quot; solution in place
+(i.e. something to show the user
+that the app is &quot;doing something&quot; in the background),
+it sometimes made apps &lt;em&gt;feel&lt;/em&gt; slow
+even though the slowness was not Panel's fault really.
+(My colleagues and I pulled out all the tricks in our bag to speed things up.)&lt;/p&gt;
+&lt;p&gt;Additionally, any errors that show up don't get surfaced to the app's UI,
+where developer eyeballs are on -
+instead, they get buried in the browser's JavaScript console
+or in the Python terminal where the app is being served.
+When deployed, this makes it difficult to see where errors show up
+and debug errors.&lt;/p&gt;
+&lt;h3 id=&quot;enter-streamlit&quot;&gt;Enter Streamlit&lt;/h3&gt;&lt;p&gt;Now, Streamlit comes along, and some of its initial demos are pretty rad.
+In order to test-drive it,
+I put together this &lt;a href=&quot;https://minimal-streamlit.herokuapp.com/&quot;&gt;little tutorial&lt;/a&gt;
+on the Beta probability distribution for my colleagues.&lt;/p&gt;
+&lt;p&gt;Streamlit definitely solves some of the pain points
+that I've observed with Panel and Voila.&lt;/p&gt;
+&lt;p&gt;The most important one that I see is that errors are captured by Streamlit
+and bubbled up to the UI,
+where our eyeballs are going to be when developing the app.
+For me, this is a very sensible decision to make, for two reasons:&lt;/p&gt;
+&lt;p&gt;Firstly, it makes debugging interactions that much easier.
+Instead of needing to have two interfaces open,
+the error message shows up right where the interaction fails,
+in the same browser window as the UI elements.&lt;/p&gt;
+&lt;p&gt;Secondly, it makes it possible for us
+to use the error messages as a UI &quot;hack&quot; to inform users
+where their inputs (e.g. free text) might be invalid,
+thereby giving them &lt;em&gt;informative error messages&lt;/em&gt;.
+(Try it out in the Beta distribution app:
+it'll give you an error message right below
+if you try to type something that cant be converted into a float!)&lt;/p&gt;
+&lt;p&gt;The other key thing that Streamlit provides as a UI nice-ity
+is the ability to signal to end-users that a computation is happening.
+Streamlit does this in three ways, two of which always come for free.
+&lt;strong&gt;Firstly&lt;/strong&gt;, if something is &quot;running&quot;,
+then in the top-right hand corner of the page,
+the &quot;Running&quot; spinner will animate.
+&lt;strong&gt;Secondly&lt;/strong&gt;, anything that is re-rendering will automatically be greyed out.
+&lt;strong&gt;Finally&lt;/strong&gt;, we can use a special context manager
+to provide a custom message on the front-end:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;streamlit&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;st&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;st&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spinner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Message goes here...&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# stuff happens&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So all-in-all, Streamlit seems to have a solution of some kind
+for the friction points that I have observed with Panel and Voila.&lt;/p&gt;
+&lt;p&gt;Besides that, Streamlit, I think, uses a procedural paradigm,
+rather than a callback paradigm, for app construction.
+We just have to think of the app as a linear sequence of actions
+that happen from top to bottom.
+State is never really an issue, because every code change
+and interaction re-runs the source file from top to bottom, from scratch.
+When building quick apps,
+this paradigm really simplifies things compared to a callback-based paradigm.&lt;/p&gt;
+&lt;p&gt;Finally, Streamlit also provides a convenient way to add text to the UI
+by automatically parsing as Markdown any raw strings unassigned to a variable
+in a &lt;code&gt;.py&lt;/code&gt; file and rendering them as HTML.
+This opens the door to treating a &lt;code&gt;.py&lt;/code&gt; file as a
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Literate_programming&quot;&gt;literate programming document&lt;/a&gt;,
+hosted by a Python-based server in the backend.
+It'd be useful especially in teaching scenarios.
+(With &lt;code&gt;pyiodide&lt;/code&gt; bringing the PyData stack to the browser,
+I can't wait to see standalone &lt;code&gt;.py&lt;/code&gt; files rendered to the DOM!)&lt;/p&gt;
+&lt;p&gt;Now, this isn't to say that Streamlit is problem-free.
+There are still rough edges,
+the most glaring (as of today) in the current release
+is the inability to upload a file and operate on it.
+This has been fixed in &lt;a href=&quot;https://github.com/streamlit/streamlit/pull/488&quot;&gt;a recent pull request&lt;/a&gt;,
+so I'm expecting this should show up in a new release any time soon.&lt;/p&gt;
+&lt;p&gt;The other not-so-big-problem that I see with Streamlit at the moment
+is the procedural paradigm -
+by always re-running code from top-to-bottom afresh on every single change,
+apps that rely on long compute may need a bit more thought to construct,
+including the use of Streamlit's caching mechanism.
+Being procedural does make things easier for development though,
+and on balance, I would not discount Streamlit's simplicity here.&lt;/p&gt;
+&lt;h2 id=&quot;where-does-streamlit-fit?&quot;&gt;Where does Streamlit fit?&lt;/h2&gt;&lt;p&gt;As I see it, Streamlit's devs are laser-focused on enabling devs
+to &lt;em&gt;very quickly&lt;/em&gt; get to a somewhat good-looking app prototype.
+In my experience, the development time for the Beta distribution app
+took about 3 hours, 2.5 of which were spent on composing prose.
+So effectively, I only used half an hour doing code writing,
+with a live and auto-reloading preview
+greatly simplifying the development process.
+(I conservatively estimate that this is about 1.5 times
+as fast as I would be using Panel.)&lt;/p&gt;
+&lt;p&gt;Given Streamlit, I would use it to develop two classes of apps:
+(1) very tightly-focused utility apps that do one lightweight thing well, and
+(2) bespoke, single-document literate programming education material.&lt;/p&gt;
+&lt;p&gt;I would be quite hesitant to build more complex things;
+then again, for me, that statement would be true more generally anyways
+with whatever tool.
+In any case, I think bringing UNIX-like thinking to the web
+is probably a good idea:
+we make little utilities/functional tools
+that can pipe standard data formats from to another.&lt;/p&gt;
+&lt;h2 id=&quot;common-pain-points-across-all-three-dashboarding-tools&quot;&gt;Common pain points across all three dashboarding tools&lt;/h2&gt;&lt;p&gt;A design pattern I have desired is to be able to serve up a fleet of small,
+individual utilities served up from the same codebase,
+served up by individual server processes,
+but all packaged within the same container.
+The only way I can think of at the moment
+is to build a custom Flask-based gateway
+to redirect properly to each utility's process.
+That said, I think this is probably out of scope
+for the individual dashboarding projects.&lt;/p&gt;
+&lt;h2 id=&quot;how-do-we-go-forward?&quot;&gt;How do we go forward?&lt;/h2&gt;&lt;p&gt;The ecosystem is ever-evolving, and,
+rather than being left confused by the multitude of options available to us,
+I find myself actually being very encouraged
+at the development that has been happening.
+There's competing ideas with friendly competition between the developers,
+but they are also simultaneously listening to each other and their users
+and converging on similar things in the end.&lt;/p&gt;
+&lt;p&gt;That said, I think it would be premature to go &quot;all-in&quot; on a single solution
+at this moment.
+For the individual data scientist,
+I would advise to be able to build something
+using each of the dashboarding frameworks.
+My personal recommendations are to know how to use:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Voila + &lt;code&gt;ipywidgets&lt;/code&gt; in a Jupyter notebook&lt;/li&gt;
+&lt;li&gt;Panel in Jupyter notebooks and standalone &lt;code&gt;.py&lt;/code&gt; files&lt;/li&gt;
+&lt;li&gt;Streamlit in &lt;code&gt;.py&lt;/code&gt; files.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These recommendations stem mainly from
+the ability to style and layout content without needing much knowledge of HTML.
+In terms of roughly when to use what,
+my prior experience has been that
+Voila and Streamlit are pretty good for quicker prototypes,
+while Panel has been good for more complex ones,
+though in all cases, we have to worry about speed impacting user experience.&lt;/p&gt;
+&lt;p&gt;From my experience at work,
+being able to quickly hash out key visual elements in a front-end prototype
+gives us the ability to better communicate with UI/UX designers and developers
+on what we're trying to accomplish.
+Knowing how to build front-ends ourselves
+lowers the communication and engineering barrier
+when taking a project to production.
+It's a worthwhile skill to have;
+be sure to have it in your toolbox!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/11/9/principled-git-based-workflow-in-collaborative-data-science-projects/">
     <title type="text">Principled Git-based Workflow in Collaborative Data Science Projects</title>
     <id>urn:uuid:7a225876-ae09-3cc4-bf75-d98cc06c9c42</id>
@@ -421,25 +614,6 @@ so the onus is on us computation types to get help navigate “data space” mor
 &lt;p&gt;There are other advanced features that &lt;code&gt;cachier&lt;/code&gt; provides, and so I’d encourage you to go and take a look at it!&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/">
-    <title type="text">Multiple Coin-Flips vs. One Coin Flip Generalized?</title>
-    <id>urn:uuid:3df0c5f9-3913-3dae-8550-1cbfdd5a6505</id>
-    <updated>2019-10-05T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Do people learn better by:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Generalizing from one example explained well, or by&lt;/li&gt;
-&lt;li&gt;Having multiple case studies that highlight the same point?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I think both are needed, but I am also torn sometimes by whether it’s more effective to communicate using the former or the latter.&lt;/p&gt;
-&lt;p&gt;Case in point: In teaching Bayesian statistics, the coin flip is a particular case of the Beta-Binomial model. However, the Beta-Binomial model can be taken from its most elementary form (estimation on one group) through to its most sophisticated form (hierarchically estimating &lt;code&gt;p&lt;/code&gt;).&lt;/p&gt;
-&lt;p&gt;I guess if the goal is to show how broadly applicable a given model class (i.e. the beta-binomial model) is, a teacher would elect to jump between multiple examples that are apparently distinct. However, if the goal is build depth (i.e. going from single group to multiple group estimation), sticking with one example (e.g. of baseball players, classically) would be the better strategy.&lt;/p&gt;
-&lt;p&gt;Both are needed, just at different times, I think. Thinking through this example, I think, gives me a first-principles way of deciding which approach to go for.&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/10/5/jupyter-server-with-https-on-personal-server/">
     <title type="text">Jupyter Server with HTTPS on Personal Server</title>
     <id>urn:uuid:9b74c6db-5130-3fcf-a2a7-0b1f922121d7</id>
@@ -479,6 +653,25 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NotebookApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keyfile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sa&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/absolute/path/to/your/certificate/mykey.key&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;If this helps you, leave me a note in the comments below. :)&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/">
+    <title type="text">Multiple Coin-Flips vs. One Coin Flip Generalized?</title>
+    <id>urn:uuid:3df0c5f9-3913-3dae-8550-1cbfdd5a6505</id>
+    <updated>2019-10-05T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;Do people learn better by:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Generalizing from one example explained well, or by&lt;/li&gt;
+&lt;li&gt;Having multiple case studies that highlight the same point?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I think both are needed, but I am also torn sometimes by whether it’s more effective to communicate using the former or the latter.&lt;/p&gt;
+&lt;p&gt;Case in point: In teaching Bayesian statistics, the coin flip is a particular case of the Beta-Binomial model. However, the Beta-Binomial model can be taken from its most elementary form (estimation on one group) through to its most sophisticated form (hierarchically estimating &lt;code&gt;p&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;I guess if the goal is to show how broadly applicable a given model class (i.e. the beta-binomial model) is, a teacher would elect to jump between multiple examples that are apparently distinct. However, if the goal is build depth (i.e. going from single group to multiple group estimation), sticking with one example (e.g. of baseball players, classically) would be the better strategy.&lt;/p&gt;
+&lt;p&gt;Both are needed, just at different times, I think. Thinking through this example, I think, gives me a first-principles way of deciding which approach to go for.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/9/7/dokku-building-an-internal-heroku-at-work/">
@@ -819,20 +1012,6 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;p&gt;I think there are great ideas in all three, and when I take a birds-eye view of the scientific computing ecosystem in Python as both a developer and end-user, I’d love to see the NumPy API, which is idiomatic and widely used and built on top of, become aware of each of these types of designs, something akin to NEP-18, the array function dispatching protocol that allows NumPy APIs to be called on other tensor libraries.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/context-switching/">
-    <title type="text">Context Switching</title>
-    <id>urn:uuid:138c066f-4d92-30c1-9ce1-fcb960d09b9f</id>
-    <updated>2019-05-10T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2019/5/10/context-switching/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Context switching is hard. I noticed this when I was at the PyCon sprints, where I was bouncing from sprinter to sprinter, trying to give them each the necessary attention to get their chosen sprint tasks done. After a while, it took a toll on my brain, and I started finding it hard to concentrate on the next problem.&lt;/p&gt;
-&lt;p&gt;Under such circumstances, when one is context switching often (most hopefully out of one's own volition), how do we communicate that we need some ramp-up time, and how can others help us help them?&lt;/p&gt;
-&lt;p&gt;I think one practical thing that can be done is to frequently communicate on each context switch that context ramp-up is needed. In the future, when I switch contexts, first thing I'm going to ask is something along the lines of, &quot;What context do I need to help me help you?&quot; Or, if I'm lost, I can clearly communicate what I'm missing - if it's context that I'm missing - by stating, &quot;I think I'm missing some context. Can you bring me up to speed?&quot;&lt;/p&gt;
-&lt;p&gt;At least while sprinting, sprinters can definitely help me help them by providing the necessary context up-front. Perhaps this applies more generally as well: when we're asking someone for help, we may be able to help them out by asking them, &quot;What context from me would help you get up-to-speed here?&quot;&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/pycon-2019-tutorial-and-conference-days/">
     <title type="text">PyCon 2019 Tutorial and Conference Days</title>
     <id>urn:uuid:6deb7465-7419-311f-8605-23b31aefa0e6</id>
@@ -847,6 +1026,20 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;p&gt;This year was the first year that Mridul and I swapped roles. In previous years, he was my TA, helping tutorial participants while I did the main lecturing. This year, the apprentice became the master, and a really good one indeed! Looking forward to seeing him shine more in subsequent tutorial iterations.&lt;/p&gt;
 &lt;p&gt;During the conference days, I spent most of my time either helping out with Financial Aid, or at the Microsoft booth. As I have alluded to in multiple tweets, Microsoft's swag this year was the best of them all. Microelectronics kits in a blue lunch box from Adafruit, and getting set up with &lt;a href=&quot;https://azure.microsoft.com/en-us/&quot;&gt;Azure&lt;/a&gt;. In fact, this website is now re-built with each push on Azure pipelines! Indeed, &lt;a href=&quot;https://twitter.com/zooba&quot;&gt;Steve Dowell&lt;/a&gt; from Microsoft told me that this year's best swag was probably getting setup with Azure, and I'm 100% onboard with that! (Fun fact, Steve told me that he's never been called by his Twitter handle (&lt;code&gt;zooba&lt;/code&gt;) in real-life... until we met.)&lt;/p&gt;
 &lt;p&gt;I also delivered a talk this year, which essentially amounted to a &lt;a href=&quot;https://us.pycon.org/2019/schedule/presentation/174/&quot;&gt;formal rant against canned statistical procedures&lt;/a&gt;. I had a ton of fun delivering this talk. The usual nerves still get to me, and I had to do a lot of talking-to-myself-style rehearsals to work off those nerves. For the first time, I also did office hours post-talk at an Open Space, where for one hour, we talked about all things Bayes. Happy to have met everybody who came by; I genuinely enjoyed the chat!&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/context-switching/">
+    <title type="text">Context Switching</title>
+    <id>urn:uuid:138c066f-4d92-30c1-9ce1-fcb960d09b9f</id>
+    <updated>2019-05-10T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/5/10/context-switching/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;Context switching is hard. I noticed this when I was at the PyCon sprints, where I was bouncing from sprinter to sprinter, trying to give them each the necessary attention to get their chosen sprint tasks done. After a while, it took a toll on my brain, and I started finding it hard to concentrate on the next problem.&lt;/p&gt;
+&lt;p&gt;Under such circumstances, when one is context switching often (most hopefully out of one's own volition), how do we communicate that we need some ramp-up time, and how can others help us help them?&lt;/p&gt;
+&lt;p&gt;I think one practical thing that can be done is to frequently communicate on each context switch that context ramp-up is needed. In the future, when I switch contexts, first thing I'm going to ask is something along the lines of, &quot;What context do I need to help me help you?&quot; Or, if I'm lost, I can clearly communicate what I'm missing - if it's context that I'm missing - by stating, &quot;I think I'm missing some context. Can you bring me up to speed?&quot;&lt;/p&gt;
+&lt;p&gt;At least while sprinting, sprinters can definitely help me help them by providing the necessary context up-front. Perhaps this applies more generally as well: when we're asking someone for help, we may be able to help them out by asking them, &quot;What context from me would help you get up-to-speed here?&quot;&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/5/8/pycon-2019-sprints/">
@@ -1052,7 +1245,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vm&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 
-&lt;span class=&quot;nd&quot;&gt;@app.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render_template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;index.html.j2&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1456,7 +1649,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SGECluster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# put parameters in there.&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;data_future&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;broadcast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data_future&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;broadcast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;One key thing to remember here is to assign the result of &lt;code&gt;client.scatter&lt;/code&gt; to a variable. This becomes a pointer that you pass into other functions that are submitted via the &lt;code&gt;client.submit&lt;/code&gt; interface. Because this point is not immediately clear from the &lt;code&gt;client.scatter&lt;/code&gt; docs, &lt;a href=&quot;https://github.com/dask/distributed/pull/2320&quot;&gt;I put in a pull request (PR) to provide some just-in-time documentation&lt;/a&gt;, which just got merged this morning. By the way, not every PR has to be code - documentation help is always good!&lt;/p&gt;
 &lt;p&gt;Once we've scattered the data across our worker nodes and obtained a pointer for the scattered data, we can parallel submit our function across worker nodes.&lt;/p&gt;
@@ -1592,11 +1785,11 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
     <author>
       <name>Eric J. Ma</name>
     </author>
-    <content type="html">&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;networkx&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;nx&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.sparse&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sp&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;seaborn&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sns&lt;/span&gt;
+    <content type="html">&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;networkx&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;nx&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.sparse&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sp&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;seaborn&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sns&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tqdm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tqdm&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;typing&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numba&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jit&lt;/span&gt;
@@ -1877,8 +2070,8 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;/ol&gt;
 &lt;p&gt;What are ECDFs? ECDFs stand for the &quot;empirical cumulative distribution function&quot;, and they map every data point in the dataset to a quantile, which is a number between 0 and 1 that indicates the cumulative fraction of data points smaller than that data point itself.&lt;/p&gt;
 &lt;p&gt;To illustrate, let's take a look at the following plots.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# Generate a mixture of two normal distributions, but with&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# very few data points.&lt;/span&gt;
@@ -2073,72 +2266,6 @@ $ git apply /tmp/patch.txt
 &lt;p&gt;I had spent about 1.5 months building and testing a graph convolutions neural network model to predict RNA cleavage by an enzyme. I was suffering from a generalization problem - this model class would never generalize beyond the training samples for my problem on hand, even though I saw the same model class perform admirably well for small molecules and proteins.&lt;/p&gt;
 &lt;p&gt;Together with an engineer at NIBR, we brainstormed a baseline with some simple features, and threw a random forest model at it. Three minutes later, after implementing everything, we had a model that generalized and outperformed my implementation of graph CNNs. Three days later, we had an AutoML (TPOT) model that beat the random forest. After further discussion, we realize then that the work that we did is sufficiently publishable even without the fancy graph CNNs.&lt;/p&gt;
 &lt;p&gt;I think there’s a lesson in establishing baselines and MVPs early on!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/3/30/consolidate-your-scripts-using-click/">
-    <title type="text">Consolidate your scripts using click</title>
-    <id>urn:uuid:3709bff4-3396-359f-b0f9-b86c59444500</id>
-    <updated>2018-03-30T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/3/30/consolidate-your-scripts-using-click/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;&lt;p&gt;&lt;code&gt;click&lt;/code&gt; is amazing! It's a Python package that allows us to add a command-line interface (CLI) to our Python scripts easily. This blog post is a data scientist-oriented post on how we can use &lt;code&gt;click&lt;/code&gt; to build useful tools for ourselves. In this blog post, I want to focus on how we can better organize our scripts.&lt;/p&gt;
-&lt;p&gt;I have found myself sometimes writing custom scripts to deal with custom data transforms. Having them refactored out into a library of modular functions can really help with maintenance. However, I still end up with multiple scripts that might not have a naturally logical organization... except for the fact that they are scripts that I run from time to time! Rather than have them scattered in multiple places, why not have them put together into a single &lt;code&gt;.py&lt;/code&gt; file, with options that are callable from the command line instead?&lt;/p&gt;
-&lt;h2 id=&quot;template&quot;&gt;Template&lt;/h2&gt;&lt;p&gt;Here's a template for organizing all those messy scripts using  &lt;code&gt;click&lt;/code&gt;.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;click&lt;/span&gt;
-
-
-&lt;span class=&quot;nd&quot;&gt;@click.group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
-
-
-&lt;span class=&quot;nd&quot;&gt;@main.command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;script1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;    Makes stuff happen.&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# do stuff that was originally in script 1&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;script 1 was run!&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# click.echo is recommended by the click authors.&lt;/span&gt;
-
-
-&lt;span class=&quot;nd&quot;&gt;@main.command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;script2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;Makes more stuff happen.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# do stuff that was originally in script 2.&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;script 2 was run!&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# we can run print instead of click.echo as well!&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vm&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;cli&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;&lt;p&gt;Let's call this new meta-script &lt;code&gt;jobs.py&lt;/code&gt;, and make it executable.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ chmod +x jobs.py
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;To execute it at the command line, we now a help command for free:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ./jobs.py --help
-Usage: jobs.py &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;OPTIONS&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; COMMAND &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;ARGS&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;...
-
-Options:
-  --help  Show this message and exit.
-
-Commands:
-  script1  Makes stuff happen.
-  script2  Makes more stuff happen.
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;We can also use just one script with varying commands to control the execution of what was originally two different &lt;code&gt;.py&lt;/code&gt; files.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ./jobs.py script1
-script &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; was run!
-$ ./jobs.py script2
-script &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; was run!
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Instead of versioning multiple &lt;code&gt;.py&lt;/code&gt; files, we now only have to keep track of one file where all non-standard custom stuff goes!&lt;/p&gt;
-&lt;h2 id=&quot;details&quot;&gt;Details&lt;/h2&gt;&lt;p&gt;Here's what's going on under the hood.&lt;/p&gt;
-&lt;p&gt;With the decorator &lt;code&gt;@click.group()&lt;/code&gt;, we have exposed the &lt;code&gt;main()&lt;/code&gt; function from the command line as a &quot;group&quot; of commands that are callable from the command line. What this does is then &quot;wrap&quot; the &lt;code&gt;main()&lt;/code&gt; function (somehow), such that now it can be used to decorate another function (in our case, &lt;code&gt;script1&lt;/code&gt; and &lt;code&gt;script2&lt;/code&gt;) using the decorator syntax &lt;code&gt;@main.command()&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;recap&quot;&gt;Recap&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;Consolidate disparate Python scripts into a single &lt;code&gt;.py&lt;/code&gt;  file, wrapping them inside a callable function.&lt;/li&gt;
-&lt;li&gt;Use &lt;code&gt;click&lt;/code&gt; to expose them to the end-user (yourself, or others) at the command line.&lt;/li&gt;
-&lt;/ul&gt;
 </content>
   </entry>
 </feed>
