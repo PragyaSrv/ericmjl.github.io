@@ -14,7 +14,12 @@
     </style>
 
     
-    
+    <!-- Syntax Highlighter. Use both pygments and hl.js. -->
+    <link rel="stylesheet" href="../../../../../static/pygments.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
 
     <!-- Google Analytics -->
     <script>
@@ -55,7 +60,7 @@
 
 </head>
 
-<title>Tag: bayesian - Eric J. Ma's Personal Site</title>
+<title>Simplifying Uncertainty Responsibly - Eric J. Ma's Personal Site</title>
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#local-links" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,42 +106,77 @@
     </nav>
     <div class="container">
         
-<h1><i class="fas fa-tag"></i> bayesian</h1>
-<ul>
   
-    <li><a href="../../../blog/2019/12/19/simplifying-uncertainty-responsibly/">2019-12-19: Simplifying Uncertainty Responsibly</a></li>
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../../../../../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
   
-    <li><a href="../../../blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/">2019-10-05: Multiple Coin-Flips vs. One Coin Flip Generalized?</a></li>
+    <h1>Simplifying Uncertainty Responsibly</h1>
   
-    <li><a href="../../../blog/2019/5/29/reasoning-about-shapes-and-probability-distributions/">2019-05-29: Reasoning about Shapes and Probability Distributions</a></li>
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-12-19
   
-    <li><a href="../../../blog/2019/1/21/advi-scalable-bayesian-inference/">2019-01-21: ADVI: Scalable Bayesian Inference</a></li>
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/bayesian/">
+          bayesian
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/data science/">
+          data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/uncertainty/">
+          uncertainty
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/decision making/">
+          decision making
+      </a>
+      
+  </p>
   
-    <li><a href="../../../blog/2018/12/16/gaussian-process-notes/">2018-12-16: Gaussian Process Notes</a></li>
-  
-    <li><a href="../../../blog/2018/12/9/mathematical-intuition/">2018-12-09: Mathematical Intuition</a></li>
-  
-    <li><a href="../../../blog/2018/11/7/bayesian-modelling-is-hard-work/">2018-11-07: Bayesian Modelling is Hard Work!</a></li>
-  
-    <li><a href="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/">2018-08-07: Joint, conditional, and marginal probability distributions</a></li>
-  
-    <li><a href="../../../blog/2018/8/6/d-separation-in-causal-inference/">2018-08-06: d-separation in causal inference</a></li>
-  
-    <li><a href="../../../blog/2018/7/16/bayesian-estimation-group-comparison-and-workflow/">2018-07-16: Bayesian Estimation, Group Comparison, and Workflow</a></li>
-  
-    <li><a href="../../../blog/2018/2/7/bayesian-inference-and-testing-sets/">2018-02-07: Bayesian Inference &amp; Testing Sets</a></li>
-  
-    <li><a href="../../../blog/2017/10/31/always-check-your-data/">2017-10-31: Always Check Your Data</a></li>
-  
-    <li><a href="../../../blog/2017/8/2/open-source-software/">2017-08-02: Open Source Software</a></li>
-  
-    <li><a href="../../../blog/2016/9/16/why-uncertainty-matters/">2016-09-16: Why Uncertainty Matters</a></li>
-  
-    <li><a href="../../../blog/2016/8/6/variational-inference-with-pymc3-a-lightweight-demo/">2016-08-06: Variational Inference With PyMC3: A Lightweight Demo</a></li>
-  
-    <li><a href="../../../blog/2016/6/10/abstractions/">2016-06-10: Abstractions</a></li>
-  
-</ul>
+
+  <!-- Put post body -->
+  <p>I read an article from Brandon Rohrer titled “<a href="https://brohrer.github.io/oversimplify.html">Oversimplify</a>”. The article provoked some thoughts.</p>
+<p>As someone who strives to model uncertainty in a day-to-day setting, it’s easy to misread Brandon’s article as saying, “discard your modelling of uncertainty”. It took me a few reads and a bit of thinking to realize that my misunderstanding would have been wrong. The gist of Brandon’s article is to communicate the fact that <em>most people don’t like uncertainty, so simplify <strong>the communication</strong> of uncertainty</em>.</p>
+<p>In a Bayesian setting, I think this corresponds mostly to “minimize regret” when making decisions.</p>
+<p>Here’s a classic example: weather forecast says “30% probability of precipitation” (assume this is rain). How does this fit into Brandon’s conception of simplifying the communication of uncertainty?</p>
+<p>Simply telling someone the probability of precipitation doesn’t help. It’s like stating an unhelpful fact - unhelpful if the audience doesn’t have a thought framework for acting on that uncertainty.</p>
+<p>Any good card-carrying Bayesian who also knows how to minimize regret in-line with pretty universal human values would say, “there’s a 30% probability of precipitation. Since getting wet is more miserable than carrying an umbrella on a cloudy day, take that umbrella, and throw in your waterproof jacket and boots while you’re at it.”</p>
+<p>By contrast, someone other consultant might take the same probabilities, and instead recommend, “Oh, there’s basically greater odds of not raining than raining, so wear your cotton jacket since it’s cold, but don’t bother about an umbrella.” This consultant, we would say, is basically deaf to human psychology and ethics. (I will not go deeper on the question of “what makes ethics” - too much for this blog post.)</p>
+<p>The key question most people are seeking an answer to is not “what do the data say”, but rather “how <em>ought</em> I act?” Though the latter question is normative, it <em>can</em> be informed by quantitative reasoning; we just have to make sure it is not <em>only</em> informed by quantitative reasoning.</p>
+<p>So to summarize: <em>most people don’t like uncertainty, so simplify <strong>the communication</strong> of uncertainty by providing an actionable recommendation in-line with universal of values (as much as possible) and culturally-specific behaviours of your audience</em>. In that way, our handling of uncertainty can be responsible and ethical.</p>
+
+  </div>
+
+  <a name="disqus"></a>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/simplifying-uncertainty-responsibly"; this.page.url = "http://www.ericmjl.com/blog/2019/12/19/simplifying-uncertainty-responsibly/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//ericmjl.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
     </div>
 

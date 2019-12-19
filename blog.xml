@@ -2,13 +2,32 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
-  <updated>2019-12-15T00:00:00Z</updated>
+  <updated>2019-12-19T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/12/19/simplifying-uncertainty-responsibly/">
+    <title type="text">Simplifying Uncertainty Responsibly</title>
+    <id>urn:uuid:2b6072c6-9383-3754-81c0-825d72035b39</id>
+    <updated>2019-12-19T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/12/19/simplifying-uncertainty-responsibly/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;I read an article from Brandon Rohrer titled “&lt;a href=&quot;https://brohrer.github.io/oversimplify.html&quot;&gt;Oversimplify&lt;/a&gt;”. The article provoked some thoughts.&lt;/p&gt;
+&lt;p&gt;As someone who strives to model uncertainty in a day-to-day setting, it’s easy to misread Brandon’s article as saying, “discard your modelling of uncertainty”. It took me a few reads and a bit of thinking to realize that my misunderstanding would have been wrong. The gist of Brandon’s article is to communicate the fact that &lt;em&gt;most people don’t like uncertainty, so simplify &lt;strong&gt;the communication&lt;/strong&gt; of uncertainty&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;In a Bayesian setting, I think this corresponds mostly to “minimize regret” when making decisions.&lt;/p&gt;
+&lt;p&gt;Here’s a classic example: weather forecast says “30% probability of precipitation” (assume this is rain). How does this fit into Brandon’s conception of simplifying the communication of uncertainty?&lt;/p&gt;
+&lt;p&gt;Simply telling someone the probability of precipitation doesn’t help. It’s like stating an unhelpful fact - unhelpful if the audience doesn’t have a thought framework for acting on that uncertainty.&lt;/p&gt;
+&lt;p&gt;Any good card-carrying Bayesian who also knows how to minimize regret in-line with pretty universal human values would say, “there’s a 30% probability of precipitation. Since getting wet is more miserable than carrying an umbrella on a cloudy day, take that umbrella, and throw in your waterproof jacket and boots while you’re at it.”&lt;/p&gt;
+&lt;p&gt;By contrast, someone other consultant might take the same probabilities, and instead recommend, “Oh, there’s basically greater odds of not raining than raining, so wear your cotton jacket since it’s cold, but don’t bother about an umbrella.” This consultant, we would say, is basically deaf to human psychology and ethics. (I will not go deeper on the question of “what makes ethics” - too much for this blog post.)&lt;/p&gt;
+&lt;p&gt;The key question most people are seeking an answer to is not “what do the data say”, but rather “how &lt;em&gt;ought&lt;/em&gt; I act?” Though the latter question is normative, it &lt;em&gt;can&lt;/em&gt; be informed by quantitative reasoning; we just have to make sure it is not &lt;em&gt;only&lt;/em&gt; informed by quantitative reasoning.&lt;/p&gt;
+&lt;p&gt;So to summarize: &lt;em&gt;most people don’t like uncertainty, so simplify &lt;strong&gt;the communication&lt;/strong&gt; of uncertainty by providing an actionable recommendation in-line with universal of values (as much as possible) and culturally-specific behaviours of your audience&lt;/em&gt;. In that way, our handling of uncertainty can be responsible and ethical.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/">
     <title type="text">A Review of the Python Data Science Dashboarding Landscape in 2019</title>
     <id>urn:uuid:84460dc2-fd52-38c9-980c-e763f1d2d7f1</id>
@@ -2251,21 +2270,6 @@ $ git apply /tmp/patch.txt
     <content type="html">&lt;p&gt;Finally, I have finished Judea Pearl's latest work &lt;a href=&quot;https://www.amazon.com/Book-Why-Science-Cause-Effect-ebook/dp/B075CR9QBJ/ref=mt_kindle?_encoding=UTF8&amp;amp;me=&quot;&gt;&quot;The Book of Why&quot;&lt;/a&gt;! Having read it, I have come to appreciate how much work had to go on in order to formalize the very intuitions that we have for causal reasoning into essentially a modelling language.&lt;/p&gt;
 &lt;p&gt;&quot;The Book of Why&quot; is geared towards the layman reader. Thus, unlike a textbook, it does not contain &quot;simplest complex examples&quot; that a reader can walk through and do calculations by hand (or through simulation). Thankfully, there is a &lt;a href=&quot;https://www.youtube.com/playlist?list=PLW01hpWnEtbTcuY0a0jhZyanHX3GPImAy&quot;&gt;lecture series by Jonas Peters&lt;/a&gt;, organized by the Broad Institute and held at MIT, that are available freely online.&lt;/p&gt;
 &lt;p&gt;From just viewing the first of the four lectures, I am thoroughly enjoying Jonas' explanations of the core ideas in causal modelling. Indeed, Jonas is a very talented lecturer! He builds up the ideas from simple examples, finally culminating in a &quot;simple complex example&quot; that we can simulate on a computer. Having just freshly read &quot;The Book of Why&quot; also helps immensely; it's also clear to me that people in the world of causal modelling are very much familiar with the same talking points. For those interested in learning more about causal modelling, I highly recommend both the book and the lecture series!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/5/6/model-baselines-are-important/">
-    <title type="text">Model Baselines Are Important</title>
-    <id>urn:uuid:7d559809-3f5b-354d-9927-4be51ce084a8</id>
-    <updated>2018-05-06T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/5/6/model-baselines-are-important/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;For any problem that we think is machine learnable, having a sane baseline is really important. It is even more important to establish them early.&lt;/p&gt;
-&lt;p&gt;Today at ODSC, I had a chance to meet both Andreas Mueller and Randy Olson. Andreas leads &lt;a href=&quot;http://scikit-learn.org/stable/&quot;&gt;&lt;code&gt;scikit-learn&lt;/code&gt;&lt;/a&gt; development, while Randy was the lead developer of &lt;a href=&quot;https://github.com/EpistasisLab/tpot&quot;&gt;TPOT&lt;/a&gt;, an AutoML tool. To both of them, I told a variation of the following story:&lt;/p&gt;
-&lt;p&gt;I had spent about 1.5 months building and testing a graph convolutions neural network model to predict RNA cleavage by an enzyme. I was suffering from a generalization problem - this model class would never generalize beyond the training samples for my problem on hand, even though I saw the same model class perform admirably well for small molecules and proteins.&lt;/p&gt;
-&lt;p&gt;Together with an engineer at NIBR, we brainstormed a baseline with some simple features, and threw a random forest model at it. Three minutes later, after implementing everything, we had a model that generalized and outperformed my implementation of graph CNNs. Three days later, we had an AutoML (TPOT) model that beat the random forest. After further discussion, we realize then that the work that we did is sufficiently publishable even without the fancy graph CNNs.&lt;/p&gt;
-&lt;p&gt;I think there’s a lesson in establishing baselines and MVPs early on!&lt;/p&gt;
 </content>
   </entry>
 </feed>

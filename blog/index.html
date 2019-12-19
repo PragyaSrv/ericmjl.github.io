@@ -109,6 +109,63 @@
 
   <!-- Set title style -->
   
+    <h1><a href="../blog/2019/12/19/simplifying-uncertainty-responsibly/">Simplifying Uncertainty Responsibly</a></h1>
+  
+
+  <!-- Append author -->
+  <p class="meta">
+    written by
+    
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-12-19
+  
+  </p>
+  <!-- Append tags after author -->
+  <p>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/bayesian/">
+          bayesian
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/data science/">
+          data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/uncertainty/">
+          uncertainty
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../blog/tag/decision making/">
+          decision making
+      </a>
+      
+  </p>
+  
+
+  <!-- Put post body -->
+  <p>I read an article from Brandon Rohrer titled “<a href="https://brohrer.github.io/oversimplify.html">Oversimplify</a>”. The article provoked some thoughts.</p>
+<p>As someone who strives to model uncertainty in a day-to-day setting, it’s easy to misread Brandon’s article as saying, “discard your modelling of uncertainty”. It took me a few reads and a bit of thinking to realize that my misunderstanding would have been wrong. The gist of Brandon’s article is to communicate the fact that <em>most people don’t like uncertainty, so simplify <strong>the communication</strong> of uncertainty</em>.</p>
+<p>In a Bayesian setting, I think this corresponds mostly to “minimize regret” when making decisions.</p>
+<p>Here’s a classic example: weather forecast says “30% probability of precipitation” (assume this is rain). How does this fit into Brandon’s conception of simplifying the communication of uncertainty?</p>
+<p>Simply telling someone the probability of precipitation doesn’t help. It’s like stating an unhelpful fact - unhelpful if the audience doesn’t have a thought framework for acting on that uncertainty.</p>
+<p>Any good card-carrying Bayesian who also knows how to minimize regret in-line with pretty universal human values would say, “there’s a 30% probability of precipitation. Since getting wet is more miserable than carrying an umbrella on a cloudy day, take that umbrella, and throw in your waterproof jacket and boots while you’re at it.”</p>
+<p>By contrast, someone other consultant might take the same probabilities, and instead recommend, “Oh, there’s basically greater odds of not raining than raining, so wear your cotton jacket since it’s cold, but don’t bother about an umbrella.” This consultant, we would say, is basically deaf to human psychology and ethics. (I will not go deeper on the question of “what makes ethics” - too much for this blog post.)</p>
+<p>The key question most people are seeking an answer to is not “what do the data say”, but rather “how <em>ought</em> I act?” Though the latter question is normative, it <em>can</em> be informed by quantitative reasoning; we just have to make sure it is not <em>only</em> informed by quantitative reasoning.</p>
+<p>So to summarize: <em>most people don’t like uncertainty, so simplify <strong>the communication</strong> of uncertainty by providing an actionable recommendation in-line with universal of values (as much as possible) and culturally-specific behaviours of your audience</em>. In that way, our handling of uncertainty can be responsible and ethical.</p>
+
+  </div>
+
+    <p><i>Did you enjoy this blog post? <a href="../blog/2019/12/19/simplifying-uncertainty-responsibly/#disqus">Let's discuss more</a>!</i></p>
+    <hr class="fancy">
+  
+    
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="../static/pygments.css">
+  <div>
+
+  <!-- Set title style -->
+  
     <h1><a href="../blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/">A Review of the Python Data Science Dashboarding Landscape in 2019</a></h1>
   
 
@@ -756,109 +813,6 @@ I hope this essay encourages you to give it a try.</p>
   </div>
 
     <p><i>Did you enjoy this blog post? <a href="../blog/2019/10/30/code-review-in-data-science/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
-    <h1><a href="../blog/2019/10/29/ai-will-not-solve-medicine/">“AI will not solve medicine”</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-10-29
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/data science/">
-          data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/drug development/">
-          drug development
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/artificial intelligence/">
-          artificial intelligence
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../blog/tag/medicine/">
-          medicine
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>Those who think “AI will solve medicine” are delusional.
-I say this as a practitioner of machine learning in drug discovery and development.</p>
-<p>First things first, “AI” is an overused term.
-We should stop using it, especially in medicinal research.</p>
-<p>Now, my thoughts are more sanguine.
-The real value proposition of machine learning models in drug development
-is to navigate chemical, sequence, pathway, and knowledge space
-faster and smarter than we might otherwise do so
-without machine learning methods.
-It’s a modeling tool, and nothing more than that.
-It’s a tool for helping the human collective make better decisions than without it,
-but it’s also a double-edged sword.
-We can use the tool and then constrain our thinking because we have that tool,
-because we want to continue using that tool.
-Or we can use the tool to our advantage
-and liberate our mind to think of other things.</p>
-<p>This thought was sparked off by an email that I was on at work.
-A molecule was approved for <em>continued investigation</em> (not even “go for safety trials”!),
-and 63 people were on that email.
-Imagine the number of people
-who are involved in getting a molecule past all research-phase checkpoints
-<em>and</em> all 3 clinical trial checkpoints.
-<em>Hint: Many people are involved.</em></p>
-<p>As I combed through the names on that email,
-the number of machine learners was vastly outnumbered by the number of colleagues
-who toiled daily at the bench,
-wrangling with even more uncertainty than that we have at our computers.
-We machine learners work in service of them,
-delivering insights and prioritized directions,
-just as they toil to generate the data that our data-hungry models need.
-It’s a symbiotic relationship.</p>
-<p>What do all of those 63 people work on?</p>
-<p>Some make the molecules.
-Others design the assays to test the molecules in.
-Yet others design the assays to find the target to then develop the assay for.
-It’s many layers of human creativity in the loop.
-I can’t automate the entirety of their work with my software tools, but I can augment them.
-I mean, yeah, I can find a new potential target,
-but ultimately it's a molecular biologist
-who develops the assay, especially if that assay has never existed before.</p>
-<p>There are others who professionally manage the progress of the project.
-There’s sufficient complexity at the bench
-and in the silicon chips
-that we can’t each keep track of the big picture.
-Someone has to do that, and keep everybody focused.</p>
-<p>And then there’s the handful of us who deal with numbers and mainly just numbers.
-Yes, it’s a handful.
-I counted them on my fingers.
-We do have an outsized impact compared to our numbers,
-but that’s because we can get computers to do our repetitive work for us.
-At the bench, robots are harder to work with.
-Having been at the bench before and failing badly at it,
-I can very much empathize with how tedious the work is.
-It’s expensive to collect that data,
-so the onus is on us computation types to get help navigate “data space” more smartly.</p>
-
-  </div>
-
-    <p><i>Did you enjoy this blog post? <a href="../blog/2019/10/29/ai-will-not-solve-medicine/#disqus">Let's discuss more</a>!</i></p>
     <hr class="fancy">
   
 
