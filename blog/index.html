@@ -149,9 +149,17 @@
 </code></pre>
 <p>If I start a Panel server here using:</p>
 <div class="hll"><pre><span></span>panel serve *.py
+<span class="c1"># or, to be selective</span>
+panel serve src1.py src2.py src3.py
+</pre></div>
+<p>If you have a bunch of Jupyter notebooks, the analogous command is:</p>
+<div class="hll"><pre><span></span>panel serve *.ipynb
+<span class="c1"># or, to be selective:</span>
+panel serve nb1.ipynb nb2.ipynb nb3.ipynb
 </pre></div>
 <p>Then all of the apps will be served up, with a default Bokeh landing page provided to link to each of the apps.</p>
 <p>Doing so lets us build multiple little utilities that can help ourselves and our colleagues be more productive!</p>
+<p>For an example of this, check out the <a href="https://minimal-panel-app.herokuapp.com/home">minimal panel app</a> I built to record these ideas. (Source code is available <a href="https://github.com/ericmjl/minimal-panel-app">here</a>.)</p>
 
   </div>
 

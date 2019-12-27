@@ -26,9 +26,17 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If I start a Panel server here using:&lt;/p&gt;
 &lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;panel serve *.py
+&lt;span class=&quot;c1&quot;&gt;# or, to be selective&lt;/span&gt;
+panel serve src1.py src2.py src3.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you have a bunch of Jupyter notebooks, the analogous command is:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;panel serve *.ipynb
+&lt;span class=&quot;c1&quot;&gt;# or, to be selective:&lt;/span&gt;
+panel serve nb1.ipynb nb2.ipynb nb3.ipynb
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Then all of the apps will be served up, with a default Bokeh landing page provided to link to each of the apps.&lt;/p&gt;
 &lt;p&gt;Doing so lets us build multiple little utilities that can help ourselves and our colleagues be more productive!&lt;/p&gt;
+&lt;p&gt;For an example of this, check out the &lt;a href=&quot;https://minimal-panel-app.herokuapp.com/home&quot;&gt;minimal panel app&lt;/a&gt; I built to record these ideas. (Source code is available &lt;a href=&quot;https://github.com/ericmjl/minimal-panel-app&quot;&gt;here&lt;/a&gt;.)&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/12/19/simplifying-uncertainty-responsibly/">
