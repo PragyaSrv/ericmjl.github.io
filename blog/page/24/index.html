@@ -111,6 +111,35 @@
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2017/1/3/on-openness-equals-source-code-inspectability/">On &#34;Openness = Source Code Inspectability&#34;</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-01-03
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/open science/">
+          open science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/open source/">
+          open source
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/peer review/">
+          peer review
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><p>One tenet of open science is the notion of "being able to inspect the source code". It's a good, lofty goal, but it comes with a big assumption that I think needs to be made clear.</p>
 <p>This assumption is that scientists who are reviewing papers that incorporate code are capable of accurately interpreting the source code in a reasonable amount of time, have a sufficient working knowledge of the language that the work is implemented in, while also possessing sufficient domain knowledge to review the paper.</p>
 <p>That middle point is the current sore point. In certain fields, such as artificial intelligence/machine learning and computational biology (both my pet fields), this is not an issue, as the substrate of scientific work is code. On the other hand, there's the scenario of experimental work that is analyzed with custom code. Here, the substrate of the scientific work is not primarily the code, it is the experiment. Reviewers who evaluate this type of work may not necessarily have the expertise to inspect the source code of the pipeline. I am not aware of journals whose editors make the extra effort to solicit a team of reviewers capable of covering both experimental design and code inspection.</p>
@@ -119,10 +148,12 @@
 <p>In summary, my claim here is that openness requires more scientists who are also technically qualified, in order to achieve the goal of reproducibility + veracity. Without the ability to inspect source code, we're only left with reproducibility, which is not good enough.</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2017/1/3/on-openness-equals-source-code-inspectability/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2017/1/3/on-openness-equals-source-code-inspectability/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -138,6 +169,39 @@
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2016/12/27/my-flask-app-building-sprint/">My Flask app-building sprint</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-12-27
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/software engineering/">
+          software engineering
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/side projects/">
+          side projects
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/flask/">
+          flask
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/python/">
+          python
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><h1 id="overview">Overview</h1><p>This winter, I decided to embark on a coding project purely for fun. In preparation to build my own Raspberry Pi photo display, I wanted to build an easily-installable, portable (across operating systems) and completely hackable stand-alone image displayer. This project ended up being an awesome way to get myself familiarized with a wide variety of concepts in web development, software packaging, and software distribution. I learned a ton, and I want to share the process behind it.</p>
 <p>The design goals were as follows:</p>
 <ol>
@@ -423,10 +487,12 @@ $ rm dist/*
 <p>I'd love to get feedback on how it could be improved, but more importantly, contributions are really welcome! Please be kind in feedback, I'm still a relative newbie with web development, so keeping things positive would help keep things encouraging. Hope you enjoyed the post!</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2016/12/27/my-flask-app-building-sprint/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2016/12/27/my-flask-app-building-sprint/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -442,6 +508,17 @@ $ rm dist/*
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2016/12/24/how-to-make-your-python-scripts-callable-from-the-command-line/">How to make your Python scripts callable from the command-line</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-12-24
+        
+
+    </small>
+
     <p class="card-text"><p>So you've written this awesome Python module/script that does awesome stuff, but now you want to call it from the command line. I'm going to show you how to make this happen.</p>
 <p>First off, create your Python script. Below, borrowing from the <a href="http://click.pocoo.org/5/">Click</a> package documentation, I'm going to show a script that is just slightly more complex than a simple "hello world".</p>
 <div class="hll"><pre><span></span><span class="c1"># helloworld.py</span>
@@ -502,10 +579,12 @@ Hello Eric!
 </pre></div>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2016/12/24/how-to-make-your-python-scripts-callable-from-the-command-line/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2016/12/24/how-to-make-your-python-scripts-callable-from-the-command-line/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -521,6 +600,31 @@ Hello Eric!
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2016/12/20/female-doctors-are-better-than-male-doctors-for-real/">Female Doctors are Better than Male Doctors - For Real?</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-12-20
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/statistics/">
+          statistics
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><p>For real. Read on for the statistical perspective on why.</p>
 <p>I saw this article published by JAMA, posted by a number of my friends on Facebook. The claim here was that patients treated by women doctors show lower readmission rates than patients treated by men, controlling for as many other factors as can be plausibly controlled for.</p>
 <p>When I saw the clickbait-y headlines and posts by my mostly left-leaning friends basically going "women are better than men", my first instinct was "go check the stats". (I'm probably best labelled as centrist.) Indeed, I think I would have made Prof. Allen Downey proud - I didn't buy the p-values at face value. Rather, I was most interested in the effect size.</p>
@@ -536,10 +640,12 @@ Hello Eric!
 <p>I still take issue with the article's emphasis on "statistically significant or not" method of reporting the results, but I think that's a flaw of the medical literature publishing culture, and something that the authors probably had to conform to in order to successfully publish the results. Nonetheless, if you even just skim the text of the paper, the data are consistent across all comparisons made, regardless of whether the results were "statistically significant" or not. That's pretty strong evidence, in my opinion.</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2016/12/20/female-doctors-are-better-than-male-doctors-for-real/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2016/12/20/female-doctors-are-better-than-male-doctors-for-real/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -555,6 +661,17 @@ Hello Eric!
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2016/12/15/experimenting-with-github-pages/">Experimenting with GitHub Pages</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-12-15
+        
+
+    </small>
+
     <p class="card-text"><p>I've been playing a ton with GitHub pages recently, and so far, I've been impressed! My main use case has been in creating places where I can host Reveal.js slides online, and showcasing some writing that I've put together that doesn't fit in my "blog" format. My <a href="https://ericmjl.github.io/">GitHub page</a> showcases some of the best.</p>
 <p>Along the way, I've learned a ton. Here's some of the highlights.</p>
 <p>Firstly, I learned about standardizing project templates using <a href="https://github.com/audreyr/cookiecutter"><code>cookiecutter</code></a>, a Python package available on conda-forge and the cheese shop (PyPI). Initially, I tried hacking my own cookiecutter-ish hodge-podge of scripts, particularly for downloading the necessary components for <a href="https://github.com/hakimel/reveal.js/">Reveal.js</a>, but that didn't really work out, and I was eventually confused by my own logic. <code>cookiecutter</code> eliminated all of the confusion, and was really easy to operate.</p>
@@ -563,10 +680,12 @@ Hello Eric!
 <p>All in all, quite a fun experience! I have also put up my cookiecutter templates for <a href="https://github.com/ericmjl/cookiecutter-talk">talks</a> and <a href="https://github.com/ericmjl/cookiecutter-writing">writing</a> on GitHub, alongside a tutorial for the <a href="https://ericmjl.github.io/easy-talk-slides-and-notes/">slides</a>, with the hope that it's useful for others!</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2016/12/15/experimenting-with-github-pages/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2016/12/15/experimenting-with-github-pages/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>

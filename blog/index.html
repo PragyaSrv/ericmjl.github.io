@@ -111,6 +111,39 @@
   <link rel="stylesheet" href="../static/pygments.css">
   <div class="card-body">
     <h1><a href="../blog/2020/1/2/on-automating-principled-statistical-analyses/">On automating principled statistical analyses</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2020-01-02
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/statistics/">
+          statistics
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/automation/">
+          automation
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/bayesian/">
+          bayesian
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><p>I’ve been known to rant against the t-test, because I see it as a canned statistical test that most scientists “just” reach for. From a statistical viewpoint, reaching for the t-test by default is unprincipled because our data may not necessarily fulfill the Gaussian-distributed assumptions of the t-test.</p>
 <p>That isn’t to say, though, that I’m against automated statistical analyses.</p>
 <p>If there’s a data generating process that will need continual analysis, and we are aware that these processes can be broadly standardized enough that we can use a single statistical model across multiple groups and/or samples, then we might be able to automate the analysis method used.</p>
@@ -122,10 +155,12 @@
 <p>And friends, if you write an automated pipeline, don’t forget to <a href="https://ericmjl.github.io/essays-on-data-science/software-skills/testing/">write tests</a>!</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../blog/2020/1/2/on-automating-principled-statistical-analyses/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../blog/2020/1/2/on-automating-principled-statistical-analyses/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -141,6 +176,35 @@
   <link rel="stylesheet" href="../static/pygments.css">
   <div class="card-body">
     <h1><a href="../blog/2019/12/26/serving-multiple-panel-apps-together/">Serving multiple Panel apps together</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2019-12-26
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/dashboarding/">
+          dashboarding
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/python/">
+          python
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><p>I learned a new thing today! If I have a bunch of small dashboard-like utilities, <code>panel</code>, which uses the <code>bokeh</code> server behind the scenes, can serve up multiple files together from the same server.</p>
 <p>Here's an example. Assume I have the following directory structure:</p>
 <pre><code>|- /
@@ -163,10 +227,12 @@ panel serve nb1.ipynb nb2.ipynb nb3.ipynb
 <p>For an example of this, check out the <a href="https://minimal-panel-app.herokuapp.com/home">minimal panel app</a> I built to record these ideas. (Source code is available <a href="https://github.com/ericmjl/minimal-panel-app">here</a>.)</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../blog/2019/12/26/serving-multiple-panel-apps-together/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../blog/2019/12/26/serving-multiple-panel-apps-together/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -182,6 +248,39 @@ panel serve nb1.ipynb nb2.ipynb nb3.ipynb
   <link rel="stylesheet" href="../static/pygments.css">
   <div class="card-body">
     <h1><a href="../blog/2019/12/19/simplifying-uncertainty-responsibly/">Simplifying Uncertainty Responsibly</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2019-12-19
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/bayesian/">
+          bayesian
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/uncertainty/">
+          uncertainty
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/decision making/">
+          decision making
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><p>I read an article from Brandon Rohrer titled “<a href="https://brohrer.github.io/oversimplify.html">Oversimplify</a>”. The article provoked some thoughts.</p>
 <p>As someone who strives to model uncertainty in a day-to-day setting, it’s easy to misread Brandon’s article as saying, “discard your modelling of uncertainty”. It took me a few reads and a bit of thinking to realize that my misunderstanding would have been wrong. The gist of Brandon’s article is to communicate the fact that <em>most people don’t like uncertainty, so simplify <strong>the communication</strong> of uncertainty</em>.</p>
 <p>In a Bayesian setting, I think this corresponds mostly to “minimize regret” when making decisions.</p>
@@ -193,10 +292,12 @@ panel serve nb1.ipynb nb2.ipynb nb3.ipynb
 <p>So to summarize: <em>most people don’t like uncertainty, so simplify <strong>the communication</strong> of uncertainty by providing an actionable recommendation in-line with universal of values (as much as possible) and culturally-specific behaviours of your audience</em>. In that way, our handling of uncertainty can be responsible and ethical.</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../blog/2019/12/19/simplifying-uncertainty-responsibly/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../blog/2019/12/19/simplifying-uncertainty-responsibly/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -212,6 +313,43 @@ panel serve nb1.ipynb nb2.ipynb nb3.ipynb
   <link rel="stylesheet" href="../static/pygments.css">
   <div class="card-body">
     <h1><a href="../blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/">A Review of the Python Data Science Dashboarding Landscape in 2019</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2019-12-15
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/dashboarding/">
+          dashboarding
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/python/">
+          python
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/data visualization/">
+          data visualization
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/software development/">
+          software development
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><p><em>This blog post is also available on <a href="https://ericmjl.github.io/essays-on-data-science/">my collection of essays</a>.</em></p>
 <h2 id="introduction">Introduction</h2><p>As Pythonista data scientists,
 we are spoiled for choice when it comes to developing front-ends
@@ -397,10 +535,12 @@ It's a worthwhile skill to have;
 be sure to have it in your toolbox!</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -416,16 +556,47 @@ be sure to have it in your toolbox!</p>
   <link rel="stylesheet" href="../static/pygments.css">
   <div class="card-body">
     <h1><a href="../blog/2019/11/9/principled-git-based-workflow-in-collaborative-data-science-projects/">Principled Git-based Workflow in Collaborative Data Science Projects</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2019-11-09
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/git/">
+          git
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../blog/tag/workflow/">
+          workflow
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><p>Having worked with GitFlow on a data science project and coming to a few epiphanies with it, I decided to share some of my thoughts <a href="https://ericmjl.github.io/essays-on-data-science/workflow/gitflow/">in an essay</a>.</p>
 <p>One of my thoughts here is that most data scientists aren't resistant to using GitFlow (and more generally, just being more intentional about what gets worked on) because it's a bad idea, but because there's a lack of incentives to do so. In there, I try to address this concern.</p>
 <p>And because GitFlow does require knowledge of Git, it can trigger an, "Oh no, one more thing to learn!" response. These things do take time to learn, yes, but I see it also as an investment of time with a future payoff.</p>
 <p>Apart from that, I hope you enjoy the essay; writing it was also a great opportunity for me to pick up more advanced features of <code>pymdownx</code>, a package that extends Markdown syntax with other really cool features.</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../blog/2019/11/9/principled-git-based-workflow-in-collaborative-data-science-projects/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../blog/2019/11/9/principled-git-based-workflow-in-collaborative-data-science-projects/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>

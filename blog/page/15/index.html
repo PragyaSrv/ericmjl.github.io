@@ -111,6 +111,17 @@
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2017/11/3/boston-bayesians-talk-an-attempt-at-demystifying-bayesian-deep-learning/">Boston Bayesians Talk: An Attempt at Demystifying Bayesian Deep Learning</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-11-03
+        
+
+    </small>
+
     <p class="card-text"><p>It's confirmed! I will be rehearsing my PyData NYC talk <a href="https://www.meetup.com/Boston-Bayesians/events/244731222">at Boston Bayesians</a>, held at McKinsey's office.</p>
 <p>This time round, I've challenged myself with making the slides without using PowerPoint or Keynote, and I think I've successfully done it! Check them out:</p>
 <ul>
@@ -120,10 +131,12 @@
 <p>Side note, I'm starting to really love what we can do with the web!</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2017/11/3/boston-bayesians-talk-an-attempt-at-demystifying-bayesian-deep-learning/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2017/11/3/boston-bayesians-talk-an-attempt-at-demystifying-bayesian-deep-learning/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -139,16 +152,51 @@
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2017/10/31/always-check-your-data/">Always Check Your Data</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-10-31
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data analysis/">
+          data analysis
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/statistics/">
+          statistics
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/bayesian/">
+          bayesian
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><p>True story, just happened today. I was trying to fit a Poisson likelihood to estimate event cycle times (in discreet weeks). For certain columns, everything went perfectly fine. Yet for other columns, I was getting negative infinity’s likelihoods, and was banging my head over this problem for over an hour and a half.</p>
 <p>As things turned out, those columns that gave me negative infinity likelihood initializations were doing so because of negative values in the data. Try fitting a Poisson likelihood, which only has positive support, on that!</p>
 <p><img src="https://i.imgflip.com/1yl6ki.jpg" alt=""></p>
 <p>This lost hour and a half was a good lesson in data checking/testing: <strong>always be sure to sanity check basic stats associated with the data - bounds (min/max), central tendency (mean/median/mode) and spread (variance, quartile range) - always check!</strong></p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2017/10/31/always-check-your-data/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2017/10/31/always-check-your-data/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -164,6 +212,35 @@
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2017/10/27/random-forests-a-good-default-model/">Random Forests: A Good Default Model?</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-10-27
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/machine learning/">
+          machine learning
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/random forest/">
+          random forest
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><p>I've been giving this some thought, and wanted to go out on a limb to put forth this idea:</p>
 <p><strong>I think Random Forests (RF) are a good "baseline" model to try, after establishing a "random" baseline case.</strong></p>
 <p>(Clarification: I'm using RF as a shorthand for "forest-based ML algorithms", including XGBoost etc.)</p>
@@ -183,10 +260,12 @@
 <p>Random Forests were the darling of the machine learning world before neural networks came along, and even now, remain the tool-of-choice for colleagues in the cheminformatics world. Given how easy they are to use now, why not just start with them?</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2017/10/27/random-forests-a-good-default-model/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2017/10/27/random-forests-a-good-default-model/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -202,6 +281,47 @@
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2017/10/22/network-propagation/">Network Propagation</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-10-22
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/network science/">
+          network science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/graph theory/">
+          graph theory
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/programming/">
+          programming
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/python/">
+          python
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/code snippets/">
+          code snippets
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><h2 id="introduction">Introduction</h2><p>I recently read a <a href="http://www.nature.com/nrg/journal/vaop/ncurrent/abs/nrg.2017.38.html">review paper on network propagation</a>. It looks like a very useful thing in data science, particularly where networks are involved, and I wanted to share it with everybody.</p>
 <p>Before I go on, I will start off by assuming we have a dataset modelled as a "network", or a "graph", in which the nodes are entities in the graph, and edges are relationships between those entities. In the context of my work, I encounter biological networks of many kinds - gene-gene interactions, protein-protein interactions, protein-RNA interactions, evolutionary networks, and more.</p>
 <p>What kind of problems can network propagation solve? The problem class generally follows this logic: I start with some nodes of interest, and I'm most interested in finding other nodes of interest based on these "seed" nodes. Knowing that path-based methods can often end up over-prioritizing highly connected nodes, we need a different principled method for finding these nodes. One way would be to take a random walk on the graph, and find out how often we land on a particular set of nodes on the graph. This random walk is what we call "network propagation".</p>
@@ -266,10 +386,12 @@
 <h2 id="conclusion">Conclusion</h2><p>Network propagation is conceptually simple, and easy to implement in Python.</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2017/10/22/network-propagation/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2017/10/22/network-propagation/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -285,6 +407,17 @@
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2017/10/11/pypy-impressive/">PyPy: Impressive!</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-10-11
+        
+
+    </small>
+
     <p class="card-text"><p>A few years on after trying out PyPy for the first time and wrestling with it, I still find it to be pretty awesome.</p>
 <p>Now that PyPy officially supports <code>numpy</code>, I'm going to profile a few simple statistical simulation tasks:</p>
 <ul>
@@ -377,10 +510,12 @@
 </pre></div>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2017/10/11/pypy-impressive/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2017/10/11/pypy-impressive/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>

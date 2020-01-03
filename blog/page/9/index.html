@@ -111,6 +111,43 @@
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/">Parallel Processing with Dask on GridEngine Clusters</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-10-11
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/parallel/">
+          parallel
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/dask/">
+          dask
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/gridengine/">
+          gridengine
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/optimization/">
+          optimization
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><p>I recently just figured out how to get this working... and it's awesome! :D</p>
 <h2 id="motivation">Motivation</h2><p>If I'm developing an analysis in the Jupyter notebook, and I have one semi-long-running function (e.g. takes dozens of seconds) that I need to run over tens to hundreds of thousands of similar inputs, it'll take <em>ages</em> for this to complete in serial. For a sense of scale, a function that takes ~20 seconds per call run serially over 10,000 similar inputs would take 200,000 seconds, which is 2 days of run-time (not including any other overhead). That's not feasible for interactive exploration of data. If I could somehow parallelize just the function over 500 compute nodes, we could take the time down to 7 minutes.</p>
 <p>GridEngine-based compute clusters are one of many options for parallelizing work. During grad school at MIT, and at work at Novartis, the primary compute cluster environment that I've encountered has been GridEngine-based. However, because they are designed for batch jobs, as a computational scientist, we have to jump out of whatever development environment we're currently using, and move to custom scripts.</p>
@@ -207,10 +244,12 @@
 <p>Finally, on a shared cluster, be respectful of others' usage. Don't request for unreasonable amounts of compute time. And when you're confirmed done with your analysis work, remember to shut down the virtual cluster! :)</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -226,6 +265,47 @@
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/">Optimizing Block Sparse Matrix Creation with Python</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-09-04
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/graph/">
+          graph
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/optimization/">
+          optimization
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/numba/">
+          numba
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/python/">
+          python
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/sparse matrix/">
+          sparse matrix
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><div class="hll"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">sp</span>
@@ -383,10 +463,12 @@
 <p>I hope you learned something new, and I hope you also enjoyed reading this post as much as I enjoyed writing it!</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -402,15 +484,50 @@
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/">Joint, conditional, and marginal probability distributions</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-08-07
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/statistics/">
+          statistics
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/probability/">
+          probability
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/bayesian/">
+          bayesian
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><p>Joint probability, conditional probability, and marginal probability... These are three central terms when learning about probability, and they show up in Bayesian statistics as well. However... I never really could remember what they were, especially since we were usually taught them using formulas, rather than pictures.</p>
 <p>Well, for those who learn a bit better using pictures... if you know what a probability distribution is, then hopefully these help with remembering what these terms mean. (Clicking on the image will bring you to the original, hosted on GitHub.)</p>
 <p><a href="https://github.com/ericmjl/distributions/raw/master/joint-conditional-marginal.pdf"><img src="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/joint-conditional-marginal.png" alt=""></a></p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -426,14 +543,45 @@
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2018/8/6/d-separation-in-causal-inference/">d-separation in causal inference</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-08-06
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/causal inference/">
+          causal inference
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/bayesian/">
+          bayesian
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><p>Yesterday evening, I had an empty block of time during which I finally did a worked example of finding whether two nodes are "d-separated" in a causal graph. It was pretty instructive to implement the algorithm. It also reminded me yet again: there's this weird thing about me where I need programming to learn math!</p>
 <p>Anyways, if you're interested in seeing the implementation, it's available at <a href="https://github.com/ericmjl/causality">GitHub</a>.</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2018/8/6/d-separation-in-causal-inference/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2018/8/6/d-separation-in-causal-inference/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
@@ -449,6 +597,43 @@
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
     <h1><a href="../../../blog/2018/8/1/nxviz-05-released/">nxviz 0.5 released!</a></h1>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-08-01
+        
+      </p>
+      <!-- Append tags after author -->
+      <p>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/nxviz/">
+          nxviz
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/visualization/">
+          visualization
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/software/">
+          software
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/open source/">
+          open source
+        </a>
+        
+      </p>
+      
+
+    </small>
+
     <p class="card-text"><p>A new version of nxviz is released!</p>
 <p>In this update, I have added a declarative interface for visualizing geographically-constrained graphs. Here, nodes in a graph have their placement constrained by longitude and latitude.</p>
 <p>An example of how to use it is below:</p>
@@ -458,10 +643,12 @@
 <p>Please enjoy!</p>
 
     </p>
-    <p class="card-text">
-      <i>Did you enjoy this blog post? <a href="../../../blog/2018/8/1/nxviz-05-released/#disqus">Let's discuss more</a>!
-      </i>
-    </p>
+    <small class="text-muted">
+      <p class="card-text">
+        <i>Did you enjoy this blog post? <a href="../../../blog/2018/8/1/nxviz-05-released/#disqus">Let's discuss more</a>!
+        </i>
+      </p>
+    </small>
 
   </div>
 </div>
