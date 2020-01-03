@@ -102,232 +102,237 @@
     </nav>
     <div class="container">
         
-<style media="screen">
-    .carousel-indicators {
-      height: 0%;
-      top: 0px;
-    }
-
-    .carousel-indicators li {
-        background-color: #999;
-        background-color: rgba(70,70,70,.25);
-    }
-
-    .carousel-indicators .active {
-        background-color: #444;
-    }
-
-    .carousel-item {
-        padding-top: 15px;
-    }
-
-    .carousel-inner {
-        padding-left: 50px;
-        padding-right: 50px;
-    }
-
-    .carousel-control-prev {
-        margin-left: -75px;
-    }
-    .carousel-control-next {
-        margin-right: -75px;
-    }
-
-</style>
-<div id="projectsCarousel" class="carousel slide" data-ride="carousel">
-
-    <!-- Carousel indicators -->
-    <ol class="carousel-indicators">
-      
-        <li data-target="#projectsCarousel" data-slide-to="0"  class="active" </li>
-      
-        <li data-target="#projectsCarousel" data-slide-to="1" </li>
-      
-        <li data-target="#projectsCarousel" data-slide-to="2" </li>
-      
-        <li data-target="#projectsCarousel" data-slide-to="3" </li>
-      
-        <li data-target="#projectsCarousel" data-slide-to="4" </li>
-      
-        <li data-target="#projectsCarousel" data-slide-to="5" </li>
-      
-    </ol>
-
-    <div class="carousel-inner" role="listbox">
-      <!-- All of the projects -->
-      
-        <div class="carousel-item active">
-            <div class="">
-                
-<div class="project-container">
-    <h3>Essays on Data Science</h3>
-    <!--  -->
-
+<div class="row row-cols-1 row-cols-md-3">
     
-      
-          <p>I have curated a collection of blog posts and non-blog content into a collection of essays that I believe will be beneficial to the broader Python data science community at large.</p>
-
-      
-          <p><a href="https://ericmjl.github.io/essays-on-data-science/">Website</a></p>
-      
     
+    
+<div class="col mb-4">
+    <div class="card bg-dark h-100">
+        
 
-</div>
+        
+        
 
-            </div>
+        
+        
+        <div class="card-body">
+            <h5 class="card-title">Essays on Data Science</h5>
+            <p>A curated collection of of essays that I believe are be useful to the broader Python data science community.</p>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+            <a href="https://ericmjl.github.io/essays-on-data-science/" class="card-link">Website</a>
+            
+
+            
+
+            
+
+            
+
+            
         </div>
-      
-        <div class="carousel-item ">
-            <div class="">
-                
-<div class="project-container">
-    <h3>Bayesian Analysis Recipes</h3>
-    <!--  -->
-
-    
-      
-          <p>I once saw a probability estimate with mean 0.8 and variance 0.3. From that point onwards, I knew frequentist estimates could be horribly wrong, and decided to go Bayesian.</p>
-<p>As part of my learning journey, I decided to make publicly available a GitHub repository of Bayesian statistical analysis recipes in PyMC3 featuring models and data that I've seen elsewhere. Most of them I implemented from scratch, to get familiar with PyMC3 syntax and to get familiar with the logic of Bayesian statistical modelling.</p>
-<p>Some models that are implemented here include:</p>
-<ul>
-<li>Binary and multinomial classification.</li>
-<li>Neural networks</li>
-<li>Linear regression</li>
-<li>Hierarchical modelling</li>
-</ul>
-
-      
-          <p>The GitHub repository can be found <a href="https://github.com/ericmjl/bayesian-analysis-recipes">here</a>.</p>
-      
-    
-
-</div>
-
-            </div>
-        </div>
-      
-        <div class="carousel-item ">
-            <div class="">
-                
-<div class="project-container">
-    <h3>Flu Forecaster</h3>
-    <!--  -->
-
-    
-      
-          <iframe src="https://docs.google.com/presentation/d/1GHSUZHxxEATvhhffTnpjJIoKW65ZJ0NeQ3M4hh_fYzI/embed?start=false&loop=false&delayms=10000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe><p>As part of my Insight project, I built Flu Forecaster, a project that aims to forecast influenza sequence evolution using deep learning. In it, I used a combination of variational autoencoders (VAEs) to translate time-stamped influenza protein sequences into a continuous coordinate space, and then used gaussian process regression to forecast future continuous coordinates that could be translated back to sequence space.</p>
-
-      
-          <p><a href="https://fluforecaster.herokuapp.com/">Interactive Blog Post</a></p>
-      
-    
-
-</div>
-
-            </div>
-        </div>
-      
-        <div class="carousel-item ">
-            <div class="">
-                
-<div class="project-container">
-    <h3>Deep Phenotype Learning</h3>
-    <!--  -->
-
-    
-      
-          <p>In order to achieve real-time surveillance, we need machine learning models with high learning capacity that are also highly interpretable. I am currently working on extending <a href="http://arxiv.org/abs/1509.09292">neural fingerprints</a> to protein structures using convolutions on graph-structured data. In the process, we are writing a graph convolution implementation as a Python package, as well as a software package for converting protein 3-D structures into its corresponding "protein interaction graph" representation. While these tools are developed with the goal of deep learning in mind, we also anticipate their general use as well.</p>
-<p><em>Software:</em></p>
-<ol>
-<li>Graph Fingerprint on <a href="https://github.com/ericmjl/graph-fingerprint">GitHub</a></li>
-<li>Protein Interaction Network on <a href="https://github.com/ericmjl/protein-interaction-network">GitHub</a></li>
-<li>Protein Convolutional Networks on <a href="https://github.com/ericmjl/protein-convolutional-nets">GitHub</a></li>
-</ol>
-<p><em>Senior Collaborators:</em></p>
-<ol>
-<li><a href="https://be.mit.edu/directory/jonathan-a-runstadler">Prof. Jonathan A. Runstadler</a></li>
-<li><a href="http://people.seas.harvard.edu/~dduvenaud/">Prof. David K. Duvenaud</a></li>
-</ol>
-
-      
-    
-
-</div>
-
-            </div>
-        </div>
-      
-        <div class="carousel-item ">
-            <div class="">
-                
-<div class="project-container">
-    <h3>Influenza Ecology &amp; Evolution</h3>
-    <!--  -->
-
-    
-      
-          <p>With its segmented genome, influenza viruses can reassort with other influenza viruses to produce hybrid progeny. Think of it as being like shuffling a red and a blue deck of cards in a box, and picking out each member of the suite at random.</p>
-<p>As part of my thesis work, I developed an phylogenetic heuristic algorithm to identify reassortant influenza viruses. Using this method, my colleagues and I were able to show that reassortment is over-represented (relative to a null model) when crossing between viral hosts; additionally, the more evolutionarily distant two viral hosts were, the more over-represented reassortment was.</p>
-<p>This may generalize across domains of life, where reticulate evolution enables organisms to more easily switch between ecological niches.</p>
-
-      
-          <p><a href="http://ericmjl.github.io/thesis
-label: Thesis"></a></p>
-      
-    
-
-</div>
-
-            </div>
-        </div>
-      
-        <div class="carousel-item ">
-            <div class="">
-                
-<div class="project-container">
-    <h3>Open Hardware for Wildlife Monitoring</h3>
-    <!--  -->
-
-    
-      
-          <p>Zoonotic infections in humans originate in wild animals. To better understand their contact structure, I have been developing an open source hardware and software kit for monitoring wild animal behaviour using the Raspberry Pi, Python, and 3D printing. The time-lapse cameras, which we call TikiCams (they look like Hawaiian lamps when mounted), are based on off-the-shelf hardware available at computer and hardware stores.</p>
-<p><em>Videos:</em></p>
-<ul>
-<li><a href="https://youtu.be/p67DX10D_GM">Video 1</a></li>
-<li><a href="https://youtu.be/bmxMFm74niA">Video 2</a></li>
-<li><a href="https://youtu.be/0iYb91tdHo8">Video 3</a></li>
-</ul>
-<p><em>Images:</em></p>
-<ul>
-<li><a href="../projects/open-hardware-for-wildlife-monitoring/hanging-cams.jpg">Hanging cameras</a></li>
-<li><a href="../projects/open-hardware-for-wildlife-monitoring/laptop.jpg">Laptop + Pi in shed</a></li>
-<li><a href="../projects/open-hardware-for-wildlife-monitoring/mounted-cams-1.jpg">Tikicams in the wild - image 1</a></li>
-<li><a href="../projects/open-hardware-for-wildlife-monitoring/mounted-cams-2.jpg">Tikicams in the wild - image 2</a></li>
-<li><a href="../projects/open-hardware-for-wildlife-monitoring/selfie.jpg">Selfie with the Tikis</a></li>
-</ul>
-
-      
-          <p>The GitHub repository can be found <a href="https://github.com/ericmjl/tikicam-config">here</a>.</p>
-      
-    
-
-</div>
-
-            </div>
-        </div>
-      
     </div>
-    <!-- Saving this for later. -->
-    <!-- <a class="carousel-control-prev" href="#projectsCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#projectsCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a> -->
-
 </div>
+
+
+    
+    
+    
+    
+<div class="col mb-4">
+    <div class="card bg-dark h-100">
+        
+
+        
+        
+
+        
+        
+        <div class="card-body">
+            <h5 class="card-title">Bayesian Analysis Recipes</h5>
+            <p>A collection of Bayesian statistical models for general usage, implemented in PyMC3</p>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+            <a href="https://github.com/ericmjl/bayesian-analysis-recipes" class="card-link">GitHub Repository</a>
+            
+
+            
+
+            
+
+            
+        </div>
+    </div>
+</div>
+
+
+    
+    
+    
+    
+<div class="col mb-4">
+    <div class="card bg-dark h-100">
+        
+
+        
+        
+
+        
+        
+        <div class="card-body">
+            <h5 class="card-title">Flu Forecaster</h5>
+            <p>Using variational autoencoders and gaussian processes to forecast the protein sequence of influenza.</p>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+            <a href="https://fluforecaster.herokuapp.com/" class="card-link">Interactive Blog Post</a>
+            
+
+            
+
+            
+
+            
+
+            
+        </div>
+    </div>
+</div>
+
+
+    
+    
+    
+    
+    
+    
+<div class="col mb-4">
+    <div class="card bg-dark h-100">
+        
+
+        
+        
+
+        
+        
+        <div class="card-body">
+            <h5 class="card-title">Influenza Ecology &amp; Evolution</h5>
+            <p>Figuring out if genome shuffling is important for influenza host switching.</p>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+            <a href="http://ericmjl.github.io/thesis" class="card-link">Thesis</a>
+            
+
+            
+
+            
+
+            
+
+            
+        </div>
+    </div>
+</div>
+
+
+    
+    
+    
+    
+<div class="col mb-4">
+    <div class="card bg-dark h-100">
+        
+
+        
+        
+
+        
+        
+        <div class="card-body">
+            <h5 class="card-title">Open Hardware for Wildlife Monitoring</h5>
+            <p>I helped make cheap cameras that continuously monitor wildlife.</p>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+            <a href="https://github.com/ericmjl/tikicam-config" class="card-link">GitHub Repository</a>
+            
+
+            
+
+            
+
+            
+        </div>
+    </div>
+</div>
+
+
+    
+    
+</div>
+
 
     </div>
 
