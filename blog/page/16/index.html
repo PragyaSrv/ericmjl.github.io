@@ -102,46 +102,16 @@
     </nav>
     <div class="container">
         
-  
-    
-  <!-- Import stylesheet -->
+
+
+
+
+
+<div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
+  <div class="card-body">
     <h1><a href="../../../blog/2017/10/10/pydata-nyc-2017/">PyData NYC 2017</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2017-10-10
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/pydata/">
-          pydata
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/conferences/">
-          conferences
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/python/">
-          python
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>I'm seriously looking forward to PyData NYC this year -- there's a great lineup of talks that I'm particularly looking forward to hearing! The theme for my set of must-see talks this year is "Bayesian machine learning" - there's much for me to learn!</p>
+    <p class="card-text"><p>I'm seriously looking forward to PyData NYC this year -- there's a great lineup of talks that I'm particularly looking forward to hearing! The theme for my set of must-see talks this year is "Bayesian machine learning" - there's much for me to learn!</p>
 <p>The first is by my fellow Boston Bayesian <strong><a href="https://colindcarroll.com/">Colin Caroll</a></strong> with his talk titled <a href="https://pydata.org/nyc2017/schedule/presentation/12/">Two views on regression with PyMC3 and scikit-learn</a>. Colin is a mathematician at heart, even though he does software engineering for living now, and I can't wait to hear about regularization strategies!</p>
 <p>The second is by <strong><a href="https://pydata.org/nyc2017/speaker/profile/6/">Nicole Carlson</a></strong>, with her talk titled <a href="https://pydata.org/nyc2017/schedule/presentation/24/">Turning PyMC3 into scikit-learn</a>. Nicole's talk is of interest to me because I've implemented models in PyMC3 before, and now would like to know how to make them reusable!</p>
 <p>The third talk is by <strong><a href="https://pydata.org/nyc2017/speaker/profile/118/">Chaya Stern</a></strong>, with her talk titled <a href="https://pydata.org/nyc2017/schedule/presentation/53/">Bayesian inference in computational chemistry</a>. Super relevant to my work at Novartis!</p>
@@ -152,46 +122,27 @@
 <p>Finally, the always-interesting, always entertaining <strong><a href="https://pydata.org/nyc2017/schedule/presentation/25/">en zyme</a></strong> will be speaking on an <a href="https://pydata.org/nyc2017/schedule/presentation/25/">interesting topic</a>.</p>
 <p>Looking forward to being at the conference, and meeting old and new friends there!</p>
 
+    </p>
+    <p class="card-text">
+      <i>Did you enjoy this blog post? <a href="../../../blog/2017/10/10/pydata-nyc-2017/#disqus">Let's discuss more</a>!
+      </i>
+    </p>
+
   </div>
+</div>
 
-    <p><i>Did you enjoy this blog post? <a href="../../../blog/2017/10/10/pydata-nyc-2017/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
+  <div class="card-body">
     <h1><a href="../../../blog/2017/10/10/recursive-programming-and-dags/">Recursive Programming and DAGs</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2017-10-10
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/programming/">
-          programming
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/code snippets/">
-          code snippets
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>Over the past few days, I've found myself using recursive programming to implement a "model specification" system with inheritance for deep learning. The goal here is to enable reproducible computational experiments for particular deep learning hyperparameter sets. Reproducibility is something I learned from the Software/Data Carpentry initiative, thus I wanted to ensure that my own work was reproducible, even if it's not (because of corporate reasons) open-able, because it's the right thing to do.</p>
+    <p class="card-text"><p>Over the past few days, I've found myself using recursive programming to implement a "model specification" system with inheritance for deep learning. The goal here is to enable reproducible computational experiments for particular deep learning hyperparameter sets. Reproducibility is something I learned from the Software/Data Carpentry initiative, thus I wanted to ensure that my own work was reproducible, even if it's not (because of corporate reasons) open-able, because it's the right thing to do.</p>
 <p>So, how do these "model spec" files work? I call them "experiment profiles", and they specify a bunch of things: <strong>model architecture</strong>, <strong>training parameters</strong>, and <strong>data tasks</strong>. These experiment profiles are stored in YAML files on disk. A profile essentially looks like the following (dummy examples provided, naturally):</p>
 <div class="hll"><pre><span></span><span class="c1"># Name: default.yaml</span>
 <span class="nt">parent</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">null</span>
@@ -273,54 +224,27 @@ J -&gt; I -&gt; F -&gt; root
 </code></pre>
 <p>If you were wondering why linked lists, trees and other data structures might be useful as a data scientist, I hope this illustrates on productive example!</p>
 
+    </p>
+    <p class="card-text">
+      <i>Did you enjoy this blog post? <a href="../../../blog/2017/10/10/recursive-programming-and-dags/#disqus">Let's discuss more</a>!
+      </i>
+    </p>
+
   </div>
+</div>
 
-    <p><i>Did you enjoy this blog post? <a href="../../../blog/2017/10/10/recursive-programming-and-dags/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
+  <div class="card-body">
     <h1><a href="../../../blog/2017/10/7/a-data-scientists-guide-to-environment-variables/">A Data Scientist&#39;s Guide to Environment Variables</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2017-10-07
-  
-  </p>
-  <!-- Append tags after author -->
-  <p>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/data science/">
-          data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/bash/">
-          bash
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/environment variables/">
-          environment variables
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../blog/tag/programming/">
-          programming
-      </a>
-      
-  </p>
-  
-
-  <!-- Put post body -->
-  <p>You might have encountered a piece of software asking you for permission to modify your <code>PATH</code> variable, or another program's installation instructions cryptically telling you that you have to "set your <code>LD_LIBRARY_PATH</code> variable correctly".</p>
+    <p class="card-text"><p>You might have encountered a piece of software asking you for permission to modify your <code>PATH</code> variable, or another program's installation instructions cryptically telling you that you have to "set your <code>LD_LIBRARY_PATH</code> variable correctly".</p>
 <p>As a data scientist, you might encounter other environment variable issues when interacting with your compute stack (particularly if you don't have full control over it, like I do). This post is meant to demystify what an environment variable is, and how it gets used in a data science context.</p>
 <h2 id="what-is-an-environment-variable?">What Is An Environment Variable?</h2><p>First off, let me explain what an environment variable is, by going in-depth into the <code>PATH</code> environment variable. I'd encourage you to execute the commands here inside your bash terminal (with appropriate modifications -- read the text to figure out what I'm doing!).</p>
 <p>When you log into your computer system, say, your local computer’s terminal or your remote server via SSH, your bash interpreter needs to know where to look for particular programs, such as <code>nano</code> (the text editor), or <code>git</code> (your version control software), or your Python executable. This is controlled by your PATH variable. It specifies the paths to folders where your executable programs are found.</p>
@@ -421,32 +345,27 @@ $ echo $PATH
 <p>Note - you can also execute the exact same commands inside your bash session; the interactivity may also be helpful.</p>
 <h3 id="conclusion">Conclusion</h3><p>I hope you enjoyed this article, and that it'll give you a, ahem, path forward whenever you encounter these environment variables!</p>
 
+    </p>
+    <p class="card-text">
+      <i>Did you enjoy this blog post? <a href="../../../blog/2017/10/7/a-data-scientists-guide-to-environment-variables/#disqus">Let's discuss more</a>!
+      </i>
+    </p>
+
   </div>
+</div>
 
-    <p><i>Did you enjoy this blog post? <a href="../../../blog/2017/10/7/a-data-scientists-guide-to-environment-variables/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
+  <div class="card-body">
     <h1><a href="../../../blog/2017/10/3/new-habits/">New Habits</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2017-10-03
-  
-
-  <!-- Put post body -->
-  <p>Ever since "going corporate", it's meant picking up more new productivity/coding habits. Here's a sampling of what I've learned.</p>
+    <p class="card-text"><p>Ever since "going corporate", it's meant picking up more new productivity/coding habits. Here's a sampling of what I've learned.</p>
 <p><strong>(1) Living by my calendar</strong></p>
 <p>Basically, the "work calendar" defines everything about the day. I've had to make sure that if I am not going to be pencilled in for a meeting, I have to block out time on the calendar first.</p>
 <p>Also, sending invites to people + rooms -- the latter being the newest habit I've had to pick up.</p>
@@ -462,44 +381,47 @@ $ echo $PATH
 <p><strong>(5) Performance reviews</strong></p>
 <p>Gotta start getting used to this. I had a taste of it while volunteering as part of Tang Hall's student leadership, but now it's for real.</p>
 
+    </p>
+    <p class="card-text">
+      <i>Did you enjoy this blog post? <a href="../../../blog/2017/10/3/new-habits/#disqus">Let's discuss more</a>!
+      </i>
+    </p>
+
   </div>
+</div>
 
-    <p><i>Did you enjoy this blog post? <a href="../../../blog/2017/10/3/new-habits/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
-    
-  <!-- Import stylesheet -->
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
-  <div>
-
-  <!-- Set title style -->
-  
+  <div class="card-body">
     <h1><a href="../../../blog/2017/9/14/visualize-large-datasets-by-sampling/">Visualize Large Datasets by Sampling</a></h1>
-  
-
-  <!-- Append author -->
-  <p class="meta">
-    written by
-    
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2017-09-14
-  
-
-  <!-- Put post body -->
-  <p>Just a little tip, putting it here for myself and others in case it helps.</p>
+    <p class="card-text"><p>Just a little tip, putting it here for myself and others in case it helps.</p>
 <p>Sometimes, you need to visualize a large dataset, but it takes a ton of time to render it or compute the necessary transforms.</p>
 <p>If your samples are statistically sampled independently of one another (i.e. basically not timeseries), and the goals are to do some statistical visualizations, then it's basically valid to visualize a downsampled set of the dataset.</p>
 <p>I recently encountered this point at work. After running a clustering analysis, I wanted to see a pair plot of the distribution of features in each cluster. However, with cluster sizes ranging from 200-2 million, rendering times were unreasonably long (making things non-interactive) for the large sized clusters. I thus decided to downsample the large clusters to a maximum of 2,000 data points. Instantly, render times improved, and I could start interacting with my data again.</p>
 <p>Little things matter!</p>
 
+    </p>
+    <p class="card-text">
+      <i>Did you enjoy this blog post? <a href="../../../blog/2017/9/14/visualize-large-datasets-by-sampling/#disqus">Let's discuss more</a>!
+      </i>
+    </p>
+
   </div>
+</div>
 
-    <p><i>Did you enjoy this blog post? <a href="../../../blog/2017/9/14/visualize-large-datasets-by-sampling/#disqus">Let's discuss more</a>!</i></p>
-    <hr class="fancy">
-  
 
-  
+<div>
+  <hr>
+</div>
+
+
   <div class="pagination">
     
       <a href="../../../blog/page/15/">&laquo; Previous</a>

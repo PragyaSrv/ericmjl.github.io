@@ -108,23 +108,23 @@
     <div class="container">
         
   
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../../../../../static/pygments.css">
-  <div>
+<!-- Import stylesheet -->
+<link rel="stylesheet" href="../../../../../static/pygments.css">
+<div>
 
   <!-- Set title style -->
   
-    <h1>Predicting HIV Drug Resistance Phenotype from Genotype</h1>
+  <h1>Predicting HIV Drug Resistance Phenotype from Genotype</h1>
   
 
   <!-- Append author -->
   <p class="meta">
     written by
     
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
     
     on 2015-09-28
-  
+    
 
   <!-- Put post body -->
   <p><strong>Note to Reader:</strong> I’d highly suggest reading this blog post on the left half of your screen, and have the <a href="https://github.com/ericmjl/hiv-resistance-prediction/blob/master/Predict%20HIV%20Genotype%20from%20Phenotype%20-%20Custom%20Funcs.ipynb">Jupyter notebook</a> on the right half of your screen. Makes things a bit easier to follow.</p>
@@ -159,7 +159,7 @@
 <p>What else do I think can be done? Well, there’s one idea I’ve been thinking about, to improve the regression score beyond what experimental error in the dataset may limit us to. Think convolutional networks (convnets) and their data input requirements. Basically, most image recognition convnets need a 2D image. But what if I used a convnet that can take in a 3D image instead? Calculating a numerical value, such as the electrostatic charge at every grid point in a static, modelled 3D protein structure, may be much more informative than simply using binarized amino acid columns. A recent paper that I read in <a href="http://www.biomedcentral.com/1471-2164/15/S5/S1">BMC genomics</a> (say "yay" for open access!) uses a computationally efficient shortcut representation to get structural features encoded as well, with great success; I would definitely be game for implementing their version as a first pass as well.</p>
 <p>Apart from that, it's insufficient to run only on a single train/test split. There will always be unavoidable biases in the trained model. Training <code>k</code>-fold splits <code>k</code> times is a common practice I've heard. In papers I've read, usually k-fold splits are trained k times, and the standard deviation reported. I can imagine also doing it n times, to get a better feel for the generalization error (assuming the data are representative of the population).</p>
 
-  </div>
+</div>
 
   <a name="disqus"></a>
   <div class="comments">

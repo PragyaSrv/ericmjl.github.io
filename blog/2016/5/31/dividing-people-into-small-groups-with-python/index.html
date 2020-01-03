@@ -108,23 +108,23 @@
     <div class="container">
         
   
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../../../../../static/pygments.css">
-  <div>
+<!-- Import stylesheet -->
+<link rel="stylesheet" href="../../../../../static/pygments.css">
+<div>
 
   <!-- Set title style -->
   
-    <h1>Dividing People into Small Groups with Python</h1>
+  <h1>Dividing People into Small Groups with Python</h1>
   
 
   <!-- Append author -->
   <p class="meta">
     written by
     
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
     
     on 2016-05-31
-  
+    
 
   <!-- Put post body -->
   <p>In our Bible Study small group, I have found through empirical observation that when the group size is large (&gt;5 people) and homogeneous (all guys/girls, all believers, all Bible study leaders), Bible study tends to be either too flat or too chatty, too boring or too distracted, and all-round just not beneficial for learning. On the other hand, when the group is small (3-5 people) and diverse (guys &amp; girls, baptized + seekers together, counsellors spread out), learning takes place. (Outside of Bible study groups, I find this to be true anyways, and doing it this way prevents the formation of exclusivist insider-groups.)</p>
@@ -145,7 +145,7 @@
 <p>I added a way to include “exclusion criteria”, such as the scenario where it would be inappropriate to put two people in the same group, for example, where there is a simmering conflict in the midst, or where the relationship between the two could be distracting to learning. Right now, that functionality is baked into the back-end, but I am designing an implementation to make it accessible through the front-end.</p>
 <p>The web app is written in Python, and uses only two packages: <code>tinydb</code> (<a href="https://pypi.python.org/pypi/tinydb">link</a>) and <code>Flask</code> (<a href="http://flask.pocoo.org">link</a>). Front-end uses HTML with <code>Jinja2</code> (<a href="http://jinja.pocoo.org/docs/dev/">link</a>) templating and <a href="http://getbootstrap.com/css/">Bootstrap</a> CSS. I wrote the GUI using <code>Flask</code> because I didn’t need fancy stuff that Django offered, and was simple enough for me to run locally. I opted for <code>tindyb</code> only because it was an even simpler, lightweight version of a database (as a JSON) file, and was sufficient for what I needed too. Of course, I’m quite sure this can be re-implemented in Django/SQLite, and made infinitely more fancy :). The code for <code>small-group</code> is available on <a href="http://github.com/ericmjl/small-group">GitHub</a>, along with instructions for how to use it. Enjoy!</p>
 
-  </div>
+</div>
 
   <a name="disqus"></a>
   <div class="comments">

@@ -108,39 +108,39 @@
     <div class="container">
         
   
-  <!-- Import stylesheet -->
-  <link rel="stylesheet" href="../../../../../static/pygments.css">
-  <div>
+<!-- Import stylesheet -->
+<link rel="stylesheet" href="../../../../../static/pygments.css">
+<div>
 
   <!-- Set title style -->
   
-    <h1>T-distributed likelihoods are kind of neat</h1>
+  <h1>T-distributed likelihoods are kind of neat</h1>
   
 
   <!-- Append author -->
   <p class="meta">
     written by
     
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
     
     on 2019-07-23
-  
+    
   </p>
   <!-- Append tags after author -->
   <p>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/data science/">
-          data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/statistics/">
-          statistics
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/distributions/">
-          distributions
-      </a>
-      
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/data science/">
+      data science
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/statistics/">
+      statistics
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/distributions/">
+      distributions
+    </a>
+    
   </p>
   
 
@@ -151,7 +151,7 @@
 <p>Notice that when $df=1$, the T distribution is identical to the Cauchy distribution, and that as $df$ increases, it gradually becomes more and more like the Normal distribution. At $df=30$, we can consider it to be approximately enough Gaussian.</p>
 <p>On its own, this is already quite useful; when placed in the context of a hierarchical Bayesian model, that’s when it gets even more interesting! In a hierarchical Bayesian model, we are using samples to estimate group-level parameters, but constraining group parameters to vary mostly like each other, unless evidence in the data suggests otherwise. If we allow the $df$ parameter to vary, then if some groups look more Cauchy while other groups look more Gaussian, this can be flexibly captured in the model.</p>
 
-  </div>
+</div>
 
   <a name="disqus"></a>
   <div class="comments">
