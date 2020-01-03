@@ -118,36 +118,36 @@
   
 
   <!-- Append author -->
-  <p class="meta">
-    written by
+  <small class="text-muted">
+    <p>
+      written by
+      
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+      
+      on 2017-10-31
+      
+      |
+      <!-- Append tags after author -->
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/data science/">
+        data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/data analysis/">
+        data analysis
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/statistics/">
+        statistics
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/bayesian/">
+        bayesian
+      </a>
+      
+    </p>
     
-    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2017-10-31
-    
-  </p>
-  <!-- Append tags after author -->
-  <p>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/data science/">
-      data science
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/data analysis/">
-      data analysis
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/statistics/">
-      statistics
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/bayesian/">
-      bayesian
-    </a>
-    
-  </p>
-  
-
+  </small>
   <!-- Put post body -->
   <p>True story, just happened today. I was trying to fit a Poisson likelihood to estimate event cycle times (in discreet weeks). For certain columns, everything went perfectly fine. Yet for other columns, I was getting negative infinity’s likelihoods, and was banging my head over this problem for over an hour and a half.</p>
 <p>As things turned out, those columns that gave me negative infinity likelihood initializations were doing so because of negative values in the data. Try fitting a Poisson likelihood, which only has positive support, on that!</p>

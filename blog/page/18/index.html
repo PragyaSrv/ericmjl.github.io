@@ -110,39 +110,25 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2017/7/22/bayesian-neural-networks/">Bayesian Neural Networks</a></h1>
+    <h3><a href="../../../blog/2016/6/13/form-and-function/">Form and Function</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2017-07-22
+        on 2016-06-13
         
     </small>
-
-    <p class="card-text"><p>During this week, while us Insight Fellows begin going out to interview with other companies, my "side hustle" has been working on my <a href="https://github.com/ericmjl/bayesian-analysis-recipes">Bayesian Analysis Recipes</a> repository.</p>
-<p>Two particularly interesting problems I've wanted to write my own implementation for are multinomial classification and Bayesian deep learning. I finally got both of them done today, after about 2-3 days of hacking on them.</p>
-<p>Multinomial classification (<a href="https://github.com/ericmjl/bayesian-analysis-recipes/blob/master/multiclass-logistic-regression-cover-type.ipynb">notebook here</a>) is the problem where we try to classify an item as being one of multiple classes. This is the natural extension to binary classification (done by logistic regression). To do this, I took the <a href="https://archive.ics.uci.edu/ml/datasets/covertype">forest cover dataset</a> and used PyMC3 to implement multinomial logistic regression. Seeing how to do it with PyMC3 was the most important aspect of this; actual accuracy wasn't much of a concern for me.</p>
-<p>However, having seen the classification report (at the bottom of the notebook), and having read that the dataset was originally classified using neural networks, I immediately had the thought of doing a Bayesian neural network for multi-class classification, having seen it implemented for binary classification on the PyMC3 website.</p>
-<p>Bayesian neural networks are not hard to intuit - basically, we place priors on the weights, rather than learning point estimates. In doing so, we are able to propagate uncertainty forward to predictions. Speaking as a non-expert in the field, I think the tricky part is the sampling algorithms needed.</p>
-<p>One thing nice about the field of Bayesian deep learning is the use of variational inference to approximate the true distribution of predictions with a mathematically more tractable one (e.g. a Gaussian). In doing so, we gain a fast way towards approximately learning the uncertainty in predictions - essentially we trade a little bit of accuracy for a lot of speed. For complex models like neural nets, this can be very valuable, as the number of parameters to learn grows very, very quickly with model complexity, so anything fast can make iteration easier.</p>
-<p>Starting with the code <a href="http://twiecki.github.io/blog/2016/06/01/bayesian-deep-learning/">from Thomas Wiecki's website</a>, I hacked together a few utility functions and boiled down the example to its essentials. Feed-forward neural nets aren't difficult to write - just a bunch of matrix ops and we're done. The <a href="https://github.com/ericmjl/bayesian-analysis-recipes/blob/master/multiclass-classification-neural-network.ipynb">notebook is available as well</a>. One nice little feature is that by going with a deep neural network, we have additional predictive accuracy!</p>
-<p>Moving forward, I'd like to improve on that notebook a bit more, by somehow implementing/developing a visualization for multiclass classification <strong>uncertainty</strong> which is the thing we gain from going Bayesian. Hopefully I'll be able to get to that next week - it's shaping up to look quite hectic!</p>
-<p>As a side note, I found a bug with the multinomial distribution implementation in PyMC3, and am working with one of the core developers to get it fixed in PyMC3's master branch. (Thanks a ton, Junpeng, if you ever get to read this! ) In the meantime, I simply took his patch, modified mine a little bit, and used the patched up PyMC3 for my own purposes.</p>
-<p>This is why I think open source is amazing - I can literally patch the source code to get it to do what I need correctly! Wherever I work next has to be supportive of things like this, and have to allow re-release of generally/broadly useful code that I touch - it is the right thing to do!</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2017/7/22/bayesian-neural-networks/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>When writing code, it’s often a great idea to write tests in parallel. Today I experienced how important it is to have a split window. I write code on my left pane, and I can immediately set up the corresponding test on the right pane. Just as...
+        <a href="../../../blog/2016/6/13/form-and-function/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -153,104 +139,47 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2017/7/17/lessons-learned-during-insight/">Lessons Learned During Insight</a></h1>
+    <h3><a href="../../../blog/2016/6/10/abstractions/">Abstractions</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2017-07-17
-        
-    </small>
-
-    <p class="card-text"><p><strong>(a) Solving healthcare goes beyond solving the science underlying it.</strong></p>
-<p>At its core, healthcare delivery is essentially a human problem.  Even what we choose to optimize for is a hard problem. Do we optimize for changing human behaviour, or do we optimize for more precise treatments?</p>
-<p><strong>(b) Healthcare is complex</strong></p>
-<p>The biggest thing preventing a "solving of healthcare" is misaligned incentives.</p>
-<p><strong>(c) I like scientific data</strong></p>
-<p>Regardless of the lesson that healthcare needs to be solved with more than science, I still found myself naturally much more engaged with companies that were dealing with scientific data as part of their data science problems. Teams that were dealing with other types of data: insurance claims, financial, marketing, platform product analytics, click streams... these were much less engaging. I know my best fit now, though I won’t rule out other teams.</p>
-<p><strong>(d) People can change the equation.</strong></p>
-<p>I met with some people whose intellect and grasp of knowledge I really admire! Additionally, passion is infectious. It helps to work with colleagues who energize one another, rather than drain each others’ energy.</p>
-<p><strong>(e) Some Insight alumni are awesome</strong></p>
-<p>And I want to be like them when I help with mentoring for the next batch. Perhaps if I get a chance to interview others, I’d like to be able to model how I interview after the alumni mentors.</p>
-<p>Biggest shout-out to George Leung, who works for Vectra, tailored his mentoring session by first asking me about my Insight project, which involved Gaussian processes and variational auto-encoders (VAEs). George asked me first about what VAEs were, and then asked me to solve a Bayes problem on the board. I could tell he was building his questions on-the-fly.</p>
-<p>The other shout-out goes to Ramsey Kamar, who went through the “Big 4” questions: tell me about yourself, what’s your previous accomplishments, how did you face a conflict, and what’s your biggest weakness. His feedback to me was direct, positive, and most importantly, always encouraging.</p>
-<p><strong>(f) Humanities tools are needed</strong></p>
-<p>On reflection, I think that if we’re going to solve the “human” portion of healthcare, we’re going to need tools from the humanities - the tools that let us qualitatively and quantitatively study human behaviour. While data science can provide a quantitative path towards a solution, the qualitative side of it will remain as important as ever.</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2017/7/17/lessons-learned-during-insight/#disqus">Let's discuss more</a>!
-        </i>
-      </p>
-    </small>
-
-  </div>
-</div>
-
-
-<div>
-  <hr>
-</div>
-
-
-
-<div class="card bg-dark">
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div class="card-body">
-    <h1><a href="../../../blog/2017/7/15/insight-week-7/">Insight Week 7</a></h1>
-    <small class="text-muted">
-      <p>
-        written by
-        
-        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-        
-        on 2017-07-15
+        on 2016-06-10
         
         |
         <!-- Append tags after author -->
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/insight data science/">
-          insight data science
+        <a href="../../../blog/tag/programming/">
+          programming
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/bayesian/">
+          bayesian
         </a>
         <i class="fas fa-tag"></i>
         <a href="../../../blog/tag/data science/">
           data science
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/job hunt/">
-          job hunt
+        <a href="../../../blog/tag/deep learning/">
+          deep learning
         </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>Aaand with that, week 7 of Insight is done!</p>
-<p>I had a short week because of SciPy 2017, and I'm thankful that I got a chance to head out there - had the opportunity to reconnect with many friends from the SciPy community.</p>
-<p>The two days of Week 7 that I experienced were probably the weirdest week 7 any Fellow has experienced to date. Because I had missed a demo on account of SciPy, and because the company didn't want to just watch the pre-recorded demo video, I made a trek up to Cambridge to demo on-site. What initially was a 30 minute session turned out to be a 1.5 hr demo.</p>
-<p>I have two more demo obligations to fulfill next week. Other than that, it's going to be mostly interview preparation with other fellows, and more data and coding challenges, and more studying of topics that we're not familiar with. I am trying to brush up on SQL more, as I can see it being a useful tool to have to query data out of databases.</p>
-<p>Now that we're done with Week 7, we're going to be alumni soon. As such, I've began thinking about how I could give back as an alumni. Some ideas have come to mind, inspired by what others have done.</p>
-<p>Firstly, I think I can help standardize future Fellows' coding environments by providing a set of annotated instructions for installing the Anaconda distribution of Python. Perhaps even an evening workshop on the first Thursday might be useful.</p>
-<p>Secondly, I've come to recognize that the biggest bottleneck for Fellows' projects is the web deployment and design portion. Model training to obtain an MVP is fairly fast - one of <code>scikit-learn</code>'s models is often good enough. However, most of us didn't know HTML and Bootstrap CSS, and the deadline makes it stressful enough to pick this up on-the-fly. (The stress is probably compounded by the fact that the web app/blog post is not the most intellectually interesting portion of the project.) Perhaps a workshop at the end of Week 2 or beginning of Week 3 might be good.</p>
-<p>Thirdly, I see this trend where a lot more projects are going to start using deep learning. I think putting a workshop together with, say, Jigar, might be a useful thing to have.</p>
-<p>Finally, my interview simulator questions have become famous for being a 'hybrid' between stats, ML and CS. It's very much in the same vein as what I got when I interviewed with Verily.</p>
-<p>Until we get hired, we are allowed (and one might even say, expected) to continue coming into the office to help each other prepare for upcoming interviews. We're all looking forward to getting hired and solving data problems!</p>
-<p>With this post, I think I'll end the regular blog post series here. Hope this post series was an informative insight into Insight! Next one I'll post is going to be a summary of lessons learned from my time as an Insight Health Data Fellow.</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2017/7/15/insight-week-7/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p><a href="http://people.csail.mit.edu/~mattjj/">Matt Johnson</a> (of <a href="http://hips.seas.harvard.edu">HIPS</a>) had an interesting comment on Wednesday.</p>
+<p>LLVM's relationship to machine code is a bit like Deep Learning's relationship to...
+        <a href="../../../blog/2016/6/10/abstractions/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -261,14 +190,14 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2017/7/12/scipy-2017/">SciPy 2017</a></h1>
+    <h3><a href="../../../blog/2016/6/9/network-science-and-statistics-applications-and-fundamentals/">Network Science and Statistics: Applications and Fundamentals</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2017-07-12
+        on 2016-06-09
         
         |
         <!-- Append tags after author -->
@@ -284,36 +213,32 @@
         <a href="../../../blog/tag/python/">
           python
         </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/network science/">
+          network science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/graph theory/">
+          graph theory
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>I just finished from SciPy 2017!  This was a fruitful conference, and I'm glad I managed to make it.</p>
-<p>Monday was the first day. I wanted to get a better feel for the Jupyter widgets ecosystem, and as such I sat in on the corresponding <a href="https://scipy2017.scipy.org/ehome/220975/493418/">tutorial</a>. That happened to be the only tutorial I sat in live.</p>
-<p>Nonetheless, one nice thing about the tutorials is that they are live recorded, and so we can watch the ones we missed on our own time when back home. These are the ones I hope to catch, partly out of interest, partly from recommendations by other conference attendees who sat in them:</p>
-<ul>
-<li>Numba</li>
-<li>Holoviews</li>
-<li>Dask</li>
-<li>scikit-image</li>
-</ul>
-<p>Looking at the list, I kind of realize now how much of a Continuum Analytics fanboy I've become...</p>
-<p>On the second day, I delivered my own Network Analysis Made Simple. I collected some feedback right at the end of the tutorial, and it looked like they were overall very positive. Many liked the whiteboard illustrations that I added on. When delivering this at PyCon, I think it would benefit from having a whiteboard of sorts.</p>
-<p>The third day was the start of the conference talks. There's many, many great talks out there! I also had the opportunity to connect with new people over breakfast, lunch, coffee and dinner. I tried hosting "office hours", like Matt Davis did last year, but I think I announced it a bit too late.</p>
-<p>All-in-all, I think it was great to attend SciPy 2017 this year. I'm happy to have not broken the chain of attendance. Looking forward to serving on next year's organizing committee again, and I hope to have a new tutorial in the works!</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2017/7/12/scipy-2017/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>I will be at SciPy 2016 this year, to deliver a workshop titled <a href="http://scipy2016.scipy.org/ehome/146062/332960/">"Network Science and Statistics: Applications and Fundamentals"</a>. A huge thanks to those who have registered!</p>
+<p>The...
+        <a href="../../../blog/2016/6/9/network-science-and-statistics-applications-and-fundamentals/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -324,57 +249,265 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2017/7/8/insight-week-6/">Insight Week 6</a></h1>
+    <h3><a href="../../../blog/2016/6/7/how-to-speed-up-scientific-python-code/">How to speed up scientific Python code</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2017-07-08
+        on 2016-06-07
         
         |
         <!-- Append tags after author -->
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/insight data science/">
-          insight data science
+        <a href="../../../blog/tag/python/">
+          python
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/data science/">
-          data science
+        <a href="../../../blog/tag/programming/">
+          programming
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/job hunt/">
-          job hunt
+        <a href="../../../blog/tag/optimization/">
+          optimization
         </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>We had a short week this week because of the long July 4th weekend (Happy Birthday, America!).</p>
-<p>Wednesday was my second demo day, this time at MGH. There were 8 of us demoing at MGH's Clinical DS team, and I really enjoyed the interaction with them. The team asked of me two technical questions about Flu Forecaster, both of which were analogous to other questions I had heard before. After the demo, we hung out with the team and chatted a bit about their latest projects.</p>
-<p>In the afternoon, I focused on doing the data challenge and leetcode exercises; in the evening, I (at the last minute) signed up for back-to-back behavioral and ML interview practice sessions. It was good to chat with the alumni helping with the sessions, as I learned much more about their thought process. In the future, I'll probably be called on to interview other people, and I will definitely draw on my experiences here.</p>
-<p>On Thursday we had more prep. I helped with mock interviewing by being an observer for Xi and an interviewer for Angela. The role-playing with Angela was an interesting one for me. I tried playing the role of a conversational but technically-competent interviewer. Also asked questions genuinely out of curiosity too. I think that combined with Angela's outgoing personality kept the conversation enjoyable for all three of our spectators.</p>
-<p>In the late afternoon, an NYC session alum came by and gave us a session on data challenges. The exercise he gave was quite neat - basically, given one categorical output column and a slew of other feature columns, train the best model that has the highest accuracy score. Oh, the twist? Do it in 25 minutes.</p>
-<p>The key point from this exercise was to have us get prepared for an on-site data challenge. The on-site data challenge mainly helps the hiring team check that we have the necessary coding chops to work with the team. It also lets them see how we perform under time constraints. The most important thing is to deliver a model with some form of results. Iterating fast is very important. Thus, it helps to push out fast one model that works.</p>
-<p>On Friday, we did another round of the interview simulator. I thought it was better run this time round. The mutual feedback from one another is very helpful. I was tasked with a stats question, which I melded into a hybrid stats + CS question, thus modelling what I had received when I was interviewed at Verily. FWIW, the question I asked was to define bootstrap resampling (sampling with replacement), implement it using the Python standard library, and discuss the scenarios where it becomes a useful thing.</p>
-<p>If tasked with a similar one for the next time, I will probably ask about writing a function to sample from a Bernoulli distribution using only the Python standard library. It's useful to know how to implement these statistical draws when it's not easy or impossible to use other libraries. (I had to do it when trying out the PyPy interpreter a few years back, and didn't want to mess with installing <code>numpy</code> for PyPy.)</p>
-<p>I liked a few of the other questions asked as well - for example, the knapsack problem posed by Steve: Given a set of produce items, each with their own value and weight (in Kg), and a knapsack that can only carry a maximum weight of produce, find the set of produce that will maximize value at the market.</p>
-<p>That afternoon, we slowed things down a bit. Regardless of how much we benefit from them, the interview simulators nonetheless are tiring. But that's the key point - interviews are day-long, exhausting endeavours that test stamina and ability to switch between contexts (both technical and social). The simulator aims to simulate that.</p>
-<p>Looking forward to next week. For me it'll be a short one, because I'll be at SciPy 2017 to lead a Network Analysis tutorial. Also hoping to represent Insight well!</p>
-
-    </p>
+    
+    <p class="card-text"><p>I highlight the use of PyPy, <code>numba</code>, <code>scipy</code>, <code>numpy</code>, and Cython as strategies for speeding up your Python code.</p>
+</p>
     <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2017/7/8/insight-week-6/#disqus">Let's discuss more</a>!
-        </i>
-      </p>
+      <a href="../../../blog/2016/6/7/how-to-speed-up-scientific-python-code/">Read on...</a>
     </small>
-
+    
   </div>
 </div>
 
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2016/6/3/the-pycon-ers-guide-to-the-hallway-track/">The PyCon attendee&#39;s Guide to the Hallway Track</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-06-03
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p>This year at PyCon 2016, totally inspired by <a href="http://www.davidbaumgold.com">DB</a>, I did the "hallway track".</p>
+<p>What's the hallway track, you say? Basically, it means spending the majority of my time in the hallways of the conference,...
+        <a href="../../../blog/2016/6/3/the-pycon-ers-guide-to-the-hallway-track/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2016/6/1/new-website/">New website!</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-06-01
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p>Having learned more about the web dev/software engineering world over the past few years, I have become more curious about static sites. Speed and security were my main concerns; WordPress has given me issues in the past. I heard quite a bit about...
+        <a href="../../../blog/2016/6/1/new-website/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2016/5/31/dividing-people-into-small-groups-with-python/">Dividing People into Small Groups with Python</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-05-31
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p>In our Bible Study small group, I have found through empirical observation that when the group size is large (&gt;5 people) and homogeneous (all guys/girls, all believers, all Bible study leaders), Bible study tends to be either too flat or too...
+        <a href="../../../blog/2016/5/31/dividing-people-into-small-groups-with-python/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2016/5/29/pycon-2016-tutorials-days-1-and-2/">PyCon 2016 Tutorials (Days 1 &amp; 2)</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-05-29
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/pycon/">
+          pycon
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/conferences/">
+          conferences
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/python/">
+          python
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>In a flash, the PyCon 2016 <a href="https://us.pycon.org/2016/schedule/tutorials/">tutorials</a> are over!</p>
+<p>My session on <a href="https://us.pycon.org/2016/schedule/presentation/1578/">network analysis</a> was on the first day, in the...
+        <a href="../../../blog/2016/5/29/pycon-2016-tutorials-days-1-and-2/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2016/5/22/odsc-east/">ODSC East</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-05-22
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/odsc/">
+          odsc
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/conferences/">
+          conferences
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>I had a ton of fun delivering a <a href="https://www.odsc.com/boston/detailed-speaker-page#eric-ma">workshop</a> on network analysis fundamentals at <a href="https://www.odsc.com/boston">ODSC East</a> yesterday! This is my bullet-point journal...
+        <a href="../../../blog/2016/5/22/odsc-east/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2016/5/20/new-funding-from-the-broad-next10/">New funding from the Broad Next10!</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-05-20
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/academia/">
+          academia
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/feel good/">
+          feel good
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <p class="card-text"><p>Some good news: funding to try out a new idea :)</p>
+</p>
+    <small class="text-muted">
+      <a href="../../../blog/2016/5/20/new-funding-from-the-broad-next10/">Read on...</a>
+    </small>
+    
+  </div>
+</div>
 
 <div>
   <hr>

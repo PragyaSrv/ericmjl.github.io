@@ -118,32 +118,32 @@
   
 
   <!-- Append author -->
-  <p class="meta">
-    written by
+  <small class="text-muted">
+    <p>
+      written by
+      
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+      
+      on 2018-01-29
+      
+      |
+      <!-- Append tags after author -->
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/jupyter/">
+        jupyter
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/data science/">
+        data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/software engineering/">
+        software engineering
+      </a>
+      
+    </p>
     
-    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2018-01-29
-    
-  </p>
-  <!-- Append tags after author -->
-  <p>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/jupyter/">
-      jupyter
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/data science/">
-      data science
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/software engineering/">
-      software engineering
-    </a>
-    
-  </p>
-  
-
+  </small>
   <!-- Put post body -->
   <p>Jupyter notebooks that are filled with complex analyses can get unwieldy. Refactoring repeated code out into functions placed in modules should be standard practice, but from the sampling of Jupyter notebooks I've seen, I don't think this is standard practice.</p>
 <p>When should code be refactored? As soon as we start copying/pasting it! Making sure I have self-contained functions ensures that lingering state in my notebook doesn't cause unexpected behaviour. (Side note: learning the "functional" programming mindset can be very useful here!)</p>

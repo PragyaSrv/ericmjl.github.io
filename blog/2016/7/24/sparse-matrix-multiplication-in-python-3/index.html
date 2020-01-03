@@ -118,36 +118,36 @@
   
 
   <!-- Append author -->
-  <p class="meta">
-    written by
+  <small class="text-muted">
+    <p>
+      written by
+      
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+      
+      on 2016-07-24
+      
+      |
+      <!-- Append tags after author -->
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/data science/">
+        data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/python/">
+        python
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/sparse matrix/">
+        sparse matrix
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/linear algebra/">
+        linear algebra
+      </a>
+      
+    </p>
     
-    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2016-07-24
-    
-  </p>
-  <!-- Append tags after author -->
-  <p>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/data science/">
-      data science
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/python/">
-      python
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/sparse matrix/">
-      sparse matrix
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/linear algebra/">
-      linear algebra
-    </a>
-    
-  </p>
-  
-
+  </small>
   <!-- Put post body -->
   <p>Sparse matrix multiplication shows up in many places, and in Python, it's often handy to use a sparse matrix representation for memory purposes.</p>
 <p>One thing nice about the newest version of Python 3 is the <code>@</code> operator, which takes two matrices and multiplies them. While <code>numpy</code> has had the <code>np.dot(mat1, mat2)</code> function for a while, I think <code>mat1 @ mat2</code> can be a more expressive way of expressing the matrix multiplication operation. One hidden benefit of the <code>@</code> operator: it handles <code>scipy.sparse</code> matrices pretty well!</p>

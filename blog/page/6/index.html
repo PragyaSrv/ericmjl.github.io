@@ -110,202 +110,44 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2019/5/8/pycon-2019-sprints/">PyCon 2019 Sprints</a></h1>
+    <h3><a href="../../../blog/2018/7/14/ecdfs/">ECDFs</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2019-05-08
+        on 2018-07-14
         
         |
         <!-- Append tags after author -->
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/pycon/">
-          pycon
+        <a href="../../../blog/tag/statistics/">
+          statistics
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/software development/">
-          software development
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/sprint/">
-          sprint
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/open source/">
-          open source
-        </a>
-        
-      </p>
-      
-    </small>
-
-    <p class="card-text"><p>This year was the first year that I decided to lead a sprint! The sprint I led was for <code>pyjanitor</code>, a package that I developed with my colleague, Zach Barry, and a remote collaborator in NYC, Sam Zuckerman (whom I've never met in person!). This being the first sprint I've ever led, I think I was lucky to stumble upon a few ideas that made for a productive, collaborative, and most importantly, fun sprint.</p>
-<h2 id="pyjanitor?">pyjanitor?</h2><p>I'm going to deliver a talk on <code>pyjanitor</code> later in the year, so I'll save the details for that talk. The short description of <code>pyjanitor</code> is that if you have <code>pandas</code> one-liners that are difficult to remember, they should become a function in <code>pyjanitor</code>; if you have a 10-liner that you always copy/paste from another source, they should become a function in <code>pyjanitor</code>.</p>
-<h2 id="sprints?">Sprints?</h2><p>Code sprints are a part of PyCon, and it's basically one to four days of intense and focused software development on a single project.</p>
-<p>Project sprint leads first pitch their projects at the "<em>Sprintros</em>", where they indicate what days they will be sprinting, and at what times. The next day, we indicate on which rooms our projects will be sprinting. Volunteers from the conference, who would like to make an open source project contribution, then identify projects they would like to come sprint with.</p>
-<p>In some senses, there's no way for a sprint leader to know how popular their sprint will be <em>a priori</em>. We have to be prepared to handle a range of scenarios from sprinting with just one other person to sprinting with a crowd.</p>
-<h2 id="structure">Structure</h2><h3 id="preparation">Preparation</h3><p>In preparation for the sprint, I absorbed many lessons learned over the years of sprinting on others' projects.</p>
-<p>The most obvious one was to ensure that every sprinter had something to do right from the get-go. Having a task from the get-go keeps sprinters, especially newcomers, engaged right from the beginning. This motivated the requirement to make a doc fix before making a code fix. (You can read more below on how we made this happen.) I wrote out this requirement in a number of places, and by the time the sprint day rolled by, this rolled off pretty naturally.</p>
-<p>The second thing that I did to prep was to triage existing issues and label them as being beginner- or intermediate-friendly, and whether they were doc, infrastructure, or code contributions.</p>
-<p>Those two things were the my highest priority preparation for the sprint, and I think that helped a ton.</p>
-<h3 id="doc-fixes">Doc Fixes</h3><p>This sprint, I gave the structure some thought, and settled on the following: Before making a code contribution, I required a docs contribution.</p>
-<p>Docs contributions could be of any scale:</p>
-<ul>
-<li>A typographical, grammatical, or spelling error.</li>
-<li>A docstring that was unclear.</li>
-<li>Installation/setup instructions that are unclear.</li>
-<li>A sentence/phrase/word choice that didn't make sense.</li>
-<li>New example/tutorial notebooks using the library.</li>
-</ul>
-<p>I think this worked well for the following reasons:</p>
-<ol>
-<li>New contributors must read the docs before developing on the project, and hence become familiar with the project.</li>
-<li>There's always something that can be done better in the docs, and hence, there is something that can be immediately acted on.</li>
-<li>The task is a pain point personally uncovered by the contributor, and hence the contributor has the full context of the problem. </li>
-<li>The docs don't break the code/tests, and hence doc contributions are a great way make a contribution without wrestling with more complex testing.</li>
-<li>Starting <em>everybody</em> who has never worked on <code>pyjanitor</code> on docs is an egalitarian way of on-boarding every newcomer, beginner and experienced individuals alike. Nobody gets special treatment.</li>
-</ol>
-<p>For each individual's contribution, I asked them to first raise an issue on the GitHub issue tracker describing the contribution that they would like to make, and then clearly indicate in the comments that they would like to work on it. Then, they would go through the process of doing the documentation fix, from forking the repository, cloning it locally, creating a new branch, making edits, committing, pushing, and PR-ing.</p>
-<p>If two people accidentally ended up working on the same docs issue, I would assess the effort of the later one, and if it was substantial enough, I would allow them to consider it done, and move onto a different issue.</p>
-<p>Going forth, as the group of contributors expands, I will enforce this "docs-first" requirement only for newcomer sprinters, and request experienced ones to help manage the process.</p>
-<h3 id="code-contributions">Code Contributions</h3><p>Once the docs contributions were done, sprinters were free to either continue with more docs contributions, or provide a code contribution.</p>
-<p>Code contributions could be of one of the following:</p>
-<ol>
-<li>New function contributions.</li>
-<li>Cleaner implementations of existing functions.</li>
-<li>Restructuring of existing functions.</li>
-<li>Identification of functions to deprecate (very important!)</li>
-<li>Infrastructural changes to docs, build system, and more.</li>
-</ol>
-<p>The process for doing this was identical to docs: raise an issue, claim it, and then make a new branch with edits, and finally PR it.</p>
-<h2 id="my-role">My Role</h2><p>For both days, we had more than 10 people sprint on <code>pyjanitor</code>. Many who were present on the 1st day (and didn't have a flight to catch) came back on the 2nd day. As such, I actually didn't get much coding done. Instead, I took on the following roles:</p>
-<ol>
-<li>Q&amp;A person: Answering questions about what would be acceptable contributions, technical (read: git) issues, and more.</li>
-<li>Issue labeller and triage-r: I spent the bulk of my downtime (and pre-/post-sprint time) tagging issues on the GitHub issue tracker and marking them as being available or unavailable for hacking on, and tagging them with whether they were docs-related, infrastructure-related, or code enhancements. </li>
-<li>Code reviewer: As PRs came in, I would conduct code reviews on each of them, and would discuss with them where to adjust the code to adhere to code style standards. </li>
-<li>Continuous integration pipeline babysitter: Because I had just switched us off from Travis CI to Azure Pipelines, I was babysitting the pipelines to make sure nothing went wrong. (Spoiler: something did!) </li>
-<li>Green button pusher: Once all tests passed, I would hit the big green button to merge PRs!</li>
-</ol>
-<p>If I get to sprint with other experienced contributors at the sprints, I would definitely like to have some help with the above.</p>
-<h2 id="thoughts">Thoughts</h2><h3 id="making-sprints-human-friendly">Making sprints human-friendly</h3><p>I tried out a few ideas, which I hope made the sprints just that little bit more human-friendly.</p>
-<ol>
-<li>Used large Post-It easel pads to write out commonly-used commands at the terminal.</li>
-<li>Displayed claimed seating arrangements at the morning, and more importantly, get to know every sprinter's name.</li>
-<li>Announcing every PR to the group that was merged and what the content was, followed by a round of applause.</li>
-<li>Setting a timer for 5 minutes before lunch so that they could all get ahead in the line.</li>
-<li>I used staff privileges to move the box of leftover bananas into our sprint room. :)</li>
-</ol>
-<p>I think the applause is the most encouraging part of the process. Having struggled through a PR, however big or small, and having group recognition for that effort, is super encouraging, especially for first-time contributors. I think we need to encourage this more at sprints.</p>
-<h3 id="relinquishing-control">Relinquishing control</h3><p>The only things about the pyjanitor project that I'm unwilling to give up on are: good documentation of what a function does, that a function should do one thing well, and that it be method-chainable. Everything else, including functionality, is an open discussion that we can have!</p>
-<p>One PR I particularly enjoyed was that from Lucas, who PR'd in a logo for the project on the docs page. He had the idea to take the hacky broomstick I drew on the big sticky note (as a makeshift logo), redraw it as a vector graphic in Inkscape, and PR it in as the (current) official logo on the docs.</p>
-<p>More broadly, I deferred to the sprinters' opinions on docs, because I recognized that I'd have old eyes on the docs, and wouldn't be able to easily identify places where the docs could be written more clearly. Eventually, a small, self-organizing squad of 3-5 sprinters ended up becoming the unofficial docs squad, rearranging the structure of the docs, building automation around it, and better organizing and summarizing the information on the docs.</p>
-<p>In more than a few places, if there were a well-justified choice for the API (which really meant naming the functions and keyword arguments), I'd be more than happy to see the PR happen. Even if it is evolved away later, the present codebase and PRs that led to it provided the substrate for better evolution of the API!</p>
-<h3 id="a-new-microsoft">A new Microsoft</h3><p>This year, I switched from Travis CI to Azure Pipelines. In particular, I was attracted to the ability to build on all three major operating systems, Windows, macOS, and Linux, on the free tier.</p>
-<p>Microsoft had a booth at PyCon, in which Steve Dowell led an initiative to get us set up with Azure-related tools. Indeed, as a major sponsor of the conference, this was one of the best swag given to us. Super practical, relationship- and goodwill-building. Definitely not lesser than the Adafruit lunchboxes with electronics as swag!</p>
-<h3 id="hiccups">Hiccups</h3><p>Naturally, not everything was smooth sailing throughout. I did find myself a tad expressing myself in an irate fashion at times with the amount of context switching that I was doing, especially switching between talking to different sprinters one after another. (I am very used to long stretches hacking on one problem.) One thing future sprinters could help with, which I will document, is to give me enough ramp-up context around their problem, so that I can quickly pinpoint what other information I might need.</p>
-<p>The other not-so-smooth-sailing thing was finding out that Azure sometimes did not catch errors in a script block! My unproven hypothesis at this point is that if I have four commands executed in a script block, and if any of the first three fail but the last one passes, the entire script block will behave as if it passes. This probably stems from the build system looking at only the last exit code to determine exit status. Eventually, after splitting each check into individual steps, linting and testing errors started getting caught automatically! (Automating this is much preferred to me running the <code>black</code> code formatter in my head.)</p>
-<p>Though the above issue is fixed, I think I am still having issues getting <code>pycodestyle</code> and <code>black</code> to work on the Windows builds. Definitely looking forward to hearing from Azure devs what could be done here!</p>
-<h2 id="suggestions">Suggestions</h2><p>I'm sure there's ways I could have made the sprint a bit better.  I'd love to hear them if there's something I've missed! Please feel free to comment below.</p>
-<h2 id="sprinter-acknowledgement">Sprinter Acknowledgement</h2><p>I would like to thank all the sprinters who joined in this sprint. Their GitHub handles are below:</p>
-<ul>
-<li>@HectorM14 (who was remote!)</li>
-<li>@jekwatt</li>
-<li>@kurtispinkney</li>
-<li>@lphk92</li>
-<li>@jonnybazookatone</li>
-<li>@SorenFrohlich</li>
-<li>@dave-frazzetto</li>
-<li>@dsouzadaniel</li>
-<li>@Eidhagen</li>
-<li>@mdini</li>
-<li>@kimt33</li>
-<li>@jack-kessler-88</li>
-<li>@NapsterInBlue</li>
-<li>@jk3587</li>
-<li>@ricky-lim</li>
-<li>@catherinedevlin</li>
-<li>@StephenSchroed</li>
-</ul>
-<p>And as always, big thanks to my collaborators on the repository:</p>
-<ul>
-<li>@zbarry</li>
-<li>@szuckerman</li>
-</ul>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2019/5/8/pycon-2019-sprints/#disqus">Let's discuss more</a>!
-        </i>
-      </p>
-    </small>
-
-  </div>
-</div>
-
-
-<div>
-  <hr>
-</div>
-
-
-
-<div class="card bg-dark">
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div class="card-body">
-    <h1><a href="../../../blog/2019/4/29/pycon-2019-pre-journey/">PyCon 2019 Pre-Journey</a></h1>
-    <small class="text-muted">
-      <p>
-        written by
-        
-        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-        
-        on 2019-04-29
-        
-        |
-        <!-- Append tags after author -->
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/pycon/">
-          pycon
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/python/">
-          python
+        <a href="../../../blog/tag/visualization/">
+          visualization
         </a>
         <i class="fas fa-tag"></i>
         <a href="../../../blog/tag/data science/">
           data science
         </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/conferences/">
-          conferences
-        </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>I'm headed out to <a href="https://us.pycon.org/2019">PyCon 2019</a>! This year, I will be co-instructing two tutorials, one on network analysis and one on Bayesian statistics, and delivering one talk on Bayesian statistics.</p>
-<p>The first tutorial on <a href="https://us.pycon.org/2019/schedule/presentation/70/">network analysis</a> is based on <a href="https://github.com/ericmjl/Network-Analysis-Made-Simple">material that I first developed</a> 5 years ago, and have continually updated. I've enjoyed teaching this tutorial because it represents a different way of thinking about data - in other words, relationally. This year, I will be a co-instructor for <a href="https://twitter.com/Mridul_Seth">Mridul</a>, who has kindly agreed to step up and teach it this year at PyCon. The apprentice has exceeded the master!</p>
-<p>The second tutorial on <a href="https://us.pycon.org/2019/schedule/presentation/77/">Bayesian statistics</a> is based on <a href="https://github.com/ericmjl/bayesian-stats-modelling-tutorial">material co-developed</a> with <a href="https://twitter.com/hugobowne">Hugo Bowne-Anderson</a>. Hugo is a mathematician by training, a pedagogy master, and data science aficionado. Like myself, he is a fan of Bayesian statistical modelling methods, and we first debuted the tutorial past year at SciPy. We're super excited for this one!</p>
-<p>The talk that I will deliver is on <a href="https://us.pycon.org/2019/schedule/presentation/174/">Bayesian statistical analysis of case/control tests</a>. In particular, I noticed a content gap in the data science talks, where case/control comparisons were limited to one case and one control. One epiphany I came to was that if we use Bayesian methods to analyze our data, there's no particular reason to limit ourselves to one case and one control; we can flexibly model multiple cases vs. one control, or even multiple cases vs multiple different controls in the same analysis, in a fashion that is flexible and principled.</p>
-<p>My final involvement with PyCon this year is as Financial Aid Chair. This is the first year that I'm leading the FinAid effort; during previous years, I had learned a ton from the previous chair Karan Goel. My co-chairs this year are Denise Williams and Jigyasa Grover; I'm looking forward to meeting them in 3D!</p>
-<p>All-in-all, I'm looking forward to another fun year at PyCon!</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2019/4/29/pycon-2019-pre-journey/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>In my two SciPy 2018 co-taught tutorials, I made the case that ECDFs provide richer information compared to histograms. My main points were:</p>
+<ol>
+<li>We can more easily identify central tendency measures, in particular, the median, compared to...
+        <a href="../../../blog/2018/7/14/ecdfs/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -316,14 +158,62 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2019/3/24/variance-explained/">Variance Explained</a></h1>
+    <h3><a href="../../../blog/2018/6/17/git-tip-apply-a-patch/">Git Tip: Apply a Patch</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2019-03-24
+        on 2018-06-17
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/git/">
+          git
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/version control/">
+          version control
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/code snippets/">
+          code snippets
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>I learned a new thing this weekend: we apparently can apply a patch onto a branch/fork using <code>git apply [patchfile]</code>.</p>
+<p>There's a few things to unpack here. First off, what's a <code>patchfile</code>?</p>
+<p>The long story cut short...
+        <a href="../../../blog/2018/6/17/git-tip-apply-a-patch/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2018/6/5/my-latent-dissatisfaction-with-modern-ml/">My Latent Dissatisfaction with Modern ML</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-06-05
         
         |
         <!-- Append tags after author -->
@@ -335,46 +225,35 @@
         <a href="../../../blog/tag/machine learning/">
           machine learning
         </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/deep learning/">
+          deep learning
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/causal inference/">
+          causal inference
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/graph theory/">
+          graph theory
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/probability/">
+          probability
+        </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>Variance explained, as a regression quality metric, is one that I have begun to like a lot, especially when used in place of a metric like the correlation coefficient (r<sup>2</sup>).</p>
-<p>Here's variance explained defined:</p>
-<p>
-$$1 - \frac{var(y_{true} - y_{pred})}{var(y_{true})}$$
-</p><p>Why do I like it? It’s because this metric gives us a measure of the scale of the error in predictions relative to the scale of the data.</p>
-<p>The numerator in the fraction calculates the variance in the errors, in other words, the <em>scale of the errors</em>. The denominator in the fraction calculates the variance in the data, in other words, the <em>scale of the data</em>. By subtracting the fraction from 1, we get a number upper-bounded at 1 (best case), and unbounded towards negative infinity.</p>
-<p>Here's a few interesting scenarios.</p>
-<ul>
-<li>If the scale of the errors is small relative to the scale of the data, then variance explained will be close to 1.</li>
-<li>If the scale of the errors is about the same scale as the data, then the variance explained will be around 0. This essentially says our model is garbage.</li>
-<li>If the scale of the errors is greater than the scale of the data, then the variance explained will be negative. This is also an indication of a garbage model.</li>
-</ul>
-<p>A thing that is <em>really nice</em> about variance explained is that it can be used to compare related machine learning tasks that have different unit scales, for which we want to compare how good one model performs across all of the tasks. Mean squared error makes this an apples-to-oranges comparison, because the unit scales of each machine learning task is different. On the other hand, variance explained is unit-less.</p>
-<p>Now, we know that single metrics can have failure points, as does the coefficient of correlation r^2^, as shown in Ansecombe's quartet and the Datasaurus Dozen:</p>
-<p><img src="https://d2f99xq7vri1nk.cloudfront.net/Anscombe_1_0_0.png" alt="Ansecombe&#39;s quartet, taken from Autodesk Research"></p>
-<p><em>Fig. 1: Ansecombe's quartet, taken from Autodesk Research</em></p>
-<p><img src="https://blog.revolutionanalytics.com/downloads/DataSaurus%20Dozen.gif" alt="Datasaurus Dozen, taken from Revolution Analytics"></p>
-<p><em>Fig. 2: Datasaurus Dozen, taken from Revolution Analytics</em></p>
-<p>One place where the variance explained can fail is if the predictions are systematically shifted off from the true values. Let's say prediction was shifted off by 2 units.</p>
-<p>
-$$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
-</p><p>There's no variance in errors, even though they are systematically shifted off from the true prediction. Like r<sup>2</sup>, variance explained will fail here.</p>
-<p>As usual, <a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">Ansecombe's quartet</a>, as does <a href="https://www.autodeskresearch.com/publications/samestats">The Datasaurus Dozen</a>, gives us a pertinent reminder that visually inspecting your model predictions is always a good thing!</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2019/3/24/variance-explained/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>It took reading Judea Pearl's "The Book of Why", and Jonas Peters' mini-course on causality, for me to finally figure out why I had this lingering dissatisfaction with modern machine learning. It's because modern machine learning (deep learning...
+        <a href="../../../blog/2018/6/5/my-latent-dissatisfaction-with-modern-ml/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -385,107 +264,139 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2019/3/22/functools-partial/">Functools Partial</a></h1>
+    <h3><a href="../../../blog/2018/5/26/causal-modelling/">Causal Modelling</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2019-03-22
+        on 2018-05-26
         
         |
         <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/causal inference/">
+          causal inference
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>Finally, I have finished Judea Pearl's latest work <a href="https://www.amazon.com/Book-Why-Science-Cause-Effect-ebook/dp/B075CR9QBJ/ref=mt_kindle?_encoding=UTF8&amp;me=">"The Book of Why"</a>! Having read it, I have come to appreciate how much...
+        <a href="../../../blog/2018/5/26/causal-modelling/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2018/5/6/model-baselines-are-important/">Model Baselines Are Important</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-05-06
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/machine learning/">
+          machine learning
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/deep learning/">
+          deep learning
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/automl/">
+          automl
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>For any problem that we think is machine learnable, having a sane baseline is really important. It is even more important to establish them early.</p>
+<p>Today at ODSC, I had a chance to meet both Andreas Mueller and Randy Olson. Andreas leads <a...
+        <a href="../../../blog/2018/5/6/model-baselines-are-important/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2018/3/30/consolidate-your-scripts-using-click/">Consolidate your scripts using click</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-03-30
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/programming/">
+          programming
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/code snippets/">
+          code snippets
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/scripting/">
+          scripting
+        </a>
         <i class="fas fa-tag"></i>
         <a href="../../../blog/tag/python/">
           python
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/hacks/">
-          hacks
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/tips and tricks/">
-          tips and tricks
-        </a>
-        <i class="fas fa-tag"></i>
         <a href="../../../blog/tag/data science/">
           data science
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/productivity/">
-          productivity
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/coding/">
-          coding
         </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>If you’ve done Python programming for a while, I think it pays off to know some little tricks that can improve the readability of your code and decrease the amount of repetition that goes on.</p>
-<p>One such tool is <code>functools.partial</code>. It took me a few years after my first introduction to <code>partial</code> before I finally understood why it was such a powerful tool.</p>
-<p>Essentially, what <code>partial</code> does is it wraps a function and sets a keyword argument to a constant. That’s it. What do we mean?</p>
-<p>Here’s a minimal example. Let’s say we have a function <code>f</code>, not written by me, but provided by someone else.</p>
-<div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="c1"># do something with a and b.</span>
-    <span class="k">return</span> <span class="n">result</span>
-</pre></div>
-<p>In my code, let’s say that I know that the value that <code>b</code> takes on in my app is always the tuple <code>(1, 'A')</code>. I now have a few options. The most obvious is assign the tuple <code>(1, 'A')</code> to a variable, and pass that in on every function call:</p>
-<div class="hll"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">)</span>
-<span class="n">result1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
-<span class="c1"># do some stuff.</span>
-<span class="n">result2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
-<span class="c1"># do more stuff.</span>
-<span class="c1"># ad nauseum</span>
-<span class="n">N</span> <span class="o">=</span> <span class="c1"># set value of N</span>
-<span class="n">resultN</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-<p>The other way I could do it is use <code>functools.partial</code> and just set the keyword argument <code>b</code> to equal to the tuple directly.</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
-<span class="n">f_</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">))</span>
-</pre></div>
-<p>Now, I can repeat the code above, but now only worrying about the keyword argument <code>a</code>:</p>
-<div class="hll"><pre><span></span><span class="n">result1</span> <span class="o">=</span> <span class="n">f_</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1"># do some stuff.</span>
-<span class="n">result2</span> <span class="o">=</span> <span class="n">f_</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="c1"># do more stuff.</span>
-<span class="c1"># ad nauseum</span>
-<span class="n">N</span> <span class="o">=</span> <span class="c1"># set value of N</span>
-<span class="n">resultN</span> <span class="o">=</span> <span class="n">f_</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
-</pre></div>
-<p>And there you go, that’s basically how <code>functools.partial</code> works in a nutshell.</p>
-<p>Now, where have I used this in real life?</p>
-<p>The most common place I have used it is in Flask. I have built Flask apps where I need to dynamically keep my Bokeh version synced up between the Python and JS libraries that get called. To ensure that my HTML templates have a consistent Bokeh version, I use the following pattern:</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh</span> <span class="kn">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">bkversion</span>
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">Flask</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span> 
-
-<span class="n">render_template</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">render_template</span><span class="p">,</span> <span class="n">bkversion</span><span class="o">=</span><span class="n">bkversion</span><span class="p">)</span>
-
-<span class="c1"># Flask app boilerplate</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">home</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html.j2&#39;</span><span class="p">)</span>
-</pre></div>
-<p>Now, because I always have <code>bkversion</code> pre-specified in <code>render_template</code>, I never have to repeat it over every <code>render_template</code> function call.</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2019/3/22/functools-partial/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><h2 id="overview">Overview</h2><p><code>click</code> is amazing! It's a Python package that allows us to add a command-line interface (CLI) to our Python scripts easily. This blog post is a data scientist-oriented post on how we can use...
+        <a href="../../../blog/2018/3/30/consolidate-your-scripts-using-click/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -496,14 +407,14 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2019/3/20/how-i-work/">How I Work</a></h1>
+    <h3><a href="../../../blog/2018/2/28/lessons-learned-and-reinforced-from-writing-my-own-deep-learning-package/">Lessons learned and reinforced from writing my own deep learning package</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2019-03-20
+        on 2018-02-28
         
         |
         <!-- Append tags after author -->
@@ -512,47 +423,188 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
           data science
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/productivity/">
-          productivity
+        <a href="../../../blog/tag/deep learning/">
+          deep learning
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/message passing neural networks/">
+          message passing neural networks
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/software engineering/">
+          software engineering
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/graph theory/">
+          graph theory
         </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>I was inspired to write this because of Will Wolf’s interview with DeepLearning.AI, in which I found a ton of similarities between how both of us work. As such, I thought I’d write down what I use at work to get things done.</p>
-<h2 id="tooling">Tooling</h2><p>For a data scientist, I think tooling is of very high importance: mastery over our tools keeps us productive. Here’s a sampling of what I use at work:</p>
-<ul>
-<li>Compute: I have my own MacBook, but I prefer freeloading off my colleague’s workstation, which is connected to our HPC compute cluster, allowing me to do parallelization with Dask!</li>
-<li>Editors/IDEs: VSCode + Jupyter Lab (JLab). Lots of plugins for VSCode!</li>
-<li>Terminal: iTerm, with my <a href="https://github.com/ericmjl/dotfiles"><code>dotfiles</code></a> providing a high degree of customization. I also use the VSCode and JLab terminals where convenient.</li>
-<li>General Purpose: Python, Dask, git</li>
-<li>ML/Stats: <code>scikit-learn</code>, <code>jax</code>, <code>pymc3</code></li>
-<li>Data wrangling: <code>pandas</code>, <code>pyjanitor</code> (a package I wrote to provide convenience APIs for data cleaning)</li>
-<li>Data visualization: <code>matplotlib</code>, <code>seaborn</code>, <code>holoviews</code></li>
-<li>App development: <code>flask</code></li>
-</ul>
-<p>As you probably can see, I’m a very Python-centric person!</p>
-<h2 id="daily/weekly-routines">Daily/Weekly Routines</h2><p>Most of my work necessitates long stretches of thinking and hacking time. Without that, I’m unable to get into “the zone” to do anything productive. Hence, I have a habit of packing meetings onto Mondays (a.k.a. “Meeting Mondays”). Backup times for meetings, which I prefer to not do, are 11 am and 1 pm, bookending lunch time so that I don’t end up with a fragmented morning/afternoon. The only exceptions I make are for my two high-priority team meetings, for which I defer to the rest of the team. I’m glad that my managers understand the need for long stretches of hacking time, and have stuck to Monday one-on-one meetings.</p>
-<p>Hence, almost every day from Tuesday through to Friday, I have long stretches of pre-allocated time for hacking. It’s data science scheduling bliss! It also means I turn down a lot of “can I meet you to chat” invites - unless we can pack them on Monday!</p>
-<p>On Friday, I make a point to try to work remotely. It helps with sanity, particularly in the winter, when the commute gets harsh and I can’t bike. Fridays also are the days on which I try to do my open source work.</p>
-<h2 id="pair-coding">Pair Coding</h2><p>Pair coding with others on mutual projects has been a very productive endeavor, <a href="https://ericmjl.github.io/blog/2019/3/1/pair-coding-why-and-how-for-data-scientists/">which I have written about before</a>. Unlike weekly update meetings, I plan for pair coding on an as-needed basis. We have a pre-defined goal for what we want to accomplish, including a conceivably achievable goal and a stretch goal; achieving the easier one keeps us motivated. It follows the “no agenda, no meeting” rule of thumb by which I protect my time.</p>
-<p>I found that a good setup is really necessary for pair coding to be successful. A minimum is a dual-monitor setup, with one extra keyboard + mouse for my coding partner.</p>
-<p>One thing I didn’t mention in my previous blog post was how knowledge transfer happens. Here’s how I think it works. We have one in the “driver’s seat”, and the other in the observer role. Knowledge transfer generally happens from the more experienced person to the less experienced one, and the driver doesn’t necessarily have to be the more experienced one. For example, when pair coding with my intern, I play the role of observer and may dictate code or outline what needs to be done, but I don’t actively take over on my keyboard unless there’s a situation that shows up that is irrelevant to the coding session goals. On the other hand, if there’s a codebase I’ve developed for which I need to play the tour guide role, I will be in the driver’s seat, while the observer will help me catch peripheral errors that I’m making.</p>
-<h2 id="learning-new-things">Learning New Things</h2><p>Pair coding has been one way I learn new things. For example, with my colleague Zach as the observer, we hacked together a simple dashboard project using Flask, Holoviews and Panel.</p>
-<p>I’m not very mathematically-savvy, in that algebra is difficult for me to follow. (I’m mildly algebra-blind, but getting better now.) Ironically, code, which is algebraic in nature too, but works with plain English names, works much better for me. Implementing algorithms and statistical methods using <code>jax</code> (for things that involve differential computing) and <code>PyMC3</code> (for all things Bayesian) has served to be very educational. While implementing, I also impose some software abstractions on the math, and this also forces me to organize my knowledge, which also helps learning. Implementing things on the computer is also the perfect way to learn by teaching: The computer is the ultimately dumb student, as it will execute exactly as you tell it, mistakes included!</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2019/3/20/how-i-work/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>At work, I’ve been rolling my own deep learning package to experiment with graph convolutional neural networks. I did this because in graph-centric deep learning, an idea I picked up from this paper, the inputs, convolution kernels, and much more,...
+        <a href="../../../blog/2018/2/28/lessons-learned-and-reinforced-from-writing-my-own-deep-learning-package/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
 
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2018/2/26/joy-from-teaching/">Joy from teaching</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-02-26
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/teaching/">
+          teaching
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/education/">
+          education
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/datacamp/">
+          datacamp
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>It always brings me joy to see others benefit from what I can offer.</p>
+<p>Thanks for <a href="https://www.linkedin.com/feed/update/urn:li:activity:6373939725656563713">sharing the fruits of your journey</a> on LinkedIn, Umar!</p>
+<p>Also a big...
+        <a href="../../../blog/2018/2/26/joy-from-teaching/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2018/2/25/annotating-code-tests-and-selectively-running-tests/">Annotating code tests and selectively running tests</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-02-25
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/programming/">
+          programming
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/python/">
+          python
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/testing/">
+          testing
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/software engineering/">
+          software engineering
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>I just learned about a neat trick when using <code>pytest</code> - the ability to "mark" tests with metadata, and the ability to selectively run groups of marked tests.</p>
+<p>Here's an example:</p>
+<div class="hll"><pre><span></span><span...
+        <a href="../../../blog/2018/2/25/annotating-code-tests-and-selectively-running-tests/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2018/2/21/nxviz-first-pr-merged/">nxviz first PR merged!</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-02-21
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/software engineering/">
+          software engineering
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data visualization/">
+          data visualization
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/nxviz/">
+          nxviz
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/graph theory/">
+          graph theory
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>With thanks to <a href="https://twitter.com/KassnerNora">@KassnerNora</a>, <a href="https://github.com/ericmjl/nxviz"><code>nxviz</code></a> has a new feature! Now, it is possible to specify the data to use to colour edges. Previously, this was...
+        <a href="../../../blog/2018/2/21/nxviz-first-pr-merged/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
 
 <div>
   <hr>

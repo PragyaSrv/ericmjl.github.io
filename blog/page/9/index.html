@@ -110,148 +110,27 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/">Parallel Processing with Dask on GridEngine Clusters</a></h1>
+    <h3><a href="../../../blog/2017/10/3/new-habits/">New Habits</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-10-11
+        on 2017-10-03
         
-        |
-        <!-- Append tags after author -->
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/parallel/">
-          parallel
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/dask/">
-          dask
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/gridengine/">
-          gridengine
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/data science/">
-          data science
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/optimization/">
-          optimization
-        </a>
-        
-      </p>
-      
     </small>
-
-    <p class="card-text"><p>I recently just figured out how to get this working... and it's awesome! :D</p>
-<h2 id="motivation">Motivation</h2><p>If I'm developing an analysis in the Jupyter notebook, and I have one semi-long-running function (e.g. takes dozens of seconds) that I need to run over tens to hundreds of thousands of similar inputs, it'll take <em>ages</em> for this to complete in serial. For a sense of scale, a function that takes ~20 seconds per call run serially over 10,000 similar inputs would take 200,000 seconds, which is 2 days of run-time (not including any other overhead). That's not feasible for interactive exploration of data. If I could somehow parallelize just the function over 500 compute nodes, we could take the time down to 7 minutes.</p>
-<p>GridEngine-based compute clusters are one of many options for parallelizing work. During grad school at MIT, and at work at Novartis, the primary compute cluster environment that I've encountered has been GridEngine-based. However, because they are designed for batch jobs, as a computational scientist, we have to jump out of whatever development environment we're currently using, and move to custom scripts.</p>
-<p>In order to do parallelism with traditional GridEngine systems, I would have to jump out of the notebook and start writing job submission scripts, which disrupts my workflow. I would be disrupting my thought process, and lose the interactivity that I might need to prototype my work faster.</p>
-<h2 id="enter-dask">Enter Dask</h2><p><code>dask</code>, alongside <code>dask-jobqueue</code> enables computational scientists like myself to take advantage of existing GridEngine setups to do interactive, parallel work. As long as I have a Jupyter notebook server running on a GridEngine-connected compute node, I can submit functions to the GridEngine cluster and collect back those results to do further processing, in a fraction of the time that it would take, thus enabling me to do my science faster than if I did everything single core/single node.</p>
-<p><strong>In this blog post, I'd like to share an annotated, minimal setup for using Dask on a GridEngine cluster.</strong> (Because we use Dask, more complicated pipelines are possible as well - I would encourage you to read the Dask docs for more complex examples.) I will assume that you are working in a Jupyter notebook environment, and that the notebook you are working out of is hosted on a GridEngine-connected compute node, from which you are able to <code>qsub</code> tasks. Don't worry, you won't be qsub-ing anything though!</p>
-<h2 id="setup">Setup</h2><p>To start, we need a cell that houses the following code block:</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">dask_jobqueue</span> <span class="kn">import</span> <span class="n">SGECluster</span>
-<span class="kn">from</span> <span class="nn">dask</span> <span class="kn">import</span> <span class="n">delayed</span><span class="p">,</span> <span class="n">compute</span>
-
-<span class="n">cluster</span> <span class="o">=</span> <span class="n">SGECluster</span><span class="p">(</span><span class="n">queue</span><span class="o">=</span><span class="s1">&#39;default.q&#39;</span><span class="p">,</span>
-                     <span class="n">walltime</span><span class="o">=</span><span class="s2">&quot;1500000&quot;</span><span class="p">,</span>
-                     <span class="n">processes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                     <span class="n">memory</span><span class="o">=</span><span class="s1">&#39;1GB&#39;</span><span class="p">,</span>
-                     <span class="n">cores</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                     <span class="n">env_extra</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;source /path/to/custom/script.sh&#39;</span><span class="p">,</span>
-                                <span class="s1">&#39;export ENV_VARIABLE=&quot;SOMETHING&quot;&#39;</span><span class="p">]</span>
-                       <span class="p">)</span>
-</pre></div>
-<p>Here, we are instantiating an <code>SGECluster</code> object under the variable name <code>cluster</code>. What <code>cluster</code> stores is essentially a configuration for a block of worker nodes that you will be requesting. Under the hood, what <code>dask-jobqueue</code> is doing is submitting jobs to the GridEngine scheduler, which will block off a specified amount of compute resources (e.g. number of cores, amount of RAM, whether you want GPUs or not, etc.) for a pre-specified amount of time, on which Dask then starts a worker process to communicate with the head process coordinating tasks amongst workers.</p>
-<p>As such, you do need to know two pieces of information:</p>
-<ol>
-<li><code>queue</code>: The queue that jobs are to be submitted to. Usually, it is named something like <code>default.q</code>, but you will need to obtain this through GridEngine. If you have the ability to view all jobs that are running, you can call <code>qstat</code> at the command line to see what queues are being used. Otherwise, you might have to ping your system administrator for this information.</li>
-<li><code>walltime</code>: You will also need to pre-estimate the wall clock time, in seconds, that you want the worker node to be alive for. It should be significantly longer than the expected time you think you will need, so that your function call doesn't timeout unexpectedly. I have defaulted to 1.5 million seconds, which is about 18 days of continual runtime. In practice, I usually kill those worker processes after just a few hours.</li>
-</ol>
-<p>Besides that, you also need to specify the resources that you need per worker process. In my example above, I'm asking for each worker process to use only 1GB of RAM, 1 core, and to use only 1 process per worker (i.e. no multiprocessing, I think).</p>
-<p>Finally, I can also specify extra environment setups that I will need. Because each worker process is a new process that has no knowledge of the parent process' environment, you might have to source some bash script, or activate a Python environment, or export some environment variable. This can be done under the <code>env_extra</code> keyword, which accepts a list of strings.</p>
-<h2 id="request-for-worker-compute-nodes">Request for worker compute "nodes"</h2><p>I put "nodes" in quotation marks, because they are effectively logical nodes, rather than actual compute nodes. (Technically, I think a compute node minimally means one physical hardware unit with CPUs and RAM).</p>
-<p>In order to request for worker nodes to run your jobs, you need the next line of code:</p>
-<div class="hll"><pre><span></span><span class="n">cluster</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
-</pre></div>
-<p>With this line, under the hood, <code>dask-jobqueue</code> will start submitting 500 jobs, each requesting 1GB of RAM and 1 core, populating my compute environment according to the instructions I provided under <code>env_extra</code>.</p>
-<p>At the end of this, I effectively have a 500-node cluster on the larger GridEngine cluster (let's call this a "virtual cluster"), each with 1GB of RAM and 1 core available to it, on which I can submit functions to run.</p>
-<h2 id="start-a-client-process">Start a client process</h2><p>In order to submit jobs to my virtual cluster, I have to instantiate a client that is connected to the cluster, and is responsible for sending functions there.</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
-
-<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
-</pre></div>
-<h2 id="compute">Compute!</h2><p>With this setup complete (I have it stored as a TextExpander snippets), we can now start submitting functions to the virtual cluster!</p>
-<p>To simulate this, let's define a square-rooting function that takes 2-3 seconds to run each time it is called, and returns the square of its inputs. This simulates a function call that is computationally semi-expensive to run a few times, but because call on this hundreds of thousands of time, the total running time to run it serially would be too much.</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
-<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>
-<span class="k">def</span> <span class="nf">slow_sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Simulates the run time needed for a semi-expensive function call.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">assert</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
-    <span class="c1"># define sleeping time in seconds, between 2-3 seconds.</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">random</span><span class="p">()</span>
-    <span class="n">sleep</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-<h3 id="serial-execution">Serial Execution</h3><p>In a naive, serial setting, we would call on the function in a for-loop:</p>
-<div class="hll"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slow_sqrt</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-</pre></div>
-<p>This would take us anywhere between 20,000 to 30,000 seconds (approximately 8 hours, basically).</p>
-<h3 id="parallel-execution">Parallel Execution</h3><p>In order to execute this in parallel instead, we could do one of the following three ways:</p>
-<h4 id="map">map</h4><div class="hll"><pre><span></span><span class="n">sq_roots</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">slow_sqrt</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
-<span class="n">sq_roots</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">sq_roots</span><span class="p">)</span>
-</pre></div>
-<h4 id="for-loop">for-loop</h4><div class="hll"><pre><span></span><span class="n">sq_roots</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
-    <span class="n">sq_roots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">slow_sqrt</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">restart</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>  <span class="c1"># submit the function as first argument, then rest of arguments</span>
-<span class="n">sq_roots</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">sq_roots</span><span class="p">)</span>
-</pre></div>
-<h4 id="delayed">delayed</h4><div class="hll"><pre><span></span><span class="n">sq_roots</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
-    <span class="n">sq_roots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">delayed</span><span class="p">(</span><span class="n">slow_sqrt</span><span class="p">)(</span><span class="n">i</span><span class="p">))</span>
-<span class="n">sq_roots</span> <span class="o">=</span> <span class="n">compute</span><span class="p">(</span><span class="o">*</span><span class="n">sq_roots</span><span class="p">)</span>
-</pre></div>
-<p>I have some comments on each of the three methods, each of which I have used.</p>
-<p>First off, <strong>each of them do require us to change the code that we would have written in serial</strong>. This little bit of overhead is the only tradeoff we really need to make in order to gain parallelism.</p>
-<p>In terms of <strong>readability</strong>, all of them are quite readable, though in my case, I tend to favour the for-loop with <code>client.submit</code>. Here is why.</p>
-<p>For readability, the for-loop explicitly indicates that we are looping over something. It's probably more easy for novices to approach my code that way.</p>
-<p>For <strong>debuggability</strong>, <code>client.submit</code> returns a Futures object (same goes for <code>client.map</code>). A "Futures" object might be confusing at first, so let me start by demystifying that. A Futures object promises that the result that is computed from <code>slow_sqrt</code> will exist, and actually contains a ton of diagnostic information, including the <code>type</code> of the object (which can be useful for diagnosing whether my function actually ran correctly). In addition to that, I can call on <code>Futures.result()</code> to inspect the actual result (in this case, <code>sq_roots[0].result()</code>). This is good for debugging the function call, in case there are issues when scaling up. (At work, I was pinging a database in parallel, and sometimes the ping would fail; debugging led me to include some failsafe code, including retries and sleeps with random lengths to stagger out database calls.)</p>
-<p>Finally, <strong>the Futures interface is non-blocking</strong> on my Jupyter notebook session. Once I've submitted the jobs, I can continue with other development work in my notebook in later cells, and check back when the Dask dashboard indicates that the jobs are done.</p>
-<p>That said, I like the <code>delayed</code> interface as well. Once I was done debugging and confident that my own data pipeline at work wouldn't encounter the failure modes I was seeing, I switched over to the <code>delayed</code> interface and scaled up my analysis. I was willing to trade in the interactivity using the <code>Futures</code> interface for the automation provided by the <code>delayed</code> interface. (I also first used Dask on a single node through the delayed interface as well).</p>
-<p>Of course, there's something also to be said for the simplicity of two lines of code for parallelism (with the <code>client.map</code> example).</p>
-<p>The final line in each of the code blocks allows us to "gather" the results back into my coordinator node's memory, thus completing the function call and giving us the result we needed.</p>
-<h2 id="conclusions">Conclusions</h2><p>That concludes it! The two key ideas illustrated in this blog post were:</p>
-<ol>
-<li>To set up a virtual cluster on a GridEngine system, we essentially harness the existing job submission system to generate workers that listen for tasks.</li>
-<li>A useful programming pattern is to <code>submit</code> functions using the <code>client</code> object using <code>client.submit(func, *args, **kwargs)</code>. This requires minimal changes from serial code.</li>
-</ol>
-<h2 id="practical-tips">Practical Tips</h2><p>Here's some tips for doing parallel processing, which I've learned over the years.</p>
-<p>Firstly, never prematurely parallelize. It's as bad as prematurely optimizing code. If your code is running slowly, check first to make sure that there aren't algorithmic complexity issues, or bandwidths being clogged up (e.g. I/O bound). As the Dask docs state, it is easier to achieve those gains first before doing parallelization.</p>
-<p>Secondly, when developing parallel workflows, make sure to test the pipeline on subsets of input data first, and slowly scale up. It is during this period that you can also profile memory usage to check to see if you need to request for more RAM per worker.</p>
-<p>Thirdly, for GridEngine clusters, it is usually easier to request for many small worker nodes that consume few cores and small amounts of RAM. If your job is trivially parallelizable, this may be a good thing.</p>
-<p>Fourthly, it's useful to have realistic expectations on the kinds of speed-ups you can expect to gain. At work, through some ad-hoc profiling, I quickly came to the realization that concurrent database pings were the most likely bottleneck in my code's speed, and that nothing apart from increasing the number of concurrent database pings allowed would make my parallel code go faster.</p>
-<p>Finally, on a shared cluster, be respectful of others' usage. Don't request for unreasonable amounts of compute time. And when you're confirmed done with your analysis work, remember to shut down the virtual cluster! :)</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>Ever since "going corporate", it's meant picking up more new productivity/coding habits. Here's a sampling of what I've learned.</p>
+<p><strong>(1) Living by my calendar</strong></p>
+<p>Basically, the "work calendar" defines everything about the...
+        <a href="../../../blog/2017/10/3/new-habits/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -262,213 +141,27 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/">Optimizing Block Sparse Matrix Creation with Python</a></h1>
+    <h3><a href="../../../blog/2017/9/14/visualize-large-datasets-by-sampling/">Visualize Large Datasets by Sampling</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-09-04
+        on 2017-09-14
         
-        |
-        <!-- Append tags after author -->
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/graph/">
-          graph
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/optimization/">
-          optimization
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/numba/">
-          numba
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/python/">
-          python
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/data science/">
-          data science
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/sparse matrix/">
-          sparse matrix
-        </a>
-        
-      </p>
-      
     </small>
-
-    <p class="card-text"><div class="hll"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
-<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">jit</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
-
-<span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
-<span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_format</span> <span class="o">=</span> <span class="s1">&#39;retina&#39;</span>
-</pre></div>
-<h1 id="introduction">Introduction</h1><p>At work, I recently encountered a neat problem. I'd like to share it with you all.</p>
-<p>One of my projects involves graphs; specifically, it involves taking individual graphs and turning them into one big graph. If you've taken my Network Analysis Made Simple workshops before, you'll have learned that graphs can be represented as a matrix, such as the one below:</p>
-<div class="hll"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">erdos_renyi_graph</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-</pre></div>
-<p><img src="../../../blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/output_2_1.png" alt="png"></p>
-<p>Because the matrix is so sparse, we can actually store it as a <strong>sparse matrix</strong>:</p>
-<div class="hll"><pre><span></span><span class="n">A_sparse</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">.</span><span class="n">tocoo</span><span class="p">()</span>
-<span class="p">[</span><span class="n">A_sparse</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">A_sparse</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="n">A_sparse</span><span class="o">.</span><span class="n">data</span><span class="p">]</span>
-</pre></div>
-<pre><code>[array([0, 0, 1, 2, 3, 3, 3, 4, 4, 5, 5, 5, 5, 6, 7, 7, 8, 8], dtype=int32),
- array([5, 7, 4, 7, 5, 6, 8, 1, 5, 0, 3, 4, 8, 3, 0, 2, 3, 5], dtype=int32),
- array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], dtype=int64)]
-</code></pre>
-<p>The most straightforward way of storing sparse matrices is in the COO (COOrdinate) format, which is also known as the "triplet" format, or the "ijv" format. ("i" is row, "j" is col, "v" is value)</p>
-<p>If we want to have two or more graphs stored together in a single matrix, which was what my projects required, then one way of representing them is as follows:</p>
-<div class="hll"><pre><span></span><span class="n">G2</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">erdos_renyi_graph</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-<span class="n">A2</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G2</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">block_diag</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">A2</span><span class="p">])</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
-</pre></div>
-<p><img src="../../../blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/output_6_1.png" alt="png"></p>
-<p>Now, notice how there's 25 nodes in total (0 to 24), and that they form what we call a "block diagonal" format. In its "dense" form, we have to represent $25^2$ values inside the matrix. That's fine for small amounts of data, but if we have tens of thousands of graphs, that'll be impossible to deal with!</p>
-<p>You'll notice I used a function from <code>scipy.sparse</code>, the <code>block_diag</code> function, which will create a block diagonal sparse matrix from an iterable of input matrices.</p>
-<p><code>block_diag</code> is the function that I want to talk about in this post.</p>
-<h1 id="profiling-block_diag-performance">Profiling <code>block_diag</code> performance</h1><p>I had noticed that when dealing with tens of thousands of graphs, <code>block_diag</code> was not performing up to scratch. Specifically, the time it needed would scale quadratically with the number of matrices provided.</p>
-<p>Let's take a look at some simulated data to illustrate this.</p>
-<div class="hll"><pre><span></span><span class="o">%%</span><span class="n">time</span>
-<span class="n">Gs</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">As</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3000</span><span class="p">):</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="mf">0.2</span>
-    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">erdos_renyi_graph</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
-    <span class="n">Gs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-    <span class="n">As</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-</pre></div>
-<p>Let's now define a function to profile the code.</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
-<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">sample</span>
-
-<span class="k">def</span> <span class="nf">profile</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="n">n_graphs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">1400</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">1800</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">n_graphs</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>  <span class="c1"># 3 replicates per n</span>
-            <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-            <span class="n">func</span><span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="n">As</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
-            <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-            <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">data</span>
-
-<span class="n">data_sp</span> <span class="o">=</span> <span class="n">profile</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">block_diag</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data_sp</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;number of graphs&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
-</pre></div>
-<p><img src="../../../blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/output_12_1.png" alt="png"></p>
-<p>It is quite clear that the increase in time is super-linear, showing $O(n^2)$ scaling. (Out of impatience, I did not go beyond 50,000 graphs in this post, but at work, I did profile performance up to that many graphs. For reference, it took about 5 minutes to finish creating the scipy sparse matrix for 50K graphs.</p>
-<h1 id="optimizing-block_diag-performance">Optimizing <code>block_diag</code> performance</h1><p>I decided to take a stab at creating an optimized version of <code>block_diag</code>. Having profiled my code and discovering that sparse block diagonal matrix creation was a bottleneck, I implemented my own sparse block diagonal matrix creation routine using pure Python.</p>
-<div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">_block_diag</span><span class="p">(</span><span class="n">As</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">]):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return the (row, col, data) triplet for a block diagonal matrix.</span>
-
-<span class="sd">    Intended to be put into a coo_matrix. Can be from scipy.sparse, but</span>
-<span class="sd">    also can be cupy.sparse, or Torch sparse etc.</span>
-
-<span class="sd">    Example usage:</span>
-
-<span class="sd">    &gt;&gt;&gt; row, col, data = _block_diag(As)</span>
-<span class="sd">    &gt;&gt;&gt; coo_matrix((data, (row, col)))</span>
-
-<span class="sd">    :param As: A list of numpy arrays to create a block diagonal matrix.</span>
-<span class="sd">    :returns: (row, col, data), each as lists.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">row</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">col</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">start_idx</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">A</span> <span class="ow">in</span> <span class="n">As</span><span class="p">:</span>
-        <span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
-        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">start_idx</span><span class="p">)</span>
-                    <span class="n">col</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="n">start_idx</span><span class="p">)</span>
-                    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>
-        <span class="n">start_idx</span> <span class="o">=</span> <span class="n">start_idx</span> <span class="o">+</span> <span class="n">nrows</span>
-    <span class="k">return</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span>
-</pre></div>
-<p>Running it through the same profiling routine:</p>
-<div class="hll"><pre><span></span><span class="n">data_custom</span> <span class="o">=</span> <span class="n">profile</span><span class="p">(</span><span class="n">_block_diag</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data_custom</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;custom&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data_sp</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;scipy.sparse&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;number of graphs&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
-</pre></div>
-<p><img src="../../../blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/output_18_1.png" alt="png"></p>
-<p>I also happened to have listened in on a <a href="https://www.youtube.com/watch?v=6oXedk2tGfk">talk by Siu Kwan Lam</a> during lunch, on <code>numba</code>, the JIT optimizer that he has been developing for the past 5 years now. Seeing as how the code I had written in <code>_block_diag</code> was all numeric code, which is exactly what <code>numba</code> was designed for, I decided to try optimizing it with JIT.</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">jit</span>
-
-<span class="n">data_jit</span> <span class="o">=</span> <span class="n">profile</span><span class="p">(</span><span class="n">jit</span><span class="p">(</span><span class="n">_block_diag</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data_custom</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;custom&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data_sp</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;scipy.sparse&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data_jit</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;jit&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;number of graphs&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
-</pre></div>
-<p><img src="../../../blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/output_21_1.png" alt="png"></p>
-<p>Notice the speed-up that JIT-ing the code provided! (Granted, that first run was a "warm-up" run; once JIT-compiled, everything is really fast!)</p>
-<p>My custom implementation only returns the (row, col, data) triplet. This is an intentional design choice - having profiled the code with and without calling a COO matrix creation routine, I found the JIT-optimized performance to be significantly better without creating the COO matrix routine. As I still have to create a sparse matrix, I ended up with the following design:</p>
-<div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">block_diag</span><span class="p">(</span><span class="n">As</span><span class="p">):</span>
-    <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">jit</span><span class="p">(</span><span class="n">_block_diag</span><span class="p">)(</span><span class="n">As</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">sp</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)))</span>
-
-<span class="n">data_wrap</span> <span class="o">=</span> <span class="n">profile</span><span class="p">(</span><span class="n">block_diag</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data_custom</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;custom&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data_sp</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;scipy.sparse&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data_jit</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;jit&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data_wrap</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;wrapped&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;number of graphs&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
-</pre></div>
-<p><img src="../../../blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/output_24_1.png" alt="png"></p>
-<p>You'll notice that the array creation step induces a consistent overhead on top of the sparse matrix triplet creation routine, but stays flat and trends the "jit" dots quite consistently. It intersects the "custom" dots at about $10^3$ graphs. Given the problem that I've been tackling, which involves $10^4$ to $10^6$ graphs at a time, it is an absolutely worthwhile improvement to JIT-compile the <code>_block_diag</code> function.</p>
-<h1 id="conclusion">Conclusion</h1><p>This was simultaneously a fun and useful exercise in optimizing my code!</p>
-<p>A few things I would take away from this:</p>
-<ul>
-<li>Profiling code for bottlenecks can be really handy, and can be especially useful if we have a hypothesis on how to optimize it.</li>
-<li><code>numba</code> can really speed up array-oriented Python computation. It lives up to the claims on its documentation.</li>
-</ul>
-<p>I hope you learned something new, and I hope you also enjoyed reading this post as much as I enjoyed writing it!</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>Just a little tip, putting it here for myself and others in case it helps.</p>
+<p>Sometimes, you need to visualize a large dataset, but it takes a ton of time to render it or compute the necessary transforms.</p>
+<p>If your samples are...
+        <a href="../../../blog/2017/9/14/visualize-large-datasets-by-sampling/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -479,53 +172,47 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/">Joint, conditional, and marginal probability distributions</a></h1>
+    <h3><a href="../../../blog/2017/9/11/nano-text-editor-hacks/">nano text editor hacks</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-08-07
+        on 2017-09-11
         
         |
         <!-- Append tags after author -->
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/statistics/">
-          statistics
+        <a href="../../../blog/tag/programming/">
+          programming
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/probability/">
-          probability
+        <a href="../../../blog/tag/nano/">
+          nano
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/bayesian/">
-          bayesian
+        <a href="../../../blog/tag/text editor/">
+          text editor
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/data science/">
-          data science
+        <a href="../../../blog/tag/coding snippets/">
+          coding snippets
         </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>Joint probability, conditional probability, and marginal probability... These are three central terms when learning about probability, and they show up in Bayesian statistics as well. However... I never really could remember what they were, especially since we were usually taught them using formulas, rather than pictures.</p>
-<p>Well, for those who learn a bit better using pictures... if you know what a probability distribution is, then hopefully these help with remembering what these terms mean. (Clicking on the image will bring you to the original, hosted on GitHub.)</p>
-<p><a href="https://github.com/ericmjl/distributions/raw/master/joint-conditional-marginal.pdf"><img src="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/joint-conditional-marginal.png" alt=""></a></p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>Much as I've embraced the <a href="https://atom.io/">Atom text editor</a>, there are times when the GUI isn't accessible to us, and we are forced to use a Terminal-based text editor.</p>
+<p>Now, I'm not one of those crazy types who use emacs or vim...
+        <a href="../../../blog/2017/9/11/nano-text-editor-hacks/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -536,48 +223,26 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/8/6/d-separation-in-causal-inference/">d-separation in causal inference</a></h1>
+    <h3><a href="../../../blog/2017/8/31/what-would-be-useful-for-aspiring-data-scientists-to-know/">What would be useful for aspiring data scientists to know?</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-08-06
+        on 2017-08-31
         
-        |
-        <!-- Append tags after author -->
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/causal inference/">
-          causal inference
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/bayesian/">
-          bayesian
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/data science/">
-          data science
-        </a>
-        
-      </p>
-      
     </small>
-
-    <p class="card-text"><p>Yesterday evening, I had an empty block of time during which I finally did a worked example of finding whether two nodes are "d-separated" in a causal graph. It was pretty instructive to implement the algorithm. It also reminded me yet again: there's this weird thing about me where I need programming to learn math!</p>
-<p>Anyways, if you're interested in seeing the implementation, it's available at <a href="https://github.com/ericmjl/causality">GitHub</a>.</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/8/6/d-separation-in-causal-inference/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>I originally titled this post, "What you need to know to become a data scientist", but I backed off from having such an authoritative post title for I wanted to keep things opinionated without being pompous :).</p>
+<p>Data Science (DS) is a hot...
+        <a href="../../../blog/2017/8/31/what-would-be-useful-for-aspiring-data-scientists-to-know/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -588,61 +253,251 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/8/1/nxviz-05-released/">nxviz 0.5 released!</a></h1>
+    <h3><a href="../../../blog/2017/8/24/reading-and-writing-docs-the-overlooked-programming-skill/">Reading &amp; Writing Docs: The Overlooked Programming Skill?</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-08-01
+        on 2017-08-24
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p>I recently read a blog article by DataCamp's CTO (Dieter) on how to scale their projects and their engineering team - it's a <a href="https://medium.com/datacamp/technical-vision-part-1-5f016c163340">great read</a>! In the article, Dieter states...
+        <a href="../../../blog/2017/8/24/reading-and-writing-docs-the-overlooked-programming-skill/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/8/10/next-steps/">Next Steps</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-08-10
         
         |
         <!-- Append tags after author -->
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/nxviz/">
-          nxviz
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/visualization/">
-          visualization
+        <a href="../../../blog/tag/job hunt/">
+          job hunt
         </a>
         <i class="fas fa-tag"></i>
         <a href="../../../blog/tag/data science/">
           data science
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/software/">
-          software
+        <a href="../../../blog/tag/insight data science/">
+          insight data science
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>Signed and done! I will be joining the Novartis Institutes for Biomedical Research (NIBR) in September, as part of the Scientific Data Analysis (SDA) team under Novartis Informatics (NX).</p>
+<p>NIBR is the research arm of Novartis, and the SDA...
+        <a href="../../../blog/2017/8/10/next-steps/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/8/2/open-source-software/">Open Source Software</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-08-02
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
         </a>
         <i class="fas fa-tag"></i>
         <a href="../../../blog/tag/open source/">
           open source
         </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/gpu/">
+          gpu
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/bayesian/">
+          bayesian
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/statistics/">
+          statistics
+        </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>A new version of nxviz is released!</p>
-<p>In this update, I have added a declarative interface for visualizing geographically-constrained graphs. Here, nodes in a graph have their placement constrained by longitude and latitude.</p>
-<p>An example of how to use it is below:</p>
-<p><a href="../../../blog/2018/8/1/nxviz-05-released/carbon-original.png"><img src="../../../blog/2018/8/1/nxviz-05-released/carbon-small.png" alt="nxviz geoplots"></a></p>
-<p>In the GeoPlot constructor API, the keyword arguments <code>node_lat</code> and <code>node_lon</code> specify which node metadata are to be used to place nodes on the x- and y- axes.</p>
-<p>By no means do I intend for GeoPlot to replace more sophisticated analysis methods; like <code>seaborn</code>, the interface is declarative; for me, the intent is to provide a very quick-and-dirty way for an end user to visualize graphs with spatially constrained nodes.</p>
-<p>Please enjoy!</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/8/1/nxviz-05-released/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>Open source software is awesome, and I've just been thoroughly convinced of why.</p>
+<p>Today, I put in a <a href="https://github.com/pymc-devs/pymc3/pull/2470">PR</a> to PyMC3. This was a bug fix related to the PyMC3 multinomial distribution's...
+        <a href="../../../blog/2017/8/2/open-source-software/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
 
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/7/22/bayesian-neural-networks/">Bayesian Neural Networks</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-07-22
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/bayesian/">
+          bayesian
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/deep learning/">
+          deep learning
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <p class="card-text"><p>Sharing some thoughts on a Bayesian neural network that I just implemented.</p>
+</p>
+    <small class="text-muted">
+      <a href="../../../blog/2017/7/22/bayesian-neural-networks/">Read on...</a>
+    </small>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/7/17/lessons-learned-during-insight/">Lessons Learned During Insight</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-07-17
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p><strong>(a) Solving healthcare goes beyond solving the science underlying it.</strong></p>
+<p>At its core, healthcare delivery is essentially a human problem.  Even what we choose to optimize for is a hard problem. Do we optimize for changing human...
+        <a href="../../../blog/2017/7/17/lessons-learned-during-insight/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/7/15/insight-week-7/">Insight Week 7</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-07-15
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/insight data science/">
+          insight data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/job hunt/">
+          job hunt
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>Aaand with that, week 7 of Insight is done!</p>
+<p>I had a short week because of SciPy 2017, and I'm thankful that I got a chance to head out there - had the opportunity to reconnect with many friends from the SciPy community.</p>
+<p>The two days...
+        <a href="../../../blog/2017/7/15/insight-week-7/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
 
 <div>
   <hr>

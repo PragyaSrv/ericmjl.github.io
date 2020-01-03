@@ -110,110 +110,42 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2019/7/21/how-to-lead-a-great-code-sprint/">How to lead a great code sprint</a></h1>
+    <h3><a href="../../../blog/2019/3/1/pair-coding-why-and-how-for-data-scientists/">Pair Coding: Why and How for Data Scientists</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2019-07-21
+        on 2019-03-01
         
         |
         <!-- Append tags after author -->
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/software development/">
-          software development
+        <a href="../../../blog/tag/data science/">
+          data science
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/sprint/">
-          sprint
+        <a href="../../../blog/tag/programming/">
+          programming
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/code sprint/">
-          code sprint
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/open source/">
-          open source
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/community/">
-          community
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/community development/">
-          community development
+        <a href="../../../blog/tag/best practices/">
+          best practices
         </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>This blog post is the first in a series of two blog posts on participating in code sprints, and is the culmination of two other blog posts I’ve written on leading a sprint. In this post, I’ll be writing it from the perspective of what a sprint participant might appreciate from a sprint leader.</p>
-<h2 id="write-good-docs">Write good docs</h2><p>Documentation scales you, the package maintainer. Good docs let others get going without needing your intervention, while bad docs create more confusion. Write good docs ahead-of-time on:</p>
-<ul>
-<li>The purpose and scope of the project.</li>
-<li>How to get setup for contributing</li>
-<li>What contributors should look out for when contributing, including:<ul>
-<li>Code style</li>
-<li>Function scope</li>
-<li>Documentation requirements</li>
-<li>Testing requirements</li>
-</ul>
-</li>
-<li>How contributors can contribute without necessarily providing code</li>
-</ul>
-<h2 id="require-documentation-as-a-first-contribution">Require documentation as a first contribution</h2><p>This may not necessarily apply to all projects, but for small-ish enough projects, this might be highly relevant. Requiring documentation contributions as the first contribution has a few nice side effects for newcomer contributors:</p>
-<ol>
-<li>This enforces familiarity with the project before making contributions.</li>
-<li>It’s a very egalitarian way to kick-off the sprints, reducing the probability of sprinter anxiety from falling behind.</li>
-<li>This reduces the burden of new contributions for first-time sprinters: docs do not break code!</li>
-<li>Apart from being non-intimidating, it can sometimes give rise to repetitive tasks that newcomer sprinters with which newcomers can practice git workflow.</li>
-</ol>
-<h2 id="make-clear-who-should-sprint-with-your-project">Make clear who should sprint with your project</h2><p>Mismatched expectations breed frustration; hence, making clear what pre-requisite knowledge participants should have can go a long way to reducing frustrations later on.</p>
-<p>Drawing on my <code>pyjanitor</code> experience, I would want participants to at the minimum be me of the following:</p>
-<ol>
-<li><code>pandas</code> users who have frustrations with the library, and would like to make contributions, or</li>
-<li>Individuals who wish to make a documentation contribution and don’t mind doing a fine-toothed pass over the docs to figure out what is unclear in the docs.</li>
-</ol>
-<p>Defining your so-called “sprint audience” ahead-of-time can go a long way to making the sprint productive and friendly.</p>
-<h2 id="communicate-priorities-of-the-project">Communicate priorities of the project</h2><p>Sprinters want to know that their contributions are going to be valued. Though it is easy to say, “come talk with me before you embark on a task”, the reality is that you, the sprint lead, are likely going to be extremely overbooked. One way to get around this, I think, is to have a high-level list of priorities for the sprint, which can help sprinters better strategize which tasks to tackle. Communicate this on a whiteboard, large sticky notes, or online Wiki page that you can direct people to.</p>
-<h2 id="have-a-publicly-viewable-file-lock">Have a publicly-viewable “file lock”</h2><p>Merge conflicts will inadvertently show up if multiple people are contributing to the same file simultaneously. It helps to have a publicly-viewable “file lock” on, say, a whiteboard or large sticky notes, so that we know who is working on what file. This helps prevent you, the sprint lead, from accidentally getting two people to work on the same file, and then having to resolve merge conflicts later.</p>
-<p>In the <code>pyjanitor</code> sprints, I frequently approved two people working on the same notebook; resolving merge conflicts in the notebook JSON later proved to be a big pain! This lesson was one learned hard.</p>
-<h2 id="encourage-contribution-of-life-like-examples">Encourage contribution of life-like examples</h2><p>If there are new package users in the crowd who want to get familiar with the package, then encouraging them to contribute life-like examples is a great way to have them make a contribution! This has some nice side effects:</p>
-<ol>
-<li>In creating the example, they may find limitations in the package that could form the substrate of future contributions.</li>
-<li>By using the library in the creation of an example, they become users of the project themselves.</li>
-</ol>
-<h2 id="celebrate-every-contribution">Celebrate every contribution</h2><p>This one is particularly important for first-time contributors. Oftentimes, they have never done standard Gitflow, and that is intimidating enough. So it doesn’t matter if the contribution is nothing more than deleting an unnecessary plural <code>s</code> or correcting a broken URL. We should celebrate that contribution, because they have now learned how to make a contribution (regardless of type), and can repeat the unfamiliar Gitflow pattern until they have it muscle memorized.</p>
-<p>At the SciPy sprints, for the <code>pyjanitor</code> project, once a contributor’s PR finished building and passed all checks, I brought my iPad over to their table to let them hit the Big Green Button on GitHub. This is one touch I am quite confident our sprinters loved!</p>
-<h2 id="recognize-and-assign-non-code-tasks">Recognize and assign non-code tasks</h2><p>While code contributions are useful, I think a great way to encourage them to help out would be to have them help with non-code contributions. A few examples include:</p>
-<ul>
-<li>Debugging others’ setups</li>
-<li>Triaging/tagging issues on your issue tracker</li>
-<li>Talking with sprinters to help them prioritize</li>
-<li>Social media sprinting for the project</li>
-</ul>
-<p>This is because you, the sprinter, might have your hands full helping beginners, and so having as much help as possible is extremely helpful to you. Be sure, of course, the acknowledge them in some public way that expresses your appreciation of their effort, because they might not necessarily get into the commit record (which, by the way, is not the only way to keep track of contributions).</p>
-<h2 id="stay-humble-and-calm">Stay humble and calm</h2><p>In open source software development, it is hard to find contributors who are willing to sustain an effort, and so any contributions are generally welcome (barring those that are clearly out of scope). Hence, as far as it is humanly possible, I would be inclined to express appreciation for contributors’ contributions.</p>
-<p>One of the PyMC maintainers, <a href="https://colindcarroll.com">Colin Carroll</a>, said something of a contribution that I wanted to make that stuck with me. The gist of it was as follows:</p>
-<blockquote><p>It’s a contribution from someone who is willing, and I’d take that any day.</p>
-</blockquote>
-<p>So yes, even though we may see our project as providing an opportunity for newcomers to contribute, the fact that they are willing to contribute is even more so an important thing to recognize! Gratitude makes more sense than entitlement here.</p>
-<p>Staying calm is also important. It’s easy to get irritated because of all of the context switching that happens. Leverage the help you can get from your sprint co-leads to help shoulder the load. If you take good care of your mental state, you can help make the sprints fun and productive for others.</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2019/7/21/how-to-lead-a-great-code-sprint/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><h2 id="introduction">Introduction</h2><p>While at work, I've been experimenting with pair coding with other data science-oriented colleagues. My experiences tell me that this is something extremely valuable to do. I'd like to share here the "why" and...
+        <a href="../../../blog/2019/3/1/pair-coding-why-and-how-for-data-scientists/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -224,24 +156,75 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2019/7/15/scipy-2019-post-conference/">SciPy 2019 Post-Conference</a></h1>
+    <h3><a href="../../../blog/2019/1/28/minimum-viable-products-matter/">Minimum Viable Products (MVPs) Matter</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2019-07-15
+        on 2019-01-28
         
         |
         <!-- Append tags after author -->
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/conference/">
-          conference
+        <a href="../../../blog/tag/data science/">
+          data science
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/scipy2019/">
-          scipy2019
+        <a href="../../../blog/tag/data products/">
+          data products
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/minimum viable products/">
+          minimum viable products
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>MVPs matter because they afford us at least two things:</p>
+<ol>
+<li>Psychological safety</li>
+<li>Credibility</li>
+</ol>
+<p>Psychological safety comes from knowing that we have at least a working prototype that we can deliver to whomever is going...
+        <a href="../../../blog/2019/1/28/minimum-viable-products-matter/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2019/1/21/advi-scalable-bayesian-inference/">ADVI: Scalable Bayesian Inference</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2019-01-21
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/bayesian/">
+          bayesian
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/variational inference/">
+          variational inference
         </a>
         <i class="fas fa-tag"></i>
         <a href="../../../blog/tag/data science/">
@@ -251,43 +234,200 @@
       </p>
       
     </small>
+    
+    <div>
+      <p class="card-text"><h2 id="introduction">Introduction</h2><p>You never know when scalability becomes an issue. Indeed, scalability necessitates a whole different world of tooling.</p>
+<p>While at work, I've been playing with a model - a Bayesian hierarchical 4-parameter...
+        <a href="../../../blog/2019/1/21/advi-scalable-bayesian-inference/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
 
-    <p class="card-text"><p>It’s my last day in Austin, TX, having finished a long week of conferencing at <a href="https://www.scipy2019.scipy.org/">SciPy 2019</a>. This trip was very fruitful and productive! At the same time, I’m ready for a quieter change - meeting and talking with people does take a drain on my brain, and I have a mildly strong preference for quiet time over interaction time.</p>
-<h2 id="tutorials">Tutorials</h2><p>I participated in the tutorials as an instructor for three tutorials, which I think have become my “data science toolkit”: <a href="https://www.youtube.com/watch?v=2wvt6GPZl1U">Bayesian statistical modeling</a>, network analysis, and <a href="https://www.youtube.com/watch?v=JPBz7-UCqRo">deep learning</a>.</p>
-<p>Of the three, the one I had the most fun teaching was the deep learning one. The goal of that tutorial was to peel back a layer behind the frameworks and see what’s going on. To reinforce this and make it all concrete, we live coded a deep learning framework prototype, and it worked! (I didn’t plan for it, and so I was quite nervous while doing it, but we pulled it off as a class, and I think it reinforced the point about revealing what goes on underneath a framework.</p>
-<p>I also had a lot of fun teaching the Bayesian statistical modeling tutorial, which I had co-created with Hugo Bowne-Anderson, and as always, my personal “evergreen” tutorial on Network Analysis always brings me joy, especially when we reach the end and talk about graphs and matrices. I think the material connecting linear algebra to graph concepts is one that the crowd enjoys, and I might emphasize it more going forth at the SciPy tutorials.</p>
-<h2 id="talks">Talks</h2><p>This year, <a href="https://www.youtube.com/watch?v=sSIT0rJh2OM">I delivered a talk on <code>pyjanitor</code></a>. Excluding lightning talks, this is probably the first time I’ve started my slides one day before having to deliver it (yikes!). Granted, I’ve had the outline in my head for a long time now, I guess having to do the talk was good impetus to actually get it done.</p>
-<p>Apart from that, there’s a rich selection of talks at SciPy from which I think we can screen at work over lunches (Data Science YouTube). I particularly like <a href="https://www.youtube.com/watch?v=J_aymk4YXhg">the talk</a> on <a href="https://optuna.org/">Optuna</a>, a framework for hyperparameter optimization, and I think I’ll be using this tool going forwards.</p>
-<h2 id="sprints">Sprints</h2><p>I did a sprint on <code>pyjanitor</code> with my colleague Zach Barry. This sprint, we had about 20+ sprinters join us, the vast majority of them being first-time sprinters.</p>
-<p>One thing that stuck for me, this time round, is how even first-timers have different degrees of experience. Some know <code>git</code> while most others don’t; most don’t have any prior experience with <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow">Gitflow</a>. I had an interaction that led me to realize it’s very important to state meaningfully what “beginner” means in concrete terms. For example, a “beginner” <code>pyjanitor</code> contributor is probably a <code>pandas</code> user, may or may not have used <code>git</code> before, probably doesn’t know GitFlow. A common prerequisite quality amongst contributors would probably be that they would have the patience to</p>
-<ol>
-<li>Read the documentation,</li>
-<li>Attempt at least one pass digesting the documentation, and </li>
-<li>Ask questions regarding the intent behind something before asking for a change.</li>
-</ol>
-<p>In terms of the things accomplished at this sprint, contributions mainly revolved around:</p>
-<ul>
-<li>Improving language in the docs,</li>
-<li>New functions, and</li>
-<li>New example notebooks.</li>
-</ul>
-<p>In addition to <code>pyjanitor</code> sprinting, special thanks goes to <a href="https://twitter.com/ocefpaf">Felipe Fernandes</a>, who helped me <a href="https://anaconda.org/conda-forge/jax">get <code>jax</code> up onto conda-forge</a>! SciPy is really the place where we can get to meet people <em>and</em> get things done.</p>
-<h2 id="career-advice-learned">Career advice learned</h2><p>While at SciPy, I had a chance to talk with Eric Jones, CEO of Enthought. Having described my current role at work, he mentioned how having a team like the one I’m on parked inside IT gives us a very unique position to connect data science work across the organization to the consumers of our data products. When I raised to him my frustrations regarding our infatuation with vendors <em>when FOSS alternatives clearly exist</em>, his advice in return was essentially this:</p>
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2018/12/25/conda-hacks-for-data-science-efficiency/">Conda hacks for data science efficiency</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-12-25
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/conda/">
+          conda
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/hacks/">
+          hacks
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>The <code>conda</code> package manager has, over the years, become an integral part of my workflow. I use it to manage project environments, and have built a bunch of very simple hacks around it that you can adopt too. I'd like to share them with...
+        <a href="../../../blog/2018/12/25/conda-hacks-for-data-science-efficiency/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2018/12/16/gaussian-process-notes/">Gaussian Process Notes</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-12-16
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/bayesian/">
+          bayesian
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>I first learned GPs about two years back, and have been fascinated by the idea. I learned it through a video by David MacKay, and managed to grok it enough that I could put it to use in simple settings. That was reflected in my <a...
+        <a href="../../../blog/2018/12/16/gaussian-process-notes/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2018/12/9/mathematical-intuition/">Mathematical Intuition</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-12-09
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/deep learning/">
+          deep learning
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/bayesian/">
+          bayesian
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/math/">
+          math
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>Last week, I picked up Jeremy Kun's book, "A Programmer's Introduction to Mathematics". In it, I finally found an explanation for my frustrations when reading math papers:</p>
+<blockquote><p>What programmers would consider “sloppy” notation is one...
+        <a href="../../../blog/2018/12/9/mathematical-intuition/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2018/11/13/solving-problems-actionably/">Solving Problems Actionably</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-11-13
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/insight data science/">
+          insight data science
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>There's a quote by John Tukey that has been a recurrent theme at work.</p>
 <blockquote class="blockquote">
-<p>Focus on leveling-up your colleagues skills and knowledge, keep pushing the education piece at work, and don’t worry about the money that gets spent on tooling.</p>
-</blockquote><p>Having thought about this, I agree. Over time, we should let the results speak. At the same time, I want to help create the environment that I would like to work in: where my colleagues use the same tooling stack, are hacker-types, aren’t afraid to dig deep into the “computer stuff” and into the biology/chemistry, and have the necessary skill + desire to design machine learning systems to systematically accelerate discovery science.</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2019/7/15/scipy-2019-post-conference/#disqus">Let's discuss more</a>!
-        </i>
+<p>It's better to solve the right problem approximately than to solve the wrong problem exactly.</p>
+</blockquote><p>Continuing on the theme...
+        <a href="../../../blog/2018/11/13/solving-problems-actionably/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -298,24 +438,67 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2019/7/7/order-of-magnitude-is-more-than-accurate-enough/">Order of magnitude is more than accurate enough</a></h1>
+    <h3><a href="../../../blog/2018/11/12/thoughts-on-black/">Thoughts on Black</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2019-07-07
+        on 2018-11-12
         
         |
         <!-- Append tags after author -->
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/data science/">
-          data science
+        <a href="../../../blog/tag/python/">
+          python
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/estimation/">
-          estimation
+        <a href="../../../blog/tag/code style/">
+          code style
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>Having used Black for quite a while now, I have a hunch that it will continue to surpass its current popularity amongst projects.</p>
+<p>It's one thing to be opinionated about things that matter for a project, but don't matter personally. Like code...
+        <a href="../../../blog/2018/11/12/thoughts-on-black/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2018/11/7/bayesian-modelling-is-hard-work/">Bayesian Modelling is Hard Work!</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2018-11-07
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/bayesian/">
+          bayesian
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
         </a>
         <i class="fas fa-tag"></i>
         <a href="../../../blog/tag/statistics/">
@@ -325,39 +508,17 @@
       </p>
       
     </small>
-
-    <p class="card-text"><p>When I was in <a href="https://scienceone.ubc.ca/">Science One</a> at UBC in 2006, our Physics professor, <a href="https://www.phas.ubc.ca/users/mark-halpern">Mark Halpern</a>, said a quotable statement that has stuck for many years.</p>
-<blockquote class="blockquote">
-<p> Order of magnitude is more than accurate enough.</p>
-<p class="blockquote-footer">Mark Halpern</p>
-</blockquote><p>At the time, that statement rocked the class, myself included. We were classically taught that significant digits are significant, and that we have to keep track of them. But Mark’s quote seemed to throw all of that caution and precision in Physics into the wind. Did what we learn in Physics lab class not matter?</p>
-<p>Turns out, there was one highly instructive activity that still hasn’t left my mind. We were asked, during a recitation, to estimate how many days the city of Vancouver could be powered for if we took a piece of chalk and converted its entire mass into energy. This clearly required estimation of chalk mass and Vancouver daily energy consumption, both of which we had no way of accurately knowing.</p>
-<p>Regardless, I took it upon myself to carry significant digits in our calculation, while my recitation partner, Charles Au, was fully convinced that this wasn’t necessary, and so did all calculations order-of-magnitude. We debated and agreed upon what assumptions we needed to arrive at a solution, and then proceeded to do the same calculations, one with significant digits, the other without.</p>
-<p>We reached the same conclusion.</p>
-<p>More precisely, I remember obtaining a result along the lines of $6.2 \cdot 10^3$ days, while Charles obtained $10^4$ days. On an order of magnitude, more or less equivalent.</p>
-<p>In retrospect, I shouldn’t have been so surprised. Mark is an astrophysicist, and at that scale, 1 or 2 significant digits might not carry the most importance; rather, getting into the right ballpark might be more important. At the same time, the recitation activity was a powerful first-hand experience of that last point: getting into the right ballpark first.</p>
-<p>At the same time, I was also missing a second perspective, which then explains my surprise at Mark’s quote. Now that I’ve gone the route of more statistics-oriented work, I see a similar theme showing up. John Tukey said something along these lines:</p>
-<blockquote class="blockquote">
-<p>Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.</p>
-<p class="blockquote-footer">John Tukey</p>
-</blockquote><p>The connection to order of magnitude estimates should be quite clear here. If we’re on an order of magnitude correct on the right questions, we can always refine the answer further. If we’re precisely answering the wrong question, God help us.</p>
-<p>What does this mean for a data scientist? For one, it means that means approximate methods are usually good enough practically to get ourselves into the right ballpark; we can use pragmatic considerations to decide whether we need a more complicated model or not. It also means that when we’re building data pipelines, minimum viable products, which help us test whether we’re answering the right question, matter more than the fanciest deep learning model.</p>
-<p>So yes, to mash those two quotes together:</p>
-<blockquote class="blockquote">
-<p>Order of magnitude estimates on the right question are more useful than precise quantifications on the wrong question. </p>
-<p class="blockquote-footer">Mashup</p>
-</blockquote>
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2019/7/7/order-of-magnitude-is-more-than-accurate-enough/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>It’s definitely not easy work; anybody trying to tell you that you can "just apply this 
+model and just be done with it" is probably wrong.</p>
+<h2 id="simple-models">Simple Models</h2><p>Let me clarify: I agree that doing the first half of the...
+        <a href="../../../blog/2018/11/7/bayesian-modelling-is-hard-work/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -368,112 +529,52 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2019/7/7/scipy-2019-pre-conference/">SciPy 2019 Pre-Conference</a></h1>
+    <h3><a href="../../../blog/2018/10/26/more-dask-pre-scattering-data/">More Dask: Pre-Scattering Data</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2019-07-07
+        on 2018-10-26
         
         |
         <!-- Append tags after author -->
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/conferences/">
-          conferences
+        <a href="../../../blog/tag/dask/">
+          dask
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/scipy2019/">
-          scipy2019
+        <a href="../../../blog/tag/parallel/">
+          parallel
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/optimization/">
+          optimization
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/gridengine/">
+          gridengine
         </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>For the 6th year running, I’m out at UT Austin for <a href="https://www.scipy2019.scipy.org/">SciPy 2019</a>! It’s one of my favorite conferences to attend, because the latest in data science tooling is well featured in the conference program, and I get to meet in-person a lot of the GitHub usernames that I interact with online.</p>
-<p>I will be involved in three tutorials this year, which I think have become my data science toolkit: Bayesian stats, network science, and deep learning. Really excited to share my knowledge; my hope is that at least a few more people find the practical experience I’ve gained over the years useful, and that they can put it to good use in their own work too. This year is also the first year I’ve submitted a talk on pyjanitor, which is a package that I have developed with others for cleaning data, also excited to share this with the broader SciPy community!</p>
-<p>I’m also looking forward to meeting the conference scholarship recipients. Together with Scott Collis and Celia Cintas, we’ve been managing the FinAid process for the past three years, and each year it heartens me to see the scholarship recipients in person.</p>
-<p>Finally, this year’s SciPy is quite unique for me, as it is the first year that I’ll be here with colleagues at work! (In prior years, I came alone, and did networking on my own.) I hope they all have as much of a fun time as I have at SciPy!</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2019/7/7/scipy-2019-pre-conference/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>I learned a new thing about <code>dask</code> yesterday: pre-scattering data properly!</p>
+<p>Turns out, you can pre-scatter your data across worker nodes, and have them access that data later when submitting functions to the scheduler.</p>
+<h2...
+        <a href="../../../blog/2018/10/26/more-dask-pre-scattering-data/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
-
-<div>
-  <hr>
-</div>
-
-
-
-<div class="card bg-dark">
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div class="card-body">
-    <h1><a href="../../../blog/2019/6/30/bone-marrow-donations/">Bone Marrow Donations</a></h1>
-    <small class="text-muted">
-      <p>
-        written by
-        
-        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-        
-        on 2019-06-30
-        
-        |
-        <!-- Append tags after author -->
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/personal/">
-          personal
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/charity/">
-          charity
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/leukemia/">
-          leukemia
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/donations/">
-          donations
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/blood donation/">
-          blood donation
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/community service/">
-          community service
-        </a>
-        
-      </p>
-      
-    </small>
-
-    <p class="card-text"><p>A friend of mine just reached out to me, saying that he’s been diagnosed with leukemia. Thankfully, he’s not subject to the abysmal state of US healthcare (as he lives in a place where healthcare coverage is great), and so he’s on treatment, progressing, and hopefully has a great shot at beating this cancer.</p>
-<p>He definitely knows how to speak to a data scientist: using data. The odds of a match for a patient who needs a bone marrow transplant are 500:1. That means on average, only about 1 donor in 500 will be a match. On the other hand, under certain assumptions, every 500 donors who registers will mean one life, on average, can be saved. I did some digging myself: According to the <a href="https://bloodcell.transplant.hrsa.gov/research/registry_donor_data/index.html">US Health Resources and Services Administration</a>, nearly every single minority ethnic group is underrepresented in donor registry databases.</p>
-<p>As things turn out, signing up to be a donor is quite lightweight. Genetic information - specifically, only Human Leukocyte Antigen (HLA) type - is needed, and that can be obtained in a non-invasive fashion. If a match is found, the donor still has the option to withdraw if they have any objections. As such, the process is completely voluntary for the donor. There are two types of donations possible: peripheral blood stem cells (PBSC) and bone marrow, with PBSC donations being lightweight and bone marrow donations being more involved. Digging a bit deeper, it seems like the only sacrifice a donor has to make is that of time and some discomfort.</p>
-<p>I’m putting this blog post up as a reminder to myself to register, and to encourage others to do so as well. If you’re in the United States, <a href="https://bethematch.org/">Be The Match</a> is the organization to get in touch with; if you’re from my home country of Canada, the <a href="https://blood.ca/en">Canadian Blood Services</a> manages the process.</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2019/6/30/bone-marrow-donations/#disqus">Let's discuss more</a>!
-        </i>
-      </p>
-    </small>
-
-  </div>
-</div>
-
 
 <div>
   <hr>

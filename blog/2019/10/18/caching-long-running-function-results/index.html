@@ -118,36 +118,36 @@
   
 
   <!-- Append author -->
-  <p class="meta">
-    written by
+  <small class="text-muted">
+    <p>
+      written by
+      
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+      
+      on 2019-10-18
+      
+      |
+      <!-- Append tags after author -->
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/python/">
+        python
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/tips/">
+        tips
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/optimization/">
+        optimization
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/packages/">
+        packages
+      </a>
+      
+    </p>
     
-    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2019-10-18
-    
-  </p>
-  <!-- Append tags after author -->
-  <p>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/python/">
-      python
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/tips/">
-      tips
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/optimization/">
-      optimization
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/packages/">
-      packages
-    </a>
-    
-  </p>
-  
-
+  </small>
   <!-- Put post body -->
   <p>I found this nifty tool for caching the results of long-running functions: <a href="https://pypi.org/project/cachier/"><code>cachier</code></a>. This is useful when we’re building, say, Python applications for which quick interactions are necessary, or for caching the results of a long database query.</p>
 <p>How do we use it? Basically it’s nothing more than a decorator!</p>

@@ -110,293 +110,44 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/6/5/my-latent-dissatisfaction-with-modern-ml/">My Latent Dissatisfaction with Modern ML</a></h1>
+    <h3><a href="../../../blog/2017/5/21/post-pycon-2017-thoughts/">Post-PyCon 2017 Thoughts</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-06-05
+        on 2017-05-21
         
         |
         <!-- Append tags after author -->
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/data science/">
-          data science
+        <a href="../../../blog/tag/pycon/">
+          pycon
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/machine learning/">
-          machine learning
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/deep learning/">
-          deep learning
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/causal inference/">
-          causal inference
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/graph theory/">
-          graph theory
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/probability/">
-          probability
-        </a>
-        
-      </p>
-      
-    </small>
-
-    <p class="card-text"><p>It took reading Judea Pearl's "The Book of Why", and Jonas Peters' mini-course on causality, for me to finally figure out why I had this lingering dissatisfaction with modern machine learning. It's because modern machine learning (deep learning included) is most commonly used as a tool in the service of finding correlations, and is not concerned with understanding systems.</p>
-<p>Perhaps this is why Pearl writes of modern ML as basically being "curve fitting". I tend to believe he didn't write those words in a dismissive way, though I might be wrong about it. Regardless, I think there is an element of truth to that statement.</p>
-<p>Linear models seek a linear combination of correlations between input variables and their targets. Tree-based models essentially seek combinations of splits in the data, while deep learning models are just stacked compositions of linear models with nonlinear functions applied to their outputs. As Keras author Francois Chollet wrote, <a href="https://blog.keras.io/the-limitations-of-deep-learning.html">deep learning can be thought of as basically geometric transforms of data from one data manifold to another</a>.</p>
-<p>(For convenience, I've divided the ML world into linear models, tree-based models, and deep learning models. Ensembles, like Random Forest, are just that: ensembles composed of these basic models.)</p>
-<p>Granted, curve fitting is actually very useful: much of image deep learning has found pragmatic use: image search, digital pathology, self-driving cars, and more. Yet, in none of these models is the notion of causality important. This is where these models are dissatisfying: they do not provide the tools to help us interrogate these questions in a structured fashion. I think it's reasonable to say that these models are essentially concerned with conditional probabilities. As written by Ferenc Huszár, <a href="http://www.inference.vc/untitled/">conditional probabilities are different from interventional probabilities</a> (ok, I mutilated that term).</p>
-<p>Humans are innately wired to recognize and ask questions about causality; consider it part of our innate makeup. That is, of course, unless that has been drilled out of our minds by our life experiences. (I know of a person who insists that causes do not exist. An extreme Hume-ist, I guess? As I'm not a student of philosophy much, I'm happy to be corrected on this point.) As such, I believe that part of being human involves asking the question, "Why?" (and its natural extension, "How?"). Yet, modern ML is still stuck at the question of, "What?"</p>
-<p>To get at why and how, we test our understanding of a system by perturbing it (i.e. intervening in it), or asking about "what if" scenarios (i.e. thinking about counterfactuals). In the real  world of biological research (which I'm embedded in), we call this "experimentation". Inherent in a causal view of the world is a causal model. In causal inference, these things are structured and expressed mathematically, and we are given formal procedures for describing an intervention and thinking about counterfactual scenarios. From what I've just learned (baby steps at the moment), these are the basic ingredients, and their mathematical mappings:</p>
-<ul>
-<li>Causal model: a directed, acyclic graph<ul>
-<li>Variables: nodes in a graph</li>
-<li>Relationships: structured causal model's equations (math transforms of incoming variables with a noise distribution added on top, embedded in each node)</li>
-</ul>
-</li>
-<li>Interventions: removal of edges in a graph ("do-calculus")</li>
-<li>Counterfactuals: set causal model based on observation, then perform do-calculus.</li>
-</ul>
-<p>Having just learned this, I think there's a way out of this latent dissatisfaction that I have with modern ML. A neat thing about ML methods is that we can use them as tools to help us better identify the important latent factors buried inside our (observational) data, which we can use to construct a better model of our data generating process. Better yet, we can express the model in a structured and formal sense, which would expose our assumptions more explicitly for critique and reasoning. Conditioned on that, perhaps we may be able to write better causal models of the world!</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/6/5/my-latent-dissatisfaction-with-modern-ml/#disqus">Let's discuss more</a>!
-        </i>
-      </p>
-    </small>
-
-  </div>
-</div>
-
-
-<div>
-  <hr>
-</div>
-
-
-
-<div class="card bg-dark">
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div class="card-body">
-    <h1><a href="../../../blog/2018/5/26/causal-modelling/">Causal Modelling</a></h1>
-    <small class="text-muted">
-      <p>
-        written by
-        
-        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-        
-        on 2018-05-26
-        
-        |
-        <!-- Append tags after author -->
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/causal inference/">
-          causal inference
-        </a>
-        
-      </p>
-      
-    </small>
-
-    <p class="card-text"><p>Finally, I have finished Judea Pearl's latest work <a href="https://www.amazon.com/Book-Why-Science-Cause-Effect-ebook/dp/B075CR9QBJ/ref=mt_kindle?_encoding=UTF8&amp;me=">"The Book of Why"</a>! Having read it, I have come to appreciate how much work had to go on in order to formalize the very intuitions that we have for causal reasoning into essentially a modelling language.</p>
-<p>"The Book of Why" is geared towards the layman reader. Thus, unlike a textbook, it does not contain "simplest complex examples" that a reader can walk through and do calculations by hand (or through simulation). Thankfully, there is a <a href="https://www.youtube.com/playlist?list=PLW01hpWnEtbTcuY0a0jhZyanHX3GPImAy">lecture series by Jonas Peters</a>, organized by the Broad Institute and held at MIT, that are available freely online.</p>
-<p>From just viewing the first of the four lectures, I am thoroughly enjoying Jonas' explanations of the core ideas in causal modelling. Indeed, Jonas is a very talented lecturer! He builds up the ideas from simple examples, finally culminating in a "simple complex example" that we can simulate on a computer. Having just freshly read "The Book of Why" also helps immensely; it's also clear to me that people in the world of causal modelling are very much familiar with the same talking points. For those interested in learning more about causal modelling, I highly recommend both the book and the lecture series!</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/5/26/causal-modelling/#disqus">Let's discuss more</a>!
-        </i>
-      </p>
-    </small>
-
-  </div>
-</div>
-
-
-<div>
-  <hr>
-</div>
-
-
-
-<div class="card bg-dark">
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div class="card-body">
-    <h1><a href="../../../blog/2018/5/6/model-baselines-are-important/">Model Baselines Are Important</a></h1>
-    <small class="text-muted">
-      <p>
-        written by
-        
-        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-        
-        on 2018-05-06
-        
-        |
-        <!-- Append tags after author -->
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/machine learning/">
-          machine learning
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/data science/">
-          data science
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/deep learning/">
-          deep learning
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/automl/">
-          automl
-        </a>
-        
-      </p>
-      
-    </small>
-
-    <p class="card-text"><p>For any problem that we think is machine learnable, having a sane baseline is really important. It is even more important to establish them early.</p>
-<p>Today at ODSC, I had a chance to meet both Andreas Mueller and Randy Olson. Andreas leads <a href="http://scikit-learn.org/stable/"><code>scikit-learn</code></a> development, while Randy was the lead developer of <a href="https://github.com/EpistasisLab/tpot">TPOT</a>, an AutoML tool. To both of them, I told a variation of the following story:</p>
-<p>I had spent about 1.5 months building and testing a graph convolutions neural network model to predict RNA cleavage by an enzyme. I was suffering from a generalization problem - this model class would never generalize beyond the training samples for my problem on hand, even though I saw the same model class perform admirably well for small molecules and proteins.</p>
-<p>Together with an engineer at NIBR, we brainstormed a baseline with some simple features, and threw a random forest model at it. Three minutes later, after implementing everything, we had a model that generalized and outperformed my implementation of graph CNNs. Three days later, we had an AutoML (TPOT) model that beat the random forest. After further discussion, we realize then that the work that we did is sufficiently publishable even without the fancy graph CNNs.</p>
-<p>I think there’s a lesson in establishing baselines and MVPs early on!</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/5/6/model-baselines-are-important/#disqus">Let's discuss more</a>!
-        </i>
-      </p>
-    </small>
-
-  </div>
-</div>
-
-
-<div>
-  <hr>
-</div>
-
-
-
-<div class="card bg-dark">
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div class="card-body">
-    <h1><a href="../../../blog/2018/3/30/consolidate-your-scripts-using-click/">Consolidate your scripts using click</a></h1>
-    <small class="text-muted">
-      <p>
-        written by
-        
-        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-        
-        on 2018-03-30
-        
-        |
-        <!-- Append tags after author -->
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/programming/">
-          programming
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/code snippets/">
-          code snippets
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/scripting/">
-          scripting
+        <a href="../../../blog/tag/conferences/">
+          conferences
         </a>
         <i class="fas fa-tag"></i>
         <a href="../../../blog/tag/python/">
           python
         </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/data science/">
-          data science
-        </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><h2 id="overview">Overview</h2><p><code>click</code> is amazing! It's a Python package that allows us to add a command-line interface (CLI) to our Python scripts easily. This blog post is a data scientist-oriented post on how we can use <code>click</code> to build useful tools for ourselves. In this blog post, I want to focus on how we can better organize our scripts.</p>
-<p>I have found myself sometimes writing custom scripts to deal with custom data transforms. Having them refactored out into a library of modular functions can really help with maintenance. However, I still end up with multiple scripts that might not have a naturally logical organization... except for the fact that they are scripts that I run from time to time! Rather than have them scattered in multiple places, why not have them put together into a single <code>.py</code> file, with options that are callable from the command line instead?</p>
-<h2 id="template">Template</h2><p>Here's a template for organizing all those messy scripts using  <code>click</code>.</p>
-<div class="hll"><pre><span></span><span class="kn">import</span> <span class="nn">click</span>
-
-
-<span class="nd">@click</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="k">pass</span>
-
-
-<span class="nd">@main</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
-<span class="k">def</span> <span class="nf">script1</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Makes stuff happen.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># do stuff that was originally in script 1</span>
-    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="s1">&#39;script 1 was run!&#39;</span><span class="p">)</span>  <span class="c1"># click.echo is recommended by the click authors.</span>
-
-
-<span class="nd">@main</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
-<span class="k">def</span> <span class="nf">script2</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Makes more stuff happen.&quot;&quot;&quot;</span>
-    <span class="c1"># do stuff that was originally in script 2.</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;script 2 was run!&#39;</span><span class="p">)</span>  <span class="c1"># we can run print instead of click.echo as well!</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">cli</span><span class="p">()</span>
-</pre></div>
-<h2 id="how-to-use">How to use</h2><p>Let's call this new meta-script <code>jobs.py</code>, and make it executable.</p>
-<div class="hll"><pre><span></span>$ chmod +x jobs.py
-</pre></div>
-<p>To execute it at the command line, we now a help command for free:</p>
-<div class="hll"><pre><span></span>$ ./jobs.py --help
-Usage: jobs.py <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>ARGS<span class="o">]</span>...
-
-Options:
-  --help  Show this message and exit.
-
-Commands:
-  script1  Makes stuff happen.
-  script2  Makes more stuff happen.
-</pre></div>
-<p>We can also use just one script with varying commands to control the execution of what was originally two different <code>.py</code> files.</p>
-<div class="hll"><pre><span></span>$ ./jobs.py script1
-script <span class="m">1</span> was run!
-$ ./jobs.py script2
-script <span class="m">2</span> was run!
-</pre></div>
-<p>Instead of versioning multiple <code>.py</code> files, we now only have to keep track of one file where all non-standard custom stuff goes!</p>
-<h2 id="details">Details</h2><p>Here's what's going on under the hood.</p>
-<p>With the decorator <code>@click.group()</code>, we have exposed the <code>main()</code> function from the command line as a "group" of commands that are callable from the command line. What this does is then "wrap" the <code>main()</code> function (somehow), such that now it can be used to decorate another function (in our case, <code>script1</code> and <code>script2</code>) using the decorator syntax <code>@main.command()</code>.</p>
-<h2 id="recap">Recap</h2><ul>
-<li>Consolidate disparate Python scripts into a single <code>.py</code>  file, wrapping them inside a callable function.</li>
-<li>Use <code>click</code> to expose them to the end-user (yourself, or others) at the command line.</li>
-</ul>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/3/30/consolidate-your-scripts-using-click/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>This year's PyCon 2017 is over! Well, for me at least, as I head back to Boston, a place I've had to call home for the past 6 years.</p>
+<p>I've noticed my Portland PyCons have felt different from my Montreal PyCons.</p>
+<p>In Montreal, I felt more...
+        <a href="../../../blog/2017/5/21/post-pycon-2017-thoughts/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -407,64 +158,376 @@ script <span class="m">2</span> was run!
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/2/28/lessons-learned-and-reinforced-from-writing-my-own-deep-learning-package/">Lessons learned and reinforced from writing my own deep learning package</a></h1>
+    <h3><a href="../../../blog/2017/5/15/thesis-defence-video/">Thesis Defence Video!</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-02-28
+        on 2017-05-15
         
         |
         <!-- Append tags after author -->
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/data science/">
-          data science
+        <a href="../../../blog/tag/grad school/">
+          grad school
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/deep learning/">
-          deep learning
+        <a href="../../../blog/tag/academia/">
+          academia
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/message passing neural networks/">
-          message passing neural networks
+        <a href="../../../blog/tag/thesis/">
+          thesis
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/software engineering/">
-          software engineering
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/graph theory/">
-          graph theory
+        <a href="../../../blog/tag/defence/">
+          defence
         </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>At work, I’ve been rolling my own deep learning package to experiment with graph convolutional neural networks. I did this because in graph-centric deep learning, an idea I picked up from this paper, the inputs, convolution kernels, and much more, are being actively developed, and the standard APIs don’t fit with this kind of data.</p>
-<p>Here’s lessons I learned (and reinforced) while doing this.</p>
-<h2 id="autograd-is-an-amazing-package"><code>autograd</code> is an amazing package</h2><p>I am using <code>autograd</code> to write my neural networks. <code>autograd</code> provides a way to automatically differentiate <code>numpy</code> code. As long as I write the forward computation up to the loss function, <code>autograd</code> will be able to differentiate the loss function w.r.t. all of the parameters used, thus providing the direction to move parameters to minimize the loss function.</p>
-<h2 id="deep-learning-is-nothing-more-than-chaining-elementary-differentiable-functions">Deep learning is nothing more than chaining elementary differentiable functions</h2><p>Linear regression is nothing more than a dot product of features with weights and adding bias terms. Logistic regression just chains the logistic function on top of that. Anything deeper than that is what we might call a neural network.</p>
-<p>One interesting thing that I've begun to ponder is the shape of the loss function, and how it changes when I change model architecture, activation functions, and more. I can't speak intelligently about it right now, but from observing the training performance live (I update a plot of predictions vs. actual values at the end of <code>x</code> training epochs), different combinations of activation functions seem to cause different behaviours of the outputs, and there's no first-principles reason why that I can think of. All-told, pretty interesting :).</p>
-<h2 id="defining-a-good-api-is-hard-work">Defining a good API is hard work</h2><p>There are design choices that go into the API design. I first off wanted to build something familiar, so I chose to emulate the functional API of Keras and PyTorch and Chainer. I also wanted composability, in which I can define modules of layers and chain them together, so I opted to use Python objects and to take advantage of their <code>__call__</code> method to achieve both goals. At the same time, <code>autograd</code> imposes a constraint in that I need to have functions differentiable with respect to their first argument, an array of parameters. Thus, I had to make sure the weights and biases are made transparently available for <code>autograd</code> to differentiate. As a positive side effect, it means I can actually inspect the parameters dictionary quite transparently.</p>
-<h2 id="optimizing-for-speed-is-a-very-hard-thing">Optimizing for speed is a very hard thing</h2><p>Even though I'm doing my best already with matrix math (and hopefully getting better at mastering 3-dimensional and higher matrix algebra), in order to keep my API clean and compatible with <code>autograd</code> (meaning no sparse arrays), I have opted to use lists of <code>numpy</code> arrays.</p>
-<h2 id="graph-convolutions-have-a-connection-to-network-propagation">Graph convolutions have a connection to network propagation</h2><p>I will probably explore this a bit more deeply in another blog post, but yes, as I explore the math involved in doing graph convolutions, I'm noticing that there's a deep connection there. The short story is basically "convolutions propagate information across nodes" in almost exactly the same way as "network propagation methods share information across nodes", through the use of a kernel defined by the adjacency matrix of a graph.</p>
-<p>Ok, that's a lot of jargon, but I promise I will explore this topic at a later time.</p>
-<h2 id="open-sourcing">Open Sourcing</h2><p>I'm an avid open source fan. Lots of my work builds on it. However, because this "neural networks on graphs" work is developed on company time and for company use, this will very likely be the first software project that I send to Legal to evaluate whether I can open source/publish it or not -- I'll naturally have to make my strongest case for open sourcing the code base (e.g. ensuring no competitive intelligence is leaked), but eventually will still have to defer to them for a final decision.</p>
-
-    </p>
+    
+    <p class="card-text"><p>My thesis defence video is <a href="https://youtu.be/ePqhQusK-3Q?t=1m23s">up on YouTube</a>!</p>
+</p>
     <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/2/28/lessons-learned-and-reinforced-from-writing-my-own-deep-learning-package/#disqus">Let's discuss more</a>!
-        </i>
-      </p>
+      <a href="../../../blog/2017/5/15/thesis-defence-video/">Read on...</a>
     </small>
-
+    
   </div>
 </div>
 
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/5/13/why-i-teach-coding-tutorials/">Why I Teach Coding Tutorials</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-05-13
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/pycon/">
+          pycon
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/conferences/">
+          conferences
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>I'm very excited to be at PyCon! It's a bit of a personal challenge this year, as I'll be leading two tutorials, one on Network Analysis and one on Data Testing.</p>
+<p>With a bit of time on hand, I've done a bit of introspection as to why I love...
+        <a href="../../../blog/2017/5/13/why-i-teach-coding-tutorials/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/5/4/pycon-2017-tutorials-and-talks-preview/">PyCon 2017: Tutorials and Talk Preview!</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-05-04
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/pycon/">
+          pycon
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/conferences/">
+          conferences
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/python/">
+          python
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>This year, I'll be at PyCon 2017 presenting two tutorials and one talk! I'm very excited to be attending!</p>
+<p>The first tutorial I will deliver is on network analysis. The GitHub repository is <a...
+        <a href="../../../blog/2017/5/4/pycon-2017-tutorials-and-talks-preview/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/5/3/managing-conda-environments/">Managing conda environments</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-05-03
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p>I recently got around to hacking a system for managing my <code>conda</code> environments better. Previously, my coding projects mostly relied on one master environment (with exceptions, e.g. <code>bokeh</code> development, or my Network Analysis...
+        <a href="../../../blog/2017/5/3/managing-conda-environments/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/4/28/defended/">Defended!</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-04-28
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p>It is done! I have defended my doctoral thesis, supervised by Prof. Jonathan A. Runstadler, advised by Prof. Mark Bathe and Prof. Jukka-Pekka Onnela, conducted as a student in the Department of Biological Engineering at MIT.</p>
+<p>Looking back,...
+        <a href="../../../blog/2017/4/28/defended/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/4/24/thesis-defence/">Thesis Defence!</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-04-24
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/graduate school/">
+          graduate school
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/thesis defence/">
+          thesis defence
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>My thesis defence announcement has been made to the department!</p>
+<ul>
+<li><strong>Date:</strong>  Thursday, April 27th, 2017</li>
+<li><strong>Time:</strong>  2:00 PM</li>
+<li><strong>Location:</strong> ...
+        <a href="../../../blog/2017/4/24/thesis-defence/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/4/21/moving-on-from-mit/">Moving on from MIT</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-04-21
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/graduate school/">
+          graduate school
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/job hunt/">
+          job hunt
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/insight data science/">
+          insight data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/mit/">
+          mit
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>It's my final week before defending my thesis.</p>
+<p>The thesis has been submitted to my committee, and my slides, as usual, are being made until the last minute.</p>
+<p>I've had a number of conversations with a number of people, both in person...
+        <a href="../../../blog/2017/4/21/moving-on-from-mit/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/4/7/staying-nimble/">Staying Nimble</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-04-07
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p>As I wrap up grad school, one thought recurrently comes to mind: as we grow older, do we intrinsically lose mental agility, nimbleness and ability to learn? Or is it because of external factors that cause one to become less adventurous, less...
+        <a href="../../../blog/2017/4/7/staying-nimble/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/3/28/thesis/">Thesis</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-03-28
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/thesis/">
+          thesis
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/academia/">
+          academia
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/grad school/">
+          grad school
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <p class="card-text"><p>Some short thoughts on how I used "continual publishing" to enable a single-source, multi-output, continually-updated thesis.</p>
+</p>
+    <small class="text-muted">
+      <a href="../../../blog/2017/3/28/thesis/">Read on...</a>
+    </small>
+    
+  </div>
+</div>
 
 <div>
   <hr>

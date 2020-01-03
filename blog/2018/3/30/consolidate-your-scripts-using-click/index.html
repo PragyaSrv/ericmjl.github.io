@@ -118,40 +118,40 @@
   
 
   <!-- Append author -->
-  <p class="meta">
-    written by
+  <small class="text-muted">
+    <p>
+      written by
+      
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+      
+      on 2018-03-30
+      
+      |
+      <!-- Append tags after author -->
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/programming/">
+        programming
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/code snippets/">
+        code snippets
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/scripting/">
+        scripting
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/python/">
+        python
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/data science/">
+        data science
+      </a>
+      
+    </p>
     
-    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2018-03-30
-    
-  </p>
-  <!-- Append tags after author -->
-  <p>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/programming/">
-      programming
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/code snippets/">
-      code snippets
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/scripting/">
-      scripting
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/python/">
-      python
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/data science/">
-      data science
-    </a>
-    
-  </p>
-  
-
+  </small>
   <!-- Put post body -->
   <h2 id="overview">Overview</h2><p><code>click</code> is amazing! It's a Python package that allows us to add a command-line interface (CLI) to our Python scripts easily. This blog post is a data scientist-oriented post on how we can use <code>click</code> to build useful tools for ourselves. In this blog post, I want to focus on how we can better organize our scripts.</p>
 <p>I have found myself sometimes writing custom scripts to deal with custom data transforms. Having them refactored out into a library of modular functions can really help with maintenance. However, I still end up with multiple scripts that might not have a naturally logical organization... except for the fact that they are scripts that I run from time to time! Rather than have them scattered in multiple places, why not have them put together into a single <code>.py</code> file, with options that are callable from the command line instead?</p>

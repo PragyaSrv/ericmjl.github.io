@@ -110,61 +110,117 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/12/9/mathematical-intuition/">Mathematical Intuition</a></h1>
+    <h3><a href="../../../blog/2017/11/16/bayesian-learning-and-overfitting/">Bayesian Learning and Overfitting</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-12-09
+        on 2017-11-16
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p>Yesterday, after I did my Boston Bayesians dry run talk, there was a point raised that I had only heard of once before: Bayesian learning methods don't overfit. Which means we're allowed to use all the data on hand. The point holds for simple...
+        <a href="../../../blog/2017/11/16/bayesian-learning-and-overfitting/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/11/14/the-value-of-thinking-simply/">The Value of Thinking Simply</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-11-14
         
         |
         <!-- Append tags after author -->
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/deep learning/">
-          deep learning
+        <a href="../../../blog/tag/quotes/">
+          quotes
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/musings/">
+          musings
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/thoughts/">
+          thoughts
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <p class="card-text"><p>Some thoughts I have had on "thinking simply" about a problem.</p>
+</p>
+    <small class="text-muted">
+      <a href="../../../blog/2017/11/14/the-value-of-thinking-simply/">Read on...</a>
+    </small>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/11/3/boston-bayesians-talk-an-attempt-at-demystifying-bayesian-deep-learning/">Boston Bayesians Talk: An Attempt at Demystifying Bayesian Deep Learning</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-11-03
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/talks/">
+          talks
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
         </a>
         <i class="fas fa-tag"></i>
         <a href="../../../blog/tag/bayesian/">
           bayesian
         </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/math/">
-          math
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/data science/">
-          data science
-        </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>Last week, I picked up Jeremy Kun's book, "A Programmer's Introduction to Mathematics". In it, I finally found an explanation for my frustrations when reading math papers:</p>
-<blockquote><p>What programmers would consider “sloppy” notation is one symptom of the problem, but there there are other expectations on the reader that, for better or worse, decelerate the pace of reading. Unfortunately I have no solution here. Part of the power and expressiveness of mathematics is the ability for its practitioners to overload, redefine, and omit in a suggestive manner. Mathematicians also have thousands of years of “legacy” math that require backward compatibility. Enforcing a single specification for all of mathematics—a suggestion I frequently hear from software engineers—would be horrendously counterproductive.</p>
-</blockquote>
-<p>Reading just <em>that</em> paragraph explained, in such a lucid manner, how my frustrations reading mathematically-oriented papers, stemmed from mismatched expectations. I come into a paper thinking like a software engineer. Descriptive variable names (as encouraged by Python), which are standardized as well, with structured abstractions providing a hierarchy of logic between chunks of code... No, mathematicians are more like Shakespeare - or perhaps linguists - in that they will take a symbol and imbibe it with a subtly new meaning or interpretation inspired by a new field. That "L" you see in one field of math doesn't always exactly mean the same thing in another field.</p>
-<h2 id="biology-vs.-math?">Biology vs. Math?</h2><p>The contrast is stark when compared against reading a biology paper. With a biology paper, if you know the key wet-bench experiment types (and there's not that many), you can essentially get the gist of a paper by reading the abstract and dissecting the figures, which, granted, are described and labelled with field-specific jargon, but are at least descriptive names. With a math-oriented paper, the equations are the star, and one has to really grok each element of the equations to know what they mean. It means taking the time to dissect each equation and ask what each symbol is, what each group of symbols means, and how those underlying ideas connect with one another and with other ideas. It's not unlike a biology paper, but requiring a different kind of patience, one that I wasn't trained in.</p>
-<h2 id="learning-to-learn-by-teaching">Learning to Learn by Teaching</h2><p>As Jeremy Kun wrote in his book, programmers do have some sort of a leg-up when it comes to reading and understanding math. It's a bit more than what Kun wrote, I think - yes, many programming ideas have deep mathematical connections. But I think there's more.</p>
-<p>One thing we know from research into how people learn is that teaching someone something is an incredible way to learn that something. From my prior experience, the less background a student has in a material, the more demands are placed on the teacher's understanding of the material, as we work out how the multiple representations in our head to try to communicate it to them.</p>
-<p>As it turns out, we programmers have the ultimate dumb "student" available at our fingertips: Our computers! By implementing mathematical ideas in code, we are essentially "teaching" the computer to do something mathematical. Computers are not smart; they are programmed to do exactly what we input to them. If we get an idea wrong, our implementation of the math will likely be wrong. That fundamental law of computing shows up again: Garbage in, garbage out.</p>
-<h2 id="hierarchy-of-ideas">Hierarchy of Ideas</h2><p>More than just that, when we programmers implement a mathematical idea in code, we can start putting our "good software engineering" ideas into place! It helps the math become stickier when we can see, through code, the hierarchy of concepts that are involved.</p>
-<p>An example, for me, comes from the deep learning world. I had an attempt dissecting two math-y deep learning papers last week. Skimming through the papers didn't do much good for my understanding of the paper. Neither did trying to read the paper like I do a biology paper. Sure, I could perhaps just read the ideas that the authors were describing in prose, but I had no intuition on which to base a proper critique of the idea's usefulness. It took implementing those papers in Python code, writing tests for them, and using abstractions that I had previously written, to come to a place where I felt like the ideas in the paper were a flexibly wieldable tool in my toolkit.</p>
-<p>Reinventing the wheel, such that we can learn the wheel, can in fact help us decompose the wheel so that we can do other new things with it. Human creativity is such a wonderful thing!</p>
-
-    </p>
+    
+    <p class="card-text"><p>I'm about to give a talk on Bayesian deep learning!</p>
+</p>
     <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/12/9/mathematical-intuition/#disqus">Let's discuss more</a>!
-        </i>
-      </p>
+      <a href="../../../blog/2017/11/3/boston-bayesians-talk-an-attempt-at-demystifying-bayesian-deep-learning/">Read on...</a>
     </small>
-
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -175,14 +231,14 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/11/13/solving-problems-actionably/">Solving Problems Actionably</a></h1>
+    <h3><a href="../../../blog/2017/10/31/always-check-your-data/">Always Check Your Data</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-11-13
+        on 2017-10-31
         
         |
         <!-- Append tags after author -->
@@ -191,221 +247,30 @@
           data science
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/insight data science/">
-          insight data science
-        </a>
-        
-      </p>
-      
-    </small>
-
-    <p class="card-text"><p>There's a quote by John Tukey that has been a recurrent theme at work.</p>
-<blockquote class="blockquote">
-<p>It's better to solve the right problem approximately than to solve the wrong problem exactly.</p>
-</blockquote><p>Continuing on the theme of quoting two Georges:</p>
-<blockquote class="blockquote"> 
-<p>All models are wrong, but some are more useful than others.</p>
-</blockquote><p>H/T Allen Downey for pointing out that our minds think alike.</p>
-<p>I have been working on a modelling effort for colleagues at work. There were two curves involved, and the second depended on the first one.</p>
-<p>In both cases, I started with a simple model, and made judgment calls along the way as to whether to continue improving the model, or to stop there because the current iteration of the model was sufficient enough to act on. With first curve, the first model was actionable for me. With the second curve, the first model I wrote clearly wasn't good enough to be actionable, so I spent lots more rounds of iteration on it.</p>
-<p>But wait, how does one determine "actionability"?</p>
-<h2 id="actionability">Actionability</h2><p><strong>For myself</strong>, it has generally meant that I'm confident enough in the results to take the next modelling step. My second curves depended on the first curves, and after double-checking multiple ways, I thought the first curve fits, though not perfect, were good enough when applied across a large number of samples that I could instead move on to the second curves.</p>
-<p><strong>For others</strong>, particularly at my workplace, it generally means a scientist can make a decision about what next experiment to run.</p>
-<h2 id="insight-s-mvp-influence">Insight's MVP Influence</h2><p>Going through Insight Data Science drilled into us an instinct for developing an MVP for our problem before going on to perfect it. I think that general model works well. My project's final modelling results will be the result of chains of modelling assumptions at every step. Documenting those steps clearly, and then being willing to revisit those assumptions, is going always a good thing.</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/11/13/solving-problems-actionably/#disqus">Let's discuss more</a>!
-        </i>
-      </p>
-    </small>
-
-  </div>
-</div>
-
-
-<div>
-  <hr>
-</div>
-
-
-
-<div class="card bg-dark">
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div class="card-body">
-    <h1><a href="../../../blog/2018/11/12/thoughts-on-black/">Thoughts on Black</a></h1>
-    <small class="text-muted">
-      <p>
-        written by
-        
-        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-        
-        on 2018-11-12
-        
-        |
-        <!-- Append tags after author -->
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/python/">
-          python
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/code style/">
-          code style
-        </a>
-        
-      </p>
-      
-    </small>
-
-    <p class="card-text"><p>Having used Black for quite a while now, I have a hunch that it will continue to surpass its current popularity amongst projects.</p>
-<p>It's one thing to be opinionated about things that matter for a project, but don't matter personally. Like code style. It's another thing to actually build a tool that, with one command, realizes those opinions in (milli)seconds. That's exactly what Black does.</p>
-<p>At the end of the day, it was, and still is, a tool that has a very good human API - that of convenience.</p>
-<p>By being opinionated about what code <em>ought</em> to look like, <code>black</code> has very few configurable parameters. Its interface is very simple. <em>Convenient.</em></p>
-<p>By automagically formatting <em>every</em> Python file in subdirectories (if not otherwise configured so), it makes code formatting quick and easy. <em>Convenient.</em></p>
-<p>In particular, by being opinionated about conforming to community standards for code style with Python, <code>black</code> ensures that formatted code is consistently formatted and thus easy to read. <em>Convenient!</em></p>
-<p>Because of this, I highly recommend the use of <code>black</code> for code formatting.</p>
-<pre><code>pip install black
-</code></pre>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/11/12/thoughts-on-black/#disqus">Let's discuss more</a>!
-        </i>
-      </p>
-    </small>
-
-  </div>
-</div>
-
-
-<div>
-  <hr>
-</div>
-
-
-
-<div class="card bg-dark">
-  <link rel="stylesheet" href="../../../static/pygments.css">
-  <div class="card-body">
-    <h1><a href="../../../blog/2018/11/7/bayesian-modelling-is-hard-work/">Bayesian Modelling is Hard Work!</a></h1>
-    <small class="text-muted">
-      <p>
-        written by
-        
-        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-        
-        on 2018-11-07
-        
-        |
-        <!-- Append tags after author -->
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/bayesian/">
-          bayesian
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/data science/">
-          data science
+        <a href="../../../blog/tag/data analysis/">
+          data analysis
         </a>
         <i class="fas fa-tag"></i>
         <a href="../../../blog/tag/statistics/">
           statistics
         </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/bayesian/">
+          bayesian
+        </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>It’s definitely not easy work; anybody trying to tell you that you can "just apply this 
-model and just be done with it" is probably wrong.</p>
-<h2 id="simple-models">Simple Models</h2><p>Let me clarify: I agree that doing the first half of the statement, "just apply this model", 
-is a good starting point, but I disagree with the latter half, "and just be done with it". I 
-have found that writing and fitting a very naive Bayesian model to the data I have is a very 
-simple thing. But doing the right thing is not. Let’s not be confused: I don’t mean a Naive 
-Bayes model, I mean naively writing down a Bayesian model that is structured very simply 
-with the simplest of priors that you can think of.</p>
-<p>Write down the model, including any transformations that you may need on the variables, and 
-then lazily put in a bunch of priors. For example, you might just start with Gaussians 
-everywhere a parameter could take on negative to positive infinity values, or a bounded Half 
-Gaussian if it can only take values above (or below) a certain value. You might assume 
-Gaussian-distributed noise in the output.</p>
-<p>Let’s still not be confused: Obviously this would not apply to a beta-bernoulli/binomial 
-model!</p>
-<p>Doing the right thing, however, is where the tricky parts come in. To butcher and mash-up 
-two quotes:</p>
-<blockquote class="blockquote">
-<p>All models are wrong, but some are useful (Box), yet some models are more wrong than others (modifying from Orwell). 
-</blockquote><h2 id="critiquing-models">Critiquing Models</h2><p>When doing modeling, a series of questions comes up:</p>
-<ul>
-<li>Do my naive assumptions about "Gaussians everywhere" hold? </li>
-<li>Given that my output data are continuous, is there a better distribution that can describe 
-the likelihood?</li>
-<li>Is there are more principled prior for some of the variables?</li>
-<li>Does my link function, which joins the input data to the output parameters, properly 
-describe their relationship?</li>
-<li>Instead of independent priors per group, would a group prior be justifiable?</li>
-<li>Does my model yield posterior distributions that are within bounds of reasonable ranges, 
-which come from my prior knowledge? If it does not, do I need to bound my priors instead of 
-naively assuming the full support for those distributions?</li>
-</ul>
-<p>I am quite sure that this list is non-exhaustive, and probably only covers the bare minimum 
-we have to think about.</p>
-<p>Doing these model critiques is not easy. Yet, if we are to work towards truthful and 
-actionable conclusions, it is a necessity. We want to know ground truth, so that we can act 
-on it accordingly, and hence take appropriate actions.</p>
-<h2 id="prior-experience">Prior Experience</h2><p>I have experienced this modeling loop that Mike Betancourt describes (in his <a href="https://github.com/betanalpha/jupyter_case_studies/blob/master/principled_bayesian_workflow/principled_bayesian_workflow.ipynb">Principled 
-Bayesian Workflow notebook</a>) more than once. One involved count data, with a data 
-scientist from TripAdvisor last year at the SciPy conference; another involved estimating 
-cycle time distributions at work, and yet another involved a whole 4-parameter dose-response 
-curve. In each scenario, model fitting and critique took hours at the minimum; I’d also note 
-that with real world data, I didn’t necessarily get to the "win" was looking for.</p>
-<p>With the count data, the TripAdvisor data scientist and I reached a point where after 5 
-rounds of tweaking his model, we had a model that fit the data, and described a data 
-generating process that mimics closely to what we would expect given his process. It took us 
-5 rounds, and 3 hours of staring at his model and data, to get there!</p>
-<p>Yet with cycle time distributions from work, a task ostensibly much easier ("just fit a 
-distribution to the data"), none of my distribution choices, which reflected what I thought 
-would be the data generating process, gave me a "good fit" to the data. I checked by many 
-means: K-S tests, visual inspection, etc. I ended up abandoning the fitting procedure, and 
-used empirical distributions instead.</p>
-<p>With a 4-parameter dose-response curve, it took me 6 hours to go through 6 rounds of 
-modeling to get to a point where I felt comfortable with the model. I started with a 
-simplifying "Gaussians everywhere" assumption. Later, though, I hesitantly and tentatively 
-putting in bound priors because I knew some posterior distributions were completely out of 
-range under the naive assumptions of the first model, and were likely a result of 
-insufficient range in the concentrations tested. Yet even that model remained unsatisfying: 
-I was stuck with some compounds that didn’t change the output regardless of concentration, 
-and that data are fundamentally very hard to fit with a dose response curve. Thus I the next 
-afternoon,I modeled the dose response relationship using a Gaussian Process instead. Neither 
-model is completely satisfying to the degree that the count data model was, but both the GP 
-and the dose-response curve are and will be roughly correct modeling choices (with the GP 
-probably being more flexible), and importantly, both are actionable by the experimentalists.</p>
-<h2 id="thoughts">Thoughts</h2><p>As you probably can see, whenever we either (1) don’t know ground truth, and/or (2) have 
-messy, real world data that don’t fit idealized assumptions about the data generating 
-process, <strong>getting the model "right" is a very hard thing to do!</strong> Moreover, data are 
-insufficient on their own to critique the model; we will always need to bring in prior 
-knowledge. Much as all probability is conditional probability (Venn), all modeling involves 
-prior knowledge. Sometimes it comes up in non-modellable ways, though as far as possible, 
-it’s a good exercise to try incorporating that into the model definition.</p>
-<h2 id="canned-models?">Canned Models?</h2><p>Even with that said, I’m still a fan of canned models, such as those provided by 
-<code>pymc-learn</code> and <code>scikit-learn</code> - provided we recognize that their "canned" nature and are 
-equipped to critique and modify said models. Yes, they provide easy, convenient baselines 
-that we can get started with. We can "just apply this model". But we can’t "just be done 
-with it": the hard part of getting the model right takes much longer and much more hard 
-work. <strong><em>Veritas!</em></strong></p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/11/7/bayesian-modelling-is-hard-work/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>True story, just happened today. I was trying to fit a Poisson likelihood to estimate event cycle times (in discreet weeks). For certain columns, everything went perfectly fine. Yet for other columns, I was getting negative infinity’s likelihoods,...
+        <a href="../../../blog/2017/10/31/always-check-your-data/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -416,84 +281,268 @@ work. <strong><em>Veritas!</em></strong></p>
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/10/26/more-dask-pre-scattering-data/">More Dask: Pre-Scattering Data</a></h1>
+    <h3><a href="../../../blog/2017/10/27/random-forests-a-good-default-model/">Random Forests: A Good Default Model?</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-10-26
+        on 2017-10-27
         
         |
         <!-- Append tags after author -->
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/dask/">
-          dask
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/parallel/">
-          parallel
-        </a>
         <i class="fas fa-tag"></i>
         <a href="../../../blog/tag/data science/">
           data science
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/optimization/">
-          optimization
+        <a href="../../../blog/tag/machine learning/">
+          machine learning
         </a>
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/gridengine/">
-          gridengine
+        <a href="../../../blog/tag/random forest/">
+          random forest
         </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>I learned a new thing about <code>dask</code> yesterday: pre-scattering data properly!</p>
-<p>Turns out, you can pre-scatter your data across worker nodes, and have them access that data later when submitting functions to the scheduler.</p>
-<h2 id="how-to">How-To</h2><p>To do so, we first call on <code>client.scatter</code>, pass in the data that I want to scatter across all nodes, ensure that broadcasting is turned on (if and only if I am sure that all worker nodes will need it), and finally assign it to a new variable.</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">dask_jobqueue</span> <span class="kn">import</span> <span class="n">SGECluster</span>
-<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
-
-<span class="n">cluster</span> <span class="o">=</span> <span class="n">SGECluster</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>  <span class="c1"># put parameters in there.</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
-<span class="n">data_future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">broadcast</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-<p>One key thing to remember here is to assign the result of <code>client.scatter</code> to a variable. This becomes a pointer that you pass into other functions that are submitted via the <code>client.submit</code> interface. Because this point is not immediately clear from the <code>client.scatter</code> docs, <a href="https://github.com/dask/distributed/pull/2320">I put in a pull request (PR) to provide some just-in-time documentation</a>, which just got merged this morning. By the way, not every PR has to be code - documentation help is always good!</p>
-<p>Once we've scattered the data across our worker nodes and obtained a pointer for the scattered data, we can parallel submit our function across worker nodes.</p>
-<p>Let's say we have a function, called <code>func</code>, that takes in the <code>data</code> variable and returns a number. The key characteristic of this function is that it takes anywhere from a few seconds to minutes to run, but I need it run many times (think hundreds to thousands of times).</p>
-<p>In serial, I would usually do this as a list comprehension:</p>
-<div class="hll"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">)]</span>
-</pre></div>
-<p>If done in parallel, I can now use the <code>client</code> object to submit the function across all worker nodes. For clarity, let me switch to a <code>for-loop</code> instead:</p>
-<div class="hll"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">data_future</span><span class="p">))</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
-</pre></div>
-<p>Because the <code>client</code> does not have to worry about sending the large <code>data</code> object across the network of cluster nodes, it is very fast to submit the functions to the scheduler, which then dispatches it to the worker nodes, which all know where <code>data_future</code> is on their own "virtual cluster" memory.</p>
-<h2 id="advantages">Advantages</h2><p>By pre-scattering, we invest a bit of time pre-allocating memory on worker nodes to hold data that are relatively expensive to transfer. This time investment reaps dividends later when we are working with functions that operate on the data.</p>
-<h2 id="cautions">Cautions</h2><p>Not really disadvantages (as I can't think of any), just some things to note:</p>
-<ol>
-<li>You need to know how much memory my data requires, and have to request for at least that amount of memory first per worker node at the the <code>SGECluster</code> instantiation step.</li>
-<li>Pre-scattering sometimes takes a bit of time, but I have not seen it take as much time as having the scheduler handle everything.</li>
-</ol>
-<h2 id="acknowledgments">Acknowledgments</h2><p>Special thanks goes to <a href="https://matthewrocklin.com">Matt Rocklin</a>, who answered my question on <a href="https://stackoverflow.com/questions/52997229/is-there-an-advantage-to-pre-scattering-data-objects-in-dask">StackOverflow</a>, which in turn inspired this blog post.</p>
-
-    </p>
+    
+    <p class="card-text"><p>Why I think random forests are a great baseline machine learning model.</p>
+</p>
     <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/10/26/more-dask-pre-scattering-data/#disqus">Let's discuss more</a>!
-        </i>
-      </p>
+      <a href="../../../blog/2017/10/27/random-forests-a-good-default-model/">Read on...</a>
     </small>
-
+    
   </div>
 </div>
 
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/10/22/network-propagation/">Network Propagation</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-10-22
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/network science/">
+          network science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/graph theory/">
+          graph theory
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/programming/">
+          programming
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/python/">
+          python
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/code snippets/">
+          code snippets
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><h2 id="introduction">Introduction</h2><p>I recently read a <a href="http://www.nature.com/nrg/journal/vaop/ncurrent/abs/nrg.2017.38.html">review paper on network propagation</a>. It looks like a very useful thing in data science, particularly where...
+        <a href="../../../blog/2017/10/22/network-propagation/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/10/11/pypy-impressive/">PyPy: Impressive!</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-10-11
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p>A few years on after trying out PyPy for the first time and wrestling with it, I still find it to be pretty awesome.</p>
+<p>Now that PyPy officially supports <code>numpy</code>, I'm going to profile a few simple statistical simulation...
+        <a href="../../../blog/2017/10/11/pypy-impressive/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/10/10/pydata-nyc-2017/">PyData NYC 2017</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-10-10
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/pydata/">
+          pydata
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/conferences/">
+          conferences
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/python/">
+          python
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>I'm seriously looking forward to PyData NYC this year -- there's a great lineup of talks that I'm particularly looking forward to hearing! The theme for my set of must-see talks this year is "Bayesian machine learning" - there's much for me to...
+        <a href="../../../blog/2017/10/10/pydata-nyc-2017/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/10/10/recursive-programming-and-dags/">Recursive Programming and DAGs</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-10-10
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/programming/">
+          programming
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/code snippets/">
+          code snippets
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>Over the past few days, I've found myself using recursive programming to implement a "model specification" system with inheritance for deep learning. The goal here is to enable reproducible computational experiments for particular deep learning...
+        <a href="../../../blog/2017/10/10/recursive-programming-and-dags/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2017/10/7/a-data-scientists-guide-to-environment-variables/">A Data Scientist&#39;s Guide to Environment Variables</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2017-10-07
+        
+        |
+        <!-- Append tags after author -->
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/data science/">
+          data science
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/bash/">
+          bash
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/environment variables/">
+          environment variables
+        </a>
+        <i class="fas fa-tag"></i>
+        <a href="../../../blog/tag/programming/">
+          programming
+        </a>
+        
+      </p>
+      
+    </small>
+    
+    <div>
+      <p class="card-text"><p>You might have encountered a piece of software asking you for permission to modify your <code>PATH</code> variable, or another program's installation instructions cryptically telling you that you have to "set your <code>LD_LIBRARY_PATH</code>...
+        <a href="../../../blog/2017/10/7/a-data-scientists-guide-to-environment-variables/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
 
 <div>
   <hr>

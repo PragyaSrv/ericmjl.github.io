@@ -118,32 +118,32 @@
   
 
   <!-- Append author -->
-  <p class="meta">
-    written by
+  <small class="text-muted">
+    <p>
+      written by
+      
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+      
+      on 2017-06-17
+      
+      |
+      <!-- Append tags after author -->
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/insight data science/">
+        insight data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/data science/">
+        data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/job hunt/">
+        job hunt
+      </a>
+      
+    </p>
     
-    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2017-06-17
-    
-  </p>
-  <!-- Append tags after author -->
-  <p>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/insight data science/">
-      insight data science
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/data science/">
-      data science
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/job hunt/">
-      job hunt
-    </a>
-    
-  </p>
-  
-
+  </small>
   <!-- Put post body -->
   <p>This week was a week of polishing our final products and getting them in shape for our demos. Pushing a product to final production really involves a lot of nitty-gritty tweaking. In this blog post, I'll detail some of what I had to work on.</p>
 <p>My <a href="https://fluforecaster.herokuapp.com">final product</a> a hybrid web dashboard + blog post. Behind the dashboard is a fairly complex set of computations, which currently are run through a Jupyter notebook. The front-end, therefore, only renders the predicted flu sequences returned from the Jupyter notebooks. As part of my forecasts, I want to show the uncertainty surrounding the predictions, and how they're associated with individual forecasted sequences. This requires computing a convex hull surrounding a point cloud, and plotting it. I spent about 3-4 hours on Tuesday figuring out the code to make this part of the visualization, which I consider integral to communicating the project.</p>

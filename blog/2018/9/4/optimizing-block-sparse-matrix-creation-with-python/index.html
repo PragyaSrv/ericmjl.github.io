@@ -118,46 +118,48 @@
   
 
   <!-- Append author -->
-  <p class="meta">
-    written by
+  <small class="text-muted">
+    <p>
+      written by
+      
+      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+      
+      on 2018-09-04
+      
+      |
+      <!-- Append tags after author -->
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/graph/">
+        graph
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/optimization/">
+        optimization
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/numba/">
+        numba
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/python/">
+        python
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/data science/">
+        data science
+      </a>
+      <i class="fas fa-tag"></i>
+      <a href="../../../../../blog/tag/sparse matrix/">
+        sparse matrix
+      </a>
+      
+    </p>
     
-    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2018-09-04
-    
-  </p>
-  <!-- Append tags after author -->
-  <p>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/graph/">
-      graph
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/optimization/">
-      optimization
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/numba/">
-      numba
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/python/">
-      python
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/data science/">
-      data science
-    </a>
-    <i class="fas fa-tag"></i>
-    <a href="../../../../../blog/tag/sparse matrix/">
-      sparse matrix
-    </a>
-    
-  </p>
-  
-
+  </small>
   <!-- Put post body -->
-  <div class="hll"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+  <h1 id="introduction">Introduction</h1><p>At work, I recently encountered a neat problem. I'd like to share it with you all.</p>
+<p>One of my projects involves graphs; specifically, it involves taking individual graphs and turning them into one big graph. If you've taken my Network Analysis Made Simple workshops before, you'll have learned that graphs can be represented as a matrix, such as the one below:</p>
+<div class="hll"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -174,8 +176,6 @@
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_format</span> <span class="o">=</span> <span class="s1">&#39;retina&#39;</span>
 </pre></div>
-<h1 id="introduction">Introduction</h1><p>At work, I recently encountered a neat problem. I'd like to share it with you all.</p>
-<p>One of my projects involves graphs; specifically, it involves taking individual graphs and turning them into one big graph. If you've taken my Network Analysis Made Simple workshops before, you'll have learned that graphs can be represented as a matrix, such as the one below:</p>
 <div class="hll"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">erdos_renyi_graph</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 

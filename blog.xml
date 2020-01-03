@@ -1853,7 +1853,9 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
     <author>
       <name>Eric J. Ma</name>
     </author>
-    <content type="html">&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;networkx&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;nx&lt;/span&gt;
+    <content type="html">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;&lt;p&gt;At work, I recently encountered a neat problem. I'd like to share it with you all.&lt;/p&gt;
+&lt;p&gt;One of my projects involves graphs; specifically, it involves taking individual graphs and turning them into one big graph. If you've taken my Network Analysis Made Simple workshops before, you'll have learned that graphs can be represented as a matrix, such as the one below:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;networkx&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;nx&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.sparse&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sp&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
@@ -1870,8 +1872,6 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matplotlib&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inline&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InlineBackend&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figure_format&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;retina&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;&lt;p&gt;At work, I recently encountered a neat problem. I'd like to share it with you all.&lt;/p&gt;
-&lt;p&gt;One of my projects involves graphs; specifically, it involves taking individual graphs and turning them into one big graph. If you've taken my Network Analysis Made Simple workshops before, you'll have learned that graphs can be represented as a matrix, such as the one below:&lt;/p&gt;
 &lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;G&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;erdos_renyi_graph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_numpy_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
@@ -2010,6 +2010,177 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;I hope you learned something new, and I hope you also enjoyed reading this post as much as I enjoyed writing it!&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://www.ericmjl.com/blog/2018/9/2/3d-printed-wifi-access-qr-codes-part-2/">
+    <title type="text">3D Printed WiFi Access QR Codes: Part 2</title>
+    <id>urn:uuid:847ab4c3-07ad-3e34-9d15-3fa823f923b0</id>
+    <updated>2018-09-02T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2018/9/2/3d-printed-wifi-access-qr-codes-part-2/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;&lt;p&gt;In this blog post, I'll detail how to create a 3D printable QR code model using Python.&lt;/p&gt;
+&lt;h2 id=&quot;recap&quot;&gt;Recap&lt;/h2&gt;&lt;p&gt;In the previous blog post, I detailed how to use &lt;code&gt;pyqrcode&lt;/code&gt; to create a QR code for a WiFi string. The most important parts were:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The WiFi string. It should have the following pattern:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;WIFI:S:&amp;lt;SSID&amp;gt;;T:&amp;lt;WPA|WEP|&amp;gt;;P:&amp;lt;password&amp;gt;;;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;The QR code creator.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyqrcode&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pq&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Family Guest Network&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;security&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;WPA&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;vn8h2sncu093y3nd!&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{ssid}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;T:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{security}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;P:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{password}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;creating-a-3d-printed-qr-code-with-python&quot;&gt;Creating a 3D Printed QR Code with Python&lt;/h2&gt;&lt;p&gt;Now, let's see how we can create 3D models with Python code. We will need a package called &lt;code&gt;SolidPython&lt;/code&gt;, and optionally &lt;code&gt;numpy&lt;/code&gt; to help us with some array processing. (It can be done entirely using built-in lists if needed.)&lt;/p&gt;
+&lt;h3 id=&quot;create-qr-code-object&quot;&gt;Create QR Code Object&lt;/h3&gt;&lt;p&gt;To start, I first defined a convenience function that let me create and return a &lt;code&gt;QRCode&lt;/code&gt; object that can be passed around and manipulated.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create_wifi_qr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;security&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{ssid}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;T:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{security}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;P:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{password}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Its use will become evident later. You'll also notice I'm using type hints inside the function.&lt;/p&gt;
+&lt;h3 id=&quot;create-text-representation&quot;&gt;Create Text Representation&lt;/h3&gt;&lt;p&gt;Using the function, we can create a text representation of the QR code:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_wifi_qr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;security&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This will give essentially a series of 1s and 0s. This is a string, though, not a &lt;code&gt;numpy&lt;/code&gt; array. Hence, we may have to convert this into a list of lists, or a &lt;code&gt;numpy&lt;/code&gt; array (as a user of the scientific Python stack, I prefer using arrays where possible, but in this case there is no real practical advantage to doing so because we are not doing linear algebra).&lt;/p&gt;
+&lt;h3 id=&quot;create-array-representation&quot;&gt;Create Array Representation&lt;/h3&gt;&lt;p&gt;Let's now define a function that takes in the &lt;code&gt;QRCode&lt;/code&gt; object and return an array version of the text rendering.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;qr2array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bit&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vstack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;With that, we can create an array version of our QR code above:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qr2array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;create-3d-model&quot;&gt;Create 3D Model&lt;/h3&gt;&lt;p&gt;Now, we're ready to play with &lt;code&gt;SolidPython&lt;/code&gt;!&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SolidPython&lt;/code&gt; is a Python package that provides an interface to the OpenSCAD language. The OpenSCAD language allows a programmer to programmatically define 3D models using the language of geometry. This includes the creation of cubes and other 3D objects, as well as object manipulations, such as translation, coloring, and union-ing.&lt;/p&gt;
+&lt;p&gt;For brevity, I'll not introduce you to more detail on what OpenSCAD is. Rather, I'll recommend two readings, to be read in order:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.makeuseof.com/tag/beginners-guide-openscad-programming-3d-printed-models/&quot;&gt;Beginner's Guide to OpenSCAD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://solidpython.readthedocs.io/en/latest/&quot;&gt;SolidPython's Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Take a look at the code below for an example of how we create the 3D object.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cube&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scad_render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;translate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;union&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;SCALE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# output defaults to 1 mm per unit; this lets us increase the size of objects proportionally.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;cubes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;translate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SCALE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SCALE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;black&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cube&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SCALE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCALE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HEIGHT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])))&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;row&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;col&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;base_plate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;white&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cube&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCALE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCALE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HEIGHT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;qrobj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;union&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cubes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base_plate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scad_render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qrobj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This will give the following OpenSCAD code, which I've truncated for brevity:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;union() {
+    translate(v = [8, 8, 0]) {
+        color(c = &amp;quot;black&amp;quot;) {
+            cube(size = [2, 2, 4]);
+        }
+    }
+    translate(v = [8, 10, 0]) {
+        color(c = &amp;quot;black&amp;quot;) {
+            cube(size = [2, 2, 4]);
+        }
+  ...
+    translate(v = [88, 80, 0]) {
+        color(c = &amp;quot;black&amp;quot;) {
+            cube(size = [2, 2, 4]);
+        }
+    }
+    translate(v = [88, 82, 0]) {
+        color(c = &amp;quot;black&amp;quot;) {
+            cube(size = [2, 2, 4]);
+        }
+    }
+    color(c = &amp;quot;white&amp;quot;) {
+        cube(size = [98, 98, 2.0000000000]);
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;What we've done here is take the 1s and created cubes where they are supposed to be, and leave the zeros empty. Then, we add a &quot;base plate&quot; so that everything stays nice and connected, and finally union all of the cubes with the base plate, so that we get one solid piece that is 3D printed.&lt;/p&gt;
+&lt;p&gt;If you observe the output of the function &lt;code&gt;scad_render&lt;/code&gt;, it will essentially be valid OpenSCAD text. With OpenSCAD text, you can paste it into OpenSCAD to render it:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../../../../../blog/2018/9/2/3d-printed-wifi-access-qr-codes-part-2/openscad.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Following that, it can be exported as an STL file. The export process in OpenSCAD takes some time, but once done, it then has to be first converted into a &lt;code&gt;.gcode&lt;/code&gt; file, which gives a 3D printer the necessary instructions to move its printhead around to print the QR code.&lt;/p&gt;
+&lt;p&gt;In short, the flow is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SolidPython -&amp;gt; OpenSCAD -&amp;gt; STL -&amp;gt; .gcode
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;&lt;p&gt;The key things to take away from this blog post are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;How to create a text representation of the QR code.&lt;/li&gt;
+&lt;li&gt;How to convert the text representation into an array.&lt;/li&gt;
+&lt;li&gt;How to create a 3D model of the QR code using the array.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now that you have an example of how to create an OpenSCAD file from Python using &lt;code&gt;SolidPython&lt;/code&gt;, I hope you'll go forth and make a ton of fun stuff!&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://www.ericmjl.com/blog/2018/9/1/3d-printed-wifi-access-qr-codes-part-1/">
+    <title type="text">3D Printed WiFi Access QR Codes: Part 1</title>
+    <id>urn:uuid:e1b34c34-2d9d-30de-9c66-7bb10f5f29a9</id>
+    <updated>2018-09-01T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2018/9/1/3d-printed-wifi-access-qr-codes-part-1/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;h2 id=&quot;the-project&quot;&gt;The Project&lt;/h2&gt;&lt;p&gt;Over the weekend, I embarked on a project to create a 3D printed QR code that guests at our house could scan to gain access to our guest wireless network.&lt;/p&gt;
+&lt;h2 id=&quot;why-i-decided-to-do-this&quot;&gt;Why I decided to do this&lt;/h2&gt;&lt;p&gt;From the standpoint of practicality, sure, it's trivial to open up phone settings, find the WiFi network name, and give them the password, but... this has the coolness factor associated with it! Imagine scanning a 3D-printed QR code! Until this becomes commonplace, it's a cool thing to be able to do.&lt;/p&gt;
+&lt;p&gt;Anyways, there's a ton of QR code generators out there on the web, and there's more than a handful of WiFi QR code generators out there - so why did I embark on this project?&lt;/p&gt;
+&lt;p&gt;Partly it's borne out of security reasons - I am not giving my WiFi password up to some random website. Who knows whether they're actually storing the passwords?&lt;/p&gt;
+&lt;p&gt;Another part of this is borne out of me wanting to scratch my itch surrounding QR codes. The last time I went to China (Xi'an and Shanghai, specifically), I saw QR codes &lt;em&gt;everywhere&lt;/em&gt;. There surely had to be something good we could use this for at home that didn't involve just packing and storage.&lt;/p&gt;
+&lt;h2 id=&quot;getting-setup&quot;&gt;Getting Setup&lt;/h2&gt;&lt;p&gt;Ok, let's get started! To create QR codes, all you need are the following packages installed in your environment:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;pyqrcode&lt;/code&gt; [&lt;code&gt;pip&lt;/code&gt;]&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pypng&lt;/code&gt; [&lt;code&gt;pip&lt;/code&gt;]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you want to do the 3D printing part, you'll need another package:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;SolidPython&lt;/code&gt; [&lt;code&gt;pip&lt;/code&gt;]&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;numpy&lt;/code&gt; [&lt;code&gt;conda&lt;/code&gt;/&lt;code&gt;pip&lt;/code&gt;]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Finally, if you'd like to work with command line interfaces and Flask, you'll need:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;click&lt;/code&gt; [&lt;code&gt;pip&lt;/code&gt;/&lt;code&gt;conda&lt;/code&gt;]&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Flask&lt;/code&gt; [&lt;code&gt;pip&lt;/code&gt;/&lt;code&gt;conda&lt;/code&gt;]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;encoding-wifi-credentials-in-a-qr-code&quot;&gt;Encoding WiFi credentials in a QR code&lt;/h2&gt;&lt;p&gt;Let's start by creating a QR code for our WiFi guest network.&lt;/p&gt;
+&lt;p&gt;Let's say that these are the security credentials for the network:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SSID (a.k.a. Network Name): &lt;code&gt;Family Guest Network&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Password: &lt;code&gt;vn8h2sncu093y3nd!&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Security Type (one of WPA or WEP): &lt;code&gt;WPA&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Because QR codes are merely two-dimensional barcodes that encode a string that can be parsed by another program, in order to create a QR-code that is readable for accessing WiFi, we need a string that can be parsed. This string is structured as follows:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;WIFI:S:&amp;lt;SSID&amp;gt;;T:&amp;lt;WPA|WEP|&amp;gt;;P:&amp;lt;password&amp;gt;;;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So in our case, we would want a string that looks like:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;WIFI:S:Family Guest Network;T:WPA;P:vn8h2sncu093y3nd!;;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, we can code up our Python program do encode the QR code for us. I'll assume you're running Python 3.6 or later.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyqrcode&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pq&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Family Guest Network&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;security&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;WPA&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;vn8h2sncu093y3nd!&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{ssid}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;T:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{security}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;P:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{password}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;terminal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;With that block of code, you should get a QR code printed to your terminal, just like that!&lt;/p&gt;
+&lt;p&gt;Let's say you wanted to do the simple thing, and just have a regular laser/inkjet printer make a printout of the QR code. To do so, you can save the QR code to disk as a PNG file:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;png&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;home_guest_wifi.png&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;&lt;p&gt;And just like that, you've used Python to create a WiFi QR code!  How easy was that?&lt;/p&gt;
+&lt;p&gt;Along the way, I also used Kite in the Atom text editor while embarking on this project - this allowed me to view documentation and common usage patterns for the packages I imported.&lt;/p&gt;
+&lt;p&gt;Now, if you remember that QR codes are just &quot;ASCII strings encoded in a 2D barcode&quot;, then you'll know that you can pass any arbitrary string into the &lt;code&gt;pyqrcode.create()&lt;/code&gt; function. That means you can come up with any creative use of a short string that needs to be scanned to be useful! For example, you can create business cards with your LinkedIn profile URL embedded in the QR code, or use it to encode a serial number information on your possessions, or more!&lt;/p&gt;
+&lt;p&gt;Stay tuned for the coming blog posts!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/">
     <title type="text">Joint, conditional, and marginal probability distributions</title>
     <id>urn:uuid:1d4f0347-83d3-3612-aa52-78facad43d8a</id>
@@ -2118,167 +2289,6 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;li&gt;Comparison&lt;/li&gt;
 &lt;li&gt;Model Checking&lt;/li&gt;
 &lt;/ol&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/7/14/ecdfs/">
-    <title type="text">ECDFs</title>
-    <id>urn:uuid:dbc98517-ed4a-3a54-b9dc-49b8b9c4cf54</id>
-    <updated>2018-07-14T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/7/14/ecdfs/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;In my two SciPy 2018 co-taught tutorials, I made the case that ECDFs provide richer information compared to histograms. My main points were:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;We can more easily identify central tendency measures, in particular, the median, compared to a histogram.&lt;/li&gt;
-&lt;li&gt;We can much more easily identify other percentile values, compared to a histogram.&lt;/li&gt;
-&lt;li&gt;We become less susceptible to outliers arising from binning issues.&lt;/li&gt;
-&lt;li&gt;It is more difficult to hide multiple modes.&lt;/li&gt;
-&lt;li&gt;We can easily identify repeat values.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;What are ECDFs? ECDFs stand for the &quot;empirical cumulative distribution function&quot;, and they map every data point in the dataset to a quantile, which is a number between 0 and 1 that indicates the cumulative fraction of data points smaller than that data point itself.&lt;/p&gt;
-&lt;p&gt;To illustrate, let's take a look at the following plots.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Generate a mixture of two normal distributions, but with&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# very few data points.&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;seed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;mx1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;normal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;mx2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;normal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;concatenate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mx1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mx2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# one outlier&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ecdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ax_ecdf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_subplot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;121&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ax_hist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_subplot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;122&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ax_hist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;histogram&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;ax_hist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ecdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ax_ecdf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ax_ecdf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;ecdf&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;output_png output_subarea &quot;&gt;
-&lt;img src=&quot;data:image/png;base64,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
-&quot;
-&gt;
-&lt;/div&gt;&lt;p&gt;Let's compare the ECDF and the histogram for this data.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Is the central tendency measure easily discoverable?&lt;/strong&gt; We might say that there's some peak at just below the x-axis at just above zero, but is that the mode, median or mean? And what is its exact value? On the other hand, at least the median is easily discoverable on the ECDF: Draw a horizontal line from 0.5 on the y-axis until it crosses a data point, and then drop a line down to the x-axis to get the median value.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Are percentiles easily discoverable?&lt;/strong&gt; It's much clearer that the answer is &quot;yes&quot; for the ECDF, and &quot;no&quot; for the histogram.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;What is the value of the potential outlier?&lt;/strong&gt; Difficult to tell on the histogram: it could be anywhere from 4 to 5 (high outlier) and maybe -3 to -4 on the low outlier. On the other hand, just drop a line down from the suspected outliers to the x-axis to read off their values.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Is this a mixture distribution or is this a single Normal distribution?&lt;/strong&gt; If you looked at the histogram, you might be tempted to think that the data are normally distributed with mean 0.5 and standard deviation about 2. However, if you look at the ECDF, it's clear that there are multiple modes, as shown by two or three sigmoidal-like curves. This should give us pause to see if there's a mixture distribution at play here.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Are there repeat values?&lt;/strong&gt; You can't tell in a histogram. However, it's evidently clear on the ECDF scatterplot that there's no repeat values -- they would show up on the plot as vertical stacks of dots. (Repeat-values might be important when working with, say, a zero- or X-inflated distribution.)&lt;/p&gt;
-&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;&lt;p&gt;I hope this post showed you why ECDFs contain richer information than histograms. They're taught less commonly than histograms, so people will have a harder time interpreting them at first glance. However, a bit of guidance and orientation will bring out the rich information on the ECDFs.&lt;/p&gt;
-&lt;h2 id=&quot;credits&quot;&gt;Credits&lt;/h2&gt;&lt;p&gt;I credit Justin Bois (Caltech) for teaching me about ECDFs, and Hugo Bowne-Anderson (DataCamp) for reinforcing the idea.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/6/17/git-tip-apply-a-patch/">
-    <title type="text">Git Tip: Apply a Patch</title>
-    <id>urn:uuid:537a773c-af06-3120-a855-0eb7840fcd8d</id>
-    <updated>2018-06-17T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/6/17/git-tip-apply-a-patch/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;I learned a new thing this weekend: we apparently can apply a patch onto a branch/fork using &lt;code&gt;git apply [patchfile]&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;There's a few things to unpack here. First off, what's a &lt;code&gt;patchfile&lt;/code&gt;?&lt;/p&gt;
-&lt;p&gt;The long story cut short is that a &lt;code&gt;patchfile&lt;/code&gt; is nothing more than a plain text file that contains all information about &lt;code&gt;diffs&lt;/code&gt; between one commit and another. If you've ever used the &lt;code&gt;git diff&lt;/code&gt; command, you'll know that it will output a &lt;code&gt;diff&lt;/code&gt; between the current state of a repository, and the last committed state. Let's take a look at an example.&lt;/p&gt;
-&lt;p&gt;Say we have a file, called &lt;code&gt;my_file.txt&lt;/code&gt;. In a real world example, this would be parallel to, say, a &lt;code&gt;.py&lt;/code&gt; module that you've written. After a bunch of commits, I have a directory structure that looks like this:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls
-total &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;
-drwxr-xr-x   &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; ericmjl  staff   128B Jun &lt;span class=&quot;m&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;:26 ./
-drwx------@ &lt;span class=&quot;m&quot;&gt;19&lt;/span&gt; ericmjl  staff   608B Jun &lt;span class=&quot;m&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;:26 ../
-drwxr-xr-x  &lt;span class=&quot;m&quot;&gt;12&lt;/span&gt; ericmjl  staff   384B Jun &lt;span class=&quot;m&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;:27 .git/
--rw-r--r--   &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; ericmjl  staff    68B Jun &lt;span class=&quot;m&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;:26 my_file.txt
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The contents of &lt;code&gt;my_file.txt&lt;/code&gt; are as follows:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat my_file.txt
-Hello! This is a text file.
-
-I have some text written inside here.
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Now, let's say I edit the text file by adding a new line and removing one line.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat my_file.txt
-Hello! This is a text file.
-
-I have some text written inside here.
-
-This is a new line!
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;If I looked at the &quot;diff&quot; between the current state of the file and the previous committed state of the file:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git diff my_file.txt
-&lt;span class=&quot;gh&quot;&gt;diff --git a/my_file.txt b/my_file.txt&lt;/span&gt;
-&lt;span class=&quot;gh&quot;&gt;index a594a37..d8602e1 100644&lt;/span&gt;
-&lt;span class=&quot;gd&quot;&gt;--- a/my_file.txt&lt;/span&gt;
-&lt;span class=&quot;gi&quot;&gt;+++ b/my_file.txt&lt;/span&gt;
-&lt;span class=&quot;gu&quot;&gt;@@ -1,4 +1,4 @@&lt;/span&gt;
- Hello! This is a text file.
-
-&lt;span class=&quot;gd&quot;&gt;-I have some text written inside here.&lt;/span&gt;
-&lt;span class=&quot;gi&quot;&gt;+This is a new line!&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;While this may look intimidating at first, the key thing that one needs to look at is the &lt;code&gt;+&lt;/code&gt; and &lt;code&gt;-&lt;/code&gt;. The &lt;code&gt;+&lt;/code&gt; signals that there is an addition of one line, and the &lt;code&gt;-&lt;/code&gt; signals the removal of one line.&lt;/p&gt;
-&lt;p&gt;Turns out, I can export this as a file.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git diff my_file.txt &amp;gt; /tmp/patch1.txt
-$ cat /tmp/patch1.txt
-diff --git a/my_file.txt b/my_file.txt
-index a594a37..d8602e1 &lt;span class=&quot;m&quot;&gt;100644&lt;/span&gt;
---- a/my_file.txt
-+++ b/my_file.txt
-@@ -1,4 +1,4 @@
- Hello! This is a text file.
-
--I have some text written inside here.
-+This is a new line!
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Now, let's simulate the scenario where I accidentally discarded those changes in the repository. A real-world analogue happened to me while contributing to CuPy: I had a really weird commit history, and couldn't remember how to rebase, so I exported the patch from my GitHub pull request (more on this later) and applied it following the same conceptual steps below.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git checkout -- my_file.txt
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Now, the repository is in a &quot;cleaned&quot; state -- there are no changes made:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git status
-On branch master
-nothing to commit, working tree clean
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Since I have saved the diff as a file, I can apply it onto my project:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git apply /tmp/patch1.txt
-$ git status
-On branch master
-Changes not staged &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; commit:
-  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot;&lt;/span&gt; to update what will be committed&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&amp;quot;git checkout -- &amp;lt;file&amp;gt;...&amp;quot;&lt;/span&gt; to discard changes in working directory&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-
-        modified:   my_file.txt
-
-no changes added to commit &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&amp;quot;git add&amp;quot;&lt;/span&gt; and/or &lt;span class=&quot;s2&quot;&gt;&amp;quot;git commit -a&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Looking at the diff again, I've recovered the changes that were lost!&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git diff
-&lt;span class=&quot;gh&quot;&gt;diff --git a/my_file.txt b/my_file.txt&lt;/span&gt;
-&lt;span class=&quot;gh&quot;&gt;index a594a37..d8602e1 100644&lt;/span&gt;
-&lt;span class=&quot;gd&quot;&gt;--- a/my_file.txt&lt;/span&gt;
-&lt;span class=&quot;gi&quot;&gt;+++ b/my_file.txt&lt;/span&gt;
-&lt;span class=&quot;gu&quot;&gt;@@ -1,4 +1,4 @@&lt;/span&gt;
- Hello! This is a text file.
-
-&lt;span class=&quot;gd&quot;&gt;-I have some text written inside here.&lt;/span&gt;
-&lt;span class=&quot;gi&quot;&gt;+This is a new line!&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Don't forget to commit and push!&lt;/p&gt;
-&lt;h2 id=&quot;how-to-export-a-patch-from-github?&quot;&gt;How to export a patch from GitHub?&lt;/h2&gt;&lt;p&gt;I mentioned earlier that I had exported the patch file from GitHub and then applied it on a re-forked repository. How does one do that? It's not as hard as you think.&lt;/p&gt;
-&lt;p&gt;Here's the commands below with comments.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Download the patch from the pull request URL.&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# Replace curly-braced elements with the appropriate names.&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# Export it to /tmp/patch.txt.&lt;/span&gt;
-$ wget https://github.com/&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;repo_owner&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;repo&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/pull/&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;pr_number&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;.patch -O /tmp/patch.txt
-
-&lt;span class=&quot;c1&quot;&gt;# Now, apply the patch to your project&lt;/span&gt;
-$ git apply /tmp/patch.txt
-&lt;/pre&gt;&lt;/div&gt;
 </content>
   </entry>
 </feed>

@@ -110,53 +110,39 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/2/7/bayesian-inference-and-testing-sets/">Bayesian Inference &amp; Testing Sets</a></h1>
+    <h3><a href="../../../blog/2016/12/20/female-doctors-are-better-than-male-doctors-for-real/">Female Doctors are Better than Male Doctors - For Real?</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-02-07
+        on 2016-12-20
         
         |
         <!-- Append tags after author -->
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/bayesian/">
-          bayesian
+        <a href="../../../blog/tag/data science/">
+          data science
         </a>
         <i class="fas fa-tag"></i>
         <a href="../../../blog/tag/statistics/">
           statistics
         </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/data science/">
-          data science
-        </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>This topic recently came up again on the <a href="https://discourse.pymc.io/t/do-we-need-a-testing-set/759/5">PyMC3 discourse</a>. I had an opportunity to further clarify what I was thinking about when I first uttered the train/test split comment <a href="https://www.youtube.com/watch?v=s0S6HFdPtlA">at PyData NYC</a>.</p>
-<p>After a little while, my thoughts for a layperson are a bit clearer, and I thought I'd re-iterate them here.</p>
-<ol>
-<li>Model specification uncertainty: Did we get the conditional relationships correct? Did we specify enough of the explanatory variables?</li>
-<li>Model parameter uncertainty: Given a model, can we quantify the uncertainty in the parameter values?</li>
-</ol>
-<p>These are different uncertainties to deal with. We must be clear: where we are pretty sure about the model spec, Bayesian inference is about quantifying the uncertainty in the parameter values. Under this paradigm, if we use more data, we get narrower posterior distributions, and if we use less data, we get wider posterior distributions. If we split the data, we're just feeding in fewer data points to the model; if we don't, then we're just feeding in more data points.</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/2/7/bayesian-inference-and-testing-sets/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>For real. Read on for the statistical perspective on why.</p>
+<p>I saw this article published by JAMA, posted by a number of my friends on Facebook. The claim here was that patients treated by women doctors show lower readmission rates than...
+        <a href="../../../blog/2016/12/20/female-doctors-are-better-than-male-doctors-for-real/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -167,89 +153,63 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/2/6/pycon-program-committee-review/">PyCon Program Committee Review</a></h1>
+    <h3><a href="../../../blog/2016/12/15/experimenting-with-github-pages/">Experimenting with GitHub Pages</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-02-06
+        on 2016-12-15
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p>I've been playing a ton with GitHub pages recently, and so far, I've been impressed! My main use case has been in creating places where I can host Reveal.js slides online, and showcasing some writing that I've put together that doesn't fit in my...
+        <a href="../../../blog/2016/12/15/experimenting-with-github-pages/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2016/12/8/scientific-inquiry-laymans-version/">Scientific Inquiry, Layman&#39;s Version</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-12-08
         
         |
         <!-- Append tags after author -->
         <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/pycon/">
-          pycon
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/conferences/">
-          conferences
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/python/">
-          python
+        <a href="../../../blog/tag/science/">
+          science
         </a>
         
       </p>
       
     </small>
-
-    <p class="card-text"><p>This year, I participated in the PyCon 2018 program committee (ProgCom). Though it was my second time doing it, it nonetheless was an eye-opening experience. This was because in contrast to last year, when I was writing my thesis and thus couldn't follow through on both rounds of review, this year I was. I’d like to write a bit about my thoughts on the process, with three-fold goals:</p>
-<ol>
-<li>To document my experience reviewing this year's PyCon talks.</li>
-<li>To bring a little bit more transparency to the process. (Proposal authors, understandably, might feel like the process is opaque.)</li>
-<li>To indirectly encourage others to participate in the process by demystifying what goes on in the mind of a reviewer.</li>
-</ol>
-<p>Before I go on, though I do want to make a few points clear on what I will not be doing in this blog post.</p>
-<ol>
-<li>I will not be commenting on any particular proposal.</li>
-<li>I will not be mentioning specific reviewers' names and what they commented on specific proposals.</li>
-<li>I will not be offering tips for making your proposal succeed next year - that will depend on what next year’s program committee is looking for.</li>
-<li>I will not be describing the review process in detail, as this will be dealt with by an "official" blog post from the PSF.</li>
-<li>This blog post is definitely not an invitation to review your current round or next round proposal, as with a full-time job, I currently don't have the bandwidth for that.</li>
-</ol>
-<p>Ready to read on? Let's go!</p>
-<h2 id="stage-1:-scoring">Stage 1: Scoring</h2><p>The process for selecting talks is a two-stage process. In the first stage, we are rating the talks qualitatively (ordinally) on six criteria (for which I will defer to the official PSF blog post for details when it comes out). <strong>At this stage, we are blinded to a speaker's name and prior experience</strong>, as we want to review only the content on its merits. I'd like to give my thoughts on a few of the criteria below.</p>
-<p><strong>On "code of conduct"</strong>, this criteria ensures that there's no disparaging of sub-communities. I generally ding'ed talks that carried any hints of negativity, as I'd like to see PyCon be a positive force in the community. A few proposals were easily misconstrued as being negative, even though they weren't in substance; we tried our best to communicate this concern to proposal authors. That said, most talks are technical in nature, thus this criteria was not really an issue.</p>
-<p><strong>On "completeness"</strong>, it's really as about seeing whether an author demonstrated the meticulousness in making it easy for us to review. Timings were super important to me, to gauge whether I thought the talk proposer had over- or under-proposed content. I also sought detail to evaluate the accuracy of content and connect the sub-points into the author's overall message. The additional detail made it easier for me to champion a talk in the later stages.</p>
-<p>A few authors, while in communication with the ProgCom, flat-out refused to add in details after I had messaged them requesting details, citing other conferences' practices. Unfortunately, each conference is going to be slightly different in how they operate, and that ongoing dialogue can indirectly influence reviewers' perception and therefore the proposal's score. We're all human, and if a talk proposer comes off as uncooperative, especially when we provide an ongoing opportunity to engage in dialogue, it just makes it tougher to justify their elevated presence as a speaker at a conference that emphasizes cooperation and community.</p>
-<p><strong>On "coherence"</strong>, this point somewhat overlaps with "completeness", in that the accuracy of content can help boost this criteria. A good talk would cover one sufficiently focused topic for 30 minutes (or 45 minutes if request in sufficient depth.</p>
-<p>I think that what constitutes "sufficient" depends on our state of knowledge. For example, in data science, I would view it as not sufficient to speak on "how to do a data analysis", as it is now quite clear that each analysis is quite different, and the generalizable principles are too vague to be of use for a listener. On the other hand, speaking about solving a particular (data) science problem can be illuminating with solid take-aways for an audience members.</p>
-<p><strong>Other non-explicit criteria can affect the perception of a proposal</strong>. At this stage, we're doing an ongoing dialogue with proposal authors, up till the submission deadline. Thus, as mentioned above, an authors' cooperativeness can affect our perception of the proposal, particularly on the "code of conduct" criteria - it'll affect whether we can trust an author's ability to adhere to the code of conduct. Additionally, having good English grammar can affect how readable the proposal is. Finally, there is something qualitatively different about a proposal by an author who is deeply passionate about their topic and believes they have something important to say, in contrast to a proposal author who is merely trying to fulfill PyCon selection criteria. I want to hear from the former, not the latter.</p>
-<h2 id="stage-2:-selection">Stage 2: Selection</h2><p>At this stage, we looked at the composition of talks, and proposed "buckets" of topics that the talks covered. This means that the "topics" are defined by what the community puts together. In total, there were &gt;60+ groups of talks.</p>
-<p>In this stage, we are basically looking for one talk to emerge from each group. The unfortunate reality is that there will be some groups that are small (3 talks), and some groups that are large (&gt;15 talks), and many groups in between, meaning not every talk has an "equal" chance of making it through. This is entirely dependent on what the community has submitted, though, so there's no easy way to control for this.</p>
-<p><strong>At this stage, we are also debating what kind of conference we want.</strong> This is where it gets super interesting, and the idiosyncracies of each ProgCom member will show through. Here's a sampling of questions that went through my mind.</p>
-<p><strong>Do we want one in which mature talks are rehashed from the three other conferences it's already been at, or do we want new talks to come to prominence?</strong> It's not an easy decision - for some topics we favoured new ones, and for others we favoured mature talks.</p>
-<p><strong>Do we want experienced speakers or do we want to encourage new ones to come up?</strong> This one is relatively easy - we hard-limited speakers to one talk; some speakers proposed 5 or 6 of them, but we only take one, to enable other speakers to be present. This gives more room for newcomers to speak.</p>
-<p>For me, there were some experienced speakers giving new talks, and I knew they'd be able to pull it off given their track record; I favoured them on both merits: experience and topical novelty. On the other hand, there were experienced speakers taking a single talk around the conference circuit - for these talks, if they were publicly available online, I didn't favour them, and communicated that to other members of the ProgCom team.</p>
-<p>Amongst new speakers (and relatively unknown speakers) at PyCon, I was looking for slide decks to evaluate their message, and recordings of other talks that they had done. Knowing that there's a catch-22 problem (new speaker approximately means no recordings), I also tried looking in greater detail at the proposal for hints and clues that the speaker knew in great depth what they were speaking about, and were confident about delivering it. (Generally, good amounts of non-jargony detail highlight a speaker's capacity for mastery and communication skills simultaneously.)</p>
-<p>My advocacy for new speakers and new talks, and advocacy against talks that had been given at other conferences, particularly those which had a public recording available online, stems from my desire to see PyCon be complementary to other conferences. We're programmers, and I thInk Don't Repeat Yourself (DRY) is a good general principle to adhere to. Other ProgCom members were also free to disagree with my advocacy, as are you, the reader.</p>
-<p>In deciding on whether to include some evergreen topics at a beginners level or not, I looked to history to help me decide. For example, we hadn't had a beginner-friendly live talk on testing for the past few years, so I advocated in favour of that, even though one other program committee member disagreed and preferred to have more advanced testing talks in the program.</p>
-<p>One topic that I was super torn by when voting was in the Bayesian Statistics category. Two talks, one extremely topical and beginner friendly, the other deeply technical but extremely useful in a variety of domains, both by speakers whom I've learned from in the past. I couldn't bring myself to pick one, so I voted for both and communicated this guidance to others on the team, and let them cast the deciding vote.</p>
-<p>Finally, as a machine learner, I have been frustrated by new libraries that don't respect existing community idioms, however idiosyncratic those idioms are. One particular pet peeve is libraries that reinvent similar-yet-slightly-different APIs. There are a myriad of DataFrame APIs out there, yet I've only seen Dask do its best to explicitly implement the Pandas API. Likewise, there are a myriad of GPU tensor libraries out there, but I've only seen CuPy explicitly implement the NumPy API, which is idiomatic in the Python community. I thus strongly advocated for talks that described projects that explicitly adhered to and built on top of community idioms.</p>
-<h2 id="gratitude-towards-the-team">Gratitude towards the team</h2><p>I'm not ProgCom's fearless leader (Jason Myers, whose name will be public anyways, is our fearless leader (and spreadsheet maestro) – and yes, I know I mentioned a second name here), but I nonetheless feel a ton of gratiutde towards the team. We worked asynchronously, distributed around globe in a myriad of time zones. We gave incisive insight into topics, and educated each other on our respective areas of expertise. I learned and got excited about new topics in Python. We debated and advocated for a PyCon that we'd all be proud of presenting back to the community.</p>
-<h2 id="encouragement-for-speakers-accepted-and-turned-down">Encouragement for speakers, accepted and turned down</h2><p>As part of PyCon's program committee in 2018, I'm proud to congratulate speakers accepted to this year's PyCon talk lineup!</p>
-<p>To those who were turned down (myself included), I would like to offer up a picture of the reality we faced: some talks were decided by a single vote; at other times, we had to decide between two proposals submitted independently that paralleled each other; yet at other times, we saw such a big cluster of talks that we knew we wanted to hear, yet could only pick a handful because we didn't have an Education Summit-like dedicated track to accommodate all of them. Tough choices left and right. Don't be discouraged, you have important things to say, and there are many awesome Python-related venues (SciPy &amp; PyData) to present at.</p>
-<p>For those whose data science talks were turned down, ping me on Twitter @ericmjl: I'd love to organize a Data Science Summit with you at PyCon 2019!</p>
-<h2 id="addressing-potential-lingering-questions">Addressing potential lingering questions</h2><p><strong>Does everybody on the ProgCom have the qualifications to review every talk proposal submitted?</strong> Definitely not. I have a knowledge bias towards the data science talks, and could handle some of the web talks, but I was completely unqualified to review talks on security and Python internals. Thus, for the data science talks, I offered my guidance to the rest of the ProgCom on what would be useful to speak about, but deferred to the expertise of others for talks I could not intelligently comment on. More than once I found myself re-voting based on other expert opinions.</p>
-<p><strong>Without a fixed criteria on hand, how can talk proposers maximize their chances of getting their talk accepted?</strong> This “criteria” (if you want to call it that) develops organically over time. This is intentional, as PyCon is a community conference, not a topical conference. By not setting explicit topical criteria, we can solicit talks from the community that range from timely to evergreen, from specialized to broad, and beyond, allowing the community to speak for itself (pun, ahem, not intended).</p>
-<p>This is not to say that PyCon couldn't become a topical conference, in which the ProgCom solitics proposals in particular pre-defined categories. If this changes, I'd love for next year's ProgCom to be explicit about this change, so that proposal authors have enough time to prepare for it.</p>
-<p>Moreover, new topical areas can be proposed: if I am remembering history correctly, this is how the Education Summit came into being (though I'm happy to be corrected if I'm wrong). If anybody's up for it, I'd love for a topical "Data Science Summit" at PyCon to come to life as well! Let's propose it together next year through the Hatchery Program.</p>
-<p>Back to the question, though: if you're thinking of this question, your proposal is probably not the one I would vote in favour of. I personally would like to hear from speakers who are deeply technical and can inject passion into a room through their technical talk, rather than from someone who was trying to tick checkboxes.</p>
-<p><strong>If you're on the ProgCom, does this mean you can't propose a talk?</strong> Of course you can propose a talk! :) Our previous fearless leader, Ned Jackson Lovely, wrote an open source app that hides our own talks from our own review, thus enabling us to remain impartial. For what it's worth, my own talk was not accepted by the ProgCom, but I have no hard feelings about it - it was placed in a category with (I think) 21 talks, making that category super competitive.</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/2/6/pycon-program-committee-review/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>Today on Facebook, I saw a link shared by the friend of a professor at Berkeley whose group I nearly joined 6 years ago. (Life would have been very different if I did.) It was a link to a <a...
+        <a href="../../../blog/2016/12/8/scientific-inquiry-laymans-version/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -260,50 +220,25 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/1/29/refactor-notebook-code/">Refactor Notebook Code</a></h1>
+    <h3><a href="../../../blog/2016/12/1/the-renaissance-researcher/">The Renaissance Researcher</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-01-29
+        on 2016-12-01
         
-        |
-        <!-- Append tags after author -->
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/jupyter/">
-          jupyter
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/data science/">
-          data science
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/software engineering/">
-          software engineering
-        </a>
-        
-      </p>
-      
     </small>
-
-    <p class="card-text"><p>Jupyter notebooks that are filled with complex analyses can get unwieldy. Refactoring repeated code out into functions placed in modules should be standard practice, but from the sampling of Jupyter notebooks I've seen, I don't think this is standard practice.</p>
-<p>When should code be refactored? As soon as we start copying/pasting it! Making sure I have self-contained functions ensures that lingering state in my notebook doesn't cause unexpected behaviour. (Side note: learning the "functional" programming mindset can be very useful here!)</p>
-<p>But won't this slow down my pace? Isn't it faster to just copy and paste the code, and tweak what I need? Yes, but a small speed hit is going to be traded for a massive bump in rigour. Just today, I saw the effects of "lingering state" in my notebooks causing my plots to display different things before and after refactoring. It's not a good sign for any analysis if this happens.</p>
-<p>In short, refactor your code.</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/1/29/refactor-notebook-code/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>This is the computational biologist who knows how to design, execute, and analyze wet lab experiments and the generated data. This is the wet lab scientist who knows how to develop software that crunches the massive amounts of data that her...
+        <a href="../../../blog/2016/12/1/the-renaissance-researcher/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -314,37 +249,26 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/1/18/pymc3-docs-weibull-patches-merged/">PyMC3 docs + Weibull patches merged!</a></h1>
+    <h3><a href="../../../blog/2016/11/10/book-thoughts-the-theory-that-would-not-die/">Book Thoughts: The Theory That Would Not Die</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-01-18
+        on 2016-11-10
         
     </small>
-
-    <p class="card-text"><p>I recently had a few PRs merged into the PyMC3 codebase. Really happy about it, and just like my previous bug fix, I thought I'd share a bit about how those PRs came about.</p>
-<p>The <a href="https://github.com/pymc-devs/pymc3/pull/2789">first PR</a> was an update to the docs on when to specify precision and when to specify standard deviation. They're related, so only one has to be specified, but I sometimes am sloppy when reading the docs and didn't pick up on that. Thus, I added a few lines to make sure this was crystal clear to sloppy readers like me.</p>
-<p>The <a href="https://github.com/pymc-devs/pymc3/pull/2799">next PR</a> was an update to the Mixture model docs, in which I added an example of the new API for specifying components of mixture models. It previously wasn't clear how to do this, as there were no examples provided, so I put in a documentation PR specifying examples.</p>
-<p>The <a href="https://github.com/pymc-devs/pymc3/pull/2804">final PR</a> was a patch to the Weibull distribution. I wanted to play around with trying mixture Weibulls at work, but mixture Weibulls wouldn't work because it didn't have a mode specified. I checked on Wikipedia, and found that Weibull's mode is conditional on the value of its parameters, and thus put in a PR to make this happen. <a href="https://github.com/ericmjl/bayesian-analysis-recipes/blob/master/notebooks/mixture-model.ipynb">Trying it out on some simulated/toy data</a>, it worked! Thus, the devs allowed it to be merged.</p>
-<p>A few lessons I've learned along the way:</p>
-<p><strong>(1) Docs are an awesome place to start.</strong> In fact, I made a few formatting mistakes in my first and second PRs that gave an opportunity for another guy to fix! Nothing is too small to be made as a contribution. FWIW, my first contribution to open source software were documentation fixes for <code>matplotlib</code>, and that was a superb learning journey!</p>
-<p><strong>(2) Friendly maintainers are crucial.</strong> The PyMC dev team can basically be described as, "generally super nice!" From the online and in-person interactions I've had with them, there's little in the way of egos, they're always learning, always being generally helpful. If they weren't that way, I very likely would have second thoughts trying putting in a PR there.</p>
-<p><strong>(3) Open source lets me fix bugs I find.</strong> This lets me work at the pace that I need to, without having to wait for commercial vendors to provide update patches. If the patch that I find turns out to be useful for others, then the work I did can possibly save a ton of people's time as well. Win-win scenario!</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/1/18/pymc3-docs-weibull-patches-merged/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>One of two eBooks I bought to read on this trip to Vienna was "The Theory That Would Not Die". It was a good read, and I definitely have come to appreciate more the history behind Bayes' rule and its multiple deaths and resurrections.</p>
+<p>Three...
+        <a href="../../../blog/2016/11/10/book-thoughts-the-theory-that-would-not-die/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
-
 
 <div>
   <hr>
@@ -355,45 +279,143 @@
 <div class="card bg-dark">
   <link rel="stylesheet" href="../../../static/pygments.css">
   <div class="card-body">
-    <h1><a href="../../../blog/2018/1/10/offline-time/">Offline Time</a></h1>
+    <h3><a href="../../../blog/2016/11/10/vienna-and-imed-2016-reflections/">Vienna &amp; IMED 2016 Reflections</a></h3>
     <small class="text-muted">
       <p>
         written by
         
         <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
         
-        on 2018-01-10
+        on 2016-11-10
         
-        |
-        <!-- Append tags after author -->
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/work/">
-          work
-        </a>
-        <i class="fas fa-tag"></i>
-        <a href="../../../blog/tag/digital decluttering/">
-          digital decluttering
-        </a>
-        
-      </p>
-      
     </small>
-
-    <p class="card-text"><p>I was locked out of my work computer due to password reasons. (It's not human error - something about corporate management tools locked me out. Okay, well, that's human error too.) That said, I inadvertently gained a full two hours of offline time on Monday.</p>
-<p>Those two hours turned out to be pretty productive. I spent some time sketching out my work projects, trying to make better sense of how the project could fit in a disease area researcher's workflow, and figuring out derivative analyses that could enhance the value to them. This was something I probably wouldn't be able to accomplish if I had the regular distractions of my computer nearby.</p>
-<p>Seems like Cal Newport's "digital distraction de-cluttering" is a good thing to do. I must do more of it.</p>
-
-    </p>
-    <small class="text-muted">
-      <p class="card-text">
-        <i>Did you enjoy this blog post? <a href="../../../blog/2018/1/10/offline-time/#disqus">Let's discuss more</a>!
-        </i>
+    
+    <div>
+      <p class="card-text"><p>This trip &amp; conference was a productive one! I'm glad I went for it and didn't have to miss out on much (even though WebJet/Turkish Airlines (still can't sort out which) messed up my initial flight booking big-time).</p>
+<p>My biggest takeaways...
+        <a href="../../../blog/2016/11/10/vienna-and-imed-2016-reflections/">(read more)</a>
       </p>
-    </small>
-
+    </div>
+    
   </div>
 </div>
 
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2016/11/6/why-phenotypic-interpretation-matters/">Why Phenotypic Interpretation Matters</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-11-06
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p>At IMED 2016, I heard a lot of talks surrounding surveillance efforts. Most of it has been syndromic surveillance, because that's what's currently collectable. For digital disease surveillance, search queries (a marker of "interest" in a disease)...
+        <a href="../../../blog/2016/11/6/why-phenotypic-interpretation-matters/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2016/11/5/imed-2016-talks/">IMED 2016 - Talks</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-11-05
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p>Today (Day 1) was the day that talks and posters really started. Hackathon participants missed the first day, in which there was a plenary session of "high-level speakers". A bit of a pity to miss it, but that's okay - the hackathon was more...
+        <a href="../../../blog/2016/11/5/imed-2016-talks/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2016/11/4/imed-2016-hackathon/">IMED 2016 - Hackathon</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-11-04
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p>Yesterday and today, I was at the <a href="http://hackathon.isid.org/">IMED 2016 hackathon</a>, jointly organized by <a href="http://hackingmedicine.mit.edu/">Hacking Medicine at MIT</a> and the <a href="http://isid.org/">International Society for...
+        <a href="../../../blog/2016/11/4/imed-2016-hackathon/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+<div>
+  <hr>
+</div>
+
+
+
+<div class="card bg-dark">
+  <link rel="stylesheet" href="../../../static/pygments.css">
+  <div class="card-body">
+    <h3><a href="../../../blog/2016/11/1/paywalls/">Paywalls</a></h3>
+    <small class="text-muted">
+      <p>
+        written by
+        
+        <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+        
+        on 2016-11-01
+        
+    </small>
+    
+    <div>
+      <p class="card-text"><p>What a twist! A paper that I contributed to is behind a Wiley paywall.</p>
+<p><a href="../../../blog/2016/11/1/paywalls/ecoletters.png"><img src="../../../blog/2016/11/1/paywalls/ecoletters-small.png" alt="Ecology letters...
+        <a href="../../../blog/2016/11/1/paywalls/">(read more)</a>
+      </p>
+    </div>
+    
+  </div>
+</div>
 
 <div>
   <hr>
