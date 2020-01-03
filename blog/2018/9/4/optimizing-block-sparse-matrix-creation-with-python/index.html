@@ -111,51 +111,54 @@
 <!-- Import stylesheet -->
 <link rel="stylesheet" href="../../../../../static/pygments.css">
 <div>
-
-  <!-- Set title style -->
   
-  <h1>Optimizing Block Sparse Matrix Creation with Python</h1>
-  
+<!-- Set title style -->
 
-  <!-- Append author -->
-  <small class="text-muted">
-    <p>
-      written by
-      
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-      
-      on 2018-09-04
-      
-      |
-      <!-- Append tags after author -->
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/graph/">
-        graph
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/optimization/">
-        optimization
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/numba/">
-        numba
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/python/">
-        python
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/data science/">
-        data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/sparse matrix/">
-        sparse matrix
-      </a>
-      
-    </p>
+<h3>Optimizing Block Sparse Matrix Creation with Python</h3>
+
+
+<!-- Append author -->
+<small class="text-muted">
+  <p>
+    written by
     
-  </small>
+    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2018-09-04
+    
+  </p>
+  <p>
+    <!-- Append tags after author -->
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/graph/">
+      graph
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/optimization/">
+      optimization
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/numba/">
+      numba
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/python/">
+      python
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/data science/">
+      data science
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/sparse matrix/">
+      sparse matrix
+    </a>
+    
+  </p>
+  
+</small>
+
+
   <!-- Put post body -->
   <h1 id="introduction">Introduction</h1><p>At work, I recently encountered a neat problem. I'd like to share it with you all.</p>
 <p>One of my projects involves graphs; specifically, it involves taking individual graphs and turning them into one big graph. If you've taken my Network Analysis Made Simple workshops before, you'll have learned that graphs can be represented as a matrix, such as the one below:</p>

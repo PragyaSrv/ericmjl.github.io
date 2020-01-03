@@ -111,39 +111,42 @@
 <!-- Import stylesheet -->
 <link rel="stylesheet" href="../../../../../static/pygments.css">
 <div>
-
-  <!-- Set title style -->
   
-  <h1>ADVI: Scalable Bayesian Inference</h1>
-  
+<!-- Set title style -->
 
-  <!-- Append author -->
-  <small class="text-muted">
-    <p>
-      written by
-      
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-      
-      on 2019-01-21
-      
-      |
-      <!-- Append tags after author -->
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/bayesian/">
-        bayesian
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/variational inference/">
-        variational inference
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/data science/">
-        data science
-      </a>
-      
-    </p>
+<h3>ADVI: Scalable Bayesian Inference</h3>
+
+
+<!-- Append author -->
+<small class="text-muted">
+  <p>
+    written by
     
-  </small>
+    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-01-21
+    
+  </p>
+  <p>
+    <!-- Append tags after author -->
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/bayesian/">
+      bayesian
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/variational inference/">
+      variational inference
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/data science/">
+      data science
+    </a>
+    
+  </p>
+  
+</small>
+
+
   <!-- Put post body -->
   <h2 id="introduction">Introduction</h2><p>You never know when scalability becomes an issue. Indeed, scalability necessitates a whole different world of tooling.</p>
 <p>While at work, I've been playing with a model - a Bayesian hierarchical 4-parameter dose response model, to be specific. With this model, the overall goal (without going into proprietary specifics) was parameter learning - what's the 50th percentile concentration, what's the max, what's the minimum, etc.; what was also important was quantifying the uncertainty surrounding these parameters.</p>

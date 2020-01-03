@@ -111,47 +111,50 @@
 <!-- Import stylesheet -->
 <link rel="stylesheet" href="../../../../../static/pygments.css">
 <div>
-
-  <!-- Set title style -->
   
-  <h1>More Dask: Pre-Scattering Data</h1>
-  
+<!-- Set title style -->
 
-  <!-- Append author -->
-  <small class="text-muted">
-    <p>
-      written by
-      
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-      
-      on 2018-10-26
-      
-      |
-      <!-- Append tags after author -->
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/dask/">
-        dask
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/parallel/">
-        parallel
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/data science/">
-        data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/optimization/">
-        optimization
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/gridengine/">
-        gridengine
-      </a>
-      
-    </p>
+<h3>More Dask: Pre-Scattering Data</h3>
+
+
+<!-- Append author -->
+<small class="text-muted">
+  <p>
+    written by
     
-  </small>
+    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2018-10-26
+    
+  </p>
+  <p>
+    <!-- Append tags after author -->
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/dask/">
+      dask
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/parallel/">
+      parallel
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/data science/">
+      data science
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/optimization/">
+      optimization
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/gridengine/">
+      gridengine
+    </a>
+    
+  </p>
+  
+</small>
+
+
   <!-- Put post body -->
   <p>I learned a new thing about <code>dask</code> yesterday: pre-scattering data properly!</p>
 <p>Turns out, you can pre-scatter your data across worker nodes, and have them access that data later when submitting functions to the scheduler.</p>

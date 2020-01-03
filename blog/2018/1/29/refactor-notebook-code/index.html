@@ -111,39 +111,42 @@
 <!-- Import stylesheet -->
 <link rel="stylesheet" href="../../../../../static/pygments.css">
 <div>
-
-  <!-- Set title style -->
   
-  <h1>Refactor Notebook Code</h1>
-  
+<!-- Set title style -->
 
-  <!-- Append author -->
-  <small class="text-muted">
-    <p>
-      written by
-      
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-      
-      on 2018-01-29
-      
-      |
-      <!-- Append tags after author -->
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/jupyter/">
-        jupyter
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/data science/">
-        data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/software engineering/">
-        software engineering
-      </a>
-      
-    </p>
+<h3>Refactor Notebook Code</h3>
+
+
+<!-- Append author -->
+<small class="text-muted">
+  <p>
+    written by
     
-  </small>
+    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2018-01-29
+    
+  </p>
+  <p>
+    <!-- Append tags after author -->
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/jupyter/">
+      jupyter
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/data science/">
+      data science
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/software engineering/">
+      software engineering
+    </a>
+    
+  </p>
+  
+</small>
+
+
   <!-- Put post body -->
   <p>Jupyter notebooks that are filled with complex analyses can get unwieldy. Refactoring repeated code out into functions placed in modules should be standard practice, but from the sampling of Jupyter notebooks I've seen, I don't think this is standard practice.</p>
 <p>When should code be refactored? As soon as we start copying/pasting it! Making sure I have self-contained functions ensures that lingering state in my notebook doesn't cause unexpected behaviour. (Side note: learning the "functional" programming mindset can be very useful here!)</p>

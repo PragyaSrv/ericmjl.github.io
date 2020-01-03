@@ -111,47 +111,50 @@
 <!-- Import stylesheet -->
 <link rel="stylesheet" href="../../../../../static/pygments.css">
 <div>
-
-  <!-- Set title style -->
   
-  <h1>Lessons learned and reinforced from writing my own deep learning package</h1>
-  
+<!-- Set title style -->
 
-  <!-- Append author -->
-  <small class="text-muted">
-    <p>
-      written by
-      
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-      
-      on 2018-02-28
-      
-      |
-      <!-- Append tags after author -->
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/data science/">
-        data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/deep learning/">
-        deep learning
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/message passing neural networks/">
-        message passing neural networks
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/software engineering/">
-        software engineering
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/graph theory/">
-        graph theory
-      </a>
-      
-    </p>
+<h3>Lessons learned and reinforced from writing my own deep learning package</h3>
+
+
+<!-- Append author -->
+<small class="text-muted">
+  <p>
+    written by
     
-  </small>
+    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2018-02-28
+    
+  </p>
+  <p>
+    <!-- Append tags after author -->
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/data science/">
+      data science
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/deep learning/">
+      deep learning
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/message passing neural networks/">
+      message passing neural networks
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/software engineering/">
+      software engineering
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/graph theory/">
+      graph theory
+    </a>
+    
+  </p>
+  
+</small>
+
+
   <!-- Put post body -->
   <p>At work, I’ve been rolling my own deep learning package to experiment with graph convolutional neural networks. I did this because in graph-centric deep learning, an idea I picked up from this paper, the inputs, convolution kernels, and much more, are being actively developed, and the standard APIs don’t fit with this kind of data.</p>
 <p>Here’s lessons I learned (and reinforced) while doing this.</p>

@@ -111,35 +111,38 @@
 <!-- Import stylesheet -->
 <link rel="stylesheet" href="../../../../../static/pygments.css">
 <div>
-
-  <!-- Set title style -->
   
-  <h1>Recursive Programming and DAGs</h1>
-  
+<!-- Set title style -->
 
-  <!-- Append author -->
-  <small class="text-muted">
-    <p>
-      written by
-      
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-      
-      on 2017-10-10
-      
-      |
-      <!-- Append tags after author -->
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/programming/">
-        programming
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/code snippets/">
-        code snippets
-      </a>
-      
-    </p>
+<h3>Recursive Programming and DAGs</h3>
+
+
+<!-- Append author -->
+<small class="text-muted">
+  <p>
+    written by
     
-  </small>
+    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2017-10-10
+    
+  </p>
+  <p>
+    <!-- Append tags after author -->
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/programming/">
+      programming
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/code snippets/">
+      code snippets
+    </a>
+    
+  </p>
+  
+</small>
+
+
   <!-- Put post body -->
   <p>Over the past few days, I've found myself using recursive programming to implement a "model specification" system with inheritance for deep learning. The goal here is to enable reproducible computational experiments for particular deep learning hyperparameter sets. Reproducibility is something I learned from the Software/Data Carpentry initiative, thus I wanted to ensure that my own work was reproducible, even if it's not (because of corporate reasons) open-able, because it's the right thing to do.</p>
 <p>So, how do these "model spec" files work? I call them "experiment profiles", and they specify a bunch of things: <strong>model architecture</strong>, <strong>training parameters</strong>, and <strong>data tasks</strong>. These experiment profiles are stored in YAML files on disk. A profile essentially looks like the following (dummy examples provided, naturally):</p>

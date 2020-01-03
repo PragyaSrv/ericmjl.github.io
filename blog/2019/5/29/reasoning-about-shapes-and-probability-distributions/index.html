@@ -111,47 +111,50 @@
 <!-- Import stylesheet -->
 <link rel="stylesheet" href="../../../../../static/pygments.css">
 <div>
-
-  <!-- Set title style -->
   
-  <h1>Reasoning about Shapes and Probability Distributions</h1>
-  
+<!-- Set title style -->
 
-  <!-- Append author -->
-  <small class="text-muted">
-    <p>
-      written by
-      
-      <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
-      
-      on 2019-05-29
-      
-      |
-      <!-- Append tags after author -->
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/bayesian/">
-        bayesian
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/probabilistic programming/">
-        probabilistic programming
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/tensors/">
-        tensors
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/data science/">
-        data science
-      </a>
-      <i class="fas fa-tag"></i>
-      <a href="../../../../../blog/tag/probability distributions/">
-        probability distributions
-      </a>
-      
-    </p>
+<h3>Reasoning about Shapes and Probability Distributions</h3>
+
+
+<!-- Append author -->
+<small class="text-muted">
+  <p>
+    written by
     
-  </small>
+    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2019-05-29
+    
+  </p>
+  <p>
+    <!-- Append tags after author -->
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/bayesian/">
+      bayesian
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/probabilistic programming/">
+      probabilistic programming
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/tensors/">
+      tensors
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/data science/">
+      data science
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/probability distributions/">
+      probability distributions
+    </a>
+    
+  </p>
+  
+</small>
+
+
   <!-- Put post body -->
   <p>I’m here with the PyMC4 dev team and Tensorflow Probability developers Rif, Brian and Chris in Google Montreal, and have found the time thus far to be an amazing learning opportunity.</p>
 <p>Prior to this summit, it never dawned on me how interfacing tensors with probability distributions could be such a minefield of overloaded ideas and terminology. Yet, communicating clearly about tensors is important, because if problems can be cast into a tensor-space operation, vectorization can help speed up many operations that we wish to handle. I wanted to share a bit about something new about tensors that I learned here: the different types of shapes involved in a probabilistic programming language.</p>
