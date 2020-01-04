@@ -972,7 +972,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
       <name>Eric J. Ma</name>
     </author>
     <content type="html">&lt;p&gt;For the 6th year running, I’m out at UT Austin for &lt;a href=&quot;https://www.scipy2019.scipy.org/&quot;&gt;SciPy 2019&lt;/a&gt;! It’s one of my favorite conferences to attend, because the latest in data science tooling is well featured in the conference program, and I get to meet in-person a lot of the GitHub usernames that I interact with online.&lt;/p&gt;
-&lt;p&gt;I will be involved in three tutorials this year, which I think have become my data science toolkit: Bayesian stats, network science, and deep learning. Really excited to share my knowledge; my hope is that at least a few more people find the practical experience I’ve gained over the years useful, and that they can put it to good use in their own work too. This year is also the first year I’ve submitted a talk on pyjanitor, which is a package that I have developed with others for cleaning data, also excited to share this with the broader SciPy community!&lt;/p&gt;
+&lt;p&gt;I will be involved in three tutorials this year, which I think have become my data science toolkit: Bayesian stats, network science, and deep learning. Really excited to share my knowledge; my hope is that at least a few more people find the practical experience I’ve gained over the years useful, and that they can put it to good use in their own work too. This year is also the first year I’ve submitted a talk on &lt;code&gt;pyjanitor&lt;/code&gt;, which is a package that I have developed with others for cleaning data, also excited to share this with the broader SciPy community!&lt;/p&gt;
 &lt;p&gt;I’m also looking forward to meeting the conference scholarship recipients. Together with Scott Collis and Celia Cintas, we’ve been managing the FinAid process for the past three years, and each year it heartens me to see the scholarship recipients in person.&lt;/p&gt;
 &lt;p&gt;Finally, this year’s SciPy is quite unique for me, as it is the first year that I’ll be here with colleagues at work! (In prior years, I came alone, and did networking on my own.) I hope they all have as much of a fun time as I have at SciPy!&lt;/p&gt;
 </content>
@@ -1080,41 +1080,11 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;p&gt;I think there are great ideas in all three, and when I take a birds-eye view of the scientific computing ecosystem in Python as both a developer and end-user, I’d love to see the NumPy API, which is idiomatic and widely used and built on top of, become aware of each of these types of designs, something akin to NEP-18, the array function dispatching protocol that allows NumPy APIs to be called on other tensor libraries.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/pycon-2019-tutorial-and-conference-days/">
-    <title type="text">PyCon 2019 Tutorial and Conference Days</title>
-    <id>urn:uuid:6deb7465-7419-311f-8605-23b31aefa0e6</id>
-    <updated>2019-05-10T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2019/5/10/pycon-2019-tutorial-and-conference-days/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;It's just been days since I got back from PyCon, and I'm already looking forward to 2020! But I thought it'd be nice to continue the recap.&lt;/p&gt;
-&lt;p&gt;This year at PyCon, I co-led two tutorials, one with Hugo Bowne-Anderson on &lt;a href=&quot;https://us.pycon.org/2019/schedule/presentation/77/&quot;&gt;Bayesian Data Science by Simulation&lt;/a&gt;, and the other with Mridul Seth on &lt;a href=&quot;https://us.pycon.org/2019/schedule/presentation/70/&quot;&gt;Network Analysis Made Simple&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I always enjoy teaching with &lt;a href=&quot;../../../../../blog/2019/5/10/pycon-2019-tutorial-and-conference-days/#&quot;&gt;Hugo&lt;/a&gt;. He brought his giant sense of humour, both figuratively and literally, to this tutorial, and melded it with his deep grasp of the math behind Bayesian statistics, delivering a workshop that, by many points of feedback, is excellent. Having reviewed the tutorial feedback, we've got many ideas for our showcase of Part II at SciPy 2019!&lt;/p&gt;
-&lt;p&gt;This year was the first year that Mridul and I swapped roles. In previous years, he was my TA, helping tutorial participants while I did the main lecturing. This year, the apprentice became the master, and a really good one indeed! Looking forward to seeing him shine more in subsequent tutorial iterations.&lt;/p&gt;
-&lt;p&gt;During the conference days, I spent most of my time either helping out with Financial Aid, or at the Microsoft booth. As I have alluded to in multiple tweets, Microsoft's swag this year was the best of them all. Microelectronics kits in a blue lunch box from Adafruit, and getting set up with &lt;a href=&quot;https://azure.microsoft.com/en-us/&quot;&gt;Azure&lt;/a&gt;. In fact, this website is now re-built with each push on Azure pipelines! Indeed, &lt;a href=&quot;https://twitter.com/zooba&quot;&gt;Steve Dowell&lt;/a&gt; from Microsoft told me that this year's best swag was probably getting setup with Azure, and I'm 100% onboard with that! (Fun fact, Steve told me that he's never been called by his Twitter handle (&lt;code&gt;zooba&lt;/code&gt;) in real-life... until we met.)&lt;/p&gt;
-&lt;p&gt;I also delivered a talk this year, which essentially amounted to a &lt;a href=&quot;https://us.pycon.org/2019/schedule/presentation/174/&quot;&gt;formal rant against canned statistical procedures&lt;/a&gt;. I had a ton of fun delivering this talk. The usual nerves still get to me, and I had to do a lot of talking-to-myself-style rehearsals to work off those nerves. For the first time, I also did office hours post-talk at an Open Space, where for one hour, we talked about all things Bayes. Happy to have met everybody who came by; I genuinely enjoyed the chat!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/context-switching/">
-    <title type="text">Context Switching</title>
-    <id>urn:uuid:138c066f-4d92-30c1-9ce1-fcb960d09b9f</id>
-    <updated>2019-05-10T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2019/5/10/context-switching/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Context switching is hard. I noticed this when I was at the PyCon sprints, where I was bouncing from sprinter to sprinter, trying to give them each the necessary attention to get their chosen sprint tasks done. After a while, it took a toll on my brain, and I started finding it hard to concentrate on the next problem.&lt;/p&gt;
-&lt;p&gt;Under such circumstances, when one is context switching often (most hopefully out of one's own volition), how do we communicate that we need some ramp-up time, and how can others help us help them?&lt;/p&gt;
-&lt;p&gt;I think one practical thing that can be done is to frequently communicate on each context switch that context ramp-up is needed. In the future, when I switch contexts, first thing I'm going to ask is something along the lines of, &quot;What context do I need to help me help you?&quot; Or, if I'm lost, I can clearly communicate what I'm missing - if it's context that I'm missing - by stating, &quot;I think I'm missing some context. Can you bring me up to speed?&quot;&lt;/p&gt;
-&lt;p&gt;At least while sprinting, sprinters can definitely help me help them by providing the necessary context up-front. Perhaps this applies more generally as well: when we're asking someone for help, we may be able to help them out by asking them, &quot;What context from me would help you get up-to-speed here?&quot;&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2019/5/8/pycon-2019-sprints/">
+  <entry xml:base="http://www.ericmjl.com/blog/2019/5/11/pycon-2019-sprints/">
     <title type="text">PyCon 2019 Sprints</title>
     <id>urn:uuid:d8d5337d-96e9-3b0d-9230-36f97c2bdfb4</id>
-    <updated>2019-05-08T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2019/5/8/pycon-2019-sprints/" />
+    <updated>2019-05-11T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/5/11/pycon-2019-sprints/" />
     <author>
       <name>Eric J. Ma</name>
     </author>
@@ -1212,6 +1182,36 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;/ul&gt;
 </content>
   </entry>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/pycon-2019-tutorial-and-conference-days/">
+    <title type="text">PyCon 2019 Tutorial and Conference Days</title>
+    <id>urn:uuid:6deb7465-7419-311f-8605-23b31aefa0e6</id>
+    <updated>2019-05-10T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/5/10/pycon-2019-tutorial-and-conference-days/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;It's just been days since I got back from PyCon, and I'm already looking forward to 2020! But I thought it'd be nice to continue the recap.&lt;/p&gt;
+&lt;p&gt;This year at PyCon, I co-led two tutorials, one with Hugo Bowne-Anderson on &lt;a href=&quot;https://us.pycon.org/2019/schedule/presentation/77/&quot;&gt;Bayesian Data Science by Simulation&lt;/a&gt;, and the other with Mridul Seth on &lt;a href=&quot;https://us.pycon.org/2019/schedule/presentation/70/&quot;&gt;Network Analysis Made Simple&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I always enjoy teaching with &lt;a href=&quot;../../../../../blog/2019/5/10/pycon-2019-tutorial-and-conference-days/#&quot;&gt;Hugo&lt;/a&gt;. He brought his giant sense of humour, both figuratively and literally, to this tutorial, and melded it with his deep grasp of the math behind Bayesian statistics, delivering a workshop that, by many points of feedback, is excellent. Having reviewed the tutorial feedback, we've got many ideas for our showcase of Part II at SciPy 2019!&lt;/p&gt;
+&lt;p&gt;This year was the first year that Mridul and I swapped roles. In previous years, he was my TA, helping tutorial participants while I did the main lecturing. This year, the apprentice became the master, and a really good one indeed! Looking forward to seeing him shine more in subsequent tutorial iterations.&lt;/p&gt;
+&lt;p&gt;During the conference days, I spent most of my time either helping out with Financial Aid, or at the Microsoft booth. As I have alluded to in multiple tweets, Microsoft's swag this year was the best of them all. Microelectronics kits in a blue lunch box from Adafruit, and getting set up with &lt;a href=&quot;https://azure.microsoft.com/en-us/&quot;&gt;Azure&lt;/a&gt;. In fact, this website is now re-built with each push on Azure pipelines! Indeed, &lt;a href=&quot;https://twitter.com/zooba&quot;&gt;Steve Dowell&lt;/a&gt; from Microsoft told me that this year's best swag was probably getting setup with Azure, and I'm 100% onboard with that! (Fun fact, Steve told me that he's never been called by his Twitter handle (&lt;code&gt;zooba&lt;/code&gt;) in real-life... until we met.)&lt;/p&gt;
+&lt;p&gt;I also delivered a talk this year, which essentially amounted to a &lt;a href=&quot;https://us.pycon.org/2019/schedule/presentation/174/&quot;&gt;formal rant against canned statistical procedures&lt;/a&gt;. I had a ton of fun delivering this talk. The usual nerves still get to me, and I had to do a lot of talking-to-myself-style rehearsals to work off those nerves. For the first time, I also did office hours post-talk at an Open Space, where for one hour, we talked about all things Bayes. Happy to have met everybody who came by; I genuinely enjoyed the chat!&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/context-switching/">
+    <title type="text">Context Switching</title>
+    <id>urn:uuid:138c066f-4d92-30c1-9ce1-fcb960d09b9f</id>
+    <updated>2019-05-10T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/5/10/context-switching/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;Context switching is hard. I noticed this when I was at the PyCon sprints, where I was bouncing from sprinter to sprinter, trying to give them each the necessary attention to get their chosen sprint tasks done. After a while, it took a toll on my brain, and I started finding it hard to concentrate on the next problem.&lt;/p&gt;
+&lt;p&gt;Under such circumstances, when one is context switching often (most hopefully out of one's own volition), how do we communicate that we need some ramp-up time, and how can others help us help them?&lt;/p&gt;
+&lt;p&gt;I think one practical thing that can be done is to frequently communicate on each context switch that context ramp-up is needed. In the future, when I switch contexts, first thing I'm going to ask is something along the lines of, &quot;What context do I need to help me help you?&quot; Or, if I'm lost, I can clearly communicate what I'm missing - if it's context that I'm missing - by stating, &quot;I think I'm missing some context. Can you bring me up to speed?&quot;&lt;/p&gt;
+&lt;p&gt;At least while sprinting, sprinters can definitely help me help them by providing the necessary context up-front. Perhaps this applies more generally as well: when we're asking someone for help, we may be able to help them out by asking them, &quot;What context from me would help you get up-to-speed here?&quot;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/4/29/pycon-2019-pre-journey/">
     <title type="text">PyCon 2019 Pre-Journey</title>
     <id>urn:uuid:ea18dc8e-651f-31d1-99c8-7ccf0d8665f9</id>
@@ -1259,6 +1259,7 @@ $$1 - \frac{var(y_{true} - y_{pred})}{var(y_{true})}$$
 $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 &lt;/p&gt;&lt;p&gt;There's no variance in errors, even though they are systematically shifted off from the true prediction. Like r&lt;sup&gt;2&lt;/sup&gt;, variance explained will fail here.&lt;/p&gt;
 &lt;p&gt;As usual, &lt;a href=&quot;https://en.wikipedia.org/wiki/Anscombe%27s_quartet&quot;&gt;Ansecombe's quartet&lt;/a&gt;, as does &lt;a href=&quot;https://www.autodeskresearch.com/publications/samestats&quot;&gt;The Datasaurus Dozen&lt;/a&gt;, gives us a pertinent reminder that visually inspecting your model predictions is always a good thing!&lt;/p&gt;
+&lt;p&gt;h/t to my colleague, &lt;a href=&quot;https://www.linkedin.com/in/clayton-springer-5a48072/&quot;&gt;Clayton Springer&lt;/a&gt;, for sharing this with me.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/3/22/functools-partial/">
