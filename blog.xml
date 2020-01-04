@@ -2,13 +2,62 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
-  <updated>2020-01-02T00:00:00Z</updated>
+  <updated>2020-01-04T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2020/1/4/build-your-digital-profile-as-a-data-scientist/">
+    <title type="text">Build your digital profile as a data scientist</title>
+    <id>urn:uuid:ffdd56bc-fefa-3008-926f-d1c93493157d</id>
+    <updated>2020-01-04T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2020/1/4/build-your-digital-profile-as-a-data-scientist/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;I have received questions from others on how to build a digital profile for career development. Everybody’s going to have a unique path, and what I think I can offer are observations on what I think have been helpful for myself and others who have enjoyed similar successes in getting started. My hope is that these pointers, which come from self-reflection over the past two years of work, help you.&lt;/p&gt;
+&lt;h2 id=&quot;the-maybe-timeless-and-cross-industry-principles&quot;&gt;The maybe-timeless and cross-industry principles&lt;/h2&gt;&lt;p&gt;First off, here are some things that I think are timeless principles in the job search, and are probably true for a large swathe of professional roles.&lt;/p&gt;
+&lt;p&gt;Firstly, nobody owes me their time or a job; &lt;strong&gt;I have a lot of leeway to make it as easy as possible for others to say, “Yes, I would like to have you on board”&lt;/strong&gt;. Naturally, this statement ignores structural privileges and inequalities that exist in society, so I would be realistic in what I can accomplish. That said, it's usually a good prior to assume that everybody is busy, and that you need to properly advertise what you can offer.&lt;/p&gt;
+&lt;p&gt;In line with the same idea, I start with the presumption that nobody has the spare time to think deeply about a candidate when there are many other things in one's mind. The corollary is that &lt;strong&gt;it is on me to frame how I want others to view me&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;data-science-specific-things&quot;&gt;Data science-specific things&lt;/h2&gt;&lt;p&gt;Now, for a data science role, being able to demonstrate the following can only help, not hurt, your application and candidacy:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ability to use your skills to solve real problems of value.&lt;/li&gt;
+&lt;li&gt;Good coding practices.&lt;/li&gt;
+&lt;li&gt;Good storytelling and communication ability.&lt;/li&gt;
+&lt;li&gt;Proficiency with building &quot;products&quot; that aid in decision-making.&lt;/li&gt;
+&lt;li&gt;Ability to work collaboratively with others.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In data science, “value” usually means saving money. Saving time = saving money, in case that was not clear. Hence, automation &lt;em&gt;is&lt;/em&gt; valuable.&lt;/p&gt;
+&lt;p&gt;Good coding practices are important: I have an &lt;a href=&quot;https://ericmjl.github.io/essays-on-data-science/software-skills/&quot;&gt;essay collection&lt;/a&gt; on them, if you need a resource to get started.&lt;/p&gt;
+&lt;p&gt;Communication skills are universally important in professional roles, and data science is no different.&lt;/p&gt;
+&lt;p&gt;What does enhance communication is the ability to build interactive tools that guide a busy decision-maker towards ethical and profitable choices (hopefully in that order). Good value judgment is needed here!&lt;/p&gt;
+&lt;h2 id=&quot;where-are-prospective-hiring-teams-going-to-look?&quot;&gt;Where are prospective hiring teams going to look?&lt;/h2&gt;&lt;p&gt;This comes from &lt;code&gt;n=7&lt;/code&gt; candidates for (I think) 3 candidate searches at work that I was involved in. The order in which I was looking was:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Resume&lt;/li&gt;
+&lt;li&gt;LinkedIn&lt;/li&gt;
+&lt;li&gt;GitHub&lt;/li&gt;
+&lt;li&gt;Personal website&lt;/li&gt;
+&lt;li&gt;Google Scholar&lt;/li&gt;
+&lt;li&gt;Old/current research group website&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The resume is what you turn in. Make sure it's clean, readable, and that it concisely captures exactly what you're looking to communicate to the hiring team: how you're going to be a good fit for the role.&lt;/p&gt;
+&lt;p&gt;When I looked at LinkedIn, I was, quite interestingly, looking at their social network. Who might they plausibly know? At least for the team I'm on, I know credentials and certifications matter less than evidence of projects done, which brings me to the next place...&lt;/p&gt;
+&lt;p&gt;GitHub. I was looking for evidence of candidates' ability to code. A well fleshed-out GitHub profile with publicly browsable repositories and a contribution record that is mostly your own makes it so much easier to see your coding style. I also looked for evidence of familiarity with packages, continuous integration tooling, good version control, and collaborations with other package developers.&lt;/p&gt;
+&lt;p&gt;Your projects that demonstrate the data science skills above should be prominently featured on your profile page. Project types that, in contemporary times, communicate these skills well include:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Data products that you've built&lt;/li&gt;
+&lt;li&gt;Teaching material that you've made&lt;/li&gt;
+&lt;li&gt;Contributions you've made to other repositories, in particular pull requests and issues politely raised.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I looked at Google Scholar as well to get a flavour for a candidate's prior research work. It's an indication of one's domain expertise, and &lt;em&gt;possibly&lt;/em&gt; an indicator of the kinds of problems one will gravitate towards. (This last point has been at least true for myself; however, for one jumping from, say, biological data science to flight data science, this will be much less relevant.)&lt;/p&gt;
+&lt;p&gt;The diversity of one's collaborators also helps paint a picture: did you specialize in work with one other person all of your academic career, or did you work in large teams, or did you work mostly solo? (Don't put a value judgment so quickly: each has their own strengths.)&lt;/p&gt;
+&lt;p&gt;A candidate's old research group is something I would check only out of curiosity, just to know more.&lt;/p&gt;
+&lt;h2 id=&quot;the-kitchen-sink-of-tips&quot;&gt;The kitchen sink of tips&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Tip #1:&lt;/strong&gt; if you put your source code on GitHub, always include in the README why the repository exists, and a guide to how to use the repository. It is a marker of &quot;sociable working style&quot;: in other words, you're able to think of how others are going to interact with things that you've created. (Using others' tools happens all the time at work!)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tip #2:&lt;/strong&gt; If you put a notebook up in your repository, be sure to make the repo &lt;a href=&quot;https://mybinder.org/&quot;&gt;Binder-friendly&lt;/a&gt;. It doesn't take much: environment spec file is all thats needed!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/1/2/on-automating-principled-statistical-analyses/">
     <title type="text">On automating principled statistical analyses</title>
     <id>urn:uuid:83eea983-3b43-3a2a-9d50-191790569054</id>
@@ -2267,29 +2316,6 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&quot;conference&quot;&gt;Conference&lt;/h2&gt;&lt;p&gt;I missed the talks mostly because I was doing the Tejas Room track (sit in the Tejas room and chat with people). I nonetheless had a very fruitful and fun time doing so!&lt;/p&gt;
 &lt;p&gt;To make up for lost time, I put together a &lt;a href=&quot;https://www.youtube.com/playlist?list=PLW01hpWnEtbTORVE7o70mZqB7IVVjOr4E&quot;&gt;playlist&lt;/a&gt; of things I'd like to catch up on later.&lt;/p&gt;
 &lt;h2 id=&quot;sprints&quot;&gt;Sprints&lt;/h2&gt;&lt;p&gt;For the first time ever, I stayed on to sprint! However, I also simultaneously caught a conference bug, so I was basically knocked out for the second day of sprints. For this year's sprints, I implemented a declarative interface for geographic graph visualizations in nxviz, where node placement is prioritized according by geographic information. The intent here isn't to replace geospatial analysis packages, but rather to provide a quick, &lt;code&gt;seaborn&lt;/code&gt;-like view into a graph's geographical structure. Once a user has a feel for the data, if nothing more is needed, they can use the graph as is; otherwise, they can move onto a different package.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/7/16/bayesian-estimation-group-comparison-and-workflow/">
-    <title type="text">Bayesian Estimation, Group Comparison, and Workflow</title>
-    <id>urn:uuid:4c1b9be5-3f2a-3ee6-b7bb-c7d06227a6fc</id>
-    <updated>2018-07-16T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/7/16/bayesian-estimation-group-comparison-and-workflow/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Over the past year, having learned about Bayesian inference methods, I finally see how estimation, group comparison, and model checking build upon each other into this really elegant framework for data analysis.&lt;/p&gt;
-&lt;h2 id=&quot;parameter-estimation&quot;&gt;Parameter Estimation&lt;/h2&gt;&lt;p&gt;The foundation of this is &quot;estimating a parameter&quot;. In a typical situation, we are most concerned with the parameter of interest. It could be a population mean, or a population variance. If there's a mathematical function that links the input variables to the output (a.k.a. &quot;link function&quot;), then the parameters of the model are that function's parameters. The key point here is that the atomic activity of Bayesian analysis is the estimation of a parameter, and its associated uncertainty.&lt;/p&gt;
-&lt;h2 id=&quot;comparison-of-groups&quot;&gt;Comparison of Groups&lt;/h2&gt;&lt;p&gt;Building on that, we can then estimate parameters for more than one group of things. As a first pass, we could assume that each of the groups are unrelated, and thus &quot;independently&quot; (I'm trying to avoid overloading this term) estimate parameters per group under this assumption. Alternatively, we could assume that the groups are related to one another, and thus use a &quot;hierarchical&quot; model to estimate parameters for each group.&lt;/p&gt;
-&lt;p&gt;Once we've done that, what's left is the comparison of parameters between the groups. The simplest activity is to compare the posterior distributions' 95% highest posterior densities, and check to see if they overlap. Usually this is done for the mean, or for regression parameters, but the variance might also be important to check as well.&lt;/p&gt;
-&lt;h2 id=&quot;model-check&quot;&gt;Model Check&lt;/h2&gt;&lt;p&gt;Rounding off this framework is model checking: how do we test that the model is a good one? The bare minimum that we should do is simulate data from the model - it should generate samples whose distribution looks like the actual data itself. If it doesn't, then we have a problem, and need to go back and rework the model structure until it does.&lt;/p&gt;
-&lt;p&gt;Could it be that we have a model that only fits the data on hand (overfitting)? Potentially so - and if this is the case, then our best check is to have an &quot;out-of-sample&quot; group. While a train/test/validation split might be useful, the truest test of a model is new data that has been collected.&lt;/p&gt;
-&lt;h2 id=&quot;thoughts&quot;&gt;Thoughts&lt;/h2&gt;&lt;p&gt;These three major steps in Bayesian data analysis workflows did not come together until recently; they each seemed disconnected from the others. Perhaps this was just an artefact of how I was learning them. However, I think I've finally come to a unified realization: Estimation is necessary before we can do comparison, and model checking helps us build confidence in the estimation and comparison procedures that we use.&lt;/p&gt;
-&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;&lt;p&gt;When doing Bayesian data analysis, the key steps that we're performing are:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Estimation&lt;/li&gt;
-&lt;li&gt;Comparison&lt;/li&gt;
-&lt;li&gt;Model Checking&lt;/li&gt;
-&lt;/ol&gt;
 </content>
   </entry>
 </feed>
