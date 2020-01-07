@@ -15,7 +15,12 @@
     </style>
 
     
-    
+    <!-- Syntax Highlighter. Use both pygments and hl.js. -->
+    <link rel="stylesheet" href="../../../../../static/pygments.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
 
     <!-- Google Analytics -->
     <script>
@@ -56,7 +61,7 @@
 
 </head>
 
-<title>Tag: software development - Eric J. Ma's Personal Site</title>
+<title>FastAPI: Flask-like generator of web APIs - Eric J. Ma's Personal Site</title>
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#local-links" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,22 +107,76 @@
     </nav>
     <div class="container">
         
-<h1><i class="fas fa-tag"></i> software development</h1>
-<ul>
   
-    <li><a href="../../../blog/2020/1/7/fastapi-flask-like-generator-of-web-apis/">2020-01-07: FastAPI: Flask-like generator of web APIs</a></li>
+<!-- Import stylesheet -->
+<link rel="stylesheet" href="../../../../../static/pygments.css">
+<div>
   
-    <li><a href="../../../blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/">2019-12-15: A Review of the Python Data Science Dashboarding Landscape in 2019</a></li>
+<!-- Set title style -->
+
+<h1>FastAPI: Flask-like generator of web APIs</h1>
+
+
+<!-- Append author -->
+<small class="text-muted">
+  <p>
+    written by
+    
+    <a href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2020-01-07
+
+    
+    | tags:
+    <!-- Append tags after author -->
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/software development/">
+      software development
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/web/">
+      web
+    </a>
+    <i class="fas fa-tag"></i>
+    <a href="../../../../../blog/tag/data science/">
+      data science
+    </a>
+    
+  </p>
   
-    <li><a href="../../../blog/2019/7/29/how-to-be-a-great-code-sprinter/">2019-07-29: How to be a great code sprinter</a></li>
-  
-    <li><a href="../../../blog/2019/7/21/how-to-lead-a-great-code-sprint/">2019-07-21: How to lead a great code sprint</a></li>
-  
-    <li><a href="../../../blog/2019/5/11/pycon-2019-sprints/">2019-05-11: PyCon 2019 Sprints</a></li>
-  
-    <li><a href="../../../blog/2015/4/3/semantic-versioning-for-papers-a-manifesto/">2015-04-03: Semantic Versioning for Papers: A Manifesto</a></li>
-  
-</ul>
+</small>
+
+
+  <!-- Put post body -->
+  <p>I test-drove <a href="https://fastapi.tiangolo.com/">FastAPI</a> yesterday, and true to it's name, it's fast! And when the developers say fast, they mean it in at least two ways:</p>
+<ol>
+<li>It's fast to execute.</li>
+<li>It's fast to develop an API.</li>
+</ol>
+<p>I'd like to write about the second point.</p>
+<p>Prior to FastAPI, my development framework of choice to build a web API would have been Flask (though I will admit, I have only developed web apps, not web APIs before). My familiarity with Flask turned out to be extremely helpful for learning FastAPI: its own API tracks very closely with Flask! Many of the same idioms, including instantiating a <code>FastAPI</code> object and using <code>@app.route</code>  decorators with string interpolation in the URIs, carry over. This is the first way that FastAPI makes API development fast: <strong>by using existing idioms</strong>.</p>
+<p>Prior to FastAPI, I did have reservations about developing a web API using Flask because I wasn't sure how to provide sufficient documentation to API users/testers on how to use it. (Have you seen Swagger APIs <em>without</em> example usage documentation? Frustrating!) Turns out, FastAPI <strong>parses your docstrings to provide API docs</strong>. This means you can provide an example usage inside the routing function, and on the <code>/docs</code> endpoint, all they will render on the API docs!</p>
+<p>So in summary, FastAPI is a very productive tool to use for developing APIs. I highly recommend you check it out once you hit the appropriate opportunity!</p>
+
+</div>
+
+  <a name="disqus"></a>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/fastapi-flask-like-generator-of-web-apis"; this.page.url = "http://www.ericmjl.com/blog/2020/1/7/fastapi-flask-like-generator-of-web-apis/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//ericmjl.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
     </div>
 
