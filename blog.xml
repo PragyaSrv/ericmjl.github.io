@@ -2,13 +2,40 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
-  <updated>2020-01-07T00:00:00Z</updated>
+  <updated>2020-01-12T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2020/1/12/honk-on-you-fools-insecure-in-your-miniscule-private-parts/">
+    <title type="text">“Honk on, you fools insecure in your miniscule private parts.”</title>
+    <id>urn:uuid:bd7185e4-7308-33bf-a08c-45de6ead1185</id>
+    <updated>2020-01-12T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2020/1/12/honk-on-you-fools-insecure-in-your-miniscule-private-parts/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;A pattern I have noticed: the drivers who honk the most at cyclists are the ones who have the largest vehicles. Based on my anecdotal counting (highly inaccurate, probably exaggerated, but captures the effect), 1 in 15 pickup truck drivers will honk at me for cycling on the road in Quincy, and will shout out their window that I should ride on the sidewalk, followed by a gas pedal run right after. Supremely insecure ignoramus is the name I would give them.&lt;/p&gt;
+&lt;p&gt;Usually, out of pure frustration, I just give them the metaphorical finger back by ignoring them. Based on my memory from my driving exam, I vaguely remembered a few pointers about the rules of the road pertaining to cyclist-motorist interactions. I decided to check them out.&lt;/p&gt;
+&lt;p&gt;From the Massachusetts government website, &lt;a href=&quot;https://www.mass.gov/doc/laws-for-bicyclists-and-motorists-in-the-presence-of-bicyclists/download&quot;&gt;the rules of the road document Chapter 4&lt;/a&gt; (page 108), a selection of rules pertaining to the cyclist-driver interactions and cyclist road usage.&lt;/p&gt;
+&lt;p&gt;As a cyclist:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You can use the &lt;strong&gt;full lane&lt;/strong&gt; (emphasis in original) anywhere, anytime, and on any street (except limited access or express state highways where signs specifically prohibiting bicycles have been posted), &lt;em&gt;even if there is a bike lane&lt;/em&gt; (emphasis mine).&lt;/li&gt;
+&lt;li&gt;You can keep to the right when passing a motor vehicle moving in the travel lane and you can move to the front of an intersection at stop lights.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As a motorist:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Do Not Squeeze Bicycles in a Narrow Lane:&lt;/strong&gt; If a lane is too narrow to pass a bicycle at a safe distance, be &lt;strong&gt;PATIENT&lt;/strong&gt; (emphasis original) until you can safely use an adjacent lane or &lt;strong&gt;WAIT&lt;/strong&gt; (emphasis original) until it is safe to pass in the lane you share. (Chap. 89, Sec. 2) &lt;em&gt;You should stay at least three feet away when passing.&lt;/em&gt; (emphasis mine)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Be aware that bicyclists Do Not Always Have to Signal Turns!&lt;/strong&gt; Bicyclists must signal their intent by either hand to stop or turn. However, the signal does not have to be continuous or be made at all if both hands are needed for the bicycle’s safe operation. (Chap. 85, Sec. 11B).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Turns out, I was not wrong about riding on the road!&lt;/p&gt;
+&lt;p&gt;So there, according to Massachusetts’ government-endorsed rules of the road, as a cyclist, I am entitled to use the entire lane whenever I see fit, &lt;em&gt;even in the presence of a bike lane&lt;/em&gt;, and am under zero obligation to use the sidewalk simply for a motorist’s convenience. I choose to ride on the right side just to make things easier for drivers (and as an occasional driver myself, I much appreciate it when cyclists do so; the Golden Rule is pretty good here). But where the rules are quite clear, I definitely do not appreciate being honked and shouted at for riding on a road that I am rightfully allowed to use.&lt;/p&gt;
+&lt;h2 id=&quot;addendum&quot;&gt;Addendum&lt;/h2&gt;&lt;p&gt;To be clear, I’m already thankful it’s only about 1 in 15 pickup-truck drivers and about 1 in 50 regular drivers who honk at me.&lt;/p&gt;
+&lt;p&gt;At the same time, I’m looking for ideas to make the ignoramuses aware of the rules of the road. Would be happy to chat on &lt;a href=&quot;https://octodon.social/web/accounts/7711&quot;&gt;Mastodon&lt;/a&gt; or &lt;a href=&quot;../../../../../blog/2020/1/12/honk-on-you-fools-insecure-in-your-miniscule-private-parts/twitter.com/ericmjl&quot;&gt;Twitter&lt;/a&gt; if you have ideas.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/1/7/fastapi-flask-like-generator-of-web-apis/">
     <title type="text">FastAPI: Flask-like generator of web APIs</title>
     <id>urn:uuid:230fffac-ad23-3638-a3cf-0449d2469e24</id>
@@ -2290,31 +2317,6 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;In the GeoPlot constructor API, the keyword arguments &lt;code&gt;node_lat&lt;/code&gt; and &lt;code&gt;node_lon&lt;/code&gt; specify which node metadata are to be used to place nodes on the x- and y- axes.&lt;/p&gt;
 &lt;p&gt;By no means do I intend for GeoPlot to replace more sophisticated analysis methods; like &lt;code&gt;seaborn&lt;/code&gt;, the interface is declarative; for me, the intent is to provide a very quick-and-dirty way for an end user to visualize graphs with spatially constrained nodes.&lt;/p&gt;
 &lt;p&gt;Please enjoy!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/7/27/pyjanitor-0-3-released/">
-    <title type="text">pyjanitor 0.3 released!</title>
-    <id>urn:uuid:7b76f896-3f53-3cbd-b657-89ab432b1d4b</id>
-    <updated>2018-07-27T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/7/27/pyjanitor-0-3-released/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;A new release of &lt;a href=&quot;https://github.com/ericmjl/pyjanitor&quot;&gt;&lt;code&gt;pyjanitor&lt;/code&gt;&lt;/a&gt; is out!&lt;/p&gt;
-&lt;p&gt;Two new features that I have added in include:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Concatenating column names into a single column, such that each item is separated by a delimiter.&lt;/li&gt;
-&lt;li&gt;Deconcatenating a column into multiple columns, separating on the basis of a delimiter.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Both of these tasks come up frequently in data preparation.&lt;/p&gt;
-&lt;p&gt;For example, concatenating a few columns together oftentimes lets us create an unique index based sample properties.&lt;/p&gt;
-&lt;p&gt;On the other hand, deconcatenating columns into multiple columns can be useful when our index is used to store metadata. (This really shouldn't be happening, but... sometimes that's just how the world works right now...)&lt;/p&gt;
-&lt;p&gt;Here's an example of how it works:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;../../../../../blog/2018/7/27/pyjanitor-0-3-released/carbon-original.png&quot;&gt;&lt;img src=&quot;../../../../../blog/2018/7/27/pyjanitor-0-3-released/carbon-small.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;To install &lt;code&gt;pyjanitor&lt;/code&gt;, grab it from PyPI:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pip&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pyjanitor&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The conda-forge build will be coming soon!&lt;/p&gt;
 </content>
   </entry>
 </feed>
