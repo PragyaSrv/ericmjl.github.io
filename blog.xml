@@ -2,13 +2,155 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
-  <updated>2020-01-16T00:00:00Z</updated>
+  <updated>2020-01-18T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2020/1/18/create-your-own-auto-publishing-slides-with-reveal-md-and-travis-ci/">
+    <title type="text">Create your own auto-publishing slides with reveal-md and Travis CI</title>
+    <id>urn:uuid:22c54666-66e3-378c-9d7d-64e97a2d64f2</id>
+    <updated>2020-01-18T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2020/1/18/create-your-own-auto-publishing-slides-with-reveal-md-and-travis-ci/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;For my PyData Ann Arbor Meetup talk, I decided to use &lt;a href=&quot;https://github.com/webpro/reveal-md&quot;&gt;&lt;code&gt;reveal-md&lt;/code&gt;&lt;/a&gt; and a Markdown file to generate my slides. Here, I'd like to write about how I used &lt;code&gt;reveal-md&lt;/code&gt; and Travis CI to continually publish my slides as I updated them, thus making them accessible to everybody on the web.&lt;/p&gt;
+&lt;h2 id=&quot;what-is-reveal-md-?&quot;&gt;What is &lt;code&gt;reveal-md&lt;/code&gt;?&lt;/h2&gt;&lt;p&gt;&lt;code&gt;reveal-md&lt;/code&gt; is nothing more than a live web server for that converts Markdown files into &lt;code&gt;reveal.js&lt;/code&gt; slides that can be hosted via a web server, static site, or PDF.&lt;/p&gt;
+&lt;h2 id=&quot;why-reveal-md-?&quot;&gt;Why &lt;code&gt;reveal-md&lt;/code&gt;?&lt;/h2&gt;&lt;p&gt;I much prefer to use Markdown to write my slides, as doing so comes with one big benefit: I am focused on the content that I want to deliver, and not the less important details that are easy to screw up (animations, positioning, etc.). Constraining what's accessible to me forces me to be extremely clear and succinct on what I'm trying to communicate. And if I really desired anything fancier, I could weave in some HTML with no issue.&lt;/p&gt;
+&lt;h2 id=&quot;create-your-own-auto-publishing-reveal-md-slides&quot;&gt;Create your own auto-publishing &lt;code&gt;reveal-md&lt;/code&gt; slides!&lt;/h2&gt;&lt;p&gt;Let’s walk through the steps needed to make this a reality for you!&lt;/p&gt;
+&lt;h3 id=&quot;create-a-new-repository&quot;&gt;Create a new repository&lt;/h3&gt;&lt;p&gt;On GitHub, create a new repository that has a nice and informative name. (For now, we’ll just refer to that repository as &lt;code&gt;my-talk&lt;/code&gt; for convenience.)&lt;/p&gt;
+&lt;h3 id=&quot;get-setup-locally&quot;&gt;Get setup locally&lt;/h3&gt;&lt;p&gt;To get setup, you need to make sure that &lt;code&gt;reveal-md&lt;/code&gt; is on your &lt;code&gt;PATH&lt;/code&gt;. I choose to use &lt;code&gt;conda&lt;/code&gt; environments to manage my packages, so I have a slightly convoluted way of doing this, by using &lt;code&gt;conda&lt;/code&gt; to install &lt;code&gt;nodejs&lt;/code&gt; (which installs the &lt;code&gt;npm&lt;/code&gt; node package manager), followed by using the node package manager to install &lt;code&gt;reveal-md&lt;/code&gt;. We first start by preparing an &lt;code&gt;environment.yml&lt;/code&gt; specification file that &lt;code&gt;conda&lt;/code&gt; can use to build your environment:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;my_talk&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda-forge&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;python=3.8&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;nodejs&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, we can execute the installation commands.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Installation commands&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Create environment&lt;/span&gt;
+conda env create -f environment.yml
+
+&lt;span class=&quot;c1&quot;&gt;# Activate environment&lt;/span&gt;
+conda activate my_talk
+
+&lt;span class=&quot;c1&quot;&gt;# Install reveal-md&lt;/span&gt;
+npm install -g reveal-md
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To learn more about &lt;code&gt;conda&lt;/code&gt; hacks that can improve your efficiency, I &lt;a href=&quot;https://ericmjl.github.io/blog/2018/12/25/conda-hacks-for-data-science-efficiency/&quot;&gt;have a blog post&lt;/a&gt; that you can reference.&lt;/p&gt;
+&lt;h3 id=&quot;write-your-slides&quot;&gt;Write your slides&lt;/h3&gt;&lt;p&gt;Before we go onto the automation, it’s important that you get a feel for the workflow so you know what’s being automated.&lt;/p&gt;
+&lt;p&gt;Let’s write a simple Markdown file that has two slides:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;---
+title: My Fancy Talk!
+---
+
+&lt;span class=&quot;gh&quot;&gt;#&lt;/span&gt; My Fancy Talk
+
+Speaker Name
+
+Date
+
+---
+
+&lt;span class=&quot;gu&quot;&gt;##&lt;/span&gt; Hello!
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Save it as &lt;code&gt;slides.md&lt;/code&gt;. The filename isn’t special, it’s just convenient to remember.&lt;/p&gt;
+&lt;p&gt;To see more of what &lt;code&gt;reveal.js&lt;/code&gt; can do, check out the &lt;a href=&quot;https://github.com/hakimel/reveal.js&quot;&gt;RevealJS GitHub repository&lt;/a&gt;!&lt;/p&gt;
+&lt;h3 id=&quot;preview-your-slides&quot;&gt;Preview your slides&lt;/h3&gt;&lt;p&gt;To serve it up, run the following command at your terminal:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;reveal-md slides.md  &lt;span class=&quot;c1&quot;&gt;# replace with the filename of your slides&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Your browser should now pop open, and your slides will be there! &lt;code&gt;reveal.js&lt;/code&gt; made simple, thanks to &lt;code&gt;reveal-md&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;continue-editing-your-slides&quot;&gt;Continue editing your slides&lt;/h3&gt;&lt;p&gt;Now, you can continue editing your slides, keeping in mind the following pointers.&lt;/p&gt;
+&lt;p&gt;Firstly, &lt;code&gt;---&lt;/code&gt; (three of them) denotes horizontal slide transition, while &lt;code&gt;----&lt;/code&gt; (four of them) denotes vertical slide transitions. Use this to organize your content.&lt;/p&gt;
+&lt;p&gt;Secondly, to progressively reveal pointers on a slide, you need to add the following HTML comment right after the element. For example, to show bullet points progressively:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; Bullet Point 1
+&amp;lt;!-- .element class=&amp;quot;fragment&amp;quot; --&amp;gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; Bullet Point 2
+&amp;lt;!-- .element class=&amp;quot;fragment&amp;quot; --&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;aside:-fancier-items&quot;&gt;Aside: fancier items&lt;/h3&gt;&lt;p&gt;If you need fancier things, you can weave in HTML at your own convenience. For example, I embedded an HTML table to organize &lt;a href=&quot;https://github.com/ColCarroll/imcmc&quot;&gt;&lt;code&gt;imcmc&lt;/code&gt;&lt;/a&gt; logos that I had previously compiled.&lt;/p&gt;
+&lt;h3 id=&quot;get-travis-ci-setup&quot;&gt;Get Travis CI setup&lt;/h3&gt;&lt;p&gt;You’ll now want to create a &lt;code&gt;.travis.yml&lt;/code&gt;, which commands Travis to do things. It’s generally nothing more than a collection of bash commands that are executed in order. An example Travis configuration file from my &lt;a href=&quot;https://ericmjl.github.io/testing-for-data-scientists&quot;&gt;data science testing talk&lt;/a&gt; looks like this:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;python&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;python&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# We don&amp;#39;t actually use the Travis Python, but this keeps it organized.&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;3.5&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;install&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# We do this conditionally because it saves us some downloading if the&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# version is the same.&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bash miniconda.sh -b -p $HOME/miniconda&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export PATH=&amp;quot;$HOME/miniconda/bin:$PATH&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;hash -r&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda config --set always_yes yes --set changeps1 no&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda update -q conda&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Useful for debugging any issues with conda&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda info -a&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Install Python and required packages.&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda env create -f environment.yml&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;source activate testing-for-data-scientists&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Install reveal-md&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;npm install -g reveal-md&lt;/span&gt;
+
+
+&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Create the docs directory. This is where we will be publishing from&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# (see the &amp;quot;deploy&amp;quot; section below).&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;mkdir -p docs/&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Use reveal-md to generate static docs.&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;reveal-md slides.md --static docs --disable-auto-open --theme white&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;cp -r assets docs/.&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Use reveal-md to generate PDF.&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;reveal-md slides.md --disable-auto-open --theme white --print slides.pdf&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;cp slides.pdf docs/.&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;# This is an example to deploy to a branch through Travis.&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;deploy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;provider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pages&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;skip-cleanup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;github-token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;$GITHUB_TOKEN&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Set in the settings page of your repository, as a secure variable&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;keep-history&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# We read the master branch&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;master&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Take the docs/ directory&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;local-dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;docs&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Publish to the gh-pages branch&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;target-branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;gh-pages&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;verbose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You’ll notice that the commands we want Travis to execute are basically the same as those we executed manually. The only difference now is that we command &lt;code&gt;reveal-md&lt;/code&gt; to build a static site under the directory &lt;code&gt;site/&lt;/code&gt;, which we then command Travis to push to GitHub pages.&lt;/p&gt;
+&lt;p&gt;In the &lt;code&gt;deploy&lt;/code&gt; section, we are specifying to Travis that we want all of the content under the directory &lt;code&gt;site/&lt;/code&gt; to be pushed to the &lt;code&gt;gh-pages&lt;/code&gt; branch of our repository. (We have not yet connected Travis to our repo; that will happen next, so sit tight!)&lt;/p&gt;
+&lt;p&gt;Notice also the &lt;code&gt;$GITHUB_TOKEN&lt;/code&gt; environment variable: we need to declare that as well. The &lt;code&gt;GITHUB_TOKEN&lt;/code&gt; is an authentication token that GitHub will recognize when Travis CI pushes the &lt;code&gt;site/&lt;/code&gt; directory to &lt;code&gt;gh-pages&lt;/code&gt;. Because underneath the hood we are using &lt;code&gt;bash&lt;/code&gt; syntax in the YAML file, when we declare the &lt;code&gt;GITHUB_TOKEN&lt;/code&gt;, we do it without the &lt;code&gt;$&lt;/code&gt; symbol, but when we need to grab it from the environment, we include the &lt;code&gt;$&lt;/code&gt; symbol, just as in regular plain old &lt;code&gt;bash&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;get-a-github-deploy-token&quot;&gt;Get a GitHub deploy token&lt;/h3&gt;&lt;p&gt;Under your repository settings, generate a deploy/“personal access” token. Exact docs are &lt;a href=&quot;https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line&quot;&gt;here&lt;/a&gt;, so in the spirit of “don’t repeat yourself” and “learn to read the docs”, I will encourage you to read them.&lt;/p&gt;
+&lt;p&gt;Once you have generated a deploy key, copy them somewhere - you will need it later. (Tip: also make sure you don’t accidentally save it to disk!)&lt;/p&gt;
+&lt;h3 id=&quot;connect-travis-ci-to-your-repository&quot;&gt;Connect Travis CI to your repository&lt;/h3&gt;&lt;p&gt;On Travis CI, connect your Travis CI account to GitHub, and then enable Travis to look for changes on the &lt;code&gt;my-talk&lt;/code&gt; repository. Generally, this is done by going to your user settings, and searching for “Legacy Services Integration”, then toggling the checkbox to enable it on your &lt;code&gt;my-talk&lt;/code&gt; repository.&lt;/p&gt;
+&lt;p&gt;Once that is done, go into the Travis CI settings for the repository. Navigate to the “Environment Variables” section, and declare the &lt;code&gt;GITHUB_TOKEN&lt;/code&gt; there. Be sure to keep it hidden from the output!&lt;/p&gt;
+&lt;h3 id=&quot;turn-on-github-pages&quot;&gt;Turn on GitHub pages&lt;/h3&gt;&lt;p&gt;To turn on GitHub pages, we are going to stick to a pretty sane and widely-used set of practices when interacting with GitHub repositories and static sites.&lt;/p&gt;
+&lt;p&gt;Firstly, on the GitHub repository for &lt;code&gt;my-talk&lt;/code&gt;, create a new branch (using the web interface or through the CLI) called &lt;code&gt;gh-pages&lt;/code&gt;. This time round, the name is definitely special, as GitHub recognizes this branch as a legitimate GitHub pages branch to serve content from.&lt;/p&gt;
+&lt;p&gt;Secondly, go to the &lt;strong&gt;repository&lt;/strong&gt; settings (not your user settings), and ensure that GitHub pages is enabled for the repository. Usually, adding the &lt;code&gt;gh-pages&lt;/code&gt; branch will result in this option being  automagically turned on.&lt;/p&gt;
+&lt;p&gt;Now, run:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;git add slides.md environment.yml .travis.yml&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;git commit -m &amp;quot;first commit&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;git push&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Your slides, environment config, and Travis CI config files are now pushed to GitHub.&lt;/p&gt;
+&lt;h3 id=&quot;check-on-travis&quot;&gt;Check on Travis&lt;/h3&gt;&lt;p&gt;Travis is now going to be building your slides and pushing them to the &lt;code&gt;gh-pages&lt;/code&gt; branch. If all goes well, you will see the slides show up at the URL: &lt;code&gt;https://your_username.github.io/my-talk&lt;/code&gt;. (Naturally, replace &lt;code&gt;your_username&lt;/code&gt; with your GitHub username, and &lt;code&gt;my-talk&lt;/code&gt; with your repository name.&lt;/p&gt;
+&lt;h2 id=&quot;debugging-builds&quot;&gt;Debugging builds&lt;/h2&gt;&lt;p&gt;In case the build fails, you can inspect the output. Any errors are basically your standard bash &lt;code&gt;stderr&lt;/code&gt;, so if you know how to debug error messages, you should be able to debug issues with the build.&lt;/p&gt;
+&lt;h2 id=&quot;beyond-this&quot;&gt;Beyond this&lt;/h2&gt;&lt;p&gt;Going beyond serving up &lt;code&gt;reveal.js&lt;/code&gt; slides, Travis hooked up to GitHub pages can help you build static sites very easily.&lt;/p&gt;
+&lt;p&gt;If you use a static site generator (such as &lt;a href=&quot;https://www.getlektor.com/&quot;&gt;Lektor&lt;/a&gt;, &lt;a href=&quot;https://gohugo.io/&quot;&gt;Hugo&lt;/a&gt;, &lt;a href=&quot;https://blog.getpelican.com/&quot;&gt;Pelican&lt;/a&gt;, &lt;a href=&quot;https://www.gatsbyjs.org/&quot;&gt;Gatsby&lt;/a&gt; or &lt;a href=&quot;https://getnikola.com/&quot;&gt;Nikola&lt;/a&gt;), then you can create websites whose sources are fully under your control, 100% customizable, and fast to load. I do not blog on Medium because I desire full control over the display of my blog content, and I want to be able to take it anywhere I desire, without relying on a platform that might lock my content in. My personal website uses Lektor + Travis to push to GitHub pages; please feel free to look at &lt;a href=&quot;https://github.com/ericmjl/website&quot;&gt;the source&lt;/a&gt; and raid the repo for anything you’d like!&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Addendum: I learned today from a fellow friend Nathan Matias that Netflix’s blog posts on Medium have been paywalled. Another reason for us to take back hosting of slides and blog content into our own hands!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Today I learned the &lt;a href=&quot;https://twitter.com/netflix?ref_src=twsrc%5Etfw&quot;&gt;@netflix&lt;/a&gt; tech blog posts are paywalled by Medium and I may have to take their post off my syllabus.&lt;br&gt;&lt;br&gt;Now I wonder if they paywalled posts which I intend to be freely available. Have any of you found that Medium was unexpectedly charging people for your work?&lt;/p&gt;&amp;mdash; J. Nathan Matias (@natematias) &lt;a href=&quot;https://twitter.com/natematias/status/1218244174299963392?ref_src=twsrc%5Etfw&quot;&gt;January 17, 2020&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/1/16/pydata-ann-arbor-meetup-testing-for-data-science/">
     <title type="text">PyData Ann Arbor Meetup: Testing for Data Science</title>
     <id>urn:uuid:01da3011-ef98-3d2d-9952-59a74ed5339e</id>
@@ -2319,18 +2461,6 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
     <content type="html">&lt;p&gt;Joint probability, conditional probability, and marginal probability... These are three central terms when learning about probability, and they show up in Bayesian statistics as well. However... I never really could remember what they were, especially since we were usually taught them using formulas, rather than pictures.&lt;/p&gt;
 &lt;p&gt;Well, for those who learn a bit better using pictures... if you know what a probability distribution is, then hopefully these help with remembering what these terms mean. (Clicking on the image will bring you to the original, hosted on GitHub.)&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/ericmjl/distributions/raw/master/joint-conditional-marginal.pdf&quot;&gt;&lt;img src=&quot;../../../../../blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/joint-conditional-marginal.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/8/6/d-separation-in-causal-inference/">
-    <title type="text">d-separation in causal inference</title>
-    <id>urn:uuid:d8b72cb8-2e3e-388c-b0e8-ea1481189cb7</id>
-    <updated>2018-08-06T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/8/6/d-separation-in-causal-inference/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Yesterday evening, I had an empty block of time during which I finally did a worked example of finding whether two nodes are &quot;d-separated&quot; in a causal graph. It was pretty instructive to implement the algorithm. It also reminded me yet again: there's this weird thing about me where I need programming to learn math!&lt;/p&gt;
-&lt;p&gt;Anyways, if you're interested in seeing the implementation, it's available at &lt;a href=&quot;https://github.com/ericmjl/causality&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
 </feed>
