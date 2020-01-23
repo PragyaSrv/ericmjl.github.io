@@ -950,25 +950,6 @@ so the onus is on us computation types to get help navigate “data space” mor
 &lt;p&gt;There are other advanced features that &lt;code&gt;cachier&lt;/code&gt; provides, and so I’d encourage you to go and take a look at it!&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/">
-    <title type="text">Multiple Coin-Flips vs. One Coin Flip Generalized?</title>
-    <id>urn:uuid:3df0c5f9-3913-3dae-8550-1cbfdd5a6505</id>
-    <updated>2019-10-05T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Do people learn better by:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Generalizing from one example explained well, or by&lt;/li&gt;
-&lt;li&gt;Having multiple case studies that highlight the same point?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I think both are needed, but I am also torn sometimes by whether it’s more effective to communicate using the former or the latter.&lt;/p&gt;
-&lt;p&gt;Case in point: In teaching Bayesian statistics, the coin flip is a particular case of the Beta-Binomial model. However, the Beta-Binomial model can be taken from its most elementary form (estimation on one group) through to its most sophisticated form (hierarchically estimating &lt;code&gt;p&lt;/code&gt;).&lt;/p&gt;
-&lt;p&gt;I guess if the goal is to show how broadly applicable a given model class (i.e. the beta-binomial model) is, a teacher would elect to jump between multiple examples that are apparently distinct. However, if the goal is build depth (i.e. going from single group to multiple group estimation), sticking with one example (e.g. of baseball players, classically) would be the better strategy.&lt;/p&gt;
-&lt;p&gt;Both are needed, just at different times, I think. Thinking through this example, I think, gives me a first-principles way of deciding which approach to go for.&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/10/5/jupyter-server-with-https-on-personal-server/">
     <title type="text">Jupyter Server with HTTPS on Personal Server</title>
     <id>urn:uuid:9b74c6db-5130-3fcf-a2a7-0b1f922121d7</id>
@@ -1008,6 +989,25 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NotebookApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keyfile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sa&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/absolute/path/to/your/certificate/mykey.key&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;If this helps you, leave me a note in the comments below. :)&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/">
+    <title type="text">Multiple Coin-Flips vs. One Coin Flip Generalized?</title>
+    <id>urn:uuid:3df0c5f9-3913-3dae-8550-1cbfdd5a6505</id>
+    <updated>2019-10-05T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;Do people learn better by:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Generalizing from one example explained well, or by&lt;/li&gt;
+&lt;li&gt;Having multiple case studies that highlight the same point?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I think both are needed, but I am also torn sometimes by whether it’s more effective to communicate using the former or the latter.&lt;/p&gt;
+&lt;p&gt;Case in point: In teaching Bayesian statistics, the coin flip is a particular case of the Beta-Binomial model. However, the Beta-Binomial model can be taken from its most elementary form (estimation on one group) through to its most sophisticated form (hierarchically estimating &lt;code&gt;p&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;I guess if the goal is to show how broadly applicable a given model class (i.e. the beta-binomial model) is, a teacher would elect to jump between multiple examples that are apparently distinct. However, if the goal is build depth (i.e. going from single group to multiple group estimation), sticking with one example (e.g. of baseball players, classically) would be the better strategy.&lt;/p&gt;
+&lt;p&gt;Both are needed, just at different times, I think. Thinking through this example, I think, gives me a first-principles way of deciding which approach to go for.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/9/7/dokku-building-an-internal-heroku-at-work/">
@@ -1201,6 +1201,20 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;/blockquote&gt;&lt;p&gt;Having thought about this, I agree. Over time, we should let the results speak. At the same time, I want to help create the environment that I would like to work in: where my colleagues use the same tooling stack, are hacker-types, aren’t afraid to dig deep into the “computer stuff” and into the biology/chemistry, and have the necessary skill + desire to design machine learning systems to systematically accelerate discovery science.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/7/7/scipy-2019-pre-conference/">
+    <title type="text">SciPy 2019 Pre-Conference</title>
+    <id>urn:uuid:af61fdd0-67f0-368f-98a7-1007c7024a16</id>
+    <updated>2019-07-07T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/7/7/scipy-2019-pre-conference/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;For the 6th year running, I’m out at UT Austin for &lt;a href=&quot;https://www.scipy2019.scipy.org/&quot;&gt;SciPy 2019&lt;/a&gt;! It’s one of my favorite conferences to attend, because the latest in data science tooling is well featured in the conference program, and I get to meet in-person a lot of the GitHub usernames that I interact with online.&lt;/p&gt;
+&lt;p&gt;I will be involved in three tutorials this year, which I think have become my data science toolkit: Bayesian stats, network science, and deep learning. Really excited to share my knowledge; my hope is that at least a few more people find the practical experience I’ve gained over the years useful, and that they can put it to good use in their own work too. This year is also the first year I’ve submitted a talk on &lt;code&gt;pyjanitor&lt;/code&gt;, which is a package that I have developed with others for cleaning data, also excited to share this with the broader SciPy community!&lt;/p&gt;
+&lt;p&gt;I’m also looking forward to meeting the conference scholarship recipients. Together with Scott Collis and Celia Cintas, we’ve been managing the FinAid process for the past three years, and each year it heartens me to see the scholarship recipients in person.&lt;/p&gt;
+&lt;p&gt;Finally, this year’s SciPy is quite unique for me, as it is the first year that I’ll be here with colleagues at work! (In prior years, I came alone, and did networking on my own.) I hope they all have as much of a fun time as I have at SciPy!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/7/7/order-of-magnitude-is-more-than-accurate-enough/">
     <title type="text">Order of magnitude is more than accurate enough</title>
     <id>urn:uuid:544726e7-4d22-3318-9b25-bd2736b63d62</id>
@@ -1230,20 +1244,6 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;p&gt;Order of magnitude estimates on the right question are more useful than precise quantifications on the wrong question. &lt;/p&gt;
 &lt;p class=&quot;blockquote-footer&quot;&gt;Mashup&lt;/p&gt;
 &lt;/blockquote&gt;</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2019/7/7/scipy-2019-pre-conference/">
-    <title type="text">SciPy 2019 Pre-Conference</title>
-    <id>urn:uuid:af61fdd0-67f0-368f-98a7-1007c7024a16</id>
-    <updated>2019-07-07T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2019/7/7/scipy-2019-pre-conference/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;For the 6th year running, I’m out at UT Austin for &lt;a href=&quot;https://www.scipy2019.scipy.org/&quot;&gt;SciPy 2019&lt;/a&gt;! It’s one of my favorite conferences to attend, because the latest in data science tooling is well featured in the conference program, and I get to meet in-person a lot of the GitHub usernames that I interact with online.&lt;/p&gt;
-&lt;p&gt;I will be involved in three tutorials this year, which I think have become my data science toolkit: Bayesian stats, network science, and deep learning. Really excited to share my knowledge; my hope is that at least a few more people find the practical experience I’ve gained over the years useful, and that they can put it to good use in their own work too. This year is also the first year I’ve submitted a talk on &lt;code&gt;pyjanitor&lt;/code&gt;, which is a package that I have developed with others for cleaning data, also excited to share this with the broader SciPy community!&lt;/p&gt;
-&lt;p&gt;I’m also looking forward to meeting the conference scholarship recipients. Together with Scott Collis and Celia Cintas, we’ve been managing the FinAid process for the past three years, and each year it heartens me to see the scholarship recipients in person.&lt;/p&gt;
-&lt;p&gt;Finally, this year’s SciPy is quite unique for me, as it is the first year that I’ll be here with colleagues at work! (In prior years, I came alone, and did networking on my own.) I hope they all have as much of a fun time as I have at SciPy!&lt;/p&gt;
-</content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/6/30/bone-marrow-donations/">
     <title type="text">Bone Marrow Donations</title>
