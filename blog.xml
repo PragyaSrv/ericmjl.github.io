@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
-  <id>urn:uuid:ff12ec40-0717-35db-b246-f5d5335071d6</id>
+  <id>urn:uuid:a6058c91-b2ec-3293-92f4-6c8535935525</id>
   <updated>2020-01-18T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
@@ -11,7 +11,7 @@
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
   <entry xml:base="http://www.ericmjl.com/blog/2020/1/18/create-your-own-auto-publishing-slides-with-reveal-md-and-travis-ci/">
     <title type="text">Create your own auto-publishing slides with reveal-md and Travis CI</title>
-    <id>urn:uuid:22c54666-66e3-378c-9d7d-64e97a2d64f2</id>
+    <id>urn:uuid:1e9b2074-db8c-3f50-a8ba-2ffdd108a38c</id>
     <updated>2020-01-18T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2020/1/18/create-your-own-auto-publishing-slides-with-reveal-md-and-travis-ci/" />
     <author>
@@ -23,10 +23,10 @@
 &lt;h2 id=&quot;create-your-own-auto-publishing-reveal-md-slides&quot;&gt;Create your own auto-publishing &lt;code&gt;reveal-md&lt;/code&gt; slides!&lt;/h2&gt;&lt;p&gt;Let’s walk through the steps needed to make this a reality for you!&lt;/p&gt;
 &lt;h3 id=&quot;create-a-new-repository&quot;&gt;Create a new repository&lt;/h3&gt;&lt;p&gt;On GitHub, create a new repository that has a nice and informative name. (For now, we’ll just refer to that repository as &lt;code&gt;my-talk&lt;/code&gt; for convenience.)&lt;/p&gt;
 &lt;h3 id=&quot;get-setup-locally&quot;&gt;Get setup locally&lt;/h3&gt;&lt;p&gt;To get setup, you need to make sure that &lt;code&gt;reveal-md&lt;/code&gt; is on your &lt;code&gt;PATH&lt;/code&gt;. I choose to use &lt;code&gt;conda&lt;/code&gt; environments to manage my packages, so I have a slightly convoluted way of doing this, by using &lt;code&gt;conda&lt;/code&gt; to install &lt;code&gt;nodejs&lt;/code&gt; (which installs the &lt;code&gt;npm&lt;/code&gt; node package manager), followed by using the node package manager to install &lt;code&gt;reveal-md&lt;/code&gt;. We first start by preparing an &lt;code&gt;environment.yml&lt;/code&gt; specification file that &lt;code&gt;conda&lt;/code&gt; can use to build your environment:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;my_talk&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;my_talk&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda-forge&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;python=3.8&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;nodejs&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -75,11 +75,11 @@ Date
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&quot;aside:-fancier-items&quot;&gt;Aside: fancier items&lt;/h3&gt;&lt;p&gt;If you need fancier things, you can weave in HTML at your own convenience. For example, I embedded an HTML table to organize &lt;a href=&quot;https://github.com/ColCarroll/imcmc&quot;&gt;&lt;code&gt;imcmc&lt;/code&gt;&lt;/a&gt; logos that I had previously compiled.&lt;/p&gt;
 &lt;h3 id=&quot;get-travis-ci-setup&quot;&gt;Get Travis CI setup&lt;/h3&gt;&lt;p&gt;You’ll now want to create a &lt;code&gt;.travis.yml&lt;/code&gt;, which commands Travis to do things. It’s generally nothing more than a collection of bash commands that are executed in order. An example Travis configuration file from my &lt;a href=&quot;https://ericmjl.github.io/testing-for-data-scientists&quot;&gt;data science testing talk&lt;/a&gt; looks like this:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;python&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;python&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;python&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;python&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;c1&quot;&gt;# We don&amp;#39;t actually use the Travis Python, but this keeps it organized.&lt;/span&gt;
     &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;3.5&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;install&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;install&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;c1&quot;&gt;# We do this conditionally because it saves us some downloading if the&lt;/span&gt;
     &lt;span class=&quot;c1&quot;&gt;# version is the same.&lt;/span&gt;
     &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;&lt;/span&gt;
@@ -100,7 +100,7 @@ Date
     &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;npm install -g reveal-md&lt;/span&gt;
 
 
-&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;c1&quot;&gt;# Create the docs directory. This is where we will be publishing from&lt;/span&gt;
     &lt;span class=&quot;c1&quot;&gt;# (see the &amp;quot;deploy&amp;quot; section below).&lt;/span&gt;
     &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;mkdir -p docs/&lt;/span&gt;
@@ -113,19 +113,19 @@ Date
 
 
 &lt;span class=&quot;c1&quot;&gt;# This is an example to deploy to a branch through Travis.&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;deploy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;provider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pages&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;skip-cleanup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;github-token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;$GITHUB_TOKEN&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Set in the settings page of your repository, as a secure variable&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;keep-history&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;deploy&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;provider&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pages&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;skip-cleanup&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;github-token&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;$GITHUB_TOKEN&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Set in the settings page of your repository, as a secure variable&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;keep-history&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
     &lt;span class=&quot;c1&quot;&gt;# We read the master branch&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;master&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;master&lt;/span&gt;
     &lt;span class=&quot;c1&quot;&gt;# Take the docs/ directory&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;local-dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;docs&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;local-dir&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;docs&lt;/span&gt;
     &lt;span class=&quot;c1&quot;&gt;# Publish to the gh-pages branch&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;target-branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;gh-pages&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;verbose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;target-branch&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;gh-pages&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;verbose&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You’ll notice that the commands we want Travis to execute are basically the same as those we executed manually. The only difference now is that we command &lt;code&gt;reveal-md&lt;/code&gt; to build a static site under the directory &lt;code&gt;site/&lt;/code&gt;, which we then command Travis to push to GitHub pages.&lt;/p&gt;
 &lt;p&gt;In the &lt;code&gt;deploy&lt;/code&gt; section, we are specifying to Travis that we want all of the content under the directory &lt;code&gt;site/&lt;/code&gt; to be pushed to the &lt;code&gt;gh-pages&lt;/code&gt; branch of our repository. (We have not yet connected Travis to our repo; that will happen next, so sit tight!)&lt;/p&gt;
@@ -153,7 +153,7 @@ Date
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/1/16/pydata-ann-arbor-meetup-testing-for-data-science/">
     <title type="text">PyData Ann Arbor Meetup: Testing for Data Science</title>
-    <id>urn:uuid:01da3011-ef98-3d2d-9952-59a74ed5339e</id>
+    <id>urn:uuid:ebd7904e-ba7e-3851-b0f1-47ac8772de66</id>
     <updated>2020-01-16T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2020/1/16/pydata-ann-arbor-meetup-testing-for-data-science/" />
     <author>
@@ -184,7 +184,7 @@ Date
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/1/12/honk-on-you-fools-insecure-in-your-miniscule-private-parts/">
     <title type="text">“Honk on, you fools insecure in your miniscule private parts.”</title>
-    <id>urn:uuid:bd7185e4-7308-33bf-a08c-45de6ead1185</id>
+    <id>urn:uuid:1a02a680-cbd2-36f8-a717-a53233c933fe</id>
     <updated>2020-01-12T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2020/1/12/honk-on-you-fools-insecure-in-your-miniscule-private-parts/" />
     <author>
@@ -211,7 +211,7 @@ Date
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/1/7/fastapi-flask-like-generator-of-web-apis/">
     <title type="text">FastAPI: Flask-like generator of web APIs</title>
-    <id>urn:uuid:230fffac-ad23-3638-a3cf-0449d2469e24</id>
+    <id>urn:uuid:95aa27a7-d050-3c7b-a471-261fae89cb6c</id>
     <updated>2020-01-07T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2020/1/7/fastapi-flask-like-generator-of-web-apis/" />
     <author>
@@ -230,7 +230,7 @@ Date
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/1/4/build-your-digital-profile-as-a-data-scientist/">
     <title type="text">Build your digital profile as a data scientist</title>
-    <id>urn:uuid:ffdd56bc-fefa-3008-926f-d1c93493157d</id>
+    <id>urn:uuid:115eff85-b6a6-3686-8ab6-e9d6a01d4e46</id>
     <updated>2020-01-04T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2020/1/4/build-your-digital-profile-as-a-data-scientist/" />
     <author>
@@ -279,7 +279,7 @@ Date
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/1/2/on-automating-principled-statistical-analyses/">
     <title type="text">On automating principled statistical analyses</title>
-    <id>urn:uuid:83eea983-3b43-3a2a-9d50-191790569054</id>
+    <id>urn:uuid:6a22cb66-ea4c-3fa7-bfd1-c01d100aa5ca</id>
     <updated>2020-01-02T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2020/1/2/on-automating-principled-statistical-analyses/" />
     <author>
@@ -298,7 +298,7 @@ Date
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/12/26/serving-multiple-panel-apps-together/">
     <title type="text">Serving multiple Panel apps together</title>
-    <id>urn:uuid:2acc0071-020b-3032-a5c6-d4fbfa513455</id>
+    <id>urn:uuid:4106e92f-7c5b-390b-8709-05e4f95d8e1a</id>
     <updated>2019-12-26T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/12/26/serving-multiple-panel-apps-together/" />
     <author>
@@ -328,7 +328,7 @@ panel serve nb1.ipynb nb2.ipynb nb3.ipynb
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/12/19/simplifying-uncertainty-responsibly/">
     <title type="text">Simplifying Uncertainty Responsibly</title>
-    <id>urn:uuid:2b6072c6-9383-3754-81c0-825d72035b39</id>
+    <id>urn:uuid:04be4864-da98-36bd-bb84-a30cb7747359</id>
     <updated>2019-12-19T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/12/19/simplifying-uncertainty-responsibly/" />
     <author>
@@ -347,7 +347,7 @@ panel serve nb1.ipynb nb2.ipynb nb3.ipynb
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/">
     <title type="text">A Review of the Python Data Science Dashboarding Landscape in 2019</title>
-    <id>urn:uuid:84460dc2-fd52-38c9-980c-e763f1d2d7f1</id>
+    <id>urn:uuid:2d0e8817-3cd5-36ac-8aa3-576cd86a3012</id>
     <updated>2019-12-15T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/" />
     <author>
@@ -438,7 +438,7 @@ the &quot;Running&quot; spinner will animate.
 &lt;strong&gt;Secondly&lt;/strong&gt;, anything that is re-rendering will automatically be greyed out.
 &lt;strong&gt;Finally&lt;/strong&gt;, we can use a special context manager
 to provide a custom message on the front-end:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;streamlit&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;st&lt;/span&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;streamlit&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;st&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;st&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spinner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Message goes here...&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
     &lt;span class=&quot;c1&quot;&gt;# stuff happens&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -540,7 +540,7 @@ be sure to have it in your toolbox!&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/11/9/principled-git-based-workflow-in-collaborative-data-science-projects/">
     <title type="text">Principled Git-based Workflow in Collaborative Data Science Projects</title>
-    <id>urn:uuid:7a225876-ae09-3cc4-bf75-d98cc06c9c42</id>
+    <id>urn:uuid:f53448fe-8805-31df-b718-1da8faf4bc04</id>
     <updated>2019-11-09T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/11/9/principled-git-based-workflow-in-collaborative-data-science-projects/" />
     <author>
@@ -554,7 +554,7 @@ be sure to have it in your toolbox!&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/10/31/reimplementing-and-testing-deep-learning-models/">
     <title type="text">Reimplementing and Testing Deep Learning Models</title>
-    <id>urn:uuid:02474dc0-517b-3e55-b426-7a7ab233a9f0</id>
+    <id>urn:uuid:e145cc3e-8014-375d-a44e-0bd4f4818d67</id>
     <updated>2019-10-31T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/10/31/reimplementing-and-testing-deep-learning-models/" />
     <author>
@@ -773,7 +773,7 @@ helps us avoid as many of these rabbitholes as possible.&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/10/30/code-review-in-data-science/">
     <title type="text">Code review in data science</title>
-    <id>urn:uuid:0f73d0d2-2ced-3974-8f4c-cbefcad558e4</id>
+    <id>urn:uuid:8e51ccb2-d893-3f34-895e-aab059e78521</id>
     <updated>2019-10-30T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/10/30/code-review-in-data-science/" />
     <author>
@@ -847,7 +847,7 @@ I hope this essay encourages you to give it a try.&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/10/29/ai-will-not-solve-medicine/">
     <title type="text">“AI will not solve medicine”</title>
-    <id>urn:uuid:dcd2e9f3-c16b-3d33-9d33-1b716878e066</id>
+    <id>urn:uuid:b5988a1e-162a-3f78-a511-108c45e9a2a9</id>
     <updated>2019-10-29T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/10/29/ai-will-not-solve-medicine/" />
     <author>
@@ -912,7 +912,7 @@ so the onus is on us computation types to get help navigate “data space” mor
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/10/18/caching-long-running-function-results/">
     <title type="text">Caching Long-Running Function Results</title>
-    <id>urn:uuid:3aa6ff89-136f-351e-bd6f-aed78cafb01b</id>
+    <id>urn:uuid:b44f1ff4-d00b-321f-9ecd-ae87089bdedc</id>
     <updated>2019-10-18T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/10/18/caching-long-running-function-results/" />
     <author>
@@ -950,9 +950,28 @@ so the onus is on us computation types to get help navigate “data space” mor
 &lt;p&gt;There are other advanced features that &lt;code&gt;cachier&lt;/code&gt; provides, and so I’d encourage you to go and take a look at it!&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/">
+    <title type="text">Multiple Coin-Flips vs. One Coin Flip Generalized?</title>
+    <id>urn:uuid:e22a8c98-73ac-3898-83c3-25bb55d42dae</id>
+    <updated>2019-10-05T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;Do people learn better by:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Generalizing from one example explained well, or by&lt;/li&gt;
+&lt;li&gt;Having multiple case studies that highlight the same point?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I think both are needed, but I am also torn sometimes by whether it’s more effective to communicate using the former or the latter.&lt;/p&gt;
+&lt;p&gt;Case in point: In teaching Bayesian statistics, the coin flip is a particular case of the Beta-Binomial model. However, the Beta-Binomial model can be taken from its most elementary form (estimation on one group) through to its most sophisticated form (hierarchically estimating &lt;code&gt;p&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;I guess if the goal is to show how broadly applicable a given model class (i.e. the beta-binomial model) is, a teacher would elect to jump between multiple examples that are apparently distinct. However, if the goal is build depth (i.e. going from single group to multiple group estimation), sticking with one example (e.g. of baseball players, classically) would be the better strategy.&lt;/p&gt;
+&lt;p&gt;Both are needed, just at different times, I think. Thinking through this example, I think, gives me a first-principles way of deciding which approach to go for.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/10/5/jupyter-server-with-https-on-personal-server/">
     <title type="text">Jupyter Server with HTTPS on Personal Server</title>
-    <id>urn:uuid:9b74c6db-5130-3fcf-a2a7-0b1f922121d7</id>
+    <id>urn:uuid:765d2117-7d56-382a-87d8-86d6adf87f5c</id>
     <updated>2019-10-05T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/10/5/jupyter-server-with-https-on-personal-server/" />
     <author>
@@ -991,28 +1010,9 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;p&gt;If this helps you, leave me a note in the comments below. :)&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/">
-    <title type="text">Multiple Coin-Flips vs. One Coin Flip Generalized?</title>
-    <id>urn:uuid:3df0c5f9-3913-3dae-8550-1cbfdd5a6505</id>
-    <updated>2019-10-05T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2019/10/5/multiple-coin-flips-vs-one-coin-flip-generalized/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Do people learn better by:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Generalizing from one example explained well, or by&lt;/li&gt;
-&lt;li&gt;Having multiple case studies that highlight the same point?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I think both are needed, but I am also torn sometimes by whether it’s more effective to communicate using the former or the latter.&lt;/p&gt;
-&lt;p&gt;Case in point: In teaching Bayesian statistics, the coin flip is a particular case of the Beta-Binomial model. However, the Beta-Binomial model can be taken from its most elementary form (estimation on one group) through to its most sophisticated form (hierarchically estimating &lt;code&gt;p&lt;/code&gt;).&lt;/p&gt;
-&lt;p&gt;I guess if the goal is to show how broadly applicable a given model class (i.e. the beta-binomial model) is, a teacher would elect to jump between multiple examples that are apparently distinct. However, if the goal is build depth (i.e. going from single group to multiple group estimation), sticking with one example (e.g. of baseball players, classically) would be the better strategy.&lt;/p&gt;
-&lt;p&gt;Both are needed, just at different times, I think. Thinking through this example, I think, gives me a first-principles way of deciding which approach to go for.&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/9/7/dokku-building-an-internal-heroku-at-work/">
     <title type="text">Dokku: Building an internal Heroku at work</title>
-    <id>urn:uuid:3a24121c-2947-3795-b2f3-137841624e2a</id>
+    <id>urn:uuid:d2262f4b-b61f-3fd6-8d03-88edd6b9333b</id>
     <updated>2019-09-07T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/9/7/dokku-building-an-internal-heroku-at-work/" />
     <author>
@@ -1042,7 +1042,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/7/29/how-to-be-a-great-code-sprinter/">
     <title type="text">How to be a great code sprinter</title>
-    <id>urn:uuid:f6c82b51-8913-3ef4-b19f-273f60ea55a9</id>
+    <id>urn:uuid:bc2c3e16-7a80-38c8-9072-e30530057ab0</id>
     <updated>2019-07-29T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/7/29/how-to-be-a-great-code-sprinter/" />
     <author>
@@ -1073,7 +1073,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/7/26/pyviz-panel-apps/">
     <title type="text">PyViz Panel Apps</title>
-    <id>urn:uuid:96ea7293-f120-373d-95a3-143b4a501d1f</id>
+    <id>urn:uuid:b3692a05-28bc-33a1-92f3-e2e9799908fa</id>
     <updated>2019-07-26T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/7/26/pyviz-panel-apps/" />
     <author>
@@ -1092,7 +1092,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/7/23/t-distributed-likelihoods-are-kind-of-neat/">
     <title type="text">T-distributed likelihoods are kind of neat</title>
-    <id>urn:uuid:54bb3560-6978-3b7d-8d06-1662c0477294</id>
+    <id>urn:uuid:3fa65ff9-e3a2-3d5a-8b5c-a13f8ed99801</id>
     <updated>2019-07-23T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/7/23/t-distributed-likelihoods-are-kind-of-neat/" />
     <author>
@@ -1107,7 +1107,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/7/21/how-to-lead-a-great-code-sprint/">
     <title type="text">How to lead a great code sprint</title>
-    <id>urn:uuid:c2b85692-9b2a-30a2-a683-0ad286e6b9f8</id>
+    <id>urn:uuid:e743487f-2b44-3985-863c-5ae3064414ed</id>
     <updated>2019-07-21T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/7/21/how-to-lead-a-great-code-sprint/" />
     <author>
@@ -1169,7 +1169,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/7/15/scipy-2019-post-conference/">
     <title type="text">SciPy 2019 Post-Conference</title>
-    <id>urn:uuid:287628a3-958d-3ec0-b59e-db5c450d2182</id>
+    <id>urn:uuid:f8cc8c4e-ca3b-333c-b139-4e1679788270</id>
     <updated>2019-07-15T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/7/15/scipy-2019-post-conference/" />
     <author>
@@ -1201,23 +1201,9 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;/blockquote&gt;&lt;p&gt;Having thought about this, I agree. Over time, we should let the results speak. At the same time, I want to help create the environment that I would like to work in: where my colleagues use the same tooling stack, are hacker-types, aren’t afraid to dig deep into the “computer stuff” and into the biology/chemistry, and have the necessary skill + desire to design machine learning systems to systematically accelerate discovery science.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2019/7/7/scipy-2019-pre-conference/">
-    <title type="text">SciPy 2019 Pre-Conference</title>
-    <id>urn:uuid:af61fdd0-67f0-368f-98a7-1007c7024a16</id>
-    <updated>2019-07-07T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2019/7/7/scipy-2019-pre-conference/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;For the 6th year running, I’m out at UT Austin for &lt;a href=&quot;https://www.scipy2019.scipy.org/&quot;&gt;SciPy 2019&lt;/a&gt;! It’s one of my favorite conferences to attend, because the latest in data science tooling is well featured in the conference program, and I get to meet in-person a lot of the GitHub usernames that I interact with online.&lt;/p&gt;
-&lt;p&gt;I will be involved in three tutorials this year, which I think have become my data science toolkit: Bayesian stats, network science, and deep learning. Really excited to share my knowledge; my hope is that at least a few more people find the practical experience I’ve gained over the years useful, and that they can put it to good use in their own work too. This year is also the first year I’ve submitted a talk on &lt;code&gt;pyjanitor&lt;/code&gt;, which is a package that I have developed with others for cleaning data, also excited to share this with the broader SciPy community!&lt;/p&gt;
-&lt;p&gt;I’m also looking forward to meeting the conference scholarship recipients. Together with Scott Collis and Celia Cintas, we’ve been managing the FinAid process for the past three years, and each year it heartens me to see the scholarship recipients in person.&lt;/p&gt;
-&lt;p&gt;Finally, this year’s SciPy is quite unique for me, as it is the first year that I’ll be here with colleagues at work! (In prior years, I came alone, and did networking on my own.) I hope they all have as much of a fun time as I have at SciPy!&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/7/7/order-of-magnitude-is-more-than-accurate-enough/">
     <title type="text">Order of magnitude is more than accurate enough</title>
-    <id>urn:uuid:544726e7-4d22-3318-9b25-bd2736b63d62</id>
+    <id>urn:uuid:201d06cd-a007-3dfc-ac70-679760e6cb2f</id>
     <updated>2019-07-07T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/7/7/order-of-magnitude-is-more-than-accurate-enough/" />
     <author>
@@ -1245,9 +1231,23 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;p class=&quot;blockquote-footer&quot;&gt;Mashup&lt;/p&gt;
 &lt;/blockquote&gt;</content>
   </entry>
+  <entry xml:base="http://www.ericmjl.com/blog/2019/7/7/scipy-2019-pre-conference/">
+    <title type="text">SciPy 2019 Pre-Conference</title>
+    <id>urn:uuid:4cf7be5b-cc21-3849-9135-bcad7c3d458b</id>
+    <updated>2019-07-07T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2019/7/7/scipy-2019-pre-conference/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;For the 6th year running, I’m out at UT Austin for &lt;a href=&quot;https://www.scipy2019.scipy.org/&quot;&gt;SciPy 2019&lt;/a&gt;! It’s one of my favorite conferences to attend, because the latest in data science tooling is well featured in the conference program, and I get to meet in-person a lot of the GitHub usernames that I interact with online.&lt;/p&gt;
+&lt;p&gt;I will be involved in three tutorials this year, which I think have become my data science toolkit: Bayesian stats, network science, and deep learning. Really excited to share my knowledge; my hope is that at least a few more people find the practical experience I’ve gained over the years useful, and that they can put it to good use in their own work too. This year is also the first year I’ve submitted a talk on &lt;code&gt;pyjanitor&lt;/code&gt;, which is a package that I have developed with others for cleaning data, also excited to share this with the broader SciPy community!&lt;/p&gt;
+&lt;p&gt;I’m also looking forward to meeting the conference scholarship recipients. Together with Scott Collis and Celia Cintas, we’ve been managing the FinAid process for the past three years, and each year it heartens me to see the scholarship recipients in person.&lt;/p&gt;
+&lt;p&gt;Finally, this year’s SciPy is quite unique for me, as it is the first year that I’ll be here with colleagues at work! (In prior years, I came alone, and did networking on my own.) I hope they all have as much of a fun time as I have at SciPy!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/6/30/bone-marrow-donations/">
     <title type="text">Bone Marrow Donations</title>
-    <id>urn:uuid:22191134-fa53-3619-9bd6-3d459afdf5d3</id>
+    <id>urn:uuid:ee0213d4-6fdd-3aeb-b563-1c6452ffe55b</id>
     <updated>2019-06-30T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/6/30/bone-marrow-donations/" />
     <author>
@@ -1261,7 +1261,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/6/15/graphs-and-matrices/">
     <title type="text">Graphs and Matrices</title>
-    <id>urn:uuid:13aa8653-1144-32cd-8390-43043f8d8d3f</id>
+    <id>urn:uuid:5a47f111-79a9-342b-a871-3cf32fd8cc36</id>
     <updated>2019-06-15T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/6/15/graphs-and-matrices/" />
     <author>
@@ -1275,7 +1275,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/6/14/mobile-working-on-the-ipad/">
     <title type="text">Mobile Working on the iPad</title>
-    <id>urn:uuid:1efd1ff8-35b9-3335-a19e-3c3b0c36cbd1</id>
+    <id>urn:uuid:c4462b8e-bcbc-3d85-9b9b-b045bb8f59b0</id>
     <updated>2019-06-14T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/6/14/mobile-working-on-the-ipad/" />
     <author>
@@ -1302,7 +1302,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/5/29/reasoning-about-shapes-and-probability-distributions/">
     <title type="text">Reasoning about Shapes and Probability Distributions</title>
-    <id>urn:uuid:5c8f4058-21b0-3325-9214-75e8ddbe29d7</id>
+    <id>urn:uuid:7ae2e5b1-ffef-3102-9d2c-05b9c03bf36e</id>
     <updated>2019-05-29T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/5/29/reasoning-about-shapes-and-probability-distributions/" />
     <author>
@@ -1350,7 +1350,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/5/11/pycon-2019-sprints/">
     <title type="text">PyCon 2019 Sprints</title>
-    <id>urn:uuid:d8d5337d-96e9-3b0d-9230-36f97c2bdfb4</id>
+    <id>urn:uuid:179e5efd-cde5-35d4-b450-acbf04f8be7b</id>
     <updated>2019-05-11T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/5/11/pycon-2019-sprints/" />
     <author>
@@ -1452,7 +1452,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/pycon-2019-tutorial-and-conference-days/">
     <title type="text">PyCon 2019 Tutorial and Conference Days</title>
-    <id>urn:uuid:6deb7465-7419-311f-8605-23b31aefa0e6</id>
+    <id>urn:uuid:1316fa65-7722-37f1-b18a-80edc766c900</id>
     <updated>2019-05-10T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/5/10/pycon-2019-tutorial-and-conference-days/" />
     <author>
@@ -1468,7 +1468,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/5/10/context-switching/">
     <title type="text">Context Switching</title>
-    <id>urn:uuid:138c066f-4d92-30c1-9ce1-fcb960d09b9f</id>
+    <id>urn:uuid:8a45de32-75a3-3a01-b0b9-7cc1ba905ee7</id>
     <updated>2019-05-10T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/5/10/context-switching/" />
     <author>
@@ -1482,7 +1482,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/4/29/pycon-2019-pre-journey/">
     <title type="text">PyCon 2019 Pre-Journey</title>
-    <id>urn:uuid:ea18dc8e-651f-31d1-99c8-7ccf0d8665f9</id>
+    <id>urn:uuid:3f407ba1-6dbc-3dbb-b3b6-a798f3ccfbc3</id>
     <updated>2019-04-29T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/4/29/pycon-2019-pre-journey/" />
     <author>
@@ -1498,7 +1498,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/3/24/variance-explained/">
     <title type="text">Variance Explained</title>
-    <id>urn:uuid:a80dbc96-c035-3453-83a6-9467547d3ba2</id>
+    <id>urn:uuid:c1fcd8c6-f749-3a10-9bde-f13c60248de2</id>
     <updated>2019-03-24T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/3/24/variance-explained/" />
     <author>
@@ -1532,7 +1532,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/3/22/functools-partial/">
     <title type="text">Functools Partial</title>
-    <id>urn:uuid:f23551e3-45c9-34f6-8f68-e3ab84b18146</id>
+    <id>urn:uuid:4cd51f52-6ccc-311d-8d89-1c5f2c60e796</id>
     <updated>2019-03-22T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/3/22/functools-partial/" />
     <author>
@@ -1582,7 +1582,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vm&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 
-&lt;span class=&quot;nd&quot;&gt;@app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@app.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render_template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;index.html.j2&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1591,7 +1591,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/3/20/how-i-work/">
     <title type="text">How I Work</title>
-    <id>urn:uuid:5a6a9ae4-43d0-34b2-81b3-823142b1a655</id>
+    <id>urn:uuid:96d08b13-0a62-3bf2-ab1e-348116b7f6e8</id>
     <updated>2019-03-20T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/3/20/how-i-work/" />
     <author>
@@ -1622,7 +1622,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/3/1/pair-coding-why-and-how-for-data-scientists/">
     <title type="text">Pair Coding: Why and How for Data Scientists</title>
-    <id>urn:uuid:d8db3420-e4e8-3ed2-b9b3-4a6f1eda345b</id>
+    <id>urn:uuid:95c7d328-ac66-3073-a932-404a127eff77</id>
     <updated>2019-03-01T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/3/1/pair-coding-why-and-how-for-data-scientists/" />
     <author>
@@ -1664,7 +1664,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/1/28/minimum-viable-products-matter/">
     <title type="text">Minimum Viable Products (MVPs) Matter</title>
-    <id>urn:uuid:5fdb7330-1a76-37a5-87fe-c82c85c29697</id>
+    <id>urn:uuid:e5085d10-6627-3ee1-808c-f7287ba62340</id>
     <updated>2019-01-28T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/1/28/minimum-viable-products-matter/" />
     <author>
@@ -1682,7 +1682,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/1/21/advi-scalable-bayesian-inference/">
     <title type="text">ADVI: Scalable Bayesian Inference</title>
-    <id>urn:uuid:bed05db0-b72f-3072-854d-cc9297778052</id>
+    <id>urn:uuid:1dbf9ba0-9e95-3818-8bf2-2a5f1d796bd7</id>
     <updated>2019-01-21T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/1/21/advi-scalable-bayesian-inference/" />
     <author>
@@ -1700,7 +1700,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/12/25/conda-hacks-for-data-science-efficiency/">
     <title type="text">Conda hacks for data science efficiency</title>
-    <id>urn:uuid:1b57f1c7-98dc-3319-9b34-bb0c73c376dc</id>
+    <id>urn:uuid:39ce6029-68b7-335b-b9ff-eef56eae19b9</id>
     <updated>2018-12-25T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/12/25/conda-hacks-for-data-science-efficiency/" />
     <author>
@@ -1710,14 +1710,14 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 &lt;h2 id=&quot;hack-1:-set-up-your-.condarc&quot;&gt;Hack #1: Set up your &lt;code&gt;.condarc&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Why?&lt;/strong&gt; It will save you a few keystrokes each time you want to do something with &lt;code&gt;conda&lt;/code&gt;. For example, in my &lt;code&gt;.condarc&lt;/code&gt;, I have the following:&lt;/p&gt;
 &lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Set the channels that the `conda install` command will &lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# automatically search through.&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;defaults&lt;/span&gt;
   &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda-forge&lt;/span&gt;
   &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ericmjl&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# Always accept installation. Is convenient, but always &lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# double-check!&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;always_yes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;always_yes&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;For more information on how to configure your &lt;code&gt;.condarc&lt;/code&gt;, check the &lt;a href=&quot;https://conda.io/docs/user-guide/configuration/use-condarc.html&quot;&gt;online documentation&lt;/a&gt;!&lt;/p&gt;
 &lt;h2 id=&quot;hack-2:-use-one-environment-spec-file-per-project&quot;&gt;Hack #2: Use one environment spec file per project&lt;/h2&gt;&lt;p&gt;This assumes that you have the habit of putting all files related to one project inside one folder, using subdirectories for finer-grained organization.&lt;/p&gt;
@@ -1725,16 +1725,16 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 &lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# file name: environment.yml&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# Give your project an informative name&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;project-name&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;project-name&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# Specify the conda channels that you wish to grab packages from, in order of priority.&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;defaults&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda-forge&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ericmjl&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# Specify the packages that you would like to install inside your environment. Version numbers are allowed, and conda will automatically use its dependency solver to ensure that all packages work with one another.&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;python=3.7&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;jupyterlab&lt;/span&gt;
@@ -1744,7 +1744,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pyjanitor&lt;/span&gt;
 &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pandas&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# There are some packages which are not conda-installable. You can put the pip dependencies here instead.&lt;/span&gt;
-&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;pip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pip&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;tqdm&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# for example only, tqdm is actually available by conda.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;A hack that I have related to this is that I use TextExpander shortcut to populate a starting environment spec file.&lt;/p&gt;
@@ -1802,7 +1802,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/12/16/gaussian-process-notes/">
     <title type="text">Gaussian Process Notes</title>
-    <id>urn:uuid:eaf5c4d1-f8ac-3221-a93e-3e7dd93d62e2</id>
+    <id>urn:uuid:7f66a2e1-5748-3157-9f54-02a15a62a568</id>
     <updated>2018-12-16T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/12/16/gaussian-process-notes/" />
     <author>
@@ -1822,7 +1822,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/12/9/mathematical-intuition/">
     <title type="text">Mathematical Intuition</title>
-    <id>urn:uuid:e46888b1-cac1-3708-b867-11715f8925af</id>
+    <id>urn:uuid:572af158-cae6-352c-9fec-4aeda3c882dc</id>
     <updated>2018-12-09T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/12/9/mathematical-intuition/" />
     <author>
@@ -1843,7 +1843,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/11/13/solving-problems-actionably/">
     <title type="text">Solving Problems Actionably</title>
-    <id>urn:uuid:d9ae291d-9091-317e-87a0-05c4610fbbaa</id>
+    <id>urn:uuid:bf1917f4-5fd8-39ef-8f8d-cd3c579e1c62</id>
     <updated>2018-11-13T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/11/13/solving-problems-actionably/" />
     <author>
@@ -1866,7 +1866,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/11/12/thoughts-on-black/">
     <title type="text">Thoughts on Black</title>
-    <id>urn:uuid:39a47edb-b6d0-3295-a3e6-f031d153d4e6</id>
+    <id>urn:uuid:328c9b28-fabd-388f-8241-ebebc5d525f7</id>
     <updated>2018-11-12T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/11/12/thoughts-on-black/" />
     <author>
@@ -1885,7 +1885,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/11/7/bayesian-modelling-is-hard-work/">
     <title type="text">Bayesian Modelling is Hard Work!</title>
-    <id>urn:uuid:0fea828d-ead7-3d05-b557-860da82b274b</id>
+    <id>urn:uuid:9db881b3-5e64-3198-9e10-4a82a60c32f2</id>
     <updated>2018-11-07T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/11/7/bayesian-modelling-is-hard-work/" />
     <author>
@@ -1972,7 +1972,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/10/26/more-dask-pre-scattering-data/">
     <title type="text">More Dask: Pre-Scattering Data</title>
-    <id>urn:uuid:89313dc4-3635-36b7-a940-ee0bf62f3118</id>
+    <id>urn:uuid:c55b96b5-1584-30ab-a716-b9233a86d089</id>
     <updated>2018-10-26T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/10/26/more-dask-pre-scattering-data/" />
     <author>
@@ -1986,7 +1986,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SGECluster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# put parameters in there.&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;data_future&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;broadcast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data_future&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;broadcast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;One key thing to remember here is to assign the result of &lt;code&gt;client.scatter&lt;/code&gt; to a variable. This becomes a pointer that you pass into other functions that are submitted via the &lt;code&gt;client.submit&lt;/code&gt; interface. Because this point is not immediately clear from the &lt;code&gt;client.scatter&lt;/code&gt; docs, &lt;a href=&quot;https://github.com/dask/distributed/pull/2320&quot;&gt;I put in a pull request (PR) to provide some just-in-time documentation&lt;/a&gt;, which just got merged this morning. By the way, not every PR has to be code - documentation help is always good!&lt;/p&gt;
 &lt;p&gt;Once we've scattered the data across our worker nodes and obtained a pointer for the scattered data, we can parallel submit our function across worker nodes.&lt;/p&gt;
@@ -2012,7 +2012,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/">
     <title type="text">Parallel Processing with Dask on GridEngine Clusters</title>
-    <id>urn:uuid:51ee1e9d-0539-3d2b-aa12-a5b6029cfc76</id>
+    <id>urn:uuid:49cb4bc9-bd08-3554-a093-bb5eab1c7a6f</id>
     <updated>2018-10-11T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/" />
     <author>
@@ -2116,7 +2116,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/">
     <title type="text">Optimizing Block Sparse Matrix Creation with Python</title>
-    <id>urn:uuid:ceebc93b-02a9-33fc-896e-fc3c6fa188cd</id>
+    <id>urn:uuid:56d08ecd-e6bc-3414-8106-7b5b1e1452c1</id>
     <updated>2018-09-04T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/9/4/optimizing-block-sparse-matrix-creation-with-python/" />
     <author>
@@ -2124,11 +2124,11 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
     </author>
     <content type="html">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;&lt;p&gt;At work, I recently encountered a neat problem. I'd like to share it with you all.&lt;/p&gt;
 &lt;p&gt;One of my projects involves graphs; specifically, it involves taking individual graphs and turning them into one big graph. If you've taken my Network Analysis Made Simple workshops before, you'll have learned that graphs can be represented as a matrix, such as the one below:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;networkx&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;nx&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.sparse&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sp&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;seaborn&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sns&lt;/span&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;networkx&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;nx&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.sparse&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sp&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;seaborn&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sns&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tqdm&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tqdm&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;typing&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numba&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jit&lt;/span&gt;
@@ -2281,7 +2281,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/9/2/3d-printed-wifi-access-qr-codes-part-2/">
     <title type="text">3D Printed WiFi Access QR Codes: Part 2</title>
-    <id>urn:uuid:847ab4c3-07ad-3e34-9d15-3fa823f923b0</id>
+    <id>urn:uuid:141eb254-30d7-3dd2-a8c6-12fa48358bdb</id>
     <updated>2018-09-02T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/9/2/3d-printed-wifi-access-qr-codes-part-2/" />
     <author>
@@ -2297,22 +2297,22 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;The QR code creator.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyqrcode&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pq&lt;/span&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyqrcode&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pq&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Family Guest Network&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;security&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;WPA&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;vn8h2sncu093y3nd!&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{ssid}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;T:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{security}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;P:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{password}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:{ssid};T:{security};P:{password};;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&quot;creating-a-3d-printed-qr-code-with-python&quot;&gt;Creating a 3D Printed QR Code with Python&lt;/h2&gt;&lt;p&gt;Now, let's see how we can create 3D models with Python code. We will need a package called &lt;code&gt;SolidPython&lt;/code&gt;, and optionally &lt;code&gt;numpy&lt;/code&gt; to help us with some array processing. (It can be done entirely using built-in lists if needed.)&lt;/p&gt;
 &lt;h3 id=&quot;create-qr-code-object&quot;&gt;Create QR Code Object&lt;/h3&gt;&lt;p&gt;To start, I first defined a convenience function that let me create and return a &lt;code&gt;QRCode&lt;/code&gt; object that can be passed around and manipulated.&lt;/p&gt;
 &lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create_wifi_qr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;security&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{ssid}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;T:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{security}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;P:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{password}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:{ssid};T:{security};P:{password};;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Its use will become evident later. You'll also notice I'm using type hints inside the function.&lt;/p&gt;
 &lt;h3 id=&quot;create-text-representation&quot;&gt;Create Text Representation&lt;/h3&gt;&lt;p&gt;Using the function, we can create a text representation of the QR code:&lt;/p&gt;
 &lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_wifi_qr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;security&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This will give essentially a series of 1s and 0s. This is a string, though, not a &lt;code&gt;numpy&lt;/code&gt; array. Hence, we may have to convert this into a list of lists, or a &lt;code&gt;numpy&lt;/code&gt; array (as a user of the scientific Python stack, I prefer using arrays where possible, but in this case there is no real practical advantage to doing so because we are not doing linear algebra).&lt;/p&gt;
 &lt;h3 id=&quot;create-array-representation&quot;&gt;Create Array Representation&lt;/h3&gt;&lt;p&gt;Let's now define a function that takes in the &lt;code&gt;QRCode&lt;/code&gt; object and return an array version of the text rendering.&lt;/p&gt;
@@ -2346,7 +2346,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;qrobj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;union&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cubes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base_plate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 
-&lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scad_render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qrobj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scad_render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qrobj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This will give the following OpenSCAD code, which I've truncated for brevity:&lt;/p&gt;
 &lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;union() {
@@ -2393,7 +2393,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/9/1/3d-printed-wifi-access-qr-codes-part-1/">
     <title type="text">3D Printed WiFi Access QR Codes: Part 1</title>
-    <id>urn:uuid:e1b34c34-2d9d-30de-9c66-7bb10f5f29a9</id>
+    <id>urn:uuid:24b6a091-2f36-304b-9262-98acb10f695b</id>
     <updated>2018-09-01T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/9/1/3d-printed-wifi-access-qr-codes-part-1/" />
     <author>
@@ -2433,12 +2433,12 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;WIFI:S:Family Guest Network;T:WPA;P:vn8h2sncu093y3nd!;;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Now, we can code up our Python program do encode the QR code for us. I'll assume you're running Python 3.6 or later.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyqrcode&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pq&lt;/span&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyqrcode&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pq&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Family Guest Network&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;security&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;WPA&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;vn8h2sncu093y3nd!&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{ssid}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;T:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{security}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;P:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{password}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;terminal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:{ssid};T:{security};P:{password};;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;terminal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;With that block of code, you should get a QR code printed to your terminal, just like that!&lt;/p&gt;
 &lt;p&gt;Let's say you wanted to do the simple thing, and just have a regular laser/inkjet printer make a printout of the QR code. To do so, you can save the QR code to disk as a PNG file:&lt;/p&gt;
@@ -2452,7 +2452,7 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/">
     <title type="text">Joint, conditional, and marginal probability distributions</title>
-    <id>urn:uuid:1d4f0347-83d3-3612-aa52-78facad43d8a</id>
+    <id>urn:uuid:4a3ff391-f843-37f8-8679-30e5585fcac4</id>
     <updated>2018-08-07T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2018/8/7/joint-conditional-and-marginal-probability-distributions/" />
     <author>
