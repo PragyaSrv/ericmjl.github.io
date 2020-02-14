@@ -217,7 +217,7 @@
 
 
 <span class="c1"># Section (B)</span>
-<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
     <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span> <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;.jpg&#39;</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">files</span><span class="p">:</span>
@@ -228,25 +228,25 @@
 
 
 <span class="c1"># Section (C)</span>
-<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/image/&lt;path:imgname&gt;&#39;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/image/&lt;path:imgname&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">random_image</span><span class="p">(</span><span class="n">imgname</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">send_from_directory</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">imgname</span><span class="p">,</span> <span class="n">as_attachment</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">send_from_directory</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">imgname</span><span class="p">,</span> <span class="n">as_attachment</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
 <span class="c1"># Section (D)</span>
-<span class="nd">@click.command</span><span class="p">()</span>
-<span class="nd">@click.option</span><span class="p">(</span><span class="s1">&#39;--port&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Port number&#39;</span><span class="p">)</span>
-<span class="nd">@click.option</span><span class="p">(</span><span class="s1">&#39;--host&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Host name&#39;</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;--port&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Port number&#39;</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;--host&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Host name&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">start_server</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">host</span><span class="p">):</span>
     <span class="c1"># Architected this way because my console_scripts entry point is at</span>
     <span class="c1"># start_server.</span>
 
     <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="n">host</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span><span class="p">:</span> <span class="n">port</span><span class="p">}</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
     <span class="n">webview</span><span class="o">.</span><span class="n">create_window</span><span class="p">(</span><span class="s2">&quot;PiPhoto Display&quot;</span><span class="p">,</span>
-                          <span class="s2">&quot;http://127.0.0.1:{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">port</span><span class="p">))</span>
+                          <span class="s2">&quot;http://127.0.0.1:</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">port</span><span class="p">))</span>
 
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 
@@ -262,7 +262,7 @@
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">template_folder</span><span class="o">=</span><span class="n">tmpl_dir</span><span class="p">)</span>
 </pre></div>
 <p>Here, we instantiate a Flask instance called <code>app</code>. The <code>tmpl_dir</code> variable was later added on, because I later learned that Flask apps had to look within the project directory for the <code>templates</code> folder; this variable ensures that the correct template directory path is specified.</p>
-<h2 id="section-b:-main-application-logic.">Section B: Main application logic.</h2><div class="hll"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<h2 id="section-b:-main-application-logic.">Section B: Main application logic.</h2><div class="hll"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
     <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span> <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;.jpg&#39;</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">files</span><span class="p">:</span>
@@ -318,26 +318,26 @@
 <p>It's a bit complicated, so let me try my best to explain what's going on. This uses the <code>url_for</code> function, which is Flask magic for saying, "render the URL for a particular function" (<code>{{ url_for('random_image',...</code>), while passing in the necessary keywords arguments to that function (<code>... imgname=image) }}</code>). But... where did the <code>random_image</code> function come from, and why is it's keyword arguments named as <code>imgname</code>?</p>
 <p>Well, that's the best segue into Section C.</p>
 <h2 id="section-c:-random_image...?">Section C: random_image...?!</h2><p>If by the end of my own explanation you don't get it, don't worry. The inner workings remain a bit of black magic to me still. Here's the code:</p>
-<div class="hll"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/image/&lt;path:imgname&gt;&#39;</span><span class="p">)</span>
+<div class="hll"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/image/&lt;path:imgname&gt;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">random_image</span><span class="p">(</span><span class="n">imgname</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">send_from_directory</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">imgname</span><span class="p">,</span> <span class="n">as_attachment</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">send_from_directory</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">imgname</span><span class="p">,</span> <span class="n">as_attachment</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 <p>This function is what is called in the <code>img.html</code> template. The function takes in an image name <code>imgname</code> keyword argument, which is then passed to Flask's <code>send_from_directory()</code> function. Here, we are essentially saying, "get the file <code>imgname</code> from the directory <code>os.getcwd()</code>, as an attachment (<code>as_attachment=True</code>), and send it to Flask."</p>
 <p>Somehow, this provides the correct way to send the image file to the browser renderer.</p>
 <p><strong>Side note:</strong> Figuring this out turned out to be the better of a whole day's worth of debugging and reading through the Flask package documentation, plus another half a day on Stack Overflow trying to figure out the right coding patterns. Once I figured this out, almost everything else fell into place for the minimum-viable-product version of the app.</p>
-<h2 id="section-d:-execution">Section D: Execution</h2><div class="hll"><pre><span></span><span class="nd">@click.command</span><span class="p">()</span>
-<span class="nd">@click.option</span><span class="p">(</span><span class="s1">&#39;--port&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Port number&#39;</span><span class="p">)</span>
-<span class="nd">@click.option</span><span class="p">(</span><span class="s1">&#39;--host&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Host name&#39;</span><span class="p">)</span>
+<h2 id="section-d:-execution">Section D: Execution</h2><div class="hll"><pre><span></span><span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;--port&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Port number&#39;</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;--host&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Host name&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">start_server</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">host</span><span class="p">):</span>
     <span class="c1"># Architected this way because my console_scripts entry point is at</span>
     <span class="c1"># start_server.</span>
 
     <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="n">host</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span><span class="p">:</span> <span class="n">port</span><span class="p">}</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
     <span class="n">webview</span><span class="o">.</span><span class="n">create_window</span><span class="p">(</span><span class="s2">&quot;PiPhoto Display&quot;</span><span class="p">,</span>
-                          <span class="s2">&quot;http://{0}:{1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+                          <span class="s2">&quot;http://</span><span class="si">{0}</span><span class="s2">:</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
 
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 </pre></div>
@@ -413,7 +413,7 @@
         <span class="s1">&#39;static&#39;</span><span class="p">:</span> <span class="s1">&#39;imgdisplay/static/*&#39;</span><span class="p">,</span>
         <span class="s1">&#39;templates&#39;</span><span class="p">:</span> <span class="s1">&#39;imgdisplay/templates/*&#39;</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="n">include_package_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">include_package_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 <p>Before we go on, please ignore my version numbering system. It's essentially the current date and time... While I know semantic versioning and the likes, for this single project, I decided to go simple and not worry about more complex stuff.</p>
@@ -431,7 +431,7 @@
     <span class="s1">&#39;static&#39;</span><span class="p">:</span> <span class="s1">&#39;imgdisplay/static/*&#39;</span><span class="p">,</span>
     <span class="s1">&#39;templates&#39;</span><span class="p">:</span> <span class="s1">&#39;imgdisplay/templates/*&#39;</span><span class="p">,</span>
 <span class="p">},</span>
-<span class="n">include_package_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="n">include_package_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </pre></div>
 <p>This is <strong>very, very important</strong> for running the Flask app. The <code>static</code> and <code>templates</code> folders are default folders that Flask automatically looks for. These have to be packaged and distributed together in order for the app to work properly.</p>
 <h2 id="building-distribution">Building Distribution</h2><p>To build the distribution at the command line, according to <a href="http://www.plankandwhittle.com/packaging-a-flask-web-app/">Plank &amp; Whittle's</a> website, there are two options for Python packages: a binary file, which contains only Python code, and a source distribution, which contains Python code + other files packaged in. Flask apps can only be distributed as a source distribution, so binary distributions are out of luck. I made the mistake of uploading a binary distribution to PyPI, and that cost me hours of debugging to get out of it, which I finally did. So here's the "correct" set of commands needed to avoid this headache:</p>

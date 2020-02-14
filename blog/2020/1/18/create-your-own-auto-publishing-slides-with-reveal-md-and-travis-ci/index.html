@@ -169,10 +169,10 @@
 <h2 id="create-your-own-auto-publishing-reveal-md-slides">Create your own auto-publishing <code>reveal-md</code> slides!</h2><p>Let’s walk through the steps needed to make this a reality for you!</p>
 <h3 id="create-a-new-repository">Create a new repository</h3><p>On GitHub, create a new repository that has a nice and informative name. (For now, we’ll just refer to that repository as <code>my-talk</code> for convenience.)</p>
 <h3 id="get-setup-locally">Get setup locally</h3><p>To get setup, you need to make sure that <code>reveal-md</code> is on your <code>PATH</code>. I choose to use <code>conda</code> environments to manage my packages, so I have a slightly convoluted way of doing this, by using <code>conda</code> to install <code>nodejs</code> (which installs the <code>npm</code> node package manager), followed by using the node package manager to install <code>reveal-md</code>. We first start by preparing an <code>environment.yml</code> specification file that <code>conda</code> can use to build your environment:</p>
-<div class="hll"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">my_talk</span>
-<span class="l l-Scalar l-Scalar-Plain">channels</span><span class="p p-Indicator">:</span>
+<div class="hll"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my_talk</span>
+<span class="nt">channels</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
-<span class="l l-Scalar l-Scalar-Plain">dependencies</span><span class="p p-Indicator">:</span>
+<span class="nt">dependencies</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python=3.8</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nodejs</span>
 </pre></div>
@@ -221,11 +221,11 @@ Date
 </pre></div>
 <h3 id="aside:-fancier-items">Aside: fancier items</h3><p>If you need fancier things, you can weave in HTML at your own convenience. For example, I embedded an HTML table to organize <a href="https://github.com/ColCarroll/imcmc"><code>imcmc</code></a> logos that I had previously compiled.</p>
 <h3 id="get-travis-ci-setup">Get Travis CI setup</h3><p>You’ll now want to create a <code>.travis.yml</code>, which commands Travis to do things. It’s generally nothing more than a collection of bash commands that are executed in order. An example Travis configuration file from my <a href="https://ericmjl.github.io/testing-for-data-scientists">data science testing talk</a> looks like this:</p>
-<div class="hll"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">language</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">python</span>
-<span class="l l-Scalar l-Scalar-Plain">python</span><span class="p p-Indicator">:</span>
+<div class="hll"><pre><span></span><span class="nt">language</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python</span>
+<span class="nt">python</span><span class="p">:</span>
     <span class="c1"># We don&#39;t actually use the Travis Python, but this keeps it organized.</span>
     <span class="p p-Indicator">-</span> <span class="s">&quot;3.5&quot;</span>
-<span class="l l-Scalar l-Scalar-Plain">install</span><span class="p p-Indicator">:</span>
+<span class="nt">install</span><span class="p">:</span>
     <span class="c1"># We do this conditionally because it saves us some downloading if the</span>
     <span class="c1"># version is the same.</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;</span>
@@ -246,7 +246,7 @@ Date
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">npm install -g reveal-md</span>
 
 
-<span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span>
+<span class="nt">script</span><span class="p">:</span>
     <span class="c1"># Create the docs directory. This is where we will be publishing from</span>
     <span class="c1"># (see the &quot;deploy&quot; section below).</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mkdir -p docs/</span>
@@ -259,19 +259,19 @@ Date
 
 
 <span class="c1"># This is an example to deploy to a branch through Travis.</span>
-<span class="l l-Scalar l-Scalar-Plain">deploy</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">provider</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">pages</span>
-    <span class="l l-Scalar l-Scalar-Plain">skip-cleanup</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="l l-Scalar l-Scalar-Plain">github-token</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">$GITHUB_TOKEN</span>  <span class="c1"># Set in the settings page of your repository, as a secure variable</span>
-    <span class="l l-Scalar l-Scalar-Plain">keep-history</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">deploy</span><span class="p">:</span>
+    <span class="nt">provider</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pages</span>
+    <span class="nt">skip-cleanup</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">github-token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">$GITHUB_TOKEN</span>  <span class="c1"># Set in the settings page of your repository, as a secure variable</span>
+    <span class="nt">keep-history</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
     <span class="c1"># We read the master branch</span>
-    <span class="l l-Scalar l-Scalar-Plain">on</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">branch</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
+    <span class="nt">on</span><span class="p">:</span>
+        <span class="nt">branch</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
     <span class="c1"># Take the docs/ directory</span>
-    <span class="l l-Scalar l-Scalar-Plain">local-dir</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">docs</span>
+    <span class="nt">local-dir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">docs</span>
     <span class="c1"># Publish to the gh-pages branch</span>
-    <span class="l l-Scalar l-Scalar-Plain">target-branch</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">gh-pages</span>
-    <span class="l l-Scalar l-Scalar-Plain">verbose</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">target-branch</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gh-pages</span>
+    <span class="nt">verbose</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 <p>You’ll notice that the commands we want Travis to execute are basically the same as those we executed manually. The only difference now is that we command <code>reveal-md</code> to build a static site under the directory <code>site/</code>, which we then command Travis to push to GitHub pages.</p>
 <p>In the <code>deploy</code> section, we are specifying to Travis that we want all of the content under the directory <code>site/</code> to be pushed to the <code>gh-pages</code> branch of our repository. (We have not yet connected Travis to our repo; that will happen next, so sit tight!)</p>

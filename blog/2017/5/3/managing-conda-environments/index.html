@@ -150,12 +150,12 @@
 <p>I thus decided to automate some of the steps involved in maintaining environments, and keep everything centrally managed so my brain doesn't overload. It involves a bit of GitHub and a bit of bash scripting, but altogether gives a ton of flexibility and control over keeping my environments updated.</p>
 <p>I start by keeping a central repository of <code>conda</code> environment YAML specifications. Mine is kept <a href="https://github.com/ericmjl/conda-envs">here</a>. Each YAML specification includes just the minimum set of packages that I need; <code>conda</code> manages the dependencies.</p>
 <p>For example, my environment specification for Bayesian statistical analyses looks as such:</p>
-<div class="hll"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">bayesian</span>  <span class="c1"># for Bayesian analysis</span>
-<span class="l l-Scalar l-Scalar-Plain">channels</span><span class="p p-Indicator">:</span> <span class="kt">!!python/tuple</span>
+<div class="hll"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bayesian</span>  <span class="c1"># for Bayesian analysis</span>
+<span class="nt">channels</span><span class="p">:</span> <span class="kt">!!python/tuple</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ericmjl</span>
-<span class="l l-Scalar l-Scalar-Plain">dependencies</span><span class="p p-Indicator">:</span>
+<span class="nt">dependencies</span><span class="p">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python=3.6</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">matplotlib</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">numpy</span>
