@@ -92,7 +92,12 @@ and returns a batch of outputs.&lt;/p&gt;
 Absolutely. We passed an &lt;em&gt;attrappe&lt;/em&gt; (Google it, it’s German) sequence through the model, 
 and checked that the reps were identical to the original - which they were. 
 But don’t take my word for it, 
-check out the &lt;a href=&quot;https://elarkk.github.io/jax-unirep/&quot;&gt;preprint&lt;/a&gt; we wrote to document this.&lt;/p&gt;
+check out the &lt;a href=&quot;https://elarkk.github.io/jax-unirep/&quot;&gt;draft preprint&lt;/a&gt; we wrote to document this!
+Meanwhile, in case you don't want to click over and read our hard work, 
+here's the figure linked from the source. 
+(It's only off by a bit because we added a delta
+to make the two representations visible.)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://elarkk.github.io/jax-unirep/figures/rep_trace_lf.png&quot; alt=&quot;Congruence between the reps.&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Besides that, 
 we also added tests and elaborate docstrings 
 for the functions in there, 
@@ -109,8 +114,10 @@ Given JAX’s automatic compilation to GPU and TPU,
 the speed improvements we could obtain might be even better, 
 though we have yet to try it out. 
 Again, don't take my word at it - 
-check out the &lt;a href=&quot;https://elarkk.github.io/jax-unirep/&quot;&gt;preprint&lt;/a&gt; 
-if you're curious!&lt;/p&gt;
+check out the &lt;a href=&quot;https://elarkk.github.io/jax-unirep/&quot;&gt;draft preprint&lt;/a&gt; 
+if you're curious!
+The exact figure, though is below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://elarkk.github.io/jax-unirep/figures/speed_comparison.png#center&quot; alt=&quot;Speed comparison between the original and `jax`-based reimplementation.&quot;&gt;&lt;/p&gt;
 &lt;p&gt;I suspect that by reimplementing the model in NumPy, 
 we basically eliminated the TensorFlow graph compilation overhead, 
 which was the original source of slowness. 
