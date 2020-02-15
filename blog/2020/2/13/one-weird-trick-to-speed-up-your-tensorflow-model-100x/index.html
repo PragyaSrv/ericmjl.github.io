@@ -226,7 +226,9 @@ we then defined the function that processes a single sequence.
 To do this, we took advantage of the <code>jax.lax</code> submodule’s <code>scan</code> function, 
 which literally “scans” the RNN cell over the entire sequence 
 the way TensorFlow’s RNN cell would be scanned. 
-This basically is a vectorized for-loop. 
+<del>This basically is a vectorized for-loop.</del>
+Thanks to Stephan Hoyer <a href="https://twitter.com/shoyer/status/1228416820119400448">pointing out my conceptual error here</a>;
+<code>lax.scan</code> is a compiled for-loop with known number of iterations.
 Together, that defined the function call that processes a single sequence. 
 This, incidentally, gives us the “batch-“ or “sample-wise” RNN function, 
 <code>mlstm1900_batch</code>.</p>
@@ -417,11 +419,13 @@ and sharing knowledge between peers.</p>
 <h2 id="conclusion">Conclusion</h2><p>I hope you enjoyed reading about our journey reimplementing UniRep in JAX. 
 Keep in mind that JAX isn't necessarily always going to speed up your TF model 100X; 
 I'm clearly being facetious in writing it that way. 
-JAX and TF share XLA underneath the hood, 
-and XLA is really the secret sauce that makes the models execute fast. 
-The only difference is TF1.x needed this compilation time, 
-while JAX does it just-in-time (when ordered to do so). 
-That said, because JAX gets us autodiff on the NumPy API, 
+<del>JAX and TF share XLA underneath the hood,</del>
+Matt Johnson pointed out that JAX uses XLA by default,
+while TF does not,
+yet XLA is really the secret sauce that makes the models execute fast.
+<del>The only difference is TF1.x needed this compilation time, 
+while JAX does it just-in-time (when ordered to do so).</del>
+Because JAX gets us autodiff on the NumPy API, 
 it's a super productive research and teaching tool 
 with a familiar API to many Pythonistas. 
 My hope is this post encourages you to try it out; happy experimenting!</p>

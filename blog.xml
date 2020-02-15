@@ -76,7 +76,9 @@ we then defined the function that processes a single sequence.
 To do this, we took advantage of the &lt;code&gt;jax.lax&lt;/code&gt; submodule’s &lt;code&gt;scan&lt;/code&gt; function, 
 which literally “scans” the RNN cell over the entire sequence 
 the way TensorFlow’s RNN cell would be scanned. 
-This basically is a vectorized for-loop. 
+&lt;del&gt;This basically is a vectorized for-loop.&lt;/del&gt;
+Thanks to Stephan Hoyer &lt;a href=&quot;https://twitter.com/shoyer/status/1228416820119400448&quot;&gt;pointing out my conceptual error here&lt;/a&gt;;
+&lt;code&gt;lax.scan&lt;/code&gt; is a compiled for-loop with known number of iterations.
 Together, that defined the function call that processes a single sequence. 
 This, incidentally, gives us the “batch-“ or “sample-wise” RNN function, 
 &lt;code&gt;mlstm1900_batch&lt;/code&gt;.&lt;/p&gt;
@@ -267,11 +269,13 @@ and sharing knowledge between peers.&lt;/p&gt;
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;I hope you enjoyed reading about our journey reimplementing UniRep in JAX. 
 Keep in mind that JAX isn't necessarily always going to speed up your TF model 100X; 
 I'm clearly being facetious in writing it that way. 
-JAX and TF share XLA underneath the hood, 
-and XLA is really the secret sauce that makes the models execute fast. 
-The only difference is TF1.x needed this compilation time, 
-while JAX does it just-in-time (when ordered to do so). 
-That said, because JAX gets us autodiff on the NumPy API, 
+&lt;del&gt;JAX and TF share XLA underneath the hood,&lt;/del&gt;
+Matt Johnson pointed out that JAX uses XLA by default,
+while TF does not,
+yet XLA is really the secret sauce that makes the models execute fast.
+&lt;del&gt;The only difference is TF1.x needed this compilation time, 
+while JAX does it just-in-time (when ordered to do so).&lt;/del&gt;
+Because JAX gets us autodiff on the NumPy API, 
 it's a super productive research and teaching tool 
 with a familiar API to many Pythonistas. 
 My hope is this post encourages you to try it out; happy experimenting!&lt;/p&gt;
