@@ -2,13 +2,104 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2020-02-13T00:00:00Z</updated>
+  <updated>2020-03-15T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2020/3/15/what-can-data-scientists-do-during-covid-19/">
+    <title type="text">What can data scientists do during COVID-19?</title>
+    <id>urn:uuid:c84a85ee-6051-3c04-9820-9a8fba1727f9</id>
+    <updated>2020-03-15T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2020/3/15/what-can-data-scientists-do-during-covid-19/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;A friend in Austria pinged me with the following question:&lt;/p&gt;
+&lt;blockquote class=&quot;blockquote&quot;&gt;
+&lt;p&gt;I was wondering if you have any ideas of how I (and other link-minded) people could help with combating this threat. Do you know how a Data Scientist can contribute to our global efforts?
+&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;My response is below.
+The tl;dr version is:
+&lt;em&gt;Your number-crunching and communication skills, 
+paired with independent re-analyses of publications, 
+can help you with local mitigation efforts.&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;The usual measures are your best bet:
+stay at home,
+interact with people virtually if you need to do meetings,
+and minimize number of trips to the grocery store.&lt;/p&gt;
+&lt;p&gt;That said, I'm sure you pinged me for a different answer :)&lt;/p&gt;
+&lt;p&gt;Here's what I can think of.
+The overarching theme is to use your skills as a data scientist, 
+particularly number-crunching and communication skills, 
+to help re-emphasize and re-communicate the good practices 
+that the epidemiology experts have been saying all along, 
+the only difference being we're local to our communities,
+and can advocate among our own community.&lt;/p&gt;
+&lt;p&gt;Firstly, independently replicating others' analyses is a good place to start.
+This doesn't necessarily mean ML models - it can mean an ODE model for case counts, 
+or &lt;a href=&quot;https://github.com/twiecki/covid19/blob/master/covid19_growth_bayes.ipynb&quot;&gt;Bayesian models for estimation of growth rate&lt;/a&gt;, etc.
+Doing this will take some deep diving into the epidemiology literature,
+as epidemiologists have given much more thought to how to properly count cases and the likes than we have.&lt;/p&gt;
+&lt;p&gt;Once you've done the first,
+extend those models to show how certain interventions that have been strongly recommended - 
+such as the social distancing one I am emphasizing as well - 
+can impact the spread of the virus. 
+I trust the recommendation from epi experts to practice social distancing 
+because I was once adjacent to the epi world (with my flu research), 
+but I'm not sure others share the same level of trust. 
+The lack of trust is probably partially due to the distance most of us have
+from a professional epidemiologist.
+It helps for one to hear it from someone one knows personally, 
+especially someone one can trust
+who also has the necessary number-crunching and communication skills.&lt;/p&gt;
+&lt;p&gt;Thirdly, produce communications of some kind (posters, blog posts, infographics) 
+that help you communicate to others in your local community. 
+This, I think, is something we can already do without doing any independent re-analyses, 
+but the message among your local community might be more effective 
+if you have already done your homework by doing independent analysis replication. 
+(There's just something about being prepared to answer questions that helps
+when preparing communication pieces.)&lt;/p&gt;
+&lt;p&gt;Some caveats when doing this.&lt;/p&gt;
+&lt;p&gt;Firstly, if you find something in your analyses that disagrees with the experts,
+be ready to hold your own view with a grain of salt. 
+There may be a key assumption you missed. 
+Dig into the literature, 
+ping your local epidemiology experts for help, 
+and discuss with other data-oriented people. 
+A good prior is, 
+&quot;I'm wrong, they're probably right, I might need to re-look what I've done.&quot;&lt;/p&gt;
+&lt;p&gt;Secondly, making dashboards/notebooks and publishing them is fun, 
+but in these times, I would call them cheap fun if it isn't paired with local action. 
+There's harder but more satisfying work to be done actually helping to influence local action 
+than publishing something to the web and tweeting about it... 
+unless doing that tweeting thing actually helps with influencing local action. 
+Use good judgment here, and don't go for cheap fame.
+I trust you won't.&lt;/p&gt;
+&lt;p&gt;From my time next to the epi world, 
+the best thing you can do is, of course, encouraging local action: 
+social distancing, 
+leaving masks for medical personnel (so don't go raiding shelves), 
+being prepared with 2 weeks of food supplies, 
+and don't go to the hospital unless you have medical symptoms (like fevers), 
+so you don't contribute to overwhelming the medical system.&lt;/p&gt;
+&lt;p&gt;And while in isolation, 
+don't forget to take care of your mental health. 
+Nerds like myself can deal with the isolation, 
+but others might need some social interaction. 
+Audio/video call someone if you need to. 
+One of the nice things of the internet age 
+is that it's easier to stay connected than ever before.&lt;/p&gt;
+&lt;p&gt;Finally, stay kind to the local grocery staff. 
+They're probably under a lot of mental and physical stress
+with people flowing through their workplace. 
+Don't sneeze in their vicinity! 
+They're keeping the shelves stocked for the good of everybody.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/2/13/one-weird-trick-to-speed-up-your-tensorflow-model-100x/">
     <title type="text">One Weird Trick to Speed Up Your TensorFlow Model 100X...</title>
     <id>urn:uuid:4f298f94-5a92-3d64-80a9-72c43ed5d026</id>
@@ -2573,12 +2664,12 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Family Guest Network&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;security&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;WPA&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;vn8h2sncu093y3nd!&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{ssid}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;T:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{security}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;P:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{password}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;T:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;security&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;P:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&quot;creating-a-3d-printed-qr-code-with-python&quot;&gt;Creating a 3D Printed QR Code with Python&lt;/h2&gt;&lt;p&gt;Now, let's see how we can create 3D models with Python code. We will need a package called &lt;code&gt;SolidPython&lt;/code&gt;, and optionally &lt;code&gt;numpy&lt;/code&gt; to help us with some array processing. (It can be done entirely using built-in lists if needed.)&lt;/p&gt;
 &lt;h3 id=&quot;create-qr-code-object&quot;&gt;Create QR Code Object&lt;/h3&gt;&lt;p&gt;To start, I first defined a convenience function that let me create and return a &lt;code&gt;QRCode&lt;/code&gt; object that can be passed around and manipulated.&lt;/p&gt;
 &lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create_wifi_qr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;security&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{ssid}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;T:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{security}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;P:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{password}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;T:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;security&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;P:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Its use will become evident later. You'll also notice I'm using type hints inside the function.&lt;/p&gt;
@@ -2661,65 +2752,6 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;li&gt;How to create a 3D model of the QR code using the array.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Now that you have an example of how to create an OpenSCAD file from Python using &lt;code&gt;SolidPython&lt;/code&gt;, I hope you'll go forth and make a ton of fun stuff!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/9/1/3d-printed-wifi-access-qr-codes-part-1/">
-    <title type="text">3D Printed WiFi Access QR Codes: Part 1</title>
-    <id>urn:uuid:7893d2eb-dfb8-31af-96ff-99cf28127789</id>
-    <updated>2018-09-01T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/9/1/3d-printed-wifi-access-qr-codes-part-1/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;h2 id=&quot;the-project&quot;&gt;The Project&lt;/h2&gt;&lt;p&gt;Over the weekend, I embarked on a project to create a 3D printed QR code that guests at our house could scan to gain access to our guest wireless network.&lt;/p&gt;
-&lt;h2 id=&quot;why-i-decided-to-do-this&quot;&gt;Why I decided to do this&lt;/h2&gt;&lt;p&gt;From the standpoint of practicality, sure, it's trivial to open up phone settings, find the WiFi network name, and give them the password, but... this has the coolness factor associated with it! Imagine scanning a 3D-printed QR code! Until this becomes commonplace, it's a cool thing to be able to do.&lt;/p&gt;
-&lt;p&gt;Anyways, there's a ton of QR code generators out there on the web, and there's more than a handful of WiFi QR code generators out there - so why did I embark on this project?&lt;/p&gt;
-&lt;p&gt;Partly it's borne out of security reasons - I am not giving my WiFi password up to some random website. Who knows whether they're actually storing the passwords?&lt;/p&gt;
-&lt;p&gt;Another part of this is borne out of me wanting to scratch my itch surrounding QR codes. The last time I went to China (Xi'an and Shanghai, specifically), I saw QR codes &lt;em&gt;everywhere&lt;/em&gt;. There surely had to be something good we could use this for at home that didn't involve just packing and storage.&lt;/p&gt;
-&lt;h2 id=&quot;getting-setup&quot;&gt;Getting Setup&lt;/h2&gt;&lt;p&gt;Ok, let's get started! To create QR codes, all you need are the following packages installed in your environment:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;pyqrcode&lt;/code&gt; [&lt;code&gt;pip&lt;/code&gt;]&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pypng&lt;/code&gt; [&lt;code&gt;pip&lt;/code&gt;]&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;If you want to do the 3D printing part, you'll need another package:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;SolidPython&lt;/code&gt; [&lt;code&gt;pip&lt;/code&gt;]&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;numpy&lt;/code&gt; [&lt;code&gt;conda&lt;/code&gt;/&lt;code&gt;pip&lt;/code&gt;]&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Finally, if you'd like to work with command line interfaces and Flask, you'll need:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;click&lt;/code&gt; [&lt;code&gt;pip&lt;/code&gt;/&lt;code&gt;conda&lt;/code&gt;]&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Flask&lt;/code&gt; [&lt;code&gt;pip&lt;/code&gt;/&lt;code&gt;conda&lt;/code&gt;]&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;encoding-wifi-credentials-in-a-qr-code&quot;&gt;Encoding WiFi credentials in a QR code&lt;/h2&gt;&lt;p&gt;Let's start by creating a QR code for our WiFi guest network.&lt;/p&gt;
-&lt;p&gt;Let's say that these are the security credentials for the network:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;SSID (a.k.a. Network Name): &lt;code&gt;Family Guest Network&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Password: &lt;code&gt;vn8h2sncu093y3nd!&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Security Type (one of WPA or WEP): &lt;code&gt;WPA&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Because QR codes are merely two-dimensional barcodes that encode a string that can be parsed by another program, in order to create a QR-code that is readable for accessing WiFi, we need a string that can be parsed. This string is structured as follows:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;WIFI:S:&amp;lt;SSID&amp;gt;;T:&amp;lt;WPA|WEP|&amp;gt;;P:&amp;lt;password&amp;gt;;;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;So in our case, we would want a string that looks like:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;WIFI:S:Family Guest Network;T:WPA;P:vn8h2sncu093y3nd!;;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Now, we can code up our Python program do encode the QR code for us. I'll assume you're running Python 3.6 or later.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyqrcode&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pq&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ssid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Family Guest Network&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;security&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;WPA&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;vn8h2sncu093y3nd!&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;WIFI:S:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{ssid}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;T:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{security}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;P:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{password}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;;;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;terminal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;With that block of code, you should get a QR code printed to your terminal, just like that!&lt;/p&gt;
-&lt;p&gt;Let's say you wanted to do the simple thing, and just have a regular laser/inkjet printer make a printout of the QR code. To do so, you can save the QR code to disk as a PNG file:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;png&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;home_guest_wifi.png&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;&lt;p&gt;And just like that, you've used Python to create a WiFi QR code!  How easy was that?&lt;/p&gt;
-&lt;p&gt;Along the way, I also used Kite in the Atom text editor while embarking on this project - this allowed me to view documentation and common usage patterns for the packages I imported.&lt;/p&gt;
-&lt;p&gt;Now, if you remember that QR codes are just &quot;ASCII strings encoded in a 2D barcode&quot;, then you'll know that you can pass any arbitrary string into the &lt;code&gt;pyqrcode.create()&lt;/code&gt; function. That means you can come up with any creative use of a short string that needs to be scanned to be useful! For example, you can create business cards with your LinkedIn profile URL embedded in the QR code, or use it to encode a serial number information on your possessions, or more!&lt;/p&gt;
-&lt;p&gt;Stay tuned for the coming blog posts!&lt;/p&gt;
 </content>
   </entry>
 </feed>
