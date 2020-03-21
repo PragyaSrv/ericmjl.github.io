@@ -43,10 +43,10 @@
     </script>
 
     <!-- Posthog Analytics -->
-    <script src="https://ericmjl-website-analytics.herokuapp.com/static/array.js"></script>
+    <!-- <script src="https://ericmjl-website-analytics.herokuapp.com/static/array.js"></script>
     <script>
     posthog.init('wWRaqGghI2wdsIZz0nkD3tcZK1KJGN1ZaIqQhDBEX6I', {api_host: 'https://ericmjl-website-analytics.herokuapp.com'})
-    </script>
+    </script> -->
 
 
     <!-- FontAwesome embed -->
@@ -205,7 +205,7 @@
 <span class="n">ssid</span> <span class="o">=</span> <span class="s2">&quot;Family Guest Network&quot;</span>
 <span class="n">security</span> <span class="o">=</span> <span class="s2">&quot;WPA&quot;</span>
 <span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;vn8h2sncu093y3nd!&quot;</span>
-<span class="n">qr</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;WIFI:S:</span><span class="si">{ssid}</span><span class="s1">;T:</span><span class="si">{security}</span><span class="s1">;P:</span><span class="si">{password}</span><span class="s1">;;&#39;</span><span class="p">)</span>
+<span class="n">qr</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;WIFI:S:</span><span class="si">{</span><span class="n">ssid</span><span class="si">}</span><span class="s1">;T:</span><span class="si">{</span><span class="n">security</span><span class="si">}</span><span class="s1">;P:</span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s1">;;&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">qr</span><span class="o">.</span><span class="n">terminal</span><span class="p">())</span>
 </pre></div>
 <p>With that block of code, you should get a QR code printed to your terminal, just like that!</p>
