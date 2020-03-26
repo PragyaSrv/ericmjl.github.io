@@ -123,6 +123,17 @@ He is also the creator and BDFL of PyMC, for which I help out with development.)
 There are some beginner-friendly ones that show you how to get started with Python too.
 In particular, &lt;a href=&quot;https://www.youtube.com/watch?v=pB3BFP001co&amp;amp;list=PLytH1Th3ORyNIBPyOQg20CsVhVIJh1u2a&quot;&gt;this playlist&lt;/a&gt;
 should cover everything for you.&lt;/p&gt;
+&lt;h2 id=&quot;pandas-resources&quot;&gt;&lt;code&gt;pandas&lt;/code&gt; Resources&lt;/h2&gt;&lt;p&gt;If you're already proficient with Python, then learning &lt;code&gt;pandas&lt;/code&gt; can only help you.
+&lt;code&gt;pandas&lt;/code&gt; is the idiomatic package for working with data tables in Python.
+Knowing how to use it can help you be productive 
+when working with tables that come from collaborators,
+or data from databases.&lt;/p&gt;
+&lt;p&gt;Here's some resources for picking up &lt;code&gt;pandas&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://tomaugspurger.github.io/modern-1-intro.html&quot;&gt;Modern Pandas&lt;/a&gt; by &lt;a href=&quot;https://tomaugspurger.github.io/&quot;&gt;Tom Augspurger&lt;/a&gt;. Tom is also someone I have met on the conference circuit.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Pandas-Cookbook-Scientific-Computing-Visualization-ebook/dp/B06W2LXLQK&quot;&gt;Pandas Cookbook&lt;/a&gt; by &lt;a href=&quot;https://www.linkedin.com/in/tedpetrou/&quot;&gt;Ted Petrou&lt;/a&gt;, a Python trainer and consultant.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Pandas-Everyone-Analysis-Addison-Wesley-Analytics-ebook/dp/B0789WKTKJ&quot;&gt;Pandas for Everyone&lt;/a&gt; by &lt;a href=&quot;https://chendaniely.github.io/&quot;&gt;Daniel Chen&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&quot;other-notes&quot;&gt;Other notes&lt;/h2&gt;&lt;h3 id=&quot;setting-up-python-locally&quot;&gt;Setting up Python locally&lt;/h3&gt;&lt;p&gt;Thus far, I've alluded to &quot;setting up your own Python environment&quot; many times.
 To demystify what I mean by that, it really boils down to installing
 the &lt;a href=&quot;https://www.anaconda.com/distribution/&quot;&gt;Anaconda distribution&lt;/a&gt; of Python more than anything else.
