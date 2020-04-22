@@ -2,13 +2,102 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2020-04-12T00:00:00Z</updated>
+  <updated>2020-04-21T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2020/4/21/use-pyprojroot-and-pythons-pathlib-to-manage-your-data-paths/">
+    <title type="text">Use pyprojroot and Python’s pathlib to manage your data paths!</title>
+    <id>urn:uuid:4cfd25f8-3da4-3218-8cad-2b4edbdceb65</id>
+    <updated>2020-04-21T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2020/4/21/use-pyprojroot-and-pythons-pathlib-to-manage-your-data-paths/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;If you adopt a proper organizational structure for your data projects,
+then each project gets its own directory (i.e. a clean and isolated &quot;workspace&quot;)
+and its own isolated analysis environment (e.g. a &lt;code&gt;conda&lt;/code&gt; environment).&lt;/p&gt;
+&lt;p&gt;In that workspace, your directory structure might look like this:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;project/
+- data/
+- notebooks/
+- src/
+- setup.py
+- README
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;As such, your notebook are all going to be in a different directory from your data.
+This is one way that keeps the mind sane: 
+you might have subdirectories in the &lt;code&gt;notebooks/&lt;/code&gt; directory
+that you use to organize the notebooks further,
+yet you have multiple notebooks that use the same file,
+leading to brittle path linking.
+After all in one notebook, you might do:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pd&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;data.csv&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;But in another notebook that lives in a different directory,
+to link to the dataset, you might have to do:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pd&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;../other_dir/data.csv&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The potential for confusion is just immense here.&lt;/p&gt;
+&lt;p&gt;A better way is to provide one authoritative path to a particular dataset that you can use.
+For example:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pd&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;../data/data.csv&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;But even that is a bit tricky: if you move the notebook for whatever good reason,
+the path to the data might break.
+It’s still brittle.
+We need a better way to resolve paths.&lt;/p&gt;
+&lt;p&gt;Enter &lt;code&gt;pyprojroot&lt;/code&gt;.
+Written by my fellow PyData conference doppleganger Daniel Chen,
+it provides a &lt;code&gt;here&lt;/code&gt; function that will resolve to your project root directory (hence the package name).
+The original was written in R (&lt;code&gt;rprojroot&lt;/code&gt;),
+and it’s a wonderful tool for data scientists.
+Let’s see it in action:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pd&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyprojroot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;here&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;here&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;data/data.csv&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And &lt;em&gt;voila&lt;/em&gt;!
+No fragile relative paths,
+and no perpetually long chains of &lt;code&gt;../../..&lt;/code&gt;!
+Just nice and clean resolution to your project root.&lt;/p&gt;
+&lt;p&gt;How does it work?
+What &lt;code&gt;pyprojroot&lt;/code&gt; does underneath the hood is
+recursively climb the file tree until it finds
+one of a set of pre-specified files
+that are commonly found in a project’s root directory.
+For example, &lt;code&gt;.git&lt;/code&gt; is a common one.
+For Python packages, &lt;code&gt;setup.py&lt;/code&gt; is another.&lt;/p&gt;
+&lt;p&gt;If your project doesn’t “fit” any of the conventions assumed,
+or if you have a fancier structure,
+you can always add a &lt;code&gt;.here()&lt;/code&gt; to your project root,
+and configure the &lt;code&gt;project_files&lt;/code&gt; keyword argument
+so that &lt;code&gt;here&lt;/code&gt; only looks for that one authoritative file:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pd&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyprojroot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;here&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;here&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;project_files&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.here&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;data/data.csv&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And what &lt;em&gt;exactly&lt;/em&gt; is the &lt;code&gt;here&lt;/code&gt; function returning?
+Well, it’s returning a &lt;code&gt;pathlib.Path&lt;/code&gt; object,
+which has some seriously clever patching
+to allow it to work with the &lt;code&gt;/&lt;/code&gt; operator
+to represent paths in native Python code!&lt;/p&gt;
+&lt;p&gt;Now, let us all toast to cleaner path resolution in our data projects!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/4/12/introducing-a-new-essay-on-markov-models/">
     <title type="text">Introducing a new essay on Markov models</title>
     <id>urn:uuid:3dc37d24-a8bf-3848-8eee-bc25e8c4e3cc</id>
@@ -2552,110 +2641,6 @@ work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;li&gt;Pre-scattering sometimes takes a bit of time, but I have not seen it take as much time as having the scheduler handle everything.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&quot;acknowledgments&quot;&gt;Acknowledgments&lt;/h2&gt;&lt;p&gt;Special thanks goes to &lt;a href=&quot;https://matthewrocklin.com&quot;&gt;Matt Rocklin&lt;/a&gt;, who answered my question on &lt;a href=&quot;https://stackoverflow.com/questions/52997229/is-there-an-advantage-to-pre-scattering-data-objects-in-dask&quot;&gt;StackOverflow&lt;/a&gt;, which in turn inspired this blog post.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/">
-    <title type="text">Parallel Processing with Dask on GridEngine Clusters</title>
-    <id>urn:uuid:18e951d8-6df5-3751-bf52-1bb750d90d1a</id>
-    <updated>2018-10-11T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/10/11/parallel-processing-with-dask-on-gridengine-clusters/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;I recently just figured out how to get this working... and it's awesome! :D&lt;/p&gt;
-&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;&lt;p&gt;If I'm developing an analysis in the Jupyter notebook, and I have one semi-long-running function (e.g. takes dozens of seconds) that I need to run over tens to hundreds of thousands of similar inputs, it'll take &lt;em&gt;ages&lt;/em&gt; for this to complete in serial. For a sense of scale, a function that takes ~20 seconds per call run serially over 10,000 similar inputs would take 200,000 seconds, which is 2 days of run-time (not including any other overhead). That's not feasible for interactive exploration of data. If I could somehow parallelize just the function over 500 compute nodes, we could take the time down to 7 minutes.&lt;/p&gt;
-&lt;p&gt;GridEngine-based compute clusters are one of many options for parallelizing work. During grad school at MIT, and at work at Novartis, the primary compute cluster environment that I've encountered has been GridEngine-based. However, because they are designed for batch jobs, as a computational scientist, we have to jump out of whatever development environment we're currently using, and move to custom scripts.&lt;/p&gt;
-&lt;p&gt;In order to do parallelism with traditional GridEngine systems, I would have to jump out of the notebook and start writing job submission scripts, which disrupts my workflow. I would be disrupting my thought process, and lose the interactivity that I might need to prototype my work faster.&lt;/p&gt;
-&lt;h2 id=&quot;enter-dask&quot;&gt;Enter Dask&lt;/h2&gt;&lt;p&gt;&lt;code&gt;dask&lt;/code&gt;, alongside &lt;code&gt;dask-jobqueue&lt;/code&gt; enables computational scientists like myself to take advantage of existing GridEngine setups to do interactive, parallel work. As long as I have a Jupyter notebook server running on a GridEngine-connected compute node, I can submit functions to the GridEngine cluster and collect back those results to do further processing, in a fraction of the time that it would take, thus enabling me to do my science faster than if I did everything single core/single node.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;In this blog post, I'd like to share an annotated, minimal setup for using Dask on a GridEngine cluster.&lt;/strong&gt; (Because we use Dask, more complicated pipelines are possible as well - I would encourage you to read the Dask docs for more complex examples.) I will assume that you are working in a Jupyter notebook environment, and that the notebook you are working out of is hosted on a GridEngine-connected compute node, from which you are able to &lt;code&gt;qsub&lt;/code&gt; tasks. Don't worry, you won't be qsub-ing anything though!&lt;/p&gt;
-&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;&lt;p&gt;To start, we need a cell that houses the following code block:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;dask_jobqueue&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SGECluster&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;dask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delayed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;compute&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SGECluster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;default.q&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                     &lt;span class=&quot;n&quot;&gt;walltime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;1500000&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                     &lt;span class=&quot;n&quot;&gt;processes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                     &lt;span class=&quot;n&quot;&gt;memory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;1GB&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                     &lt;span class=&quot;n&quot;&gt;cores&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                     &lt;span class=&quot;n&quot;&gt;env_extra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;source /path/to/custom/script.sh&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                                &lt;span class=&quot;s1&quot;&gt;&amp;#39;export ENV_VARIABLE=&amp;quot;SOMETHING&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-                       &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Here, we are instantiating an &lt;code&gt;SGECluster&lt;/code&gt; object under the variable name &lt;code&gt;cluster&lt;/code&gt;. What &lt;code&gt;cluster&lt;/code&gt; stores is essentially a configuration for a block of worker nodes that you will be requesting. Under the hood, what &lt;code&gt;dask-jobqueue&lt;/code&gt; is doing is submitting jobs to the GridEngine scheduler, which will block off a specified amount of compute resources (e.g. number of cores, amount of RAM, whether you want GPUs or not, etc.) for a pre-specified amount of time, on which Dask then starts a worker process to communicate with the head process coordinating tasks amongst workers.&lt;/p&gt;
-&lt;p&gt;As such, you do need to know two pieces of information:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;queue&lt;/code&gt;: The queue that jobs are to be submitted to. Usually, it is named something like &lt;code&gt;default.q&lt;/code&gt;, but you will need to obtain this through GridEngine. If you have the ability to view all jobs that are running, you can call &lt;code&gt;qstat&lt;/code&gt; at the command line to see what queues are being used. Otherwise, you might have to ping your system administrator for this information.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;walltime&lt;/code&gt;: You will also need to pre-estimate the wall clock time, in seconds, that you want the worker node to be alive for. It should be significantly longer than the expected time you think you will need, so that your function call doesn't timeout unexpectedly. I have defaulted to 1.5 million seconds, which is about 18 days of continual runtime. In practice, I usually kill those worker processes after just a few hours.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Besides that, you also need to specify the resources that you need per worker process. In my example above, I'm asking for each worker process to use only 1GB of RAM, 1 core, and to use only 1 process per worker (i.e. no multiprocessing, I think).&lt;/p&gt;
-&lt;p&gt;Finally, I can also specify extra environment setups that I will need. Because each worker process is a new process that has no knowledge of the parent process' environment, you might have to source some bash script, or activate a Python environment, or export some environment variable. This can be done under the &lt;code&gt;env_extra&lt;/code&gt; keyword, which accepts a list of strings.&lt;/p&gt;
-&lt;h2 id=&quot;request-for-worker-compute-nodes&quot;&gt;Request for worker compute &quot;nodes&quot;&lt;/h2&gt;&lt;p&gt;I put &quot;nodes&quot; in quotation marks, because they are effectively logical nodes, rather than actual compute nodes. (Technically, I think a compute node minimally means one physical hardware unit with CPUs and RAM).&lt;/p&gt;
-&lt;p&gt;In order to request for worker nodes to run your jobs, you need the next line of code:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;With this line, under the hood, &lt;code&gt;dask-jobqueue&lt;/code&gt; will start submitting 500 jobs, each requesting 1GB of RAM and 1 core, populating my compute environment according to the instructions I provided under &lt;code&gt;env_extra&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;At the end of this, I effectively have a 500-node cluster on the larger GridEngine cluster (let's call this a &quot;virtual cluster&quot;), each with 1GB of RAM and 1 core available to it, on which I can submit functions to run.&lt;/p&gt;
-&lt;h2 id=&quot;start-a-client-process&quot;&gt;Start a client process&lt;/h2&gt;&lt;p&gt;In order to submit jobs to my virtual cluster, I have to instantiate a client that is connected to the cluster, and is responsible for sending functions there.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;dask.distributed&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&quot;compute&quot;&gt;Compute!&lt;/h2&gt;&lt;p&gt;With this setup complete (I have it stored as a TextExpander snippets), we can now start submitting functions to the virtual cluster!&lt;/p&gt;
-&lt;p&gt;To simulate this, let's define a square-rooting function that takes 2-3 seconds to run each time it is called, and returns the square of its inputs. This simulates a function call that is computationally semi-expensive to run a few times, but because call on this hundreds of thousands of time, the total running time to run it serially would be too much.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;random&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;slow_sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;    Simulates the run time needed for a semi-expensive function call.&lt;/span&gt;
-&lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# define sleeping time in seconds, between 2-3 seconds.&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;serial-execution&quot;&gt;Serial Execution&lt;/h3&gt;&lt;p&gt;In a naive, serial setting, we would call on the function in a for-loop:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slow_sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This would take us anywhere between 20,000 to 30,000 seconds (approximately 8 hours, basically).&lt;/p&gt;
-&lt;h3 id=&quot;parallel-execution&quot;&gt;Parallel Execution&lt;/h3&gt;&lt;p&gt;In order to execute this in parallel instead, we could do one of the following three ways:&lt;/p&gt;
-&lt;h4 id=&quot;map&quot;&gt;map&lt;/h4&gt;&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sq_roots&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slow_sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sq_roots&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gather&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sq_roots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&quot;for-loop&quot;&gt;for-loop&lt;/h4&gt;&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sq_roots&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sq_roots&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;submit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slow_sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;restart&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# submit the function as first argument, then rest of arguments&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sq_roots&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gather&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sq_roots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&quot;delayed&quot;&gt;delayed&lt;/h4&gt;&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sq_roots&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sq_roots&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delayed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slow_sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sq_roots&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;compute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sq_roots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;I have some comments on each of the three methods, each of which I have used.&lt;/p&gt;
-&lt;p&gt;First off, &lt;strong&gt;each of them do require us to change the code that we would have written in serial&lt;/strong&gt;. This little bit of overhead is the only tradeoff we really need to make in order to gain parallelism.&lt;/p&gt;
-&lt;p&gt;In terms of &lt;strong&gt;readability&lt;/strong&gt;, all of them are quite readable, though in my case, I tend to favour the for-loop with &lt;code&gt;client.submit&lt;/code&gt;. Here is why.&lt;/p&gt;
-&lt;p&gt;For readability, the for-loop explicitly indicates that we are looping over something. It's probably more easy for novices to approach my code that way.&lt;/p&gt;
-&lt;p&gt;For &lt;strong&gt;debuggability&lt;/strong&gt;, &lt;code&gt;client.submit&lt;/code&gt; returns a Futures object (same goes for &lt;code&gt;client.map&lt;/code&gt;). A &quot;Futures&quot; object might be confusing at first, so let me start by demystifying that. A Futures object promises that the result that is computed from &lt;code&gt;slow_sqrt&lt;/code&gt; will exist, and actually contains a ton of diagnostic information, including the &lt;code&gt;type&lt;/code&gt; of the object (which can be useful for diagnosing whether my function actually ran correctly). In addition to that, I can call on &lt;code&gt;Futures.result()&lt;/code&gt; to inspect the actual result (in this case, &lt;code&gt;sq_roots[0].result()&lt;/code&gt;). This is good for debugging the function call, in case there are issues when scaling up. (At work, I was pinging a database in parallel, and sometimes the ping would fail; debugging led me to include some failsafe code, including retries and sleeps with random lengths to stagger out database calls.)&lt;/p&gt;
-&lt;p&gt;Finally, &lt;strong&gt;the Futures interface is non-blocking&lt;/strong&gt; on my Jupyter notebook session. Once I've submitted the jobs, I can continue with other development work in my notebook in later cells, and check back when the Dask dashboard indicates that the jobs are done.&lt;/p&gt;
-&lt;p&gt;That said, I like the &lt;code&gt;delayed&lt;/code&gt; interface as well. Once I was done debugging and confident that my own data pipeline at work wouldn't encounter the failure modes I was seeing, I switched over to the &lt;code&gt;delayed&lt;/code&gt; interface and scaled up my analysis. I was willing to trade in the interactivity using the &lt;code&gt;Futures&lt;/code&gt; interface for the automation provided by the &lt;code&gt;delayed&lt;/code&gt; interface. (I also first used Dask on a single node through the delayed interface as well).&lt;/p&gt;
-&lt;p&gt;Of course, there's something also to be said for the simplicity of two lines of code for parallelism (with the &lt;code&gt;client.map&lt;/code&gt; example).&lt;/p&gt;
-&lt;p&gt;The final line in each of the code blocks allows us to &quot;gather&quot; the results back into my coordinator node's memory, thus completing the function call and giving us the result we needed.&lt;/p&gt;
-&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;&lt;p&gt;That concludes it! The two key ideas illustrated in this blog post were:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;To set up a virtual cluster on a GridEngine system, we essentially harness the existing job submission system to generate workers that listen for tasks.&lt;/li&gt;
-&lt;li&gt;A useful programming pattern is to &lt;code&gt;submit&lt;/code&gt; functions using the &lt;code&gt;client&lt;/code&gt; object using &lt;code&gt;client.submit(func, *args, **kwargs)&lt;/code&gt;. This requires minimal changes from serial code.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;practical-tips&quot;&gt;Practical Tips&lt;/h2&gt;&lt;p&gt;Here's some tips for doing parallel processing, which I've learned over the years.&lt;/p&gt;
-&lt;p&gt;Firstly, never prematurely parallelize. It's as bad as prematurely optimizing code. If your code is running slowly, check first to make sure that there aren't algorithmic complexity issues, or bandwidths being clogged up (e.g. I/O bound). As the Dask docs state, it is easier to achieve those gains first before doing parallelization.&lt;/p&gt;
-&lt;p&gt;Secondly, when developing parallel workflows, make sure to test the pipeline on subsets of input data first, and slowly scale up. It is during this period that you can also profile memory usage to check to see if you need to request for more RAM per worker.&lt;/p&gt;
-&lt;p&gt;Thirdly, for GridEngine clusters, it is usually easier to request for many small worker nodes that consume few cores and small amounts of RAM. If your job is trivially parallelizable, this may be a good thing.&lt;/p&gt;
-&lt;p&gt;Fourthly, it's useful to have realistic expectations on the kinds of speed-ups you can expect to gain. At work, through some ad-hoc profiling, I quickly came to the realization that concurrent database pings were the most likely bottleneck in my code's speed, and that nothing apart from increasing the number of concurrent database pings allowed would make my parallel code go faster.&lt;/p&gt;
-&lt;p&gt;Finally, on a shared cluster, be respectful of others' usage. Don't request for unreasonable amounts of compute time. And when you're confirmed done with your analysis work, remember to shut down the virtual cluster! :)&lt;/p&gt;
 </content>
   </entry>
 </feed>
