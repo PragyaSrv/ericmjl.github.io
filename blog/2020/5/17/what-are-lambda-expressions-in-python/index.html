@@ -14,10 +14,15 @@
 
     </style>
     <!-- Import stylesheet -->
-    <link rel="stylesheet" href="../../../static/pygments.css">
+    <link rel="stylesheet" href="../../../../../static/pygments.css">
 
     
-    
+<!-- Syntax Highlighter. Use both pygments and hl.js. -->
+<link rel="stylesheet" href="../../../../../static/pygments.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 
     <!-- Google Analytics -->
     <script>
@@ -66,7 +71,7 @@
 
 </head>
 
-<title>Tag: programming - Eric J. Ma's Personal Site</title>
+<title>What are lambda expressions in Python? - Eric J. Ma's Personal Site</title>
 
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark-nord">
@@ -123,34 +128,113 @@
     </nav>
     <div class="container">
         
-<h1><i class="fas fa-tag"></i> programming</h1>
+
+<div>
+  
+<!-- Set title style -->
+
+<h1>What are lambda expressions in Python?</h1>
+
+
+<!-- Append author -->
+<small class="text-muted">
+  <p>
+    written by
+    
+    <a class="author" href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2020-05-17
+
+    
+    | tags:
+    <!-- Append tags after author -->
+    <i class="fas fa-tag"></i>
+    <a class="tags" href="../../../../../blog/tag/python/">
+      python
+    </a>
+    <i class="fas fa-tag"></i>
+    <a class="tags" href="../../../../../blog/tag/programming/">
+      programming
+    </a>
+    <i class="fas fa-tag"></i>
+    <a class="tags" href="../../../../../blog/tag/lambda expression/">
+      lambda expression
+    </a>
+    
+  </p>
+  
+</small>
+
+
+  <!-- Put post body -->
+  <p>Inspired by a conversation I had with a colleague who is learning Python, I wanted to write down an explainer of what "lambda expressions" are in Python.</p>
+<p>You might have seen lambda expressions in someone else's Python code, which looks like such:</p>
+<div class="hll"><pre><span></span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+<p>This, actually, is the equivalent of writing a function that we might name <code>is_even</code>:</p>
+<div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span><span class="mi">0</span>
+</pre></div>
+<p>Here's an explainer of the <em>anatomy</em> of the lambda function.</p>
 <ul>
-  
-    <li><a href="../../../blog/2020/5/17/what-are-lambda-expressions-in-python/">2020-05-17: What are lambda expressions in Python?</a></li>
-  
-    <li><a href="../../../blog/2019/5/10/context-switching/">2019-05-10: Context Switching</a></li>
-  
-    <li><a href="../../../blog/2019/3/1/pair-coding-why-and-how-for-data-scientists/">2019-03-01: Pair Coding: Why and How for Data Scientists</a></li>
-  
-    <li><a href="../../../blog/2018/3/30/consolidate-your-scripts-using-click/">2018-03-30: Consolidate your scripts using click</a></li>
-  
-    <li><a href="../../../blog/2018/2/25/annotating-code-tests-and-selectively-running-tests/">2018-02-25: Annotating code tests and selectively running tests</a></li>
-  
-    <li><a href="../../../blog/2017/10/22/network-propagation/">2017-10-22: Network Propagation</a></li>
-  
-    <li><a href="../../../blog/2017/10/11/pypy-impressive/">2017-10-11: PyPy: Impressive!</a></li>
-  
-    <li><a href="../../../blog/2017/10/10/recursive-programming-and-dags/">2017-10-10: Recursive Programming and DAGs</a></li>
-  
-    <li><a href="../../../blog/2017/10/7/a-data-scientists-guide-to-environment-variables/">2017-10-07: A Data Scientist&#39;s Guide to Environment Variables</a></li>
-  
-    <li><a href="../../../blog/2017/9/11/nano-text-editor-hacks/">2017-09-11: nano text editor hacks</a></li>
-  
-    <li><a href="../../../blog/2016/6/10/abstractions/">2016-06-10: Abstractions</a></li>
-  
-    <li><a href="../../../blog/2016/6/7/how-to-speed-up-scientific-python-code/">2016-06-07: How to speed up scientific Python code</a></li>
-  
+<li><code>lambda</code> tells Python that we're constructing a function.</li>
+<li>The signature of the function, meaning, the arguments the function takes in, is given by everything between <code>lambda</code> and <code>:</code>. In our example, the signature of the function is <code>x</code>, meaning the function only takes in a single argument, <code>x</code>.</li>
+<li>The stuff the function returns is everything after the <code>:</code>. In our case, it's the boolean result of <code>x % 2 == 0</code>.</li>
 </ul>
+<p>So a lambda function <em>basically</em> equivalent to a Python function. The key difference here is that it is considered "anonymous", in that we have not given it an explicit name.</p>
+<p>Let me explain. When we use the following pattern:</p>
+<div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">func_name</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">something</span>
+</pre></div>
+<p>the function has a name, given by <code>func_name</code>.</p>
+<p>However, when we do a lambda function:</p>
+<div class="hll"><pre><span></span><span class="k">lambda</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">:</span> <span class="n">something</span>
+</pre></div>
+<p>this function doesn't have a name. Hence, the term "anonymous".</p>
+<p>But what's the use of a lambda function if all it does is nothing more than be "anonymous"? Well, one place I have used lambda functions is when I determine that a function that I want to implement is a simple one-liner that can get slotted in anywhere. For example, in <code>pyjanitor</code>, when transforming a column to see whether it's even:</p>
+<div class="hll"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">transform_column</span><span class="p">(</span><span class="s2">&quot;my_column&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;is_even&quot;</span><span class="p">)</span>
+</pre></div>
+<p>That would be less verbose than:</p>
+<div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">transform_column</span><span class="p">(</span><span class="s2">&quot;my_column&quot;</span><span class="p">,</span> <span class="n">is_even</span><span class="p">,</span> <span class="s2">&quot;is_even&quot;</span><span class="p">)</span>
+</pre></div>
+<p>RealPython has a great article which also details <a href="https://realpython.com/python-lambda/#appropriate-uses-of-lambda-expressions">the appropriate uses of lambda expressions</a>; definitely check it out!</p>
+
+</div>
+<hr>
+<div>
+  <p>
+    <i>I send out a monthly newsletter with tips and tools
+    for data scientists. Come check it out at
+    <a href="https://tinyletter.com/ericmjl">TinyLetter</a>.</i>
+  </p>
+  <p>
+    <i>If you would like to receive deeper, in-depth content
+    as an early subscriber, come support me on
+    <a href="https://patreon.com/ericmjl">Patreon</a>!</i>
+  </p>
+</div>
+
+<a name="disqus"></a>
+<div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/what-are-lambda-expressions-in-python"; this.page.url = "http://www.ericmjl.com/blog/2020/5/17/what-are-lambda-expressions-in-python/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//ericmjl.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
     </div>
 
