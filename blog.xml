@@ -2,13 +2,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2020-05-17T00:00:00Z</updated>
+  <updated>2020-05-31T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2020/5/31/development-containers/">
+    <title type="text">VSCode Development Containers</title>
+    <id>urn:uuid:be56b343-64d1-36de-8c13-9dca4204a97e</id>
+    <updated>2020-05-31T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2020/5/31/development-containers/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;It's been about four days since I first discovered the idea of &quot;development containers&quot;, and I'm absolutely hooked.&lt;/p&gt;
+&lt;p&gt;We know that &quot;containers&quot;, such as Docker or Singularity containers, give us operating system-level &quot;virtualization&quot;. Or in other words, it gives us completely isolated &lt;em&gt;runtime&lt;/em&gt; environments.&lt;/p&gt;
+&lt;p&gt;Development containers take this idea one step further, and provide us with isolated &lt;em&gt;development&lt;/em&gt; environments. This actually can take down the time needed for a newcomer to the project to get up and running with software &lt;em&gt;development&lt;/em&gt;. They don't have to configure anything. In VSCode, simply &quot;open a repository in a remote container&quot; (a command palette command), and ensure that they have Docker running locally. Boom! Start developing.&lt;/p&gt;
+&lt;p&gt;I added dev containers to &lt;code&gt;pyjanitor&lt;/code&gt;, my personal website, my Essays collection, and also started using Dockerhub to &lt;em&gt;prebuild&lt;/em&gt; the containers so that a newcomer &lt;em&gt;just has to pull the container and go!&lt;/em&gt; This stands in contrast to building the container locally, which is a power drain (if on battery) and can take time.&lt;/p&gt;
+&lt;p&gt;I plan to do more of this at work, so I can onboard interns and new colleagues onto a project much faster. I also got running &lt;em&gt;remote&lt;/em&gt; development containers, i.e. containers that are running on my slightly more powerful remote GPU tower, but the VSCode client is running locally on my puny little 12&quot; MacBook. The future is looking bright! :)&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/5/17/what-are-lambda-expressions-in-python/">
     <title type="text">What are lambda expressions in Python?</title>
     <id>urn:uuid:facf9642-99b7-3f91-ab29-959466828397</id>
@@ -2559,93 +2574,6 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 &lt;p&gt;Because of this, I highly recommend the use of &lt;code&gt;black&lt;/code&gt; for code formatting.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;pip install black
 &lt;/code&gt;&lt;/pre&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/11/7/bayesian-modelling-is-hard-work/">
-    <title type="text">Bayesian Modelling is Hard Work!</title>
-    <id>urn:uuid:b544d44a-b92e-3f93-80b0-83a5f38ea17b</id>
-    <updated>2018-11-07T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/11/7/bayesian-modelling-is-hard-work/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;It’s definitely not easy work; anybody trying to tell you that you can &quot;just apply this 
-model and just be done with it&quot; is probably wrong.&lt;/p&gt;
-&lt;h2 id=&quot;simple-models&quot;&gt;Simple Models&lt;/h2&gt;&lt;p&gt;Let me clarify: I agree that doing the first half of the statement, &quot;just apply this model&quot;, 
-is a good starting point, but I disagree with the latter half, &quot;and just be done with it&quot;. I 
-have found that writing and fitting a very naive Bayesian model to the data I have is a very 
-simple thing. But doing the right thing is not. Let’s not be confused: I don’t mean a Naive 
-Bayes model, I mean naively writing down a Bayesian model that is structured very simply 
-with the simplest of priors that you can think of.&lt;/p&gt;
-&lt;p&gt;Write down the model, including any transformations that you may need on the variables, and 
-then lazily put in a bunch of priors. For example, you might just start with Gaussians 
-everywhere a parameter could take on negative to positive infinity values, or a bounded Half 
-Gaussian if it can only take values above (or below) a certain value. You might assume 
-Gaussian-distributed noise in the output.&lt;/p&gt;
-&lt;p&gt;Let’s still not be confused: Obviously this would not apply to a beta-bernoulli/binomial 
-model!&lt;/p&gt;
-&lt;p&gt;Doing the right thing, however, is where the tricky parts come in. To butcher and mash-up 
-two quotes:&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt;All models are wrong, but some are useful (Box), yet some models are more wrong than others (modifying from Orwell). 
-&lt;/blockquote&gt;&lt;h2 id=&quot;critiquing-models&quot;&gt;Critiquing Models&lt;/h2&gt;&lt;p&gt;When doing modeling, a series of questions comes up:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Do my naive assumptions about &quot;Gaussians everywhere&quot; hold? &lt;/li&gt;
-&lt;li&gt;Given that my output data are continuous, is there a better distribution that can describe 
-the likelihood?&lt;/li&gt;
-&lt;li&gt;Is there are more principled prior for some of the variables?&lt;/li&gt;
-&lt;li&gt;Does my link function, which joins the input data to the output parameters, properly 
-describe their relationship?&lt;/li&gt;
-&lt;li&gt;Instead of independent priors per group, would a group prior be justifiable?&lt;/li&gt;
-&lt;li&gt;Does my model yield posterior distributions that are within bounds of reasonable ranges, 
-which come from my prior knowledge? If it does not, do I need to bound my priors instead of 
-naively assuming the full support for those distributions?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I am quite sure that this list is non-exhaustive, and probably only covers the bare minimum 
-we have to think about.&lt;/p&gt;
-&lt;p&gt;Doing these model critiques is not easy. Yet, if we are to work towards truthful and 
-actionable conclusions, it is a necessity. We want to know ground truth, so that we can act 
-on it accordingly, and hence take appropriate actions.&lt;/p&gt;
-&lt;h2 id=&quot;prior-experience&quot;&gt;Prior Experience&lt;/h2&gt;&lt;p&gt;I have experienced this modeling loop that Mike Betancourt describes (in his &lt;a href=&quot;https://github.com/betanalpha/jupyter_case_studies/blob/master/principled_bayesian_workflow/principled_bayesian_workflow.ipynb&quot;&gt;Principled 
-Bayesian Workflow notebook&lt;/a&gt;) more than once. One involved count data, with a data 
-scientist from TripAdvisor last year at the SciPy conference; another involved estimating 
-cycle time distributions at work, and yet another involved a whole 4-parameter dose-response 
-curve. In each scenario, model fitting and critique took hours at the minimum; I’d also note 
-that with real world data, I didn’t necessarily get to the &quot;win&quot; was looking for.&lt;/p&gt;
-&lt;p&gt;With the count data, the TripAdvisor data scientist and I reached a point where after 5 
-rounds of tweaking his model, we had a model that fit the data, and described a data 
-generating process that mimics closely to what we would expect given his process. It took us 
-5 rounds, and 3 hours of staring at his model and data, to get there!&lt;/p&gt;
-&lt;p&gt;Yet with cycle time distributions from work, a task ostensibly much easier (&quot;just fit a 
-distribution to the data&quot;), none of my distribution choices, which reflected what I thought 
-would be the data generating process, gave me a &quot;good fit&quot; to the data. I checked by many 
-means: K-S tests, visual inspection, etc. I ended up abandoning the fitting procedure, and 
-used empirical distributions instead.&lt;/p&gt;
-&lt;p&gt;With a 4-parameter dose-response curve, it took me 6 hours to go through 6 rounds of 
-modeling to get to a point where I felt comfortable with the model. I started with a 
-simplifying &quot;Gaussians everywhere&quot; assumption. Later, though, I hesitantly and tentatively 
-putting in bound priors because I knew some posterior distributions were completely out of 
-range under the naive assumptions of the first model, and were likely a result of 
-insufficient range in the concentrations tested. Yet even that model remained unsatisfying: 
-I was stuck with some compounds that didn’t change the output regardless of concentration, 
-and that data are fundamentally very hard to fit with a dose response curve. Thus I the next 
-afternoon,I modeled the dose response relationship using a Gaussian Process instead. Neither 
-model is completely satisfying to the degree that the count data model was, but both the GP 
-and the dose-response curve are and will be roughly correct modeling choices (with the GP 
-probably being more flexible), and importantly, both are actionable by the experimentalists.&lt;/p&gt;
-&lt;h2 id=&quot;thoughts&quot;&gt;Thoughts&lt;/h2&gt;&lt;p&gt;As you probably can see, whenever we either (1) don’t know ground truth, and/or (2) have 
-messy, real world data that don’t fit idealized assumptions about the data generating 
-process, &lt;strong&gt;getting the model &quot;right&quot; is a very hard thing to do!&lt;/strong&gt; Moreover, data are 
-insufficient on their own to critique the model; we will always need to bring in prior 
-knowledge. Much as all probability is conditional probability (Venn), all modeling involves 
-prior knowledge. Sometimes it comes up in non-modellable ways, though as far as possible, 
-it’s a good exercise to try incorporating that into the model definition.&lt;/p&gt;
-&lt;h2 id=&quot;canned-models?&quot;&gt;Canned Models?&lt;/h2&gt;&lt;p&gt;Even with that said, I’m still a fan of canned models, such as those provided by 
-&lt;code&gt;pymc-learn&lt;/code&gt; and &lt;code&gt;scikit-learn&lt;/code&gt; - provided we recognize that their &quot;canned&quot; nature and are 
-equipped to critique and modify said models. Yes, they provide easy, convenient baselines 
-that we can get started with. We can &quot;just apply this model&quot;. But we can’t &quot;just be done 
-with it&quot;: the hard part of getting the model right takes much longer and much more hard 
-work. &lt;strong&gt;&lt;em&gt;Veritas!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>
