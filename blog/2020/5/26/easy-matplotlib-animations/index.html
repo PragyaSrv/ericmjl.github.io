@@ -14,10 +14,15 @@
 
     </style>
     <!-- Import stylesheet -->
-    <link rel="stylesheet" href="../../../static/pygments.css">
+    <link rel="stylesheet" href="../../../../../static/pygments.css">
 
     
-    
+<!-- Syntax Highlighter. Use both pygments and hl.js. -->
+<link rel="stylesheet" href="../../../../../static/pygments.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 
     <!-- Google Analytics -->
     <script>
@@ -66,7 +71,7 @@
 
 </head>
 
-<title>Tag: data visualization - Eric J. Ma's Personal Site</title>
+<title>Easy `matplotlib` animations - Eric J. Ma's Personal Site</title>
 
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark-nord">
@@ -123,22 +128,96 @@
     </nav>
     <div class="container">
         
-<h1><i class="fas fa-tag"></i> data visualization</h1>
-<ul>
+
+<div>
   
-    <li><a href="../../../blog/2020/5/26/easy-matplotlib-animations/">2020-05-26: Easy `matplotlib` animations</a></li>
+<!-- Set title style -->
+
+<h1>Easy `matplotlib` animations</h1>
+
+
+<!-- Append author -->
+<small class="text-muted">
+  <p>
+    written by
+    
+    <a class="author" href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2020-05-26
+
+    
+    | tags:
+    <!-- Append tags after author -->
+    <i class="fas fa-tag"></i>
+    <a class="tags" href="../../../../../blog/tag/matplotlib/">
+      matplotlib
+    </a>
+    <i class="fas fa-tag"></i>
+    <a class="tags" href="../../../../../blog/tag/python/">
+      python
+    </a>
+    <i class="fas fa-tag"></i>
+    <a class="tags" href="../../../../../blog/tag/data visualization/">
+      data visualization
+    </a>
+    <i class="fas fa-tag"></i>
+    <a class="tags" href="../../../../../blog/tag/animation/">
+      animation
+    </a>
+    
+  </p>
   
-    <li><a href="../../../blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/">2019-12-15: A Review of the Python Data Science Dashboarding Landscape in 2019</a></li>
-  
-    <li><a href="../../../blog/2018/2/21/nxviz-first-pr-merged/">2018-02-21: nxviz first PR merged!</a></li>
-  
-    <li><a href="../../../blog/2016/9/27/boxplot-or-violin-plot/">2016-09-27: Boxplot or Violin Plot?</a></li>
-  
-    <li><a href="../../../blog/2016/7/16/nxviz-a-networkx-visualization-package/">2016-07-16: nxviz: A NetworkX Visualization Package</a></li>
-  
-    <li><a href="../../../blog/2016/7/16/principles-of-network-visualization/">2016-07-16: Principles of Network Visualization</a></li>
-  
-</ul>
+</small>
+
+
+  <!-- Put post body -->
+  <p>Recently, [<code>celluloid</code>][celluloid]caught my eye: it's a package that lets you create <code>matplotlib</code> animations easily!</p>
+<p>If you need a dead-simple example to convince you to check it out, here's one lifted straight from the repository:</p>
+<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">celluloid</span> <span class="kn">import</span> <span class="n">Camera</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">camera</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">snap</span><span class="p">()</span>
+<span class="n">animation</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">animate</span><span class="p">()</span>
+</pre></div>
+<p>But seriously though, if you use the workhorse Python drawing package <code>matplotlib</code> for anything,
+this package can be considered to be one of those "great tricks to have" in your bag!</p>
+
+</div>
+<hr>
+<div>
+  <p>
+    <i>I send out a monthly newsletter with tips and tools
+    for data scientists. Come check it out at
+    <a href="https://tinyletter.com/ericmjl">TinyLetter</a>.</i>
+  </p>
+  <p>
+    <i>If you would like to receive deeper, in-depth content
+    as an early subscriber, come support me on
+    <a href="https://patreon.com/ericmjl">Patreon</a>!</i>
+  </p>
+</div>
+
+<a name="disqus"></a>
+<div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/easy-matplotlib-animations"; this.page.url = "http://www.ericmjl.com/blog/2020/5/26/easy-matplotlib-animations/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//ericmjl.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
     </div>
 

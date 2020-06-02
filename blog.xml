@@ -2,13 +2,32 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2020-05-31T00:00:00Z</updated>
+  <updated>2020-06-02T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2020/6/2/data-science-design-manual/">
+    <title type="text">Data Science Design Manual</title>
+    <id>urn:uuid:7ac247ad-ec53-34d2-9c63-eccc216acdff</id>
+    <updated>2020-06-02T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2020/6/2/data-science-design-manual/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;During this extraordinary COVID-19 time,
+Springer did an extraordinary thing that I never expected:
+They released a whole bucketload of books for free online!
+One of them caught my eye: &lt;a href=&quot;https://link.springer.com/book/10.1007%2F978-3-319-55444-0&quot;&gt;&quot;The Data Science Design Manual&quot;&lt;/a&gt;.
+Having browsed through the book PDF, I'm impressed by its coverage of the foundational topics
+that I think &lt;em&gt;every&lt;/em&gt; data scientist should be equipped with:
+statistical inference, data wrangling, linear algebra, and machine learning.
+The author, Steven Skiena, also covers more in there.&lt;/p&gt;
+&lt;p&gt;Go &lt;a href=&quot;https://link.springer.com/book/10.1007%2F978-3-319-55444-0&quot;&gt;grab the PDF&lt;/a&gt; while it's still free!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/5/31/development-containers/">
     <title type="text">VSCode Development Containers</title>
     <id>urn:uuid:be56b343-64d1-36de-8c13-9dca4204a97e</id>
@@ -22,6 +41,30 @@
 &lt;p&gt;Development containers take this idea one step further, and provide us with isolated &lt;em&gt;development&lt;/em&gt; environments. This actually can take down the time needed for a newcomer to the project to get up and running with software &lt;em&gt;development&lt;/em&gt;. They don't have to configure anything. In VSCode, simply &quot;open a repository in a remote container&quot; (a command palette command), and ensure that they have Docker running locally. Boom! Start developing.&lt;/p&gt;
 &lt;p&gt;I added dev containers to &lt;code&gt;pyjanitor&lt;/code&gt;, my personal website, my Essays collection, and also started using Dockerhub to &lt;em&gt;prebuild&lt;/em&gt; the containers so that a newcomer &lt;em&gt;just has to pull the container and go!&lt;/em&gt; This stands in contrast to building the container locally, which is a power drain (if on battery) and can take time.&lt;/p&gt;
 &lt;p&gt;I plan to do more of this at work, so I can onboard interns and new colleagues onto a project much faster. I also got running &lt;em&gt;remote&lt;/em&gt; development containers, i.e. containers that are running on my slightly more powerful remote GPU tower, but the VSCode client is running locally on my puny little 12&quot; MacBook. The future is looking bright! :)&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://www.ericmjl.com/blog/2020/5/26/easy-matplotlib-animations/">
+    <title type="text">Easy `matplotlib` animations</title>
+    <id>urn:uuid:7f5683b1-7f71-3837-bd3f-94861b0d3677</id>
+    <updated>2020-05-26T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2020/5/26/easy-matplotlib-animations/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;Recently, [&lt;code&gt;celluloid&lt;/code&gt;][celluloid]caught my eye: it's a package that lets you create &lt;code&gt;matplotlib&lt;/code&gt; animations easily!&lt;/p&gt;
+&lt;p&gt;If you need a dead-simple example to convince you to check it out, here's one lifted straight from the repository:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;celluloid&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Camera&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;camera&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Camera&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;snap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;animation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;camera&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;But seriously though, if you use the workhorse Python drawing package &lt;code&gt;matplotlib&lt;/code&gt; for anything,
+this package can be considered to be one of those &quot;great tricks to have&quot; in your bag!&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/5/17/what-are-lambda-expressions-in-python/">
@@ -2532,48 +2575,6 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 &lt;h2 id=&quot;hierarchy-of-ideas&quot;&gt;Hierarchy of Ideas&lt;/h2&gt;&lt;p&gt;More than just that, when we programmers implement a mathematical idea in code, we can start putting our &quot;good software engineering&quot; ideas into place! It helps the math become stickier when we can see, through code, the hierarchy of concepts that are involved.&lt;/p&gt;
 &lt;p&gt;An example, for me, comes from the deep learning world. I had an attempt dissecting two math-y deep learning papers last week. Skimming through the papers didn't do much good for my understanding of the paper. Neither did trying to read the paper like I do a biology paper. Sure, I could perhaps just read the ideas that the authors were describing in prose, but I had no intuition on which to base a proper critique of the idea's usefulness. It took implementing those papers in Python code, writing tests for them, and using abstractions that I had previously written, to come to a place where I felt like the ideas in the paper were a flexibly wieldable tool in my toolkit.&lt;/p&gt;
 &lt;p&gt;Reinventing the wheel, such that we can learn the wheel, can in fact help us decompose the wheel so that we can do other new things with it. Human creativity is such a wonderful thing!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/11/13/solving-problems-actionably/">
-    <title type="text">Solving Problems Actionably</title>
-    <id>urn:uuid:47287890-e99d-3c82-b19f-7d2ddd0735ac</id>
-    <updated>2018-11-13T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/11/13/solving-problems-actionably/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;There's a quote by John Tukey that has been a recurrent theme at work.&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt;It's better to solve the right problem approximately than to solve the wrong problem exactly.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;p&gt;Continuing on the theme of quoting two Georges:&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt; 
-&lt;p&gt;All models are wrong, but some are more useful than others.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;p&gt;H/T Allen Downey for pointing out that our minds think alike.&lt;/p&gt;
-&lt;p&gt;I have been working on a modelling effort for colleagues at work. There were two curves involved, and the second depended on the first one.&lt;/p&gt;
-&lt;p&gt;In both cases, I started with a simple model, and made judgment calls along the way as to whether to continue improving the model, or to stop there because the current iteration of the model was sufficient enough to act on. With first curve, the first model was actionable for me. With the second curve, the first model I wrote clearly wasn't good enough to be actionable, so I spent lots more rounds of iteration on it.&lt;/p&gt;
-&lt;p&gt;But wait, how does one determine &quot;actionability&quot;?&lt;/p&gt;
-&lt;h2 id=&quot;actionability&quot;&gt;Actionability&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;For myself&lt;/strong&gt;, it has generally meant that I'm confident enough in the results to take the next modelling step. My second curves depended on the first curves, and after double-checking multiple ways, I thought the first curve fits, though not perfect, were good enough when applied across a large number of samples that I could instead move on to the second curves.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;For others&lt;/strong&gt;, particularly at my workplace, it generally means a scientist can make a decision about what next experiment to run.&lt;/p&gt;
-&lt;h2 id=&quot;insight-s-mvp-influence&quot;&gt;Insight's MVP Influence&lt;/h2&gt;&lt;p&gt;Going through Insight Data Science drilled into us an instinct for developing an MVP for our problem before going on to perfect it. I think that general model works well. My project's final modelling results will be the result of chains of modelling assumptions at every step. Documenting those steps clearly, and then being willing to revisit those assumptions, is going always a good thing.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/11/12/thoughts-on-black/">
-    <title type="text">Thoughts on Black</title>
-    <id>urn:uuid:08f2ca8d-df54-3740-8d8b-b93a5bd7e728</id>
-    <updated>2018-11-12T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/11/12/thoughts-on-black/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Having used Black for quite a while now, I have a hunch that it will continue to surpass its current popularity amongst projects.&lt;/p&gt;
-&lt;p&gt;It's one thing to be opinionated about things that matter for a project, but don't matter personally. Like code style. It's another thing to actually build a tool that, with one command, realizes those opinions in (milli)seconds. That's exactly what Black does.&lt;/p&gt;
-&lt;p&gt;At the end of the day, it was, and still is, a tool that has a very good human API - that of convenience.&lt;/p&gt;
-&lt;p&gt;By being opinionated about what code &lt;em&gt;ought&lt;/em&gt; to look like, &lt;code&gt;black&lt;/code&gt; has very few configurable parameters. Its interface is very simple. &lt;em&gt;Convenient.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;By automagically formatting &lt;em&gt;every&lt;/em&gt; Python file in subdirectories (if not otherwise configured so), it makes code formatting quick and easy. &lt;em&gt;Convenient.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;In particular, by being opinionated about conforming to community standards for code style with Python, &lt;code&gt;black&lt;/code&gt; ensures that formatted code is consistently formatted and thus easy to read. &lt;em&gt;Convenient!&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Because of this, I highly recommend the use of &lt;code&gt;black&lt;/code&gt; for code formatting.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;pip install black
-&lt;/code&gt;&lt;/pre&gt;
 </content>
   </entry>
 </feed>

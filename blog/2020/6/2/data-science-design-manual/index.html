@@ -14,10 +14,15 @@
 
     </style>
     <!-- Import stylesheet -->
-    <link rel="stylesheet" href="../../../static/pygments.css">
+    <link rel="stylesheet" href="../../../../../static/pygments.css">
 
     
-    
+<!-- Syntax Highlighter. Use both pygments and hl.js. -->
+<link rel="stylesheet" href="../../../../../static/pygments.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 
     <!-- Google Analytics -->
     <script>
@@ -66,7 +71,7 @@
 
 </head>
 
-<title>Tag: data visualization - Eric J. Ma's Personal Site</title>
+<title>Data Science Design Manual - Eric J. Ma's Personal Site</title>
 
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark-nord">
@@ -123,22 +128,83 @@
     </nav>
     <div class="container">
         
-<h1><i class="fas fa-tag"></i> data visualization</h1>
-<ul>
+
+<div>
   
-    <li><a href="../../../blog/2020/5/26/easy-matplotlib-animations/">2020-05-26: Easy `matplotlib` animations</a></li>
+<!-- Set title style -->
+
+<h1>Data Science Design Manual</h1>
+
+
+<!-- Append author -->
+<small class="text-muted">
+  <p>
+    written by
+    
+    <a class="author" href="https://twitter.com/ericmjl">Eric J. Ma</a>
+    
+    on 2020-06-02
+
+    
+    | tags:
+    <!-- Append tags after author -->
+    <i class="fas fa-tag"></i>
+    <a class="tags" href="../../../../../blog/tag/data science/">
+      data science
+    </a>
+    <i class="fas fa-tag"></i>
+    <a class="tags" href="../../../../../blog/tag/ebooks/">
+      ebooks
+    </a>
+    
+  </p>
   
-    <li><a href="../../../blog/2019/12/15/a-review-of-the-python-data-science-dashboarding-landscape-in-2019/">2019-12-15: A Review of the Python Data Science Dashboarding Landscape in 2019</a></li>
-  
-    <li><a href="../../../blog/2018/2/21/nxviz-first-pr-merged/">2018-02-21: nxviz first PR merged!</a></li>
-  
-    <li><a href="../../../blog/2016/9/27/boxplot-or-violin-plot/">2016-09-27: Boxplot or Violin Plot?</a></li>
-  
-    <li><a href="../../../blog/2016/7/16/nxviz-a-networkx-visualization-package/">2016-07-16: nxviz: A NetworkX Visualization Package</a></li>
-  
-    <li><a href="../../../blog/2016/7/16/principles-of-network-visualization/">2016-07-16: Principles of Network Visualization</a></li>
-  
-</ul>
+</small>
+
+
+  <!-- Put post body -->
+  <p>During this extraordinary COVID-19 time,
+Springer did an extraordinary thing that I never expected:
+They released a whole bucketload of books for free online!
+One of them caught my eye: <a href="https://link.springer.com/book/10.1007%2F978-3-319-55444-0">"The Data Science Design Manual"</a>.
+Having browsed through the book PDF, I'm impressed by its coverage of the foundational topics
+that I think <em>every</em> data scientist should be equipped with:
+statistical inference, data wrangling, linear algebra, and machine learning.
+The author, Steven Skiena, also covers more in there.</p>
+<p>Go <a href="https://link.springer.com/book/10.1007%2F978-3-319-55444-0">grab the PDF</a> while it's still free!</p>
+
+</div>
+<hr>
+<div>
+  <p>
+    <i>I send out a monthly newsletter with tips and tools
+    for data scientists. Come check it out at
+    <a href="https://tinyletter.com/ericmjl">TinyLetter</a>.</i>
+  </p>
+  <p>
+    <i>If you would like to receive deeper, in-depth content
+    as an early subscriber, come support me on
+    <a href="https://patreon.com/ericmjl">Patreon</a>!</i>
+  </p>
+</div>
+
+<a name="disqus"></a>
+<div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/data-science-design-manual"; this.page.url = "http://www.ericmjl.com/blog/2020/6/2/data-science-design-manual/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//ericmjl.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
     </div>
 
