@@ -2,13 +2,43 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2020-06-02T00:00:00Z</updated>
+  <updated>2020-06-09T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2020/6/9/with-what-symbols-do-you-write-thermodynamic-equations/">
+    <title type="text">With what symbols do you write thermodynamic equations?</title>
+    <id>urn:uuid:786ccbe2-be36-3bc3-8770-77adf43eb92e</id>
+    <updated>2020-06-09T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2020/6/9/with-what-symbols-do-you-write-thermodynamic-equations/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;em&gt;A rant &lt;a href=&quot;https://twitter.com/vboykis/status/1270401190124310529&quot;&gt;egged on&lt;/a&gt; by &lt;a href=&quot;https://twitter.com/vboykis&quot;&gt;Vicki Boykis&lt;/a&gt; after reading her &lt;a href=&quot;http://veekaybee.github.io/2020/06/09/ml-in-prod/&quot;&gt;excellent essay on model deployment&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;/beginrant&lt;/p&gt;
+&lt;p&gt;When I was in my first year of undergrad, I was in a special first-year program in which the sciences were taught as an integrated unit. (The program, &lt;a href=&quot;https://scienceone.ubc.ca/&quot;&gt;Science One&lt;/a&gt;, was quite influential in my learning journey in learning across disciplinary silos.) There, the lecturers would coordinate their use of terminology and symbols in equations. The reason? They recognized that having defined, precise, and consistent terminology reduced learner confusion, increased retention, and aided in us linking key &lt;em&gt;concepts&lt;/em&gt;. In other words, because they knew that symbolism and choice of words mattered, they were able to more easily teach the things that &lt;em&gt;mattered more&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;One example of this was in thermodynamics. Heat, energy, and entropy have quite specific definitions, and in certain pedagogical traditions, they have the same equation forms but use different symbols. When we learned thermodynamics, we avoided all of that confusion by simply adopting the physicist's set of symbols. Nobody argued about it, because though the form changed, the &quot;spirit&quot; of the matter was preserved.&lt;/p&gt;
+&lt;p&gt;Well, fast forward 14 years later, it appears the machine learning world has yet to learn the same lessons taught in Science One. No big deal, after all, Science One only educated 80 students at a time. But I think it's worth  writing about, because we might end up with a new generation of data scientists who can't tell the difference between inference and inference.&lt;/p&gt;
+&lt;p&gt;Wait, what?! &quot;You're willing to die on the &lt;em&gt;inference&lt;/em&gt; hill?!&quot;&lt;/p&gt;
+&lt;p&gt;In some ways, not. You might want to keep doing what you do, but hear me out. &lt;em&gt;I got reasonz, yo.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The following items are key components to a statistical modelling/machine learning workflow: (a) input data, (b) model/structure, (c) parameters to learn, and (d) output data. One can frame statistical learning methods in terms of a &quot;direction&quot; w.r.t. the output data (d). &quot;Simulation&quot;/&quot;prediction&quot; refer to the forward direction of going from (a-c) to (d), while &quot;inference&quot; or &quot;learning&quot; refer to the backward direction of going from (a, c, d) to (b). We use distinct terms because they are distinct and, in fact, basically opposite subclasses of the larger thing of calculating 1 thing from the other 3.&lt;/p&gt;
+&lt;p&gt;&quot;Inference&quot;, then, has a specific definition in the quantitative sciences, rooted in its use in statistics. It refers to &quot;inferring&quot; the parameters of a model, given data. It is distinct from simple &quot;guessing&quot;, in that there are criteria (maximum likelihood, for example) for evaluating how good individual inferred values are.&lt;/p&gt;
+&lt;p&gt;The term &quot;inference&quot;, however, has been  co-opted incorrectly by deep learning practitioners to refer to the task of &lt;em&gt;generating&lt;/em&gt; or &lt;em&gt;predicting&lt;/em&gt; what an output should be, given known input data and model structure + parameters. We are starting to hear the term  mis-used all the time: &quot;At inference time...&quot;, &quot;When performing inference...&quot;. How this came about, I do not know, but I have a hypothesis that the first few people who  co-opted the term were genuinely trying to make &lt;em&gt;some&lt;/em&gt; form of linguistic connection between the statistics and machine learning worlds. I shall not try to, ahem, &lt;em&gt;infer their intents from observed behaviour&lt;/em&gt; here though. :)&lt;/p&gt;
+&lt;p&gt;But imagine the poor statistician trying to decipher what the machine learner is trying to say when they read the term, &quot;at inference time...&quot; It's like the chemist staring at the physicist's heat equation and being ever so subtly thrown off by symbol mismatch! Likewise, the statistician stands to be tripped up by the &lt;em&gt;completely opposite&lt;/em&gt; use of &quot;inference&quot; when reading a machine learning paper.&lt;/p&gt;
+&lt;p&gt;So what's the big deal here? Languages evolve, don't they?&lt;/p&gt;
+&lt;p&gt;Yes! But surely that's not the only criteria for letting words slip? If words and their precise meanings do not matter, we might as well &lt;code&gt;#abolish #communication&lt;/code&gt;! (If you disagree with me, go ahead and decipher what I &lt;em&gt;really&lt;/em&gt; mean by that, since my words didn't matter and I can evolve the language anyways...)&lt;/p&gt;
+&lt;p&gt;Statistics and machine learning are extremely interrelated fields. Machine learning research built upon statistical foundations and has given statistics practitioners new model classes to work with and tooling to perform inference on models more easily (I'm thinking about things like automatic differentiation!). Both fields stand to learn a ton from one another, but also stand to lose a lot without precise and consistent vocabulary. If you accept the premise (and, if I may dare claim, &lt;em&gt;very common mental model&lt;/em&gt;) of directionality w.r.t. the output data,  then using the same term to refer to opposite-direction procedures is &lt;em&gt;bewilderingly&lt;/em&gt; confusing! Especially for learners of both domains.&lt;/p&gt;
+&lt;p&gt;What's the solution going forth?&lt;/p&gt;
+&lt;p&gt;The unfortunate reality is that the  co-opting of the term has already happened. The optimistic reality is that &lt;a href=&quot;https://twitter.com/PhDemetri/status/1270396350195212289&quot;&gt;there are individuals who are merely &quot;accepting of the fact but don't necessarily like/agree with it&quot;&lt;/a&gt;. Much like I push back on the use of &quot;aye eye&quot; at work, I think we can push our colleagues to a better standard of communication: lucid, consistent, precise, and concise.&lt;/p&gt;
+&lt;p&gt;If you &lt;em&gt;still&lt;/em&gt; want to use the term inference for &quot;forward prediction/simulation&quot;, then prefix or suffix it &lt;a href=&quot;https://twitter.com/ryanstravis/status/1270400888885202948&quot;&gt;with some word.&lt;/a&gt; Call it &quot;output inference&quot; if you'd like. But make it distinct from &quot;parameter inference&quot;. (I just set an example, so there.)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://media1.tenor.com/images/4b7d6e1687f09ba7fafd2d13b71321da/tenor.gif?itemid=15798788&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;If you agree, please share the message around.&lt;/p&gt;
+&lt;p&gt;/endrant&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/6/2/data-science-design-manual/">
     <title type="text">Data Science Design Manual</title>
     <id>urn:uuid:7ac247ad-ec53-34d2-9c63-eccc216acdff</id>
@@ -2554,27 +2584,6 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 &lt;li&gt;Grokking the math behind GPs at the minimum requires one thing: remembering, or else knowing how to derive, the formula for how to get the distribution parameters of a multivariate Gaussian conditioned on some of of its variables.&lt;/li&gt;
 &lt;li&gt;Once I grokked the math, implementing a GP using only NumPy was trivial; also, extending it to higher dimensions was similarly trivial!&lt;/li&gt;
 &lt;/ul&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/12/9/mathematical-intuition/">
-    <title type="text">Mathematical Intuition</title>
-    <id>urn:uuid:4ae0c241-c33a-3013-8d4c-baf759793236</id>
-    <updated>2018-12-09T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/12/9/mathematical-intuition/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;Last week, I picked up Jeremy Kun's book, &quot;A Programmer's Introduction to Mathematics&quot;. In it, I finally found an explanation for my frustrations when reading math papers:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;What programmers would consider “sloppy” notation is one symptom of the problem, but there there are other expectations on the reader that, for better or worse, decelerate the pace of reading. Unfortunately I have no solution here. Part of the power and expressiveness of mathematics is the ability for its practitioners to overload, redefine, and omit in a suggestive manner. Mathematicians also have thousands of years of “legacy” math that require backward compatibility. Enforcing a single specification for all of mathematics—a suggestion I frequently hear from software engineers—would be horrendously counterproductive.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Reading just &lt;em&gt;that&lt;/em&gt; paragraph explained, in such a lucid manner, how my frustrations reading mathematically-oriented papers, stemmed from mismatched expectations. I come into a paper thinking like a software engineer. Descriptive variable names (as encouraged by Python), which are standardized as well, with structured abstractions providing a hierarchy of logic between chunks of code... No, mathematicians are more like Shakespeare - or perhaps linguists - in that they will take a symbol and imbibe it with a subtly new meaning or interpretation inspired by a new field. That &quot;L&quot; you see in one field of math doesn't always exactly mean the same thing in another field.&lt;/p&gt;
-&lt;h2 id=&quot;biology-vs.-math?&quot;&gt;Biology vs. Math?&lt;/h2&gt;&lt;p&gt;The contrast is stark when compared against reading a biology paper. With a biology paper, if you know the key wet-bench experiment types (and there's not that many), you can essentially get the gist of a paper by reading the abstract and dissecting the figures, which, granted, are described and labelled with field-specific jargon, but are at least descriptive names. With a math-oriented paper, the equations are the star, and one has to really grok each element of the equations to know what they mean. It means taking the time to dissect each equation and ask what each symbol is, what each group of symbols means, and how those underlying ideas connect with one another and with other ideas. It's not unlike a biology paper, but requiring a different kind of patience, one that I wasn't trained in.&lt;/p&gt;
-&lt;h2 id=&quot;learning-to-learn-by-teaching&quot;&gt;Learning to Learn by Teaching&lt;/h2&gt;&lt;p&gt;As Jeremy Kun wrote in his book, programmers do have some sort of a leg-up when it comes to reading and understanding math. It's a bit more than what Kun wrote, I think - yes, many programming ideas have deep mathematical connections. But I think there's more.&lt;/p&gt;
-&lt;p&gt;One thing we know from research into how people learn is that teaching someone something is an incredible way to learn that something. From my prior experience, the less background a student has in a material, the more demands are placed on the teacher's understanding of the material, as we work out how the multiple representations in our head to try to communicate it to them.&lt;/p&gt;
-&lt;p&gt;As it turns out, we programmers have the ultimate dumb &quot;student&quot; available at our fingertips: Our computers! By implementing mathematical ideas in code, we are essentially &quot;teaching&quot; the computer to do something mathematical. Computers are not smart; they are programmed to do exactly what we input to them. If we get an idea wrong, our implementation of the math will likely be wrong. That fundamental law of computing shows up again: Garbage in, garbage out.&lt;/p&gt;
-&lt;h2 id=&quot;hierarchy-of-ideas&quot;&gt;Hierarchy of Ideas&lt;/h2&gt;&lt;p&gt;More than just that, when we programmers implement a mathematical idea in code, we can start putting our &quot;good software engineering&quot; ideas into place! It helps the math become stickier when we can see, through code, the hierarchy of concepts that are involved.&lt;/p&gt;
-&lt;p&gt;An example, for me, comes from the deep learning world. I had an attempt dissecting two math-y deep learning papers last week. Skimming through the papers didn't do much good for my understanding of the paper. Neither did trying to read the paper like I do a biology paper. Sure, I could perhaps just read the ideas that the authors were describing in prose, but I had no intuition on which to base a proper critique of the idea's usefulness. It took implementing those papers in Python code, writing tests for them, and using abstractions that I had previously written, to come to a place where I felt like the ideas in the paper were a flexibly wieldable tool in my toolkit.&lt;/p&gt;
-&lt;p&gt;Reinventing the wheel, such that we can learn the wheel, can in fact help us decompose the wheel so that we can do other new things with it. Human creativity is such a wonderful thing!&lt;/p&gt;
 </content>
   </entry>
 </feed>
