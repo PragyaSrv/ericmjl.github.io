@@ -2,13 +2,68 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2020-06-09T00:00:00Z</updated>
+  <updated>2020-06-14T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2020/6/14/pab-to-phd/">
+    <title type="text">P(A,B) to P(H,D)??</title>
+    <id>urn:uuid:c4d3ae7b-9991-34db-bcfe-e14d22031f4f</id>
+    <updated>2020-06-14T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2020/6/14/pab-to-phd/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;Bayes' rule looks like this:&lt;/p&gt;
+&lt;p&gt;$$P(A|B) = 
+\frac{P(B|A)P(A)}
+{P(B)}
+$$&lt;/p&gt;
+&lt;p&gt;It is a natural result that comes straight from the rules of probability,
+being that the joint distribution of two random variables
+can be written in two equivalent ways:&lt;/p&gt;
+&lt;p&gt;$$P(A, B) = P(A|B)P(B) = P(B|A)P(A)$$&lt;/p&gt;
+&lt;p&gt;Now, I have encountered in many books write,
+regarding the application of Bayes' rule to statistical modelling,
+something along the lines of the following:&lt;/p&gt;
+&lt;blockquote class=&quot;blockquote&quot;&gt;
+&lt;p&gt;
+Now, there is an alternative _interpretation_ of Bayes' rule,
+one that replaces the symbol &quot;A&quot; with &quot;Hypothesis&quot;,
+and &quot;B&quot; with the &quot;Data&quot;, such that we get:
+
+$$P(H|D) = \frac{P(D|H)P(H)}{P(D)}$$
+&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;At first glance, nothing seems wrong about this statement,
+but I did remember having a lingering nagging feeling
+that there was a logical jump unexplained here.&lt;/p&gt;
+&lt;p&gt;More specifically, that logical jump yielded the following question: &lt;em&gt;Why are we allowed to take this interpretation?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;It took asking the question to a mathematician friend, Colin Carroll,
+to finally &quot;grok&quot; the idea.
+Let me try to explain.&lt;/p&gt;
+&lt;h2 id=&quot;spaces-of-models-and-data&quot;&gt;Spaces of models and data&lt;/h2&gt;&lt;p&gt;We have to think back to the fundamental idea of possible spaces.&lt;/p&gt;
+&lt;p&gt;If we set up a Bernoulli probability distribution with parameter $p$,
+then the space of possible probability distributions that we could instantiate is infinite!
+This result should not surprise you: $p$ can take on any one of an infinite set of values between 0 and 1, each one giving a different instantiated Bernoulli.
+As such, a &lt;code&gt;Bernoulli(p)&lt;/code&gt; hypothesis is drawn from a (very large) space of possible &lt;code&gt;Bernoulli(p)&lt;/code&gt;s,
+or more abstractly, hypotheses, thereby giving us a $P(H)$.&lt;/p&gt;
+&lt;p&gt;Moreover, consider our data.
+The Bernoulli data that came to us, which for example might be &lt;code&gt;0, 1, 1, 1, 0&lt;/code&gt;,
+were drawn from a near-infinite space of possible configurations of data.
+First off, there's no reason why we always have to have three 1s and two 0s in five draws;
+it could have been five 1s or five 0s.
+Secondly, the order of data (though it doesn't really matter in this case)
+for three 1s and two 0s might well have been different.
+As such, we have the $P(D)$ interpretation.&lt;/p&gt;
+&lt;p&gt;As a modelling decision, we &lt;em&gt;choose&lt;/em&gt; to say
+that our data and model are jointly distributed,
+thus we have the &lt;em&gt;joint distribution&lt;/em&gt;
+between model and data, $P(H, D)$.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/6/9/with-what-symbols-do-you-write-thermodynamic-equations/">
     <title type="text">With what symbols do you write thermodynamic equations?</title>
     <id>urn:uuid:786ccbe2-be36-3bc3-8770-77adf43eb92e</id>
@@ -2564,26 +2619,6 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 &lt;p&gt;Now, all of your defined aliases will be available in your bash shell.&lt;/p&gt;
 &lt;p&gt;The idea/pattern, as I mentioned earlier, is generalizable beyond just bash commands. (I have &lt;code&gt;ls&lt;/code&gt; aliased for &lt;code&gt;exa&lt;/code&gt;, and &lt;code&gt;l&lt;/code&gt; aliased for &lt;code&gt;ls&lt;/code&gt; - the epitome of laziness!)&lt;/p&gt;
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;I hope you found these bash and &lt;code&gt;conda&lt;/code&gt; hacks to be useful. Hopefully they will help you become more productive and efficient!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/12/16/gaussian-process-notes/">
-    <title type="text">Gaussian Process Notes</title>
-    <id>urn:uuid:66321576-e328-3d24-b3a2-c90b3fa831fe</id>
-    <updated>2018-12-16T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/12/16/gaussian-process-notes/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;I first learned GPs about two years back, and have been fascinated by the idea. I learned it through a video by David MacKay, and managed to grok it enough that I could put it to use in simple settings. That was reflected in my &lt;a href=&quot;https://fluforecaster.herokuapp.com&quot;&gt;Flu Forecaster project&lt;/a&gt;, in which my GPs were trained only on individual latent spaces.&lt;/p&gt;
-&lt;p&gt;Recently, though, I decided to seriously sit down and try to grok the math behind GPs (and other machine learning models). To do so, I worked through &lt;a href=&quot;https://youtu.be/4vGiHC35j9s&quot;&gt;Nando de Freitas' YouTube videos on GPs&lt;/a&gt;. (Super thankful that he has opted to put these videos up online!)&lt;/p&gt;
-&lt;p&gt;The product of this learning is two-fold. Firstly, I have added a &lt;a href=&quot;https://github.com/ericmjl/bayesian-analysis-recipes/blob/master/notebooks/gp-test.ipynb&quot;&gt;GP notebook&lt;/a&gt; to my &lt;a href=&quot;https://github.com/ericmjl/bayesian-analysis-recipes&quot;&gt;Bayesian analysis recipes&lt;/a&gt; repository.&lt;/p&gt;
-&lt;p&gt;Secondly, I have also put together some hand-written notes on GPs. (For those who are curious, I first hand-wrote them on paper, then copied them into my iPad mini using a Wacom stylus. We don't have the budget at the moment for an iPad Pro!) They can be downloaded &lt;a href=&quot;../../../../../blog/2018/12/16/gaussian-process-notes/gaussian-processes.pdf&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Some lessons learned:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Algebra is indeed a technology of sorts (to quote Jeremy Kun's book). Being less sloppy than I used to be gives me the opportunity to connect ideas on the page to ideas in my head, and express them more succinctly.&lt;/li&gt;
-&lt;li&gt;Grokking the math behind GPs at the minimum requires one thing: remembering, or else knowing how to derive, the formula for how to get the distribution parameters of a multivariate Gaussian conditioned on some of of its variables.&lt;/li&gt;
-&lt;li&gt;Once I grokked the math, implementing a GP using only NumPy was trivial; also, extending it to higher dimensions was similarly trivial!&lt;/li&gt;
-&lt;/ul&gt;
 </content>
   </entry>
 </feed>
