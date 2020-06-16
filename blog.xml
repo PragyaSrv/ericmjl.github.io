@@ -29,15 +29,12 @@ can be written in two equivalent ways:&lt;/p&gt;
 &lt;p&gt;Now, I have encountered in many books write,
 regarding the application of Bayes' rule to statistical modelling,
 something along the lines of the following:&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt;
-Now, there is an alternative _interpretation_ of Bayes' rule,
+&lt;blockquote&gt;&lt;p&gt;Now, there is an alternative &lt;em&gt;interpretation&lt;/em&gt; of Bayes' rule,
 one that replaces the symbol &quot;A&quot; with &quot;Hypothesis&quot;,
-and &quot;B&quot; with the &quot;Data&quot;, such that we get:
-
-$$P(H|D) = \frac{P(D|H)P(H)}{P(D)}$$
-&lt;/p&gt;
-&lt;/blockquote&gt;&lt;p&gt;At first glance, nothing seems wrong about this statement,
+and &quot;B&quot; with the &quot;Data&quot;, such that we get:&lt;/p&gt;
+&lt;p&gt;$$P(H|D) = \frac{P(D|H)P(H)}{P(D)}$$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;At first glance, nothing seems wrong about this statement,
 but I did remember having a lingering nagging feeling
 that there was a logical jump unexplained here.&lt;/p&gt;
 &lt;p&gt;More specifically, that logical jump yielded the following question: &lt;em&gt;Why are we allowed to take this interpretation?&lt;/em&gt;&lt;/p&gt;
@@ -217,7 +214,7 @@ and its own isolated analysis environment (e.g. a &lt;code&gt;conda&lt;/code&gt;
 - README
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;As such, your notebook are all going to be in a different directory from your data.
-This is one way that keeps the mind sane: 
+This is one way that keeps the mind sane:
 you might have subdirectories in the &lt;code&gt;notebooks/&lt;/code&gt; directory
 that you use to organize the notebooks further,
 yet you have multiple notebooks that use the same file,
@@ -266,7 +263,7 @@ one of a set of pre-specified files
 that are commonly found in a project’s root directory.
 For example, &lt;code&gt;.git&lt;/code&gt; is a common one.
 For Python packages, &lt;code&gt;setup.py&lt;/code&gt; is another.&lt;/p&gt;
-&lt;p&gt;If your project doesn’t “fit” any of the conventions assumed,
+&lt;p&gt;If your project doesn’t &quot;fit&quot; any of the conventions assumed,
 or if you have a fancier structure,
 you can always add a &lt;code&gt;.here()&lt;/code&gt; to your project root,
 and configure the &lt;code&gt;project_files&lt;/code&gt; keyword argument
@@ -474,13 +471,12 @@ If you want the knowledge to stick, you need to increase the odds that you'll ge
       <name>Eric J. Ma</name>
     </author>
     <content type="html">&lt;p&gt;A friend in Austria pinged me with the following question:&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt;I was wondering if you have any ideas of how I (and other link-minded) people could help with combating this threat. Do you know how a Data Scientist can contribute to our global efforts?
-&lt;/p&gt;
-&lt;/blockquote&gt;&lt;p&gt;My response is below.
+&lt;blockquote&gt;&lt;p&gt;I was wondering if you have any ideas of how I (and other link-minded) people could help with combating this threat. Do you know how a Data Scientist can contribute to our global efforts?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;My response is below.
 The tl;dr version is:
-&lt;em&gt;Your number-crunching and communication skills, 
-paired with independent re-analyses of publications, 
+&lt;em&gt;Your number-crunching and communication skills,
+paired with independent re-analyses of publications,
 can help you with local mitigation efforts.&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;The usual measures are your best bet:
@@ -489,72 +485,72 @@ interact with people virtually if you need to do meetings,
 and minimize number of trips to the grocery store.&lt;/p&gt;
 &lt;p&gt;That said, I'm sure you pinged me for a different answer :)&lt;/p&gt;
 &lt;p&gt;Here's what I can think of.
-The overarching theme is to use your skills as a data scientist, 
-particularly number-crunching and communication skills, 
-to help re-emphasize and re-communicate the good practices 
-that the epidemiology experts have been saying all along, 
+The overarching theme is to use your skills as a data scientist,
+particularly number-crunching and communication skills,
+to help re-emphasize and re-communicate the good practices
+that the epidemiology experts have been saying all along,
 the only difference being we're local to our communities,
 and can advocate among our own community.&lt;/p&gt;
 &lt;p&gt;Firstly, independently replicating others' analyses is a good place to start.
-This doesn't necessarily mean ML models - it can mean an ODE model for case counts, 
+This doesn't necessarily mean ML models - it can mean an ODE model for case counts,
 or &lt;a href=&quot;https://github.com/twiecki/covid19/blob/master/covid19_growth_bayes.ipynb&quot;&gt;Bayesian models for estimation of growth rate&lt;/a&gt;, etc.
 Doing this will take some deep diving into the epidemiology literature,
 as epidemiologists have given much more thought to how to properly count cases and the likes than we have.&lt;/p&gt;
 &lt;p&gt;Once you've done the first,
-extend those models to show how certain interventions that have been strongly recommended - 
-such as the social distancing one I am emphasizing as well - 
-can impact the spread of the virus. 
-I trust the recommendation from epi experts to practice social distancing 
-because I was once adjacent to the epi world (with my flu research), 
-but I'm not sure others share the same level of trust. 
+extend those models to show how certain interventions that have been strongly recommended -
+such as the social distancing one I am emphasizing as well -
+can impact the spread of the virus.
+I trust the recommendation from epi experts to practice social distancing
+because I was once adjacent to the epi world (with my flu research),
+but I'm not sure others share the same level of trust.
 The lack of trust is probably partially due to the distance most of us have
 from a professional epidemiologist.
-It helps for one to hear it from someone one knows personally, 
+It helps for one to hear it from someone one knows personally,
 especially someone one can trust
 who also has the necessary number-crunching and communication skills.&lt;/p&gt;
-&lt;p&gt;Thirdly, produce communications of some kind (posters, blog posts, infographics) 
-that help you communicate to others in your local community. 
-This, I think, is something we can already do without doing any independent re-analyses, 
-but the message among your local community might be more effective 
-if you have already done your homework by doing independent analysis replication. 
+&lt;p&gt;Thirdly, produce communications of some kind (posters, blog posts, infographics)
+that help you communicate to others in your local community.
+This, I think, is something we can already do without doing any independent re-analyses,
+but the message among your local community might be more effective
+if you have already done your homework by doing independent analysis replication.
 (There's just something about being prepared to answer questions that helps
 when preparing communication pieces.)&lt;/p&gt;
 &lt;p&gt;Some caveats when doing this.&lt;/p&gt;
 &lt;p&gt;Firstly, if you find something in your analyses that disagrees with the experts,
-be ready to hold your own view with a grain of salt. 
-There may be a key assumption you missed. 
-Dig into the literature, 
-ping your local epidemiology experts for help, 
-and discuss with other data-oriented people. 
-A good prior is, 
+be ready to hold your own view with a grain of salt.
+There may be a key assumption you missed.
+Dig into the literature,
+ping your local epidemiology experts for help,
+and discuss with other data-oriented people.
+A good prior is,
 &quot;I'm wrong, they're probably right, I might need to re-look what I've done.&quot;&lt;/p&gt;
-&lt;p&gt;Secondly, making dashboards/notebooks and publishing them is fun, 
-but in these times, I would call them cheap fun if it isn't paired with local action. 
-(To know why I call it cheap fun, 
+&lt;p&gt;Secondly, making dashboards/notebooks and publishing them is fun,
+but in these times, I would call them cheap fun if it isn't paired with local action.
+(To know why I call it cheap fun,
 see &lt;a href=&quot;https://medium.com/nightingale/ten-considerations-before-you-create-another-chart-about-covid-19-27d3bd691be8&quot;&gt;this article on #vizresponsibly&lt;/a&gt;.
-There's harder but more satisfying work to be done actually helping to influence local action 
-than publishing something to the web and tweeting about it... 
-unless doing that tweeting thing actually helps with influencing local action. 
+There's harder but more satisfying work to be done actually helping to influence local action
+than publishing something to the web and tweeting about it...
+unless doing that tweeting thing actually helps with influencing local action.
 Use good judgment here, and don't go for cheap fame.
 I trust you won't.&lt;/p&gt;
-&lt;p&gt;From my time next to the epi world, 
-the best thing you can do is, of course, encouraging local action: 
-social distancing, 
-leaving masks for medical personnel (so don't go raiding shelves), 
-being prepared with 2 weeks of food supplies, 
-and don't go to the hospital unless you have medical symptoms (like fevers), 
+&lt;p&gt;From my time next to the epi world,
+the best thing you can do is, of course, encouraging local action:
+social distancing,
+leaving masks for medical personnel (so don't go raiding shelves),
+being prepared with 2 weeks of food supplies,
+and don't go to the hospital unless you have medical symptoms (like fevers),
 so you don't contribute to overwhelming the medical system.&lt;/p&gt;
-&lt;p&gt;And while in isolation, 
-don't forget to take care of your mental health. 
-Nerds like myself can deal with the isolation, 
-but others might need some social interaction. 
-Audio/video call someone if you need to. 
-One of the nice things of the internet age 
+&lt;p&gt;And while in isolation,
+don't forget to take care of your mental health.
+Nerds like myself can deal with the isolation,
+but others might need some social interaction.
+Audio/video call someone if you need to.
+One of the nice things of the internet age
 is that it's easier to stay connected than ever before.&lt;/p&gt;
-&lt;p&gt;Finally, stay kind to the local grocery staff. 
+&lt;p&gt;Finally, stay kind to the local grocery staff.
 They're probably under a lot of mental and physical stress
-with people flowing through their workplace. 
-Don't sneeze in their vicinity! 
+with people flowing through their workplace.
+Don't sneeze in their vicinity!
 They're keeping the shelves stocked for the good of everybody.&lt;/p&gt;
 </content>
   </entry>
@@ -566,267 +562,267 @@ They're keeping the shelves stocked for the good of everybody.&lt;/p&gt;
     <author>
       <name>Eric J. Ma</name>
     </author>
-    <content type="html">&lt;p&gt;You’ve got a TensorFlow 1.13 model on hand, 
-written by an academic group, 
-and you know it’s going to be useful, 
-because you’ve already done some preliminary experiments with it. 
-The model takes in protein sequences, 
-and returns vectors, one per protein sequence. 
-The vectors turn out to be excellent descriptors 
-for downstream supervised learning, 
+    <content type="html">&lt;p&gt;You’ve got a TensorFlow 1.13 model on hand,
+written by an academic group,
+and you know it’s going to be useful,
+because you’ve already done some preliminary experiments with it.
+The model takes in protein sequences,
+and returns vectors, one per protein sequence.
+The vectors turn out to be excellent descriptors
+for downstream supervised learning,
 to predict protein activity from sequence data.&lt;/p&gt;
-&lt;p&gt;The only problem? 
-It’s slow. 
-&lt;em&gt;Excruciatingly slow&lt;/em&gt;. 
-Not just on CPU. 
-It’s slow on your local GPU as well. 
-You can’t run this locally without waiting for hours 
+&lt;p&gt;The only problem?
+It’s slow.
+&lt;em&gt;Excruciatingly slow&lt;/em&gt;.
+Not just on CPU.
+It’s slow on your local GPU as well.
+You can’t run this locally without waiting for hours
 to process the thousands of protein sequences that you have on hand.&lt;/p&gt;
-&lt;h2 id=&quot;slow?-what-now?&quot;&gt;Slow? What now?&lt;/h2&gt;&lt;p&gt;What do we do, then? 
-Install a newer GPU with faster processors and more RAM? 
-“Lift and shift” onto cloud GPUs?&lt;/p&gt;
-&lt;p&gt;I’d argue that all of those are evil choices, 
-because premature optimization is the root of all evil (Donald Knuth). 
-Moving the model onto a GPU 
-without knowing the root cause of the model’s slowness 
-could be construed as a form of premature optimization, 
-because we are prematurely moving to more powerful hardware 
-without first finding out whether it can be improved on existing ones. 
-Moving the model onto a &lt;em&gt;cloud&lt;/em&gt; GPU, 
-renting another person’s computer 
-while not maximizing pushing the model to its extremes locally, 
-is probably even worse, 
-because we end up with more variables to debug. 
-By the aforementioned premises and Knuth’s logical conjugation, 
+&lt;h2 id=&quot;slow?-what-now?&quot;&gt;Slow? What now?&lt;/h2&gt;&lt;p&gt;What do we do, then?
+Install a newer GPU with faster processors and more RAM?
+&quot;Lift and shift&quot; onto cloud GPUs?&lt;/p&gt;
+&lt;p&gt;I’d argue that all of those are evil choices,
+because premature optimization is the root of all evil (Donald Knuth).
+Moving the model onto a GPU
+without knowing the root cause of the model’s slowness
+could be construed as a form of premature optimization,
+because we are prematurely moving to more powerful hardware
+without first finding out whether it can be improved on existing ones.
+Moving the model onto a &lt;em&gt;cloud&lt;/em&gt; GPU,
+renting another person’s computer
+while not maximizing pushing the model to its extremes locally,
+is probably even worse,
+because we end up with more variables to debug.
+By the aforementioned premises and Knuth’s logical conjugation,
 those options are, therefore, evil choices.&lt;/p&gt;
-&lt;p&gt;Rather provocatively, 
-I’d like to suggest that one right option 
-when faced with a very slow deep learning model 
-is to make it fast on a &lt;em&gt;single CPU&lt;/em&gt;. 
-If we make the model fast locally on a single CPU, 
-then we might have a good chance 
-of dissecting the source of the model’s slowness, 
+&lt;p&gt;Rather provocatively,
+I’d like to suggest that one right option
+when faced with a very slow deep learning model
+is to make it fast on a &lt;em&gt;single CPU&lt;/em&gt;.
+If we make the model fast locally on a single CPU,
+then we might have a good chance
+of dissecting the source of the model’s slowness,
 and thus make it really fast on different hardware.&lt;/p&gt;
-&lt;p&gt;This is exactly what we did with the UniRep model. 
-Our protein engineering intern in Basel, Arkadij, 
-had already done the groundwork testing the model 
-on our high performance computing cluster. 
-It was slow in our hands, 
+&lt;p&gt;This is exactly what we did with the UniRep model.
+Our protein engineering intern in Basel, Arkadij,
+had already done the groundwork testing the model
+on our high performance computing cluster.
+It was slow in our hands,
 and so we decided it was time to really dig into the model.&lt;/p&gt;
-&lt;h2 id=&quot;reimplementation&quot;&gt;Reimplementation&lt;/h2&gt;&lt;p&gt;Because the model is an RNN model that processes sequential data, 
-we need to know how the model processes one window of sequence first. 
-In the deep learning literature, this is known as an “RNN cell”. 
-We isolated that part of the RNN, 
-and carefully translated each line of code into NumPy. 
-Because it processes one “window” or &lt;strong&gt;”step”&lt;/strong&gt; at a time, 
+&lt;h2 id=&quot;reimplementation&quot;&gt;Reimplementation&lt;/h2&gt;&lt;p&gt;Because the model is an RNN model that processes sequential data,
+we need to know how the model processes one window of sequence first.
+In the deep learning literature, this is known as an &quot;RNN cell&quot;.
+We isolated that part of the RNN,
+and carefully translated each line of code into NumPy.
+Because it processes one &quot;window&quot; or &lt;strong&gt;&quot;step&quot;&lt;/strong&gt; at a time,
 we call it &lt;code&gt;mlstm1900_step&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Because the RNN cell is “scanned” over a single sequence, 
-we then defined the function that processes a single sequence. 
-To do this, we took advantage of the &lt;code&gt;jax.lax&lt;/code&gt; submodule’s &lt;code&gt;scan&lt;/code&gt; function, 
-which literally “scans” the RNN cell over the entire sequence 
-the way TensorFlow’s RNN cell would be scanned. 
+&lt;p&gt;Because the RNN cell is &quot;scanned&quot; over a single sequence,
+we then defined the function that processes a single sequence.
+To do this, we took advantage of the &lt;code&gt;jax.lax&lt;/code&gt; submodule’s &lt;code&gt;scan&lt;/code&gt; function,
+which literally &quot;scans&quot; the RNN cell over the entire sequence
+the way TensorFlow’s RNN cell would be scanned.
 &lt;del&gt;This basically is a vectorized for-loop.&lt;/del&gt;
 Thanks to Stephan Hoyer &lt;a href=&quot;https://twitter.com/shoyer/status/1228416820119400448&quot;&gt;pointing out my conceptual error here&lt;/a&gt;;
 &lt;code&gt;lax.scan&lt;/code&gt; is a compiled for-loop with known number of iterations.
-Together, that defined the function call that processes a single sequence. 
-This, incidentally, gives us the “batch-“ or “sample-wise” RNN function, 
+Together, that defined the function call that processes a single sequence.
+This, incidentally, gives us the &quot;batch-&quot; or &quot;sample-wise&quot; RNN function,
 &lt;code&gt;mlstm1900_batch&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Finally, we need a function that processes multiple sequences 
-that are the same length. 
-Here, we need the function to be vectorized, 
-so that we do not incur a Python loop penalty 
-for processing sequences one at a time. 
-This forms the &lt;code&gt;mlstm1900&lt;/code&gt; layer, 
-which, semantically speaking, takes in a batch of sequences 
+&lt;p&gt;Finally, we need a function that processes multiple sequences
+that are the same length.
+Here, we need the function to be vectorized,
+so that we do not incur a Python loop penalty
+for processing sequences one at a time.
+This forms the &lt;code&gt;mlstm1900&lt;/code&gt; layer,
+which, semantically speaking, takes in a batch of sequences
 and returns a batch of outputs.&lt;/p&gt;
-&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;&lt;p&gt;So, does the reimplementation work in the same way as the original? 
-Absolutely. We passed an &lt;em&gt;attrappe&lt;/em&gt; (Google it, it’s German) sequence through the model, 
-and checked that the reps were identical to the original - which they were. 
-But don’t take my word for it, 
+&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;&lt;p&gt;So, does the reimplementation work in the same way as the original?
+Absolutely. We passed an &lt;em&gt;attrappe&lt;/em&gt; (Google it, it’s German) sequence through the model,
+and checked that the reps were identical to the original - which they were.
+But don’t take my word for it,
 check out the &lt;a href=&quot;https://elarkk.github.io/jax-unirep/&quot;&gt;draft preprint&lt;/a&gt; we wrote to document this!
-Meanwhile, in case you don't want to click over and read our hard work, 
-here's the figure linked from the source. 
+Meanwhile, in case you don't want to click over and read our hard work,
+here's the figure linked from the source.
 (It's only off by a bit because we added a delta
 to make the two representations visible.)&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://elarkk.github.io/jax-unirep/figures/rep_trace_lf.png&quot; alt=&quot;Congruence between the reps.&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Besides that, 
-we also added tests and elaborate docstrings 
-for the functions in there, 
-so anybody reading the model source code 
-can know what the &lt;em&gt;semantic meaning&lt;/em&gt; of each of the tensors’ axes are. 
-Having wrestled through undocumented academic code, 
-knowing what input tensor dimensions were supposed to be 
-were one of the hardest things to grok 
+&lt;p&gt;Besides that,
+we also added tests and elaborate docstrings
+for the functions in there,
+so anybody reading the model source code
+can know what the &lt;em&gt;semantic meaning&lt;/em&gt; of each of the tensors’ axes are.
+Having wrestled through undocumented academic code,
+knowing what input tensor dimensions were supposed to be
+were one of the hardest things to grok
 from looking at a relatively poorly undocumented model.&lt;/p&gt;
-&lt;p&gt;By carefully reimplementing the deep learning model in pure JAX/NumPy, 
-we were able to achieve approximately 100X speedup 
-over the original implementation on a single CPU. 
-Given JAX’s automatic compilation to GPU and TPU, 
-the speed improvements we could obtain might be even better, 
-though we have yet to try it out. 
-Again, don't take my word at it - 
-check out the &lt;a href=&quot;https://elarkk.github.io/jax-unirep/&quot;&gt;draft preprint&lt;/a&gt; 
+&lt;p&gt;By carefully reimplementing the deep learning model in pure JAX/NumPy,
+we were able to achieve approximately 100X speedup
+over the original implementation on a single CPU.
+Given JAX’s automatic compilation to GPU and TPU,
+the speed improvements we could obtain might be even better,
+though we have yet to try it out.
+Again, don't take my word at it -
+check out the &lt;a href=&quot;https://elarkk.github.io/jax-unirep/&quot;&gt;draft preprint&lt;/a&gt;
 if you're curious!
 The exact figure, though is below.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://elarkk.github.io/jax-unirep/figures/speed_comparison.png#center&quot; alt=&quot;Speed comparison between the original and `jax`-based reimplementation.&quot;&gt;&lt;/p&gt;
-&lt;p&gt;I suspect that by reimplementing the model in NumPy, 
-we basically eliminated the TensorFlow graph compilation overhead, 
-which was the original source of slowness. 
-By using some of JAX’s tricks, including &lt;code&gt;lax.scan&lt;/code&gt; and &lt;code&gt;jax.vmap&lt;/code&gt;, 
-we could take advantage of vectorized looping 
+&lt;p&gt;I suspect that by reimplementing the model in NumPy,
+we basically eliminated the TensorFlow graph compilation overhead,
+which was the original source of slowness.
+By using some of JAX’s tricks, including &lt;code&gt;lax.scan&lt;/code&gt; and &lt;code&gt;jax.vmap&lt;/code&gt;,
+we could take advantage of vectorized looping
 that the JAX developers built into the package,
 thus eliminating Python looping overhead.&lt;/p&gt;
-&lt;h2 id=&quot;distribution&quot;&gt;Distribution&lt;/h2&gt;&lt;p&gt;So, now, how do we get the model distributed to end-users? 
-This is where thinking about the API matters. 
-I have this long-held opinion that data scientists 
-need some basic proficiency in software skills, 
-as we invariably end up doing tool-building whether we want to or not. 
-Part of software skills involves knowing 
-how to package the model for use in a variety of settings, 
-and thinking about how the end-user would use it. 
+&lt;h2 id=&quot;distribution&quot;&gt;Distribution&lt;/h2&gt;&lt;p&gt;So, now, how do we get the model distributed to end-users?
+This is where thinking about the API matters.
+I have this long-held opinion that data scientists
+need some basic proficiency in software skills,
+as we invariably end up doing tool-building whether we want to or not.
+Part of software skills involves knowing
+how to package the model for use in a variety of settings,
+and thinking about how the end-user would use it.
 Then, only, have we made a &lt;strong&gt;data product&lt;/strong&gt; that is of use to others.&lt;/p&gt;
 &lt;p&gt;Two settings we thought of are the Python user setting, and a web user setting.&lt;/p&gt;
 &lt;h3 id=&quot;python-user-setting&quot;&gt;Python-user setting&lt;/h3&gt;&lt;p&gt;Serving Python users means building &lt;strong&gt;&lt;code&gt;pip&lt;/code&gt;-installable packages&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;In the Python world, 
-it’s idiomatic to consider a Python package 
-as the unit of software that is shipped to others. 
-Some packages are large (think NumPy), 
-others are diverse (think SciPy), 
-some are both (e.g. &lt;code&gt;scikit-learn&lt;/code&gt;), 
-and yet others do one and only one thing well (think &lt;code&gt;humanize&lt;/code&gt;). 
+&lt;p&gt;In the Python world,
+it’s idiomatic to consider a Python package
+as the unit of software that is shipped to others.
+Some packages are large (think NumPy),
+others are diverse (think SciPy),
+some are both (e.g. &lt;code&gt;scikit-learn&lt;/code&gt;),
+and yet others do one and only one thing well (think &lt;code&gt;humanize&lt;/code&gt;).
 UniRep probably falls within to the last category.&lt;/p&gt;
-&lt;p&gt;To fit this idiom, 
-we decided to package up the model as a Python-style package 
-that is pip-installable into the environment of an end-user. 
-While we develop the package, 
-it is &lt;code&gt;pip&lt;/code&gt;-installable from our GitHub repository 
+&lt;p&gt;To fit this idiom,
+we decided to package up the model as a Python-style package
+that is pip-installable into the environment of an end-user.
+While we develop the package,
+it is &lt;code&gt;pip&lt;/code&gt;-installable from our GitHub repository
 (where we also give full credit and reference to the original authors for the original).
 We might release it to PyPI, with licenses and the likes as well.&lt;/p&gt;
 &lt;p&gt;Moreover, we needed a &lt;strong&gt;nice API&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;With UniRep, there’s basically two things one would want to do:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Compute “reps” for a sequence conditioned on the pre-trained weights, and &lt;/li&gt;
+&lt;li&gt;Compute &quot;reps&quot; for a sequence conditioned on the pre-trained weights, and&lt;/li&gt;
 &lt;li&gt;Evolutionarily-tune (&quot;evo-tune&quot;) the model weights to compute more locally-relevant reps.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;As such, we designed a &lt;code&gt;get_reps(seqs)&lt;/code&gt; API 
-that would correctly process single sequences, 
-multiple sequences of same lengths, 
-and multiple sequences of varying lengths, 
+&lt;p&gt;As such, we designed a &lt;code&gt;get_reps(seqs)&lt;/code&gt; API
+that would correctly process single sequences,
+multiple sequences of same lengths,
+and multiple sequences of varying lengths,
 while not needing the user to think about that.&lt;/p&gt;
-&lt;p&gt;For evolutionary tuning, 
-we desired that the API worked regardless of whether 
-the user tuned on sequences of equal or varying lengths. 
-In other words, 
-we wanted to wrap the complexity of handling sequences of multiple lengths 
-away from the end-user. 
-This is something we are working on right now, 
-but at least the API sketch as it stands now 
-gives the end-user a single &lt;code&gt;evotune(sequences)&lt;/code&gt; function to work with. 
-Designing it this way allows us to work backwards from the outside-in, 
-starting with the desired API and flexibly designing the inner parts. 
-A friend of mine, Ex-Googler Jesse Johnson at Cellarity, 
+&lt;p&gt;For evolutionary tuning,
+we desired that the API worked regardless of whether
+the user tuned on sequences of equal or varying lengths.
+In other words,
+we wanted to wrap the complexity of handling sequences of multiple lengths
+away from the end-user.
+This is something we are working on right now,
+but at least the API sketch as it stands now
+gives the end-user a single &lt;code&gt;evotune(sequences)&lt;/code&gt; function to work with.
+Designing it this way allows us to work backwards from the outside-in,
+starting with the desired API and flexibly designing the inner parts.
+A friend of mine, Ex-Googler Jesse Johnson at Cellarity,
 &lt;a href=&quot;https://medium.com/@jejo.math/writing-software-from-the-outside-in-e5359f60fa30&quot;&gt;wrote an excellent blog post on this&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&quot;web-api&quot;&gt;Web API&lt;/h3&gt;&lt;p&gt;With a &lt;code&gt;pip&lt;/code&gt;-installable package on-hand, 
-we could then depend on it to build other single-use tools. 
-For example, we built a web API for the model by using &lt;a href=&quot;https://fastapi.tiangolo.com/&quot;&gt;FastAPI&lt;/a&gt;, 
-and designed it to return the calculated representations for a single sequence 
-based on the pre-trained weights. 
-Because evo-tuning is computationally expensive, 
-we don’t plan to offer that on the web API. 
-The web API is also packaged up as a &lt;code&gt;pip&lt;/code&gt;-installable package, 
-and can be installed inside a Docker container, 
-thus forming the basis of a deep learning-powered micro-service 
-that pre-calculates “standard”, non-tuned representations 
+&lt;h3 id=&quot;web-api&quot;&gt;Web API&lt;/h3&gt;&lt;p&gt;With a &lt;code&gt;pip&lt;/code&gt;-installable package on-hand,
+we could then depend on it to build other single-use tools.
+For example, we built a web API for the model by using &lt;a href=&quot;https://fastapi.tiangolo.com/&quot;&gt;FastAPI&lt;/a&gt;,
+and designed it to return the calculated representations for a single sequence
+based on the pre-trained weights.
+Because evo-tuning is computationally expensive,
+we don’t plan to offer that on the web API.
+The web API is also packaged up as a &lt;code&gt;pip&lt;/code&gt;-installable package,
+and can be installed inside a Docker container,
+thus forming the basis of a deep learning-powered micro-service
+that pre-calculates &quot;standard&quot;, non-tuned representations
 of every new protein we might encounter.&lt;/p&gt;
-&lt;h2 id=&quot;lessons-learned&quot;&gt;Lessons Learned&lt;/h2&gt;&lt;h3 id=&quot;on-the-fragility-of-deep-learning-models&quot;&gt;On the fragility of deep learning models&lt;/h3&gt;&lt;p&gt;Our modern way of communicating the architecture of deep learning models 
-is still a work-in-progress, with overloaded terms and ambiguity present. 
-As such, there were minor details that we reimplemented incorrectly 
-that incidentally also had a major impact on the correctness of the reimplementation. 
-For example, the &lt;code&gt;sigmoid()&lt;/code&gt; function in TensorFlow 
-was different from the other implementations that we had seen in multiple codebases 
-(we detail this in our preprint), 
-yet both are colloquially described as “sigmoids”.&lt;/p&gt;
-&lt;p&gt;We also know from adversarial examples 
-that deep learning models are notoriously fragile 
-against inputs that have noise added to them. 
-This has implications in the design of the API to the model. 
-If we design the user-facing API to accept tensors rather than strings, 
-then we leave the burden of correctly translating string inputs into tensors 
-(with semantically correct dimensions) on the end-user. 
-If the end-user processed the strings in a way that the model is not robust against, 
-it will handle the processed tensors in a way that may be incorrect for their purposes; 
-yet, there is no robust way to write a unit test against this. 
-The key problem here is that the semantic meaning of the tensors 
+&lt;h2 id=&quot;lessons-learned&quot;&gt;Lessons Learned&lt;/h2&gt;&lt;h3 id=&quot;on-the-fragility-of-deep-learning-models&quot;&gt;On the fragility of deep learning models&lt;/h3&gt;&lt;p&gt;Our modern way of communicating the architecture of deep learning models
+is still a work-in-progress, with overloaded terms and ambiguity present.
+As such, there were minor details that we reimplemented incorrectly
+that incidentally also had a major impact on the correctness of the reimplementation.
+For example, the &lt;code&gt;sigmoid()&lt;/code&gt; function in TensorFlow
+was different from the other implementations that we had seen in multiple codebases
+(we detail this in our preprint),
+yet both are colloquially described as &quot;sigmoids&quot;.&lt;/p&gt;
+&lt;p&gt;We also know from adversarial examples
+that deep learning models are notoriously fragile
+against inputs that have noise added to them.
+This has implications in the design of the API to the model.
+If we design the user-facing API to accept tensors rather than strings,
+then we leave the burden of correctly translating string inputs into tensors
+(with semantically correct dimensions) on the end-user.
+If the end-user processed the strings in a way that the model is not robust against,
+it will handle the processed tensors in a way that may be incorrect for their purposes;
+yet, there is no robust way to write a unit test against this.
+The key problem here is that the semantic meaning of the tensors
 cannot be easily and automatically tested.&lt;/p&gt;
-&lt;p&gt;As such, in order for the user-facing API of the model to be “friendly” (so to speak), 
-it must accept data in a format that the intended end-user will be handling. 
-This is nothing new in the world of software development, to be user-centric. 
-At the same time, because of its small size and the way we structure our codebase, 
-all of the internals are easily accessible, 
+&lt;p&gt;As such, in order for the user-facing API of the model to be &quot;friendly&quot; (so to speak),
+it must accept data in a format that the intended end-user will be handling.
+This is nothing new in the world of software development, to be user-centric.
+At the same time, because of its small size and the way we structure our codebase,
+all of the internals are easily accessible,
 and how they fit together is also not difficult to understand.&lt;/p&gt;
-&lt;h3 id=&quot;why-tools-and-not-full-apps?&quot;&gt;Why tools, and not full apps?&lt;/h3&gt;&lt;p&gt;The environment that we're in is a research environment. 
-That, by definition, means we're always doing non-standard things. 
-Moreover, a model is usually but one small component 
-in a large interconnected web of tools 
-that come together to make a useful, consumable app. 
-Rather than try to go end-to-end, 
-it makes more sense to produce modular parts that fit well with one another. 
+&lt;h3 id=&quot;why-tools-and-not-full-apps?&quot;&gt;Why tools, and not full apps?&lt;/h3&gt;&lt;p&gt;The environment that we're in is a research environment.
+That, by definition, means we're always doing non-standard things.
+Moreover, a model is usually but one small component
+in a large interconnected web of tools
+that come together to make a useful, consumable app.
+Rather than try to go end-to-end,
+it makes more sense to produce modular parts that fit well with one another.
 The mantra I like to keep in mind here is:&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt;Modularity and composability give us the flexibility for creativity.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;p&gt;And if creativity is not the heart of research, what then is?&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Modularity and composability give us the flexibility for creativity.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And if creativity is not the heart of research, what then is?&lt;/p&gt;
 &lt;h3 id=&quot;if-you-want-to-accelerate-a-deep-learning-model...&quot;&gt;If you want to accelerate a deep learning model...&lt;/h3&gt;&lt;p&gt;…&lt;em&gt;how about making sure it first runs well on a single CPU?&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;But beyond that, 
-also consider that whole frameworks 
-and their associated overheads might not necessarily be what you need. 
-In our case, we didn't need the entire TF framework to get the model reimplemented. 
-We only really needed XLA (pre-compiled in &lt;code&gt;jaxlib&lt;/code&gt; for our systems) 
-and the NumPy API to get it right. 
-Also consider whether a framework is getting in the way of your modelling work, 
-or if it's helping. 
+&lt;p&gt;But beyond that,
+also consider that whole frameworks
+and their associated overheads might not necessarily be what you need.
+In our case, we didn't need the entire TF framework to get the model reimplemented.
+We only really needed XLA (pre-compiled in &lt;code&gt;jaxlib&lt;/code&gt; for our systems)
+and the NumPy API to get it right.
+Also consider whether a framework is getting in the way of your modelling work,
+or if it's helping.
 (If it's the latter, keep using what you're using!)&lt;/p&gt;
-&lt;h3 id=&quot;encouraging-a-co-creation-mindset&quot;&gt;Encouraging a co-creation mindset&lt;/h3&gt;&lt;p&gt;Co-creation is &lt;em&gt;the&lt;/em&gt; ethos of the open source world, 
-where unrelated people come together and build software 
-that is useful to others beyond themselves. 
-I've experienced it many times on the &lt;code&gt;pyjanitor&lt;/code&gt; and &lt;code&gt;nxviz&lt;/code&gt; projects. 
-Technically, nobody has to ask for permission to fork a project, 
-make changes, and even submit a pull request back. 
-Of course, we do so anyways, 
-just for the polity of being courteous to the original creator - 
+&lt;h3 id=&quot;encouraging-a-co-creation-mindset&quot;&gt;Encouraging a co-creation mindset&lt;/h3&gt;&lt;p&gt;Co-creation is &lt;em&gt;the&lt;/em&gt; ethos of the open source world,
+where unrelated people come together and build software
+that is useful to others beyond themselves.
+I've experienced it many times on the &lt;code&gt;pyjanitor&lt;/code&gt; and &lt;code&gt;nxviz&lt;/code&gt; projects.
+Technically, nobody has to ask for permission to fork a project,
+make changes, and even submit a pull request back.
+Of course, we do so anyways,
+just for the polity of being courteous to the original creator -
 it's always good to let someone know something's coming their way.&lt;/p&gt;
-&lt;p&gt;Pair-coding, as it turns out, 
-happens to be a wonderful way to encourage co-creation. 
-Much of the reimplementation work 
-was done pair coding with my co-author, Arkadij Kummer, 
-who lives and works in our Basel site. 
-Yes, we're separated by six hours of time, 
-but that doesn't stop us 
-from using all of the good internet-enabled tools available to us 
-to collaborate together. 
-We used MS Teams at work for video chatting, 
-and sometimes just did VSCode with VSLiveShare (with audio) 
-to develop code together. 
-All work was version-controlled and shared via Git, 
-which means we could work asynchronously when needed as well. 
-The time spent pair coding is time where knowledge is shared, 
-trust is built, 
-and mentoring relationships are forged. 
-In an upcoming blog post, 
-I will write about pair coding as a practice in data science, 
-particularly for levelling-up junior members of the data science team 
+&lt;p&gt;Pair-coding, as it turns out,
+happens to be a wonderful way to encourage co-creation.
+Much of the reimplementation work
+was done pair coding with my co-author, Arkadij Kummer,
+who lives and works in our Basel site.
+Yes, we're separated by six hours of time,
+but that doesn't stop us
+from using all of the good internet-enabled tools available to us
+to collaborate together.
+We used MS Teams at work for video chatting,
+and sometimes just did VSCode with VSLiveShare (with audio)
+to develop code together.
+All work was version-controlled and shared via Git,
+which means we could work asynchronously when needed as well.
+The time spent pair coding is time where knowledge is shared,
+trust is built,
+and mentoring relationships are forged.
+In an upcoming blog post,
+I will write about pair coding as a practice in data science,
+particularly for levelling-up junior members of the data science team
 and sharing knowledge between peers.&lt;/p&gt;
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;I hope you enjoyed reading about our journey reimplementing UniRep in JAX. 
-Keep in mind that JAX isn't necessarily always going to speed up your TF model 100X; 
-I'm clearly being facetious in writing it that way. 
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;I hope you enjoyed reading about our journey reimplementing UniRep in JAX.
+Keep in mind that JAX isn't necessarily always going to speed up your TF model 100X;
+I'm clearly being facetious in writing it that way.
 &lt;del&gt;JAX and TF share XLA underneath the hood,&lt;/del&gt;
 Matt Johnson pointed out that JAX uses XLA by default,
 while TF does not,
 yet XLA is really the secret sauce that makes the models execute fast.
-&lt;del&gt;The only difference is TF1.x needed this compilation time, 
+&lt;del&gt;The only difference is TF1.x needed this compilation time,
 while JAX does it just-in-time (when ordered to do so).&lt;/del&gt;
-Because JAX gets us autodiff on the NumPy API, 
-it's a super productive research and teaching tool 
-with a familiar API to many Pythonistas. 
+Because JAX gets us autodiff on the NumPy API,
+it's a super productive research and teaching tool
+with a familiar API to many Pythonistas.
 My hope is this post encourages you to try it out; happy experimenting!&lt;/p&gt;
 </content>
   </entry>
@@ -951,10 +947,10 @@ Date
 &lt;p&gt;You’ll notice that the commands we want Travis to execute are basically the same as those we executed manually. The only difference now is that we command &lt;code&gt;reveal-md&lt;/code&gt; to build a static site under the directory &lt;code&gt;site/&lt;/code&gt;, which we then command Travis to push to GitHub pages.&lt;/p&gt;
 &lt;p&gt;In the &lt;code&gt;deploy&lt;/code&gt; section, we are specifying to Travis that we want all of the content under the directory &lt;code&gt;site/&lt;/code&gt; to be pushed to the &lt;code&gt;gh-pages&lt;/code&gt; branch of our repository. (We have not yet connected Travis to our repo; that will happen next, so sit tight!)&lt;/p&gt;
 &lt;p&gt;Notice also the &lt;code&gt;$GITHUB_TOKEN&lt;/code&gt; environment variable: we need to declare that as well. The &lt;code&gt;GITHUB_TOKEN&lt;/code&gt; is an authentication token that GitHub will recognize when Travis CI pushes the &lt;code&gt;site/&lt;/code&gt; directory to &lt;code&gt;gh-pages&lt;/code&gt;. Because underneath the hood we are using &lt;code&gt;bash&lt;/code&gt; syntax in the YAML file, when we declare the &lt;code&gt;GITHUB_TOKEN&lt;/code&gt;, we do it without the &lt;code&gt;$&lt;/code&gt; symbol, but when we need to grab it from the environment, we include the &lt;code&gt;$&lt;/code&gt; symbol, just as in regular plain old &lt;code&gt;bash&lt;/code&gt;.&lt;/p&gt;
-&lt;h3 id=&quot;get-a-github-deploy-token&quot;&gt;Get a GitHub deploy token&lt;/h3&gt;&lt;p&gt;Under your repository settings, generate a deploy/“personal access” token. Exact docs are &lt;a href=&quot;https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line&quot;&gt;here&lt;/a&gt;, so in the spirit of “don’t repeat yourself” and “learn to read the docs”, I will encourage you to read them.&lt;/p&gt;
+&lt;h3 id=&quot;get-a-github-deploy-token&quot;&gt;Get a GitHub deploy token&lt;/h3&gt;&lt;p&gt;Under your repository settings, generate a deploy/&quot;personal access&quot; token. Exact docs are &lt;a href=&quot;https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line&quot;&gt;here&lt;/a&gt;, so in the spirit of &quot;don’t repeat yourself&quot; and &quot;learn to read the docs&quot;, I will encourage you to read them.&lt;/p&gt;
 &lt;p&gt;Once you have generated a deploy key, copy them somewhere - you will need it later. (Tip: also make sure you don’t accidentally save it to disk!)&lt;/p&gt;
-&lt;h3 id=&quot;connect-travis-ci-to-your-repository&quot;&gt;Connect Travis CI to your repository&lt;/h3&gt;&lt;p&gt;On Travis CI, connect your Travis CI account to GitHub, and then enable Travis to look for changes on the &lt;code&gt;my-talk&lt;/code&gt; repository. Generally, this is done by going to your user settings, and searching for “Legacy Services Integration”, then toggling the checkbox to enable it on your &lt;code&gt;my-talk&lt;/code&gt; repository.&lt;/p&gt;
-&lt;p&gt;Once that is done, go into the Travis CI settings for the repository. Navigate to the “Environment Variables” section, and declare the &lt;code&gt;GITHUB_TOKEN&lt;/code&gt; there. Be sure to keep it hidden from the output!&lt;/p&gt;
+&lt;h3 id=&quot;connect-travis-ci-to-your-repository&quot;&gt;Connect Travis CI to your repository&lt;/h3&gt;&lt;p&gt;On Travis CI, connect your Travis CI account to GitHub, and then enable Travis to look for changes on the &lt;code&gt;my-talk&lt;/code&gt; repository. Generally, this is done by going to your user settings, and searching for &quot;Legacy Services Integration&quot;, then toggling the checkbox to enable it on your &lt;code&gt;my-talk&lt;/code&gt; repository.&lt;/p&gt;
+&lt;p&gt;Once that is done, go into the Travis CI settings for the repository. Navigate to the &quot;Environment Variables&quot; section, and declare the &lt;code&gt;GITHUB_TOKEN&lt;/code&gt; there. Be sure to keep it hidden from the output!&lt;/p&gt;
 &lt;h3 id=&quot;turn-on-github-pages&quot;&gt;Turn on GitHub pages&lt;/h3&gt;&lt;p&gt;To turn on GitHub pages, we are going to stick to a pretty sane and widely-used set of practices when interacting with GitHub repositories and static sites.&lt;/p&gt;
 &lt;p&gt;Firstly, on the GitHub repository for &lt;code&gt;my-talk&lt;/code&gt;, create a new branch (using the web interface or through the CLI) called &lt;code&gt;gh-pages&lt;/code&gt;. This time round, the name is definitely special, as GitHub recognizes this branch as a legitimate GitHub pages branch to serve content from.&lt;/p&gt;
 &lt;p&gt;Secondly, go to the &lt;strong&gt;repository&lt;/strong&gt; settings (not your user settings), and ensure that GitHub pages is enabled for the repository. Usually, adding the &lt;code&gt;gh-pages&lt;/code&gt; branch will result in this option being  automagically turned on.&lt;/p&gt;
@@ -988,7 +984,7 @@ Date
 &lt;h2 id=&quot;the-food&quot;&gt;The Food&lt;/h2&gt;&lt;p&gt;Ann Arbor, according to Sean, has quite the foodie scene. It is quite true, even as a land-locked midwestern university town.&lt;/p&gt;
 &lt;p&gt;On the first afternoon here, I went to this restaurant called &lt;a href=&quot;https://holaseoul.com/&quot;&gt;Hola Seoul&lt;/a&gt;, which served Korean-Mexican fusion food. On my second day here, I had Panera for breakfast (not knowing anything better), skipped lunch, but went out with the PyData organizers to &lt;a href=&quot;http://slurpingturtle.com/annarbor/&quot;&gt;Slurping Turtle&lt;/a&gt; for some  very delicious sushi, fried chicken, and spicy miso ramen. And on my third day here, I decided to enjoy: smoked salmon and avocado omelette at &lt;a href=&quot;http://www.cafezola.com/content/&quot;&gt;Cafe Zola&lt;/a&gt; (it was expensive… but &lt;em&gt;worth  it&lt;/em&gt;), and &lt;a href=&quot;https://savasannarbor.com/&quot;&gt;Sava’s&lt;/a&gt; for a late lunch with Ben (NVIDIA) and Logan (TD Ameritrade).&lt;/p&gt;
 &lt;h2 id=&quot;career-chat-with-sean&quot;&gt;Career Chat with Sean&lt;/h2&gt;&lt;p&gt;A few hours before the talk, I had a free-ranging chat with Sean about the problems we tackle in our respective roles. Here’s a smattering of thinking and talking points from our conversation.&lt;/p&gt;
-&lt;p&gt;We share an “internal consulting” role at work, where both our teams’ missions are to spearhead new initiatives. His team is explicitly tasked with feeling out what’s upcoming in the next 5 years, POC-ing it, and seeing how it best fits in TD’s systems. It’s a very similar type of role that I’m in.&lt;/p&gt;
+&lt;p&gt;We share an &quot;internal consulting&quot; role at work, where both our teams’ missions are to spearhead new initiatives. His team is explicitly tasked with feeling out what’s upcoming in the next 5 years, POC-ing it, and seeing how it best fits in TD’s systems. It’s a very similar type of role that I’m in.&lt;/p&gt;
 &lt;p&gt;I shared with him the frustrations I had battling what I saw was  unnecessary vendor tech. We both seemed to agree that front-liners and decision-makers not operating in the same circles was  an important reason for this phenomena.&lt;/p&gt;
 &lt;p&gt;I also learned a few lessons from Sean that I think I need to emphasize more at work:&lt;/p&gt;
 &lt;ol&gt;
@@ -996,7 +992,7 @@ Date
 &lt;li&gt;Strategically cycling between quick wins for credibility, and parlaying that into longer-term (but riskier) wins for the organization.&lt;/li&gt;
 &lt;li&gt;Coffee talk tours throughout the company to spread good ideas.&lt;/li&gt;
 &lt;li&gt;Minimizing surprises on colleagues (especially nasty ones; pleasant surprises are ok though).&lt;/li&gt;
-&lt;li&gt;Strategically holding back on “just doing everything”, and instead letting colleagues co-create, to generate a sense of ownership over the final product.&lt;/li&gt;
+&lt;li&gt;Strategically holding back on &quot;just doing everything&quot;, and instead letting colleagues co-create, to generate a sense of ownership over the final product.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&quot;the-miscellaneous&quot;&gt;The Miscellaneous&lt;/h2&gt;&lt;p&gt;I was picked up by a limo to and from the hotel. While extremely comfortable, I was definitely pleasantly surprised, to the point of being a little bit not used to it.&lt;/p&gt;
 &lt;p&gt;Delta Airlines was half-empty on the way over, but really full on the way back. Either way, my impressions are that without the WiFi access for free, they can’t beat JetBlue for me. That said, PyData Ann Arbor paid for the flight and lodging, so I won’t complain, it was still a comfortable flight nonetheless.&lt;/p&gt;
@@ -1004,7 +1000,7 @@ Date
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/1/12/honk-on-you-fools-insecure-in-your-miniscule-private-parts/">
-    <title type="text">“Honk on, you fools insecure in your miniscule private parts.”</title>
+    <title type="text">&quot;Honk on, you fools insecure in your miniscule private parts.&quot;</title>
     <id>urn:uuid:6d56bddc-44f4-30f7-a5e8-b167806684db</id>
     <updated>2020-01-12T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2020/1/12/honk-on-you-fools-insecure-in-your-miniscule-private-parts/" />
@@ -1059,7 +1055,7 @@ Date
     </author>
     <content type="html">&lt;p&gt;I have received questions from others on how to build a digital profile for career development. Everybody’s going to have a unique path, and what I think I can offer are observations on what I think have been helpful for myself and others who have enjoyed similar successes in getting started. My hope is that these pointers, which come from self-reflection over the past two years of work, help you.&lt;/p&gt;
 &lt;h2 id=&quot;the-maybe-timeless-and-cross-industry-principles&quot;&gt;The maybe-timeless and cross-industry principles&lt;/h2&gt;&lt;p&gt;First off, here are some things that I think are timeless principles in the job search, and are probably true for a large swathe of professional roles.&lt;/p&gt;
-&lt;p&gt;Firstly, nobody owes me their time or a job; &lt;strong&gt;I have a lot of leeway to make it as easy as possible for others to say, “Yes, I would like to have you on board”&lt;/strong&gt;. Naturally, this statement ignores structural privileges and inequalities that exist in society, so I would be realistic in what I can accomplish. That said, it's usually a good prior to assume that everybody is busy, and that you need to properly advertise what you can offer.&lt;/p&gt;
+&lt;p&gt;Firstly, nobody owes me their time or a job; &lt;strong&gt;I have a lot of leeway to make it as easy as possible for others to say, &quot;Yes, I would like to have you on board&quot;&lt;/strong&gt;. Naturally, this statement ignores structural privileges and inequalities that exist in society, so I would be realistic in what I can accomplish. That said, it's usually a good prior to assume that everybody is busy, and that you need to properly advertise what you can offer.&lt;/p&gt;
 &lt;p&gt;In line with the same idea, I start with the presumption that nobody has the spare time to think deeply about a candidate when there are many other things in one's mind. The corollary is that &lt;strong&gt;it is on me to frame how I want others to view me&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2 id=&quot;data-science-specific-things&quot;&gt;Data science-specific things&lt;/h2&gt;&lt;p&gt;Now, for a data science role, being able to demonstrate the following can only help, not hurt, your application and candidacy:&lt;/p&gt;
 &lt;ol&gt;
@@ -1069,7 +1065,7 @@ Date
 &lt;li&gt;Proficiency with building &quot;products&quot; that aid in decision-making.&lt;/li&gt;
 &lt;li&gt;Ability to work collaboratively with others.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;In data science, “value” usually means saving money. Saving time = saving money, in case that was not clear. Hence, automation &lt;em&gt;is&lt;/em&gt; valuable.&lt;/p&gt;
+&lt;p&gt;In data science, &quot;value&quot; usually means saving money. Saving time = saving money, in case that was not clear. Hence, automation &lt;em&gt;is&lt;/em&gt; valuable.&lt;/p&gt;
 &lt;p&gt;Good coding practices are important: I have an &lt;a href=&quot;https://ericmjl.github.io/essays-on-data-science/software-skills/&quot;&gt;essay collection&lt;/a&gt; on them, if you need a resource to get started.&lt;/p&gt;
 &lt;p&gt;Communication skills are universally important in professional roles, and data science is no different.&lt;/p&gt;
 &lt;p&gt;What does enhance communication is the ability to build interactive tools that guide a busy decision-maker towards ethical and profitable choices (hopefully in that order). Good value judgment is needed here!&lt;/p&gt;
@@ -1106,13 +1102,13 @@ Date
     <author>
       <name>Eric J. Ma</name>
     </author>
-    <content type="html">&lt;p&gt;I’ve been known to rant against the t-test, because I see it as a canned statistical test that most scientists “just” reach for. From a statistical viewpoint, reaching for the t-test by default is unprincipled because our data may not necessarily fulfill the Gaussian-distributed assumptions of the t-test.&lt;/p&gt;
+    <content type="html">&lt;p&gt;I’ve been known to rant against the t-test, because I see it as a canned statistical test that most scientists &quot;just&quot; reach for. From a statistical viewpoint, reaching for the t-test by default is unprincipled because our data may not necessarily fulfill the Gaussian-distributed assumptions of the t-test.&lt;/p&gt;
 &lt;p&gt;That isn’t to say, though, that I’m against automated statistical analyses.&lt;/p&gt;
 &lt;p&gt;If there’s a data generating process that will need continual analysis, and we are aware that these processes can be broadly standardized enough that we can use a single statistical model across multiple groups and/or samples, then we might be able to automate the analysis method used.&lt;/p&gt;
 &lt;p&gt;An example from my line of work is standardized high throughput (and/or large-scale) measurements with the same randomized experimental structure. If the high throughput measurement assay stays the same from project to project, and is a standardized assay measurement, then we should be able to use a single statistical model across all samples in the assay.&lt;/p&gt;
 &lt;p&gt;I have done this with large-scale electrophysiology measurements, where we quantified electrophysiological curve decay constants as a function of molecule concentrations, and wrote a custom hierarchical Bayesian model for the data. In another project, my colleagues and I built a hierarchical Bayesian model for enzyme catalysis efficiency. In both cases, because we had confidence that the data generating process was constant over time, we could write a program through which we fed in standardized data and from which we obtained robust, regularized estimates of our quantities of interest.&lt;/p&gt;
 &lt;p&gt;Counterfactually, if we had &lt;em&gt;just&lt;/em&gt; picked some quantity and gone with the t-test (or worse, used t-test assumptions with multiple hypothesis correction), we would have likely made a number of errors in our automated analyses that would compound in our later decision-making steps. More pedestrian would have been the fact that I would not have been able to properly defend what we were doing in front of a properly-trained statistician who knows how to use likelihoods in appropriate situations. (Our data didn’t necessarily have t-distributed likelihoods!)&lt;/p&gt;
-&lt;p&gt;There’s always this “smell test” that we can do. &lt;strong&gt;The “likelihood smell test” is a good one.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;There’s always this &quot;smell test&quot; that we can do. &lt;strong&gt;The &quot;likelihood smell test&quot; is a good one.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;In conclusion, automating a principled statistical analysis is fine, as long as the data generating process is more or less constant. Reaching for a canned test by default is not.&lt;/p&gt;
 &lt;p&gt;And friends, if you write an automated pipeline, don’t forget to &lt;a href=&quot;https://ericmjl.github.io/essays-on-data-science/software-skills/testing/&quot;&gt;write tests&lt;/a&gt;!&lt;/p&gt;
 </content>
@@ -1155,14 +1151,14 @@ panel serve nb1.ipynb nb2.ipynb nb3.ipynb
     <author>
       <name>Eric J. Ma</name>
     </author>
-    <content type="html">&lt;p&gt;I read an article from Brandon Rohrer titled “&lt;a href=&quot;https://brohrer.github.io/oversimplify.html&quot;&gt;Oversimplify&lt;/a&gt;”. The article provoked some thoughts.&lt;/p&gt;
-&lt;p&gt;As someone who strives to model uncertainty in a day-to-day setting, it’s easy to misread Brandon’s article as saying, “discard your modelling of uncertainty”. It took me a few reads and a bit of thinking to realize that my misunderstanding would have been wrong. The gist of Brandon’s article is to communicate the fact that &lt;em&gt;most people don’t like uncertainty, so simplify &lt;strong&gt;the communication&lt;/strong&gt; of uncertainty&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;In a Bayesian setting, I think this corresponds mostly to “minimize regret” when making decisions.&lt;/p&gt;
-&lt;p&gt;Here’s a classic example: weather forecast says “30% probability of precipitation” (assume this is rain). How does this fit into Brandon’s conception of simplifying the communication of uncertainty?&lt;/p&gt;
+    <content type="html">&lt;p&gt;I read an article from Brandon Rohrer titled &quot;&lt;a href=&quot;https://brohrer.github.io/oversimplify.html&quot;&gt;Oversimplify&lt;/a&gt;&quot;. The article provoked some thoughts.&lt;/p&gt;
+&lt;p&gt;As someone who strives to model uncertainty in a day-to-day setting, it’s easy to misread Brandon’s article as saying, &quot;discard your modelling of uncertainty&quot;. It took me a few reads and a bit of thinking to realize that my misunderstanding would have been wrong. The gist of Brandon’s article is to communicate the fact that &lt;em&gt;most people don’t like uncertainty, so simplify &lt;strong&gt;the communication&lt;/strong&gt; of uncertainty&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;In a Bayesian setting, I think this corresponds mostly to &quot;minimize regret&quot; when making decisions.&lt;/p&gt;
+&lt;p&gt;Here’s a classic example: weather forecast says &quot;30% probability of precipitation&quot; (assume this is rain). How does this fit into Brandon’s conception of simplifying the communication of uncertainty?&lt;/p&gt;
 &lt;p&gt;Simply telling someone the probability of precipitation doesn’t help. It’s like stating an unhelpful fact - unhelpful if the audience doesn’t have a thought framework for acting on that uncertainty.&lt;/p&gt;
-&lt;p&gt;Any good card-carrying Bayesian who also knows how to minimize regret in-line with pretty universal human values would say, “there’s a 30% probability of precipitation. Since getting wet is more miserable than carrying an umbrella on a cloudy day, take that umbrella, and throw in your waterproof jacket and boots while you’re at it.”&lt;/p&gt;
-&lt;p&gt;By contrast, someone other consultant might take the same probabilities, and instead recommend, “Oh, there’s basically greater odds of not raining than raining, so wear your cotton jacket since it’s cold, but don’t bother about an umbrella.” This consultant, we would say, is basically deaf to human psychology and ethics. (I will not go deeper on the question of “what makes ethics” - too much for this blog post.)&lt;/p&gt;
-&lt;p&gt;The key question most people are seeking an answer to is not “what do the data say”, but rather “how &lt;em&gt;ought&lt;/em&gt; I act?” Though the latter question is normative, it &lt;em&gt;can&lt;/em&gt; be informed by quantitative reasoning; we just have to make sure it is not &lt;em&gt;only&lt;/em&gt; informed by quantitative reasoning.&lt;/p&gt;
+&lt;p&gt;Any good card-carrying Bayesian who also knows how to minimize regret in-line with pretty universal human values would say, &quot;there’s a 30% probability of precipitation. Since getting wet is more miserable than carrying an umbrella on a cloudy day, take that umbrella, and throw in your waterproof jacket and boots while you’re at it.&quot;&lt;/p&gt;
+&lt;p&gt;By contrast, someone other consultant might take the same probabilities, and instead recommend, &quot;Oh, there’s basically greater odds of not raining than raining, so wear your cotton jacket since it’s cold, but don’t bother about an umbrella.&quot; This consultant, we would say, is basically deaf to human psychology and ethics. (I will not go deeper on the question of &quot;what makes ethics&quot; - too much for this blog post.)&lt;/p&gt;
+&lt;p&gt;The key question most people are seeking an answer to is not &quot;what do the data say&quot;, but rather &quot;how &lt;em&gt;ought&lt;/em&gt; I act?&quot; Though the latter question is normative, it &lt;em&gt;can&lt;/em&gt; be informed by quantitative reasoning; we just have to make sure it is not &lt;em&gt;only&lt;/em&gt; informed by quantitative reasoning.&lt;/p&gt;
 &lt;p&gt;So to summarize: &lt;em&gt;most people don’t like uncertainty, so simplify &lt;strong&gt;the communication&lt;/strong&gt; of uncertainty by providing an actionable recommendation in-line with universal of values (as much as possible) and culturally-specific behaviours of your audience&lt;/em&gt;. In that way, our handling of uncertainty can be responsible and ethical.&lt;/p&gt;
 </content>
   </entry>
@@ -1667,16 +1663,16 @@ I hope this essay encourages you to give it a try.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/10/29/ai-will-not-solve-medicine/">
-    <title type="text">“AI will not solve medicine”</title>
+    <title type="text">&quot;AI will not solve medicine&quot;</title>
     <id>urn:uuid:2f60d040-fd91-3f65-986f-e24b5d432f6d</id>
     <updated>2019-10-29T00:00:00Z</updated>
     <link href="http://www.ericmjl.com/blog/2019/10/29/ai-will-not-solve-medicine/" />
     <author>
       <name>Eric J. Ma</name>
     </author>
-    <content type="html">&lt;p&gt;Those who think “AI will solve medicine” are delusional.
+    <content type="html">&lt;p&gt;Those who think &quot;AI will solve medicine&quot; are delusional.
 I say this as a practitioner of machine learning in drug discovery and development.&lt;/p&gt;
-&lt;p&gt;First things first, “AI” is an overused term.
+&lt;p&gt;First things first, &quot;AI&quot; is an overused term.
 We should stop using it, especially in medicinal research.&lt;/p&gt;
 &lt;p&gt;Now, my thoughts are more sanguine.
 The real value proposition of machine learning models in drug development
@@ -1691,7 +1687,7 @@ because we want to continue using that tool.
 Or we can use the tool to our advantage
 and liberate our mind to think of other things.&lt;/p&gt;
 &lt;p&gt;This thought was sparked off by an email that I was on at work.
-A molecule was approved for &lt;em&gt;continued investigation&lt;/em&gt; (not even “go for safety trials”!),
+A molecule was approved for &lt;em&gt;continued investigation&lt;/em&gt; (not even &quot;go for safety trials&quot;!),
 and 63 people were on that email.
 Imagine the number of people
 who are involved in getting a molecule past all research-phase checkpoints
@@ -1728,7 +1724,7 @@ At the bench, robots are harder to work with.
 Having been at the bench before and failing badly at it,
 I can very much empathize with how tedious the work is.
 It’s expensive to collect that data,
-so the onus is on us computation types to get help navigate “data space” more smartly.&lt;/p&gt;
+so the onus is on us computation types to get help navigate &quot;data space&quot; more smartly.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/10/18/caching-long-running-function-results/">
@@ -1840,20 +1836,20 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
       <name>Eric J. Ma</name>
     </author>
     <content type="html">&lt;p&gt;At work, we don’t have a service that has the simplicity of Heroku. Part of it is that we’re still behind what’s available for free in my FOSS life (both commercial and FOSS offerings), and cybersecurity tends to be a gatekeeper against adoption of new things, which is a reality I have to face at work.&lt;/p&gt;
-&lt;p&gt;BUT! I am unwilling to simply bow down to this secnario. “There’s got to be a better way.”&lt;/p&gt;
+&lt;p&gt;BUT! I am unwilling to simply bow down to this secnario. &quot;There’s got to be a better way.&quot;&lt;/p&gt;
 &lt;p&gt;What does that mean? It means if we want a Heroku-like thing internally, we have to hack together workarounds.&lt;/p&gt;
 &lt;p&gt;Enter &lt;a href=&quot;http://dokku.viewdocs.io/dokku/&quot;&gt;Dokku&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;What is it? It’s a FOSS implementation of the functionality that Heroku provides. It’s only slightly more involved than Heroku, and gives us a really nice taste of what’s possible with Heroku.&lt;/p&gt;
-&lt;p&gt;Dokku claims to be the “smallest PaaS implementation you’ve ever seen”, and I fully believe it. The maintainers have done a wonderful thing, making the installation process as simple and clean as possible. I’ve successfully installed it on a bare DigitalOcean droplet and on my home Linux tower. I’ve also successfully installed it in EC2 instances at work, albeit needing a few minor modifications to the script they provide.&lt;/p&gt;
+&lt;p&gt;Dokku claims to be the &quot;smallest PaaS implementation you’ve ever seen&quot;, and I fully believe it. The maintainers have done a wonderful thing, making the installation process as simple and clean as possible. I’ve successfully installed it on a bare DigitalOcean droplet and on my home Linux tower. I’ve also successfully installed it in EC2 instances at work, albeit needing a few minor modifications to the script they provide.&lt;/p&gt;
 &lt;h2 id=&quot;why-would-i-want-to-use-dokku?&quot;&gt;Why would I want to use Dokku?&lt;/h2&gt;&lt;p&gt;Taking Dokku on my DigitalOcean droplet as an example, what it effectively provides is a self-hosted Heroku.&lt;/p&gt;
 &lt;p&gt;This means you can get 95% of the convenience that Heroku offers, except done in-house. This can be handy if you’ve got cybersecurity standing in the way of awesome convenience, or if finance isn’t willing to shell out the moolah.&lt;/p&gt;
 &lt;h2 id=&quot;what-can-we-do-with-dokku?&quot;&gt;What can we do with Dokku?&lt;/h2&gt;&lt;p&gt;Here’s a few neat things that we can do.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;We can provision a database to run on the same compute node as the app, and then link them together. If your compute node is “beefy” enough (RAM/CPU/storage-wise) to handle both the database and the app (and I mean, I’m confident that most disposable apps aren’t going to be at a large scale), then it can be pretty handy, because it means we save on latency.&lt;/li&gt;
-&lt;li&gt;We can deploy apps using either Heroku buildpacks (which look for Procfiles) or using Dockerfiles. Docker containers can be easier to maintain if we have a large and/or complex &lt;code&gt;conda&lt;/code&gt; environment, in my opinion, as we can reuse the existing environment spec, but Procfiles are much nicer for smaller projects. This fits with the paradigm of “declaring what you need”, rather than “programming what you need”. &lt;/li&gt;
+&lt;li&gt;We can provision a database to run on the same compute node as the app, and then link them together. If your compute node is &quot;beefy&quot; enough (RAM/CPU/storage-wise) to handle both the database and the app (and I mean, I’m confident that most disposable apps aren’t going to be at a large scale), then it can be pretty handy, because it means we save on latency.&lt;/li&gt;
+&lt;li&gt;We can deploy apps using either Heroku buildpacks (which look for Procfiles) or using Dockerfiles. Docker containers can be easier to maintain if we have a large and/or complex &lt;code&gt;conda&lt;/code&gt; environment, in my opinion, as we can reuse the existing environment spec, but Procfiles are much nicer for smaller projects. This fits with the paradigm of &quot;declaring what you need&quot;, rather than &quot;programming what you need&quot;.&lt;/li&gt;
 &lt;li&gt;Because Dokku is managing everything through isolated Docker containers, we can actually enter into a Docker container and muck around to debug, without worrying about breaking the broader system. I realize now how neat it is to have containerization, but without a unified front-end interface to manage the containers, networking interfaces, and environment variables, it’s tough to keep everything straight. Dokku provides that front-end interface.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&quot;what-are-you-deploying-right-now?&quot;&gt;What are you deploying right now?&lt;/h2&gt;&lt;p&gt;On my DigitalOcean box, which I use for personal projects, I have deployed both the “Getting Started” Ruby app that Heroku provides as well as a &lt;a href=&quot;../../../../../blog/2019/9/7/dokku-building-an-internal-heroku-at-work/minimal-panel.ericmjl.com&quot;&gt;minimal app&lt;/a&gt; showcasing a minimal dashboard using &lt;a href=&quot;../../../../../blog/2019/9/7/dokku-building-an-internal-heroku-at-work/panel.pyviz.org&quot;&gt;Panel&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;what-are-you-deploying-right-now?&quot;&gt;What are you deploying right now?&lt;/h2&gt;&lt;p&gt;On my DigitalOcean box, which I use for personal projects, I have deployed both the &quot;Getting Started&quot; Ruby app that Heroku provides as well as a &lt;a href=&quot;../../../../../blog/2019/9/7/dokku-building-an-internal-heroku-at-work/minimal-panel.ericmjl.com&quot;&gt;minimal app&lt;/a&gt; showcasing a minimal dashboard using &lt;a href=&quot;../../../../../blog/2019/9/7/dokku-building-an-internal-heroku-at-work/panel.pyviz.org&quot;&gt;Panel&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The easy part was getting Dokku up and running. The hard part, though, was getting URLs and DNSs right. It took some debugging to get that work correctly.&lt;/p&gt;
 &lt;p&gt;In particular, Dokku uses a concept called virtual hosts (&lt;code&gt;VHOSTS&lt;/code&gt;) to route from the Dokku host to individual containers. For example, to get &lt;code&gt;minimal-panel.ericmjl.com&lt;/code&gt; up and running correctly, I had to ensure that &lt;code&gt;*.ericmjl.com&lt;/code&gt; was routed to my DigitalOcean box.&lt;/p&gt;
 &lt;h2 id=&quot;how-have-we-used-this-at-work?&quot;&gt;How have we used this at work?&lt;/h2&gt;&lt;p&gt;At work, I just finished prototyping the use of Dokku on EC2. In particular, I was able to deploy both Dockerfile-based and Procfile-based projects. Once again, getting a domain was the most troublesome part of this project; spinning up an EC2 instance and configuring it became easy using a simple Bash script which we executed on each test spin-up machine.&lt;/p&gt;
@@ -1872,18 +1868,18 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
     <content type="html">&lt;p&gt;This blog post is the second in a series of two on participating in code sprints. The first one is &lt;a href=&quot;https://ericmjl.github.io/blog/2019/7/21/how-to-lead-a-great-code-sprint/&quot;&gt;here&lt;/a&gt;. In this post, I will write about how a sprinter themselves can also help contribute to a positive sprint experience all-ways.&lt;/p&gt;
 &lt;h2 id=&quot;read-the-docs-to-understand-the-scope-of-the-project&quot;&gt;Read the docs to understand the scope of the project&lt;/h2&gt;&lt;p&gt;As a sprinter, we may often have preconceived notions about what a project is about. It helps to have an accurate view on what a project is and isn’t about. This is oftentimes best accomplished by reading the documentation of that project, assuming the docs are well-written. Doing so can help you better align what you think should be done on the project with what the package maintainer sees as priorities for the project.&lt;/p&gt;
 &lt;h2 id=&quot;be-ready-to-make-documentation-contributions-of-any-scale&quot;&gt;Be ready to make documentation contributions of any scale&lt;/h2&gt;&lt;p&gt;Documentation is oftentimes the hardest thing for a package maintainer to write, because it often entails slowing down to a beginner’s speed (an unnatural speed at this point), while knowing one’s own blind spots on where a beginner would stumble (also challenging to do).&lt;/p&gt;
-&lt;p&gt;If you are newcomer sprinter, by focusing on the sections of the docs that pertain to “processes” (e.g. getting development environment setup) and slowly working through them and documenting what’s missing, that can go a long way to helping other newcomers get set up as well. Anything that the maintainer leaves out may need to be made explicitly clear - and you can help make it clear!&lt;/p&gt;
+&lt;p&gt;If you are newcomer sprinter, by focusing on the sections of the docs that pertain to &quot;processes&quot; (e.g. getting development environment setup) and slowly working through them and documenting what’s missing, that can go a long way to helping other newcomers get set up as well. Anything that the maintainer leaves out may need to be made explicitly clear - and you can help make it clear!&lt;/p&gt;
 &lt;p&gt;Package maintainers, and prior contributors, are human. That means that there inadvertently may be errors in language that may have been inserted into the package. Any small patch that fixes the docs, including even small typographical errors, can be very helpful to improving documentation quality.&lt;/p&gt;
 &lt;h2 id=&quot;dont-be-afraid-to-ask-questions...&quot;&gt;Don’t be afraid to ask questions...&lt;/h2&gt;&lt;p&gt;You will find that asking questions can really accelerate your own progress on the project. This is important for getting unstuck, wherever you might be stuck.&lt;/p&gt;
 &lt;h2 id=&quot;...but-also-try-keep-your-questions-to-the-non-obvious-things.&quot;&gt;...but also try keep your questions to the non-obvious things.&lt;/h2&gt;&lt;p&gt;That said, asking the too-simple questions that can be answered by a Google query is likely going to steal time and attention away from other sprinters who might have more substantial questions on hand.&lt;/p&gt;
 &lt;p&gt;A pet peeve of mine is asking questions that can be answered in the docs. Asking these questions of the maintainer doesn’t reflect positively on you, the sprinter. Whether or not you intended, what often gets received/communicated to the maintainer is carelessness and a lack of attention to detail, the opposite of both being generally good qualities to possess and project.&lt;/p&gt;
 &lt;p&gt;There’s a pretty broad balance point between the two, so don’t feel inhibited by fear of not hitting a precise balance between looking for docs and asking questions.&lt;/p&gt;
-&lt;h2 id=&quot;for-any-feature-requests-try-to-be-ready-with-a-proposed-implementation&quot;&gt;For any feature requests, try to be ready with a proposed implementation&lt;/h2&gt;&lt;p&gt;This one I find very important. Having a proposed implementation on hand for a thing that you think should be in the library goes a long way to helping the package maintainer (or other contributors) see what exactly you’re trying to accomplish with that feature. Having a sketch on-hand makes it much easier for the package maintainer to say “yes” to the new feature, and having written the documentation and a proposed suite of tests for that new feature makes it &lt;em&gt;even easier&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;for-any-feature-requests-try-to-be-ready-with-a-proposed-implementation&quot;&gt;For any feature requests, try to be ready with a proposed implementation&lt;/h2&gt;&lt;p&gt;This one I find very important. Having a proposed implementation on hand for a thing that you think should be in the library goes a long way to helping the package maintainer (or other contributors) see what exactly you’re trying to accomplish with that feature. Having a sketch on-hand makes it much easier for the package maintainer to say &quot;yes&quot; to the new feature, and having written the documentation and a proposed suite of tests for that new feature makes it &lt;em&gt;even easier&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;If you aren’t able to propose an implementation, then raising an inquiry rather than a request makes a world of difference in how a package maintainer perceives the communication of the issue at hand.&lt;/p&gt;
 &lt;p&gt;As an example:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Request&lt;/strong&gt;: “Package X should be able to do Y.”&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Inquiry&lt;/strong&gt;: “Is it within scope for package X to be able to do Y?” or “Has this feature Y been considered before?”&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Request&lt;/strong&gt;: &quot;Package X should be able to do Y.&quot;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Inquiry&lt;/strong&gt;: &quot;Is it within scope for package X to be able to do Y?&quot; or &quot;Has this feature Y been considered before?&quot;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The latter are more thoughtful, and communicates much less a sense of entitlement on the part of the sprinter’s request.&lt;/p&gt;
 &lt;h2 id=&quot;were-all-building-mental-maps-of-each-others-knowledge&quot;&gt;We’re all building mental maps of each others’ knowledge&lt;/h2&gt;&lt;p&gt;When two colleagues meet for the first time, we have to build a mental model of each others’ strengths. At a sprint, the package maintainer has to multiply this by however many people are sprinting.&lt;/p&gt;
@@ -1919,7 +1915,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
     <author>
       <name>Eric J. Ma</name>
     </author>
-    <content type="html">&lt;p&gt;The Student’s T distribution is the generalization of the Gaussian and Cauchy distributions. How so? Basically by use of its “degrees of freedom” ($df$) parameter.&lt;/p&gt;
+    <content type="html">&lt;p&gt;The Student’s T distribution is the generalization of the Gaussian and Cauchy distributions. How so? Basically by use of its &quot;degrees of freedom&quot; ($df$) parameter.&lt;/p&gt;
 &lt;p&gt;If we plot the probability density functions of the T distribution with varying degrees of freedom, and compare them to the Cauchy and Gaussian distributions, we get the following:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;../../../../../blog/2019/7/23/t-distributed-likelihoods-are-kind-of-neat/t-distributions.png&quot;&gt;&lt;img src=&quot;../../../../../blog/2019/7/23/t-distributed-likelihoods-are-kind-of-neat/t-distributions.png&quot; alt=&quot;Student T distributions with varying degrees of freedom.&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Notice that when $df=1$, the T distribution is identical to the Cauchy distribution, and that as $df$ increases, it gradually becomes more and more like the Normal distribution. At $df=30$, we can consider it to be approximately enough Gaussian.&lt;/p&gt;
@@ -1961,9 +1957,9 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;li&gt;&lt;code&gt;pandas&lt;/code&gt; users who have frustrations with the library, and would like to make contributions, or&lt;/li&gt;
 &lt;li&gt;Individuals who wish to make a documentation contribution and don’t mind doing a fine-toothed pass over the docs to figure out what is unclear in the docs.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Defining your so-called “sprint audience” ahead-of-time can go a long way to making the sprint productive and friendly.&lt;/p&gt;
-&lt;h2 id=&quot;communicate-priorities-of-the-project&quot;&gt;Communicate priorities of the project&lt;/h2&gt;&lt;p&gt;Sprinters want to know that their contributions are going to be valued. Though it is easy to say, “come talk with me before you embark on a task”, the reality is that you, the sprint lead, are likely going to be extremely overbooked. One way to get around this, I think, is to have a high-level list of priorities for the sprint, which can help sprinters better strategize which tasks to tackle. Communicate this on a whiteboard, large sticky notes, or online Wiki page that you can direct people to.&lt;/p&gt;
-&lt;h2 id=&quot;have-a-publicly-viewable-file-lock&quot;&gt;Have a publicly-viewable “file lock”&lt;/h2&gt;&lt;p&gt;Merge conflicts will inadvertently show up if multiple people are contributing to the same file simultaneously. It helps to have a publicly-viewable “file lock” on, say, a whiteboard or large sticky notes, so that we know who is working on what file. This helps prevent you, the sprint lead, from accidentally getting two people to work on the same file, and then having to resolve merge conflicts later.&lt;/p&gt;
+&lt;p&gt;Defining your so-called &quot;sprint audience&quot; ahead-of-time can go a long way to making the sprint productive and friendly.&lt;/p&gt;
+&lt;h2 id=&quot;communicate-priorities-of-the-project&quot;&gt;Communicate priorities of the project&lt;/h2&gt;&lt;p&gt;Sprinters want to know that their contributions are going to be valued. Though it is easy to say, &quot;come talk with me before you embark on a task&quot;, the reality is that you, the sprint lead, are likely going to be extremely overbooked. One way to get around this, I think, is to have a high-level list of priorities for the sprint, which can help sprinters better strategize which tasks to tackle. Communicate this on a whiteboard, large sticky notes, or online Wiki page that you can direct people to.&lt;/p&gt;
+&lt;h2 id=&quot;have-a-publicly-viewable-file-lock&quot;&gt;Have a publicly-viewable &quot;file lock&quot;&lt;/h2&gt;&lt;p&gt;Merge conflicts will inadvertently show up if multiple people are contributing to the same file simultaneously. It helps to have a publicly-viewable &quot;file lock&quot; on, say, a whiteboard or large sticky notes, so that we know who is working on what file. This helps prevent you, the sprint lead, from accidentally getting two people to work on the same file, and then having to resolve merge conflicts later.&lt;/p&gt;
 &lt;p&gt;In the &lt;code&gt;pyjanitor&lt;/code&gt; sprints, I frequently approved two people working on the same notebook; resolving merge conflicts in the notebook JSON later proved to be a big pain! This lesson was one learned hard.&lt;/p&gt;
 &lt;h2 id=&quot;encourage-contribution-of-life-like-examples&quot;&gt;Encourage contribution of life-like examples&lt;/h2&gt;&lt;p&gt;If there are new package users in the crowd who want to get familiar with the package, then encouraging them to contribute life-like examples is a great way to have them make a contribution! This has some nice side effects:&lt;/p&gt;
 &lt;ol&gt;
@@ -1997,16 +1993,16 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
       <name>Eric J. Ma</name>
     </author>
     <content type="html">&lt;p&gt;It’s my last day in Austin, TX, having finished a long week of conferencing at &lt;a href=&quot;https://www.scipy2019.scipy.org/&quot;&gt;SciPy 2019&lt;/a&gt;. This trip was very fruitful and productive! At the same time, I’m ready for a quieter change - meeting and talking with people does take a drain on my brain, and I have a mildly strong preference for quiet time over interaction time.&lt;/p&gt;
-&lt;h2 id=&quot;tutorials&quot;&gt;Tutorials&lt;/h2&gt;&lt;p&gt;I participated in the tutorials as an instructor for three tutorials, which I think have become my “data science toolkit”: &lt;a href=&quot;https://www.youtube.com/watch?v=2wvt6GPZl1U&quot;&gt;Bayesian statistical modeling&lt;/a&gt;, network analysis, and &lt;a href=&quot;https://www.youtube.com/watch?v=JPBz7-UCqRo&quot;&gt;deep learning&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;tutorials&quot;&gt;Tutorials&lt;/h2&gt;&lt;p&gt;I participated in the tutorials as an instructor for three tutorials, which I think have become my &quot;data science toolkit&quot;: &lt;a href=&quot;https://www.youtube.com/watch?v=2wvt6GPZl1U&quot;&gt;Bayesian statistical modeling&lt;/a&gt;, network analysis, and &lt;a href=&quot;https://www.youtube.com/watch?v=JPBz7-UCqRo&quot;&gt;deep learning&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Of the three, the one I had the most fun teaching was the deep learning one. The goal of that tutorial was to peel back a layer behind the frameworks and see what’s going on. To reinforce this and make it all concrete, we live coded a deep learning framework prototype, and it worked! (I didn’t plan for it, and so I was quite nervous while doing it, but we pulled it off as a class, and I think it reinforced the point about revealing what goes on underneath a framework.&lt;/p&gt;
-&lt;p&gt;I also had a lot of fun teaching the Bayesian statistical modeling tutorial, which I had co-created with Hugo Bowne-Anderson, and as always, my personal “evergreen” tutorial on Network Analysis always brings me joy, especially when we reach the end and talk about graphs and matrices. I think the material connecting linear algebra to graph concepts is one that the crowd enjoys, and I might emphasize it more going forth at the SciPy tutorials.&lt;/p&gt;
+&lt;p&gt;I also had a lot of fun teaching the Bayesian statistical modeling tutorial, which I had co-created with Hugo Bowne-Anderson, and as always, my personal &quot;evergreen&quot; tutorial on Network Analysis always brings me joy, especially when we reach the end and talk about graphs and matrices. I think the material connecting linear algebra to graph concepts is one that the crowd enjoys, and I might emphasize it more going forth at the SciPy tutorials.&lt;/p&gt;
 &lt;h2 id=&quot;talks&quot;&gt;Talks&lt;/h2&gt;&lt;p&gt;This year, &lt;a href=&quot;https://www.youtube.com/watch?v=sSIT0rJh2OM&quot;&gt;I delivered a talk on &lt;code&gt;pyjanitor&lt;/code&gt;&lt;/a&gt;. Excluding lightning talks, this is probably the first time I’ve started my slides one day before having to deliver it (yikes!). Granted, I’ve had the outline in my head for a long time now, I guess having to do the talk was good impetus to actually get it done.&lt;/p&gt;
 &lt;p&gt;Apart from that, there’s a rich selection of talks at SciPy from which I think we can screen at work over lunches (Data Science YouTube). I particularly like &lt;a href=&quot;https://www.youtube.com/watch?v=J_aymk4YXhg&quot;&gt;the talk&lt;/a&gt; on &lt;a href=&quot;https://optuna.org/&quot;&gt;Optuna&lt;/a&gt;, a framework for hyperparameter optimization, and I think I’ll be using this tool going forwards.&lt;/p&gt;
 &lt;h2 id=&quot;sprints&quot;&gt;Sprints&lt;/h2&gt;&lt;p&gt;I did a sprint on &lt;code&gt;pyjanitor&lt;/code&gt; with my colleague Zach Barry. This sprint, we had about 20+ sprinters join us, the vast majority of them being first-time sprinters.&lt;/p&gt;
-&lt;p&gt;One thing that stuck for me, this time round, is how even first-timers have different degrees of experience. Some know &lt;code&gt;git&lt;/code&gt; while most others don’t; most don’t have any prior experience with &lt;a href=&quot;https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow&quot;&gt;Gitflow&lt;/a&gt;. I had an interaction that led me to realize it’s very important to state meaningfully what “beginner” means in concrete terms. For example, a “beginner” &lt;code&gt;pyjanitor&lt;/code&gt; contributor is probably a &lt;code&gt;pandas&lt;/code&gt; user, may or may not have used &lt;code&gt;git&lt;/code&gt; before, probably doesn’t know GitFlow. A common prerequisite quality amongst contributors would probably be that they would have the patience to&lt;/p&gt;
+&lt;p&gt;One thing that stuck for me, this time round, is how even first-timers have different degrees of experience. Some know &lt;code&gt;git&lt;/code&gt; while most others don’t; most don’t have any prior experience with &lt;a href=&quot;https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow&quot;&gt;Gitflow&lt;/a&gt;. I had an interaction that led me to realize it’s very important to state meaningfully what &quot;beginner&quot; means in concrete terms. For example, a &quot;beginner&quot; &lt;code&gt;pyjanitor&lt;/code&gt; contributor is probably a &lt;code&gt;pandas&lt;/code&gt; user, may or may not have used &lt;code&gt;git&lt;/code&gt; before, probably doesn’t know GitFlow. A common prerequisite quality amongst contributors would probably be that they would have the patience to&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Read the documentation,&lt;/li&gt;
-&lt;li&gt;Attempt at least one pass digesting the documentation, and &lt;/li&gt;
+&lt;li&gt;Attempt at least one pass digesting the documentation, and&lt;/li&gt;
 &lt;li&gt;Ask questions regarding the intent behind something before asking for a change.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;In terms of the things accomplished at this sprint, contributions mainly revolved around:&lt;/p&gt;
@@ -2017,9 +2013,9 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;/ul&gt;
 &lt;p&gt;In addition to &lt;code&gt;pyjanitor&lt;/code&gt; sprinting, special thanks goes to &lt;a href=&quot;https://twitter.com/ocefpaf&quot;&gt;Felipe Fernandes&lt;/a&gt;, who helped me &lt;a href=&quot;https://anaconda.org/conda-forge/jax&quot;&gt;get &lt;code&gt;jax&lt;/code&gt; up onto conda-forge&lt;/a&gt;! SciPy is really the place where we can get to meet people &lt;em&gt;and&lt;/em&gt; get things done.&lt;/p&gt;
 &lt;h2 id=&quot;career-advice-learned&quot;&gt;Career advice learned&lt;/h2&gt;&lt;p&gt;While at SciPy, I had a chance to talk with Eric Jones, CEO of Enthought. Having described my current role at work, he mentioned how having a team like the one I’m on parked inside IT gives us a very unique position to connect data science work across the organization to the consumers of our data products. When I raised to him my frustrations regarding our infatuation with vendors &lt;em&gt;when FOSS alternatives clearly exist&lt;/em&gt;, his advice in return was essentially this:&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt;Focus on leveling-up your colleagues skills and knowledge, keep pushing the education piece at work, and don’t worry about the money that gets spent on tooling.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;p&gt;Having thought about this, I agree. Over time, we should let the results speak. At the same time, I want to help create the environment that I would like to work in: where my colleagues use the same tooling stack, are hacker-types, aren’t afraid to dig deep into the “computer stuff” and into the biology/chemistry, and have the necessary skill + desire to design machine learning systems to systematically accelerate discovery science.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Focus on leveling-up your colleagues skills and knowledge, keep pushing the education piece at work, and don’t worry about the money that gets spent on tooling.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Having thought about this, I agree. Over time, we should let the results speak. At the same time, I want to help create the environment that I would like to work in: where my colleagues use the same tooling stack, are hacker-types, aren’t afraid to dig deep into the &quot;computer stuff&quot; and into the biology/chemistry, and have the necessary skill + desire to design machine learning systems to systematically accelerate discovery science.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/7/7/order-of-magnitude-is-more-than-accurate-enough/">
@@ -2031,26 +2027,26 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
       <name>Eric J. Ma</name>
     </author>
     <content type="html">&lt;p&gt;When I was in &lt;a href=&quot;https://scienceone.ubc.ca/&quot;&gt;Science One&lt;/a&gt; at UBC in 2006, our Physics professor, &lt;a href=&quot;https://www.phas.ubc.ca/users/mark-halpern&quot;&gt;Mark Halpern&lt;/a&gt;, said a quotable statement that has stuck for many years.&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt; Order of magnitude is more than accurate enough.&lt;/p&gt;
-&lt;p class=&quot;blockquote-footer&quot;&gt;Mark Halpern&lt;/p&gt;
-&lt;/blockquote&gt;&lt;p&gt;At the time, that statement rocked the class, myself included. We were classically taught that significant digits are significant, and that we have to keep track of them. But Mark’s quote seemed to throw all of that caution and precision in Physics into the wind. Did what we learn in Physics lab class not matter?&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Order of magnitude is more than accurate enough.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Mark Halpern&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;At the time, that statement rocked the class, myself included. We were classically taught that significant digits are significant, and that we have to keep track of them. But Mark’s quote seemed to throw all of that caution and precision in Physics into the wind. Did what we learn in Physics lab class not matter?&lt;/p&gt;
 &lt;p&gt;Turns out, there was one highly instructive activity that still hasn’t left my mind. We were asked, during a recitation, to estimate how many days the city of Vancouver could be powered for if we took a piece of chalk and converted its entire mass into energy. This clearly required estimation of chalk mass and Vancouver daily energy consumption, both of which we had no way of accurately knowing.&lt;/p&gt;
 &lt;p&gt;Regardless, I took it upon myself to carry significant digits in our calculation, while my recitation partner, Charles Au, was fully convinced that this wasn’t necessary, and so did all calculations order-of-magnitude. We debated and agreed upon what assumptions we needed to arrive at a solution, and then proceeded to do the same calculations, one with significant digits, the other without.&lt;/p&gt;
 &lt;p&gt;We reached the same conclusion.&lt;/p&gt;
 &lt;p&gt;More precisely, I remember obtaining a result along the lines of $6.2 \cdot 10^3$ days, while Charles obtained $10^4$ days. On an order of magnitude, more or less equivalent.&lt;/p&gt;
 &lt;p&gt;In retrospect, I shouldn’t have been so surprised. Mark is an astrophysicist, and at that scale, 1 or 2 significant digits might not carry the most importance; rather, getting into the right ballpark might be more important. At the same time, the recitation activity was a powerful first-hand experience of that last point: getting into the right ballpark first.&lt;/p&gt;
 &lt;p&gt;At the same time, I was also missing a second perspective, which then explains my surprise at Mark’s quote. Now that I’ve gone the route of more statistics-oriented work, I see a similar theme showing up. John Tukey said something along these lines:&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt;Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.&lt;/p&gt;
-&lt;p class=&quot;blockquote-footer&quot;&gt;John Tukey&lt;/p&gt;
-&lt;/blockquote&gt;&lt;p&gt;The connection to order of magnitude estimates should be quite clear here. If we’re on an order of magnitude correct on the right questions, we can always refine the answer further. If we’re precisely answering the wrong question, God help us.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise.&lt;/p&gt;
+&lt;p&gt;John Tukey&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The connection to order of magnitude estimates should be quite clear here. If we’re on an order of magnitude correct on the right questions, we can always refine the answer further. If we’re precisely answering the wrong question, God help us.&lt;/p&gt;
 &lt;p&gt;What does this mean for a data scientist? For one, it means that means approximate methods are usually good enough practically to get ourselves into the right ballpark; we can use pragmatic considerations to decide whether we need a more complicated model or not. It also means that when we’re building data pipelines, minimum viable products, which help us test whether we’re answering the right question, matter more than the fanciest deep learning model.&lt;/p&gt;
 &lt;p&gt;So yes, to mash those two quotes together:&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt;Order of magnitude estimates on the right question are more useful than precise quantifications on the wrong question. &lt;/p&gt;
-&lt;p class=&quot;blockquote-footer&quot;&gt;Mashup&lt;/p&gt;
-&lt;/blockquote&gt;</content>
+&lt;blockquote&gt;&lt;p&gt;Order of magnitude estimates on the right question are more useful than precise quantifications on the wrong question.&lt;/p&gt;
+&lt;p&gt;Mashup&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/7/7/scipy-2019-pre-conference/">
     <title type="text">SciPy 2019 Pre-Conference</title>
@@ -2104,7 +2100,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
     </author>
     <content type="html">&lt;p&gt;A few years ago, I test-drove mobile work using my thesis as a case study, basically challenging myself with the question: how much of my main thesis paper could I write on iOS (specifically, an iPad Mini)? Back then, iOS turned out to be a superb tool for the writing phase (getting ideas into a text editor), and a horrible one for final formatting before submitting a paper to a journal (inflexible). Now, don’t get me wrong, though - I would still use it as part of my workflow if I were to do it again!&lt;/p&gt;
 &lt;p&gt;Fast-forward a few years, I now do more programming in a data science context than I do formal writing, and the tooling for software development and data analysis on iOS has improved greatly. I thought I’d challenge myself with an experiment: how much of development and analytics could I do on an iPad, especially the Mini?&lt;/p&gt;
-&lt;p&gt;This time round, armed with an iPad Pro (11”), I decided to test again how much one can do on iOS, once again.&lt;/p&gt;
+&lt;p&gt;This time round, armed with an iPad Pro (11&quot;), I decided to test again how much one can do on iOS, once again.&lt;/p&gt;
 &lt;h2 id=&quot;software-development&quot;&gt;Software Development&lt;/h2&gt;&lt;p&gt;I develop &lt;a href=&quot;https://pyjanitor.readthedocs.io&quot;&gt;&lt;code&gt;pyjanitor&lt;/code&gt;&lt;/a&gt; as a tool that I use in my daily work, and as part of my open source software portfolio. When I’m on my MacBook or Pro, or on my Linux desktop at home, I usually work with VSCode for it’s integrated terminal, superb syntax highlighting, git integration, code completion with Kite, and more.&lt;/p&gt;
 &lt;p&gt;Moving to iOS, VSCode is not available, and that immediately means to rely on Terminal-based tools to get my work done. I ponied up for &lt;a href=&quot;https://www.blink.sh/&quot;&gt;Blink Shell&lt;/a&gt;, and found it to pay off immediately. Having enabled remote access on my Linux tower at home, I was thrilled to learn that Blink supports &lt;a href=&quot;https://mosh.org/&quot;&gt;&lt;code&gt;mosh&lt;/code&gt;&lt;/a&gt;, and when paired with &lt;a href=&quot;https://github.com/tmux/tmux&quot;&gt;&lt;code&gt;tmux&lt;/code&gt;&lt;/a&gt;, it is a superb solution for maintaining persistent shells across spotty internet conditions.&lt;/p&gt;
 &lt;p&gt;A while ago, I also configured &lt;code&gt;nano&lt;/code&gt; with syntax highlighting. As things turned out, syntax highlighting has the biggest effect on my productivity compared to other text editor enhancements (e.g. code completion, git integration, etc.). After I mastered most of &lt;code&gt;nano&lt;/code&gt;'s shortcut keys, I found I could be productive at coding in just &lt;code&gt;nano&lt;/code&gt; itself. Even though missing out on the usual assistive tools meant I was coding somewhat slower, the pace was still acceptable; moreover, relying less on those tools helped me develop a muscle memory for certain API calls. I also found myself becoming more effective because the single window idioms of iOS meant I was focusing on the programming task at hand, rather than getting distracted while looking at docs in a web browser (a surprisingly common happening for me!).&lt;/p&gt;
@@ -2116,7 +2112,7 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;h3 id=&quot;pros&quot;&gt;Pros&lt;/h3&gt;&lt;p&gt;Even with the issues detailed above, there’s still much to love about doing mobile development work on an iOS device.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;iOS Speed:&lt;/strong&gt; On the latest hardware, iOS is speedy. Well, even that is a bit of an understatement. I rarely get lags while typing in Blink and Juno, and even when I do, I can usually pin it down to network latency more than RAM issues.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Focus:&lt;/strong&gt; This is the biggest win. Because iOS makes it difficult to switch contexts, this is actually an upside for work that involves creating things. Whether it’s someone who is drawing, producing videos, editing photos, writing blog posts, or creating code, the ability to focus on the context at hand is tremendous for producing high quality work. Here, iOS is actually a winner for focused productivity.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Mobility:&lt;/strong&gt; The second upside would be that of battery life, and hence mobility, by extension. My 12” MacBook is super mobile, yes, but macOS appears to have issues restraining battery drainage when the lid is closed. By contrast, iOS seems to have fewer issues with this. The battery life concerns mean I’m carrying my mouse, charger and dongle with me all the time, and I’ll get the equivalent of range anxiety when I take only my laptop.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mobility:&lt;/strong&gt; The second upside would be that of battery life, and hence mobility, by extension. My 12&quot; MacBook is super mobile, yes, but macOS appears to have issues restraining battery drainage when the lid is closed. By contrast, iOS seems to have fewer issues with this. The battery life concerns mean I’m carrying my mouse, charger and dongle with me all the time, and I’ll get the equivalent of range anxiety when I take only my laptop.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Keyboard Experience:&lt;/strong&gt; The keyboard experience on the Smart Keyboard Folio is surprisingly good! It’s tactile, and is fully covered, so we won’t have issues arise due to dust getting underneath the keys, like my little MacBook had.&lt;/p&gt;
 &lt;h2 id=&quot;concluding-thoughts&quot;&gt;Concluding Thoughts&lt;/h2&gt;&lt;p&gt;This test has been quite instructive. As usual, tooling is superbly important for productivity; investing in the right tools makes it worthwhile. Granted, none of this comes cheap or for free, naturally. Given the future directions of iOS, I think it’s shaping up to be a real contender for productivity!&lt;/p&gt;
 </content>
@@ -2327,9 +2323,8 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
     </author>
     <content type="html">&lt;p&gt;Variance explained, as a regression quality metric, is one that I have begun to like a lot, especially when used in place of a metric like the correlation coefficient (r&lt;sup&gt;2&lt;/sup&gt;).&lt;/p&gt;
 &lt;p&gt;Here's variance explained defined:&lt;/p&gt;
-&lt;p&gt;
-$$1 - \frac{var(y_{true} - y_{pred})}{var(y_{true})}$$
-&lt;/p&gt;&lt;p&gt;Why do I like it? It’s because this metric gives us a measure of the scale of the error in predictions relative to the scale of the data.&lt;/p&gt;
+&lt;p&gt;$$1 - \frac{var(y&lt;em&gt;{true} - y&lt;/em&gt;{pred})}{var(y_{true})}$$&lt;/p&gt;
+&lt;p&gt;Why do I like it? It’s because this metric gives us a measure of the scale of the error in predictions relative to the scale of the data.&lt;/p&gt;
 &lt;p&gt;The numerator in the fraction calculates the variance in the errors, in other words, the &lt;em&gt;scale of the errors&lt;/em&gt;. The denominator in the fraction calculates the variance in the data, in other words, the &lt;em&gt;scale of the data&lt;/em&gt;. By subtracting the fraction from 1, we get a number upper-bounded at 1 (best case), and unbounded towards negative infinity.&lt;/p&gt;
 &lt;p&gt;Here's a few interesting scenarios.&lt;/p&gt;
 &lt;ul&gt;
@@ -2344,9 +2339,8 @@ $$1 - \frac{var(y_{true} - y_{pred})}{var(y_{true})}$$
 &lt;p&gt;&lt;img src=&quot;https://blog.revolutionanalytics.com/downloads/DataSaurus%20Dozen.gif&quot; alt=&quot;Datasaurus Dozen, taken from Revolution Analytics&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Fig. 2: Datasaurus Dozen, taken from Revolution Analytics&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;One place where the variance explained can fail is if the predictions are systematically shifted off from the true values. Let's say prediction was shifted off by 2 units.&lt;/p&gt;
-&lt;p&gt;
-$$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
-&lt;/p&gt;&lt;p&gt;There's no variance in errors, even though they are systematically shifted off from the true prediction. Like r&lt;sup&gt;2&lt;/sup&gt;, variance explained will fail here.&lt;/p&gt;
+&lt;p&gt;$$var(y&lt;em&gt;{true} - y&lt;/em&gt;{pred}) = var([2, 2, ..., 2]) = 0$$&lt;/p&gt;
+&lt;p&gt;There's no variance in errors, even though they are systematically shifted off from the true prediction. Like r&lt;sup&gt;2&lt;/sup&gt;, variance explained will fail here.&lt;/p&gt;
 &lt;p&gt;As usual, &lt;a href=&quot;https://en.wikipedia.org/wiki/Anscombe%27s_quartet&quot;&gt;Ansecombe's quartet&lt;/a&gt;, as does &lt;a href=&quot;https://www.autodeskresearch.com/publications/samestats&quot;&gt;The Datasaurus Dozen&lt;/a&gt;, gives us a pertinent reminder that visually inspecting your model predictions is always a good thing!&lt;/p&gt;
 &lt;p&gt;h/t to my colleague, &lt;a href=&quot;https://www.linkedin.com/in/clayton-springer-5a48072/&quot;&gt;Clayton Springer&lt;/a&gt;, for sharing this with me.&lt;/p&gt;
 </content>
@@ -2431,12 +2425,12 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 &lt;li&gt;App development: &lt;code&gt;flask&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;As you probably can see, I’m a very Python-centric person!&lt;/p&gt;
-&lt;h2 id=&quot;daily/weekly-routines&quot;&gt;Daily/Weekly Routines&lt;/h2&gt;&lt;p&gt;Most of my work necessitates long stretches of thinking and hacking time. Without that, I’m unable to get into “the zone” to do anything productive. Hence, I have a habit of packing meetings onto Mondays (a.k.a. “Meeting Mondays”). Backup times for meetings, which I prefer to not do, are 11 am and 1 pm, bookending lunch time so that I don’t end up with a fragmented morning/afternoon. The only exceptions I make are for my two high-priority team meetings, for which I defer to the rest of the team. I’m glad that my managers understand the need for long stretches of hacking time, and have stuck to Monday one-on-one meetings.&lt;/p&gt;
-&lt;p&gt;Hence, almost every day from Tuesday through to Friday, I have long stretches of pre-allocated time for hacking. It’s data science scheduling bliss! It also means I turn down a lot of “can I meet you to chat” invites - unless we can pack them on Monday!&lt;/p&gt;
+&lt;h2 id=&quot;daily/weekly-routines&quot;&gt;Daily/Weekly Routines&lt;/h2&gt;&lt;p&gt;Most of my work necessitates long stretches of thinking and hacking time. Without that, I’m unable to get into &quot;the zone&quot; to do anything productive. Hence, I have a habit of packing meetings onto Mondays (a.k.a. &quot;Meeting Mondays&quot;). Backup times for meetings, which I prefer to not do, are 11 am and 1 pm, bookending lunch time so that I don’t end up with a fragmented morning/afternoon. The only exceptions I make are for my two high-priority team meetings, for which I defer to the rest of the team. I’m glad that my managers understand the need for long stretches of hacking time, and have stuck to Monday one-on-one meetings.&lt;/p&gt;
+&lt;p&gt;Hence, almost every day from Tuesday through to Friday, I have long stretches of pre-allocated time for hacking. It’s data science scheduling bliss! It also means I turn down a lot of &quot;can I meet you to chat&quot; invites - unless we can pack them on Monday!&lt;/p&gt;
 &lt;p&gt;On Friday, I make a point to try to work remotely. It helps with sanity, particularly in the winter, when the commute gets harsh and I can’t bike. Fridays also are the days on which I try to do my open source work.&lt;/p&gt;
-&lt;h2 id=&quot;pair-coding&quot;&gt;Pair Coding&lt;/h2&gt;&lt;p&gt;Pair coding with others on mutual projects has been a very productive endeavor, &lt;a href=&quot;https://ericmjl.github.io/blog/2019/3/1/pair-coding-why-and-how-for-data-scientists/&quot;&gt;which I have written about before&lt;/a&gt;. Unlike weekly update meetings, I plan for pair coding on an as-needed basis. We have a pre-defined goal for what we want to accomplish, including a conceivably achievable goal and a stretch goal; achieving the easier one keeps us motivated. It follows the “no agenda, no meeting” rule of thumb by which I protect my time.&lt;/p&gt;
+&lt;h2 id=&quot;pair-coding&quot;&gt;Pair Coding&lt;/h2&gt;&lt;p&gt;Pair coding with others on mutual projects has been a very productive endeavor, &lt;a href=&quot;https://ericmjl.github.io/blog/2019/3/1/pair-coding-why-and-how-for-data-scientists/&quot;&gt;which I have written about before&lt;/a&gt;. Unlike weekly update meetings, I plan for pair coding on an as-needed basis. We have a pre-defined goal for what we want to accomplish, including a conceivably achievable goal and a stretch goal; achieving the easier one keeps us motivated. It follows the &quot;no agenda, no meeting&quot; rule of thumb by which I protect my time.&lt;/p&gt;
 &lt;p&gt;I found that a good setup is really necessary for pair coding to be successful. A minimum is a dual-monitor setup, with one extra keyboard + mouse for my coding partner.&lt;/p&gt;
-&lt;p&gt;One thing I didn’t mention in my previous blog post was how knowledge transfer happens. Here’s how I think it works. We have one in the “driver’s seat”, and the other in the observer role. Knowledge transfer generally happens from the more experienced person to the less experienced one, and the driver doesn’t necessarily have to be the more experienced one. For example, when pair coding with my intern, I play the role of observer and may dictate code or outline what needs to be done, but I don’t actively take over on my keyboard unless there’s a situation that shows up that is irrelevant to the coding session goals. On the other hand, if there’s a codebase I’ve developed for which I need to play the tour guide role, I will be in the driver’s seat, while the observer will help me catch peripheral errors that I’m making.&lt;/p&gt;
+&lt;p&gt;One thing I didn’t mention in my previous blog post was how knowledge transfer happens. Here’s how I think it works. We have one in the &quot;driver’s seat&quot;, and the other in the observer role. Knowledge transfer generally happens from the more experienced person to the less experienced one, and the driver doesn’t necessarily have to be the more experienced one. For example, when pair coding with my intern, I play the role of observer and may dictate code or outline what needs to be done, but I don’t actively take over on my keyboard unless there’s a situation that shows up that is irrelevant to the coding session goals. On the other hand, if there’s a codebase I’ve developed for which I need to play the tour guide role, I will be in the driver’s seat, while the observer will help me catch peripheral errors that I’m making.&lt;/p&gt;
 &lt;h2 id=&quot;learning-new-things&quot;&gt;Learning New Things&lt;/h2&gt;&lt;p&gt;Pair coding has been one way I learn new things. For example, with my colleague Zach as the observer, we hacked together a simple dashboard project using Flask, Holoviews and Panel.&lt;/p&gt;
 &lt;p&gt;I’m not very mathematically-savvy, in that algebra is difficult for me to follow. (I’m mildly algebra-blind, but getting better now.) Ironically, code, which is algebraic in nature too, but works with plain English names, works much better for me. Implementing algorithms and statistical methods using &lt;code&gt;jax&lt;/code&gt; (for things that involve differential computing) and &lt;code&gt;PyMC3&lt;/code&gt; (for all things Bayesian) has served to be very educational. While implementing, I also impose some software abstractions on the math, and this also forces me to organize my knowledge, which also helps learning. Implementing things on the computer is also the perfect way to learn by teaching: The computer is the ultimately dumb student, as it will execute exactly as you tell it, mistakes included!&lt;/p&gt;
 </content>
@@ -2462,7 +2456,7 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 &lt;h2 id=&quot;what-pre-requisites-do-you-see-for-a-productive-pair-programming-session?&quot;&gt;What pre-requisites do you see for a productive pair programming session?&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;A long, continuous, and uninterrupted time slot (at least 2-3 hours in length) to maintain continuity.&lt;/li&gt;
 &lt;li&gt;A defined goal or question that we are seeking to answer - keeps us focused on what needs to be done.&lt;/li&gt;
-&lt;li&gt;That goal should also be plausibly achievable within the 2-3 hour timeframe. &lt;/li&gt;
+&lt;li&gt;That goal should also be plausibly achievable within the 2-3 hour timeframe.&lt;/li&gt;
 &lt;li&gt;Large monitors for both parties to look at, or a code-sharing platform where both can see the code without needing to physically huddle.&lt;/li&gt;
 &lt;li&gt;A place where we can talk without feeling hindered.&lt;/li&gt;
 &lt;li&gt;No impromptu interruptions from other individuals.&lt;/li&gt;
@@ -2475,13 +2469,13 @@ $$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
 &lt;p&gt;Perhaps a related difference is that as data scientists, because of potentially greater uncertainty surrounding the final product, we may end up talking more about project direction than one would as a software engineer. But that's probably just a minor detail.&lt;/p&gt;
 &lt;h2 id=&quot;do-you-have-any-memorable-quotes-from-the-new-yorker-article?&quot;&gt;Do you have any memorable quotes from the New Yorker article?&lt;/h2&gt;&lt;p&gt;Yes, a number of them.&lt;/p&gt;
 &lt;p&gt;One on scaling things up.&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt;Alan Eustace became the head of the engineering team after Rosing left, in 2005. “To solve problems at scale, paradoxically, you have to know the smallest details,” Eustace said.&lt;/p&gt;
-&lt;/blockquote&gt;&lt;p&gt;Another on pair programming as an uncommon practice:&lt;/p&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt;“I don’t know why more people don’t do it,” Sanjay said, of programming with a partner.&lt;/p&gt;
-&lt;p&gt;“You need to find someone that you’re gonna pair-program with who’s compatible with your way of thinking, so that the two of you together are a complementary force,” Jeff said.&lt;/p&gt;
-&lt;/blockquote&gt;</content>
+&lt;blockquote&gt;&lt;p&gt;Alan Eustace became the head of the engineering team after Rosing left, in 2005. &quot;To solve problems at scale, paradoxically, you have to know the smallest details,&quot; Eustace said.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Another on pair programming as an uncommon practice:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;&quot;I don’t know why more people don’t do it,&quot; Sanjay said, of programming with a partner.&lt;/p&gt;
+&lt;p&gt;&quot;You need to find someone that you’re gonna pair-program with who’s compatible with your way of thinking, so that the two of you together are a complementary force,&quot; Jeff said.&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2019/1/28/minimum-viable-products-matter/">
     <title type="text">Minimum Viable Products (MVPs) Matter</title>

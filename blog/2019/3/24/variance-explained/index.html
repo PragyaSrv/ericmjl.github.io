@@ -165,9 +165,8 @@
   <!-- Put post body -->
   <p>Variance explained, as a regression quality metric, is one that I have begun to like a lot, especially when used in place of a metric like the correlation coefficient (r<sup>2</sup>).</p>
 <p>Here's variance explained defined:</p>
-<p>
-$$1 - \frac{var(y_{true} - y_{pred})}{var(y_{true})}$$
-</p><p>Why do I like it? It’s because this metric gives us a measure of the scale of the error in predictions relative to the scale of the data.</p>
+<p>$$1 - \frac{var(y<em>{true} - y</em>{pred})}{var(y_{true})}$$</p>
+<p>Why do I like it? It’s because this metric gives us a measure of the scale of the error in predictions relative to the scale of the data.</p>
 <p>The numerator in the fraction calculates the variance in the errors, in other words, the <em>scale of the errors</em>. The denominator in the fraction calculates the variance in the data, in other words, the <em>scale of the data</em>. By subtracting the fraction from 1, we get a number upper-bounded at 1 (best case), and unbounded towards negative infinity.</p>
 <p>Here's a few interesting scenarios.</p>
 <ul>
@@ -182,9 +181,8 @@ $$1 - \frac{var(y_{true} - y_{pred})}{var(y_{true})}$$
 <p><img src="https://blog.revolutionanalytics.com/downloads/DataSaurus%20Dozen.gif" alt="Datasaurus Dozen, taken from Revolution Analytics"></p>
 <p><em>Fig. 2: Datasaurus Dozen, taken from Revolution Analytics</em></p>
 <p>One place where the variance explained can fail is if the predictions are systematically shifted off from the true values. Let's say prediction was shifted off by 2 units.</p>
-<p>
-$$var(y_{true} - y_{pred}) = var([2, 2, ..., 2]) = 0$$
-</p><p>There's no variance in errors, even though they are systematically shifted off from the true prediction. Like r<sup>2</sup>, variance explained will fail here.</p>
+<p>$$var(y<em>{true} - y</em>{pred}) = var([2, 2, ..., 2]) = 0$$</p>
+<p>There's no variance in errors, even though they are systematically shifted off from the true prediction. Like r<sup>2</sup>, variance explained will fail here.</p>
 <p>As usual, <a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">Ansecombe's quartet</a>, as does <a href="https://www.autodeskresearch.com/publications/samestats">The Datasaurus Dozen</a>, gives us a pertinent reminder that visually inspecting your model predictions is always a good thing!</p>
 <p>h/t to my colleague, <a href="https://www.linkedin.com/in/clayton-springer-5a48072/">Clayton Springer</a>, for sharing this with me.</p>
 
