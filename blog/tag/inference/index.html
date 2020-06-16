@@ -14,15 +14,10 @@
 
     </style>
     <!-- Import stylesheet -->
-    <link rel="stylesheet" href="../../../../../static/pygments.css">
+    <link rel="stylesheet" href="../../../static/pygments.css">
 
     
-<!-- Syntax Highlighter. Use both pygments and hl.js. -->
-<link rel="stylesheet" href="../../../../../static/pygments.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
+    
 
     <!-- Google Analytics -->
     <script>
@@ -71,7 +66,7 @@
 
 </head>
 
-<title>P(A,B) to P(H,D)?? - Eric J. Ma's Personal Site</title>
+<title>Tag: inference - Eric J. Ma's Personal Site</title>
 
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark-nord">
@@ -128,122 +123,12 @@
     </nav>
     <div class="container">
         
-
-<div>
+<h1><i class="fas fa-tag"></i> inference</h1>
+<ul>
   
-<!-- Set title style -->
-
-<h1>P(A,B) to P(H,D)??</h1>
-
-
-<!-- Append author -->
-<small class="text-muted">
-  <p>
-    written by
-    
-    <a class="author" href="https://twitter.com/ericmjl">Eric J. Ma</a>
-    
-    on 2020-06-14
-
-    
-    | tags:
-    <!-- Append tags after author -->
-    <i class="fas fa-tag"></i>
-    <a class="tags" href="../../../../../blog/tag/bayesian/">
-      bayesian
-    </a>
-    <i class="fas fa-tag"></i>
-    <a class="tags" href="../../../../../blog/tag/data science/">
-      data science
-    </a>
-    <i class="fas fa-tag"></i>
-    <a class="tags" href="../../../../../blog/tag/statistical inference/">
-      statistical inference
-    </a>
-    
-  </p>
+    <li><a href="../../../blog/2020/6/15/whats-the-most-optimal-way-to-learn-bayesian-statistics/">2020-06-15: What&#39;s the most optimal way to learn Bayesian statistics?</a></li>
   
-</small>
-
-
-  <!-- Put post body -->
-  <p>Bayes' rule looks like this:</p>
-<p>$$P(A|B) = 
-\frac{P(B|A)P(A)}
-{P(B)}
-$$</p>
-<p>It is a natural result that comes straight from the rules of probability,
-being that the joint distribution of two random variables
-can be written in two equivalent ways:</p>
-<p>$$P(A, B) = P(A|B)P(B) = P(B|A)P(A)$$</p>
-<p>Now, I have encountered in many books write,
-regarding the application of Bayes' rule to statistical modelling,
-something along the lines of the following:</p>
-<blockquote><p>Now, there is an alternative <em>interpretation</em> of Bayes' rule,
-one that replaces the symbol "A" with "Hypothesis",
-and "B" with the "Data", such that we get:</p>
-<p>$$P(H|D) = \frac{P(D|H)P(H)}{P(D)}$$</p>
-</blockquote>
-<p>At first glance, nothing seems wrong about this statement,
-but I did remember having a lingering nagging feeling
-that there was a logical jump unexplained here.</p>
-<p>More specifically, that logical jump yielded the following question: <em>Why are we allowed to take this interpretation?</em></p>
-<p>It took asking the question to a mathematician friend, <a href="https://colindcarroll.com/">Colin Carroll</a>,
-to finally "grok" the idea.
-Let me try to explain.</p>
-<h2 id="spaces-of-models-and-data">Spaces of models and data</h2><p>We have to think back to the fundamental idea of possible spaces.</p>
-<p>If we set up a Bernoulli probability distribution with parameter $p$,
-then the space of possible probability distributions that we could instantiate is infinite!
-This result should not surprise you: $p$ can take on any one of an infinite set of values between 0 and 1, each one giving a different instantiated Bernoulli.
-As such, a <code>Bernoulli(p)</code> hypothesis is drawn from a (very large) space of possible <code>Bernoulli(p)</code>s,
-or more abstractly, hypotheses, thereby giving us a $P(H)$.</p>
-<p>Moreover, consider our data.
-The Bernoulli data that came to us, which for example might be <code>0, 1, 1, 1, 0</code>,
-were drawn from a near-infinite space of possible configurations of data.
-First off, there's no reason why we always have to have three 1s and two 0s in five draws;
-it could have been five 1s or five 0s.
-Secondly, the order of data (though it doesn't really matter in this case)
-for three 1s and two 0s might well have been different.
-As such, we have the $P(D)$ interpretation.</p>
-<p>As a modelling decision, we <em>choose</em> to say
-that our data and model are jointly distributed,
-thus we have the <em>joint distribution</em>
-between model and data, $P(H, D)$.</p>
-<p>And once we have the joint distribution between model and data,
-we can begin to reason about Bayes' rule on it.</p>
-
-</div>
-<hr>
-<div>
-  <p>
-    <i>I send out a monthly newsletter with tips and tools
-    for data scientists. Come check it out at
-    <a href="https://tinyletter.com/ericmjl">TinyLetter</a>.</i>
-  </p>
-  <p>
-    <i>If you would like to receive deeper, in-depth content
-    as an early subscriber, come support me on
-    <a href="https://patreon.com/ericmjl">Patreon</a>!</i>
-  </p>
-</div>
-
-<a name="disqus"></a>
-<div class="comments">
-<div id="disqus_thread"></div>
-<script>
-  var disqus_config = function() { this.page.identifier = "/blog/pab-to-phd"; this.page.url = "http://www.ericmjl.com/blog/2020/6/14/pab-to-phd/"; };
-  (function() {
-    var d = document, s = d.createElement('script');
-    s.src = '//ericmjl.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-<noscript>
-  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
-    rel="nofollow">comments powered by Disqus.</a>
-</noscript>
-</div>
+</ul>
 
     </div>
 

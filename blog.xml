@@ -2,13 +2,32 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2020-06-14T00:00:00Z</updated>
+  <updated>2020-06-15T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2020/6/15/whats-the-most-optimal-way-to-learn-bayesian-statistics/">
+    <title type="text">What's the most optimal way to learn Bayesian statistics?</title>
+    <id>urn:uuid:5e897219-ccca-31a1-b090-eb8af84b6ebc</id>
+    <updated>2020-06-15T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2020/6/15/whats-the-most-optimal-way-to-learn-bayesian-statistics/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;I've been reflecting on the way I learned statistics, and I think I learned it in a flawed fashion.&lt;/p&gt;
+&lt;p&gt;Traditionally, statistics is taught in the format of performing hypothesis tests to infer whether there's a difference between groups, or to learn the parameters of some curve.&lt;/p&gt;
+&lt;p&gt;Learning statistics in this direction leads to &lt;strong&gt;a ton&lt;/strong&gt; of confusion, because we're taught &lt;em&gt;the shortcut to the answer&lt;/em&gt;, rather than the first-principles way of thinking about a problem. We end up with the &quot;standard t-test&quot; and multiple confusing names for regression modelling, masquerading as canned procedures that can be used on any problem. (OK, that's a bit of a stretch, but please do tell me you were &lt;em&gt;at least tempted to use the t-test in a situation where you just had to crank out an analysis&lt;/em&gt;...)&lt;/p&gt;
+&lt;p&gt;After seeing the following tweet from Michael Betancourt...&lt;/p&gt;
+&lt;p&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Unpopular opinion: regression models are _much_ harder to use well than generative models of an actual data generating process and consequently should not be the first and only modeling techniques that many people are taught.&lt;/p&gt;&amp;mdash; \mathfrak{Michael &amp;quot;El Muy Muy&amp;quot; Betancourt} (@betanalpha) &lt;a href=&quot;https://twitter.com/betanalpha/status/1272358065447329792?ref_src=twsrc%5Etfw&quot;&gt;June 15, 2020&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;...I realized that the only reason why &lt;a href=&quot;https://ericmjl.github.io/essays-on-data-science/machine-learning/markov-models/&quot;&gt;Markov Models and their variants&lt;/a&gt; clicked for me was thinking through the data generating process. The only reason why hierarchical models clicked for me was stepping through the data generating process on a real problem and linking them to statistical parameters. Without thinking through the data generating process, none of those models made any sense.&lt;/p&gt;
+&lt;p&gt;In some sense, thinking through the data generating process is &lt;em&gt;an extremely natural thing to do&lt;/em&gt;. It's like telling a story about how our data came into being, and we know that telling stories is &lt;em&gt;exactly&lt;/em&gt; what humans are great at. Storytelling helps us reason about the world. There should be no reason why we don't use statistical storytelling to reason about our problems.&lt;/p&gt;
+&lt;p&gt;Worrying &lt;em&gt;first&lt;/em&gt; about the data generating process and then about the inferential procedure makes statistical inference less of a black box and more of a natural conclusion of statistical storytelling. We become less concerned with whether something is &quot;significant&quot;, and instead more concerned with whether we &quot;got the model right&quot;.&lt;/p&gt;
+&lt;p&gt;To put this into concrete action, I've been working on an alternative introduction to probabilistic programming and Bayesian inference that is lighter on math than most introductions, involves a lot of verbal storytelling, and goes heavier than most introductions in its use of programming. Here we practice the skill of hypothesizing a data generating story and translating that into the language of probability distributions, which can then be translated into SciPy stats Python code. Stay tuned!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/6/14/pab-to-phd/">
     <title type="text">P(A,B) to P(H,D)??</title>
     <id>urn:uuid:c4d3ae7b-9991-34db-bcfe-e14d22031f4f</id>
@@ -38,7 +57,7 @@ and &quot;B&quot; with the &quot;Data&quot;, such that we get:&lt;/p&gt;
 but I did remember having a lingering nagging feeling
 that there was a logical jump unexplained here.&lt;/p&gt;
 &lt;p&gt;More specifically, that logical jump yielded the following question: &lt;em&gt;Why are we allowed to take this interpretation?&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;It took asking the question to a mathematician friend, Colin Carroll,
+&lt;p&gt;It took asking the question to a mathematician friend, &lt;a href=&quot;https://colindcarroll.com/&quot;&gt;Colin Carroll&lt;/a&gt;,
 to finally &quot;grok&quot; the idea.
 Let me try to explain.&lt;/p&gt;
 &lt;h2 id=&quot;spaces-of-models-and-data&quot;&gt;Spaces of models and data&lt;/h2&gt;&lt;p&gt;We have to think back to the fundamental idea of possible spaces.&lt;/p&gt;
@@ -59,6 +78,8 @@ As such, we have the $P(D)$ interpretation.&lt;/p&gt;
 that our data and model are jointly distributed,
 thus we have the &lt;em&gt;joint distribution&lt;/em&gt;
 between model and data, $P(H, D)$.&lt;/p&gt;
+&lt;p&gt;And once we have the joint distribution between model and data,
+we can begin to reason about Bayes' rule on it.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/6/9/with-what-symbols-do-you-write-thermodynamic-equations/">
@@ -71,7 +92,7 @@ between model and data, $P(H, D)$.&lt;/p&gt;
     </author>
     <content type="html">&lt;p&gt;&lt;em&gt;A rant &lt;a href=&quot;https://twitter.com/vboykis/status/1270401190124310529&quot;&gt;egged on&lt;/a&gt; by &lt;a href=&quot;https://twitter.com/vboykis&quot;&gt;Vicki Boykis&lt;/a&gt; after reading her &lt;a href=&quot;http://veekaybee.github.io/2020/06/09/ml-in-prod/&quot;&gt;excellent essay on model deployment&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;/beginrant&lt;/p&gt;
-&lt;p&gt;When I was in my first year of undergrad, I was in a special first-year program in which the sciences were taught as an integrated unit. (The program, &lt;a href=&quot;https://scienceone.ubc.ca/&quot;&gt;Science One&lt;/a&gt;, was quite influential in my learning journey in learning across disciplinary silos.) There, the lecturers would coordinate their use of terminology and symbols in equations. The reason? They recognized that having defined, precise, and consistent terminology reduced learner confusion, increased retention, and aided in us linking key &lt;em&gt;concepts&lt;/em&gt;. In other words, because they knew that symbolism and choice of words mattered, they were able to more easily teach the things that &lt;em&gt;mattered more&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;When I was in my first year of undergrad, I was in a first-year program in which the sciences were taught as an integrated unit. (The program, &lt;a href=&quot;https://scienceone.ubc.ca/&quot;&gt;Science One&lt;/a&gt;, was quite influential in my learning journey in learning across disciplinary silos.) There, the lecturers would coordinate their use of terminology and symbols in equations. The reason? They recognized that having defined, precise, and consistent terminology reduced learner confusion, increased retention, and aided in us linking key &lt;em&gt;concepts&lt;/em&gt;. In other words, because they knew that symbolism and choice of words mattered, they were able to more easily teach the things that &lt;em&gt;mattered more&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;One example of this was in thermodynamics. Heat, energy, and entropy have quite specific definitions, and in certain pedagogical traditions, they have the same equation forms but use different symbols. When we learned thermodynamics, we avoided all of that confusion by simply adopting the physicist's set of symbols. Nobody argued about it, because though the form changed, the &quot;spirit&quot; of the matter was preserved.&lt;/p&gt;
 &lt;p&gt;Well, fast forward 14 years later, it appears the machine learning world has yet to learn the same lessons taught in Science One. No big deal, after all, Science One only educated 80 students at a time. But I think it's worth  writing about, because we might end up with a new generation of data scientists who can't tell the difference between inference and inference.&lt;/p&gt;
 &lt;p&gt;Wait, what?! &quot;You're willing to die on the &lt;em&gt;inference&lt;/em&gt; hill?!&quot;&lt;/p&gt;
@@ -2511,108 +2532,6 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;p&gt;Fitting this model with NUTS with the full dataset would have taken a week, with no stopping time guarantees at the end of an overnight run - when I left the day before, I was still hoping for 5 days. However, switching over to ADVI (automatic differentiation variational inference) was a key enabler for this model: I was able to finish fitting the model with ADVI in just 2.5 hours, with similar uncertainty estimates (it'll never end up being identical, given random sampling).&lt;/p&gt;
 &lt;h2 id=&quot;thoughts&quot;&gt;Thoughts&lt;/h2&gt;&lt;p&gt;I used to not appreciate that ADVI could be useful for simpler models; in the past, I used to think that ADVI was mainly useful in Bayesian neural network applications - in other words, with large parameter and large data models.&lt;/p&gt;
 &lt;p&gt;With this example, I'm definitely more informed about what &quot;scale&quot; can mean: both in terms of number of parameters in a model, and in terms of number of samples that the model is fitted on. In this particular example, the model is simple, but the number of samples is so large that ADVI becomes a feasible alternative to NUTS MCMC sampling.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2018/12/25/conda-hacks-for-data-science-efficiency/">
-    <title type="text">Conda hacks for data science efficiency</title>
-    <id>urn:uuid:251beb77-b7ce-3834-b046-ca9701afdffb</id>
-    <updated>2018-12-25T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2018/12/25/conda-hacks-for-data-science-efficiency/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;The &lt;code&gt;conda&lt;/code&gt; package manager has, over the years, become an integral part of my workflow. I use it to manage project environments, and have built a bunch of very simple hacks around it that you can adopt too. I'd like to share them with you, alongside the rationale for using them.&lt;/p&gt;
-&lt;h2 id=&quot;hack-1:-set-up-your-.condarc&quot;&gt;Hack #1: Set up your &lt;code&gt;.condarc&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Why?&lt;/strong&gt; It will save you a few keystrokes each time you want to do something with &lt;code&gt;conda&lt;/code&gt;. For example, in my &lt;code&gt;.condarc&lt;/code&gt;, I have the following:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Set the channels that the `conda install` command will &lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# automatically search through.&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;defaults&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda-forge&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ericmjl&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Always accept installation. Is convenient, but always &lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# double-check!&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;always_yes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;true&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;For more information on how to configure your &lt;code&gt;.condarc&lt;/code&gt;, check the &lt;a href=&quot;https://conda.io/docs/user-guide/configuration/use-condarc.html&quot;&gt;online documentation&lt;/a&gt;!&lt;/p&gt;
-&lt;h2 id=&quot;hack-2:-use-one-environment-spec-file-per-project&quot;&gt;Hack #2: Use one environment spec file per project&lt;/h2&gt;&lt;p&gt;This assumes that you have the habit of putting all files related to one project inside one folder, using subdirectories for finer-grained organization.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Why?&lt;/strong&gt; It will ensure that you have one version-controlled, authoritative specification for the packages that are associated with the project. This is good for (1) reproducibility, as you can send it to a colleague and have them reproduce the environment, and (2) will enable Hack #3, which I will showcase afterwards.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# file name: environment.yml&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Give your project an informative name&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;project-name&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Specify the conda channels that you wish to grab packages from, in order of priority.&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;defaults&lt;/span&gt;
-&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda-forge&lt;/span&gt;
-&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ericmjl&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Specify the packages that you would like to install inside your environment. Version numbers are allowed, and conda will automatically use its dependency solver to ensure that all packages work with one another.&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;python=3.7&lt;/span&gt;
-&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;conda&lt;/span&gt;
-&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;jupyterlab&lt;/span&gt;
-&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;scipy&lt;/span&gt;
-&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;numpy&lt;/span&gt;
-&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pandas&lt;/span&gt;
-&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pyjanitor&lt;/span&gt;
-&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pandas&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# There are some packages which are not conda-installable. You can put the pip dependencies here instead.&lt;/span&gt;
-&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;pip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;tqdm&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# for example only, tqdm is actually available by conda.&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;A hack that I have related to this is that I use TextExpander shortcut to populate a starting environment spec file.&lt;/p&gt;
-&lt;p&gt;Additionally, if I want to install a new package, rather than simply typing &lt;code&gt;conda install &amp;lt;packagename&amp;gt;&lt;/code&gt;, I will add the package to the environment spec file, and then type &lt;code&gt;conda env update -f environment.yml&lt;/code&gt;, as more often than not, my default is to continue using the package I added.&lt;/p&gt;
-&lt;p&gt;For more details on what the environment spec file is all about, &lt;a href=&quot;https://conda.io/docs/user-guide/tasks/manage-environments.html#create-env-file-manually&quot;&gt;read the online docs&lt;/a&gt;!&lt;/p&gt;
-&lt;h2 id=&quot;hack-3:-use-conda-auto-env&quot;&gt;Hack 3: use &lt;code&gt;conda-auto-env&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;Written by &lt;a href=&quot;https://chdoig.github.io&quot;&gt;Christine Doig&lt;/a&gt;, &lt;a href=&quot;https://github.com/chdoig/conda-auto-env&quot;&gt;&lt;code&gt;conda-auto-env&lt;/code&gt;&lt;/a&gt; is a bash hack that enables you to automatically activate an environment once you enter into a project directory, &lt;em&gt;as long as an &lt;code&gt;environment.yml&lt;/code&gt; file already exists in the directory&lt;/em&gt;. If the environment does not already exist, then &lt;code&gt;conda-auto-env&lt;/code&gt; will automatically create one based on the &lt;code&gt;environment.yml&lt;/code&gt; file in your project directory.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Why?&lt;/strong&gt; If you have many projects that you are working on, then it will greatly reduce the amount of effort used to remember which project to activate.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;conda-auto-env&lt;/code&gt; looks like this:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# File: .conda-auto-env&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#!/bin/bash&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; conda_auto_env&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;environment.yml&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# echo &amp;quot;environment.yml file found&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;head -n &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; environment.yml &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; cut -f2 -d &lt;span class=&quot;s1&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# Check if you are already in the environment&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt; !&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; *&lt;span class=&quot;nv&quot;&gt;$ENV&lt;/span&gt;* &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
-      &lt;span class=&quot;c1&quot;&gt;# Check if the environment exists&lt;/span&gt;
-      conda activate &lt;span class=&quot;nv&quot;&gt;$ENV&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$?&lt;/span&gt; -eq &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
-        :
-      &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# Create the environment and activate&lt;/span&gt;
-        &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Conda env &amp;#39;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ENV&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;#39; doesn&amp;#39;t exist.&amp;quot;&lt;/span&gt;
-        conda env create -q
-        conda activate &lt;span class=&quot;nv&quot;&gt;$ENV&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PROMPT_COMMAND&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;conda_auto_env
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;To use it, you have two options. You can either copy/paste the whole original script into your &lt;code&gt;.bashrc&lt;/code&gt;, or you can put it in a file called &lt;code&gt;.conda-auto-env&lt;/code&gt;, and source it from your &lt;code&gt;.bashrc&lt;/code&gt;. I recommend the latter, as it makes managing your &lt;code&gt;.bashrc&lt;/code&gt; easier:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# File: .bashrc&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /path/to/.conda-auto-env
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&quot;hack-4:-hijack-bash-aliases-for-conda-commands&quot;&gt;Hack 4: hijack bash aliases for &lt;code&gt;conda&lt;/code&gt; commands&lt;/h2&gt;&lt;p&gt;I use aliases to save myself a few keystrokes whenever I'm at the terminal. This is a generalizable bash hack, but here it is as applied to &lt;code&gt;conda&lt;/code&gt; commands.&lt;/p&gt;
-&lt;p&gt;Anyways, these are the commands that I use most often, which I have found it useful to alias:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# File: .aliases&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ceu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;conda env update&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;cl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;conda list&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ci&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;conda install&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;cr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;conda remove&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Make sure your aliases don't clash with existing commands that you use!&lt;/p&gt;
-&lt;p&gt;Then, source &lt;code&gt;.aliases&lt;/code&gt; in your &lt;code&gt;. bashrc&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# File: .bashrc&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /path/to/.aliases
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Now, all of your defined aliases will be available in your bash shell.&lt;/p&gt;
-&lt;p&gt;The idea/pattern, as I mentioned earlier, is generalizable beyond just bash commands. (I have &lt;code&gt;ls&lt;/code&gt; aliased for &lt;code&gt;exa&lt;/code&gt;, and &lt;code&gt;l&lt;/code&gt; aliased for &lt;code&gt;ls&lt;/code&gt; - the epitome of laziness!)&lt;/p&gt;
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;I hope you found these bash and &lt;code&gt;conda&lt;/code&gt; hacks to be useful. Hopefully they will help you become more productive and efficient!&lt;/p&gt;
 </content>
   </entry>
 </feed>

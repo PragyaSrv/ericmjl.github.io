@@ -71,7 +71,7 @@
 
 </head>
 
-<title>With what symbols do you write thermodynamic equations? - Eric J. Ma's Personal Site</title>
+<title>What&#39;s the most optimal way to learn Bayesian statistics? - Eric J. Ma's Personal Site</title>
 
 <body class="body">
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark-nord">
@@ -133,7 +133,7 @@
   
 <!-- Set title style -->
 
-<h1>With what symbols do you write thermodynamic equations?</h1>
+<h1>What&#39;s the most optimal way to learn Bayesian statistics?</h1>
 
 
 <!-- Append author -->
@@ -143,26 +143,30 @@
     
     <a class="author" href="https://twitter.com/ericmjl">Eric J. Ma</a>
     
-    on 2020-06-09
+    on 2020-06-15
 
     
     | tags:
     <!-- Append tags after author -->
     <i class="fas fa-tag"></i>
-    <a class="tags" href="../../../../../blog/tag/deep learning/">
-      deep learning
+    <a class="tags" href="../../../../../blog/tag/bayesian statistics/">
+      bayesian statistics
     </a>
     <i class="fas fa-tag"></i>
-    <a class="tags" href="../../../../../blog/tag/machine learning/">
-      machine learning
+    <a class="tags" href="../../../../../blog/tag/bayesian/">
+      bayesian
+    </a>
+    <i class="fas fa-tag"></i>
+    <a class="tags" href="../../../../../blog/tag/data science/">
+      data science
     </a>
     <i class="fas fa-tag"></i>
     <a class="tags" href="../../../../../blog/tag/statistics/">
       statistics
     </a>
     <i class="fas fa-tag"></i>
-    <a class="tags" href="../../../../../blog/tag/rants/">
-      rants
+    <a class="tags" href="../../../../../blog/tag/inference/">
+      inference
     </a>
     
   </p>
@@ -171,26 +175,15 @@
 
 
   <!-- Put post body -->
-  <p><em>A rant <a href="https://twitter.com/vboykis/status/1270401190124310529">egged on</a> by <a href="https://twitter.com/vboykis">Vicki Boykis</a> after reading her <a href="http://veekaybee.github.io/2020/06/09/ml-in-prod/">excellent essay on model deployment</a>.</em></p>
-<p>/beginrant</p>
-<p>When I was in my first year of undergrad, I was in a first-year program in which the sciences were taught as an integrated unit. (The program, <a href="https://scienceone.ubc.ca/">Science One</a>, was quite influential in my learning journey in learning across disciplinary silos.) There, the lecturers would coordinate their use of terminology and symbols in equations. The reason? They recognized that having defined, precise, and consistent terminology reduced learner confusion, increased retention, and aided in us linking key <em>concepts</em>. In other words, because they knew that symbolism and choice of words mattered, they were able to more easily teach the things that <em>mattered more</em>.</p>
-<p>One example of this was in thermodynamics. Heat, energy, and entropy have quite specific definitions, and in certain pedagogical traditions, they have the same equation forms but use different symbols. When we learned thermodynamics, we avoided all of that confusion by simply adopting the physicist's set of symbols. Nobody argued about it, because though the form changed, the "spirit" of the matter was preserved.</p>
-<p>Well, fast forward 14 years later, it appears the machine learning world has yet to learn the same lessons taught in Science One. No big deal, after all, Science One only educated 80 students at a time. But I think it's worth  writing about, because we might end up with a new generation of data scientists who can't tell the difference between inference and inference.</p>
-<p>Wait, what?! "You're willing to die on the <em>inference</em> hill?!"</p>
-<p>In some ways, not. You might want to keep doing what you do, but hear me out. <em>I got reasonz, yo.</em></p>
-<p>The following items are key components to a statistical modelling/machine learning workflow: (a) input data, (b) model/structure, (c) parameters to learn, and (d) output data. One can frame statistical learning methods in terms of a "direction" w.r.t. the output data (d). "Simulation"/"prediction" refer to the forward direction of going from (a-c) to (d), while "inference" or "learning" refer to the backward direction of going from (a, c, d) to (b). We use distinct terms because they are distinct and, in fact, basically opposite subclasses of the larger thing of calculating 1 thing from the other 3.</p>
-<p>"Inference", then, has a specific definition in the quantitative sciences, rooted in its use in statistics. It refers to "inferring" the parameters of a model, given data. It is distinct from simple "guessing", in that there are criteria (maximum likelihood, for example) for evaluating how good individual inferred values are.</p>
-<p>The term "inference", however, has been  co-opted incorrectly by deep learning practitioners to refer to the task of <em>generating</em> or <em>predicting</em> what an output should be, given known input data and model structure + parameters. We are starting to hear the term  mis-used all the time: "At inference time...", "When performing inference...". How this came about, I do not know, but I have a hypothesis that the first few people who  co-opted the term were genuinely trying to make <em>some</em> form of linguistic connection between the statistics and machine learning worlds. I shall not try to, ahem, <em>infer their intents from observed behaviour</em> here though. :)</p>
-<p>But imagine the poor statistician trying to decipher what the machine learner is trying to say when they read the term, "at inference time..." It's like the chemist staring at the physicist's heat equation and being ever so subtly thrown off by symbol mismatch! Likewise, the statistician stands to be tripped up by the <em>completely opposite</em> use of "inference" when reading a machine learning paper.</p>
-<p>So what's the big deal here? Languages evolve, don't they?</p>
-<p>Yes! But surely that's not the only criteria for letting words slip? If words and their precise meanings do not matter, we might as well <code>#abolish #communication</code>! (If you disagree with me, go ahead and decipher what I <em>really</em> mean by that, since my words didn't matter and I can evolve the language anyways...)</p>
-<p>Statistics and machine learning are extremely interrelated fields. Machine learning research built upon statistical foundations and has given statistics practitioners new model classes to work with and tooling to perform inference on models more easily (I'm thinking about things like automatic differentiation!). Both fields stand to learn a ton from one another, but also stand to lose a lot without precise and consistent vocabulary. If you accept the premise (and, if I may dare claim, <em>very common mental model</em>) of directionality w.r.t. the output data,  then using the same term to refer to opposite-direction procedures is <em>bewilderingly</em> confusing! Especially for learners of both domains.</p>
-<p>What's the solution going forth?</p>
-<p>The unfortunate reality is that the  co-opting of the term has already happened. The optimistic reality is that <a href="https://twitter.com/PhDemetri/status/1270396350195212289">there are individuals who are merely "accepting of the fact but don't necessarily like/agree with it"</a>. Much like I push back on the use of "aye eye" at work, I think we can push our colleagues to a better standard of communication: lucid, consistent, precise, and concise.</p>
-<p>If you <em>still</em> want to use the term inference for "forward prediction/simulation", then prefix or suffix it <a href="https://twitter.com/ryanstravis/status/1270400888885202948">with some word.</a> Call it "output inference" if you'd like. But make it distinct from "parameter inference". (I just set an example, so there.)</p>
-<p><img src="https://media1.tenor.com/images/4b7d6e1687f09ba7fafd2d13b71321da/tenor.gif?itemid=15798788" alt=""></p>
-<p>If you agree, please share the message around.</p>
-<p>/endrant</p>
+  <p>I've been reflecting on the way I learned statistics, and I think I learned it in a flawed fashion.</p>
+<p>Traditionally, statistics is taught in the format of performing hypothesis tests to infer whether there's a difference between groups, or to learn the parameters of some curve.</p>
+<p>Learning statistics in this direction leads to <strong>a ton</strong> of confusion, because we're taught <em>the shortcut to the answer</em>, rather than the first-principles way of thinking about a problem. We end up with the "standard t-test" and multiple confusing names for regression modelling, masquerading as canned procedures that can be used on any problem. (OK, that's a bit of a stretch, but please do tell me you were <em>at least tempted to use the t-test in a situation where you just had to crank out an analysis</em>...)</p>
+<p>After seeing the following tweet from Michael Betancourt...</p>
+<p><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Unpopular opinion: regression models are _much_ harder to use well than generative models of an actual data generating process and consequently should not be the first and only modeling techniques that many people are taught.</p>&mdash; \mathfrak{Michael &quot;El Muy Muy&quot; Betancourt} (@betanalpha) <a href="https://twitter.com/betanalpha/status/1272358065447329792?ref_src=twsrc%5Etfw">June 15, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+<p>...I realized that the only reason why <a href="https://ericmjl.github.io/essays-on-data-science/machine-learning/markov-models/">Markov Models and their variants</a> clicked for me was thinking through the data generating process. The only reason why hierarchical models clicked for me was stepping through the data generating process on a real problem and linking them to statistical parameters. Without thinking through the data generating process, none of those models made any sense.</p>
+<p>In some sense, thinking through the data generating process is <em>an extremely natural thing to do</em>. It's like telling a story about how our data came into being, and we know that telling stories is <em>exactly</em> what humans are great at. Storytelling helps us reason about the world. There should be no reason why we don't use statistical storytelling to reason about our problems.</p>
+<p>Worrying <em>first</em> about the data generating process and then about the inferential procedure makes statistical inference less of a black box and more of a natural conclusion of statistical storytelling. We become less concerned with whether something is "significant", and instead more concerned with whether we "got the model right".</p>
+<p>To put this into concrete action, I've been working on an alternative introduction to probabilistic programming and Bayesian inference that is lighter on math than most introductions, involves a lot of verbal storytelling, and goes heavier than most introductions in its use of programming. Here we practice the skill of hypothesizing a data generating story and translating that into the language of probability distributions, which can then be translated into SciPy stats Python code. Stay tuned!</p>
 
 </div>
 <hr>
@@ -211,7 +204,7 @@
 <div class="comments">
 <div id="disqus_thread"></div>
 <script>
-  var disqus_config = function() { this.page.identifier = "/blog/with-what-symbols-do-you-write-thermodynamic-equations"; this.page.url = "http://www.ericmjl.com/blog/2020/6/9/with-what-symbols-do-you-write-thermodynamic-equations/"; };
+  var disqus_config = function() { this.page.identifier = "/blog/whats-the-most-optimal-way-to-learn-bayesian-statistics"; this.page.url = "http://www.ericmjl.com/blog/2020/6/15/whats-the-most-optimal-way-to-learn-bayesian-statistics/"; };
   (function() {
     var d = document, s = d.createElement('script');
     s.src = '//ericmjl.disqus.com/embed.js';
