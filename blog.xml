@@ -2,13 +2,68 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2020-06-15T00:00:00Z</updated>
+  <updated>2020-06-28T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2020/6/28/statistical-tests-are-just-fancy-model-comparisons/">
+    <title type="text">Statistical tests are just canned model comparisons</title>
+    <id>urn:uuid:4b1701e8-f200-3f5a-9e38-a8fd0624eb16</id>
+    <updated>2020-06-28T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2020/6/28/statistical-tests-are-just-fancy-model-comparisons/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;I reached another statistics epiphany today.&lt;/p&gt;
+&lt;p&gt;Statistical tests? They are nothing more than a comparison between statistical models
+that has been made canned.&lt;/p&gt;
+&lt;p&gt;What do I mean?&lt;/p&gt;
+&lt;p&gt;Let's say we have data for Korean men from both the North and the South.
+We could write a generative model for men's height that looks something like the following:&lt;/p&gt;
+&lt;p&gt;$$
+h&lt;em&gt;{north} \sim N(\mu&lt;/em&gt;{north}, \sigma{north})&lt;/p&gt;
+&lt;p&gt;h&lt;em&gt;{south} \sim N(\mu&lt;/em&gt;{south}, \sigma{south})
+$$&lt;/p&gt;
+&lt;p&gt;In effect, we have one data generating model per country.&lt;/p&gt;
+&lt;p&gt;Think back to how you might analyze Korean male height data using canned statistical procedures.
+You might choose the t-test.
+In performing the t-test, we make some assumptions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The two populations have equal variance, and&lt;/li&gt;
+&lt;li&gt;We are only interested in comparing the means.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Yes, there are variations on the t-test, such as t-test with unequal variance and the likes,
+but I wonder how many of us would &lt;em&gt;really&lt;/em&gt; think deep about the assumptions underlying the procedure
+when faced with data and a &quot;canned protocol&quot;?
+Instead, we'd simply ask, &quot;is there a difference in the means?&quot;
+And then calculate some convoluted p-value.&lt;/p&gt;
+&lt;p&gt;How could we go beyond canned procedures and tell if the two populations have a difference?
+Well, we could compare their means, but we could also add another comparison of the variance too.
+All of this comes very naturally from thinking about the data generating story.
+Let's see this in action.&lt;/p&gt;
+&lt;p&gt;In performing Bayesian inference, we would obtain posterior distributions
+for both the $\mu$ and $\sigma$ parameters of both models.
+We could then compare the $\mu$ and the $\sigma$ parameters,
+and they would both be informative.&lt;/p&gt;
+&lt;p&gt;For example, if $\mu$s turned out to be different and their posteriors do not overlap,
+we would claim that the two populations differ in their average height,
+and explain it as being due to the nutritional difference arising from economic mismanagement.&lt;/p&gt;
+&lt;p&gt;On the other hand, if the $\sigma$ turned out to be different and their posterios didn't overlap,
+we would claim that the two populations differ in their &lt;em&gt;variation in height&lt;/em&gt;.
+How would we explain this?
+For example, if the distribution of North Korean heights was tighter
+giving rise to a smaller $\sigma$ value,
+we might explain this as being due to rationing and genetic homogeneity.&lt;/p&gt;
+&lt;p&gt;In both comparisons, by thinking more precisely about the data generating process,
+we had access to a broader set of hypotheses.
+If we had defaulted to the t-test as a &quot;canned statistical procedure&quot;,
+and not thought carefully about setting up a data generating model,
+we would be missing out on a rich world of inquiry into our data.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/6/15/whats-the-most-optimal-way-to-learn-bayesian-statistics/">
     <title type="text">What's the most optimal way to learn Bayesian statistics?</title>
     <id>urn:uuid:5e897219-ccca-31a1-b090-eb8af84b6ebc</id>
@@ -2514,24 +2569,6 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;p&gt;Psychological safety comes from knowing that we have at least a working prototype that we can deliver to whomever is going to consume our results. We aren't stuck in the land of imaginary ideas without something tangible for others to interact with.&lt;/p&gt;
 &lt;p&gt;Credibility comes about because with the MVP on hand, others now can trust on our ability to execute on an idea. Prior to that, all that others have to go off are promises of &quot;a thing&quot;.&lt;/p&gt;
 &lt;p&gt;Build your MVPs. They're a good thing!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2019/1/21/advi-scalable-bayesian-inference/">
-    <title type="text">ADVI: Scalable Bayesian Inference</title>
-    <id>urn:uuid:c601f17e-84cb-3984-8342-27dd19372045</id>
-    <updated>2019-01-21T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2019/1/21/advi-scalable-bayesian-inference/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;&lt;p&gt;You never know when scalability becomes an issue. Indeed, scalability necessitates a whole different world of tooling.&lt;/p&gt;
-&lt;p&gt;While at work, I've been playing with a model - a Bayesian hierarchical 4-parameter dose response model, to be specific. With this model, the overall goal (without going into proprietary specifics) was parameter learning - what's the 50th percentile concentration, what's the max, what's the minimum, etc.; what was also important was quantifying the uncertainty surrounding these parameters.&lt;/p&gt;
-&lt;h2 id=&quot;prototype-phase&quot;&gt;Prototype Phase&lt;/h2&gt;&lt;p&gt;Originally, when I prototyped the model, I used just a few thousand samples, which was trivial to fit with NUTS. I also got the model specification (both the group-level and population-level priors) done using those same few thousand.&lt;/p&gt;
-&lt;p&gt;At some point, I was qualitatively and quantitatively comfortable with the model specification. Qualitatively - the model structure reflected prior biochemical knowledge. Quantitatively, I saw good convergence when examining the sampling traces, as well as the shrinkage phenomena.&lt;/p&gt;
-&lt;h2 id=&quot;scaling-up&quot;&gt;Scaling Up&lt;/h2&gt;&lt;p&gt;Once I reached that point, I decided to scale up to the entire dataset: 400K+ samples, 3000+ groups.&lt;/p&gt;
-&lt;p&gt;Fitting this model with NUTS with the full dataset would have taken a week, with no stopping time guarantees at the end of an overnight run - when I left the day before, I was still hoping for 5 days. However, switching over to ADVI (automatic differentiation variational inference) was a key enabler for this model: I was able to finish fitting the model with ADVI in just 2.5 hours, with similar uncertainty estimates (it'll never end up being identical, given random sampling).&lt;/p&gt;
-&lt;h2 id=&quot;thoughts&quot;&gt;Thoughts&lt;/h2&gt;&lt;p&gt;I used to not appreciate that ADVI could be useful for simpler models; in the past, I used to think that ADVI was mainly useful in Bayesian neural network applications - in other words, with large parameter and large data models.&lt;/p&gt;
-&lt;p&gt;With this example, I'm definitely more informed about what &quot;scale&quot; can mean: both in terms of number of parameters in a model, and in terms of number of samples that the model is fitted on. In this particular example, the model is simple, but the number of samples is so large that ADVI becomes a feasible alternative to NUTS MCMC sampling.&lt;/p&gt;
 </content>
   </entry>
 </feed>
