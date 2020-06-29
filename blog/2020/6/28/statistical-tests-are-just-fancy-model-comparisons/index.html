@@ -173,10 +173,9 @@ that has been made canned.</p>
 <p>What do I mean?</p>
 <p>Let's say we have data for Korean men from both the North and the South.
 We could write a generative model for men's height that looks something like the following:</p>
-<p>$$
-h<em>{north} \sim N(\mu</em>{north}, \sigma{north})</p>
-<p>h<em>{south} \sim N(\mu</em>{south}, \sigma{south})
-$$</p>
+<p>$$h^n \sim N(\mu^{n}, \sigma^{n})$$</p>
+<p>$$h^s \sim N(\mu^{s}, \sigma^{s})$$</p>
+<p>(The superscripts don't refer to powers, but "north" and "south"; I was just having difficulty getting Markdown + LaTeX subscripts parsed correctly.)</p>
 <p>In effect, we have one data generating model per country.</p>
 <p>Think back to how you might analyze Korean male height data using canned statistical procedures.
 You might choose the t-test.

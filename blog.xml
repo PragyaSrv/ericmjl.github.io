@@ -23,10 +23,9 @@ that has been made canned.&lt;/p&gt;
 &lt;p&gt;What do I mean?&lt;/p&gt;
 &lt;p&gt;Let's say we have data for Korean men from both the North and the South.
 We could write a generative model for men's height that looks something like the following:&lt;/p&gt;
-&lt;p&gt;$$
-h&lt;em&gt;{north} \sim N(\mu&lt;/em&gt;{north}, \sigma{north})&lt;/p&gt;
-&lt;p&gt;h&lt;em&gt;{south} \sim N(\mu&lt;/em&gt;{south}, \sigma{south})
-$$&lt;/p&gt;
+&lt;p&gt;$$h^n \sim N(\mu^{n}, \sigma^{n})$$&lt;/p&gt;
+&lt;p&gt;$$h^s \sim N(\mu^{s}, \sigma^{s})$$&lt;/p&gt;
+&lt;p&gt;(The superscripts don't refer to powers, but &quot;north&quot; and &quot;south&quot;; I was just having difficulty getting Markdown + LaTeX subscripts parsed correctly.)&lt;/p&gt;
 &lt;p&gt;In effect, we have one data generating model per country.&lt;/p&gt;
 &lt;p&gt;Think back to how you might analyze Korean male height data using canned statistical procedures.
 You might choose the t-test.
