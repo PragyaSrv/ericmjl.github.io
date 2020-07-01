@@ -2,13 +2,61 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Eric Ma's Blog</title>
   <id>urn:uuid:8e5496e4-8606-3632-a35c-1d9694b4313d</id>
-  <updated>2020-06-28T00:00:00Z</updated>
+  <updated>2020-06-29T00:00:00Z</updated>
   <link href="http://www.ericmjl.com/blog/" />
   <link href="http://www.ericmjl.com/blog.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://www.ericmjl.com/blog/2020/6/29/how-i-feel-about-hey/">
+    <title type="text">How I feel about Hey</title>
+    <id>urn:uuid:94dde895-bd9d-322a-b3bb-caed5a5ef73f</id>
+    <updated>2020-06-29T00:00:00Z</updated>
+    <link href="http://www.ericmjl.com/blog/2020/6/29/how-i-feel-about-hey/" />
+    <author>
+      <name>Eric J. Ma</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a href=&quot;../../../../../blog/2020/6/29/how-i-feel-about-hey/hey.com&quot;&gt;Hey&lt;/a&gt; is a new email service by Basecamp. If you’re a techie type, you’ve probably heard of it via the Twitter world.&lt;/p&gt;
+&lt;p&gt;I saw the demo by their CEO Jason Fried, and I was sold enough to write an email to their invite request address (&lt;a href=&quot;mailto:iwant@hey.com&quot;&gt;iwant@hey.com&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 id=&quot;my-likes&quot;&gt;My likes&lt;/h2&gt;&lt;p&gt;Now that I’ve been trying it out for about a week, I wanted to share about my favourite features about Hey email that makes me ready to pay up for it.&lt;/p&gt;
+&lt;h3 id=&quot;batched-replies&quot;&gt;Batched replies&lt;/h3&gt;&lt;p&gt;Hey gives us an interface that lets us set aside emails into a bucket that one can “Reply Later”. With any email open, we can mark it as an email to “Reply Later”, and assign it to the “Reply Later” stack.&lt;/p&gt;
+&lt;p&gt;At a later time in the day, we can go into that stack, and hit the “Focus &amp;amp; Reply” button, which gives us another interface to go down the stack and respond to emails one by one.&lt;/p&gt;
+&lt;p&gt;This makes so much more sense, because:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;It’s easier to give each email the attention that it needs,&lt;/li&gt;
+&lt;li&gt;Without having to pass through the “Inbox” and being distracted by something else we “feel” we need to respond to (but don’t actually have to).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;the-screener&quot;&gt;The Screener&lt;/h3&gt;&lt;p&gt;The Screener is pretty rad. I can quickly screen emails into the appropriate buckets: The Imbox, The Feed, and The Papertrail. This helps reduce the amount of clutter that hits my eyes.&lt;/p&gt;
+&lt;p&gt;The screening procedure is quite deterministic. There’s no fancy machine learning that goes on that attempts to stochastically move emails unexpectedly. Emails from important people, or important newsletters, get sent to the Imbox. (I get to decide what is important!) Other emails are sent out of sight, out of mind, until I feel ready to look at them as a collection.&lt;/p&gt;
+&lt;h3 id=&quot;functional-piles&quot;&gt;Functional piles&lt;/h3&gt;&lt;p&gt;“Functional piles” is, by far, the biggest thing I’ve come to like about Hey. I’ve alluded to this above, but I thought I’d detail this a bit more.&lt;/p&gt;
+&lt;p&gt;Hey gives us a functionally broad definition of “piles” of email:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Screening&lt;/li&gt;
+&lt;li&gt;The Imbox&lt;/li&gt;
+&lt;li&gt;The Papertrail&lt;/li&gt;
+&lt;li&gt;The Feed&lt;/li&gt;
+&lt;li&gt;The Set Aside Pile&lt;/li&gt;
+&lt;li&gt;The Reply Later Pile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What’s really cool about this functional definition is that:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The definition is “functional”, in that it determines &lt;em&gt;what I do&lt;/em&gt; with the email in a sane workflow.&lt;/li&gt;
+&lt;li&gt;The definition is broad enough that I don’t have to think &lt;em&gt;too&lt;/em&gt; hard about which pile it goes into.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For example, “The Screening” pile is for all of the first-time emails in my Inbox, and all I have to decide is whether I might want to see that email later or not.&lt;/p&gt;
+&lt;p&gt;As another example, the “Reply Later” pile lets me batch together emails that I might want to focus and reply to at one shot.&lt;/p&gt;
+&lt;p&gt;The workflow feels &lt;em&gt;very&lt;/em&gt; functional, and the user interaction design is definitely geared towards making sane the way we handle email.&lt;/p&gt;
+&lt;p&gt;By contrast, in Gmail, I was paying for SaneBox to help me automatically triage my email for me, but even then, I couldn’t leisurely scroll through them because it was a separate service with a separate interface that made it difficult to work with.&lt;/p&gt;
+&lt;p&gt;Also, Gmail never gave us the ability to screen out emails, neither did it give us the ability to set aside special piles to “reply to” later.&lt;/p&gt;
+&lt;p&gt;I know I could have used Gmail tags to handle this, but dragging and dropping an email to a generic tag qualitatively &lt;em&gt;feels&lt;/em&gt; different compared to hitting a button to send it to a pile that is still visible but not in my face.&lt;/p&gt;
+&lt;p&gt;Finally, whenever an email is read, it gets moved from the top of the Imbox into the “read” pile. This is another one of those subtle designs that makes usage such a joy. There’s a feed of email below that I’ve seen once, but only the &lt;em&gt;truly&lt;/em&gt; unread ones are still above. Having ingrained email habits for over 20 years, this takes a bit of getting used to, but once one is used to Hey’s design, one realizes how helpful it is for triaging and batching (i.e. “pretty good” email workflow).&lt;/p&gt;
+&lt;h3 id=&quot;forwarding-in&quot;&gt;Forwarding in&lt;/h3&gt;&lt;p&gt;Any email service can do this, but yes, email forwarding is the way that we get emails ported over from our old addresses. Forwarding is the most straightforward (ahem!) way to get started with the service without needing to resort to emailing a ton of people.&lt;/p&gt;
+&lt;p&gt;I still keep my old Gmail account around because I use it for the calendar scheduling story, and for Google Drive. It’s hard to part with an address I’ve had for a long time, but I’ve done migration off digital services before, and I know it just takes a bit of patience to finish.&lt;/p&gt;
+&lt;h2 id=&quot;concluding-thoughts&quot;&gt;Concluding thoughts&lt;/h2&gt;&lt;p&gt;Perhaps my situation has become typical of the kind of user that Hey is trying to help: lots of emails, a small fraction being important, the others I might need to know.&lt;/p&gt;
+&lt;p&gt;Yet again, good design is shown to matter - Hey makes “great workflow” front-and-center, whereas most email services don’t. This seemingly little workflow detail has a disproportionate impact on the quality of the service. Good design matters, and I’m happy to pay for it!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://www.ericmjl.com/blog/2020/6/28/statistical-tests-are-just-fancy-model-comparisons/">
     <title type="text">Statistical tests are just canned model comparisons</title>
     <id>urn:uuid:4b1701e8-f200-3f5a-9e38-a8fd0624eb16</id>
@@ -2550,24 +2598,6 @@ chown &amp;lt;myusername&amp;gt; *.pem  &lt;span class=&quot;c1&quot;&gt;# chang
 &lt;blockquote&gt;&lt;p&gt;&quot;I don’t know why more people don’t do it,&quot; Sanjay said, of programming with a partner.&lt;/p&gt;
 &lt;p&gt;&quot;You need to find someone that you’re gonna pair-program with who’s compatible with your way of thinking, so that the two of you together are a complementary force,&quot; Jeff said.&lt;/p&gt;
 &lt;/blockquote&gt;
-</content>
-  </entry>
-  <entry xml:base="http://www.ericmjl.com/blog/2019/1/28/minimum-viable-products-matter/">
-    <title type="text">Minimum Viable Products (MVPs) Matter</title>
-    <id>urn:uuid:e7106802-1560-3f7e-a492-9b3e5bd3d957</id>
-    <updated>2019-01-28T00:00:00Z</updated>
-    <link href="http://www.ericmjl.com/blog/2019/1/28/minimum-viable-products-matter/" />
-    <author>
-      <name>Eric J. Ma</name>
-    </author>
-    <content type="html">&lt;p&gt;MVPs matter because they afford us at least two things:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Psychological safety&lt;/li&gt;
-&lt;li&gt;Credibility&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Psychological safety comes from knowing that we have at least a working prototype that we can deliver to whomever is going to consume our results. We aren't stuck in the land of imaginary ideas without something tangible for others to interact with.&lt;/p&gt;
-&lt;p&gt;Credibility comes about because with the MVP on hand, others now can trust on our ability to execute on an idea. Prior to that, all that others have to go off are promises of &quot;a thing&quot;.&lt;/p&gt;
-&lt;p&gt;Build your MVPs. They're a good thing!&lt;/p&gt;
 </content>
   </entry>
 </feed>
